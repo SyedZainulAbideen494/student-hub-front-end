@@ -67,7 +67,7 @@ const GroupChat = () => {
     };
 
     const handleOpenFlashcard = (flashcardId) => {
-        nav(`/flashcards/${flashcardId}`);
+        nav(`/note/view/${flashcardId}`);
     };
 
     return (
