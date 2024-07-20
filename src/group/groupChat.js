@@ -11,6 +11,7 @@ const GroupChat = () => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [flashcardDetailsMap, setFlashcardDetailsMap] = useState({});
+    const [userNameMap, setUserNameMap] = useState({});
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
@@ -38,6 +39,31 @@ const GroupChat = () => {
                 }, {});
 
                 setFlashcardDetailsMap(flashcardDetailsMap);
+
+                const userIds = response.data.messages
+                    .map(message => message.sender);
+
+                const uniqueUserIds = [...new Set(userIds)];
+
+                const userNames = await Promise.all(
+                    uniqueUserIds.map(userId => {
+                        const token = localStorage.getItem('token');
+                        return axios.get(`${API_ROUTES.getUserByToken}/${userId}`, {
+                            headers: { Authorization: `Bearer ${token}` },
+                            params: { userId }
+                        }).then(res => ({
+                            userId,
+                            userName: res.data.user_name
+                        }));
+                    })
+                );
+
+                const userNameMap = userNames.reduce((acc, { userId, userName }) => {
+                    acc[userId] = userName;
+                    return acc;
+                }, {});
+
+                setUserNameMap(userNameMap);
 
             } catch (error) {
                 console.error('Error fetching group details:', error);
@@ -82,7 +108,7 @@ const GroupChat = () => {
             <div className="messages-container">
                 {messages.map((message, index) => (
                     <div key={index} className="message">
-                        <span className="message-sender">{message.sender}:</span>
+                        <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}:</span>
                         {message.type === 'flashcard' ? (
                             <div className="flashcard-message-card">
                                 <div className="flashcard-header">

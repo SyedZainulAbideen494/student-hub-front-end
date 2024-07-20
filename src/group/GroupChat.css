@@ -63,25 +63,33 @@
 
 .flashcard-message-card {
     border: 1px solid #007bff;
-    border-radius: 10px;
-    padding: 15px;
-    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    width: 60%;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .flashcard-header h3 {
     margin: 0;
-    font-size: 18px;
-    color: #333;
+    font-size: 16px;
+    color: #007bff;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .open-flashcard-button {
     background-color: #007bff;
     color: #ffffff;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
+    align-self: flex-end;
 }
 
 .open-flashcard-button:hover {

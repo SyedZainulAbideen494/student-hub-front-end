@@ -18,5 +18,6 @@ export const API_ROUTES = {
   createGroup: `${API_URL}/api/groups/add`,
   shareFlashCard: `${API_URL}/shareFlashCard`,
   getGroupDetailsById: `${API_URL}/api/groups`,
-  sendGroupMessages: `${API_URL}/api/groups/messages/send`
+  sendGroupMessages: `${API_URL}/api/groups/messages/send`,
+  getUserByToken: `${API_URL}/api/user/details`, // Add this line
 };
