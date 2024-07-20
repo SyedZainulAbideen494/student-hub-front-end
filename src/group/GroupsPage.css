@@ -1,70 +1,142 @@
-.groups-page {
-    font-family: Arial, sans-serif;
+/* General styling for the page container */
+.groups-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    max-width: 800px;
-    margin: auto;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    overflow: auto;
 }
 
-.create-group {
-    margin-bottom: 40px;
-}
-
-.create-group h1 {
-    margin-bottom: 10px;
-}
-
-.create-group input,
-.create-group textarea {
+/* Styling for the group creation form */
+.group-creation-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.form-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.group-name-input,
+.group-description-input {
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.create-group label {
-    display: block;
+.group-name-input:focus,
+.group-description-input:focus {
+    border-color: #7161ef;
+    outline: none;
+}
+
+/* Styling for the checkbox container and label */
+.checkbox-container {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
 }
 
-.create-group button {
-    padding: 10px 20px;
+.public-checkbox {
+    margin-right: 10px;
+    accent-color: #7161ef;
+}
+
+.checkbox-label {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Styling for the create group button */
+.group-creation-button {
+    background-color: #7161ef;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
+    padding: 10px 15px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-.create-group button:hover {
-    background-color: #0056b3;
+.group-creation-button:hover {
+    background-color: #5a50d6;
 }
 
-.groups-list h2 {
-    margin-top: 40px;
+/* Styling for the groups list section */
+.groups-list-container {
+    width: 100%;
+    max-width: 600px;
+    overflow-y: auto;
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+
+.groups-list-title {
+    font-size: 20px;
+    color: #333;
     margin-bottom: 10px;
 }
 
-.groups-list ul {
-    list-style-type: none;
+.groups-list {
+    list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.groups-list ul li {
+.group-item {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.groups-list button {
-    margin-left: 10px;
-    padding: 5px 10px;
+.join-group-button {
+    background-color: #7161ef;
+    color: #ffffff;
     border: none;
     border-radius: 4px;
-    background-color: #28a745;
-    color: #fff;
+    padding: 5px 10px;
     cursor: pointer;
+    font-size: 14px;
 }
 
-.groups-list button:hover {
-    background-color: #218838;
+.join-group-button:hover {
+    background-color: #5a50d6;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .group-creation-form,
+    .groups-list-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-title,
+    .groups-list-title {
+        font-size: 18px;
+    }
+
+    .group-creation-button,
+    .join-group-button {
+        font-size: 14px;
+    }
 }

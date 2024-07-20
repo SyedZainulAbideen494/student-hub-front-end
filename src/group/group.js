@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GroupsPage.css'; // Import CSS file
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import FooterNav from '../app_modules/footernav';
 
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
@@ -69,52 +70,56 @@ const GroupsPage = () => {
     };
 
     return (
-        <div className="groups-page">
-            <div className="create-group">
-                <h1>Create Group</h1>
+        <div className="groups-container">
+        <div className="group-creation-form">
+            <h1 className="form-title">Create Group</h1>
+            <input
+                type="text"
+                className="group-name-input"
+                placeholder="Group Name"
+                value={newGroup.name}
+                onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
+            />
+            <textarea
+                className="group-description-input"
+                placeholder="Description"
+                value={newGroup.description}
+                onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
+            />
+            <div className="checkbox-container">
                 <input
-                    type="text"
-                    placeholder="Group Name"
-                    value={newGroup.name}
-                    onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
+                    type="checkbox"
+                    className="public-checkbox"
+                    checked={newGroup.is_public}
+                    onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
                 />
-                <textarea
-                    placeholder="Description"
-                    value={newGroup.description}
-                    onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
-                />
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={newGroup.is_public}
-                        onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
-                    />
-                    Public
-                </label>
-                <button onClick={handleCreateGroup}>Create Group</button>
+                <label className="checkbox-label">Public</label>
             </div>
-
-            <div className="groups-list">
-                <h2>Joined Groups</h2>
-                <ul>
-                    {joinedGroups.map((group) => (
-                        <li key={group.id}>
-                            {group.name}
-                        </li>
-                    ))}
-                </ul>
-
-                <h2>Public Groups</h2>
-                <ul>
-                    {publicGroups.map((group) => (
-                        <li key={group.id}>
-                            {group.name}
-                            <button onClick={() => handleJoinGroup(group.id)}>Join</button>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <button className="group-creation-button" onClick={handleCreateGroup}>Create Group</button>
         </div>
+    
+        <div className="groups-list-container">
+            <h2 className="groups-list-title">Joined Groups</h2>
+            <ul className="groups-list">
+                {joinedGroups.map((group) => (
+                    <li key={group.id} className="group-item">
+                        {group.name}
+                    </li>
+                ))}
+            </ul>
+    
+            <h2 className="groups-list-title">Public Groups</h2>
+            <ul className="groups-list" style={{marginBottom: '50px'}}>
+                {publicGroups.map((group) => (
+                    <li key={group.id} className="group-item">
+                        {group.name}
+                        <button className="join-group-button" onClick={() => handleJoinGroup(group.id)}>Join</button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+        <FooterNav/>
+    </div>
     );
 };
 
