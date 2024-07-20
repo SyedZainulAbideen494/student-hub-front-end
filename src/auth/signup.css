@@ -1,0 +1,101 @@
+/* Sign Up container */
+.signup-container {
+  max-width: 400px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.signup-container h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  color: #ff6347; /* Tomato red */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-container-login {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.input-container-login:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.signup-container input,
+.signup-container select {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: none;
+}
+
+.toggle-password-login {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #007bff; /* Blue */
+  margin-left: 10px;
+}
+
+.toggle-password-login:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.signup-container button[type="submit"] {
+  background-color: #007bff; /* Blue */
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.signup-container button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.links-login {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.links-login a {
+  color: #007bff; /* Blue */
+  text-decoration: none;
+}
+
+.links-login a:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darker blue on hover */
+}
+

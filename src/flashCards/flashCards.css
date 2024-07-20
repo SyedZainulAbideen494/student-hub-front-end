@@ -1,0 +1,123 @@
+.flashcards-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.flashcard-form-flashcards-page {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.flashcard-form-flashcards-page .form-group-flashcards-page {
+    margin-bottom: 15px;
+}
+
+.flashcard-form-flashcards-page label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.flashcard-form-flashcards-page input[type="text"],
+.flashcard-form-flashcards-page textarea,
+.flashcard-form-flashcards-page input[type="file"] {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.flashcard-form-flashcards-page textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.flashcard-form-flashcards-page input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.flashcard-form-flashcards-page button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.flashcard-form-flashcards-page button:hover {
+    background-color: #0056b3;
+}
+
+.search-bar-flashcards-page {
+    margin-bottom: 20px;
+}
+
+.search-bar-flashcards-page input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.flashcard-list-flashcards-page {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.flashcard-item-flashcards-page {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.flashcard-item-flashcards-page h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+.flashcard-item-flashcards-page p {
+    font-size: 16px;
+    color: #666;
+}
+
+.flashcard-item-flashcards-page img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.flashcard-actions-flashcards-page {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.flashcard-actions-flashcards-page button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.flashcard-actions-flashcards-page button:hover {
+    background-color: #0056b3;
+}
+

@@ -1,0 +1,111 @@
+/* Login container */
+.login-container {
+  max-width: 400px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+  transform: scale(1.01);
+}
+
+.login-container h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-message {
+  color: #ff6347; /* Tomato red */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input-container-login {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.input-container-login:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.login-container input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.login-container input:focus {
+  border-color: #007bff; /* Blue */
+}
+
+.toggle-password-login {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #007bff; /* Blue */
+  margin-left: 10px;
+}
+
+.toggle-password-login:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.login-container button[type="submit"] {
+  background-color: #007bff; /* Blue */
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.02);
+}
+
+.links-login {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.links-login a {
+  color: #007bff; /* Blue */
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.links-login a:hover {
+  text-decoration: underline;
+  color: #0056b3; /* Darker blue on hover */
+}
