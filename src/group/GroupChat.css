@@ -62,7 +62,7 @@
 }
 
 .flashcard-message-card {
-    border: 1px solid #007bff;
+    border: 1px solid #f1f1f1;
     border-radius: 8px;
     padding: 10px;
     width: 60%;
@@ -70,13 +70,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
     align-items: flex-start;
 }
 
 .flashcard-header h3 {
     margin: 0;
-    font-size: 16px;
-    color: #007bff;
+    font-size: 14px;
+    color: #000000;
     font-weight: 600;
     margin-bottom: 8px;
 }
