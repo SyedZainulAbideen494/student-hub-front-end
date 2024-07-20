@@ -12,6 +12,7 @@ import SignUp from "./auth/signup";
 import Dashbaord from "./dashbaord/dashboard";
 import FlashcardsPage from "./flashCards/flashCards";
 import NoteDetailPage from "./flashCards/noteDetails";
+import GroupsPage from "./group/group";
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
   {path: '/sign-up', element: <SignUp/>},
   {path: '/', element: <Dashbaord/>},
   {path: '/notes', element: <FlashcardsPage/>},
-  {path: '/note/view/:id', element: <NoteDetailPage/>}
+  {path: '/note/view/:id', element: <NoteDetailPage/>},
+  {path: '/group', element: <GroupsPage/>},
 ]);
 
 
