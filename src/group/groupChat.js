@@ -12,6 +12,7 @@ const DiscussionBoard = () => {
     const [newMessage, setNewMessage] = useState('');
     const [flashcardDetailsMap, setFlashcardDetailsMap] = useState({});
     const [userNameMap, setUserNameMap] = useState({});
+    const [memberCount, setMemberCount] = useState(0);
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
@@ -65,6 +66,10 @@ const DiscussionBoard = () => {
 
                 setUserNameMap(userNameMap);
 
+                // Fetch member count
+                const memberCountResponse = await axios.get(`${API_ROUTES.getGroupMemberCount}/${id}`);
+                setMemberCount(memberCountResponse.data.memberCount);
+
             } catch (error) {
                 console.error('Error fetching group details:', error);
             }
@@ -97,49 +102,49 @@ const DiscussionBoard = () => {
     };
 
     return (
-<div className="discussion-group-container">
-    <header className="discussion-header">
-        <button className="back-button" onClick={handleBackBtn}>←</button>
-        <div className="group-info">
-            <h1 className="group-name">{groupDetails?.name}</h1>
-            <span className="member-count">{groupDetails?.membersCount || 0} Members</span>
-        </div>
-    </header>
-    <div className="messages-container">
-        {messages.map((message, index) => (
-            <div key={index} className="message">
-                <div className="message-header">
-                    <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}</span>
-                    <span className="message-timestamp">{new Date(message.created_at).toLocaleString()}</span>
+        <div className="discussion-group-container">
+            <header className="discussion-header">
+                <button className="back-button" onClick={handleBackBtn}>←</button>
+                <div className="group-info">
+                    <h2 className="group-name">{groupDetails?.name}</h2>
+                    <span className="member-count">{memberCount} Members</span>
                 </div>
-                {message.type === 'flashcard' ? (
-                    <div className="flashcard-message-card">
-                        <div className="flashcard-header">
-                            <h3>{flashcardDetailsMap[message.content]?.title || 'Flashcard'}</h3>
+            </header>
+            <div className="messages-container">
+                {messages.map((message, index) => (
+                    <div key={index} className="message">
+                        <div className="message-header">
+                            <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}</span>
+                            <span className="message-timestamp">{new Date(message.created_at).toLocaleString()}</span>
                         </div>
-                        <div className="flashcard-content">
-                            <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
-                                Open Flashcard
-                            </button>
-                        </div>
+                        {message.type === 'flashcard' ? (
+                            <div className="flashcard-message-card">
+                                <div className="flashcard-header">
+                                    <h3>{flashcardDetailsMap[message.content]?.title || 'Flashcard'}</h3>
+                                </div>
+                                <div className="flashcard-content">
+                                    <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
+                                        Open Flashcard
+                                    </button>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="message-content">{message.content}</div>
+                        )}
                     </div>
-                ) : (
-                    <div className="message-content">{message.content}</div>
-                )}
+                ))}
             </div>
-        ))}
-    </div>
-    <div className="message-input-container">
-        <input
-            type="text"
-            className="message-input"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message..."
-        />
-        <button className="send-button" onClick={handleSendMessage}>Send</button>
-    </div>
-</div>
+            <div className="message-input-container">
+                <input
+                    type="text"
+                    className="message-input"
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    placeholder="Type your message..."
+                />
+                <button className="send-button" onClick={handleSendMessage}>Send</button>
+            </div>
+        </div>
     );
 };
 

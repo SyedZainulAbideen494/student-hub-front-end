@@ -19,5 +19,6 @@ export const API_ROUTES = {
   shareFlashCard: `${API_URL}/shareFlashCard`,
   getGroupDetailsById: `${API_URL}/api/groups`,
   sendGroupMessages: `${API_URL}/api/groups/messages/send`,
-  getUserByToken: `${API_URL}/api/user/details`, // Add this line
+  getUserByToken: `${API_URL}/api/user/details`, 
+  getGroupMemberCount: `${API_URL}/group/member-count`
 };
