@@ -29,7 +29,7 @@ const GroupDetailModal = ({ groupDetails, members, onClose, onInvite }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className="close-button" onClick={onClose}>×</button>
+                <button className="close-button" onClick={onClose} style={{color: 'black'}}>×</button>
                 <h2>{groupDetails.name}</h2>
                 <p>Status: {groupDetails.is_public ? 'Public' : 'Private'}</p>
                 <h3>Members</h3>
