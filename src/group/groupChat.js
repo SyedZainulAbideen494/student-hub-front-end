@@ -121,7 +121,7 @@ const GroupChat = () => {
                                 </div>
                             </div>
                         ) : (
-                            <span className="message-content">{message.content}</span>
+                           <span><br/><span className="message-content">{message.content}</span></span> 
                         )}
                     </div>
                 ))}
