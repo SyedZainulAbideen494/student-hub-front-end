@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // For navigation
 import axios from 'axios';
-import './GroupsPage.css'; // Import CSS file
+import './GroupsPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
-import SuccessModal from '../app_modules/SuccessModal'; // Import SuccessModal
+import SuccessModal from '../app_modules/SuccessModal';
 
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
@@ -11,19 +12,16 @@ const GroupsPage = () => {
     const [newGroup, setNewGroup] = useState({ name: '', description: '', is_public: true });
     const [successMessage, setSuccessMessage] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const nav = useNavigate(); // For navigation
 
     useEffect(() => {
         const fetchGroups = async () => {
             try {
-                const token = localStorage.getItem('token'); // Get token from localStorage
-
-                // Fetch joined groups
+                const token = localStorage.getItem('token');
                 const joinedResponse = await axios.get(API_ROUTES.fetchJoinedGroups, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setJoinedGroups(joinedResponse.data);
-
-                // Fetch public groups
                 const publicResponse = await axios.get(API_ROUTES.fetchPublicGroups);
                 setPublicGroups(publicResponse.data);
             } catch (error) {
@@ -36,25 +34,17 @@ const GroupsPage = () => {
 
     const handleCreateGroup = async () => {
         try {
-            const token = localStorage.getItem('token'); // Get token from localStorage
-
+            const token = localStorage.getItem('token');
             await axios.post(API_ROUTES.createGroup, newGroup, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-
-            // Refresh the list of groups after creating a new one
             const response = await axios.get(API_ROUTES.fetchJoinedGroups, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setJoinedGroups(response.data);
-
-            // Show success modal
             setSuccessMessage('Group created successfully!');
             setIsModalVisible(true);
-
-            // Hide modal after 3 seconds
             setTimeout(() => setIsModalVisible(false), 3000);
-
         } catch (error) {
             console.error('Error creating group:', error);
         }
@@ -62,34 +52,29 @@ const GroupsPage = () => {
 
     const handleJoinGroup = async (groupId) => {
         try {
-            const token = localStorage.getItem('token'); // Get token from localStorage
-
+            const token = localStorage.getItem('token');
             await axios.post(`${API_ROUTES.joinGroup}/${groupId}`, {}, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-
-            // Refresh the list of joined groups
             const response = await axios.get(API_ROUTES.fetchJoinedGroups, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setJoinedGroups(response.data);
-
-            // Show success modal
             setSuccessMessage('Joined group successfully!');
             setIsModalVisible(true);
-
-            // Hide modal after 3 seconds
             setTimeout(() => setIsModalVisible(false), 3000);
-
         } catch (error) {
             console.error('Error joining group:', error);
         }
     };
 
+    const openGroupChat = (groupId) => {
+        nav(`/group-chat/${groupId}`);
+    };
+
     return (
         <div className="groups-container">
             <SuccessModal visible={isModalVisible} message={successMessage} />
-
             <div className="group-creation-form">
                 <h1 className="form-title">Create Group</h1>
                 <input
@@ -116,19 +101,17 @@ const GroupsPage = () => {
                 </div>
                 <button className="group-creation-button" onClick={handleCreateGroup}>Create Group</button>
             </div>
-
             <div className="groups-list-container">
                 <h2 className="groups-list-title">Joined Groups</h2>
                 <ul className="groups-list">
                     {joinedGroups.map((group) => (
-                        <li key={group.id} className="group-item">
+                        <li key={group.id} className="group-item" onClick={() => openGroupChat(group.id)}>
                             {group.name}
                         </li>
                     ))}
                 </ul>
-
                 <h2 className="groups-list-title">Public Groups</h2>
-                <ul className="groups-list" style={{marginBottom: '50px'}}>
+                <ul className="groups-list" style={{ marginBottom: '50px' }}>
                     {publicGroups.map((group) => (
                         <li key={group.id} className="group-item">
                             {group.name}

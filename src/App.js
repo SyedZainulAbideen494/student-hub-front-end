@@ -13,6 +13,7 @@ import Dashbaord from "./dashbaord/dashboard";
 import FlashcardsPage from "./flashCards/flashCards";
 import NoteDetailPage from "./flashCards/noteDetails";
 import GroupsPage from "./group/group";
+import GroupChat from "./group/groupChat";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   {path: '/notes', element: <FlashcardsPage/>},
   {path: '/note/view/:id', element: <NoteDetailPage/>},
   {path: '/groups', element: <GroupsPage/>},
+  {path: '/group-chat/:id', element: <GroupChat/>}
 ]);
 
 
