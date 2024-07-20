@@ -20,5 +20,7 @@ export const API_ROUTES = {
   getGroupDetailsById: `${API_URL}/api/groups`,
   sendGroupMessages: `${API_URL}/api/groups/messages/send`,
   getUserByToken: `${API_URL}/api/user/details`, 
-  getGroupMemberCount: `${API_URL}/group/member-count`
+  getGroupMemberCount: `${API_URL}/group/member-count`,
+  inviteMemberToGroup: `${API_URL}/invite/group`,
+  getGroupMembers: `${API_URL}/api/groups/members`
 };

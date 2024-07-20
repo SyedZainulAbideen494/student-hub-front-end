@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './GroupChat.css'; // Import CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import GroupDetailModal from './GroupDetails';
 
 const DiscussionBoard = () => {
     const { id } = useParams();
@@ -13,6 +14,8 @@ const DiscussionBoard = () => {
     const [flashcardDetailsMap, setFlashcardDetailsMap] = useState({});
     const [userNameMap, setUserNameMap] = useState({});
     const [memberCount, setMemberCount] = useState(0);
+    const [showModal, setShowModal] = useState(false);
+    const [members, setMembers] = useState([]);
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
@@ -70,6 +73,10 @@ const DiscussionBoard = () => {
                 const memberCountResponse = await axios.get(`${API_ROUTES.getGroupMemberCount}/${id}`);
                 setMemberCount(memberCountResponse.data.memberCount);
 
+                // Fetch group members
+                const memberResponse = await axios.get(`${API_ROUTES.getGroupMembers}/${id}`);
+                setMembers(memberResponse.data.members);
+
             } catch (error) {
                 console.error('Error fetching group details:', error);
             }
@@ -101,12 +108,32 @@ const DiscussionBoard = () => {
         nav(`/note/view/${flashcardId}`);
     };
 
+    const handleGroupDetailsBtn = () => {
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleInviteMembers = async (phoneNumber) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.post(`${API_ROUTES.inviteMemberToGroup}/${id}`, { phoneNumber }, {
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            alert('Invitation sent successfully.');
+        } catch (error) {
+            throw new Error(error.response?.data?.message || 'An error occurred while sending the invitation.');
+        }
+    };
+
     return (
         <div className="discussion-group-container">
-            <header className="discussion-header">
+            <header className="discussion-header" onClick={handleGroupDetailsBtn}>
                 <button className="back-button" onClick={handleBackBtn}>←</button>
                 <div className="group-info">
-                    <h2 className="group-name">{groupDetails?.name}</h2>
+                    <h2 className="group-name" >{groupDetails?.name}</h2>
                     <span className="member-count">{memberCount} Members</span>
                 </div>
             </header>
@@ -144,6 +171,16 @@ const DiscussionBoard = () => {
                 />
                 <button className="send-button" onClick={handleSendMessage}>Send</button>
             </div>
+
+            {/* Render modal if showModal is true */}
+            {showModal && (
+                <GroupDetailModal
+                    groupDetails={groupDetails}
+                    members={members}
+                    onClose={handleCloseModal}
+                    onInvite={handleInviteMembers}
+                />
+            )}
         </div>
     );
 };
