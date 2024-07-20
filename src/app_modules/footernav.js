@@ -19,10 +19,12 @@ const FooterNav = () => {
                 <span className="btn-label">Study Planner</span> {/* Update label */}
             </button>
             </Link>
+            <Link to='/groups'>
             <button className="nav-btn-footer-nav">
                 <FaUsers className="icon-footer-nav" />
                 <span className="btn-label">Groups</span>
             </button>
+            </Link>
             <button className="nav-btn-footer-nav">
                 <FaTasks className="icon-footer-nav" />
                 <span className="btn-label">Tasks</span>
@@ -38,10 +40,12 @@ const FooterNav = () => {
                     <span className="btn-label">Study Planner</span> {/* Update label */}
                 </button>
                 </Link>
-                <button className="nav-btn-footer-nav">
-                    <FaUsers className="icon-footer-nav" />
-                    <span className="btn-label">Groups</span>
-                </button>
+                <Link to='/groups'>
+            <button className="nav-btn-footer-nav">
+                <FaUsers className="icon-footer-nav" />
+                <span className="btn-label">Groups</span>
+            </button>
+            </Link>
                 <button className="nav-btn-footer-nav">
                     <FaTasks className="icon-footer-nav" />
                     <span className="btn-label">Tasks</span>

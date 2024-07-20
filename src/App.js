@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   {path: '/', element: <Dashbaord/>},
   {path: '/notes', element: <FlashcardsPage/>},
   {path: '/note/view/:id', element: <NoteDetailPage/>},
-  {path: '/group', element: <GroupsPage/>},
+  {path: '/groups', element: <GroupsPage/>},
 ]);
 
 
