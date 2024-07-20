@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './GroupChat.css'; // Import CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
-const GroupChat = () => {
+const DiscussionBoard = () => {
     const { id } = useParams();
     const nav = useNavigate();
     const [groupDetails, setGroupDetails] = useState(null);
@@ -97,47 +97,50 @@ const GroupChat = () => {
     };
 
     return (
-        <div className="group-chat-container">
-            <header className="chat-header">
-                <button className="back-button" onClick={handleBackBtn}>←</button>
-                <div className="group-info">
-                    <h1 className="group-name">{groupDetails?.name}</h1>
-                    <span className="member-count">Members</span>
-                </div>
-            </header>
-            <div className="messages-container">
-                {messages.map((message, index) => (
-                    <div key={index} className="message">
-                        <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}:</span>
-                        {message.type === 'flashcard' ? (
-                            <div className="flashcard-message-card">
-                                <div className="flashcard-header">
-                                    <h3>{flashcardDetailsMap[message.content]?.title || 'Flashcard'}</h3>
-                                </div>
-                                <div className="flashcard-content">
-                                    <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
-                                        Open Flashcard
-                                    </button>
-                                </div>
-                            </div>
-                        ) : (
-                           <span><br/><span className="message-content">{message.content}</span></span> 
-                        )}
-                    </div>
-                ))}
-            </div>
-            <div className="message-input-container">
-                <input
-                    type="text"
-                    className="message-input"
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    placeholder="Type your message..."
-                />
-                <button className="send-button" onClick={handleSendMessage}>Send</button>
-            </div>
+<div className="discussion-group-container">
+    <header className="discussion-header">
+        <button className="back-button" onClick={handleBackBtn}>←</button>
+        <div className="group-info">
+            <h1 className="group-name">{groupDetails?.name}</h1>
+            <span className="member-count">{groupDetails?.membersCount || 0} Members</span>
         </div>
+    </header>
+    <div className="messages-container">
+        {messages.map((message, index) => (
+            <div key={index} className="message">
+                <div className="message-header">
+                    <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}</span>
+                    <span className="message-timestamp">{new Date(message.created_at).toLocaleString()}</span>
+                </div>
+                {message.type === 'flashcard' ? (
+                    <div className="flashcard-message-card">
+                        <div className="flashcard-header">
+                            <h3>{flashcardDetailsMap[message.content]?.title || 'Flashcard'}</h3>
+                        </div>
+                        <div className="flashcard-content">
+                            <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
+                                Open Flashcard
+                            </button>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="message-content">{message.content}</div>
+                )}
+            </div>
+        ))}
+    </div>
+    <div className="message-input-container">
+        <input
+            type="text"
+            className="message-input"
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            placeholder="Type your message..."
+        />
+        <button className="send-button" onClick={handleSendMessage}>Send</button>
+    </div>
+</div>
     );
 };
 
-export default GroupChat;
+export default DiscussionBoard;
