@@ -1,3 +1,4 @@
+// FlashcardsPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -6,6 +7,7 @@ import FooterNav from '../app_modules/footernav';
 import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import GroupModal from './GroupModal';
 
 const FlashcardsPage = () => {
     const [title, setTitle] = useState('');
@@ -16,7 +18,29 @@ const FlashcardsPage = () => {
     const [notes, setNotes] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [editorContent, setEditorContent] = useState('');
+    const [groups, setGroups] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedFlashcardId, setSelectedFlashcardId] = useState(null);
+    const [joinedGroups, setJoinedGroups] = useState([]);
     const nav = useNavigate();
+
+    useEffect(() => {
+        const fetchGroups = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                
+                // Fetch joined groups
+                const joinedResponse = await axios.get(API_ROUTES.fetchJoinedGroups, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setJoinedGroups(joinedResponse.data)
+            } catch (error) {
+                console.error('Error fetching groups:', error);
+            }
+        };
+    
+        fetchGroups();
+    }, []);
 
     useEffect(() => {
         const fetchNotes = async () => {
@@ -32,8 +56,22 @@ const FlashcardsPage = () => {
             }
         };
 
+        const fetchGroups = async () => {
+            try {
+                const response = await axios.get(API_ROUTES.getUserGroups, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+                setGroups(response.data);
+            } catch (error) {
+                console.error('Error fetching groups:', error);
+            }
+        };
+
         if (token) {
             fetchNotes();
+            fetchGroups();
         }
     }, [token]);
 
@@ -97,29 +135,32 @@ const FlashcardsPage = () => {
         nav(`/note/view/${id}`);
     };
 
-    const handleShareClick = async (id) => {
-        const siteURL = 'https://dropment.online';
+    const handleShareClick = (flashcardId) => {
+        setSelectedFlashcardId(flashcardId);
+        setShowModal(true);
+    };
 
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: 'Check out Dropment!',
-                    text: `Discover cool motivational clips and download them for free to grow your Instagram page at Dropment.`,
-                    url: siteURL
-                });
-            } catch (error) {
-                console.error('Error sharing:', error);
-            }
-        } else {
-            const shareText = `Check out Dropment: Discover cool motivational clips and download them for free to grow your Instagram page at ${siteURL}`;
-            const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-            window.location.href = shareURL;
+    const handleShareToGroup = async (groupId) => {
+        try {
+            await axios.post(API_ROUTES.shareFlashCard, { id: selectedFlashcardId, groupId }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            alert('Flashcard shared successfully!');
+        } catch (error) {
+            console.error('Error sharing flashcard:', error);
+            alert('Failed to share flashcard.');
         }
+        setShowModal(false);
+    };
+
+    const handleModalClose = () => {
+        setShowModal(false);
     };
 
     const safeParseJSON = (jsonString) => {
         try {
-            // Ensure jsonString is valid and parseable
             if (!jsonString || jsonString.trim() === '') {
                 return [];
             }
@@ -209,6 +250,13 @@ const FlashcardsPage = () => {
                 ))}
             </div>
             <FooterNav />
+            {showModal && (
+    <GroupModal
+        groups={joinedGroups} // Use joinedGroups here
+        onClose={handleModalClose}
+        onShare={handleShareToGroup}
+    />
+)}
         </div>
     );
 };

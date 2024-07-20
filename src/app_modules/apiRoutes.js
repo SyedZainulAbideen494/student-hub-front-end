@@ -15,5 +15,8 @@ export const API_ROUTES = {
   joinGroup: `${API_URL}/api/groups/join`,
   fetchJoinedGroups: `${API_URL}/api/groups/joined`,
   fetchPublicGroups: `${API_URL}/api/groups/public`,
-  createGroup: `${API_URL}/api/groups/add`
+  createGroup: `${API_URL}/api/groups/add`,
+  shareFlashCard: `${API_URL}/shareFlashCard`,
+  getGroupDetailsById: `${API_URL}/api/groups`,
+  sendGroupMessages: `${API_URL}/api/groups/messages/send`
 };
