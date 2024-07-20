@@ -1,4 +1,3 @@
-// FlashcardsPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -159,6 +158,16 @@ const FlashcardsPage = () => {
         setShowModal(false);
     };
 
+    const handleQuickShare = (platform) => {
+        const flashcardUrl = `${window.location.origin}/note/view/${selectedFlashcardId}`;
+        if (platform === 'whatsapp') {
+            window.open(`https://wa.me/?text=${encodeURIComponent(flashcardUrl)}`, '_blank');
+        } else if (platform === 'copy') {
+            navigator.clipboard.writeText(flashcardUrl);
+            alert('Link copied to clipboard!');
+        }
+    };
+
     const safeParseJSON = (jsonString) => {
         try {
             if (!jsonString || jsonString.trim() === '') {
@@ -255,6 +264,7 @@ const FlashcardsPage = () => {
         groups={joinedGroups} // Use joinedGroups here
         onClose={handleModalClose}
         onShare={handleShareToGroup}
+        onQuickShare={handleQuickShare} // Pass the quick share handler
     />
 )}
         </div>
