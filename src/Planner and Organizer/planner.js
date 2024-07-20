@@ -150,13 +150,13 @@ function Planner() {
 
     // Show success modal
     const showModal = (message) => {
+        console.log('Showing modal with message:', message);
         setModalMessage(message);
         setModalVisible(true);
         setTimeout(() => {
             setModalVisible(false);
         }, 3000); // Hide modal after 3 seconds
     };
-
     // Scroll to the form
     const scrollToForm = () => {
         if (formRef.current) {
@@ -276,7 +276,7 @@ function Planner() {
                     ))
                 )}
             </div>
-            {modalVisible && <SuccessModal message={modalMessage} />}
+            {modalVisible && <SuccessModal visible={modalVisible} message={modalMessage} />}
             <FooterNav />
         </div>
     );

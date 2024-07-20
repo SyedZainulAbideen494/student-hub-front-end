@@ -4,6 +4,8 @@ import './SuccessModal.css'; // Add your CSS styles here
 const SuccessModal = ({ visible, message }) => {
     if (!visible) return null;
 
+    console.log("Modal is visible with message:", message); // Debugging line
+
     return (
         <div className="success-modal">
             <div className="success-modal-content">
