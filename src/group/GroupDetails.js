@@ -27,25 +27,31 @@ const GroupDetailModal = ({ groupDetails, members, onClose, onInvite }) => {
     if (!groupDetails) return null;
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <button className="close-button" onClick={onClose} style={{color: 'black'}}>×</button>
+        <div className="modal-overlay-group-details">
+            <div className="modal-content-group-details">
+                <button className="close-button-group-details" onClick={onClose}>×</button>
                 <h2>{groupDetails.name}</h2>
+                <p>{groupDetails.description}</p>
                 <p>Status: {groupDetails.is_public ? 'Public' : 'Private'}</p>
-                <h3>Members</h3>
-                <ul>
+                
+                <h3 className="members-heading">Members</h3>
+                <div className="members-container">
                     {members.map(member => (
-                        <li key={member.id}>{member.user_name}</li>
+                        <div key={member.id} className="member-card">
+                            <p className="member-name">{member.user_name}</p>
+                        </div>
                     ))}
-                </ul>
+                </div>
+                
+                <h3 className="invite-heading">Invite Members</h3>
                 <input
                     type="text"
                     value={phoneNumber}
                     onChange={handlePhoneNumberChange}
                     placeholder="Enter phone number"
                 />
-                <button className="invite-button" onClick={handleInvite}>Invite Members</button>
-                {errorMessage && <p className="error-message">{errorMessage}</p>}
+                <button className="invite-button-group-details" onClick={handleInvite}>Invite Members</button>
+                {errorMessage && <p className="error-message-group-details">{errorMessage}</p>}
             </div>
         </div>
     );

@@ -1,42 +1,133 @@
-/* GroupModal.css */
-.modal-overlay {
+/* Modal Overlay */
+.modal-overlay-group-details {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 1000;
+    justify-content: center;
+    z-index: 1000; /* Ensure modal is on top of other content */
 }
 
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
+/* Modal Content */
+.modal-content-group-details {
+    background: #ffffff; /* White background */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 15px; /* Reduced padding */
+    max-width: 500px; /* Smaller width */
+    width: 90%; /* Responsive width */
+    max-height: 70vh; /* Smaller max height */
+    overflow-y: auto; /* Scroll if content overflows */
+    position: relative; /* For positioning close button */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Softer shadow */
 }
 
-.close-button {
+/* Close Button */
+.close-button-group-details {
     position: absolute;
     top: 10px;
     right: 10px;
+    background: transparent;
     border: none;
-    background: none;
-    font-size: 20px;
+    font-size: 24px; /* Slightly smaller font size */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button-group-details:hover {
+    color: #ff4d4d; /* Red color on hover */
+}
+
+/* Error Message */
+.error-message-group-details {
+    color: #d9534f; /* Bootstrap red for errors */
+    margin-top: 15px; /* Reduced margin */
+    font-size: 14px;
+}
+
+/* Invite Button */
+.invite-button-group-details {
+    background-color: #007bff; /* Bootstrap blue */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px; /* Reduced padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px; /* Slightly smaller font size */
+    margin-top: 15px; /* Reduced margin */
+    transition: background-color 0.3s ease;
+}
+
+.invite-button-group-details:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Members List Heading */
+.members-heading {
+    margin-top: 15px; /* Reduced margin */
+    font-size: 18px; /* Slightly smaller font size */
+    color: #333333; /* Dark gray for heading */
+    border-bottom: 1px solid #f1f1f1; /* Light border */
+    padding-bottom: 8px; /* Reduced padding */
+}
+
+/* Members Container */
+.members-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Reduced gap */
+    margin-top: 10px; /* Reduced margin */
+}
+
+/* Member Card */
+.member-card {
+    background: #ffffff; /* Very light gray background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Reduced padding */
+    width: 100%; /* Full width */
+    max-width: 220px; /* Reduced width */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.invite-button {
-    margin-top: 20px;
-    padding: 10px;
-    background: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.member-card:hover {
+    transform: translateY(-6px); /* Slightly lift card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow */
+}
+
+/* Member Name */
+.member-name {
+    margin: 0;
+    font-size: 16px; /* Slightly smaller font size */
+    color: #333333; /* Dark gray text */
+}
+
+/* Member ID */
+.member-id {
+    font-size: 12px; /* Smaller font size */
+    color: #666666; /* Medium gray text */
+}
+
+/* Invite Heading */
+.invite-heading {
+    margin-top: 20px; /* Reduced margin */
+    font-size: 18px; /* Slightly smaller font size */
+    color: #333333; /* Dark gray for heading */
+    border-bottom: 1px solid #f1f1f1; /* Light border */
+    padding-bottom: 8px; /* Reduced padding */
+}
+
+/* Input Styles */
+.modal-content-group-details input[type="text"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px; /* Reduced padding */
+    border: 1px solid #dcdcdc; /* Light gray border */
+    border-radius: 6px;
+    font-size: 14px; /* Slightly smaller font size */
+    margin-top: 10px; /* Reduced margin */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
 }
