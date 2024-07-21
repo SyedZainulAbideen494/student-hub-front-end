@@ -31,10 +31,12 @@ const FooterNav = () => {
                     <span className="btn-label">Notes</span>
                 </button>
                 </Link>
-            <button className="nav-btn-footer-nav more-btn-footer-nav" onClick={togglePopup}>
-                <FaBars className="icon-footer-nav" />
-                <span className="btn-label">More</span>
-            </button>
+                <Link to='/quiz/home'>
+                <button className="nav-btn-footer-nav">
+                    <FaFlask className="icon-footer-nav" />
+                    <span className="btn-label">Quizzes</span>
+                </button>
+                </Link>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
             <Link to='/' style={{textDecoration: 'none'}}>
                 <button className="nav-btn-footer-nav">
@@ -48,12 +50,7 @@ const FooterNav = () => {
                 <span className="btn-label">Groups</span>
             </button>
             </Link>
-            <Link to='/quiz/home'>
-                <button className="nav-btn-footer-nav">
-                    <FaFlask className="icon-footer-nav" />
-                    <span className="btn-label">Quizzes</span>
-                </button>
-                </Link>
+            
                 <Link to='/notes' style={{textDecoration: 'none'}}>
                 <button className="nav-btn-footer-nav">
                     <FaStickyNote className="icon-footer-nav" />
