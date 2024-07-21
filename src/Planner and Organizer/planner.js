@@ -181,34 +181,52 @@ function Planner() {
                 />
             </div>
             <div className="task-form" ref={formRef}>
-                <h2 className="section-title">{editingTask ? 'Edit Task' : 'Add Task'}</h2>
-                <input
-                    type="text"
-                    placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <textarea
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-                <input
-                    type="date"
-                    value={dueDate}
-                    onChange={(e) => setDueDate(e.target.value)}
-                />
-                <select
-                    value={priority}
-                    onChange={(e) => setPriority(e.target.value)}
-                >
-                    <option value="Low">Low</option>
-                    <option value="Normal">Normal</option>
-                    <option value="High">High</option>
-                </select>
-                <button onClick={handleSaveTask}>{editingTask ? 'Save Changes' : 'Add Task'}</button>
-                {editingTask && <button onClick={resetForm}>Cancel</button>}
-            </div>
+    <h2 className="section-title">{editingTask ? 'Edit Task' : 'Add Task'}</h2>
+    <div className="form-group">
+        <label htmlFor="task-title">Title:</label>
+        <input
+            id="task-title"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+        />
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-description">Description:</label>
+        <textarea
+            id="task-description"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-due-date">Due Date:</label>
+        <input
+            id="task-due-date"
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+        />
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-priority">Priority:</label>
+        <select
+            id="task-priority"
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+        >
+            <option value="Low">Low</option>
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+    <div className="form-actions">
+        <button onClick={handleSaveTask}>{editingTask ? 'Save Changes' : 'Add Task'}</button>
+        {editingTask && <button onClick={resetForm}>Cancel</button>}
+    </div>
+</div>
             <div className="task-list">
                 <h2 className="section-title">Tasks for {selectedDate.toDateString()}</h2>
                 {getTasksForDate(selectedDate).length === 0 ? (
