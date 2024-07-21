@@ -20,6 +20,7 @@ import CreateQuizPage from "./quiz/CreateQuizPage";
 import QuizPage from "./quiz/QuizPage";
 import SubmitPage from "./quiz/submitPage";
 import CalendarPage from "./calander/calander";
+import TermsAndConditions from "./auth/terms-conditions";
 
 
 const router = createBrowserRouter([
@@ -35,7 +36,8 @@ const router = createBrowserRouter([
   {path: '/quiz/create', element: <CreateQuizPage/>},
   {path: '/quiz/:id', element: <QuizPage/>},
   {path: '/quiz/submit', element: <SubmitPage/>},
-  {path: '/calendar', element: <CalendarPage/>}
+  {path: '/calendar', element: <CalendarPage/>},
+  {path: '/terms-and-conditions', element: <TermsAndConditions/>}
 ]);
 
 

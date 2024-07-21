@@ -12,7 +12,8 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [error, setError] = useState(null);
-    const nav = useNavigate()
+    const [termsAccepted, setTermsAccepted] = useState(false); // State for checkbox
+    const nav = useNavigate();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -38,12 +39,22 @@ const SignUp = () => {
         setPasswordVisible(!passwordVisible);
     };
 
+    const handleTermsChange = (e) => {
+        setTermsAccepted(e.target.checked);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Validate passwords match
         if (password !== confirmPassword) {
             setError('Passwords do not match');
+            return;
+        }
+
+        // Check if terms are accepted
+        if (!termsAccepted) {
+            setError('You must agree to the terms and conditions');
             return;
         }
 
@@ -77,10 +88,11 @@ const SignUp = () => {
             setPhone('');
             setPassword('');
             setConfirmPassword('');
+            setTermsAccepted(false); // Reset checkbox
             setError(null);
 
             console.log('User registered successfully!');
-            nav('/login')
+            nav('/login');
             // Optionally redirect to login page or another route
         } catch (error) {
             console.error('Error signing up:', error);
@@ -94,15 +106,15 @@ const SignUp = () => {
             <form onSubmit={handleSubmit}>
                 {error && <p className="error-message">{error}</p>}
                 <div className="input-container-login">
-                        <FaPhone className="icon" />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={handleEmailChange}
-                            required
-                        />
-                    </div>
+                    <FaPhone className="icon" />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={handleEmailChange}
+                        required
+                    />
+                </div>
                 <div className="input-container-login">
                     <FaUser className="icon" />
                     <input
@@ -149,7 +161,19 @@ const SignUp = () => {
                         required
                     />
                 </div>
-                <button type="submit">Sign Up</button>
+                <div className="checkbox-container">
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        checked={termsAccepted}
+                        onChange={handleTermsChange}
+                        required
+                    />
+                    <label htmlFor="terms">
+                        I agree to the <Link to='/terms-and-conditions'>Terms and Conditions</Link>
+                    </label>
+                </div>
+                <button type="submit" disabled={!termsAccepted}>Sign Up</button>
             </form>
             <div className="links-login">
                 <Link to="/login">Already have an account? Login</Link>

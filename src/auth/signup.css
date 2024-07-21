@@ -1,19 +1,19 @@
 /* Sign Up container */
 .signup-container {
-  max-width: 400px; /* Adjust as needed */
+  max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
 }
 
 .signup-container h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   color: #333;
 }
 
@@ -23,16 +23,17 @@
 }
 
 .error-message {
-  color: #ff6347; /* Tomato red */
-  margin-bottom: 10px;
+  color: #d9534f; /* Bootstrap red */
+  margin-bottom: 16px;
   text-align: center;
+  font-size: 0.9rem;
 }
 
 .input-container-login {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
 
@@ -41,61 +42,96 @@
 }
 
 .icon {
-  margin-right: 10px;
+  margin-right: 12px;
   font-size: 1.2rem;
-  color: #666;
+  color: #888;
 }
 
 .signup-container input,
 .signup-container select {
   flex: 1;
-  padding: 10px;
-  border: none;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   outline: none;
   font-size: 1rem;
-  background: none;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.signup-container input:focus,
+.signup-container select:focus {
+  border-color: #007bff; /* Blue */
 }
 
 .toggle-password-login {
   cursor: pointer;
   font-size: 0.9rem;
-  color: #007bff; /* Blue */
+  color: #007bff;
   margin-left: 10px;
 }
 
 .toggle-password-login:hover {
   text-decoration: underline;
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkbox-container label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.checkbox-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.checkbox-container a:hover {
+  text-decoration: underline;
 }
 
 .signup-container button[type="submit"] {
-  background-color: #007bff; /* Blue */
+  background-color: #007bff;
   color: #ffffff;
   border: none;
-  padding: 12px 20px;
+  padding: 14px 20px;
   font-size: 1.1rem;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 20px;
   transition: background-color 0.3s ease-in-out;
 }
 
-.signup-container button[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+.signup-container button[type="submit"]:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.signup-container button[type="submit"]:hover:not(:disabled) {
+  background-color: #0056b3;
 }
 
 .links-login {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .links-login a {
-  color: #007bff; /* Blue */
+  color: #007bff;
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
 .links-login a:hover {
   text-decoration: underline;
-  color: #0056b3; /* Darker blue on hover */
 }
-
