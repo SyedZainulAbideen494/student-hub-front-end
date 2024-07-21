@@ -1,67 +1,123 @@
-/* calendarPage.css */
-
+/* General Styles */
 .calendar-page {
-    padding: 20px;
-    background: #f9f9f9;
+    padding: 20px; /* Adjusted padding for better spacing */
+    background: #f5f5f5; /* Slightly off-white background for a clean look */
+    font-family: 'Roboto', sans-serif; /* Consistent font-family */
 }
 
-.header-title {
+/* Header Title */
+.header-title-calendar-page {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Adjusted margin for spacing */
+    font-size: 2rem; /* Increased font size for prominence */
+    color: #333; /* Darker text color for better readability */
 }
 
+/* Calendar Container */
 .calendar-container {
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Increased padding for better content spacing */
+    background: #ffffff; /* White background for the calendar */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    margin-bottom: 20px; /* Spacing below the calendar */
+    max-height: 600px; /* Adjusted max-height */
+    overflow-y: auto; /* Scroll if content exceeds max-height */
 }
 
-.event-form, .event-list, .activity-list {
-    margin: 20px auto;
-    max-width: 600px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Form Container */
+.event-form {
+    padding: 20px; /* Consistent padding */
+    background: #ffffff; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    margin-bottom: 20px; /* Spacing below the form */
 }
 
+/* Event List Container */
+.event-list {
+    padding: 20px; /* Consistent padding */
+    background: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    margin-bottom: 20px; /* Spacing below the list */
+    max-height: 600px; /* Adjusted max-height */
+    overflow-y: auto; /* Scroll if content exceeds max-height */
+}
+
+/* Activity List Container */
+.activity-list {
+    padding: 20px; /* Consistent padding */
+    background: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    max-height: 600px; /* Adjusted max-height */
+    overflow-y: auto; /* Scroll if content exceeds max-height */
+}
+
+/* Section Title */
 .section-title {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px; /* Slightly increased margin for spacing */
+    font-size: 1.2rem; /* Larger font size for section titles */
+    color: #555; /* Slightly lighter color for section titles */
 }
 
+/* Event Form Input */
 .event-form input {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 12px; /* Increased margin for spacing */
+    font-size: 14px; /* Adjusted font size */
 }
 
+/* Event Date Picker */
 .event-date-picker {
-    margin: 20px 0;
+    margin: 12px 0; /* Increased margin for spacing */
 }
 
+/* Event Form Button */
 .event-form button {
-    margin-top: 10px;
+    margin-top: 12px; /* Increased margin for spacing */
+    font-size: 14px; /* Adjusted font size */
 }
 
+/* Event and Activity Items */
 .event-item, .activity-item {
-    padding: 15px;
+    padding: 15px; /* Increased padding for better content spacing */
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    margin-bottom: 12px; /* Increased margin for spacing */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    font-size: 14px; /* Adjusted font size */
 }
 
+/* Calendar Tile with Events */
 .react-calendar__tile--has-events {
-    background: #ffeb3b;
-    border-radius: 4px;
+    background: #ffeb3b; /* Highlight events with a bright background */
+    border-radius: 8px; /* Rounded corners */
 }
 
+/* Media Queries */
 @media (max-width: 600px) {
-    .calendar-container {
-        margin: 0;
+    .calendar-container, .event-form, .event-list, .activity-list {
+        padding: 15px; /* Adjusted padding for smaller screens */
+        font-size: 14px; /* Adjusted font size for better readability */
+    }
+}
+
+@media (max-width: 400px) {
+    .header-title-calendar-page {
+        font-size: 1.5rem; /* Smaller font size for very small screens */
     }
 
-    .event-form, .event-list, .activity-list {
-        padding: 10px;
+    .section-title {
+        font-size: 1.1rem; /* Smaller font size for section titles */
+    }
+
+    .event-form input, .event-form button {
+        font-size: 13px; /* Slightly smaller font size for inputs and buttons */
+    }
+
+    .event-item, .activity-item {
+        font-size: 13px; /* Slightly smaller font size */
     }
 }
