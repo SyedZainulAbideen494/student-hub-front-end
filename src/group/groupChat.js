@@ -142,6 +142,10 @@ const DiscussionBoard = () => {
         nav(`/note/view/${flashcardId}`);
     };
 
+    const handleOpenQuiz = (quizId) => {
+        nav(`/quiz/${quizId}`);
+    };
+
     const handleGroupDetailsBtn = () => {
         setShowModal(true);
     };
@@ -198,6 +202,17 @@ const DiscussionBoard = () => {
                                         <div className="flashcard-content">
                                             <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
                                                 Open Flashcard
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : message.type === 'quiz' ? (
+                                    <div className="quiz-message-card">
+                                        <div className="quiz-header">
+                                            <h3>Quiz</h3>
+                                        </div>
+                                        <div className="quiz-content">
+                                            <button className="open-flashcard-button" onClick={() => handleOpenQuiz(message.content)}>
+                                                Take Quiz
                                             </button>
                                         </div>
                                     </div>

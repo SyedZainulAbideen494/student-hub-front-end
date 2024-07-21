@@ -48,10 +48,12 @@ const FooterNav = () => {
                 <span className="btn-label">Groups</span>
             </button>
             </Link>
+            <Link to='/quiz/home'>
                 <button className="nav-btn-footer-nav">
                     <FaFlask className="icon-footer-nav" />
                     <span className="btn-label">Quizzes</span>
                 </button>
+                </Link>
                 <Link to='/notes' style={{textDecoration: 'none'}}>
                 <button className="nav-btn-footer-nav">
                     <FaStickyNote className="icon-footer-nav" />
