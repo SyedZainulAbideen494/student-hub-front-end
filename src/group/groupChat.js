@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './GroupChat.css'; // Import CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import GroupDetailModal from './GroupDetails';
+import SuccessModal from '../app_modules/SuccessModal';
 
 const DiscussionBoard = () => {
     const { id } = useParams();
@@ -16,6 +17,8 @@ const DiscussionBoard = () => {
     const [memberCount, setMemberCount] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [members, setMembers] = useState([]);
+    const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
@@ -122,11 +125,20 @@ const DiscussionBoard = () => {
             await axios.post(`${API_ROUTES.inviteMemberToGroup}/${id}`, { phoneNumber }, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            alert('Invitation sent successfully.');
+            setSuccessMessage('Invitation sent successfully.');
+            setIsSuccessModalVisible(true);
+            setTimeout(() => {
+                setIsSuccessModalVisible(false);
+            }, 3000);
         } catch (error) {
             throw new Error(error.response?.data?.message || 'An error occurred while sending the invitation.');
         }
     };
+
+    const closeSuccessModal = () => {
+        setIsSuccessModalVisible(false);
+    };
+
 
     return (
         <div className="discussion-group-container">
@@ -181,6 +193,7 @@ const DiscussionBoard = () => {
                     onInvite={handleInviteMembers}
                 />
             )}
+             <SuccessModal visible={isSuccessModalVisible} message={successMessage} />
         </div>
     );
 };

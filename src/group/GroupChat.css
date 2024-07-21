@@ -120,7 +120,7 @@
 .message-input {
     flex: 1;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     color: #333;
@@ -131,7 +131,7 @@
     color: #ffffff;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
     margin-left: 10px;

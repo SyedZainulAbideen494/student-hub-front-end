@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './GroupDetails.css'; // Import CSS for modal styling
+import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
 
 const GroupDetailModal = ({ groupDetails, members, onClose, onInvite }) => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
 
     const handlePhoneNumberChange = (e) => {
         setPhoneNumber(e.target.value);
@@ -19,9 +22,21 @@ const GroupDetailModal = ({ groupDetails, members, onClose, onInvite }) => {
             await onInvite(phoneNumber);
             setPhoneNumber('');
             setErrorMessage('');
+            setSuccessMessage('Invitation sent successfully.');
+            setIsSuccessModalVisible(true);
+            
+            // Hide success modal after 3 seconds
+            setTimeout(() => {
+                setIsSuccessModalVisible(false);
+            }, 3000);
+
         } catch (error) {
             setErrorMessage(error.message);
         }
+    };
+
+    const closeSuccessModal = () => {
+        setIsSuccessModalVisible(false);
     };
 
     if (!groupDetails) return null;
@@ -53,6 +68,7 @@ const GroupDetailModal = ({ groupDetails, members, onClose, onInvite }) => {
                 <button className="invite-button-group-details" onClick={handleInvite}>Invite Members</button>
                 {errorMessage && <p className="error-message-group-details">{errorMessage}</p>}
             </div>
+            <SuccessModal visible={isSuccessModalVisible} message={successMessage} />
         </div>
     );
 };
