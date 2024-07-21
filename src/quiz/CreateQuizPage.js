@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './quiz.css'
+import FooterNav from '../app_modules/footernav';
 
 const CreateQuizPage = () => {
     const [title, setTitle] = useState('');
@@ -94,6 +95,7 @@ const CreateQuizPage = () => {
         ))}
         <button onClick={handleAddQuestion} className="add-question-button">Add Question</button>
         <button onClick={handleSubmit} className="submit-quiz-button">Create Quiz</button>
+        <FooterNav/>
     </div>
     );
 };
