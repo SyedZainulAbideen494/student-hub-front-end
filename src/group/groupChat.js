@@ -19,10 +19,22 @@ const DiscussionBoard = () => {
     const [members, setMembers] = useState([]);
     const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
+    const [isMember, setIsMember] = useState(null); // Null means not checked yet
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
             try {
+                // Check user membership
+                await checkUserMembership();
+
+                if (isMember === null) return; // Wait for the membership check to complete
+
+                if (!isMember) {
+                    // User is not a member, show an appropriate message
+                    return;
+                }
+
+                // Fetch group details if the user is a member
                 const response = await axios.get(`${API_ROUTES.getGroupDetailsById}/${id}`);
                 setGroupDetails(response.data);
                 setMessages(response.data.messages);
@@ -86,7 +98,26 @@ const DiscussionBoard = () => {
         };
 
         fetchGroupDetails();
-    }, [id]);
+    }, [id, isMember]);
+
+    const checkUserMembership = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`${API_ROUTES.checkUserMembership}`, { 
+                token, 
+                groupId: id 
+            });
+
+            if (response.data.isMember) {
+                setIsMember(true);
+            } else {
+                setIsMember(false);
+            }
+        } catch (error) {
+            console.error('Error checking user membership:', error);
+            setIsMember(false);
+        }
+    };
 
     const handleSendMessage = async () => {
         try {
@@ -139,61 +170,71 @@ const DiscussionBoard = () => {
         setIsSuccessModalVisible(false);
     };
 
-
     return (
         <div className="discussion-group-container">
-            <header className="discussion-header" onClick={handleGroupDetailsBtn}>
-                <button className="back-button" onClick={handleBackBtn}>←</button>
-                <div className="group-info">
-                    <h2 className="group-name" >{groupDetails?.name}</h2>
-                    <span className="member-count">{memberCount} Members</span>
-                </div>
-            </header>
-            <div className="messages-container">
-                {messages.map((message, index) => (
-                    <div key={index} className="message">
-                        <div className="message-header">
-                            <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}</span>
-                            <span className="message-timestamp">{new Date(message.created_at).toLocaleString()}</span>
+            {isMember === null ? (
+                <p>Loading...</p> // Show a loading message while checking membership
+            ) : isMember ? (
+                <>
+                    <header className="discussion-header" onClick={handleGroupDetailsBtn}>
+                        <button className="back-button" onClick={handleBackBtn}>←</button>
+                        <div className="group-info">
+                            <h2 className="group-name">{groupDetails?.name}</h2>
+                            <span className="member-count">{memberCount} Members</span>
                         </div>
-                        {message.type === 'flashcard' ? (
-                            <div className="flashcard-message-card">
-                                <div className="flashcard-header">
-                                    <h3>{flashcardDetailsMap[message.content]?.title || 'Flashcard'}</h3>
+                    </header>
+                    <div className="messages-container">
+                        {messages.map((message, index) => (
+                            <div key={index} className="message">
+                                <div className="message-header">
+                                    <span className="message-sender">{userNameMap[message.sender] || 'Unknown'}</span>
+                                    <span className="message-timestamp">{new Date(message.created_at).toLocaleString()}</span>
                                 </div>
-                                <div className="flashcard-content">
-                                    <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
-                                        Open Flashcard
-                                    </button>
-                                </div>
+                                {message.type === 'flashcard' ? (
+                                    <div className="flashcard-message-card">
+                                        <div className="flashcard-header">
+                                            <h3>{flashcardDetailsMap[message.content]?.title || 'Flashcard'}</h3>
+                                        </div>
+                                        <div className="flashcard-content">
+                                            <button className="open-flashcard-button" onClick={() => handleOpenFlashcard(message.content)}>
+                                                Open Flashcard
+                                            </button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="message-content">{message.content}</div>
+                                )}
                             </div>
-                        ) : (
-                            <div className="message-content">{message.content}</div>
-                        )}
+                        ))}
                     </div>
-                ))}
-            </div>
-            <div className="message-input-container">
-                <input
-                    type="text"
-                    className="message-input"
-                    value={newMessage}
-                    onChange={(e) => setNewMessage(e.target.value)}
-                    placeholder="Type your message..."
-                />
-                <button className="send-button" onClick={handleSendMessage}>Send</button>
-            </div>
+                    <div className="message-input-container">
+                        <input
+                            type="text"
+                            className="message-input"
+                            value={newMessage}
+                            onChange={(e) => setNewMessage(e.target.value)}
+                            placeholder="Type your message..."
+                        />
+                        <button className="send-button" onClick={handleSendMessage}>Send</button>
+                    </div>
 
-            {/* Render modal if showModal is true */}
-            {showModal && (
-                <GroupDetailModal
-                    groupDetails={groupDetails}
-                    members={members}
-                    onClose={handleCloseModal}
-                    onInvite={handleInviteMembers}
-                />
+                    {/* Render modal if showModal is true */}
+                    {showModal && (
+                        <GroupDetailModal
+                            groupDetails={groupDetails}
+                            members={members}
+                            onClose={handleCloseModal}
+                            onInvite={handleInviteMembers}
+                        />
+                    )}
+                    <SuccessModal visible={isSuccessModalVisible} message={successMessage} />
+                </>
+            ) : (
+                <div className="chat-not-found">
+                    <h2>Chat Not Found</h2>
+                    <p>It seems you are not a member of this group.</p>
+                </div>
             )}
-             <SuccessModal visible={isSuccessModalVisible} message={successMessage} />
         </div>
     );
 };
