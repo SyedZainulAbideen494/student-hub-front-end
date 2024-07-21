@@ -60,14 +60,7 @@ const FooterNav = () => {
                     <span className="btn-label">Notes</span>
                 </button>
                 </Link>
-                <button className="nav-btn-footer-nav">
-                    <FaQuestionCircle className="icon-footer-nav" />
-                    <span className="btn-label">Help</span>
-                </button>
-                <button className="nav-btn-footer-nav">
-                    <FaCalendarAlt className="icon-footer-nav" />
-                    <span className="btn-label">Calendar</span>
-                </button>
+
                 <button className="close-btn-footer-nav" onClick={togglePopup}>Close</button>
             </div>
         </div>
