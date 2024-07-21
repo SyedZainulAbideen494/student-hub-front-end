@@ -31,12 +31,10 @@ const FooterNav = () => {
                     <span className="btn-label">Notes</span>
                 </button>
                 </Link>
-                <Link to='/quiz/home'>
-                <button className="nav-btn-footer-nav">
-                    <FaFlask className="icon-footer-nav" />
-                    <span className="btn-label">Quizzes</span>
+                <button className="nav-btn-footer-nav" onClick={setPopupVisible}>
+                    <FaBars className="icon-footer-nav" />
+                    <span className="btn-label">More</span>
                 </button>
-                </Link>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
             <Link to='/' style={{textDecoration: 'none'}}>
                 <button className="nav-btn-footer-nav">
@@ -44,7 +42,7 @@ const FooterNav = () => {
                     <span className="btn-label">Study Planner</span> {/* Update label */}
                 </button>
                 </Link>
-                <Link to='/groups'>
+                <Link to='/groups' style={{textDecoration: 'none'}}>
             <button className="nav-btn-footer-nav">
                 <FaUsers className="icon-footer-nav" />
                 <span className="btn-label">Groups</span>
@@ -57,7 +55,18 @@ const FooterNav = () => {
                     <span className="btn-label">Notes</span>
                 </button>
                 </Link>
-
+                <Link to='/quiz/home' style={{textDecoration: 'none'}}>
+                <button className="nav-btn-footer-nav">
+                    <FaFlask className="icon-footer-nav" />
+                    <span className="btn-label">Quizzes</span>
+                </button>
+                </Link>
+                <Link to='/calendar' style={{textDecoration: 'none'}}>
+                <button className="nav-btn-footer-nav">
+                    <FaCalendarAlt className="icon-footer-nav" />
+                    <span className="btn-label">Calendar</span>
+                </button>
+                </Link>
                 <button className="close-btn-footer-nav" onClick={togglePopup}>Close</button>
             </div>
         </div>

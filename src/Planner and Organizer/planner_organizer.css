@@ -337,15 +337,15 @@
 
 /* Optional: Different background colors for each priority level */
 .task-item.low-priority {
-    background: #eaf4e9; /* Light green background */
+    background: #ffffff; /* Light green background */
 }
 
 .task-item.normal-priority {
-    background: #fef9e7; /* Light orange background */
+    background: #ffffff; /* Light orange background */
 }
 
 .task-item.high-priority {
-    background: #fdecea; /* Light red background */
+    background: #ffffff; /* Light red background */
 }
 
 /* General button styles */

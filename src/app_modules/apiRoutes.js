@@ -31,5 +31,8 @@ export const API_ROUTES = {
   getQuiz: `${API_URL}/getQuiz`,
   submitQuiz: `${API_URL}/submitQuiz`,
   shareQuiz: `${API_URL}/shareQuiz`,
-  getUserResults: `${API_URL}/api/getUserResults`
+  getUserResults: `${API_URL}/api/getUserResults`,
+  getQuizResults: `${API_URL}/api/getQuizResults`,
+  fetchEvents: `${API_URL}/api/fetchEvents`,
+  addEvent: `${API_URL}/api/addEvent`
 };

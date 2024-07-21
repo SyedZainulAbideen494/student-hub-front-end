@@ -44,7 +44,7 @@ const CreateQuizPage = () => {
     const handleSubmit = async () => {
         const token = localStorage.getItem('token');
         await axios.post(API_ROUTES.createQuiz, { token, title, description, questions });
-        navigate('/');
+        navigate('/quiz/home');
     };
 
     return (

@@ -91,6 +91,7 @@ const Login = () => {
                             aria-label="OTP"
                         />
                     </div>
+                    <p>Sent to your email</p>
                     {error && <div className="error-message">{error}</div>}
                     <button type="submit" disabled={loading}>
                         {loading ? "Verifying..." : "Verify OTP"}

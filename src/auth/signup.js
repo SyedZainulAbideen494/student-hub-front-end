@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaPhone } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -7,6 +7,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 const SignUp = () => {
     const [username, setUsername] = useState('');
     const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -19,6 +20,10 @@ const SignUp = () => {
 
     const handlePhoneChange = (e) => {
         setPhone(e.target.value);
+    };
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
     };
 
     const handlePasswordChange = (e) => {
@@ -45,6 +50,7 @@ const SignUp = () => {
         // Prepare user data for POST request
         const userData = {
             username: username,
+            email: email,
             phone: phone,
             password: password
         };
@@ -67,6 +73,7 @@ const SignUp = () => {
 
             // Clear form fields on successful sign-up
             setUsername('');
+            setEmail('');
             setPhone('');
             setPassword('');
             setConfirmPassword('');
@@ -86,6 +93,16 @@ const SignUp = () => {
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit}>
                 {error && <p className="error-message">{error}</p>}
+                <div className="input-container-login">
+                        <FaPhone className="icon" />
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={handleEmailChange}
+                            required
+                        />
+                    </div>
                 <div className="input-container-login">
                     <FaUser className="icon" />
                     <input
