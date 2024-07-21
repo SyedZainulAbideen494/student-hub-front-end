@@ -4,34 +4,52 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Slightly darker overlay for better contrast */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+    overflow: auto; /* Allow scrolling if needed */
 }
 
 .modal-content {
-    background: white;
+    background: #fff; /* Changed to a soft white */
     padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
+    border-radius: 10px; /* Slightly more rounded corners */
+    width: 90%;
+    max-width: 600px; /* Increased max-width for better content display */
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+    animation: fadeIn 0.3s ease-out; /* Fade-in animation */
+}
+
+.invitation-header {
+    margin-bottom: 20px;
+    font-size: 1.5em; /* Slightly larger font size for header */
+    color: #333; /* Darker color for better readability */
 }
 
 .invitation-item {
-    margin: 10px 0;
+    margin: 5px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.invitation-item:hover {
+    background-color: #f9f9f9; /* Subtle background color change on hover */
 }
 
 .accept-button, .ignore-button {
-    margin: 0 5px;
-    padding: 5px 10px;
+    padding: 6px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth color and scale transitions */
 }
 
 .accept-button {
@@ -39,17 +57,44 @@
     color: white;
 }
 
+.accept-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
 .ignore-button {
     background-color: #f44336;
     color: white;
 }
 
+.ignore-button:hover {
+    background-color: #e53935; /* Slightly darker red on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
 .close-button {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     background-color: #2196F3;
     color: white;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth color and scale transitions */
+}
+
+.close-button:hover {
+    background-color: #1e88e5; /* Slightly darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -99,7 +99,9 @@ const GroupsPage = () => {
             });
             setInvitations(response.data);
             setSuccessMessage(`Invitation ${action}ed successfully!`);
+            setIsInvitationModalVisible(false)
             setTimeout(() => setIsModalVisible(false), 3000);
+            
         } catch (error) {
             console.error('Error responding to invitation:', error);
         }
@@ -108,6 +110,10 @@ const GroupsPage = () => {
     const openGroupChat = (groupId) => {
         nav(`/group-chat/${groupId}`);
     };
+
+    const toggleCreateGroupBtn = () => {
+        setShowCreateGroupForm(!showCreateGroupForm)
+    }
 
     return (
         <div className="groups-container">
@@ -118,9 +124,9 @@ const GroupsPage = () => {
                 onResponse={handleInvitationResponse}
                 onClose={() => setIsInvitationModalVisible(false)} 
             />
-            <div className="button-container">
-                <button className="nav-button" onClick={() => setShowCreateGroupForm(true)}>Create Group</button>
-                <button className="nav-button" onClick={() => setIsInvitationModalVisible(true)}>Invitations</button>
+            <div className="button-container" style={{marginBottom: '30px'}}>
+                <button  className="join-group-button" style={{marginRight: '10px'}} onClick={toggleCreateGroupBtn}>Create Group</button>
+                <button  className="join-group-button" style={{marginLeft: '10px'}} onClick={() => setIsInvitationModalVisible(true)}>Invitations</button>
             </div>
             {showCreateGroupForm && (
                 <div className="group-creation-form">
