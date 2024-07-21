@@ -25,10 +25,12 @@ const FooterNav = () => {
                 <span className="btn-label">Groups</span>
             </button>
             </Link>
-            <button className="nav-btn-footer-nav">
-                <FaTasks className="icon-footer-nav" />
-                <span className="btn-label">Tasks</span>
-            </button>
+            <Link to='/notes' style={{textDecoration: 'none'}}>
+                <button className="nav-btn-footer-nav">
+                    <FaStickyNote className="icon-footer-nav" />
+                    <span className="btn-label">Notes</span>
+                </button>
+                </Link>
             <button className="nav-btn-footer-nav more-btn-footer-nav" onClick={togglePopup}>
                 <FaBars className="icon-footer-nav" />
                 <span className="btn-label">More</span>
@@ -46,10 +48,6 @@ const FooterNav = () => {
                 <span className="btn-label">Groups</span>
             </button>
             </Link>
-                <button className="nav-btn-footer-nav">
-                    <FaTasks className="icon-footer-nav" />
-                    <span className="btn-label">Tasks</span>
-                </button>
                 <button className="nav-btn-footer-nav">
                     <FaFlask className="icon-footer-nav" />
                     <span className="btn-label">Quizzes</span>
