@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import './GroupsPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import SuccessModal from '../app_modules/SuccessModal';
-import InvitationModal from './InvitationModal'; // New component for invitations
+import InvitationModal from './InvitationModal'; 
 
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
@@ -16,17 +16,19 @@ const GroupsPage = () => {
     const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
     const [invitations, setInvitations] = useState([]);
     const [isInvitationModalVisible, setIsInvitationModalVisible] = useState(false);
-    const nav = useNavigate(); // For navigation
+    const nav = useNavigate(); 
 
     useEffect(() => {
         const fetchGroups = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const joinedResponse = await axios.get(API_ROUTES.fetchJoinedGroups, {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
+                const [joinedResponse, publicResponse] = await Promise.all([
+                    axios.get(API_ROUTES.fetchJoinedGroups, {
+                        headers: { Authorization: `Bearer ${token}` }
+                    }),
+                    axios.get(API_ROUTES.fetchPublicGroups)
+                ]);
                 setJoinedGroups(joinedResponse.data);
-                const publicResponse = await axios.get(API_ROUTES.fetchPublicGroups);
                 setPublicGroups(publicResponse.data);
             } catch (error) {
                 console.error('Error fetching groups:', error);
@@ -88,17 +90,15 @@ const GroupsPage = () => {
 
     const handleInvitationResponse = async (groupId, phoneNumber, action) => {
         try {
-            const token = localStorage.getItem('token');
-            await axios.post(API_ROUTES.respondToInvitation, { groupId, phoneNumber, action }, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            // Update invitations after response
+          const token = localStorage.getItem('token');
+          await axios.post(API_ROUTES.respondToInvitation, { groupId, phoneNumber, action }, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
             const response = await axios.get(API_ROUTES.fetchInvitations, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setInvitations(response.data);
             setSuccessMessage(`Invitation ${action}ed successfully!`);
-            setIsModalVisible(true);
             setTimeout(() => setIsModalVisible(false), 3000);
         } catch (error) {
             console.error('Error responding to invitation:', error);

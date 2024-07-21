@@ -1,5 +1,5 @@
 import React from 'react';
-import './InvitationModal.css'; // Make sure to style this modal appropriately
+import './InvitationModal.css'; 
 
 const InvitationModal = ({ visible, invitations, onResponse, onClose }) => {
     if (!visible) return null;
