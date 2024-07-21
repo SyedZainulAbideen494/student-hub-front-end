@@ -15,6 +15,7 @@ const ResultsModal = ({ results, onClose }) => {
     return (
         <div className="results-modal-overlay">
             <div className="results-modal">
+            <p onClick={onClose}>x</p>
                 <h2>Your Quiz Results</h2>
                 <ul className="results-list">
                     {results.length > 0 ? (
