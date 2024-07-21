@@ -61,6 +61,10 @@ const QuizPage = () => {
         }
     };
 
+    const handleBackbtn = () => {
+        navigate('/quiz/home')
+    }
+
     return (
         <div className="quiz-page">
         {quiz && (
@@ -84,6 +88,7 @@ const QuizPage = () => {
                         ))}
                     </div>
                 ))}
+                <button onClick={handleBackbtn} className="submit-button" style={{marginRight: '20px'}}>Back</button>
                 <button onClick={handleSubmit} className="submit-button">Submit Quiz</button>
             </div>
         )}

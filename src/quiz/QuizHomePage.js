@@ -57,8 +57,8 @@ const QuizHomePage = () => {
                     <li key={quiz.id} className="quiz-item">
                         <span className="quiz-title" onClick={() => navigate(`/quiz/${quiz.id}`)}>
                             {quiz.title}
-                        </span>
-                        <span className="quiz-date">Date: {formatDate(quiz.created_at)}</span>
+                        </span><br/><br/>
+                        <span className="quiz-date">Created At: {formatDate(quiz.created_at)}</span><br/><br/>
                         <button className="share-button" onClick={() => handleShareClick(quiz)}>
                             Share
                         </button>
