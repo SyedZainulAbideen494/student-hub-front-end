@@ -25,5 +25,9 @@ export const API_ROUTES = {
   getGroupMembers: `${API_URL}/api/groups/members`,
   fetchInvitations: `${API_URL}/api/invitations`,
   respondToInvitation: `${API_URL}/invitations/respond`,
-  checkUserMembership: `${API_URL}/api/checkUserMembership`
+  checkUserMembership: `${API_URL}/api/checkUserMembership`,
+  getUserQuizzes: `${API_URL}/getUserQuizzes`,
+  createQuiz: `${API_URL}/createQuiz`,
+  getQuiz: `${API_URL}/getQuiz`,
+  submitQuiz: `${API_URL}/submitQuiz`
 };

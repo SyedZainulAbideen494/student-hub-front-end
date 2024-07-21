@@ -15,6 +15,10 @@ import NoteDetailPage from "./flashCards/noteDetails";
 import GroupsPage from "./group/group";
 import GroupChat from "./group/groupChat";
 import GroupDetails from "./group/GroupDetails";
+import QuizHomePage from "./quiz/QuizHomePage";
+import CreateQuizPage from "./quiz/CreateQuizPage";
+import QuizPage from "./quiz/QuizPage";
+import SubmitPage from "./quiz/submitPage";
 
 
 const router = createBrowserRouter([
@@ -25,7 +29,11 @@ const router = createBrowserRouter([
   {path: '/note/view/:id', element: <NoteDetailPage/>},
   {path: '/groups', element: <GroupsPage/>},
   {path: '/group-chat/:id', element: <GroupChat/>},
-  {path: '/group/details/:id', element: <GroupDetails/>}
+  {path: '/group/details/:id', element: <GroupDetails/>},
+  {path: '/quiz/home', element: <QuizHomePage/>},
+  {path: '/quiz/create', element: <CreateQuizPage/>},
+  {path: '/quiz/:id', element: <QuizPage/>},
+  {path: '/quiz/submit', element: <SubmitPage/>},
 ]);
 
 
