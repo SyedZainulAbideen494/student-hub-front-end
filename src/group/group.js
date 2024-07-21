@@ -5,6 +5,7 @@ import './GroupsPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import SuccessModal from '../app_modules/SuccessModal';
+import InvitationModal from './InvitationModal'; // New component for invitations
 
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
@@ -12,6 +13,9 @@ const GroupsPage = () => {
     const [newGroup, setNewGroup] = useState({ name: '', description: '', is_public: true });
     const [successMessage, setSuccessMessage] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
+    const [invitations, setInvitations] = useState([]);
+    const [isInvitationModalVisible, setIsInvitationModalVisible] = useState(false);
     const nav = useNavigate(); // For navigation
 
     useEffect(() => {
@@ -29,7 +33,20 @@ const GroupsPage = () => {
             }
         };
 
+        const fetchInvitations = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get(API_ROUTES.fetchInvitations, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setInvitations(response.data);
+            } catch (error) {
+                console.error('Error fetching invitations:', error);
+            }
+        };
+
         fetchGroups();
+        fetchInvitations();
     }, []);
 
     const handleCreateGroup = async () => {
@@ -45,6 +62,7 @@ const GroupsPage = () => {
             setSuccessMessage('Group created successfully!');
             setIsModalVisible(true);
             setTimeout(() => setIsModalVisible(false), 3000);
+            setShowCreateGroupForm(false);
         } catch (error) {
             console.error('Error creating group:', error);
         }
@@ -68,6 +86,25 @@ const GroupsPage = () => {
         }
     };
 
+    const handleInvitationResponse = async (groupId, phoneNumber, action) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.post(API_ROUTES.respondToInvitation, { groupId, phoneNumber, action }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            // Update invitations after response
+            const response = await axios.get(API_ROUTES.fetchInvitations, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setInvitations(response.data);
+            setSuccessMessage(`Invitation ${action}ed successfully!`);
+            setIsModalVisible(true);
+            setTimeout(() => setIsModalVisible(false), 3000);
+        } catch (error) {
+            console.error('Error responding to invitation:', error);
+        }
+    };
+
     const openGroupChat = (groupId) => {
         nav(`/group-chat/${groupId}`);
     };
@@ -75,32 +112,44 @@ const GroupsPage = () => {
     return (
         <div className="groups-container">
             <SuccessModal visible={isModalVisible} message={successMessage} />
-            <div className="group-creation-form">
-                <h1 className="form-title">Create Group</h1>
-                <input
-                    type="text"
-                    className="group-name-input"
-                    placeholder="Group Name"
-                    value={newGroup.name}
-                    onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
-                />
-                <textarea
-                    className="group-description-input"
-                    placeholder="Description"
-                    value={newGroup.description}
-                    onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
-                />
-                <div className="checkbox-container">
-                    <input
-                        type="checkbox"
-                        className="public-checkbox"
-                        checked={newGroup.is_public}
-                        onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
-                    />
-                    <label className="checkbox-label">Public</label>
-                </div>
-                <button className="group-creation-button" onClick={handleCreateGroup}>Create Group</button>
+            <InvitationModal 
+                visible={isInvitationModalVisible} 
+                invitations={invitations}
+                onResponse={handleInvitationResponse}
+                onClose={() => setIsInvitationModalVisible(false)} 
+            />
+            <div className="button-container">
+                <button className="nav-button" onClick={() => setShowCreateGroupForm(true)}>Create Group</button>
+                <button className="nav-button" onClick={() => setIsInvitationModalVisible(true)}>Invitations</button>
             </div>
+            {showCreateGroupForm && (
+                <div className="group-creation-form">
+                    <h1 className="form-title">Create Group</h1>
+                    <input
+                        type="text"
+                        className="group-name-input"
+                        placeholder="Group Name"
+                        value={newGroup.name}
+                        onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
+                    />
+                    <textarea
+                        className="group-description-input"
+                        placeholder="Description"
+                        value={newGroup.description}
+                        onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
+                    />
+                    <div className="checkbox-container">
+                        <input
+                            type="checkbox"
+                            className="public-checkbox"
+                            checked={newGroup.is_public}
+                            onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
+                        />
+                        <label className="checkbox-label">Public</label>
+                    </div>
+                    <button className="group-creation-button" onClick={handleCreateGroup}>Create Group</button>
+                </div>
+            )}
             <div className="groups-list-container">
                 <h2 className="groups-list-title">Joined Groups</h2>
                 <ul className="groups-list">
