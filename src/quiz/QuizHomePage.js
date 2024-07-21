@@ -86,45 +86,51 @@ const QuizHomePage = () => {
 
     return (
         <div className="quiz-home-page">
-            <button onClick={handleCreateQuiz} className="create-quiz-button" style={{marginRight: '40px'}}>Create Quiz</button>
-            <button onClick={handleResultsClick} className="create-quiz-button">My Results</button>
-            <h2 className="quizzes-title">Your Quizzes</h2>
-            <ul className="quizzes-list">
-                {quizzes.map(quiz => (
-                    <li key={quiz.id} className="quiz-item">
-                        <span className="quiz-title" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+        <div className="button-group">
+            <button onClick={handleCreateQuiz} className="create-quiz-button-home-page">Create Quiz</button>
+            <button onClick={handleResultsClick} className="results-button-home-page">My Results</button>
+        </div>
+        <h2 className="quizzes-title-home-page" style={{marginBottom: '40px', marginTop: '40px'}}>Your Quizzes</h2>
+        <ul className="quizzes-list-home-page">
+            {quizzes.map(quiz => (
+                <li key={quiz.id} className="quiz-item-home-page">
+                    <div className="quiz-header">
+                        <span className="quiz-title-home-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
                             {quiz.title}
-                        </span><br/><br/>
-                        <span className="quiz-date">Created At: {formatDate(quiz.created_at)}</span><br/><br/>
-                        <button className="share-button" onClick={() => handleShareClick(quiz)}>
+                        </span>
+                        <span className="quiz-date-home-page">Created At: {formatDate(quiz.created_at)}</span>
+                    </div>
+                    <div className="quiz-actions">
+                        <button className="share-button-home-page" onClick={() => handleShareClick(quiz)}>
                             Share
                         </button>
-                        <button className="share-button" onClick={() => handleViewQuizClick(quiz.id)}>
+                        <button className="view-results-button-home-page" onClick={() => handleViewQuizClick(quiz.id)}>
                             View Results
                         </button>
-                    </li>
-                ))}
-            </ul>
-            {showModal && (
-                <ShareQuizModal
-                    quizId={selectedQuiz.id}
-                    onClose={handleCloseModal}
-                />
-            )}
-            {showResultsModal && (
-                <ResultsModal
-                    results={results}
-                    onClose={handleCloseResultsModal}
-                />
-            )}
-            {showViewQuizModal && (
-                <ViewQuizModal
-                    quizResults={quizResults}
-                    onClose={handleCloseViewQuizModal}
-                />
-            )}
-            <FooterNav />
-        </div>
+                    </div>
+                </li>
+            ))}
+        </ul>
+        {showModal && (
+            <ShareQuizModal
+                quizId={selectedQuiz.id}
+                onClose={handleCloseModal}
+            />
+        )}
+        {showResultsModal && (
+            <ResultsModal
+                results={results}
+                onClose={handleCloseResultsModal}
+            />
+        )}
+        {showViewQuizModal && (
+            <ViewQuizModal
+                quizResults={quizResults}
+                onClose={handleCloseViewQuizModal}
+            />
+        )}
+        <FooterNav />
+    </div>
     );
 };
 
