@@ -67,7 +67,7 @@ const Pomodoro = () => {
 
     return (
         <div className="pomodoro-container">
-            <h2>{isWork ? 'Work Time' : 'Break Time'}</h2>
+            <h2>{isWork ? 'Study Time' : 'Break Time'}</h2>
             <div className="timer">
                 {formatTime(time)}
             </div>
@@ -102,7 +102,7 @@ const Pomodoro = () => {
             {showModal && (
                 <div className="modal">
                     <div className="modal-content">
-                        <h3>{isWork ? 'Time for a Break!' : 'Back to Work!'}</h3>
+                        <h3>{isWork ? 'Time for a Break!' : 'Back to Study!'}</h3>
                     </div>
                 </div>
             )}
