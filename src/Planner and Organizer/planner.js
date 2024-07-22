@@ -223,7 +223,7 @@ function Planner() {
         </select>
     </div>
     <div className="form-actions">
-        <button onClick={handleSaveTask}>{editingTask ? 'Save Changes' : 'Add Task'}</button>
+        <button onClick={handleSaveTask}>{editingTask ? 'Save Changes' : 'Add Task +'}</button>
         {editingTask && <button onClick={resetForm}>Cancel</button>}
     </div>
 </div>
