@@ -81,15 +81,18 @@ const Card = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s;
+
   &:hover {
     transform: scale(1.05);
   }
+
   @media (max-width: 768px) {
     width: 250px;
     padding: 1.5rem;
   }
+
   @media (max-width: 480px) {
-    width: 100%;
+    width: 90%; /* Adjust the width to be smaller on small screens */
     padding: 1rem;
   }
 `;
