@@ -39,7 +39,7 @@ const FooterNav = () => {
 
     return (
         <div className="footer-nav">
-            <Link to='/' style={{ textDecoration: 'none' }}>
+            <Link to='/planner' style={{ textDecoration: 'none' }}>
                 <button className="nav-btn-footer-nav active-footer-nav">
                     <HiBookOpen className="icon-footer-nav" />
                     <span className="btn-label">Study Planner</span>
@@ -62,7 +62,7 @@ const FooterNav = () => {
                 <span className="btn-label">More</span>
             </button>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
-                <Link to='/' style={{ textDecoration: 'none' }}>
+                <Link to='/planner' style={{ textDecoration: 'none' }}>
                     <button className="nav-btn-footer-nav">
                         <HiBookOpen className="icon-footer-nav" />
                         <span className="btn-label">Study Planner</span>

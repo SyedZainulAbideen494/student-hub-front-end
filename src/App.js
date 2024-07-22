@@ -28,7 +28,7 @@ import DownloadPage from "./website/website";
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
   {path: '/sign-up', element: <SignUp/>},
-  {path: '/', element: <Dashbaord/>},
+  {path: '/planner', element: <Dashbaord/>},
   {path: '/notes', element: <FlashcardsPage/>},
   {path: '/note/view/:id', element: <NoteDetailPage/>},
   {path: '/groups', element: <GroupsPage/>},
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
   {path: '/calendar', element: <CalendarPage/>},
   {path: '/terms-and-conditions', element: <TermsAndConditions/>},
   {path: '/pomodoro', element: <Pomodoro/>},
-  {path: '/website', element: <DownloadPage/>}
+  {path: '/', element: <DownloadPage/>}
 ]);
 
 

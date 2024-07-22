@@ -38,5 +38,7 @@ export const API_ROUTES = {
   fetchUserActivity: `${API_URL}/api/fetchUserActivities`,
   deleteEvent: `${API_URL}/api/events/remove`,
   updateEvent: `${API_URL}/api/events/update`,
-  userSessionAut: `${API_URL}/api/validate-token-session`
+  userSessionAut: `${API_URL}/api/validate-token-session`,
+  sessionCheck: `${API_URL}/api/session-check`,
+  downloadAndroid: `${API_URL}/download/android`
 };

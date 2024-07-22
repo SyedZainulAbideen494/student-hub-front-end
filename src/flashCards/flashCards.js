@@ -22,6 +22,71 @@ const FlashcardsPage = () => {
     const [selectedFlashcardId, setSelectedFlashcardId] = useState(null);
     const [joinedGroups, setJoinedGroups] = useState([]);
     const nav = useNavigate();
+    const [editMode, setEditMode] = useState(false);
+const [editingFlashcard, setEditingFlashcard] = useState(null);
+
+const handleEditClick = (id) => {
+    const flashcard = notes.find(note => note.id === id);
+    setTitle(flashcard.title);
+    setDescription(flashcard.description);
+    setIsPublic(flashcard.is_public);
+    setEditorContent(flashcard.headings);
+    setEditingFlashcard(id);
+    setEditMode(true);
+};
+
+const handleEditSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('isPublic', isPublic);
+    formData.append('token', token);
+    formData.append('headings', editorContent);
+
+    images.forEach((image) => {
+        formData.append('images', image);
+    });
+
+    try {
+        await axios.put(`${API_ROUTES.addFlashCard}/${editingFlashcard}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+        alert('Flashcard updated successfully!');
+        setEditMode(false);
+        setEditingFlashcard(null);
+        setTitle('');
+        setDescription('');
+        setImages([]);
+        setIsPublic(true);
+        setEditorContent('');
+    } catch (error) {
+        console.error('Error updating flashcard:', error);
+        alert('Failed to update flashcard.');
+    }
+};
+
+const handleDeleteClick = async (id) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this flashcard?');
+    if (confirmDelete) {
+        try {
+            await axios.delete(`${API_ROUTES.addFlashCard}/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            alert('Flashcard deleted successfully!');
+            setNotes(notes.filter(note => note.id !== id));
+        } catch (error) {
+            console.error('Error deleting flashcard:', error);
+            alert('Failed to delete flashcard.');
+        }
+    }
+};
+
 
     useEffect(() => {
         const fetchGroups = async () => {

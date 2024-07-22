@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Slide } from 'react-awesome-reveal';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,7 +25,7 @@ const Navbar = styled.nav`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   color: #333333;
   text-decoration: none;
   margin: 0 1rem;
@@ -93,23 +95,27 @@ const Card = styled.div`
   }
 
   @media (max-width: 480px) {
-    width: 90%; /* Adjust the width to be smaller on small screens */
+    width: 90%;
     padding: 1rem;
   }
 `;
 
-const Button = styled.a`
+const Button = styled.button`
   display: inline-block;
   padding: 1rem 2rem;
   margin-top: 1rem;
   background: #007BFF;
   color: #ffffff;
   border-radius: 5px;
+  border: none;
   text-decoration: none;
+  cursor: pointer;
   transition: background 0.3s;
+
   &:hover {
     background: #0056b3;
   }
+
   @media (max-width: 480px) {
     padding: 0.8rem 1.5rem;
     margin-top: 0.5rem;
@@ -160,6 +166,7 @@ const FeatureCard = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s;
+
   &:hover {
     transform: scale(1.05);
   }
@@ -186,38 +193,62 @@ const Footer = styled.footer`
 `;
 
 const handleDownload = async () => {
-    const response = await fetch('http://localhost:8080/download/android', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/octet-stream',
-      },
-    });
+  const response = await fetch('http://localhost:8080/download/android', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
+  });
+
+  if (!response.ok) {
+    console.error('Failed to download file');
+    return;
+  }
+
+  const blob = await response.blob();
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Edusify.apk'; // Replace with your file name
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
+
+
+
+const checkTokenAndRedirect = async (token, navigate) => {
+    try {
+      const response = await axios.post(`${API_ROUTES.sessionCheck}`, { token });
   
-    if (!response.ok) {
-      console.error('Failed to download file');
-      return;
+      if (response.data.exists) {
+        // Token is valid, redirect to /planner
+        navigate('/planner');
+      } else {
+        console.error('No matching token found.');
+      }
+    } catch (error) {
+      console.error('Error checking token:', error);
     }
-  
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Edusify.apk'; // Replace with your file name
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
   };
 
+
 const DownloadPage = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
+      checkTokenAndRedirect(token, navigate);
+    }, [navigate]);
+
+
   return (
     <>
       <GlobalStyle />
       <Navbar>
         <h1 style={{ color: '#007BFF' }}>Edusify</h1>
         <div>
-            <Link to='/terms-and-conditions' style={{textDecoration: 'none'}}>
-          <NavLink>Terms and Conditions</NavLink>
-          </Link>
+          <NavLink to='/terms-and-conditions'>Terms and Conditions</NavLink>
         </div>
       </Navbar>
       <Container>
@@ -240,9 +271,9 @@ const DownloadPage = () => {
               <AppInfo>
                 Our app is not available on Apple Store. Click the button below to use web-app.
               </AppInfo>
-              <Link to='/sign-up'>
-              <Button>Download for iOS</Button>
-              </Link>
+              <NavLink to='/sign-up'>
+                <Button>Download for iOS</Button>
+              </NavLink>
             </Card>
           </Slide>
         </CardContainer>
@@ -275,25 +306,9 @@ const DownloadPage = () => {
             </Slide>
             <Slide direction="right" triggerOnce>
               <FeatureCard>
-                <FeatureTitle>Create Quizzes</FeatureTitle>
+                <FeatureTitle>Track Progress</FeatureTitle>
                 <FeatureDescription>
-                  Create quizzes and share them in groups for collaborative learning.
-                </FeatureDescription>
-              </FeatureCard>
-            </Slide>
-            <Slide direction="left" triggerOnce>
-              <FeatureCard>
-                <FeatureTitle>Pomodoro Timer</FeatureTitle>
-                <FeatureDescription>
-                  Use the Pomodoro timer to boost productivity with timed work sessions.
-                </FeatureDescription>
-              </FeatureCard>
-            </Slide>
-            <Slide direction="right" triggerOnce>
-              <FeatureCard>
-                <FeatureTitle>Calendar Events</FeatureTitle>
-                <FeatureDescription>
-                  Manage your events and get personalized reminders.
+                  Track your progress and improve your productivity.
                 </FeatureDescription>
               </FeatureCard>
             </Slide>
@@ -301,7 +316,7 @@ const DownloadPage = () => {
         </FeaturesContainer>
       </Container>
       <Footer>
-        &copy; {new Date().getFullYear()} Edusify. All rights reserved.
+        <p>&copy; {new Date().getFullYear()} Edusify. All rights reserved.</p>
       </Footer>
     </>
   );
