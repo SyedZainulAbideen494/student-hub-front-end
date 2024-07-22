@@ -100,7 +100,7 @@ const Pomodoro = () => {
                 </label>
             </div>
             {showModal && (
-                <div className="moda-pomodorol">
+                <div className="modal-pomodoro">
                     <div className="modal-content-pomodoro">
                         <h3>{isWork ? 'Time for a Break!' : 'Back to Study!'}</h3>
                     </div>
