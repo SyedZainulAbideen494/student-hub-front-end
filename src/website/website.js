@@ -189,7 +189,7 @@ const DownloadPage = () => {
     <>
       <GlobalStyle />
       <Navbar>
-        <h1 style={{ color: '#007BFF' }}>MyApp</h1>
+        <h1 style={{ color: '#007BFF' }}>Edusify</h1>
         <div>
           <NavLink href="#home">Home</NavLink>
           <NavLink href="#features">Features</NavLink>
