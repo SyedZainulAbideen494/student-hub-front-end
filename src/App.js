@@ -22,6 +22,7 @@ import SubmitPage from "./quiz/submitPage";
 import CalendarPage from "./calander/calander";
 import TermsAndConditions from "./auth/terms-conditions";
 import Pomodoro from "./Pomodoro/pomodoro";
+import DownloadPage from "./website/website";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
   {path: '/calendar', element: <CalendarPage/>},
   {path: '/terms-and-conditions', element: <TermsAndConditions/>},
   {path: '/pomodoro', element: <Pomodoro/>},
+  {path: '/website', element: <DownloadPage/>}
 ]);
 
 
