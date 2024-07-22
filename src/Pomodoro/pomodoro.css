@@ -1,0 +1,102 @@
+.pomodoro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+    justify-content: center;
+}
+
+
+.timer {
+    font-size: 4rem;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.controls button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: #7161ef;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: #5a49d4;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.settings label {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.settings input {
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 2px solid #7161ef;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #444;
+}
+
+.modal-content button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background: #7161ef;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-content button:hover {
+    background: #5a49d4;
+}
