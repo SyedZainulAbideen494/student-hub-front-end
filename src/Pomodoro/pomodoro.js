@@ -71,7 +71,7 @@ const Pomodoro = () => {
             <div className="timer">
                 {formatTime(time)}
             </div>
-            <div className="controls">
+            <div className="controls-pomodoro">
                 <button onClick={handleStartPause}>
                     {isRunning ? 'Pause' : 'Start'}
                 </button>
@@ -79,7 +79,7 @@ const Pomodoro = () => {
                     Reset
                 </button>
             </div>
-            <div className="settings">
+            <div className="settings-pomodoro">
                 <label>
                     Work Time (minutes):
                     <input
@@ -100,8 +100,8 @@ const Pomodoro = () => {
                 </label>
             </div>
             {showModal && (
-                <div className="modal">
-                    <div className="modal-content">
+                <div className="moda-pomodorol">
+                    <div className="modal-content-pomodoro">
                         <h3>{isWork ? 'Time for a Break!' : 'Back to Study!'}</h3>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
 }
 
 
-.timer {
+.timer-pomodoro {
     font-size: 4rem;
     margin: 20px 0;
     padding: 10px 20px;
@@ -18,13 +18,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.controls {
+.controls-pomodoro {
     display: flex;
     gap: 20px;
     margin: 20px 0;
 }
 
-.controls button {
+.controls-pomodoro button {
     padding: 9px 30px;
     background: #7161ef;
     color: #fff;
@@ -34,24 +34,24 @@
     transition: background 0.3s;
 }
 
-.controls button:hover {
+.controls-pomodoro button:hover {
     background: #5a49d4;
 }
 
-.settings {
+.settings-pomodoro {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
 
-.settings label {
+.settings-pomodoro label {
     margin: 10px 0;
     font-size: 1.2rem;
     color: #333;
 }
 
-.settings input {
+.settings-pomodoro input {
     padding: 10px;
     font-size: 1.2rem;
     width: 90%;
@@ -60,7 +60,7 @@
     margin-top: 5px;
 }
 
-.modal {
+.modal-pomodoro {
     position: fixed;
     top: 0;
     left: 0;
@@ -72,7 +72,7 @@
     background: rgba(0, 0, 0, 0.7);
 }
 
-.modal-content {
+.modal-content-pomodoro {
     background: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -80,13 +80,13 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.modal-content h3 {
+.modal-content-pomodoro h3 {
     margin-bottom: 20px;
     font-size: 2rem;
     color: #444;
 }
 
-.modal-content button {
+.modal-content-pomodoro button {
     padding: 15px 30px;
     font-size: 1.2rem;
     background: #7161ef;
@@ -97,6 +97,6 @@
     transition: background 0.3s;
 }
 
-.modal-content button:hover {
+.modal-content-pomodoro button:hover {
     background: #5a49d4;
 }
