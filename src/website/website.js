@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Slide } from 'react-awesome-reveal';
+import { Link } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -191,8 +192,9 @@ const DownloadPage = () => {
       <Navbar>
         <h1 style={{ color: '#007BFF' }}>Edusify</h1>
         <div>
-          <NavLink href="#home">Home</NavLink>
-          <NavLink href="#features">Features</NavLink>
+            <Link to='/terms-and-conditions' style={{textDecoration: 'none'}}>
+          <NavLink>Terms and Conditions</NavLink>
+          </Link>
         </div>
       </Navbar>
       <Container>
