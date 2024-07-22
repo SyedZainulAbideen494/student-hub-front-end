@@ -1,99 +1,120 @@
 .footer-nav {
     position: fixed;
     bottom: 0;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Offset it back by 50% of its own width to center it */
-    width: 80%;
-    background: #007bff; /* A deeper blue for a more modern look */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background: rgba(0, 95, 190, 0.9); /* Slightly transparent blue */
     display: flex;
     justify-content: space-around;
     align-items: center;
-    opacity: 0.7; /* Slightly less opaque for better visibility */
-    padding: 5px 0;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3); /* Softer shadow for a more subtle effect */
+    padding: 8px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
     z-index: 1000;
-    flex-wrap: wrap;
-    border-radius: 20px; /* Slightly less rounded corners for a more modern style */
-    margin-bottom: 0; /* Removed extra margin for a cleaner look */
+    transition: background 0.3s ease; /* Smooth background transition */
 }
 
 .nav-btn-footer-nav {
     background: none;
     border: none;
-    color: #f0f0f0; /* Light color for better contrast with the blue background */
+    color: #f0f0f0;
     text-align: center;
     cursor: pointer;
-    padding: 6px; /* Slightly more padding for better touch targets */
-    font-size: 14px; /* Increased font size for better readability */
-    flex: 1;
-    min-width: 70px; /* Increased minimum width for better spacing */
-    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+    padding: 5px;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative; /* For active path effect */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s ease, background 0.3s ease; /* Smooth color and background transition */
+}
+
+.nav-btn-footer-nav.active {
+    color: #007bff; /* Highlight color for the active state */
+}
+
+.nav-btn-footer-nav.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background: #007bff; /* Highlight color */
+    transition: width 0.3s ease; /* Smooth underline transition */
 }
 
 .nav-btn-footer-nav:hover {
-    background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
-    color: #ffffff; /* Ensured text remains readable */
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
 }
 
 .icon-footer-nav {
-    font-size: 22px; /* Slightly larger icons for better visibility */
+    font-size: 24px; /* Larger icons for better visibility */
+    transition: transform 0.3s ease; /* Smooth icon scaling */
+}
+
+.nav-btn-footer-nav:hover .icon-footer-nav {
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
 }
 
 .btn-label {
-    font-size: 12px; /* Adjusted font size for readability */
-    margin-top: 2px; /* Space between icon and label */
-    color: #f0f0f0; /* Light color for contrast */
+    font-size: 12px; /* Slightly larger font size for better readability */
+    margin-top: 2px;
+    color: #f0f0f0;
 }
 
 .popup-menu-footer-nav {
     position: fixed;
     bottom: 0;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%) translateY(100%); /* Offset it back by 50% of its own width to center it horizontally and initially hide it off-screen vertically */
-    width: 90%;
-    max-width: 400px; /* Maximum width for the popup */
-    background: #0056b3; /* Darker shade of blue for the popup menu */
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    max-width: 350px;
+    background: rgba(0, 45, 90, 0.9); /* Slightly transparent dark blue */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px 0;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3); /* Deeper shadow for better separation */
-    transition: transform 0.3s ease; /* Smooth transition */
-    z-index: 1001;
-    border-top-left-radius: 20px; /* Rounded top corners for a smooth transition */
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transform and opacity transition */
+    opacity: 0; /* Initially hidden */
+    border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
 
 .popup-menu-footer-nav.show-footer-nav {
-    transform: translateX(-50%) translateY(0); /* Center horizontally and move into view */
+    transform: translateX(-50%) translateY(0);
+    opacity: 1; /* Fade in */
 }
 
 .popup-menu-footer-nav .nav-btn-footer-nav {
-    font-size: 14px; /* Slightly larger font size for better readability in the popup */
-    padding: 12px;
-    min-width: 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    font-size: 12px;
+    padding: 8px;
+    min-width: 60px;
 }
 
 .close-btn-footer-nav {
     color: #fff;
     border: none;
     cursor: pointer;
-    padding: 12px;
+    padding: 8px;
     background-color: transparent;
-    font-size: 16px; /* Adjusted font size for better readability */
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.close-btn-footer-nav:hover {
+    color: #ff4d4d; /* Highlight color on hover */
 }
 
 @media (max-width: 768px) {
     .nav-btn-footer-nav {
         font-size: 12px;
-        padding: 8px;
-        min-width: 60px;
+        padding: 6px;
     }
 
     .icon-footer-nav {
@@ -101,6 +122,6 @@
     }
 
     .btn-label {
-        font-size: 10px; /* Smaller font size for smaller screens */
+        font-size: 10px;
     }
 }
