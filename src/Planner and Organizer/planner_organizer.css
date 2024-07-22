@@ -3,21 +3,21 @@
     font-family: 'Helvetica Neue', Arial, sans-serif;
     background: #f7f9fc; /* Light background for a clean look */
     color: #333;
-    padding: 40px; /* Increased padding for better spacing */
-    border-radius: 15px; /* Rounded corners for a smoother look */
+    padding: 40px 60px; /* Increased padding for better spacing */
+    border-radius: 20px; /* More rounded corners for a smoother look */
     max-width: 1200px;
     margin: 50px auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
     position: relative;
-    padding-bottom: 100px; /* Space for the footer */
+    padding-bottom: 120px; /* Space for the footer */
 }
 
 /* Header */
 .header-title {
     color: #2c3e50;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5em;
+    margin-bottom: 40px; /* Increased spacing */
+    font-size: 3em; /* Larger font size for better impact */
     font-weight: 700;
     line-height: 1.2;
 }
@@ -27,23 +27,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
+    margin: 30px 0; /* Increased margin */
 }
 
 .react-calendar {
-    border: 3px solid #3498db;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 4px solid #3498db;
+    border-radius: 16px; /* More rounded corners */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
     background: #fff;
-    padding: 20px;
+    padding: 30px; /* Increased padding */
     transition: border-color 0.3s;
 }
 
 /* Tile styles */
 .react-calendar__tile {
     position: relative;
-    padding: 10px;
+    padding: 12px; /* Increased padding */
     transition: background 0.3s, color 0.3s;
+    border-radius: 12px; /* Rounded corners for tiles */
 }
 
 .react-calendar__tile--active {
@@ -59,16 +60,16 @@
 
 .react-calendar__tile--has-tasks {
     background: #eaf4f4;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .react-calendar__tile--has-tasks::after {
     content: '';
     position: absolute;
-    bottom: 5px;
-    right: 5px;
-    width: 8px;
-    height: 8px;
+    bottom: 8px;
+    right: 8px;
+    width: 10px; /* Slightly larger dot */
+    height: 10px; /* Slightly larger dot */
     border-radius: 50%;
     background: #3498db;
     border: 2px solid #fff;
@@ -77,54 +78,54 @@
 /* Style for the select element */
 .task-form select {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px; /* More rounded corners */
     background-color: #fff;
     font-size: 16px;
     color: #333;
     cursor: pointer;
     outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Increased margin */
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 /* Style for the select element when focused */
 .task-form select:focus {
     border-color: #7161ef;
-    box-shadow: 0 0 5px rgba(113, 97, 239, 0.5);
+    box-shadow: 0 0 6px rgba(113, 97, 239, 0.5);
 }
 
 /* Task Form Styles */
 .task-form {
     background: #fff;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    border-radius: 20px; /* More rounded corners */
+    padding: 30px; /* Increased padding */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px; /* Increased margin */
 }
 
 .task-form h2 {
     color: #3498db;
-    margin-bottom: 20px;
-    font-size: 1.8em;
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 2em; /* Larger font size */
     font-weight: 600;
 }
 
 .task-form input,
 .task-form textarea {
     width: 100%;
-    padding: 14px;
+    padding: 16px; /* Increased padding */
     border: 2px solid #3498db;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    border-radius: 12px; /* More rounded corners */
+    margin-bottom: 25px; /* Increased margin */
     font-size: 16px;
     box-sizing: border-box;
 }
 
 .task-form textarea {
-    height: 140px;
+    height: 160px; /* Slightly taller textarea */
     resize: vertical;
 }
 
@@ -132,8 +133,8 @@
     background: #3498db;
     color: #fff;
     border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
+    padding: 16px 32px; /* Increased padding */
+    border-radius: 12px; /* More rounded corners */
     cursor: pointer;
     font-size: 16px;
     transition: background 0.3s, transform 0.3s;
@@ -148,26 +149,26 @@
 .task-list,
 .all-tasks-card {
     background: #fff;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    border-radius: 20px; /* More rounded corners */
+    padding: 30px; /* Increased padding */
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px; /* Increased margin */
 }
 
 .task-list h2,
 .all-tasks-card h2 {
     color: #3498db;
-    margin-bottom: 20px;
-    font-size: 1.8em;
+    margin-bottom: 25px; /* Increased margin */
+    font-size: 2em; /* Larger font size */
     font-weight: 600;
 }
 
 .task-item {
     background: #fefefe;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 12px; /* More rounded corners */
+    padding: 25px; /* Increased padding */
+    margin-bottom: 25px; /* Increased margin */
     transition: background 0.3s, transform 0.3s;
     position: relative;
 }
@@ -179,28 +180,28 @@
 
 .task-title {
     color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.4em;
+    margin-bottom: 15px; /* Increased margin */
+    font-size: 1.6em; /* Larger font size */
     font-weight: 600;
 }
 
 .task-description {
     margin: 10px 0;
-    font-size: 1.1em;
+    font-size: 1.2em; /* Larger font size */
     color: #555;
 }
 
 .all-tasks-card .task-item {
     background: #f7f9fc;
     border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 20px; /* Increased padding */
+    margin-bottom: 20px; /* Increased margin */
 }
 
 .all-tasks-card .task-title {
     color: #2c3e50;
     font-weight: bold;
-    font-size: 1.3em;
+    font-size: 1.5em; /* Larger font size */
 }
 
 .all-tasks-card .task-description {
@@ -210,7 +211,7 @@
 
 .all-tasks-card .task-due-date {
     color: #777;
-    font-size: 14px;
+    font-size: 15px; /* Slightly larger font size */
 }
 
 /* Responsive Styles */
@@ -219,13 +220,13 @@
     .all-tasks-card {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 25px; /* Increased gap */
     }
 
     .task-list .task-item,
     .all-tasks-card .task-item {
-        flex: 1 1 calc(50% - 20px);
-        max-width: calc(50% - 20px);
+        flex: 1 1 calc(50% - 25px); /* Adjusted flex basis */
+        max-width: calc(50% - 25px); /* Adjusted max-width */
     }
 }
 
@@ -234,120 +235,68 @@
     .all-tasks-card {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 25px; /* Increased gap */
     }
 
     .task-list .task-item,
     .all-tasks-card .task-item {
-        flex: 1 1 calc(33.333% - 20px);
-        max-width: calc(33.333% - 20px);
+        flex: 1 1 calc(33.333% - 25px); /* Adjusted flex basis */
+        max-width: calc(33.333% - 25px); /* Adjusted max-width */
     }
 }
 
 @media (max-width: 768px) {
     .App-dashboard-planner {
-        padding: 25px;
+        padding: 30px; /* Adjusted padding */
     }
 
     .header-title {
-        font-size: 2.2em;
+        font-size: 2.5em; /* Adjusted font size */
+    }
+
+    .task-form,
+    .task-list,
+    .all-tasks-card {
+        padding: 20px; /* Adjusted padding */
     }
 
     .task-form input,
     .task-form textarea {
-        font-size: 15px;
+        padding: 14px; /* Adjusted padding */
     }
 
     .task-form button {
-        font-size: 15px;
-        padding: 12px 20px;
+        padding: 14px 28px; /* Adjusted padding */
     }
 
-    .calendar-container {
-        margin: 20px 0;
-    }
-
-    .task-list h2,
-    .all-tasks-card h2 {
-        font-size: 1.6em;
+    .task-item {
+        padding: 20px; /* Adjusted padding */
     }
 }
 
-@media (max-width: 480px) {
-    .App-dashboard-planner {
-        padding: 20px;
-    }
-
-    .header-title {
-        font-size: 1.9em;
-    }
-
-    .task-form input,
-    .task-form textarea {
-        font-size: 13px;
-    }
-
-    .task-form button {
-        font-size: 13px;
-        padding: 10px 15px;
-    }
-
-    .calendar-container {
-        margin: 15px 0;
-    }
-
-    .task-list h2,
-    .all-tasks-card h2 {
-        font-size: 1.4em;
-    }
-}
-
-/* Task Priority Styles */
-.task-item.low-priority {
-    border-left: 5px solid #2ecc71; /* Green */
-    background: #eaf8f0; /* Light green background */
-}
-
-.task-item.normal-priority {
-    border-left: 5px solid #f39c12; /* Orange */
-    background: #fef4e0; /* Light orange background */
-}
-
-.task-item.high-priority {
-    border-left: 5px solid #e74c3c; /* Red */
-    background: #fce8e8; /* Light red background */
-}
-
-/* General button styles */
 .button-dashboard-planner {
-    padding: 8px 16px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px; /* Smaller font size */
+    font-weight: 600;
     border: none;
-    background: #3498db;
-    color: #fff;
-    border-radius: 6px;
-    font-size: 16px;
+    border-radius: 12px; /* Curvier edges */
+    padding: 12px 20px; /* Larger padding */
     cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .button-dashboard-planner:hover {
-    background: #2980b9;
+    background-color: #2980b9;
     transform: scale(1.05);
 }
 
-/* Footer styles */
-.footer {
-    background: #2c3e50;
+.button-edit-dashboard-planner  {
+    background-color: #f39c12;
     color: #fff;
-    padding: 20px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    border-top: 1px solid #444;
+    margin-right: 10px;
 }
 
-.footer .footer-section {
-    margin-bottom: 15px;
+.button-edit-dashboard-planner {
+    background-color: #e74c3c;
+    color: #fff;
 }

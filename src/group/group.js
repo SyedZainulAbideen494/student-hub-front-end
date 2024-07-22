@@ -165,6 +165,8 @@ const GroupsPage = () => {
                         </li>
                     ))}
                 </ul>
+                </div>
+                <div className="groups-list-container">
                 <h2 className="groups-list-title">Public Groups</h2>
                 <ul className="groups-list" style={{ marginBottom: '50px' }}>
                     {publicGroups.map((group) => (
