@@ -23,7 +23,7 @@
     background: none;
     border: none;
     color: #007bff;
-    font-size: 26px;
+    font-size: 17px;
     cursor: pointer;
     transition: color 0.3s, transform 0.2s;
 }
@@ -41,7 +41,7 @@
 }
 
 .group-name {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     margin: 0;
     color: #333;
