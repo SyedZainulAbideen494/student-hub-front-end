@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './pomodoro.css'; // Create a CSS file for styling
+import './pomodoro.css';
 import FooterNav from '../app_modules/footernav';
 
 const Pomodoro = () => {
@@ -12,21 +12,27 @@ const Pomodoro = () => {
 
     useEffect(() => {
         let timer;
-        if (isRunning) {
+        if (isRunning && time > 0) {
             timer = setInterval(() => {
                 setTime((prevTime) => prevTime - 1);
             }, 1000);
+        } else if (time === 0) {
+            setIsRunning(false);
+            setShowModal(true);
         }
         return () => clearInterval(timer);
-    }, [isRunning]);
+    }, [isRunning, time]);
 
     useEffect(() => {
-        if (time === 0) {
-            setIsWork(!isWork);
-            setShowModal(true);
-            setTime(isWork ? breakTime * 60 : workTime * 60);
+        if (showModal) {
+            const timeout = setTimeout(() => {
+                setShowModal(false);
+                setIsWork((prevIsWork) => !prevIsWork);
+                setTime(isWork ? breakTime * 60 : workTime * 60);
+            }, 3000);
+            return () => clearTimeout(timeout);
         }
-    }, [time, isWork, workTime, breakTime]);
+    }, [showModal, isWork, breakTime, workTime]);
 
     const handleStartPause = () => {
         setIsRunning(!isRunning);
@@ -37,21 +43,19 @@ const Pomodoro = () => {
         setTime(isWork ? workTime * 60 : breakTime * 60);
     };
 
-    const handleModalClose = () => {
-        setShowModal(false);
-    };
-
     const handleWorkTimeChange = (e) => {
-        setWorkTime(e.target.value);
+        const value = Math.max(1, e.target.value);
+        setWorkTime(value);
         if (isWork) {
-            setTime(e.target.value * 60);
+            setTime(value * 60);
         }
     };
 
     const handleBreakTimeChange = (e) => {
-        setBreakTime(e.target.value);
+        const value = Math.max(1, e.target.value);
+        setBreakTime(value);
         if (!isWork) {
-            setTime(e.target.value * 60);
+            setTime(value * 60);
         }
     };
 
@@ -99,7 +103,6 @@ const Pomodoro = () => {
                 <div className="modal">
                     <div className="modal-content">
                         <h3>{isWork ? 'Time for a Break!' : 'Back to Work!'}</h3>
-                        <button onClick={handleModalClose}>Close</button>
                     </div>
                 </div>
             )}
