@@ -238,9 +238,11 @@ const DownloadPage = () => {
             <Card>
               <h2 style={{ color: '#333333' }}>Download for iOS</h2>
               <AppInfo>
-                Our app is available for iOS devices. Click the button below to download.
+                Our app is not available on Apple Store. Click the button below to use web-app.
               </AppInfo>
-              <Button href="https://www.apple.com/app-store/">Download for iOS</Button>
+              <Link to='/sign-up'>
+              <Button>Download for iOS</Button>
+              </Link>
             </Card>
           </Slide>
         </CardContainer>
