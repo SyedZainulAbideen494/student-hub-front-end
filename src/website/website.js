@@ -274,7 +274,7 @@ const DownloadPage = () => {
         </FeaturesContainer>
       </Container>
       <Footer>
-        &copy; {new Date().getFullYear()} MyApp. All rights reserved.
+        &copy; {new Date().getFullYear()} Edusify. All rights reserved.
       </Footer>
     </>
   );
