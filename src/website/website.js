@@ -193,7 +193,7 @@ const Footer = styled.footer`
 `;
 
 const handleDownload = async () => {
-  const response = await fetch('http://localhost:8080/download/android', {
+  const response = await fetch(API_ROUTES.downloadAndroid, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/octet-stream',
