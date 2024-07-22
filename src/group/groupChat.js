@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import './GroupChat.css'; // Import CSS file for styling
@@ -20,6 +20,8 @@ const DiscussionBoard = () => {
     const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [isMember, setIsMember] = useState(null); // Null means not checked yet
+
+    const messagesEndRef = useRef(null); // Ref for the end of the messages container
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
@@ -99,6 +101,11 @@ const DiscussionBoard = () => {
 
         fetchGroupDetails();
     }, [id, isMember]);
+
+    useEffect(() => {
+        // Scroll to the bottom of the messages container when messages change
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
 
     const checkUserMembership = async () => {
         try {
@@ -221,6 +228,8 @@ const DiscussionBoard = () => {
                                 )}
                             </div>
                         ))}
+                        {/* Scroll to bottom */}
+                        <div ref={messagesEndRef} />
                     </div>
                     <div className="message-input-container">
                         <input
@@ -242,13 +251,14 @@ const DiscussionBoard = () => {
                             onInvite={handleInviteMembers}
                         />
                     )}
-                    <SuccessModal visible={isSuccessModalVisible} message={successMessage} />
+
+                    {/* Render success modal if isSuccessModalVisible is true */}
+                    {isSuccessModalVisible && (
+                        <SuccessModal message={successMessage} onClose={closeSuccessModal} />
+                    )}
                 </>
             ) : (
-                <div className="chat-not-found">
-                    <h2>Chat Not Found</h2>
-                    <p>It seems you are not a member of this group.</p>
-                </div>
+                <p>You are not a member of this group.</p>
             )}
         </div>
     );

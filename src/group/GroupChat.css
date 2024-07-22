@@ -1,3 +1,4 @@
+/* Container for the entire discussion group page */
 .discussion-group-container {
     display: flex;
     flex-direction: column;
@@ -6,22 +7,33 @@
     color: #333;
 }
 
+/* Header section of the discussion group */
 .discussion-header {
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 20px 30px;
     background-color: #ffffff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px 12px 0 0;
 }
 
+/* Back button styling */
 .back-button {
     background: none;
     border: none;
     color: #007bff;
-    font-size: 24px;
+    font-size: 26px;
     cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
 }
 
+.back-button:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* Group info styling */
 .group-info {
     display: flex;
     flex-direction: column;
@@ -29,36 +41,42 @@
 }
 
 .group-name {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 600;
     margin: 0;
+    color: #333;
 }
 
 .member-count {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     margin-top: 5px;
 }
 
+/* Container for messages */
 .messages-container {
     flex: 1;
     overflow-y: auto;
-    padding: 15px;
+    padding: 20px;
     background-color: #ffffff;
     padding-bottom: 70px;
 }
 
+/* Individual message styling */
 .message {
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 12px;
     background-color: #f1f1f1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Message header with sender and timestamp */
 .message-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .message-sender {
@@ -71,62 +89,27 @@
     color: #999;
 }
 
+/* Flashcard message card styling */
 .flashcard-message-card {
-    border: 1px solid #f1f1f1;
-    border-radius: 8px;
-    padding: 10px;
-    width: 60%;
+    border: 1px solid #e1e1e1;
+    border-radius: 12px;
+    padding: 15px;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    align-items: flex-start;
 }
 
 .flashcard-header h3 {
     margin: 0;
-    font-size: 14px;
-    color: #000000;
+    font-size: 16px;
+    color: #333;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .open-flashcard-button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 12px;
-    align-self: flex-end;
-}
-
-.open-flashcard-button:hover {
-    background-color: #0056b3;
-}
-
-.message-input-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 95%;
-    display: flex;
-    padding: 10px;
-    border-radius: 25px;
-}
-
-.message-input {
-    flex: 1;
-    padding: 10px;
-    border-radius: 25px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-.send-button {
     background-color: #007bff;
     color: #ffffff;
     border: none;
@@ -134,9 +117,75 @@
     border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
+    align-self: flex-end;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.open-flashcard-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Message input container at the bottom */
+.message-input-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    display: flex;
+    padding: 10px 15px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Message input field */
+.message-input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Send button styling */
+.send-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
     margin-left: 10px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .send-button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Chat not found section */
+.chat-not-found {
+    text-align: center;
+    margin: auto;
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+}
+
+.chat-not-found h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.chat-not-found p {
+    font-size: 16px;
+    color: #666;
 }
