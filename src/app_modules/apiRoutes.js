@@ -37,5 +37,6 @@ export const API_ROUTES = {
   addEvent: `${API_URL}/api/addEvent`,
   fetchUserActivity: `${API_URL}/api/fetchUserActivities`,
   deleteEvent: `${API_URL}/api/events/remove`,
-  updateEvent: `${API_URL}/api/events/update`
+  updateEvent: `${API_URL}/api/events/update`,
+  userSessionAut: `${API_URL}/api/validate-token-session`
 };

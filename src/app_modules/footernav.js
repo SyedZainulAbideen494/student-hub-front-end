@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUsers, FaFlask, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock } from 'react-icons/fa';
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate } from 'react-router-dom';
 import './footer-nav.css';
+import axios from 'axios';
+import { API_ROUTES } from './apiRoutes';
 
 const FooterNav = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.post(API_ROUTES.userSessionAut, { token })
+                .then(response => {
+                    if (!response.data.valid) {
+                        navigate('/login');
+                    }
+                })
+                .catch(error => {
+                    console.error('Token validation error:', error);
+                    navigate('/login');
+                });
+        } else {
+            console.log('valid session')
+        }
+    }, [navigate]);
 
     const togglePopup = () => {
         setPopupVisible(!isPopupVisible);
