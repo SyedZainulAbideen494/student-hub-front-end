@@ -185,6 +185,29 @@ const Footer = styled.footer`
   width: 100%;
 `;
 
+const handleDownload = async () => {
+    const response = await fetch('http://localhost:8080/download/android', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/octet-stream',
+      },
+    });
+  
+    if (!response.ok) {
+      console.error('Failed to download file');
+      return;
+    }
+  
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Edusify.apk'; // Replace with your file name
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
 const DownloadPage = () => {
   return (
     <>
@@ -208,7 +231,7 @@ const DownloadPage = () => {
               <AppInfo>
                 Our app is available for Android devices. Click the button below to download.
               </AppInfo>
-              <Button href="https://play.google.com/store">Download for Android</Button>
+              <Button onClick={handleDownload}>Download for Android</Button>
             </Card>
           </Slide>
           <Slide direction="right" triggerOnce>
