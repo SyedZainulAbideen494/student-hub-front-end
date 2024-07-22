@@ -1,90 +1,101 @@
 .flashcards-page {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    padding: 30px;
+    background-color: #f5f5f5; /* Lighter background for a cleaner look */
     color: #333;
 }
 
 .flashcard-form-flashcards-page {
     background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 12px; /* More rounded edges */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease-in-out; /* Animation for hover effect */
+}
+
+.flashcard-form-flashcards-page:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
 }
 
 .flashcard-form-flashcards-page .form-group-flashcards-page {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Increased spacing */
 }
 
 .flashcard-form-flashcards-page label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 500; /* Slightly bolder text */
+    margin-bottom: 8px; /* Increased spacing */
 }
 
 .flashcard-form-flashcards-page input[type="text"],
 .flashcard-form-flashcards-page textarea,
 .flashcard-form-flashcards-page input[type="file"] {
-    width: 90%;
-    padding: 8px;
+    width: 100%; /* Full-width input fields */
+    padding: 12px; /* Increased padding for a more comfortable input */
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px; /* Rounded edges */
+    box-sizing: border-box;
 }
 
 .flashcard-form-flashcards-page textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px; /* Increased minimum height */
 }
 
 .flashcard-form-flashcards-page input[type="checkbox"] {
-    margin-right: 8px;
+    margin-right: 10px; /* Increased spacing */
 }
 
 .flashcard-form-flashcards-page button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
+    border-radius: 8px; /* Rounded button edges */
+    padding: 12px 24px; /* Increased padding for larger button */
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animation effects */
 }
 
 .flashcard-form-flashcards-page button:hover {
     background-color: #0056b3;
+    transform: scale(1.02); /* Slight button zoom on hover */
 }
 
 .search-bar-flashcards-page {
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Increased spacing */
 }
 
 .search-bar-flashcards-page input[type="text"] {
-    width: 90%;
-    padding: 10px;
+    width: 100%; /* Full-width input field */
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 16px;
 }
 
 .flashcard-list-flashcards-page {
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
 }
 
 .flashcard-item-flashcards-page {
     background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 15px;
+    border-radius: 12px; /* More rounded edges */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out; /* Animation for hover effect */
+}
+
+.flashcard-item-flashcards-page:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
 }
 
 .flashcard-item-flashcards-page h2 {
     margin-top: 0;
-    font-size: 1.5em;
+    font-size: 1.6em;
     color: #007bff;
 }
 
@@ -96,28 +107,28 @@
 .flashcard-item-flashcards-page img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 8px; /* Rounded image edges */
     margin: 10px 0;
 }
 
 .flashcard-actions-flashcards-page {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 20px; /* Increased spacing */
 }
 
 .flashcard-actions-flashcards-page button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
+    border-radius: 8px;
+    padding: 10px 16px; /* Slightly larger padding */
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .flashcard-actions-flashcards-page button:hover {
     background-color: #0056b3;
+    transform: scale(1.02); /* Slight button zoom on hover */
 }
-
