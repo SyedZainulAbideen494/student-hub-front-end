@@ -93,7 +93,7 @@ const NoteDetailPage = () => {
         <div className="note-detail-page">
             <div className="note-header-note-detail-page">
                 <button onClick={handleBackClick} className="back-button-note-detail-page">
-                    <span className="arrow-note-detail-page">←</span> Back
+                    <span className="arrow-note-detail-page">←</span>
                 </button>
                 <h1>{note.title}</h1>
             </div>
