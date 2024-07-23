@@ -40,5 +40,7 @@ export const API_ROUTES = {
   updateEvent: `${API_URL}/api/events/update`,
   userSessionAut: `${API_URL}/api/validate-token-session`,
   sessionCheck: `${API_URL}/api/session-check`,
-  downloadAndroid: `${API_URL}/download/android`
-};
+  downloadAndroid: `${API_URL}/download/android`,
+  loginSpotify: `${API_URL}/login/spotify`,
+  refreshSpotifyToken: `${API_URL}/refresh_token`
+}

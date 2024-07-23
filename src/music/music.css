@@ -1,0 +1,52 @@
+.music {
+    text-align: center;
+    padding: 20px;
+}
+
+.music form {
+    margin-bottom: 20px;
+}
+
+.music ul {
+    list-style: none;
+    padding: 0;
+}
+
+.music ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.player {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.current-track {
+    display: flex;
+    align-items: center;
+}
+
+.current-track img {
+    width: 64px;
+    height: 64px;
+    margin-right: 20px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.controls button {
+    margin-right: 10px;
+}
+
+.controls input {
+    width: 300px;
+    margin-right: 10px;
+}

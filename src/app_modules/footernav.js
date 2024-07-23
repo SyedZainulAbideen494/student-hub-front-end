@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic } from 'react-icons/fa';
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './footer-nav.css';
@@ -95,6 +95,12 @@ const FooterNav = () => {
                     <button className="nav-btn-footer-nav">
                         <FaClock className="icon-footer-nav" />
                         <span className="btn-label">Pomodoro</span>
+                    </button>
+                </Link>
+                <Link to='/music' style={{textDecoration: 'none'}}>
+                    <button className="nav-btn-footer-nav">
+                        <FaMusic className="icon-footer-nav" />
+                        <span className="btn-label">Music</span>
                     </button>
                 </Link>
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>
