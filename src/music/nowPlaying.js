@@ -1,106 +1,129 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaPlay, FaPause, FaForward, FaBackward, FaRandom, FaList } from 'react-icons/fa';
 
-const NowPlaying = ({ track, isPlaying, onPlayPrevious, onPlayNext, isVisible, onToggleVisibility }) => {
-  if (!track) {
-    return null; // Return null if no track is selected
-  }
+const NowPlaying = ({ track, isPlaying, onPlayPause, onPlayNext, onPlayPrevious, onPlayRandom, onPlayFromQueue }) => {
+  if (!track) return null;
 
   return (
-    <Container isVisible={isVisible}>
-      <Header>
-        <h2>Now Playing</h2>
-        <button onClick={onToggleVisibility}>Close</button>
-      </Header>
-      <Content>
-        <TrackImage src={track.album.images[0]?.url} alt={track.name} />
-        <TrackInfo>
-          <TrackName>{track.name}</TrackName>
-          <TrackArtists>{track.artists.map(artist => artist.name).join(', ')}</TrackArtists>
-        </TrackInfo>
-      </Content>
+    <Container>
+      <TrackImage src={track.album.images[0]?.url} alt={track.name} />
+      <TrackInfo>
+        <TrackName>{track.name}</TrackName>
+        <TrackArtists>{track.artists.map(artist => artist.name).join(', ')}</TrackArtists>
+      </TrackInfo>
       <Controls>
-        <button onClick={onPlayPrevious}>Previous</button>
-        <button onClick={isPlaying ? () => {} : () => {}}>Play/Pause</button>
-        <button onClick={onPlayNext}>Next</button>
+        <ControlButton onClick={onPlayPrevious}>
+          <FaBackward size={20} />
+        </ControlButton>
+        <ControlButton onClick={onPlayPause}>
+          {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
+        </ControlButton>
+        <ControlButton onClick={onPlayNext}>
+          <FaForward size={20} />
+        </ControlButton>
+        <ControlButton onClick={onPlayRandom}>
+          <FaRandom size={20} />
+        </ControlButton>
+        <ControlButton onClick={onPlayFromQueue}>
+          <FaList size={20} />
+        </ControlButton>
       </Controls>
     </Container>
   );
 };
 
+// Styled Components
 const Container = styled.div`
-  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
+  background-color: #121212;
+  border-radius: 8px;
   color: #fff;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-
-  button {
-    background: none;
-    border: none;
-    color: #1DB954;
-    font-size: 16px;
-    cursor: pointer;
-
-    &:hover {
-      color: #fff;
-    }
+  max-width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  @media (min-width: 600px) {
+    flex-direction: row;
+    padding: 15px;
   }
-`;
-
-const Content = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 const TrackImage = styled.img`
   width: 60px;
   height: 60px;
-  border-radius: 10px;
-  margin-right: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  @media (min-width: 600px) {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
 `;
 
 const TrackInfo = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  @media (min-width: 600px) {
+    text-align: left;
+    flex: 1;
+  }
 `;
 
-const TrackName = styled.span`
-  font-size: 18px;
+const TrackName = styled.div`
   font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 5px;
+  @media (min-width: 600px) {
+    font-size: 1.2em;
+  }
 `;
 
-const TrackArtists = styled.span`
-  color: #b3b3b3;
+const TrackArtists = styled.div`
+  color: #aaa;
+  font-size: 0.9em;
+  @media (min-width: 600px) {
+    font-size: 1em;
+  }
 `;
 
 const Controls = styled.div`
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 10px;
+  @media (min-width: 600px) {
+    margin-left: auto;
+    margin-top: 0;
+  }
+`;
 
-  button {
-    background: none;
-    border: none;
-    color: #1DB954;
-    font-size: 16px;
-    cursor: pointer;
-
-    &:hover {
-      color: #fff;
-    }
+const ControlButton = styled.button`
+  background-color: #1DB954;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, transform 0.2s;
+  
+  &:hover {
+    background-color: #1AAE4D;
+    transform: scale(1.1);
+  }
+  
+  &:active {
+    transform: scale(1);
+  }
+  
+  @media (min-width: 600px) {
+    padding: 10px;
   }
 `;
 

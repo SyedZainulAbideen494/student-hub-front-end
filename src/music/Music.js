@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import FooterNav from '../app_modules/footernav';
+import styled from 'styled-components';
+import NowPlaying from './nowPlaying'; // Import the NowPlaying component
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import FooterNav from '../app_modules/footernav';
 
 const SpotifyPlayer = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -12,38 +13,19 @@ const SpotifyPlayer = () => {
   const [randomSongs, setRandomSongs] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isNowPlayingVisible, setIsNowPlayingVisible] = useState(true);
+  const [queue, setQueue] = useState([]);
+  const [currentQueueIndex, setCurrentQueueIndex] = useState(0);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('spotifyAccessToken');
-    const storedRefreshToken = localStorage.getItem('spotifyRefreshToken');
-
-    if (storedToken) {
-      setAccessToken(storedToken);
-      loadSpotifySDK(storedToken);
-      fetchUserPlaylists(storedToken);
-      fetchRandomSongs(storedToken);
-    } else {
-      const params = new URLSearchParams(window.location.search);
-      const token = params.get('access_token');
-      const refreshToken = params.get('refresh_token');
-
-      if (token && refreshToken) {
-        localStorage.setItem('spotifyAccessToken', token);
-        localStorage.setItem('spotifyRefreshToken', refreshToken);
-        setAccessToken(token);
-        loadSpotifySDK(token);
-        fetchUserPlaylists(token);
-        fetchRandomSongs(token);
-      }
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('access_token');
+    if (token) {
+      setAccessToken(token);
+      loadSpotifySDK(token);
+      fetchUserPlaylists(token);
+      fetchRandomSongs(token);
     }
   }, []);
-
-  useEffect(() => {
-    if (accessToken && player) {
-      refreshAccessToken(); // Refresh token if needed
-    }
-  }, [accessToken, player]);
 
   const loadSpotifySDK = (token) => {
     const script = document.createElement('script');
@@ -88,6 +70,10 @@ const SpotifyPlayer = () => {
           if (currentTrack) {
             setSelectedTrack(currentTrack);
             setIsPlaying(!state.paused);
+            if (queue.length > 0) {
+              setQueue(prevQueue => prevQueue.slice(1)); // Remove the played song from the queue
+              setCurrentQueueIndex(0);
+            }
           }
         });
 
@@ -119,7 +105,7 @@ const SpotifyPlayer = () => {
 
   const fetchRandomSongs = async (token) => {
     try {
-      const playlistId = '37i9dQZF1DXcBWIGoYBM5M'; // Discover Weekly playlist
+      const playlistId = '37i9dQZF1DXcBWIGoYBM5M';
       const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -164,59 +150,57 @@ const SpotifyPlayer = () => {
     });
   };
 
-  const refreshAccessToken = async () => {
-    const refreshToken = localStorage.getItem('spotifyRefreshToken');
-    if (!refreshToken) return;
-
-    try {
-      const response = await fetch(API_ROUTES.refreshSpotifyToken, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ refreshToken })
-      });
-
-      if (!response.ok) {
-        throw new Error('Error refreshing access token');
-      }
-
-      const data = await response.json();
-      const newAccessToken = data.accessToken;
-      localStorage.setItem('spotifyAccessToken', newAccessToken);
-      setAccessToken(newAccessToken);
-      if (player) {
-        player.getOAuthToken(cb => cb(newAccessToken));
-      }
-    } catch (error) {
-      console.error('Error refreshing access token:', error);
+  const handlePlayNext = () => {
+    if (queue.length > 0) {
+      const nextTrack = queue[currentQueueIndex];
+      setCurrentQueueIndex((prevIndex) => (prevIndex + 1) % queue.length);
+      playSong(nextTrack.uri);
+      setSelectedTrack(nextTrack);
+      setIsPlaying(true);
     }
+  };
+
+  const handlePlayPrevious = () => {
+    if (queue.length > 0) {
+      const prevTrackIndex = (currentQueueIndex - 1 + queue.length) % queue.length;
+      const prevTrack = queue[prevTrackIndex];
+      setCurrentQueueIndex(prevTrackIndex);
+      playSong(prevTrack.uri);
+      setSelectedTrack(prevTrack);
+      setIsPlaying(true);
+    }
+  };
+
+  const playRandomTrack = () => {
+    if (randomSongs.length > 0) {
+      const randomTrack = randomSongs[Math.floor(Math.random() * randomSongs.length)];
+      playSong(randomTrack.uri);
+      setSelectedTrack(randomTrack);
+      setIsPlaying(true);
+    }
+  };
+
+  const addToQueue = (track) => {
+    setQueue(prevQueue => [...prevQueue, track]);
+  };
+
+  const playFromQueue = () => {
+    if (queue.length > 0) {
+      const trackToPlay = queue[currentQueueIndex];
+      playSong(trackToPlay.uri);
+      setSelectedTrack(trackToPlay);
+      setIsPlaying(true);
+    }
+  };
+
+  const clearQueue = () => {
+    setQueue([]);
+    setCurrentQueueIndex(0);
   };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
     searchTracks(e.target.value);
-  };
-
-  const handlePlayNext = (currentTrackUri) => {
-    // Logic to play next song
-  };
-
-  const handlePlayPrevious = () => {
-    // Logic to play previous song
-  };
-
-  const toggleNowPlayingVisibility = () => {
-    setIsNowPlayingVisible(prev => !prev);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('spotifyAccessToken');
-    localStorage.removeItem('spotifyRefreshToken');
-    setAccessToken('');
-    setDeviceId('');
-    setPlayer(undefined);
-    // Redirect or update UI as needed
   };
 
   return (
@@ -231,6 +215,18 @@ const SpotifyPlayer = () => {
             onChange={handleSearchChange}
             placeholder="Search for a track"
           />
+          {selectedTrack && (
+            <NowPlaying 
+              track={selectedTrack}
+              isPlaying={isPlaying}
+              onPlayPause={() => player.togglePlay()}
+              onPlayNext={handlePlayNext}
+              onPlayPrevious={handlePlayPrevious}
+              onPlayRandom={playRandomTrack}
+              onPlayFromQueue={playFromQueue}
+              onClearQueue={clearQueue} // Pass clearQueue function
+            />
+          )}
           {searchQuery ? (
             <>
               <SectionTitle>Search Results</SectionTitle>
@@ -248,13 +244,14 @@ const SpotifyPlayer = () => {
                     >
                       ▶
                     </PlayButton>
+                    <QueueButton onClick={() => addToQueue(track)}>Add to Queue</QueueButton>
                   </TrackItem>
                 ))}
               </Tracks>
             </>
           ) : (
             <>
-              <SectionTitle>Random Songs</SectionTitle>
+              <SectionTitle>Random Tracks</SectionTitle>
               <Tracks>
                 {randomSongs.map(track => (
                   <TrackItem key={track.id}>
@@ -269,6 +266,7 @@ const SpotifyPlayer = () => {
                     >
                       ▶
                     </PlayButton>
+                    <QueueButton onClick={() => addToQueue(track)}>Add to Queue</QueueButton>
                   </TrackItem>
                 ))}
               </Tracks>
@@ -281,114 +279,94 @@ const SpotifyPlayer = () => {
   );
 };
 
+// Styled Components
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: #121212;
-color: #fff;
-min-height: 100vh;
-padding: 20px;
+  text-align: center;
+  padding: 20px;
 `;
 
 const Title = styled.h1`
-margin-bottom: 20px;
+  font-size: 2em;
+  margin-bottom: 20px;
 `;
 
 const LoginLink = styled.a`
-color: #1DB954;
-font-size: 18px;
-text-decoration: none;
-border: 1px solid #1DB954;
-padding: 10px 20px;
-border-radius: 50px;
-transition: background-color 0.3s, color 0.3s;
-
-&:hover {
-  background-color: #1DB954;
-  color: #fff;
-}
+  font-size: 1.2em;
+  color: #1DB954;
 `;
 
 const Content = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
-max-width: 800px;
+  margin: 0 auto;
+  max-width: 800px;
 `;
 
 const SearchBar = styled.input`
-width: 100%;
-padding: 10px;
-border-radius: 50px;
-border: none;
-margin-bottom: 20px;
-font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 `;
 
 const SectionTitle = styled.h2`
-align-self: flex-start;
-margin: 20px 0;
+  font-size: 1.5em;
+  margin-bottom: 10px;
 `;
 
 const Tracks = styled.div`
-display: flex;
-flex-direction: column;
-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const TrackItem = styled.div`
-display: flex;
-align-items: center;
-margin-bottom: 10px;
-background-color: #282828;
-padding: 10px;
-border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 300px;
+  background: #f9f9f9;
 `;
 
 const TrackImage = styled.img`
-width: 60px;
-height: 60px;
-border-radius: 10px;
-margin-right: 10px;
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
 `;
 
 const TrackInfo = styled.div`
-flex: 1;
-display: flex;
-flex-direction: column;
+  flex: 1;
 `;
 
-const TrackName = styled.span`
-font-size: 16px;
-font-weight: bold;
+const TrackName = styled.div`
+  font-size: 1.2em;
 `;
 
-const TrackArtists = styled.span`
-color: #b3b3b3;
-`;
-
-const spin = keyframes`
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+const TrackArtists = styled.div`
+  font-size: 0.9em;
+  color: #666;
 `;
 
 const PlayButton = styled.button`
-background: none;
-border: none;
-color: #1DB954;
-font-size: 24px;
-cursor: pointer;
-transition: color 0.3s;
-
-${({ isPlaying }) => isPlaying && css`
-  animation: ${spin} 2s linear infinite;
-`}
-
-&:hover {
+  background: ${props => props.isPlaying ? '#1DB954' : '#ddd'};
   color: #fff;
-}
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const QueueButton = styled.button`
+  background: #1DB954;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
 `;
 
 export default SpotifyPlayer;
