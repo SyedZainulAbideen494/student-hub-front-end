@@ -252,8 +252,8 @@ function Planner() {
                                 setDueDate(task.due_date);
                                 setPriority(task.priority);
                                 scrollToForm();
-                            }} className='button-dashboard-planner'>Edit</button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner button-edit-dashboard-planner'>Complete</button>
+                            }} className='button-dashboard-planner button-edit-dashboard-planner'>Edit</button>
+                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner'>Complete</button>
                         </div>
                     ))}
                 </div>
