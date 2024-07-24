@@ -26,6 +26,8 @@ const DiscussionBoard = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [isMember, setIsMember] = useState(null);
     const nav = useNavigate()
+    const inputRef = useRef(null); // Create a ref for the input
+
 
     const messagesEndRef = useRef(null);
 
@@ -136,23 +138,40 @@ const DiscussionBoard = () => {
 
     const handleSendReply = async () => {
         try {
-            const token = localStorage.getItem('token');
-            await axios.post(
-                `${API_ROUTES.sendGroupMessages}/${id}`,
-                { content: replyMessage, type: 'message', parentId: replyToMessageId },
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
-            setMessages(messages.map(message => 
-                message.id === replyToMessageId 
-                ? { ...message, replies: [...message.replies, { content: replyMessage, sender: 'Me', type: 'message' }] }
-                : message
-            ));
-            setReplyMessage('');
-            setReplyToMessageId(null);
+          const token = localStorage.getItem('token');
+          await axios.post(
+            `${API_ROUTES.sendGroupMessages}/${id}`,
+            { content: replyMessage, type: 'message', parentId: replyToMessageId },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          setMessages(messages.map(message => 
+            message.id === replyToMessageId 
+            ? { ...message, replies: [...message.replies, { content: replyMessage, sender: 'Me', type: 'message' }] }
+            : message
+          ));
+          setReplyMessage('');
+          setReplyToMessageId(null);
+      
+          // Scroll input into view and trigger animation
+          if (inputRef.current) {
+            inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            inputRef.current.classList.add('input-animate');
+            // Remove animation class after 0.5 seconds
+            setTimeout(() => {
+              inputRef.current.classList.remove('input-animate');
+            }, 500);
+          }
         } catch (error) {
-            console.error('Error sending reply:', error);
+          console.error('Error sending reply:', error);
         }
-    };
+      };
+      
+      // Scroll input into view when replyToMessageId changes
+      useEffect(() => {
+        if (replyToMessageId) {
+          inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+      }, [replyToMessageId]);
 
     const handleBackBtn = () => {
         navigate('/groups');
@@ -251,16 +270,21 @@ const DiscussionBoard = () => {
                 <div ref={messagesEndRef} />
               </div>
               <div className="message-input-container">
-                <input
-                  type="text"
-                  value={replyToMessageId ? replyMessage : newMessage}
-                  onChange={e => replyToMessageId ? setReplyMessage(e.target.value) : setNewMessage(e.target.value)}
-                  placeholder={replyToMessageId ? "Type your reply here..." : "Type your message here..."}
-                />
-                <button className="send-btn" onClick={replyToMessageId ? handleSendReply : handleSendMessage}>
-                  <FaArrowRight />
-                </button>
-              </div>
+  <input
+    ref={inputRef} // Attach ref here
+    type="text"
+    value={replyToMessageId ? replyMessage : newMessage}
+    onChange={e => replyToMessageId ? setReplyMessage(e.target.value) : setNewMessage(e.target.value)}
+    placeholder={replyToMessageId ? "Type your reply here..." : "Type your message here..."}
+    className="input-field" // Updated class name for the input
+  />
+  <button 
+    className={replyToMessageId ? "reply-btn-input-sedn" : "send-btn"} // Conditional class for button
+    onClick={replyToMessageId ? handleSendReply : handleSendMessage}
+  >
+    <FaArrowRight />
+  </button>
+</div>
             </div>
           )}
           {showModal && (
