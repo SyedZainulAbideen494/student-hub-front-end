@@ -1,243 +1,291 @@
-/* Wrapper for the entire player */
-.player-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-  background: #f0f0f0; /* Lighter background for the entire view */
-  overflow: auto;
-  padding: 20px 0;
+/* General Styles */
+.player-container {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Container for the player */
-.player-container {
-  width: 90%;
-  max-width: 900px; /* Increased max-width for a spacious look */
-  background: #ffffff; /* Light background for container */
-  border-radius: 15px; /* More rounded corners */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Softer shadow */
-  padding: 30px; /* Increased padding for better spacing */
+/* Header Styles */
+.spotify-player-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 20px;
 }
 
-.player-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+.spotify-player-header h1 {
+  margin-bottom: 10px;
 }
 
-/* Search bar */
-.search-bar {
-  display: flex;
-  width: 100%;
-  max-width: 700px; /* Adjusted max-width */
-  margin: 20px 0;
-}
-
-.search-bar input {
-  flex-grow: 1;
-  padding: 14px;
-  border: 2px solid #007bff; /* Blue border for better visibility */
+.spotify-player-header input {
+  padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 25px;
-  background: #ffffff; /* Light background for input */
-  color: #333;
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 10px;
   font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.search-bar input:focus {
-  border-color: #0056b3; /* Darker blue on focus */
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
-}
-
-.search-bar button {
-  background-color: #007bff;
+.spotify-player-header button {
+  background-color: #7161ef;
+  color: white;
   border: none;
   border-radius: 25px;
-  color: white;
-  cursor: pointer;
   padding: 10px 20px;
   font-size: 16px;
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.search-bar button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-/* Container for the now playing section */
-.now-playing-music {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #ffffff; /* Light background for now playing section */
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  max-width: 500px; /* Increased max-width */
-  margin: auto;
-  color: #333;
-}
-
-/* Album cover styling */
-.album-cover {
-  width: 120px; /* Adjusted size */
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-/* Spinning animation for album cover */
-.album-cover.spinning {
-  animation: spin 10s linear infinite;
-}
-
-/* Track info styling */
-.track-info-music {
-  text-align: center;
-  margin-top: 15px;
-}
-
-/* Track details styling */
-.track-details-music h3 {
-  font-size: 1.6em; /* Slightly larger font size */
-  margin: 10px 0;
-  font-weight: 600;
-}
-
-.track-details-music p {
-  font-size: 1.1em;
-  color: #666; /* Lighter text color */
-}
-
-/* Player controls styling */
-.player-controls-music {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-  width: 100%;
-}
-
-/* Styling for buttons */
-.player-controls-music button {
-  background: transparent;
-  border: none;
-  color: #007bff; /* Blue color for controls */
-  font-size: 1.6em;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s;
+  margin: 5px;
 }
 
-.player-controls-music button:hover {
-  color: #0056b3;
-  transform: scale(1.1);
+
+
+
+/* Search Results Styles */
+.search-results {
+  margin-bottom: 20px;
 }
 
-/* Active state for play/pause button */
-.player-controls-music button.active {
-  color: #0056b3;
+.search-results h2 {
+  margin-bottom: 10px;
 }
 
-/* Track details */
-.track-details {
+.search-result-item {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #666; /* Lighter text color */
+  align-items: center;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.track-details h3 {
+.search-result-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.search-result-item div {
+  flex: 1;
+}
+
+.search-result-item h3 {
   margin: 0;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
 }
 
-.track-details p {
+.search-result-item p {
   margin: 5px 0;
-  font-size: 16px; /* Adjusted font-size */
+  font-size: 14px;
+  color: #666;
 }
 
-/* Search results and playlists */
-.search-results,
-.playlists {
-  width: 100%;
-  max-width: 900px; /* Increased max-width */
+.search-result-item button {
+  background-color: #7161ef;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+
+
+/* Queue Styles */
+.queue {
+  margin-bottom: 20px;
+}
+
+.queue h2 {
+  margin-bottom: 10px;
+}
+
+.queue-item {
   display: flex;
-  flex-direction: column;
-  gap: 20px; /* Increased gap */
-  padding: 0 15px; /* Adjusted padding */
+  align-items: center;
+  margin-bottom: 15px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.search-result-item,
+.queue-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.queue-item div {
+  flex: 1;
+}
+
+.queue-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.queue-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.queue-item button {
+  background-color: #7161ef;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.queue-item button:hover {
+  background-color: #5a50d7;
+}
+
+.queue-item.current {
+  background-color: #e0e0e0;
+}
+
+
+/* Playlists Styles */
+.playlists {
+  margin-bottom: 20px;
+}
+
+.playlists h2 {
+  margin-bottom: 10px;
+}
+
 .playlist-item {
   display: flex;
   align-items: center;
-  gap: 20px; /* Increased gap */
-  background: #f8f9fa; /* Light background for items */
+  margin-bottom: 15px;
+  background: #fff;
   border-radius: 10px;
-  padding: 15px;
-  transition: background-color 0.3s, transform 0.3s;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
-.search-result-item:hover,
-.playlist-item:hover {
-  background: #e9ecef; /* Lighter hover background */
-  transform: translateY(-2px);
-}
-
-.search-result-item img,
 .playlist-item img {
-  width: 60px; /* Adjusted size */
-  height: 60px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  margin-right: 15px;
 }
 
-.search-result-item .track-actions,
-.playlist-item .playlist-actions {
-  margin-left: auto;
-  display: flex;
-  gap: 10px;
+.playlist-item div {
+  flex: 1;
 }
 
-.search-result-item button,
+.playlist-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.playlist-item p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
 .playlist-item button {
+  color: white;
   border: none;
-  border-radius: 5px;
-  background-color: transparent;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
+  border-radius: 20px;
   padding: 5px 10px;
   font-size: 14px;
-  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
 }
 
-/* Animation for spinning effect */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+
+.current-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa; /* Light theme background */
+  color: #333; /* Darker text color for contrast */
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 10px;
 }
 
-/* Styling for album cover */
-.album-cover {
-  width: 120px; /* Adjusted size */
-  height: 120px;
+.current-track img {
+  width: 100px; /* Smaller size */
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  animation: spin 10s linear infinite; /* Slower spin */
 }
 
-/* Spinning effect applied when playing */
-.now-playing-music.playing .album-cover {
-  animation: spin 10s linear infinite;
+.current-track h2 {
+  margin: 8px 0;
+  font-size: 16px; /* Slightly smaller text */
+  text-align: center;
 }
 
+.current-track p {
+  font-size: 14px;
+  text-align: center;
+  color: #666; /* Slightly lighter text color */
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: #007bff; /* Light blue color for buttons */
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .current-track img {
+    width: 80px; /* Even smaller size for very small screens */
+    height: 80px;
+  }
+
+  .current-track h2 {
+    font-size: 14px;
+  }
+
+  .current-track p {
+    font-size: 12px;
+  }
+
+  .controls button {
+    font-size: 20px;
+  }
+}

@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
-import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaRandom, FaPlus, FaSearch } from 'react-icons/fa';
+import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaTrash, FaRandom, FaPlus } from 'react-icons/fa';
 import './music.css';
 
 const SpotifyPlayer = () => {
   const [accessToken, setAccessToken] = useState(localStorage.getItem('spotifyAccessToken') || '');
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem('spotifyRefreshToken') || '');
-  const [player, setPlayer] = useState(undefined);
-  const [deviceId, setDeviceId] = useState('');
+  const [deviceId, setDeviceId] = useState(localStorage.getItem('spotifyDeviceId') || '');
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [randomSongs, setRandomSongs] = useState([]);
-  const [selectedTrack, setSelectedTrack] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [queue, setQueue] = useState([]);
-  const [currentQueueIndex, setCurrentQueueIndex] = useState(0);
+  const [selectedTrack, setSelectedTrack] = useState(JSON.parse(localStorage.getItem('spotifySelectedTrack')) || null);
+  const [isPlaying, setIsPlaying] = useState(JSON.parse(localStorage.getItem('spotifyIsPlaying')) || false);
+  const [queue, setQueue] = useState(JSON.parse(localStorage.getItem('spotifyQueue')) || []);
+  const [currentQueueIndex, setCurrentQueueIndex] = useState(JSON.parse(localStorage.getItem('spotifyCurrentQueueIndex')) || 0);
   const [playlists, setPlaylists] = useState([]);
-
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get('access_token');
     const refresh = params.get('refresh_token');
-  
+
     if (token && refresh) {
       setAccessToken(token);
       setRefreshToken(refresh);
@@ -49,6 +47,13 @@ const SpotifyPlayer = () => {
     }
   }, [searchQuery]);
 
+  useEffect(() => {
+    localStorage.setItem('spotifySelectedTrack', JSON.stringify(selectedTrack));
+    localStorage.setItem('spotifyIsPlaying', JSON.stringify(isPlaying));
+    localStorage.setItem('spotifyQueue', JSON.stringify(queue));
+    localStorage.setItem('spotifyCurrentQueueIndex', JSON.stringify(currentQueueIndex));
+  }, [selectedTrack, isPlaying, queue, currentQueueIndex]);
+
   const loadSpotifySDK = (token) => {
     const script = document.createElement('script');
     script.src = 'https://sdk.scdn.co/spotify-player.js';
@@ -62,11 +67,10 @@ const SpotifyPlayer = () => {
           volume: 0.5
         });
 
-        setPlayer(player);
-
         player.addListener('ready', ({ device_id }) => {
           console.log('Ready with Device ID', device_id);
           setDeviceId(device_id);
+          localStorage.setItem('spotifyDeviceId', device_id);
         });
 
         player.addListener('not_ready', ({ device_id }) => {
@@ -113,11 +117,11 @@ const SpotifyPlayer = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-  
+
       if (!response.ok) {
         throw new Error(`Error fetching playlists: ${response.statusText}`);
       }
-  
+
       const data = await response.json();
       setPlaylists(data.items);
     } catch (error) {
@@ -147,10 +151,6 @@ const SpotifyPlayer = () => {
       const newAccessToken = data.accessToken;
       localStorage.setItem('spotifyAccessToken', newAccessToken);
       setAccessToken(newAccessToken);
-
-      if (player) {
-        player.getOAuthToken(cb => cb(newAccessToken));
-      }
 
       scheduleTokenRefresh(refreshToken);
     } catch (error) {
@@ -230,122 +230,177 @@ const SpotifyPlayer = () => {
   };
 
   const handlePlayPause = async () => {
-    if (!player) return;
-
     try {
-      const state = await player.getCurrentState();
-      if (!state) return;
+      const response = await fetch(`https://api.spotify.com/v1/me/player/${isPlaying ? 'pause' : 'play'}?device_id=${deviceId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+      });
 
-      if (state.paused) {
-        await player.resume();
-        setIsPlaying(true);
+      if (response.ok) {
+        setIsPlaying(prev => !prev);
       } else {
-        await player.pause();
-        setIsPlaying(false);
+        console.error(`Error performing ${isPlaying ? 'pause' : 'play'} operation`);
       }
     } catch (error) {
-      console.error("Error in handlePlayPause:", error);
+      console.error(`Error performing ${isPlaying ? 'pause' : 'play'} operation:`, error);
     }
   };
 
-  const handlePlayNext = () => {
-    if (queue.length > 0) {
-      const nextTrack = queue[currentQueueIndex];
-      setCurrentQueueIndex((prevIndex) => (prevIndex + 1) % queue.length);
-      playSong(nextTrack.uri);
-      setSelectedTrack(nextTrack);
-      setIsPlaying(true);
+  const handleNext = async () => {
+    try {
+      if (queue.length > 0) {
+        // Play the next song in the queue
+        const nextTrackIndex = (currentQueueIndex + 1) % queue.length;
+        setCurrentQueueIndex(nextTrackIndex);
+        const nextTrack = queue[nextTrackIndex];
+        playSong(nextTrack.uri);
+        setIsPlaying(true);
+      } else {
+        // Queue is empty, play a random song
+        const randomTrack = randomSongs[Math.floor(Math.random() * randomSongs.length)];
+        if (randomTrack) {
+          playSong(randomTrack.uri);
+          setQueue([randomTrack]); // Optionally add the random track to the queue
+          setCurrentQueueIndex(0);
+          setIsPlaying(true);
+        }
+      }
+    } catch (error) {
+      console.error('Error skipping to next track:', error);
+    }
+  };
+  
+  const handlePrevious = async () => {
+    try {
+      if (queue.length > 0) {
+        // Play the previous song in the queue
+        const previousTrackIndex = (currentQueueIndex - 1 + queue.length) % queue.length;
+        setCurrentQueueIndex(previousTrackIndex);
+        const previousTrack = queue[previousTrackIndex];
+        playSong(previousTrack.uri);
+        setIsPlaying(true);
+      } else {
+        // Queue is empty, play a random song
+        const randomTrack = randomSongs[Math.floor(Math.random() * randomSongs.length)];
+        if (randomTrack) {
+          playSong(randomTrack.uri);
+          setQueue([randomTrack]); // Optionally add the random track to the queue
+          setCurrentQueueIndex(0);
+          setIsPlaying(true);
+        }
+      }
+    } catch (error) {
+      console.error('Error skipping to previous track:', error);
     }
   };
 
-  const handlePlayPrevious = () => {
-    if (queue.length > 0) {
-      const prevTrackIndex = (currentQueueIndex - 1 + queue.length) % queue.length;
-      const prevTrack = queue[prevTrackIndex];
-      setCurrentQueueIndex(prevTrackIndex);
-      playSong(prevTrack.uri);
-      setSelectedTrack(prevTrack);
-      setIsPlaying(true);
-    }
+  const handleAddToQueue = (track) => {
+    setQueue(prevQueue => [...prevQueue, track]);
   };
 
-  const addToQueue = (track) => {
-    setQueue((prevQueue) => [...prevQueue, track]);
+  const handleRemoveFromQueue = (index) => {
+    setQueue(prevQueue => prevQueue.filter((_, i) => i !== index));
   };
 
-  const playRandomTrack = () => {
-    const randomIndex = Math.floor(Math.random() * randomSongs.length);
-    const randomTrack = randomSongs[randomIndex];
-    playSong(randomTrack.uri);
-    setSelectedTrack(randomTrack);
+
+
+  const handleRandomPlay = () => {
+    // Implement play random track functionality
   };
 
-  const playSongFromSearch = (uri) => {
-    playSong(uri);
-    setIsPlaying(true);
-  };
 
   return (
-    <div className="player-wrapper">
-      {!accessToken && <h2><a href={API_ROUTES.loginSpotify}>Login</a></h2>}
-      <div className="player-container">
-        <div className="now-playing-music">
-          {selectedTrack && (
-            <div className="track-info-music">
-              <img className="album-cover spinning" src={selectedTrack.album.images[0]?.url} alt="Album Cover" /><br/>
-              <div className="track-details-music">
-                <h3>{selectedTrack.name}</h3><br/>
-                <p>{selectedTrack.artists.map(artist => artist.name).join(', ')}</p>
-              </div>
-              <div className="player-controls-music">
-                <button onClick={handlePlayPrevious}><FaStepBackward /></button>
-                <button onClick={handlePlayPause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
-                <button onClick={handlePlayNext}><FaStepForward /></button>
-                <button onClick={playRandomTrack}><FaRandom /></button>
-              </div>
-            </div>
-          )}
+<div className="player-container">
+      {/* Header */}
+      <p><a href={API_ROUTES.loginSpotify}>Login</a></p>
+      <header className="spotify-player-header search-bar">
+        <h1>Spotify Player</h1>
+
+      {/* Now Playing Card */}
+      {selectedTrack && (
+        <div className="current-track">
+          <img src={selectedTrack.album.images[0].url} alt={selectedTrack.name} />
+          <div>
+            <h2>{selectedTrack.name}</h2>
+            <p>{selectedTrack.artists.map((artist) => artist.name).join(', ')}</p>
+          </div><br/>
+          <section className="controls player-controls">
+        <button onClick={handlePrevious}><FaStepBackward /></button>
+        <button onClick={handlePlayPause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
+        <button onClick={handleNext}><FaStepForward /></button>
+        <button onClick={handleRandomPlay}><FaRandom /></button>
+      </section>
         </div>
-        <div className="search-bar">
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search for a song"
-          />
-          <button onClick={() => searchTracks(searchQuery)}><FaSearch /></button>
-        </div>
-        {searchQuery.length > 0 ? (
-          <div className="search-results">
-            {searchResults.map(track => (
-              <div className="search-result-item" key={track.id}>
-                <img className="album-cover" src={track.album.images[0]?.url} alt="Album Cover" />
-                <div className="track-details">
-                  <h4>{track.name}</h4>
-                  <p>{track.artists.map(artist => artist.name).join(', ')}</p>
+      )}
+        <input
+          type="text"
+          placeholder="Search for a track..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </header>
+      {/* Search Results */}
+      {searchResults.length > 0 && (
+        <section className="search-results">
+          <h2>Search Results</h2>
+          <ul>
+            {searchResults.map((track) => (
+              <li key={track.id} className="search-result-item">
+                <img src={track.album.images[0].url} alt={track.name} />
+                <div>
+                  <h3>{track.name}</h3>
+                  <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
                 </div>
-                <div className="track-actions">
-                  <button onClick={() => playSongFromSearch(track.uri)}><FaPlay /></button>
-                  <button onClick={() => addToQueue(track)}><FaPlus /></button>
-                </div>
-              </div>
+                <button onClick={() => playSong(track.uri)}><FaPlay /></button>
+                <button onClick={() => handleAddToQueue(track)}><FaPlus /></button>
+              </li>
             ))}
-          </div>
-        ) : (
-          <div className="playlists">
-          {playlists.map(playlist => (
-            <div className="playlist-item" key={playlist.id}>
-              <img className="album-cover" src={playlist.images[0]?.url} alt="Playlist Cover" />
-              <div className="playlist-details">
-                <h4>{playlist.name}</h4>
-                <p>{playlist.tracks.total} songs</p>
-              </div>
-              <button onClick={() => playPlaylist(playlist.id)}><FaPlay /> Play</button>
-            </div>
-          ))}
-        </div>
-        )}
-      </div>
+          </ul>
+        </section>
+      )}
+
+      {/* Queue */}
+      {queue.length > 0 && (
+        <section className="queue">
+          <h2>Queue</h2>
+          <ul>
+            {queue.map((track, index) => (
+              <li key={track.id} className={`queue-item ${index === currentQueueIndex ? 'current' : ''}`}>
+                <img src={track.album.images[0].url} alt={track.name} />
+                <div>
+                  <h3>{track.name}</h3>
+                  <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
+                </div>
+                <button onClick={() => handleRemoveFromQueue(index)}><FaTrash /></button>
+              </li>
+            ))}
+          </ul>
+          <button className="clear-queue-btn" onClick={() => setQueue([])}>Clear Queue</button>
+        </section>
+      )}
+
+      {/* Playlists */}
+      {playlists.length > 0 && (
+        <section className="playlists">
+          <h2>Your Playlists</h2>
+          <ul>
+            {playlists.map((playlist) => (
+              <li key={playlist.id} className="playlist-item">
+                <img src={playlist.images[0]?.url || 'default-image-url'} alt={playlist.name} />
+                <div>
+                  <h3>{playlist.name}</h3>
+                  <p>{playlist.tracks.total} tracks</p>
+                </div>
+                <button onClick={() => playPlaylist(playlist.id)}>Play</button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <FooterNav />
     </div>
   );
