@@ -13,29 +13,30 @@ const SpotifyPlayer = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [randomSongs, setRandomSongs] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false); // Initialize state
+  const [isPlaying, setIsPlaying] = useState(false);
   const [queue, setQueue] = useState([]);
   const [currentQueueIndex, setCurrentQueueIndex] = useState(0);
   const [playlists, setPlaylists] = useState([]);
+
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get('access_token');
     const refresh = params.get('refresh_token');
-
+  
     if (token && refresh) {
       setAccessToken(token);
       setRefreshToken(refresh);
       localStorage.setItem('spotifyAccessToken', token);
       localStorage.setItem('spotifyRefreshToken', refresh);
       loadSpotifySDK(token);
-      fetchUserPlaylists(token);
       fetchRandomSongs(token);
+      fetchUserPlaylists(token);
       scheduleTokenRefresh(refresh);
     } else if (accessToken && refreshToken) {
       loadSpotifySDK(accessToken);
-      fetchUserPlaylists(accessToken);
       fetchRandomSongs(accessToken);
+      fetchUserPlaylists(accessToken);
       scheduleTokenRefresh(refreshToken);
     }
   }, [accessToken, refreshToken]);
@@ -92,7 +93,7 @@ const SpotifyPlayer = () => {
             setSelectedTrack(currentTrack);
             setIsPlaying(!state.paused);
             if (queue.length > 0) {
-              setQueue(prevQueue => prevQueue.slice(1)); // Remove the played song from the queue
+              setQueue(prevQueue => prevQueue.slice(1));
               setCurrentQueueIndex(0);
             }
           }
@@ -112,20 +113,20 @@ const SpotifyPlayer = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-
+  
       if (!response.ok) {
         throw new Error(`Error fetching playlists: ${response.statusText}`);
       }
-
+  
       const data = await response.json();
-      setPlaylists(data.items); // Save playlists to state
+      setPlaylists(data.items);
     } catch (error) {
       console.error('Error fetching playlists:', error);
     }
   };
 
   const scheduleTokenRefresh = (refreshToken) => {
-    setTimeout(() => refreshAccessToken(refreshToken), 3600 * 1000 - 60000); // Refresh the token 1 minute before it expires
+    setTimeout(() => refreshAccessToken(refreshToken), 3600 * 1000 - 60000);
   };
 
   const refreshAccessToken = async (refreshToken) => {
@@ -151,10 +152,9 @@ const SpotifyPlayer = () => {
         player.getOAuthToken(cb => cb(newAccessToken));
       }
 
-      scheduleTokenRefresh(refreshToken); // Schedule the next token refresh
+      scheduleTokenRefresh(refreshToken);
     } catch (error) {
       console.error('Error refreshing access token:', error);
-      // Redirect to login if refreshing fails
       window.location.href = API_ROUTES.loginSpotify;
     }
   };
@@ -174,8 +174,8 @@ const SpotifyPlayer = () => {
       const data = await response.json();
       const tracks = data.items.map(item => item.track);
       if (tracks.length > 0) {
-        playSong(tracks[0].uri); // Play the first track in the playlist
-        setQueue(tracks); // Set the queue to the playlist tracks
+        playSong(tracks[0].uri);
+        setQueue(tracks);
       }
     } catch (error) {
       console.error('Error playing playlist:', error);
@@ -238,12 +238,11 @@ const SpotifyPlayer = () => {
 
       if (state.paused) {
         await player.resume();
-        setIsPlaying(true); // Update state
+        setIsPlaying(true);
       } else {
         await player.pause();
-        setIsPlaying(false); // Update state
+        setIsPlaying(false);
       }
-      console.log(state, player)
     } catch (error) {
       console.error("Error in handlePlayPause:", error);
     }
@@ -327,23 +326,24 @@ const SpotifyPlayer = () => {
                 </div>
                 <div className="track-actions">
                   <button onClick={() => playSongFromSearch(track.uri)}><FaPlay /></button>
-                  <button onClick={() => addToQueue(track)}><FaPlus /> Queue</button>
+                  <button onClick={() => addToQueue(track)}><FaPlus /></button>
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div className="playlists">
-            {playlists.map(playlist => (
-              <div className="playlist-item" key={playlist.id}>
-                <img className="playlist-cover" src={playlist.images[0]?.url} alt="Playlist Cover" />
-                <div className="playlist-details">
-                  <h4>{playlist.name}</h4>
-                  <button onClick={() => playPlaylist(playlist.id)}><FaPlay /></button>
-                </div>
+          {playlists.map(playlist => (
+            <div className="playlist-item" key={playlist.id}>
+              <img className="album-cover" src={playlist.images[0]?.url} alt="Playlist Cover" />
+              <div className="playlist-details">
+                <h4>{playlist.name}</h4>
+                <p>{playlist.tracks.total} songs</p>
               </div>
-            ))}
-          </div>
+              <button onClick={() => playPlaylist(playlist.id)}><FaPlay /> Play</button>
+            </div>
+          ))}
+        </div>
         )}
       </div>
       <FooterNav />
