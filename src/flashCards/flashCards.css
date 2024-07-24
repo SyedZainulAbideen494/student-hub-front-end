@@ -1,3 +1,4 @@
+/* flashCards.css */
 .flashcards-page {
     font-family: 'Roboto', sans-serif; /* Modern font */
     padding: 30px;
@@ -131,4 +132,20 @@
 .flashcard-actions-flashcards-page button:hover {
     background-color: #0056b3;
     transform: scale(1.02); /* Slight button zoom on hover */
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+#dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    color: #007bff;
 }
