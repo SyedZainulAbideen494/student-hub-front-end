@@ -237,38 +237,38 @@ const DiscussionBoard = () => {
             </div>
           ) : (
             <div className="group-chat-container">
-              <div className="messages-container">
-                {messages.map(message => (
-                  <div className="message-card" key={message.id}>
-                    <div className="message-header">
-                      <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
-                    </div>
-                    <div className="message-content">
-                      <p>{message.content}</p>
-                      {message.type === 'flashcard' && (
-                        <button className="flashcard-btn" onClick={() => handleOpenFlashcard(message.content)}>
-                          <FaBook /> Open Flashcard
-                        </button>
-                      )}
-                      {message.type === 'quiz' && (
-                        <button className="quiz-btn" onClick={() => handleOpenQuiz(message.content)}>
-                          <FaQuestionCircle /> Take Quiz
-                        </button>
-                      )}
-                    </div>
-                    <div className="replies-container">
-                      {message.replies && message.replies.map(reply => (
-                        <div key={reply.id} className="reply">
-                          <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
-                          <p>{reply.content}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
-                  </div>
-                ))}
-                <div ref={messagesEndRef} />
-              </div>
+<div className="messages-container">
+  {messages.map(message => (
+    <div className="message-card" key={message.id}>
+      <div className="message-header">
+        <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
+      </div>
+      <div className="message-content">
+        <p>{message.type === 'flashcard' ? 'Flashcard' : message.type === 'quiz' ? 'Quiz' : message.content}</p>
+        {message.type === 'flashcard' && (
+          <button className="flashcard-btn" onClick={() => handleOpenFlashcard(message.content)}>
+            <FaBook /> Open Flashcard
+          </button>
+        )}
+        {message.type === 'quiz' && (
+          <button className="quiz-btn" onClick={() => handleOpenQuiz(message.content)}>
+            <FaQuestionCircle /> Take Quiz
+          </button>
+        )}
+      </div>
+      <div className="replies-container">
+        {message.replies && message.replies.map(reply => (
+          <div key={reply.id} className="reply">
+            <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
+            <p>{reply.content}</p>
+          </div>
+        ))}
+      </div>
+      <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
+    </div>
+  ))}
+  <div ref={messagesEndRef} />
+</div>
               <div className="message-input-container">
   <input
     ref={inputRef} // Attach ref here
