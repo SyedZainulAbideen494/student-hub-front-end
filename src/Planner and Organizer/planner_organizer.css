@@ -282,6 +282,7 @@
     border-radius: 12px; /* Curvier edges */
     padding: 12px 20px; /* Larger padding */
     cursor: pointer;
+    margin-right: 10px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -293,10 +294,12 @@
 .button-edit-dashboard-planner  {
     background-color: #f39c12;
     color: #fff;
-    margin-right: 10px;
+   
+   
 }
 
 .button-edit-dashboard-planner {
-    background-color: #e74c3c;
+    background-color: #66fd6d;
+    margin-right: 10px;
     color: #fff;
 }

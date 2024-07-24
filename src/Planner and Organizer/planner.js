@@ -6,6 +6,7 @@ import './planner_organizer.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
+import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -15,9 +16,10 @@ function Planner() {
     const [priority, setPriority] = useState('Normal');
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [editingTask, setEditingTask] = useState(null);
-    const [modalVisible, setModalVisible] = useState(false); // State for modal visibility
-    const [modalMessage, setModalMessage] = useState(''); // State for modal message
-    const formRef = useRef(null); // Reference to the task form
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+    const [loading, setLoading] = useState(true); // Add loading state
+    const formRef = useRef(null);
 
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
@@ -33,13 +35,14 @@ function Planner() {
         axios.post(API_ROUTES.fetchTask, { token })
             .then(response => {
                 setTasks(response.data);
+                setLoading(false); // Stop loading
             })
             .catch(error => {
                 console.error('There was an error fetching the tasks!', error);
+                setLoading(false); // Stop loading even on error
             });
     };
 
-    // Use fetchTasks in useEffect
     useEffect(() => {
         fetchTasks();
     }, []);
@@ -47,6 +50,7 @@ function Planner() {
     // Handle task addition or update
     const handleSaveTask = () => {
         const token = localStorage.getItem('token');
+        setLoading(true); // Start loading
         if (editingTask) {
             axios.post(API_ROUTES.editTask, {
                 id: editingTask.id,
@@ -60,11 +64,12 @@ function Planner() {
                 setTasks(tasks.map(task => task.id === editingTask.id ? { ...task, title, description, due_date: dueDate, priority } : task));
                 resetForm();
                 showModal('Task updated successfully!');
-                scrollToForm(); // Scroll to the form
+                scrollToForm();
             })
             .catch(error => {
                 console.error('There was an error updating the task!', error);
-            });
+            })
+            .finally(() => setLoading(false)); // Stop loading
         } else {
             axios.post(API_ROUTES.addTask, {
                 title,
@@ -80,13 +85,15 @@ function Planner() {
             })
             .catch(error => {
                 console.error('There was an error adding the task!', error);
-            });
+            })
+            .finally(() => setLoading(false)); // Stop loading
         }
     };
 
     // Handle task deletion
     const handleDeleteTask = (id) => {
         const token = localStorage.getItem('token');
+        setLoading(true); // Start loading
         axios.post(API_ROUTES.deleteTask, { id, token })
             .then(response => {
                 setTasks(tasks.filter(task => task.id !== id));
@@ -94,7 +101,8 @@ function Planner() {
             })
             .catch(error => {
                 console.error('There was an error deleting the task!', error);
-            });
+            })
+            .finally(() => setLoading(false)); // Stop loading
     };
 
     // Handle date change from calendar
@@ -150,19 +158,21 @@ function Planner() {
 
     // Show success modal
     const showModal = (message) => {
-        console.log('Showing modal with message:', message);
         setModalMessage(message);
         setModalVisible(true);
         setTimeout(() => {
             setModalVisible(false);
         }, 3000); // Hide modal after 3 seconds
     };
+
     // Scroll to the form
     const scrollToForm = () => {
         if (formRef.current) {
             formRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
+
+    if (loading) return <LoadingSpinner />; // Show loader if loading
 
     return (
         <div className="App-dashboard-planner">
@@ -181,121 +191,97 @@ function Planner() {
                 />
             </div>
             <div className="task-form" ref={formRef}>
-    <h2 className="section-title">{editingTask ? 'Edit Task' : 'Add Task'}</h2>
-    <div className="form-group">
-        <label htmlFor="task-title">Title:</label>
-        <input
-            id="task-title"
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-        />
-    </div>
-    <div className="form-group">
-        <label htmlFor="task-description">Description:</label>
-        <textarea
-            id="task-description"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-    </div>
-    <div className="form-group">
-        <label htmlFor="task-due-date">Due Date:</label>
-        <input
-            id="task-due-date"
-            type="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-        />
-    </div>
-    <div className="form-group">
-        <label htmlFor="task-priority">Priority:</label>
-        <select
-            id="task-priority"
-            value={priority}
-            onChange={(e) => setPriority(e.target.value)}
-        >
-            <option value="Low">Low</option>
-            <option value="Normal">Normal</option>
-            <option value="High">High</option>
-        </select>
-    </div>
-    <div className="form-actions">
-        <button onClick={handleSaveTask}>{editingTask ? 'Save Changes' : 'Add Task +'}</button>
-        {editingTask && <button onClick={resetForm}>Cancel</button>}
-    </div>
-</div>
-            <div className="task-list">
-                <h2 className="section-title">Tasks for {selectedDate.toDateString()}</h2>
-                {getTasksForDate(selectedDate).length === 0 ? (
-                    <p>No tasks for this date</p>
-                ) : (
-                    getTasksForDate(selectedDate).map(task => (
-                        <div key={task.id} className={`task-item ${getPriorityClass(task.priority)}`}>
-                            <h2 className="task-title">{task.title}</h2>
-                            <p className="task-description">{task.description}</p>
-                            <p>Due: {new Date(task.due_date).toLocaleDateString()}</p>
-                            <p>Priority: {task.priority}</p>
-                            <button
-    className="button-dashboard-planner button-edit-dashboard-planner"
-    onClick={() => {
-        setTitle(task.title);
-        setDescription(task.description);
-        setDueDate(task.due_date);
-        setPriority(task.priority);
-        setEditingTask(task);
-        scrollToForm(); // Scroll to the form
-    }}
->
-    Edit
-</button>
-<button
-    className="button-dashboard-planner button-delete-dashboard-planner"
-    onClick={() => handleDeleteTask(task.id)}
->
-    Delete
-</button>
-                        </div>
-                    ))
-                )}
-                
-                <h2 className="section-title">All Tasks</h2>
-                {getAllTasks().length === 0 ? (
-                    <p>No tasks available</p>
-                ) : (
-                    getAllTasks().map(task => (
-                        <div key={task.id} className={`task-item ${getPriorityClass(task.priority)}`}>
-                            <h2 className="task-title">{task.title}</h2>
-                            <p className="task-description">{task.description}</p>
-                            <p>Due: {new Date(task.due_date).toLocaleDateString()}</p>
-                            <p>Priority: {task.priority}</p>
-                            <button
-    className="button-dashboard-planner button-edit-dashboard-planner"
-    onClick={() => {
-        setTitle(task.title);
-        setDescription(task.description);
-        setDueDate(task.due_date);
-        setPriority(task.priority);
-        setEditingTask(task)
-        scrollToForm(); // Scroll to the form
-    }}
->
-    Edit
-</button>
-<button
-    className="button-dashboard-planner button-delete-dashboard-planner"
-    onClick={() => handleDeleteTask(task.id)}
->
-    Delete
-</button>
-                        </div>
-                    ))
-                )}
+                <h2 className="section-title">{editingTask ? 'Edit Task' : 'Add Task'}</h2>
+                <div className="form-group">
+                    <label htmlFor="task-title">Title:</label>
+                    <input
+                        id="task-title"
+                        type="text"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="task-description">Description:</label>
+                    <textarea
+                        id="task-description"
+                        placeholder="Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="task-due-date">Due Date:</label>
+                    <input
+                        id="task-due-date"
+                        type="date"
+                        value={dueDate}
+                        onChange={(e) => setDueDate(e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="task-priority">Priority:</label>
+                    <select
+                        id="task-priority"
+                        value={priority}
+                        onChange={(e) => setPriority(e.target.value)}
+                    >
+                        <option value="Low">Low</option>
+                        <option value="Normal">Normal</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <button onClick={handleSaveTask}>
+                    {editingTask ? 'Update Task' : 'Add Task'}
+                </button>
             </div>
-            {modalVisible && <SuccessModal visible={modalVisible} message={modalMessage} />}
+            <div className="task-list">
+                <h2 className="section-title">Tasks for {formatDate(selectedDate)}</h2>
+                <div className="task-container">
+                    {getTasksForDate(selectedDate).map(task => (
+                        <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
+                            <h3 className="task-title">{task.title}</h3>
+                            <p className="task-description">{task.description}</p>
+                            <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
+                            <p className="task-priority">Priority: {task.priority}</p>
+                            <button onClick={() => {
+                                setEditingTask(task);
+                                setTitle(task.title);
+                                setDescription(task.description);
+                                setDueDate(task.due_date);
+                                setPriority(task.priority);
+                                scrollToForm();
+                            }} className='button-dashboard-planner'>Edit</button>
+                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner button-edit-dashboard-planner'>Complete</button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="task-list">
+                <h2 className="section-title">All Tasks</h2>
+                <div className="task-container">
+                    {getAllTasks().map(task => (
+                        <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
+                            <h3 className="task-title">{task.title}</h3>
+                            <p className="task-description">{task.description}</p>
+                            <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
+                            <p className="task-priority">Priority: {task.priority}</p>
+                            <button onClick={() => {
+                                setTitle(task.title);
+                                setDescription(task.description);
+                                setDueDate(task.due_date);
+                                setPriority(task.priority);
+                                setEditingTask(task);
+                                scrollToForm();
+                            }} className='button-dashboard-planner'>Edit</button>
+                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner button-edit-dashboard-planner'>Complete</button>
+                        </div>
+                    ))}
+                </div>
+            </div>
             <FooterNav />
+            {modalVisible && <SuccessModal message={modalMessage} />}
         </div>
     );
 }

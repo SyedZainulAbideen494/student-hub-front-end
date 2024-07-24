@@ -130,7 +130,8 @@ const SpotifyPlayer = () => {
   };
 
   const scheduleTokenRefresh = (refreshToken) => {
-    setTimeout(() => refreshAccessToken(refreshToken), 3600 * 1000 - 60000);
+    // Refresh the token every 10 minutes
+    setInterval(() => refreshAccessToken(refreshToken), 10 * 60 * 1000); // 10 minutes in milliseconds
   };
 
   const refreshAccessToken = async (refreshToken) => {
