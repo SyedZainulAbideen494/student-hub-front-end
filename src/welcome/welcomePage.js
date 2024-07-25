@@ -8,35 +8,40 @@ import { urlBase64ToUint8Array } from '../utils/webPushUtils';
 const Welcome = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [transition, setTransition] = useState('');
-        const [subscription, setSubscription] = useState(null);
-    
-        useEffect(() => {
-          const registerServiceWorker = async () => {
-            if ('serviceWorker' in navigator) {
-              try {
+    const [subscription, setSubscription] = useState(null);
+    const [permissionGranted, setPermissionGranted] = useState(false);
+
+    // Request notification permission and subscription
+    const requestNotificationPermission = async () => {
+        if ('serviceWorker' in navigator) {
+            try {
                 const swRegistration = await navigator.serviceWorker.register('/service-worker.js');
                 console.log('Service Worker Registered:', swRegistration);
-      
+
                 const permission = await Notification.requestPermission();
                 if (permission === 'granted') {
-                  const subscription = await swRegistration.pushManager.subscribe({
-                    userVisibleOnly: true,
-                    applicationServerKey: urlBase64ToUint8Array('BB0t-WTOpYNRM6b24mcvZKliaHnYK0umXovnqouKrFpSD8Zeq07V9N_z1jTwhenXBJ-Rlf_UxplpYculchlM3ug'),
-                  });
-                  console.log('Push Subscription:', subscription);
-                  setSubscription(subscription);
-                  await subscribeUser(subscription);
+                    setPermissionGranted(true);
+                    const subscription = await swRegistration.pushManager.subscribe({
+                        userVisibleOnly: true,
+                        applicationServerKey: urlBase64ToUint8Array('BB0t-WTOpYNRM6b24mcvZKliaHnYK0umXovnqouKrFpSD8Zeq07V9N_z1jTwhenXBJ-Rlf_UxplpYculchlM3ug'),
+                    });
+                    console.log('Push Subscription:', subscription);
+                    setSubscription(subscription);
+                    await subscribeUser(subscription);
                 } else {
-                  console.warn('Notification permission denied');
+                    console.warn('Notification permission denied');
                 }
-              } catch (error) {
+            } catch (error) {
                 console.error('Error registering service worker or subscribing:', error);
-              }
             }
-          };
-      
-          registerServiceWorker();
-        }, []);
+        }
+    };
+
+    // Call requestNotificationPermission when the component mounts
+    useEffect(() => {
+        // You can choose to call this function based on user interaction as well
+    }, []);
+
     const handleNext = () => {
         if (currentStep < 3) {
             setTransition('hidden');
@@ -69,10 +74,10 @@ const Welcome = () => {
                         <main className="welcome-content-welcome-page">
                             <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
                             <div className="pagination-dots">
-                {[1, 2, 3].map((step) => (
-                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
-                ))}
-            </div>
+                                {[1, 2, 3].map((step) => (
+                                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                                ))}
+                            </div>
                         </main>
                     </div>
                 )}
@@ -99,10 +104,10 @@ const Welcome = () => {
                                 <button className="continue-button-welcome-page" onClick={handlePrevious}>Previous</button>
                                 <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
                                 <div className="pagination-dots">
-                {[1, 2, 3].map((step) => (
-                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
-                ))}
-            </div>
+                                    {[1, 2, 3].map((step) => (
+                                        <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                                    ))}
+                                </div>
                             </section>
                         </main>
                     </div>
@@ -154,10 +159,10 @@ const Welcome = () => {
                                 </div>
                                 <button className="continue-button-welcome-page" onClick={handlePrevious}>Back</button>
                                 <div className="pagination-dots">
-                {[1, 2, 3].map((step) => (
-                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
-                ))}
-            </div>
+                                    {[1, 2, 3].map((step) => (
+                                        <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                                    ))}
+                                </div>
                             </section>
                         </main>
                     </div>
@@ -168,6 +173,12 @@ const Welcome = () => {
                     <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
                 ))}
             </div>
+            {/* Button to request notification permission */}
+            {!permissionGranted && (
+                <button className="request-permission-button" onClick={requestNotificationPermission}>
+                    Enable Notifications
+                </button>
+            )}
         </div>
     );
 };
