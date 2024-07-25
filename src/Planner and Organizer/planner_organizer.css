@@ -109,7 +109,6 @@
 .task-form h2 {
     color: #3498db;
     margin-bottom: 25px; /* Increased margin */
-    font-size: 2em; /* Larger font size */
     font-weight: 600;
 }
 
@@ -120,7 +119,6 @@
     border: 2px solid #3498db;
     border-radius: 12px; /* More rounded corners */
     margin-bottom: 25px; /* Increased margin */
-    font-size: 16px;
     box-sizing: border-box;
 }
 
@@ -136,7 +134,6 @@
     padding: 16px 32px; /* Increased padding */
     border-radius: 12px; /* More rounded corners */
     cursor: pointer;
-    font-size: 16px;
     transition: background 0.3s, transform 0.3s;
 }
 
@@ -159,7 +156,6 @@
 .all-tasks-card h2 {
     color: #3498db;
     margin-bottom: 25px; /* Increased margin */
-    font-size: 2em; /* Larger font size */
     font-weight: 600;
 }
 
