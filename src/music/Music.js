@@ -375,7 +375,7 @@ const SpotifyPlayer = () => {
                 <h3>{track.name}</h3>
                 <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
               </div>
-              <button onClick={() => handleRemoveFromQueue(index)}><FaTrash /></button>
+              <button onClick={() => handleRemoveFromQueue(index)} className='remove-queue-btn'><FaTrash /></button>
             </li>
           ))}
         </ul>
