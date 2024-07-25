@@ -23,32 +23,32 @@ const Welcome = () => {
             <div className="feature-card-welcome-page">
               <h3>Study Planner</h3>
               <p>Organize your tasks and get reminders. View your schedule on a calendar.</p>
-              <Link to="/study-planner" className="continue-button-welcome-page">Explore</Link>
+              <Link to="/planner" className="continue-button-welcome-page">Continue to Study Planner</Link>
             </div>
             <div className="feature-card-welcome-page">
               <h3>Groups</h3>
               <p>Create groups with friends or join public groups to ask questions and share knowledge.</p>
-              <Link to="/groups" className="continue-button-welcome-page">Explore</Link>
+              <Link to="/groups" className="continue-button-welcome-page">Continue to GroupsStudy Planner</Link>
             </div>
             <div className="feature-card-welcome-page">
               <h3>Notes</h3>
               <p>Create and share notes with your groups or via WhatsApp. Keep your study materials organized.</p>
-              <Link to="/notes" className="continue-button-welcome-page">Explore</Link>
+              <Link to="/notes" className="continue-button-welcome-page">Continue to Notes</Link>
             </div>
             <div className="feature-card-welcome-page">
               <h3>Quizzes</h3>
               <p>Create quizzes to test your knowledge or challenge friends. View and share quiz results.</p>
-              <Link to="/quizzes" className="continue-button-welcome-page">Explore</Link>
+              <Link to="/quiz/home" className="continue-button-welcome-page">Continue to Quizzes</Link>
             </div>
             <div className="feature-card-welcome-page">
               <h3>Calendar</h3>
               <p>Add and manage events such as exams. Stay organized with reminders and notifications.</p>
-              <Link to="/calendar" className="continue-button-welcome-page">Explore</Link>
+              <Link to="/calendar" className="continue-button-welcome-page">Continue to Calendar</Link>
             </div>
             <div className="feature-card-welcome-page">
               <h3>Music Player</h3>
               <p>Play music directly through the app to stay focused while studying.</p>
-              <Link to="/music" className="continue-button-welcome-page">Explore</Link>
+              <Link to="/music" className="continue-button-welcome-page">Continue to Music Player</Link>
             </div>
           </div>
         </section>
