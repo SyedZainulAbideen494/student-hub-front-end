@@ -37,6 +37,11 @@ const Welcome = () => {
                         </header>
                         <main className="welcome-content-welcome-page">
                             <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
+                            <div className="pagination-dots">
+                {[1, 2, 3].map((step) => (
+                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                ))}
+            </div>
                         </main>
                     </div>
                 )}
@@ -62,6 +67,11 @@ const Welcome = () => {
                                 </ul>
                                 <button className="continue-button-welcome-page" onClick={handlePrevious}>Previous</button>
                                 <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
+                                <div className="pagination-dots">
+                {[1, 2, 3].map((step) => (
+                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                ))}
+            </div>
                             </section>
                         </main>
                     </div>
@@ -111,8 +121,12 @@ const Welcome = () => {
                                         <Link to="/music" className="continue-button-welcome-page">Continue to Music Player</Link>
                                     </div>
                                 </div>
-                                <button className="continue-button-welcome-page" onClick={handlePrevious}>Previous</button>
-                                <button className="continue-button-welcome-page" onClick={() => window.location.href = '/planner'}>Get Started</button>
+                                <button className="continue-button-welcome-page" onClick={handlePrevious}>Back</button>
+                                <div className="pagination-dots">
+                {[1, 2, 3].map((step) => (
+                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                ))}
+            </div>
                             </section>
                         </main>
                     </div>
