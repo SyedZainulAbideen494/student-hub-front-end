@@ -50,7 +50,6 @@ const ShareQuizModal = ({ quizId, onClose }) => {
             await axios.post(API_ROUTES.shareQuiz, { quizId, groupId }, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
-            alert('Quiz shared successfully!');
             onClose();
         } catch (error) {
             console.error('Error sharing quiz:', error);

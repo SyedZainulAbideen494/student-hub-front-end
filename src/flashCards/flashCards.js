@@ -211,7 +211,6 @@ const handleDeleteClick = async (id) => {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            alert('Flashcard shared successfully!');
         } catch (error) {
             console.error('Error sharing flashcard:', error);
             alert('Failed to share flashcard.');
