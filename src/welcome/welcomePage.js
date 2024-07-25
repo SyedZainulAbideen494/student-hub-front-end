@@ -157,6 +157,11 @@ const Welcome = () => {
                                         <Link to="/music" className="continue-button-welcome-page">Continue to Music Player</Link>
                                     </div>
                                 </div>
+                                {!permissionGranted && (
+                <button  className="continue-button-welcome-page" onClick={requestNotificationPermission}>
+                    Enable Notifications
+                </button>
+            )}
                                 <button className="continue-button-welcome-page" onClick={handlePrevious}>Back</button>
                                 <div className="pagination-dots">
                                     {[1, 2, 3].map((step) => (
@@ -174,11 +179,7 @@ const Welcome = () => {
                 ))}
             </div>
             {/* Button to request notification permission */}
-            {!permissionGranted && (
-                <button className="request-permission-button" onClick={requestNotificationPermission}>
-                    Enable Notifications
-                </button>
-            )}
+            
         </div>
     );
 };
