@@ -28,7 +28,7 @@ const Welcome = () => {
             <div className="feature-card-welcome-page">
               <h3>Groups</h3>
               <p>Create groups with friends or join public groups to ask questions and share knowledge.</p>
-              <Link to="/groups" className="continue-button-welcome-page">Continue to GroupsStudy Planner</Link>
+              <Link to="/groups" className="continue-button-welcome-page">Continue to Groups</Link>
             </div>
             <div className="feature-card-welcome-page">
               <h3>Notes</h3>
