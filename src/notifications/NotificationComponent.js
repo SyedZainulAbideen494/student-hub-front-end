@@ -1,74 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { subscribeUser } from '../api/api'; // Correctly import subscribeUser
+import { urlBase64ToUint8Array } from '../utils/webPushUtils';
 
-const NotificationComponent = ({ userId }) => {
-  const [notifications, setNotifications] = useState([]);
-  const [message, setMessage] = useState('');
-  const [ws, setWs] = useState(null);
+const NotificationComponent = () => {
+    const [subscription, setSubscription] = useState(null);
 
-  useEffect(() => {
-    if (!userId) {
-      console.error('No userId provided');
-      return;
-    }
-
-    const fetchNotifications = async () => {
-      try {
-        const res = await axios.get(`http://localhost:8080/notifications/${userId}`);
-        setNotifications(res.data);
-      } catch (err) {
-        console.error('Error fetching notifications:', err);
-      }
-    };
-    fetchNotifications();
-
-    const websocket = new WebSocket(`ws://localhost:8081/${userId}`);
-    websocket.onopen = () => {
-      console.log('WebSocket connection established');
-    };
-    websocket.onmessage = (event) => {
-      const newNotification = JSON.parse(event.data);
-      setNotifications((prev) => [...prev, newNotification]);
-    };
-    websocket.onerror = (error) => {
-      console.error('WebSocket error:', error);
-    };
-    websocket.onclose = () => {
-      console.log('WebSocket connection closed');
-    };
-    setWs(websocket);
-
-    return () => {
-      websocket.close();
-    };
-  }, [userId]);
-
-  const sendNotification = async () => {
-    try {
-      await axios.post('http://localhost:8080/send-notification', { userId, message });
-      setMessage('');
-    } catch (err) {
-      console.error('Error sending notification:', err);
-    }
+    useEffect(() => {
+      const registerServiceWorker = async () => {
+        if ('serviceWorker' in navigator) {
+          try {
+            const swRegistration = await navigator.serviceWorker.register('/service-worker.js');
+            console.log('Service Worker Registered:', swRegistration);
+  
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+              const subscription = await swRegistration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array('BB0t-WTOpYNRM6b24mcvZKliaHnYK0umXovnqouKrFpSD8Zeq07V9N_z1jTwhenXBJ-Rlf_UxplpYculchlM3ug'),
+              });
+              console.log('Push Subscription:', subscription);
+              setSubscription(subscription);
+              await subscribeUser(subscription);
+            } else {
+              console.warn('Notification permission denied');
+            }
+          } catch (error) {
+            console.error('Error registering service worker or subscribing:', error);
+          }
+        }
+      };
+  
+      registerServiceWorker();
+    }, []);
+  
+    return <div>Notification setup complete!</div>;
   };
-
-  return (
-    <div>
-      <h2>Notifications</h2>
-      <ul>
-        {notifications.map((notif, index) => (
-          <li key={index}>{notif.message}</li>
-        ))}
-      </ul>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        placeholder="Enter your message"
-      />
-      <button onClick={sendNotification}>Send Notification</button>
-    </div>
-  );
-};
 
 export default NotificationComponent;

@@ -1,4 +1,4 @@
-const API_URL = 'https://b2e74c318c41f2d5c0cdfc1d3da12c49.serveo.net';
+const API_URL = 'https://da164cbf7c937dc8b43a5199ec6c5fb0.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -42,5 +42,6 @@ export const API_ROUTES = {
   sessionCheck: `${API_URL}/api/session-check`,
   downloadAndroid: `${API_URL}/download/android`,
   loginSpotify: `${API_URL}/login/spotify`,
-  refreshSpotifyToken: `${API_URL}/refresh_token`
+  refreshSpotifyToken: `${API_URL}/refresh_token`,
+  saveNotificationSubscriptiopn: `${API_URL}/save-subscription`
 }
