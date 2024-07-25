@@ -7,7 +7,25 @@
   background-color: #f9f9f9;
   color: #333;
   border-radius: 15px;
+  margin-bottom: 50px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Login Message Styles */
+.login-message {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.login-message a {
+  color: #7161ef;
+  text-decoration: underline;
+}
+
+.login-message a:hover {
+  text-decoration: none;
 }
 
 /* Header Styles */
@@ -43,8 +61,55 @@
   margin: 5px;
 }
 
+/* Now Playing Card Styles */
+.current-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 10px;
+}
 
+.current-track img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: spin 10s linear infinite;
+}
 
+.current-track h2 {
+  margin: 8px 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.current-track p {
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
 
 /* Search Results Styles */
 .search-results {
@@ -98,7 +163,9 @@
   margin-left: 10px;
 }
 
-
+.search-result-item button:hover {
+  background-color: #5a50d7;
+}
 
 /* Queue Styles */
 .queue {
@@ -141,25 +208,23 @@
   color: #666;
 }
 
-.queue-item button {
+.queue-item .current {
+  border-left: 4px solid #7161ef;
+}
+
+.clear-queue-btn {
   background-color: #7161ef;
   color: white;
   border: none;
   border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 14px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  margin-left: 10px;
 }
 
-.queue-item button:hover {
+.clear-queue-btn:hover {
   background-color: #5a50d7;
 }
-
-.queue-item.current {
-  background-color: #e0e0e0;
-}
-
 
 /* Playlists Styles */
 .playlists {
@@ -203,6 +268,7 @@
 }
 
 .playlist-item button {
+  background-color: #7161ef;
   color: white;
   border: none;
   border-radius: 20px;
@@ -211,81 +277,13 @@
   cursor: pointer;
 }
 
-
-.current-track {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f8f9fa; /* Light theme background */
-  color: #333; /* Darker text color for contrast */
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 100%;
-  margin: 10px;
-}
-
-.current-track img {
-  width: 100px; /* Smaller size */
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  animation: spin 10s linear infinite; /* Slower spin */
-}
-
-.current-track h2 {
-  margin: 8px 0;
-  font-size: 16px; /* Slightly smaller text */
-  text-align: center;
-}
-
-.current-track p {
-  font-size: 14px;
-  text-align: center;
-  color: #666; /* Slightly lighter text color */
-}
-
-.controls {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 15px;
-}
-
-.controls button {
-  background: none;
-  border: none;
-  color: #007bff; /* Light blue color for buttons */
-  font-size: 22px;
-  cursor: pointer;
-  transition: color 0.3s, transform 0.3s;
+.playlist-item button:hover {
+  background-color: #5a50d7;
 }
 
 
+/* Animation */
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (max-width: 480px) {
-  .current-track img {
-    width: 80px; /* Even smaller size for very small screens */
-    height: 80px;
-  }
-
-  .current-track h2 {
-    font-size: 14px;
-  }
-
-  .current-track p {
-    font-size: 12px;
-  }
-
-  .controls button {
-    font-size: 20px;
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

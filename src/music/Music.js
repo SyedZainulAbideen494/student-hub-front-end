@@ -314,12 +314,13 @@ const SpotifyPlayer = () => {
 
 
   return (
-<div className="player-container">
-      {/* Header */}
-      <p><a href={API_ROUTES.loginSpotify}>Login</a></p>
-      <header className="spotify-player-header search-bar">
-        <h1>Spotify Player</h1>
-
+    <div className="player-container">
+    {/* Header */}
+    <p className="login-message">
+      If the music player is not responding, <a href={API_ROUTES.loginSpotify}>click here</a>
+    </p>
+    <header className="spotify-player-header search-bar">
+      <h1>Spotify Player</h1>
       {/* Now Playing Card */}
       {selectedTrack && (
         <div className="current-track">
@@ -327,83 +328,80 @@ const SpotifyPlayer = () => {
           <div>
             <h2>{selectedTrack.name}</h2>
             <p>{selectedTrack.artists.map((artist) => artist.name).join(', ')}</p>
-          </div><br/>
+          </div>
           <section className="controls player-controls">
-        <button onClick={handlePrevious}><FaStepBackward /></button>
-        <button onClick={handlePlayPause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
-        <button onClick={handleNext}><FaStepForward /></button>
-        <button onClick={handleRandomPlay}><FaRandom /></button>
-      </section>
+            <button onClick={handlePrevious}><FaStepBackward /></button>
+            <button onClick={handlePlayPause}>{isPlaying ? <FaPause /> : <FaPlay />}</button>
+            <button onClick={handleNext}><FaStepForward /></button>
+            <button onClick={handleRandomPlay}><FaRandom /></button>
+          </section>
         </div>
       )}
-        <input
-          type="text"
-          placeholder="Search for a track..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </header>
-      {/* Search Results */}
-      {searchResults.length > 0 && (
-        <section className="search-results">
-          <h2>Search Results</h2>
-          <ul>
-            {searchResults.map((track) => (
-              <li key={track.id} className="search-result-item">
-                <img src={track.album.images[0].url} alt={track.name} />
-                <div>
-                  <h3>{track.name}</h3>
-                  <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
-                </div>
-                <button onClick={() => playSong(track.uri)}><FaPlay /></button>
-                <button onClick={() => handleAddToQueue(track)}><FaPlus /></button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* Queue */}
-      {queue.length > 0 && (
-        <section className="queue">
-          <h2>Queue</h2>
-          <ul>
-            {queue.map((track, index) => (
-              <li key={track.id} className={`queue-item ${index === currentQueueIndex ? 'current' : ''}`}>
-                <img src={track.album.images[0].url} alt={track.name} />
-                <div>
-                  <h3>{track.name}</h3>
-                  <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
-                </div>
-                <button onClick={() => handleRemoveFromQueue(index)}><FaTrash /></button>
-              </li>
-            ))}
-          </ul>
-          <button className="clear-queue-btn" onClick={() => setQueue([])}>Clear Queue</button>
-        </section>
-      )}
-
-      {/* Playlists */}
-      {playlists.length > 0 && (
-        <section className="playlists">
-          <h2>Your Playlists</h2>
-          <ul>
-            {playlists.map((playlist) => (
-              <li key={playlist.id} className="playlist-item">
-                <img src={playlist.images[0]?.url || 'default-image-url'} alt={playlist.name} />
-                <div>
-                  <h3>{playlist.name}</h3>
-                  <p>{playlist.tracks.total} tracks</p>
-                </div>
-                <button onClick={() => playPlaylist(playlist.id)}>Play</button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      <FooterNav />
-    </div>
+      <input
+        type="text"
+        placeholder="Search for a track..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+    </header>
+    {/* Search Results */}
+    {searchResults.length > 0 && (
+      <section className="search-results">
+        <h2>Search Results</h2>
+        <ul>
+          {searchResults.map((track) => (
+            <li key={track.id} className="search-result-item">
+              <img src={track.album.images[0].url} alt={track.name} />
+              <div>
+                <h3>{track.name}</h3>
+                <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
+              </div>
+              <button onClick={() => playSong(track.uri)}><FaPlay /></button>
+              <button onClick={() => handleAddToQueue(track)}><FaPlus /></button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+    {/* Queue */}
+    {queue.length > 0 && (
+      <section className="queue">
+        <h2>Queue</h2>
+        <ul>
+          {queue.map((track, index) => (
+            <li key={track.id} className={`queue-item ${index === currentQueueIndex ? 'current' : ''}`}>
+              <img src={track.album.images[0].url} alt={track.name} />
+              <div>
+                <h3>{track.name}</h3>
+                <p>{track.artists.map((artist) => artist.name).join(', ')}</p>
+              </div>
+              <button onClick={() => handleRemoveFromQueue(index)}><FaTrash /></button>
+            </li>
+          ))}
+        </ul>
+        <button className="clear-queue-btn" onClick={() => setQueue([])}>Clear Queue</button>
+      </section>
+    )}
+    {/* Playlists */}
+    {playlists.length > 0 && (
+      <section className="playlists">
+        <h2>Your Playlists</h2>
+        <ul>
+          {playlists.map((playlist) => (
+            <li key={playlist.id} className="playlist-item">
+              <img src={playlist.images[0]?.url || 'default-image-url'} alt={playlist.name} />
+              <div>
+                <h3>{playlist.name}</h3>
+                <p>{playlist.tracks.total} tracks</p>
+              </div>
+              <button onClick={() => playPlaylist(playlist.id)}>Play</button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+    <FooterNav />
+  </div>
   );
 };
 
