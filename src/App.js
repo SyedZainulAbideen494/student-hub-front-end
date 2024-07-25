@@ -26,6 +26,8 @@ import DownloadPage from "./website/website";
 import SpotifyPlayer from "./music/Music";
 import Callback from "./music/SpotifyRedirect";
 import Welcome from "./welcome/welcomePage";
+import NotificationComponent from "./notifications/NotificationComponent";
+import NotiPage from "./notifications/notiPage";
 
 
 const router = createBrowserRouter([
@@ -47,7 +49,8 @@ const router = createBrowserRouter([
   {path: '/', element: <DownloadPage/>},
   {path: '/music', element: <SpotifyPlayer/>},
   {path: '/callback', element: <Callback/>},
-  {path: '/welcome', element: <Welcome/>}
+  {path: '/welcome', element: <Welcome/>},
+  {path: '/noti', element: <NotiPage/>}
 ]);
 
 
