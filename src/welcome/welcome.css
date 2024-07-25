@@ -1,0 +1,102 @@
+
+.welcome-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #e9f5ff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .welcome-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-header h1 {
+    font-size: 32px;
+    color: #1a73e8;
+    margin: 0;
+  }
+  
+  .welcome-header p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .welcome-content {
+    width: 100%;
+    max-width: 900px;
+  }
+  
+  .app-overview {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .app-overview h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .app-overview p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .features {
+    margin-top: 30px;
+  }
+  
+  .features h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .feature-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .feature-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 280px;
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .feature-card h3 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #1a73e8;
+  }
+  
+  .feature-card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .continue-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1a73e8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .continue-button:hover {
+    background-color: #1769aa;
+  }

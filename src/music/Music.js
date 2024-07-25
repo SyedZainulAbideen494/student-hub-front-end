@@ -241,7 +241,7 @@ const SpotifyPlayer = () => {
       });
 
       if (response.ok) {
-        setIsPlaying(prev => !prev);
+        setIsPlaying(prev => !isPlaying);
       } else {
         console.error(`Error performing ${isPlaying ? 'pause' : 'play'} operation`);
       }

@@ -67,7 +67,7 @@ const Login = () => {
             if (!response.data.auth) {
                 setError(response.data.message || "An error occurred");
             } else {
-                nav("/");
+                nav("/welcome");
                 localStorage.setItem("token", response.data.token);
             }
         }).catch((error) => {

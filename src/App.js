@@ -25,6 +25,7 @@ import Pomodoro from "./Pomodoro/pomodoro";
 import DownloadPage from "./website/website";
 import SpotifyPlayer from "./music/Music";
 import Callback from "./music/SpotifyRedirect";
+import Welcome from "./welcome/welcomePage";
 
 
 const router = createBrowserRouter([
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
   {path: '/pomodoro', element: <Pomodoro/>},
   {path: '/', element: <DownloadPage/>},
   {path: '/music', element: <SpotifyPlayer/>},
-  {path: '/callback', element: <Callback/>}
+  {path: '/callback', element: <Callback/>},
+  {path: '/welcome', element: <Welcome/>}
 ]);
 
 
