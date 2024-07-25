@@ -71,10 +71,11 @@ const NoteDetailPage = () => {
                 heightLeft -= pdfHeight;
             }
 
-            // Save the PDF
-            pdf.save('note.pdf');
-        }).catch((error) => console.error('Error generating PDF:', error));
-    };
+     // Save the PDF with the note title as the file name
+     const fileName = note.title ? `${note.title}-Eduisy-notes-downloader.pdf` : 'note-Eduisy-notes-downloader.pdf';
+     pdf.save(fileName);
+ }).catch((error) => console.error('Error generating PDF:', error));
+};
 
     const downloadAsPNG = () => {
         const input = document.querySelector('.note-content-note-detail-page');
