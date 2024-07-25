@@ -11,7 +11,7 @@
     background: #ffffff;
     border-radius: 15px; /* More rounded edges */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
-    padding: 40px;
+    padding: 10px;
     margin-bottom: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
 }
@@ -36,7 +36,7 @@
 .flashcard-form-flashcards-page textarea,
 .flashcard-form-flashcards-page input[type="file"] {
     width: 100%; /* Full-width input fields */
-    padding: 15px; /* Comfortable padding */
+    padding: 20px; /* Comfortable padding */
     border: 1px solid #ddd;
     border-radius: 10px; /* More rounded edges */
     box-sizing: border-box;
