@@ -63,10 +63,9 @@
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 10px; /* Rounded button edges */
-    padding: 15px 30px; /* Larger button */
+    border-radius: 25px; /* Rounded button edges */
+    padding: 10px 30px; /* Larger button */
     cursor: pointer;
-    font-size: 18px;
     transition: background-color 0.3s ease, transform 0.3s ease; /* Animation effects */
 }
 
@@ -116,7 +115,6 @@
 
 .flashcard-item-flashcards-page h2 {
     margin-top: 0;
-    font-size: 1.8em;
     color: #007bff;
 }
 
@@ -143,10 +141,9 @@
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 10px;
-    padding: 12px 20px; /* Slightly larger padding */
+    border-radius: 25px;
+    padding: 10px 20px; /* Slightly larger padding */
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
