@@ -7,6 +7,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
 import LoadingSpinner from '../app_modules/LoadingSpinner';
+import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from 'react-icons/fa'; // Importing icons
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -176,7 +177,7 @@ function Planner() {
 
     return (
         <div className="App-dashboard-planner">
-            <h1 className="header-title">Study Planner</h1>
+            <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="calendar-container">
                 <Calendar
                     onChange={onDateChange}
@@ -191,7 +192,7 @@ function Planner() {
                 />
             </div>
             <div className="task-form" ref={formRef}>
-                <h2 className="section-title">{editingTask ? 'Edit Task' : 'Add Task'}</h2>
+                <h2 className="section-title">{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
                 <div className="form-group">
                     <label htmlFor="task-title">Title:</label>
                     <input
@@ -233,11 +234,11 @@ function Planner() {
                     </select>
                 </div>
                 <button onClick={handleSaveTask}>
-                    {editingTask ? 'Update Task' : 'Add Task'}
+                    {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
                 </button>
             </div>
             <div className="task-list">
-                <h2 className="section-title">Tasks for {formatDate(selectedDate)}</h2>
+                <h2 className="section-title"><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>
                 <div className="task-container">
                     {getTasksForDate(selectedDate).map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
@@ -252,14 +253,14 @@ function Planner() {
                                 setDueDate(task.due_date);
                                 setPriority(task.priority);
                                 scrollToForm();
-                            }} className='button-dashboard-planner button-edit-dashboard-planner'>Edit</button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner'>Complete</button>
+                            }}><FaEdit /> Edit</button>
+                            <button onClick={() => handleDeleteTask(task.id)}><FaCheck /> Complete</button>
                         </div>
                     ))}
                 </div>
             </div>
             <div className="task-list">
-                <h2 className="section-title">All Tasks</h2>
+                <h2 className="section-title"><FaTasks /> All Tasks</h2>
                 <div className="task-container">
                     {getAllTasks().map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
@@ -268,14 +269,14 @@ function Planner() {
                             <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
                             <p className="task-priority">Priority: {task.priority}</p>
                             <button onClick={() => {
+                                setEditingTask(task);
                                 setTitle(task.title);
                                 setDescription(task.description);
                                 setDueDate(task.due_date);
                                 setPriority(task.priority);
-                                setEditingTask(task);
                                 scrollToForm();
-                            }} className='button-dashboard-planner'>Edit</button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner button-edit-dashboard-planner'>Complete</button>
+                            }} className='button-dashboard-planner'><FaEdit /> Edit</button>
+                            <button onClick={() => handleDeleteTask(task.id)} className='button-edit-dashboard-planner button-dashboard-planner'><FaCheck /> Complete</button>
                         </div>
                     ))}
                 </div>
