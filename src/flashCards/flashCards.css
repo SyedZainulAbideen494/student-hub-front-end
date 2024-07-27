@@ -1,96 +1,119 @@
 /* General Styling */
 .flashcards-page {
-    font-family: 'Roboto', sans-serif; /* Modern font */
+    font-family: 'Roboto', sans-serif;
     padding: 20px;
-    background-color: #f0f4f8; /* Softer background for a clean look */
+    background-color: #f0f4f8;
     color: #333;
 }
 
 /* Flashcard Form */
 .flashcard-form-flashcards-page {
     background: #ffffff;
-    border-radius: 15px; /* More rounded edges */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
-    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
     margin-bottom: 40px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .flashcard-form-flashcards-page:hover {
-    transform: translateY(-10px); /* Subtle hover effect */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .flashcard-form-flashcards-page .form-group-flashcards-page {
-    margin-bottom: 25px; /* Increased spacing */
+    margin-bottom: 25px;
 }
 
 .flashcard-form-flashcards-page label {
     display: block;
-    font-weight: 600; /* Bolder text for labels */
-    margin-bottom: 10px; /* Increased spacing */
-    color: #007bff; /* Accent color for labels */
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #007bff;
 }
 
 .flashcard-form-flashcards-page input[type="text"],
 .flashcard-form-flashcards-page textarea,
 .flashcard-form-flashcards-page input[type="file"] {
-    width: 100%; /* Full-width input fields */
-    padding: 20px; /* Comfortable padding */
+    width: 100%;
+    padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 10px; /* More rounded edges */
+    border-radius: 10px;
     box-sizing: border-box;
     font-size: 16px;
-    transition: border-color 0.3s ease; /* Smooth border color transition */
+    transition: border-color 0.3s ease;
 }
 
 .flashcard-form-flashcards-page input[type="text"]:focus,
 .flashcard-form-flashcards-page textarea:focus {
-    border-color: #007bff; /* Highlight border on focus */
+    border-color: #007bff;
     outline: none;
 }
 
 .flashcard-form-flashcards-page textarea {
     resize: vertical;
-    min-height: 150px; /* Increased minimum height */
+    min-height: 150px;
 }
 
 .flashcard-form-flashcards-page input[type="checkbox"] {
-    margin-right: 15px; /* Increased spacing */
+    margin-right: 15px;
 }
 
 .flashcard-form-flashcards-page button {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 25px; /* Rounded button edges */
-    padding: 10px 30px; /* Larger button */
+    border-radius: 25px;
+    padding: 10px 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Animation effects */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
 }
 
 .flashcard-form-flashcards-page button:hover {
     background-color: #0056b3;
-    transform: scale(1.05); /* Slight button zoom on hover */
+    transform: scale(1.05);
 }
 
 /* Search Bar */
 .search-bar-flashcards-page {
-    margin-bottom: 40px; /* Increased spacing */
+    display: flex;
+    margin-bottom: 40px;
 }
 
 .search-bar-flashcards-page input[type="text"] {
-    width: 100%; /* Full-width input field */
+    width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for input */
-    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 .search-bar-flashcards-page input[type="text"]:focus {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Darker shadow on focus */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar-flashcards-page button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar-flashcards-page button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Flashcard List */
@@ -101,16 +124,16 @@
 
 .flashcard-item-flashcards-page {
     background: #ffffff;
-    border-radius: 15px; /* More rounded edges */
+    border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     padding: 25px;
     margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .flashcard-item-flashcards-page:hover {
-    transform: translateY(-10px); /* Subtle hover effect */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .flashcard-item-flashcards-page h2 {
@@ -126,7 +149,7 @@
 .flashcard-item-flashcards-page img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px; /* Rounded image edges */
+    border-radius: 10px;
     margin: 15px 0;
 }
 
@@ -134,7 +157,7 @@
 .flashcard-actions-flashcards-page {
     display: flex;
     justify-content: space-between;
-    margin-top: 25px; /* Increased spacing */
+    margin-top: 25px;
 }
 
 .flashcard-actions-flashcards-page button {
@@ -142,30 +165,15 @@
     color: #fff;
     border: none;
     border-radius: 25px;
-    padding: 10px 20px; /* Slightly larger padding */
+    padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .flashcard-actions-flashcards-page button:hover {
     background-color: #0056b3;
-    transform: scale(1.05); /* Slight button zoom on hover */
-}
-
-/* Misc */
-.loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-}
-
-#dropzone {
-    border: 2px dashed #007bff;
-    border-radius: 10px;
-    padding: 30px;
-    text-align: center;
-    cursor: pointer;
-    color: #007bff;
-    background-color: #ffffff; /* Background for the dropzone */
+    transform: scale(1.05);
 }

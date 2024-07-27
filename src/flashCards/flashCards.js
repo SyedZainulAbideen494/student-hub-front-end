@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import GroupModal from './GroupModal';
+import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
+
 
 const FlashcardsPage = () => {
     const [title, setTitle] = useState('');
@@ -293,7 +295,7 @@ const handleDeleteClick = async (id) => {
                         modules={quillModules}
                     />
                 </div>
-                <button type="submit">Save Flashcard</button>
+                <button type="submit"><FaSave /> Save Flashcard</button>
             </form>
             <div className="search-bar-flashcards-page">
                 <input
@@ -302,6 +304,7 @@ const handleDeleteClick = async (id) => {
                     value={searchQuery}
                     onChange={handleSearchChange}
                 />
+                <button type="button"><FaSearch /></button>
             </div>
             <div className="flashcard-list-flashcards-page">
                 {filteredNotes.map(note => (
@@ -316,21 +319,21 @@ const handleDeleteClick = async (id) => {
                             />
                         ))}
                         <div className="flashcard-actions-flashcards-page">
-                            <button onClick={() => handleViewClick(note.id)}>View</button>
-                            <button onClick={() => handleShareClick(note.id)}>Share</button>
+                            <button onClick={() => handleViewClick(note.id)}><FaEye /> View</button>
+                            <button onClick={() => handleShareClick(note.id)}><FaShare /> Share</button>
                         </div>
                     </div>
                 ))}
             </div>
             <FooterNav />
             {showModal && (
-    <GroupModal
-        groups={joinedGroups} // Use joinedGroups here
-        onClose={handleModalClose}
-        onShare={handleShareToGroup}
-        onQuickShare={handleQuickShare} // Pass the quick share handler
-    />
-)}
+                <GroupModal
+                    groups={joinedGroups}
+                    onClose={handleModalClose}
+                    onShare={handleShareToGroup}
+                    onQuickShare={handleQuickShare}
+                />
+            )}
         </div>
     );
 };
