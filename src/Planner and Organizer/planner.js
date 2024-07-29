@@ -51,7 +51,6 @@ function Planner() {
     // Handle task addition or update
     const handleSaveTask = () => {
         const token = localStorage.getItem('token');
-        setLoading(true); // Start loading
         if (editingTask) {
             axios.post(API_ROUTES.editTask, {
                 id: editingTask.id,
