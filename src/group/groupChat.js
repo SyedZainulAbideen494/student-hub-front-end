@@ -178,7 +178,7 @@ const DiscussionBoard = () => {
     };
 
     const handleOpenFlashcard = (flashcardId) => {
-        navigate(`/note/${flashcardId}`);
+        navigate(`/note/view/${flashcardId}`);
     };
 
     const openModal = () => {
