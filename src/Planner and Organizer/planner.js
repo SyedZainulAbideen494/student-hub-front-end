@@ -51,6 +51,7 @@ function Planner() {
     // Handle task addition or update
     const handleSaveTask = () => {
         const token = localStorage.getItem('token');
+        setLoading(true); // Start loading
         if (editingTask) {
             axios.post(API_ROUTES.editTask, {
                 id: editingTask.id,
@@ -93,6 +94,7 @@ function Planner() {
     // Handle task deletion
     const handleDeleteTask = (id) => {
         const token = localStorage.getItem('token');
+        setLoading(true); // Start loading
         axios.post(API_ROUTES.deleteTask, { id, token })
             .then(response => {
                 setTasks(tasks.filter(task => task.id !== id));
