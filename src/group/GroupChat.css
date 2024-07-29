@@ -24,7 +24,7 @@
   }
   
   .group-footer {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -55,7 +55,7 @@
     position: fixed; /* Fix position to the bottom */
     bottom: 0;
     left: 0;
-    width: 90%;
+    width: 70%;
     z-index: 1000; /* Ensure it is above other content */
   }
   
@@ -275,7 +275,7 @@
     position: fixed; /* Fix position to the bottom */
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 95%;
     z-index: 1000; /* Ensure it is above other content */
   }
   
