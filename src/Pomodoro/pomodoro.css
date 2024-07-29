@@ -6,16 +6,20 @@
     min-height: 100vh;
     justify-content: center;
     margin-bottom: 30px;
+    background: linear-gradient(135deg, #B4D8E7 0%, #E5EBF1 100%);
+    color: #444;
+    font-family: 'Roboto', sans-serif;
 }
-
 
 .timer {
     font-size: 4rem;
     margin: 20px 0;
-    padding: 10px 20px;
+    padding: 20px;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+    transition: background 0.5s, color 0.5s;
 }
 
 .controls-pomodoro {
@@ -25,17 +29,18 @@
 }
 
 .controls-pomodoro button {
-    padding: 9px 30px;
-    background: #7161ef;
+    padding: 10px 40px;
+    background: #77B5FE;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .controls-pomodoro button:hover {
-    background: #5a49d4;
+    background: #60A3D9;
+    transform: scale(1.05);
 }
 
 .settings-pomodoro {
@@ -43,21 +48,30 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
+    transition: opacity 0.5s, transform 0.5s;
 }
 
 .settings-pomodoro label {
     margin: 10px 0;
     font-size: 1.2rem;
-    color: #333;
+    color: #444;
 }
 
 .settings-pomodoro input {
     padding: 10px;
     font-size: 1.2rem;
     width: 90%;
-    border: 2px solid #7161ef;
+    border: 2px solid #77B5FE;
     border-radius: 5px;
     margin-top: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #444;
+    transition: background 0.3s, color 0.3s;
+}
+
+.settings-pomodoro input:focus {
+    background: #fff;
+    color: #333;
 }
 
 .modal-pomodoro {
@@ -69,7 +83,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.5s;
 }
 
 .modal-content-pomodoro {
@@ -78,6 +93,7 @@
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    color: #333;
 }
 
 .modal-content-pomodoro h3 {
@@ -86,17 +102,11 @@
     color: #444;
 }
 
-.modal-content-pomodoro button {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    background: #7161ef;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.modal-content-pomodoro button:hover {
-    background: #5a49d4;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

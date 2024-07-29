@@ -3,13 +3,14 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    background: rgba(0, 95, 190, 0.9); /* Slightly transparent blue */
+    width: calc(100% - 40px); /* Add spacing on the left and right */
+    background: rgba(18, 18, 18, 0.9); /* Dark theme with slightly transparent dark color */
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 8px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px; /* Add padding */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Elevated effect with larger shadow */
+    margin-bottom: 10px;
     border-radius: 20px;
     z-index: 1000;
     transition: background 0.3s ease; /* Smooth background transition */
@@ -32,7 +33,7 @@
 }
 
 .nav-btn-footer-nav.active {
-    color: #007bff; /* Highlight color for the active state */
+    color: #a38dff; /* Highlight color for the active state */
 }
 
 .nav-btn-footer-nav.active::after {
@@ -43,7 +44,7 @@
     transform: translateX(-50%);
     width: 100%;
     height: 2px;
-    background: #007bff; /* Highlight color */
+    background: #a38dff; /* Highlight color */
     transition: width 0.3s ease; /* Smooth underline transition */
 }
 
@@ -74,12 +75,12 @@
     transform: translateX(-50%) translateY(100%);
     width: 100%;
     max-width: 350px;
-    background: rgba(0, 45, 90, 0.9); /* Slightly transparent dark blue */
+    background: rgba(24, 24, 24, 0.9); /* Dark theme with slightly transparent dark color */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Elevated effect with larger shadow */
     transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transform and opacity transition */
     opacity: 0; /* Initially hidden */
     border-top-left-radius: 20px;

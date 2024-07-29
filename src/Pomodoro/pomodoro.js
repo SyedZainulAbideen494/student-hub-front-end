@@ -75,30 +75,34 @@ const Pomodoro = () => {
                 <button onClick={handleStartPause}>
                     {isRunning ? 'Pause' : 'Start'}
                 </button>
-                <button onClick={handleReset}>
-                    Reset
-                </button>
+                {isRunning && (
+                    <button onClick={handleReset}>
+                        Stop
+                    </button>
+                )}
             </div>
-            <div className="settings-pomodoro">
-                <label>
-                    Work Time (minutes):
-                    <input
-                        type="number"
-                        value={workTime}
-                        onChange={handleWorkTimeChange}
-                        min="1"
-                    />
-                </label>
-                <label>
-                    Break Time (minutes):
-                    <input
-                        type="number"
-                        value={breakTime}
-                        onChange={handleBreakTimeChange}
-                        min="1"
-                    />
-                </label>
-            </div>
+            {!isRunning && (
+                <div className="settings-pomodoro">
+                    <label>
+                        Work Time (minutes):
+                        <input
+                            type="number"
+                            value={workTime}
+                            onChange={handleWorkTimeChange}
+                            min="1"
+                        />
+                    </label>
+                    <label>
+                        Break Time (minutes):
+                        <input
+                            type="number"
+                            value={breakTime}
+                            onChange={handleBreakTimeChange}
+                            min="1"
+                        />
+                    </label>
+                </div>
+            )}
             {showModal && (
                 <div className="modal-pomodoro">
                     <div className="modal-content-pomodoro">
