@@ -7,7 +7,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
 import LoadingSpinner from '../app_modules/LoadingSpinner';
-import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from 'react-icons/fa'; // Importing icons
+import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt } from 'react-icons/fa'; // Importing icons
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -31,17 +31,16 @@ function Planner() {
     };
 
     // Fetch tasks from API
-    const fetchTasks = () => {
+    const fetchTasks = async () => {
         const token = localStorage.getItem('token');
-        axios.post(API_ROUTES.fetchTask, { token })
-            .then(response => {
-                setTasks(response.data);
-                setLoading(false); // Stop loading
-            })
-            .catch(error => {
-                console.error('There was an error fetching the tasks!', error);
-                setLoading(false); // Stop loading even on error
-            });
+        try {
+            const response = await axios.post(API_ROUTES.fetchTask, { token });
+            setTasks(response.data);
+        } catch (error) {
+            console.error('There was an error fetching the tasks!', error);
+        } finally {
+            setLoading(false); // Stop loading
+        }
     };
 
     useEffect(() => {
@@ -49,59 +48,49 @@ function Planner() {
     }, []);
 
     // Handle task addition or update
-    const handleSaveTask = () => {
+    const handleSaveTask = async () => {
         const token = localStorage.getItem('token');
-        if (editingTask) {
-            axios.post(API_ROUTES.editTask, {
-                id: editingTask.id,
-                title,
-                description,
-                due_date: dueDate,
-                priority,
-                token
-            })
-            .then(response => {
+        try {
+            if (editingTask) {
+                await axios.post(API_ROUTES.editTask, {
+                    id: editingTask.id,
+                    title,
+                    description,
+                    due_date: dueDate,
+                    priority,
+                    token
+                });
                 setTasks(tasks.map(task => task.id === editingTask.id ? { ...task, title, description, due_date: dueDate, priority } : task));
-                resetForm();
                 showModal('Task updated successfully!');
-                scrollToForm();
-            })
-            .catch(error => {
-                console.error('There was an error updating the task!', error);
-            })
-            .finally(() => setLoading(false)); // Stop loading
-        } else {
-            axios.post(API_ROUTES.addTask, {
-                title,
-                description,
-                due_date: dueDate,
-                priority,
-                token
-            })
-            .then(response => {
+            } else {
+                const response = await axios.post(API_ROUTES.addTask, {
+                    title,
+                    description,
+                    due_date: dueDate,
+                    priority,
+                    token
+                });
                 setTasks([...tasks, { id: response.data.id, title, description, due_date: dueDate, priority }]);
-                resetForm();
                 showModal('Task added successfully!');
-            })
-            .catch(error => {
-                console.error('There was an error adding the task!', error);
-            })
-            .finally(() => setLoading(false)); // Stop loading
+            }
+        } catch (error) {
+            console.error('There was an error handling the task!', error);
+        } finally {
+            resetForm();
+            scrollToForm();
         }
     };
 
     // Handle task deletion
-    const handleDeleteTask = (id) => {
+    const handleDeleteTask = async (id) => {
         const token = localStorage.getItem('token');
-        axios.post(API_ROUTES.deleteTask, { id, token })
-            .then(response => {
-                setTasks(tasks.filter(task => task.id !== id));
-                showModal('Task deleted successfully!');
-            })
-            .catch(error => {
-                console.error('There was an error deleting the task!', error);
-            })
-            .finally(() => setLoading(false)); // Stop loading
+        try {
+            await axios.post(API_ROUTES.deleteTask, { id, token });
+            setTasks(tasks.filter(task => task.id !== id));
+            showModal('Task deleted successfully!');
+        } catch (error) {
+            console.error('There was an error deleting the task!', error);
+        }
     };
 
     // Handle date change from calendar
@@ -114,11 +103,7 @@ function Planner() {
     // Get tasks for the selected date
     const getTasksForDate = (date) => {
         const formattedDate = formatDate(date);
-        const filteredTasks = tasks.filter(task => {
-            const taskDate = new Date(task.due_date);
-            const taskFormattedDate = formatDate(taskDate);
-            return taskFormattedDate === formattedDate;
-        });
+        const filteredTasks = tasks.filter(task => formatDate(new Date(task.due_date)) === formattedDate);
         return filteredTasks.sort((a, b) => {
             const priorityOrder = { 'Low': 1, 'Normal': 2, 'High': 3 };
             return priorityOrder[b.priority] - priorityOrder[a.priority];
@@ -252,35 +237,13 @@ function Planner() {
                                 setPriority(task.priority);
                                 scrollToForm();
                             }} className='button-dashboard-planner'><FaEdit /> Edit</button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-edit-dashboard-planner button-dashboard-planner'><FaCheck /> Complete</button>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="task-list">
-                <h2 className="section-title"><FaTasks /> All Tasks</h2>
-                <div className="task-container">
-                    {getAllTasks().map(task => (
-                        <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
-                            <h3 className="task-title">{task.title}</h3>
-                            <p className="task-description">{task.description}</p>
-                            <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
-                            <p className="task-priority">Priority: {task.priority}</p>
-                            <button onClick={() => {
-                                setEditingTask(task);
-                                setTitle(task.title);
-                                setDescription(task.description);
-                                setDueDate(task.due_date);
-                                setPriority(task.priority);
-                                scrollToForm();
-                            }} className='button-dashboard-planner'><FaEdit /> Edit</button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-edit-dashboard-planner button-dashboard-planner'><FaCheck /> Complete</button>
+                            <button onClick={() => handleDeleteTask(task.id)} className='button-dashboard-planner'><FaCheck /> Delete</button>
                         </div>
                     ))}
                 </div>
             </div>
             <FooterNav />
-            {modalVisible && <SuccessModal message={modalMessage} />}
+            <SuccessModal visible={modalVisible} message={modalMessage} />
         </div>
     );
 }
