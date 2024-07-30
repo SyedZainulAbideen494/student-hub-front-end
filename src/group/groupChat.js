@@ -25,10 +25,9 @@ const DiscussionBoard = () => {
     const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [isMember, setIsMember] = useState(null);
-    const nav = useNavigate()
+    const [lastMessageTimestamp, setLastMessageTimestamp] = useState(null); // Track the last message timestamp
+
     const inputRef = useRef(null); // Create a ref for the input
-
-
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
@@ -94,6 +93,12 @@ const DiscussionBoard = () => {
                 const memberResponse = await axios.get(`${API_ROUTES.getGroupMembers}/${id}`);
                 setMembers(memberResponse.data.members);
 
+                // Set initial timestamp for polling
+                if (response.data.messages.length > 0) {
+                    const lastMessage = response.data.messages[response.data.messages.length - 1];
+                    setLastMessageTimestamp(new Date(lastMessage.created_at).toISOString());
+                }
+
             } catch (error) {
                 console.error('Error fetching group details:', error);
             }
@@ -105,6 +110,33 @@ const DiscussionBoard = () => {
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
+
+    useEffect(() => {
+        const pollMessages = async () => {
+            if (isMember) {
+                try {
+                    const response = await axios.get(`${API_ROUTES.getGroupDetailsById}/${id}`, {
+                        params: { after: lastMessageTimestamp } // Fetch messages after the last message timestamp
+                    });
+                    const newMessages = response.data.messages;
+
+                    if (newMessages.length > 0) {
+                        setMessages(prevMessages => [...prevMessages, ...newMessages]);
+                        const lastMessage = newMessages[newMessages.length - 1];
+                        setLastMessageTimestamp(new Date(lastMessage.created_at).toISOString());
+                    }
+                } catch (error) {
+                    console.error('Error polling messages:', error);
+                }
+            }
+        };
+
+        // Poll every 5 seconds
+        const intervalId = setInterval(pollMessages, 5000);
+
+        // Clear interval on component unmount
+        return () => clearInterval(intervalId);
+    }, [id, isMember, lastMessageTimestamp]);
 
     const checkUserMembership = async () => {
         try {
@@ -129,7 +161,6 @@ const DiscussionBoard = () => {
                 { content: newMessage, type: 'message' },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-            setMessages([...messages, { content: newMessage, sender: 'Me', type: 'message' }]);
             setNewMessage('');
         } catch (error) {
             console.error('Error sending message:', error);
@@ -144,11 +175,6 @@ const DiscussionBoard = () => {
             { content: replyMessage, type: 'message', parentId: replyToMessageId },
             { headers: { Authorization: `Bearer ${token}` } }
           );
-          setMessages(messages.map(message => 
-            message.id === replyToMessageId 
-            ? { ...message, replies: [...message.replies, { content: replyMessage, sender: 'Me', type: 'message' }] }
-            : message
-          ));
           setReplyMessage('');
           setReplyToMessageId(null);
       
@@ -164,14 +190,13 @@ const DiscussionBoard = () => {
         } catch (error) {
           console.error('Error sending reply:', error);
         }
-      };
-      
-      // Scroll input into view when replyToMessageId changes
-      useEffect(() => {
+    };
+
+    useEffect(() => {
         if (replyToMessageId) {
           inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
-      }, [replyToMessageId]);
+    }, [replyToMessageId]);
 
     const handleBackBtn = () => {
         navigate('/groups');
@@ -222,86 +247,64 @@ const DiscussionBoard = () => {
     };
 
     const handleOpenQuiz = (quizId) => {
-        nav(`/quiz/${quizId}`);
+        navigate(`/quiz/${quizId}`);
     };
 
-    return  (
+    return (
         <div className="group-chat">
-          <div className="group-header">
-            <button className="header-btn" onClick={handleBackBtn}><FaArrowLeft /></button>
-            <h1 onClick={openModal}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
+          <div className="header">
+            <button onClick={handleBackBtn} className="back-btn">
+              <FaArrowLeft />
+            </button>
+            <h1>{groupDetails?.name || 'Loading...'}</h1>
+            <button onClick={handleGroupDetailsBtn} className="details-btn">
+              Details
+            </button>
+            <button onClick={openModal} className="members-btn">
+              Members ({memberCount})
+            </button>
           </div>
-          {isMember === false ? (
-            <div className="not-a-member">
-              <p>You are not a member of this group. Join to view and participate in the discussion.</p>
+      
+          <div className="chat-box">
+            <div className="message-list">
+              {messages.map((message) => (
+                <Message
+                  key={message.id}
+                  message={message}
+                  userName={userNameMap[message.sender]}
+                  flashcardDetails={flashcardDetailsMap[message.content]}
+                  onReplyClick={() => setReplyToMessageId(message.id)}
+                  onFlashcardClick={() => handleOpenFlashcard(message.content)}
+                  onQuizClick={() => handleOpenQuiz(message.content)}
+                />
+              ))}
+              <div ref={messagesEndRef} />
             </div>
-          ) : (
-            <div className="group-chat-container">
-<div className="messages-container">
-  {messages.map(message => (
-    <div className="message-card" key={message.id}>
-      <div className="message-header">
-        <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
-      </div>
-      <div className="message-content">
-        <p>{message.type === 'flashcard' ? 'Flashcard' : message.type === 'quiz' ? 'Quiz' : message.content}</p>
-        {message.type === 'flashcard' && (
-          <button className="flashcard-btn" onClick={() => handleOpenFlashcard(message.content)}>
-            <FaBook /> Open Flashcard
-          </button>
-        )}
-        {message.type === 'quiz' && (
-          <button className="quiz-btn" onClick={() => handleOpenQuiz(message.content)}>
-            <FaQuestionCircle /> Take Quiz
-          </button>
-        )}
-      </div>
-      <div className="replies-container">
-        {message.replies && message.replies.map(reply => (
-          <div key={reply.id} className="reply">
-            <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
-            <p>{reply.content}</p>
+      
+            <div className="message-input-container">
+              <MessageInput
+                value={replyToMessageId ? replyMessage : newMessage}
+                onChange={(e) => replyToMessageId ? setReplyMessage(e.target.value) : setNewMessage(e.target.value)}
+                onSend={replyToMessageId ? handleSendReply : handleSendMessage}
+                ref={inputRef}
+              />
+            </div>
           </div>
-        ))}
-      </div>
-      <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
-    </div>
-  ))}
-  <div ref={messagesEndRef} />
-</div>
-              <div className="message-input-container">
-  <input
-    ref={inputRef} // Attach ref here
-    type="text"
-    value={replyToMessageId ? replyMessage : newMessage}
-    onChange={e => replyToMessageId ? setReplyMessage(e.target.value) : setNewMessage(e.target.value)}
-    placeholder={replyToMessageId ? "Type your reply here..." : "Type your message here..."}
-    className="input-field" // Updated class name for the input
-  />
-  <button 
-    className={replyToMessageId ? "reply-btn-input-sedn" : "send-btn"} // Conditional class for button
-    onClick={replyToMessageId ? handleSendReply : handleSendMessage}
-  >
-    <FaArrowRight />
-  </button>
-</div>
-            </div>
-          )}
+      
           {showModal && (
             <GroupDetailModal
               groupDetails={groupDetails}
               members={members}
+              onInviteMembers={handleInviteMembers}
               onClose={handleCloseModal}
-              onInvite={handleInviteMembers}
             />
           )}
-          <SuccessModal
-            isOpen={isSuccessModalVisible}
-            onRequestClose={closeSuccessModal}
-            message={successMessage}
-          />
+      
+          {isSuccessModalVisible && (
+            <SuccessModal message={successMessage} onClose={closeSuccessModal} />
+          )}
         </div>
-      );
+    );
 };
 
 export default DiscussionBoard;
