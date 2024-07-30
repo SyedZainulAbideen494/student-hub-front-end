@@ -114,12 +114,12 @@
 
 @media (max-width: 768px) {
     .nav-btn-footer-nav {
-        font-size: 12px;
+        font-size: 6px;
         padding: 6px;
     }
 
     .icon-footer-nav {
-        font-size: 20px;
+        font-size: 17px;
     }
 
     .btn-label {
