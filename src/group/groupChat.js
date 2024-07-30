@@ -310,7 +310,7 @@ const DiscussionBoard = () => {
                                 ref={inputRef}
                             />
                         )}
-                        <button onClick={replyToMessageId ? handleSendReply : handleSendMessage}>
+                        <button className='send-btn' onClick={replyToMessageId ? handleSendReply : handleSendMessage}>
                             <FaArrowRight />
                         </button>
                     </div>
