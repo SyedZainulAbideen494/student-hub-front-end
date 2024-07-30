@@ -130,7 +130,7 @@ const DiscussionBoard = () => {
         };
 
         // Poll every 5 seconds
-        const intervalId = setInterval(pollMessages, 1000);
+        const intervalId = setInterval(pollMessages, 2500);
 
         // Clear interval on component unmount
         return () => clearInterval(intervalId);
