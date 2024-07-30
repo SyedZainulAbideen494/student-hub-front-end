@@ -5,8 +5,6 @@ import './GroupChat.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import GroupDetailModal from './GroupDetails';
 import SuccessModal from '../app_modules/SuccessModal';
-import Message from './Message';
-import MessageInput from './MessageInput';
 import { FaArrowLeft, FaBook, FaQuestionCircle, FaArrowRight } from 'react-icons/fa';
 
 const DiscussionBoard = () => {
@@ -108,7 +106,7 @@ const DiscussionBoard = () => {
     }, [id, isMember]);
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        messagesEndRef.current?.scrollIntoView(); // Automatically scroll to bottom without smooth animation
     }, [messages]);
 
     useEffect(() => {
@@ -169,32 +167,22 @@ const DiscussionBoard = () => {
 
     const handleSendReply = async () => {
         try {
-          const token = localStorage.getItem('token');
-          await axios.post(
-            `${API_ROUTES.sendGroupMessages}/${id}`,
-            { content: replyMessage, type: 'message', parentId: replyToMessageId },
-            { headers: { Authorization: `Bearer ${token}` } }
-          );
-          setReplyMessage('');
-          setReplyToMessageId(null);
-      
-          // Scroll input into view and trigger animation
-          if (inputRef.current) {
-            inputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            inputRef.current.classList.add('input-animate');
-            // Remove animation class after 0.5 seconds
-            setTimeout(() => {
-              inputRef.current.classList.remove('input-animate');
-            }, 500);
-          }
+            const token = localStorage.getItem('token');
+            await axios.post(
+                `${API_ROUTES.sendGroupMessages}/${id}`,
+                { content: replyMessage, type: 'message', parentId: replyToMessageId },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setReplyMessage('');
+            setReplyToMessageId(null);
         } catch (error) {
-          console.error('Error sending reply:', error);
+            console.error('Error sending reply:', error);
         }
     };
 
     useEffect(() => {
         if (replyToMessageId) {
-          inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            inputRef.current?.scrollIntoView(); // Scroll input into view when replying
         }
     }, [replyToMessageId]);
 
@@ -250,83 +238,101 @@ const DiscussionBoard = () => {
         navigate(`/quiz/${quizId}`);
     };
 
-    return  (
+    return (
         <div className="group-chat">
-          <div className="group-header">
-            <button className="header-btn" onClick={handleBackBtn}><FaArrowLeft /></button>
-            <h1 onClick={openModal}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
-          </div>
-          {isMember === false ? (
-            <div className="not-a-member">
-              <p>You are not a member of this group. Join to view and participate in the discussion.</p>
+            <div className="group-header">
+                <button className="header-btn" onClick={handleBackBtn}><FaArrowLeft /></button>
+                <h1 onClick={openModal}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
             </div>
-          ) : (
-            <div className="group-chat-container">
-<div className="messages-container">
-  {messages.map(message => (
-    <div className="message-card" key={message.id}>
-      <div className="message-header">
-        <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
-      </div>
-      <div className="message-content">
-        <p>{message.type === 'flashcard' ? 'Flashcard' : message.type === 'quiz' ? 'Quiz' : message.content}</p>
-        {message.type === 'flashcard' && (
-          <button className="flashcard-btn" onClick={() => handleOpenFlashcard(message.content)}>
-            <FaBook /> Open Flashcard
-          </button>
-        )}
-        {message.type === 'quiz' && (
-          <button className="quiz-btn" onClick={() => handleOpenQuiz(message.content)}>
-            <FaQuestionCircle /> Take Quiz
-          </button>
-        )}
-      </div>
-      <div className="replies-container">
-        {message.replies && message.replies.map(reply => (
-          <div key={reply.id} className="reply">
-            <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
-            <p>{reply.content}</p>
-          </div>
-        ))}
-      </div>
-      <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
-    </div>
-  ))}
-  <div ref={messagesEndRef} />
-</div>
-              <div className="message-input-container">
-  <input
-    ref={inputRef} // Attach ref here
-    type="text"
-    value={replyToMessageId ? replyMessage : newMessage}
-    onChange={e => replyToMessageId ? setReplyMessage(e.target.value) : setNewMessage(e.target.value)}
-    placeholder={replyToMessageId ? "Type your reply here..." : "Type your message here..."}
-    className="input-field" // Updated class name for the input
-  />
-  <button 
-    className={replyToMessageId ? "reply-btn-input-sedn" : "send-btn"} // Conditional class for button
-    onClick={replyToMessageId ? handleSendReply : handleSendMessage}
-  >
-    <FaArrowRight />
-  </button>
-</div>
-            </div>
-          )}
-          {showModal && (
-            <GroupDetailModal
-              groupDetails={groupDetails}
-              members={members}
-              onClose={handleCloseModal}
-              onInvite={handleInviteMembers}
-            />
-          )}
-          <SuccessModal
-            isOpen={isSuccessModalVisible}
-            onRequestClose={closeSuccessModal}
-            message={successMessage}
-          />
+            {isMember === false ? (
+                <div className="not-a-member">
+                    <p>You are not a member of this group. Join to view and participate in the discussion.</p>
+                </div>
+            ) : (
+                <div className="group-chat-container">
+                    <div className="messages-container">
+                        {messages.map(message => (
+                            <div className="message-card" key={message.id}>
+                                <div className="message-header">
+                                    <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
+                                </div>
+                                <div className="message-content">
+                                    <p>{message.type === 'flashcard' ? (
+                                        <button onClick={() => handleOpenFlashcard(message.content)}>
+                                            {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
+                                        </button>
+                                    ) : (
+                                        message.content
+                                    )}</p>
+                                </div>
+                                {message.replies && message.replies.length > 0 && (
+                                    <div className="replies-container">
+                                        {message.replies.map(reply => (
+                                            <div className="reply-card" key={reply.id}>
+                                                <div className="reply-header">
+                                                    <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
+                                                </div>
+                                                <div className="reply-content">
+                                                    {reply.content}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                                <div>
+                                    <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
+                                </div>
+                            </div>
+                        ))}
+                        <div ref={messagesEndRef} />
+                    </div>
+                    <div className="message-input-container">
+                        {replyToMessageId ? (
+                            <div className="reply-section">
+                                <button onClick={() => setReplyToMessageId(null)}>
+                                    <FaArrowLeft />
+                                </button>
+                                <input
+                                    type="text"
+                                    placeholder="Type your reply..."
+                                    value={replyMessage}
+                                    onChange={(e) => setReplyMessage(e.target.value)}
+                                    ref={inputRef}
+                                />
+                                <button onClick={handleSendReply}>Send Reply</button>
+                            </div>
+                        ) : (
+                            <input
+                                type="text"
+                                placeholder="Type your message..."
+                                value={newMessage}
+                                onChange={(e) => setNewMessage(e.target.value)}
+                                ref={inputRef}
+                            />
+                        )}
+                        <button onClick={replyToMessageId ? handleSendReply : handleSendMessage}>
+                            <FaArrowRight />
+                        </button>
+                    </div>
+                </div>
+            )}
+            {showModal && (
+                <GroupDetailModal
+                    onClose={handleCloseModal}
+                    groupDetails={groupDetails}
+                    onInviteMember={handleInviteMembers}
+                    onQuizClick={handleOpenQuiz}
+                    onSuccessMessage={showSuccessModal}
+                />
+            )}
+            {isSuccessModalVisible && (
+                <SuccessModal
+                    onClose={closeSuccessModal}
+                    message={successMessage}
+                />
+            )}
         </div>
-      );
+    );
 };
 
 export default DiscussionBoard;
