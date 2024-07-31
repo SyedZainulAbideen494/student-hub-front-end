@@ -1,61 +1,126 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
-
-const dummyProfile = {
-  name: 'Anne Adams',
-  username: '@anne.adams99',
-  location: 'San Jose, CA',
-  stats: {
-    fans: 24000,
-    following: 582,
-    posts: 2129,
-    stories: 91
-  },
-  photos: [
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150'
-  ]
-};
+import axios from 'axios';
+import { API_ROUTES } from '../app_modules/apiRoutes';
+import FooterNav from '../app_modules/footernav';
 
 const ProfilePage = () => {
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState('Flashcards');
+  const [flashcards, setFlashcards] = useState([]);
+  const [quizzes, setQuizzes] = useState([]);
+  const [eduScribe, setEduScribe] = useState([]);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setError('No token found');
+          setLoading(false);
+          return;
+        }
+
+        const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
+        setProfile(data);
+      } catch (err) {
+        setError('Error fetching profile data');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
+  useEffect(() => {
+    const fetchDataForActiveTab = async () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) return;
+
+      try {
+        if (activeTab === 'Flashcards') {
+          const { data } = await axios.get('http://localhost:8080/api/get/user/notes', {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          setFlashcards(data.filter(card => card.is_public === 'true'));
+        } else if (activeTab === 'Quizzes') {
+          const { data } = await axios.post('http://localhost:8080/getUserQuizzes', { token });
+          setQuizzes(data);
+        } else if (activeTab === 'EduScribe') {
+          const { data } = await axios.post('http://localhost:8080/getEduScribe', { token });
+          setEduScribe(data);
+        } else if (activeTab === 'Posts') {
+          const { data } = await axios.post('http://localhost:8080/getPosts', { token });
+          setPosts(data);
+        }
+      } catch (err) {
+        console.error('Error fetching data:', err);
+      }
+    };
+
+    fetchDataForActiveTab();
+  }, [activeTab]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!profile) return <p>No profile data available</p>;
+
   return (
     <div className="profile-page">
-      <header>
-        <h1>&larr;</h1>
-      </header>
-      <div className="profile">
-        <img className="avatar" src="https://via.placeholder.com/80" alt="avatar" />
-        <h2>{dummyProfile.name}</h2>
-        <p>{dummyProfile.username}</p>
-        <p>{dummyProfile.location}</p>
-        <div className="stats">
-          <div>{dummyProfile.stats.fans} Fans</div>
-          <div>{dummyProfile.stats.following} Following</div>
-          <div>{dummyProfile.stats.posts} Posts</div>
-          <div>{dummyProfile.stats.stories} Stories</div>
+      <div className="profile-info">
+        <img
+          className="profile-avatar"
+          src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
+          alt="Profile Avatar"
+        />
+        <h2 className="profile-name">{profile.name}</h2>
+        <p className="profile-username">{profile.user_name}</p>
+        <div className="profile-stats">
+          <div className="profile-stat">{profile.following} Following</div>
+          <div className="profile-stat">Flashcards: {flashcards.length}</div>
+          <div className="profile-stat">Posts: {posts.length}</div>
         </div>
-        <div className="actions">
-          <button className="follow">Follow</button>
-          <button className="message">Message</button>
+        <div className="profile-actions">
+          <button className="profile-follow-button">Follow</button>
         </div>
       </div>
-      <div className="media">
-        <div className="tabs">
-          <button>Photo</button>
-          <button>Video</button>
-          <button>About</button>
-          <button>Favorite</button>
+      <div className="profile-media">
+        <div className="profile-tabs">
+          {['Flashcards', 'Quizzes', 'EduScribe', 'Posts'].map(tab => (
+            <button
+              key={tab}
+              className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+          <div className="profile-tab-underline" style={{ width: `${100 / 4}%`, left: `${['Flashcards', 'Quizzes', 'EduScribe', 'Posts'].indexOf(activeTab) * (100 / 4)}%` }} />
         </div>
-        <div className="photos">
-          {dummyProfile.photos.map((photo, index) => (
-            <img key={index} src={photo} alt="profile" />
+        <div className="profile-content">
+          {activeTab === 'Flashcards' && flashcards.map((card, index) => (
+            <div key={index} className="flashcard">{card.title}</div>
+          ))}
+          {activeTab === 'Quizzes' && quizzes.map((quiz, index) => (
+            <div key={index} className="quiz">{quiz.title}</div>
+          ))}
+          {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
+            <div key={index} className="edu-scribe">{item.title}</div>
+          ))}
+          {activeTab === 'Posts' && posts.map((post, index) => (
+            <div key={index} className="post">{post.title}</div>
           ))}
         </div>
       </div>
+      <FooterNav />
     </div>
   );
-}
+};
 
 export default ProfilePage;

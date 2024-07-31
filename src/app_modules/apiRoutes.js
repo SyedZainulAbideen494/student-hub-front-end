@@ -43,5 +43,6 @@ export const API_ROUTES = {
   downloadAndroid: `${API_URL}/download/android`,
   loginSpotify: `${API_URL}/login/spotify`,
   refreshSpotifyToken: `${API_URL}/refresh_token`,
-  saveNotificationSubscriptiopn: `${API_URL}/save-subscription`
+  saveNotificationSubscriptiopn: `${API_URL}/save-subscription`,
+  fetchUserProfile: `${API_URL}/api/profile/user`
 }

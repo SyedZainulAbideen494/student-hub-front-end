@@ -1,86 +1,144 @@
 .profile-page {
     padding: 20px;
-  }
-  
-  header h1 {
-    font-size: 24px;
-  }
-  
-  .profile {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
     text-align: center;
-  }
-  
-  .profile .avatar {
-    width: 80px;
-    height: 80px;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-bottom: 10px;
-  }
-  
-  .profile h2 {
+    border: 3px solid #7161ef;
+}
+
+.profile-name {
     font-size: 24px;
-  }
-  
-  .profile p {
     margin: 5px 0;
-  }
-  
-  .profile .stats {
+    color: #333;
+    font-weight: 600;
+}
+
+.profile-username {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.profile-stats {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
     margin: 20px 0;
-  }
-  
-  .profile .actions {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .profile .actions .follow,
-  .profile .actions .message {
+}
+
+.profile-stat {
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.profile-stat:hover {
+    background: #7161ef;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.profile-actions {
+    margin-top: 20px;
+}
+
+.profile-follow-button {
     padding: 10px 20px;
     border: none;
-    border-radius: 20px;
-  }
-  
-  .profile .actions .follow {
+    border-radius: 25px;
     background: #7161ef;
     color: white;
-  }
-  
-  .profile .actions .message {
-    background: #a38dff;
-  }
-  
-  .media {
-    margin-top: 20px;
-  }
-  
-  .media .tabs {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .media .tabs button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    background: none;
-  }
-  
-  .media .tabs button:hover {
-    border-bottom: 2px solid #7161ef;
-  }
-  
-  .media .photos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .media .photos img {
-    width: calc(50% - 5px);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.profile-follow-button:hover {
+    background: #5a4edc;
+    transform: scale(1.05);
+}
+
+.profile-media {
+    width: 100%;
+    background: #fff;
     border-radius: 10px;
-  }
-  
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.profile-tabs {
+    display: flex;
+    justify-content: space-between; /* Distributes space evenly between tabs */
+    position: relative;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.profile-tab {
+    flex: 1; /* Ensures all tabs are of equal width */
+    text-align: center;
+    padding: 12px 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.profile-tab.active {
+    color: #7161ef; /* Highlight color for active tab */
+    border-bottom: 2px solid #7161ef; /* Optional underline for active tab */
+}
+
+.profile-tab-underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background: #7161ef; /* Color of the underline */
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+.profile-content {
+    padding: 15px;
+    max-height: 500px; /* Increased max-height for better scrolling */
+    overflow-y: auto;
+}
+
+.flashcard, .quiz, .edu-scribe, .post {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.flashcard:hover, .quiz:hover, .edu-scribe:hover, .post:hover {
+    background: #f9f9f9;
+    transform: scale(1.02);
+}
