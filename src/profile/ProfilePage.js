@@ -90,7 +90,9 @@ const ProfilePage = () => {
           <div className="profile-stat">Posts: {posts.length}</div>
         </div>
         <div className="profile-actions">
+            <Link to='/post/add'>
           <button className="profile-follow-button">+ Add Post</button>
+          </Link>
         </div>
       </div>
       <div className="profile-media">

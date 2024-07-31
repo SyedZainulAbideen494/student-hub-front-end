@@ -1,0 +1,140 @@
+/* General Container Styling */
+.post-form-container-add-post {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f7f7f7, #e1e1e1);
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Title Styling */
+  .post-form-title-add-post {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Form Styling */
+  .post-form-add-post {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Form Group Styling */
+  .form-group-add-post-add-post {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  /* Labels */
+  .form-label-add-post {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  /* Input Fields */
+  .form-input-add-post, .form-textarea-add-post, .form-file-input {
+    width: 90%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  /* Textarea Styling */
+  .form-textarea-add-post {
+    height: 180px;
+    resize: vertical;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* File Input Styling */
+  .form-file-input-add-post {
+    border: 2px dashed #ddd;
+    background: #fafafa;
+    padding: 15px;
+    cursor: pointer;
+  }
+  
+  /* File Preview Styling */
+  .file-preview-add-post {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .file-preview-item-add-post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .file-preview-img-add-post {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.3s;
+  }
+  
+  .file-preview-img-add-post:hover {
+    transform: scale(1.05);
+  }
+  
+  .file-preview-name-add-post {
+    padding: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #666;
+  }
+  
+  /* Submit Button Styling */
+  .submit-button-add-post {
+    background: linear-gradient(135deg, #7161ef, #a38dff);
+    color: #fff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .submit-button-add-post:hover {
+    background: linear-gradient(135deg, #5a4fdd, #8a6bff);
+    transform: scale(1.05);
+  }
+  
+  /* Response Message Styling */
+  .response-message-add-post {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Keyframes for Fade-in Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

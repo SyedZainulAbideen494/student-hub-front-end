@@ -30,6 +30,7 @@ import NotificationComponent from "./notifications/NotificationComponent";
 import NotiPage from "./notifications/notiPage";
 import SocialFeed from "./soical feed/socialfeed";
 import ProfilePage from "./profile/ProfilePage";
+import PostForm from "./post/addPost";
 
 
 const router = createBrowserRouter([
@@ -54,7 +55,8 @@ const router = createBrowserRouter([
   {path: '/welcome', element: <Welcome/>},
   {path: '/noti', element: <NotiPage/>},
   {path: '/social-feed', element: <SocialFeed/>},
-  {path: '/profile', element: <ProfilePage/>}
+  {path: '/profile', element: <ProfilePage/>},
+  {path: '/post/add', element: <PostForm/>}
 ]);
 
 
