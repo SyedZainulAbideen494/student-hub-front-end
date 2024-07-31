@@ -1,0 +1,86 @@
+.profile-page {
+    padding: 20px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+  }
+  
+  .profile {
+    text-align: center;
+  }
+  
+  .profile .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .profile h2 {
+    font-size: 24px;
+  }
+  
+  .profile p {
+    margin: 5px 0;
+  }
+  
+  .profile .stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .profile .actions {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .profile .actions .follow,
+  .profile .actions .message {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .profile .actions .follow {
+    background: #7161ef;
+    color: white;
+  }
+  
+  .profile .actions .message {
+    background: #a38dff;
+  }
+  
+  .media {
+    margin-top: 20px;
+  }
+  
+  .media .tabs {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .media .tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+  }
+  
+  .media .tabs button:hover {
+    border-bottom: 2px solid #7161ef;
+  }
+  
+  .media .photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .media .photos img {
+    width: calc(50% - 5px);
+    border-radius: 10px;
+  }
+  

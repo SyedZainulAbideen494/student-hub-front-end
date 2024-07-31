@@ -29,6 +29,7 @@ import Welcome from "./welcome/welcomePage";
 import NotificationComponent from "./notifications/NotificationComponent";
 import NotiPage from "./notifications/notiPage";
 import SocialFeed from "./soical feed/socialfeed";
+import ProfilePage from "./profile/ProfilePage";
 
 
 const router = createBrowserRouter([
@@ -52,7 +53,8 @@ const router = createBrowserRouter([
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},
   {path: '/noti', element: <NotiPage/>},
-  {path: '/social-feed', element: <SocialFeed/>}
+  {path: '/social-feed', element: <SocialFeed/>},
+  {path: '/profile', element: <ProfilePage/>}
 ]);
 
 
