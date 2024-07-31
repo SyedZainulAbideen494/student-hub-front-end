@@ -143,14 +143,12 @@ const ProfilePage = () => {
           <div className="profile-stat">Posts: {posts.length}</div>
         </div>
         <div className="profile-actions">
-          <Link to='/post/add'>
-            <button className="profile-follow-button">+ Add Post</button>
-          </Link>
+          
         </div>
       </div>
       <div className="profile-media">
         <div className="profile-tabs">
-          {['Flashcards', 'Quizzes', 'EduScribe', 'Posts'].map(tab => (
+          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
             <button
               key={tab}
               className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
@@ -179,50 +177,6 @@ const ProfilePage = () => {
           {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
             <div key={index} className="card edu-scribe-item">
               <div className="card-content">{item.title}</div>
-            </div>
-          ))}
-          {activeTab === 'Posts' && posts.map((post, index) => (
-            <div key={index} className="card post-item">
-              <h3 className="post-title">{post.title}</h3>
-              <div className="post-content">{post.content}</div>
-              <div
-                className="post-carousel"
-                onTouchStart={(e) => handleTouchStart(e, post.id)}
-                onTouchEnd={(e) => handleTouchEnd(e, post.id)}
-              >
-                {post.images.length > 0 && (
-                  <>
-                    <img 
-                      src={`${API_ROUTES.displayImg}/${post.images[currentImageIndex[post.id]]}`} 
-                      alt={`Post ${post.id} image`} 
-                      className="post-image"
-                    />
-                    <div className="carousel-controls">
-                      <button 
-                        className="carousel-control prev" 
-                        onClick={() => handlePrevImage(post.id)}
-                      >
-                        &lt;
-                      </button>
-                      <button 
-                        className="carousel-control next" 
-                        onClick={() => handleNextImage(post.id)}
-                      >
-                        &gt;
-                      </button>
-                    </div>
-                    <div className="carousel-dots">
-                      {post.images.map((_, idx) => (
-                        <span 
-                          key={idx} 
-                          className={`dot ${currentImageIndex[post.id] === idx ? 'active' : ''}`} 
-                          onClick={() => handleDotClick(post.id, idx)}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
             </div>
           ))}
         </div>
