@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import { Link } from 'react-router-dom';
 import FooterNav from '../app_modules/footernav';
 
 const ProfilePage = () => {
@@ -108,10 +109,16 @@ const ProfilePage = () => {
         </div>
         <div className="profile-content">
           {activeTab === 'Flashcards' && flashcards.map((card, index) => (
-            <div key={index} className="flashcard">{card.title}</div>
+           <div key={index} className="flashcard-item">
+           <Link to={`/note/view/${card.id}`} style={{textDecoration: 'none', color: 'black'}}>
+             <div className="flashcard">{card.title}</div>
+           </Link>
+         </div>
           ))}
           {activeTab === 'Quizzes' && quizzes.map((quiz, index) => (
+             <Link to={`/quiz/${quiz.id}`} style={{textDecoration: 'none', color: 'black'}}>
             <div key={index} className="quiz">{quiz.title}</div>
+            </Link>
           ))}
           {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
             <div key={index} className="edu-scribe">{item.title}</div>
