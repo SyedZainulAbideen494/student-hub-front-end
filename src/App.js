@@ -28,6 +28,7 @@ import Callback from "./music/SpotifyRedirect";
 import Welcome from "./welcome/welcomePage";
 import NotificationComponent from "./notifications/NotificationComponent";
 import NotiPage from "./notifications/notiPage";
+import SocialFeed from "./soical feed/socialfeed";
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,8 @@ const router = createBrowserRouter([
   {path: '/music', element: <SpotifyPlayer/>},
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},
-  {path: '/noti', element: <NotiPage/>}
+  {path: '/noti', element: <NotiPage/>},
+  {path: '/social-feed', element: <SocialFeed/>}
 ]);
 
 

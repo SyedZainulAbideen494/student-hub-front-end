@@ -1,4 +1,4 @@
-const API_URL = 'https://e940c18f037202abb3b65708f67c5c9f.serveo.net';
+const API_URL = 'https://653f67cd07893ca0392a85d13d7512bd.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
