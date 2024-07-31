@@ -15,6 +15,7 @@ const ProfilePage = () => {
   const [eduScribe, setEduScribe] = useState([]);
   const [posts, setPosts] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState({});
+  const [touchStartX, setTouchStartX] = useState({});
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -59,7 +60,6 @@ const ProfilePage = () => {
         } else if (activeTab === 'Posts') {
           const { data } = await axios.post(API_ROUTES.getUserPosts, { token });
           setPosts(data);
-          // Initialize current image index for posts
           const initialIndices = data.reduce((acc, post) => {
             acc[post.id] = 0;
             return acc;
@@ -95,6 +95,29 @@ const ProfilePage = () => {
       ...prevIndices,
       [postId]: index
     }));
+  };
+
+  const handleTouchStart = (event, postId) => {
+    if (event.touches.length > 0) {
+      setTouchStartX({ ...touchStartX, [postId]: event.touches[0].clientX });
+    }
+  };
+
+  const handleTouchEnd = (event, postId) => {
+    if (event.changedTouches.length > 0) {
+      const touchEndX = event.changedTouches[0].clientX;
+      const touchStartXValue = touchStartX[postId];
+      
+      if (touchStartXValue !== undefined) {
+        const swipeThreshold = 50; // Adjust this value as needed
+        if (touchStartXValue - touchEndX > swipeThreshold) {
+          handleNextImage(postId);
+        } else if (touchEndX - touchStartXValue > swipeThreshold) {
+          handlePrevImage(postId);
+        }
+        setTouchStartX({ ...touchStartX, [postId]: undefined }); // Reset touch start position
+      }
+    }
   };
 
   if (loading) return <p>Loading...</p>;
@@ -162,13 +185,17 @@ const ProfilePage = () => {
             <div key={index} className="card post-item">
               <h3 className="post-title">{post.title}</h3>
               <div className="post-content">{post.content}</div>
-              <div className="post-carousel">
+              <div
+                className="post-carousel"
+                onTouchStart={(e) => handleTouchStart(e, post.id)}
+                onTouchEnd={(e) => handleTouchEnd(e, post.id)}
+              >
                 {post.images.length > 0 && (
                   <>
                     <img 
                       src={`${API_ROUTES.displayImg}/${post.images[currentImageIndex[post.id]]}`} 
                       alt={`Post ${post.id} image`} 
-                      className="post-image" 
+                      className="post-image"
                     />
                     <div className="carousel-controls">
                       <button 
