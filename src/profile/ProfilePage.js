@@ -57,7 +57,7 @@ const ProfilePage = () => {
           const { data } = await axios.post('http://localhost:8080/getEduScribe', { token });
           setEduScribe(data);
         } else if (activeTab === 'Posts') {
-          const { data } = await axios.post('http://localhost:8080/getPosts', { token });
+          const { data } = await axios.post(API_ROUTES.getUserPosts, { token });
           setPosts(data);
           // Initialize current image index for posts
           const initialIndices = data.reduce((acc, post) => {
