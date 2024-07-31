@@ -45,12 +45,12 @@ const ProfilePage = () => {
 
       try {
         if (activeTab === 'Flashcards') {
-          const { data } = await axios.get('http://localhost:8080/api/get/user/notes', {
+          const { data } = await axios.get(API_ROUTES.getUserNotes, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setFlashcards(data.filter(card => card.is_public === 'true'));
         } else if (activeTab === 'Quizzes') {
-          const { data } = await axios.post('http://localhost:8080/getUserQuizzes', { token });
+          const { data } = await axios.post(API_ROUTES.getUserQuizzes, { token });
           setQuizzes(data);
         } else if (activeTab === 'EduScribe') {
           const { data } = await axios.post('http://localhost:8080/getEduScribe', { token });
@@ -81,6 +81,9 @@ const ProfilePage = () => {
         />
         <h2 className="profile-name">{profile.name}</h2>
         <p className="profile-username">{profile.user_name}</p>
+        <p className="profile-bio">{profile.bio}</p>
+        <p className="profile-unique-id">@{profile.unique_id}</p>
+        <p className="profile-location">{profile.location}</p>
         <div className="profile-stats">
           <div className="profile-stat">{profile.following} Following</div>
           <div className="profile-stat">Flashcards: {flashcards.length}</div>
