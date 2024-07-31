@@ -18,7 +18,8 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+
 }
 
 .profile-name {
@@ -192,3 +193,63 @@
 .add-button.add-post {
     margin-left: 10px;
 }
+
+.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f8f8f8;
+  }
+  
+  .post-content {
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .post-carousel {
+    position: relative;
+  }
+  
+  .post-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .carousel-control {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: gray;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: white;
+  }

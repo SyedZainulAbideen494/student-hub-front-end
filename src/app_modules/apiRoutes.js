@@ -44,5 +44,6 @@ export const API_ROUTES = {
   loginSpotify: `${API_URL}/login/spotify`,
   refreshSpotifyToken: `${API_URL}/refresh_token`,
   saveNotificationSubscriptiopn: `${API_URL}/save-subscription`,
-  fetchUserProfile: `${API_URL}/api/profile/user`
+  fetchUserProfile: `${API_URL}/api/profile/user`,
+  addPost: `${API_URL}/api/add/posts`
 }

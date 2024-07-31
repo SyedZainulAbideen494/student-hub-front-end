@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './PostForm.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const PostForm = () => {
   const [title, setTitle] = useState('');
@@ -29,7 +30,7 @@ const PostForm = () => {
         return;
       }
       
-      const response = await axios.post('http://localhost:8080/api/posts', formData, {
+      const response = await axios.post(API_ROUTES.addPost, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`

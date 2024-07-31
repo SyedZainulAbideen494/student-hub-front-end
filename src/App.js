@@ -31,7 +31,8 @@ import NotiPage from "./notifications/notiPage";
 import SocialFeed from "./soical feed/socialfeed";
 import ProfilePage from "./profile/ProfilePage";
 import PostForm from "./post/addPost";
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
