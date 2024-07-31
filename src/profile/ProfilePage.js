@@ -41,7 +41,6 @@ const ProfilePage = () => {
   useEffect(() => {
     const fetchDataForActiveTab = async () => {
       const token = localStorage.getItem('token');
-
       if (!token) return;
 
       try {
@@ -91,7 +90,7 @@ const ProfilePage = () => {
           <div className="profile-stat">Posts: {posts.length}</div>
         </div>
         <div className="profile-actions">
-          <button className="profile-follow-button">Follow</button>
+          <button className="profile-follow-button">+ Add Post</button>
         </div>
       </div>
       <div className="profile-media">
@@ -109,22 +108,28 @@ const ProfilePage = () => {
         </div>
         <div className="profile-content">
           {activeTab === 'Flashcards' && flashcards.map((card, index) => (
-           <div key={index} className="flashcard-item">
-           <Link to={`/note/view/${card.id}`} style={{textDecoration: 'none', color: 'black'}}>
-             <div className="flashcard">{card.title}</div>
-           </Link>
-         </div>
+            <div key={index} className="card flashcard-item">
+              <Link to={`/note/view/${card.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                <div className="card-content">{card.title}</div>
+              </Link>
+            </div>
           ))}
           {activeTab === 'Quizzes' && quizzes.map((quiz, index) => (
-             <Link to={`/quiz/${quiz.id}`} style={{textDecoration: 'none', color: 'black'}}>
-            <div key={index} className="quiz">{quiz.title}</div>
-            </Link>
+            <div key={index} className="card quiz-item">
+              <Link to={`/quiz/${quiz.id}`} style={{ textDecoration: 'none', color: 'black' }}>
+                <div className="card-content">{quiz.title}</div>
+              </Link>
+            </div>
           ))}
           {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
-            <div key={index} className="edu-scribe">{item.title}</div>
+            <div key={index} className="card edu-scribe-item">
+              <div className="card-content">{item.title}</div>
+            </div>
           ))}
           {activeTab === 'Posts' && posts.map((post, index) => (
-            <div key={index} className="post">{post.title}</div>
+            <div key={index} className="card post-item">
+              <div className="card-content">{post.title}</div>
+            </div>
           ))}
         </div>
       </div>
