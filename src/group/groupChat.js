@@ -288,10 +288,6 @@ const DiscussionBoard = () => {
                     </div>
                     <div className="message-input-container">
                         {replyToMessageId ? (
-                            <div className="reply-section">
-                                <button onClick={() => setReplyToMessageId(null)}>
-                                    <FaArrowLeft />
-                                </button>
                                 <input
                                     type="text"
                                     placeholder="Type your reply..."
@@ -299,8 +295,6 @@ const DiscussionBoard = () => {
                                     onChange={(e) => setReplyMessage(e.target.value)}
                                     ref={inputRef}
                                 />
-                                <button onClick={handleSendReply}>Send Reply</button>
-                            </div>
                         ) : (
                             <input
                                 type="text"
