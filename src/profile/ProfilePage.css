@@ -1,195 +1,85 @@
 .profile-page {
     padding: 20px;
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #f4f4f4;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.profile-info {
+  }
+  
+  header h1 {
+    font-size: 24px;
+  }
+  
+  .profile {
     text-align: center;
-    margin-bottom: 20px;
-}
-
-.profile-avatar {
-    width: 60px;
-    height: 60px;
+  }
+  
+  .profile .avatar {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     margin-bottom: 10px;
-
-}
-
-.profile-name {
-    font-size: 22px;
+  }
+  
+  .profile h2 {
+    font-size: 24px;
+  }
+  
+  .profile p {
     margin: 5px 0;
-    color: #333;
-    font-weight: 600;
-}
-
-.profile-username {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.profile-bio {
-    font-size: 14px;
-    color: #444;
-    margin-bottom: 10px;
-}
-
-.profile-unique-id {
-    font-size: 12px;
-    color: #888;
-}
-
-.profile-location {
-    font-size: 12px;
-    color: #888;
-}
-
-.profile-stats {
+  }
+  
+  .profile .stats {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    justify-content: space-around;
     margin: 20px 0;
-}
-
-.profile-stat {
-    background: #fff;
-    padding: 8px 12px;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 12px;
-    color: #333;
-    text-align: center;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.profile-stat:hover {
-    background: #7161ef;
-    color: #fff;
-    transform: scale(1.05);
-}
-
-.profile-actions {
-    margin-top: 10px;
-}
-
-.profile-follow-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 25px;
-    background: #7161ef;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-    margin: 5px;
-}
-
-.profile-follow-button:hover {
-    background: #5a4edc;
-    transform: scale(1.05);
-}
-
-.profile-media {
-    width: 100%;
-    max-width: 1200px;
-}
-
-.profile-tabs {
-    position: relative;
+  }
+  
+  .profile .actions {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #333;
-}
-
-.profile-tab {
-    background: transparent;
-    border: none;
+    justify-content: space-around;
+  }
+  
+  .profile .actions .follow,
+  .profile .actions .message {
     padding: 10px 20px;
-    font-size: 17px;
-    color: #333;
-    cursor: pointer;
-    border-radius: 12px;
-    transition: background 0.3s, color 0.3s;
-    
-}
-
-.profile-tab.active {
-    color: #7161ef;
-    background: #fff;
-    border-radius: 12px 12px 0 0;
-    font-weight: bold;
-}
-
-
-.profile-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    flex: 1 1 calc(25% - 15px);
-    min-width: 200px;
-}
-
-.card-content {
-    padding: 15px;
-    font-size: 14px;
-    color: #333;
-}
-
-.card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.add-buttons {
-    display: flex;
-    justify-content: space-between;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .profile .actions .follow {
+    background: #007bff;
+    color: white;
+  }
+  
+  .profile .actions .message {
+    background: #ccc;
+  }
+  
+  .media {
     margin-top: 20px;
-}
-
-.add-button {
-    padding: 10px 20px;
+  }
+  
+  .media .tabs {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .media .tabs button {
+    flex: 1;
+    padding: 10px;
     border: none;
-    border-radius: 25px;
-    background: #7161ef;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.add-button:hover {
-    background: #5a4edc;
-    transform: scale(1.05);
-}
-
-.add-button.add-edu-scribe {
-    margin-right: 10px;
-}
-
-.add-button.add-post {
-    margin-left: 10px;
-}
+    border-bottom: 2px solid transparent;
+    background: none;
+  }
+  
+  .media .tabs button:hover {
+    border-bottom: 2px solid #007bff;
+  }
+  
+  .media .photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .media .photos img {
+    width: calc(50% - 5px);
+    border-radius: 10px;
+  }

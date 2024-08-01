@@ -76,7 +76,7 @@ const ProfilePage = () => {
 
   const handlePrevImage = (postId) => {
     setCurrentImageIndex((prevIndices) => {
-      const images = posts.find(post => post.id === postId).images;
+      const images = posts.find(post => post.id === postId)?.images || [];
       const newIndex = (prevIndices[postId] - 1 + images.length) % images.length;
       return { ...prevIndices, [postId]: newIndex };
     });
@@ -84,7 +84,7 @@ const ProfilePage = () => {
 
   const handleNextImage = (postId) => {
     setCurrentImageIndex((prevIndices) => {
-      const images = posts.find(post => post.id === postId).images;
+      const images = posts.find(post => post.id === postId)?.images || [];
       const newIndex = (prevIndices[postId] + 1) % images.length;
       return { ...prevIndices, [postId]: newIndex };
     });
@@ -120,68 +120,48 @@ const ProfilePage = () => {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-  if (!profile) return <p>No profile data available</p>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
     <div className="profile-page">
-      <div className="profile-info">
-        <img
-          className="profile-avatar"
-          src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
-          alt="Profile Avatar"
-        />
-        <h2 className="profile-name">{profile.name}</h2>
-        <p className="profile-username">{profile.user_name}</p>
-        <p className="profile-bio">{profile.bio}</p>
-        <p className="profile-unique-id">@{profile.unique_id}</p>
-        <p className="profile-location">{profile.location}</p>
-        <div className="profile-stats">
-          <div className="profile-stat">{profile.following} Following</div>
-          <div className="profile-stat">Flashcards: {flashcards.length}</div>
-          <div className="profile-stat">Posts: {posts.length}</div>
+      <header>
+        <h1>&larr;</h1>
+      </header>
+      <div className="profile">
+        {profile && (
+          <>
+            <img className="avatar"
+             src={`${API_ROUTES.displayImg}/${profile.avatar || 'default-avatar-url'}`} 
+             alt="avatar"
+             />
+            <h2>{profile.user_name}</h2>
+            <p>@{profile.unique_id}</p>
+            <p>{profile.location}</p>
+            <div className="stats">
+              <div> Fans</div>
+              <div> Following</div>
+              <div> Posts</div>
+              <div> Stories</div>
+            </div>
+            <div className="actions">
+              <button className="follow">Follow</button>
+              <button className="message">Message</button>
+            </div>
+          </>
+        )}
+      </div>
+      <div className="media">
+        <div className="tabs">
+          <button onClick={() => setActiveTab('Flashcards')}>Flashcards</button>
+          <button onClick={() => setActiveTab('Quizzes')}>Quizzes</button>
+          <button onClick={() => setActiveTab('EduScribe')}>EduScribe</button>
+          <button onClick={() => setActiveTab('Posts')}>Posts</button>
         </div>
-        <div className="profile-actions">
-          
+        <div className="photos">
+          {/* Render photos based on activeTab */}
         </div>
       </div>
-      <div className="profile-media">
-        <div className="profile-tabs">
-          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
-            <button
-              key={tab}
-              className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-          <div className="profile-tab-underline" style={{ width: `${100 / 4}%`, left: `${['Flashcards', 'Quizzes', 'EduScribe', 'Posts'].indexOf(activeTab) * (100 / 4)}%` }} />
-        </div>
-        <div className="profile-content">
-          {activeTab === 'Flashcards' && flashcards.map((card, index) => (
-            <div key={index} className="card flashcard-item">
-              <Link to={`/note/view/${card.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <div className="card-content">{card.title}</div>
-              </Link>
-            </div>
-          ))}
-          {activeTab === 'Quizzes' && quizzes.map((quiz, index) => (
-            <div key={index} className="card quiz-item">
-              <Link to={`/quiz/${quiz.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <div className="card-content">{quiz.title}</div>
-              </Link>
-            </div>
-          ))}
-          {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
-            <div key={index} className="card edu-scribe-item">
-              <div className="card-content">{item.title}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <FooterNav />
     </div>
   );
 };
