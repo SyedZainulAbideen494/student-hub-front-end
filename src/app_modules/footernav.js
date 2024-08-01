@@ -103,18 +103,7 @@ const FooterNav = () => {
                         <span className="btn-label">Music</span>
                     </button>
                 </Link>
-                <Link to='/profile' style={{textDecoration: 'none'}}>
-                    <button className="nav-btn-footer-nav">
-                        <FaUser className="icon-footer-nav" />
-                        <span className="btn-label">Profile</span>
-                    </button>
-                </Link>
-                <Link to='/social-feed' style={{textDecoration: 'none'}}>
-                    <button className="nav-btn-footer-nav">
-                        <FaStream className="icon-footer-nav" />
-                        <span className="btn-label">Social Feed</span>
-                    </button>
-                </Link>
+
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>
                     <FaSignOutAlt className="icon-footer-nav" />
                     <span className="btn-label">Logout</span>
