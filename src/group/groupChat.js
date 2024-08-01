@@ -257,14 +257,20 @@ const DiscussionBoard = () => {
                                     <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
                                 </div>
                                 <div className="message-content">
-                                    <p>{message.type === 'flashcard' ? (
-                                        <button onClick={() => handleOpenFlashcard(message.content)}>
-                                            {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
-                                        </button>
-                                    ) : (
-                                        message.content
-                                    )}</p>
-                                </div>
+    <p>
+        {message.type === 'flashcard' ? (
+            <button onClick={() => handleOpenFlashcard(message.content)} className='flashcard-btn'>
+                {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
+            </button>
+        ) : message.type === 'quiz' ? (
+            <button onClick={() => handleOpenQuiz(message.content)} className='flashcard-btn'>
+                {'Quiz'}
+            </button>
+        ) : (
+            message.content
+        )}
+    </p>
+</div>
                                 {message.replies && message.replies.length > 0 && (
                                     <div className="replies-container">
                                         {message.replies.map(reply => (
