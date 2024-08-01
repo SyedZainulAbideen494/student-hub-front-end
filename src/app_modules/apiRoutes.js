@@ -1,4 +1,4 @@
-const API_URL = 'https://fe81123bc10875c16089925f256b2ae6.serveo.net';
+const API_URL = 'https://000c0fa82d88b2a9397d44d14c6f0391.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -45,6 +45,4 @@ export const API_ROUTES = {
   refreshSpotifyToken: `${API_URL}/refresh_token`,
   saveNotificationSubscriptiopn: `${API_URL}/save-subscription`,
   fetchUserProfile: `${API_URL}/api/profile/user`,
-  addPost: `${API_URL}/api/add/posts`,
-  getUserPosts: `${API_URL}/getPosts/user`
 }
