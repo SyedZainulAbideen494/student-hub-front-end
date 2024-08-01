@@ -1,4 +1,4 @@
-const API_URL = 'https://888bbb294a57dc0f663d7581ab1f27f2.serveo.net';
+const API_URL = 'http://localhost:8080';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -45,4 +45,8 @@ export const API_ROUTES = {
   refreshSpotifyToken: `${API_URL}/refresh_token`,
   saveNotificationSubscriptiopn: `${API_URL}/save-subscription`,
   fetchUserProfile: `${API_URL}/api/profile/user`,
+  fetchAllEduscribes: `${API_URL}/api/eduscribes`,
+  handleLikeEduscribes: `${API_URL}/api/eduscribes/like`,
+  fetchEducribeComments: `${API_URL}/api/eduscribes/comments`,
+  addEduscribeComment: `${API_URL}/api/eduscribes/add/comment`
 }

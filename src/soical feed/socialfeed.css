@@ -1,154 +1,48 @@
-.social-feed-page {
-    padding: 20px;
-    margin-bottom: 50px;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .header-title {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .header-search-icon {
-    font-size: 14px;
-  }
-  
-  .stories-container {
-    overflow-x: scroll;
-    display: flex;
-  }
-  
-  .stories {
-    display: flex;
-    
-  }
-  
-  .story {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 10px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .story-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 3px solid #f0f0f0;
-  }
-  
-  .story-name {
-    margin-top: 5px;
-    font-size: 12px;
-    color: #555;
-  }
-  
-  .story.add-story {
-    width: 60px;
-    height: 60px;
-    background: #7161ef;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    margin-right: 10px;
-  }
-  
-  .new-post {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .new-post-avatar {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 30px;
-    background: #ccc;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .new-post-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    border: 1px solid #ccc;
-  }
-  
-  .posts {
-    margin-top: 20px;
-  }
-  
-  .post {
-    margin: 20px 0;
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .post-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .post-user {
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  .post-time {
-    font-size: 12px;
-    color: #888;
-  }
-  
-  .post-content {
-    margin: 10px 0;
-  }
-  
-  .post-image {
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-  
-  .post-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    font-size: 14px;
-    color: #888;
-  }
-  
-  .post-likes,
-  .post-comments,
-  .post-shares {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-  }
-  
-  .post-likes svg,
-  .post-comments svg,
-  .post-shares svg {
-    margin-right: 5px;
-  }
+.social-media-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-social-media {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.app--social-media {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile-avatar-social-media {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.tabs-social-media {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.tab-button-social-media {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-button-social-media.active {
+  border-bottom: 2px solid #007bff;
+}
