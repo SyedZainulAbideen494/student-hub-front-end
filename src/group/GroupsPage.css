@@ -6,49 +6,49 @@
     padding: 40px;
     box-sizing: border-box;
     min-height: 100vh;
-    background-color: #f0f2f5; /* Light gray background for a modern look */
+    background-color: #fafafa; /* WhatsApp's light gray background */
     overflow: auto;
-    font-family: 'Roboto', sans-serif; /* Professional font */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* WhatsApp-like font */
 }
 
 /* Styling for the group creation form */
 .group-creation-form {
     background-color: #ffffff;
-    border-radius: 12px; /* Increased border-radius for curvier edges */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow */
-    padding: 30px;
+    border-radius: 16px; /* More rounded edges for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean appearance */
+    padding: 20px;
     width: 100%;
-    max-width: 700px;
+    max-width: 500px; /* Smaller width for a more WhatsApp-like form */
     margin-bottom: 30px;
-    transition: box-shadow 0.3s ease; /* Smooth shadow transition on hover */
+    transition: box-shadow 0.3s ease;
 }
 
 .group-creation-form:hover {
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 .form-title {
-    margin-bottom: 25px;
-    font-size: 28px;
+    margin-bottom: 20px;
+    font-size: 24px;
     color: #333;
-    font-weight: 500;
+    font-weight: 600; /* Bolder title */
 }
 
 /* Styling for the input fields */
 .group-name-input,
 .group-description-input {
     width: calc(100% - 20px);
-    padding: 15px;
+    padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
-    border-radius: 8px; /* More rounded corners */
+    border-radius: 8px;
     box-sizing: border-box;
-    font-size: 16px; /* Larger font for better readability */
+    font-size: 16px;
 }
 
 .group-name-input:focus,
 .group-description-input:focus {
-    border-color: #7161ef;
+    border-color: #34b7f1; /* WhatsApp-like blue */
     outline: none;
 }
 
@@ -60,45 +60,44 @@
 }
 
 .public-checkbox {
-    margin-right: 12px;
-    accent-color: #7161ef;
+    margin-right: 10px;
 }
 
 .checkbox-label {
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
 }
 
 /* Styling for the create group button */
 .group-creation-button {
-    background-color: #7161ef;
+    background-color: #34b7f1; /* WhatsApp-like blue */
     color: #ffffff;
     border: none;
-    border-radius: 8px; /* More rounded corners */
+    border-radius: 8px;
     padding: 12px 20px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .group-creation-button:hover {
-    background-color: #5a50d6;
+    background-color: #009688; /* Slightly darker shade */
 }
 
 /* Styling for the groups list section */
 .groups-list-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 500px; /* Adjusted width */
     overflow-y: auto;
     max-height: 500px;
     margin-bottom: 30px;
 }
 
 .groups-list-title {
-    font-size: 24px;
+    font-size: 20px;
     color: #333;
     margin-bottom: 15px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .groups-list {
@@ -109,33 +108,33 @@
 
 .group-item {
     background-color: #ffffff;
-    border-radius: 12px; /* Increased border-radius for curvier edges */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 15px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: box-shadow 0.3s ease; /* Smooth shadow transition on hover */
+    transition: box-shadow 0.3s ease;
 }
 
 .group-item:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .join-group-button {
-    background-color: #7161ef;
+    background-color: #34b7f1; /* WhatsApp-like blue */
     color: #ffffff;
     border: none;
-    border-radius: 8px; /* More rounded corners */
-    padding: 8px 16px;
+    border-radius: 8px;
+    padding: 6px 12px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease;
 }
 
 .join-group-button:hover {
-    background-color: #5a50d6;
+    background-color: #009688; /* Slightly darker shade */
 }
 
 /* Responsive styling */
@@ -149,11 +148,11 @@
 @media (max-width: 480px) {
     .form-title,
     .groups-list-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .group-creation-button,
     .join-group-button {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
