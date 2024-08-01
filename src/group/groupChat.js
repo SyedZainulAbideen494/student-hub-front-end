@@ -226,8 +226,8 @@ const DiscussionBoard = () => {
         }
     };
 
-    const handleGroupDetailsBtn = () => {
-        setShowModal(true);
+    const openGroupDetailsPage = () => {
+        navigate(`/group-details/${id}`); // Adjust the route as needed
     };
 
     const handleCloseModal = () => {
@@ -242,7 +242,7 @@ const DiscussionBoard = () => {
         <div className="group-chat">
             <div className="group-header">
                 <button className="header-btn" onClick={handleBackBtn}><FaArrowLeft /></button>
-                <h1 onClick={openModal}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
+                <h1 onClick={openGroupDetailsPage}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
             </div>
             {isMember === false ? (
                 <div className="not-a-member">
@@ -257,20 +257,14 @@ const DiscussionBoard = () => {
                                     <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
                                 </div>
                                 <div className="message-content">
-    <p>
-        {message.type === 'flashcard' ? (
-            <button onClick={() => handleOpenFlashcard(message.content)} className='flashcard-btn'>
-                {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
-            </button>
-        ) : message.type === 'quiz' ? (
-            <button onClick={() => handleOpenQuiz(message.content)} className='flashcard-btn'>
-                {'Quiz'}
-            </button>
-        ) : (
-            message.content
-        )}
-    </p>
-</div>
+                                    <p>{message.type === 'flashcard' ? (
+                                        <button onClick={() => handleOpenFlashcard(message.content)}>
+                                            {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
+                                        </button>
+                                    ) : (
+                                        message.content
+                                    )}</p>
+                                </div>
                                 {message.replies && message.replies.length > 0 && (
                                     <div className="replies-container">
                                         {message.replies.map(reply => (
@@ -294,6 +288,10 @@ const DiscussionBoard = () => {
                     </div>
                     <div className="message-input-container">
                         {replyToMessageId ? (
+                            <div className="reply-section">
+                                <button onClick={() => setReplyToMessageId(null)}>
+                                    <FaArrowLeft />
+                                </button>
                                 <input
                                     type="text"
                                     placeholder="Type your reply..."
@@ -301,6 +299,8 @@ const DiscussionBoard = () => {
                                     onChange={(e) => setReplyMessage(e.target.value)}
                                     ref={inputRef}
                                 />
+                                <button onClick={handleSendReply}>Send Reply</button>
+                            </div>
                         ) : (
                             <input
                                 type="text"

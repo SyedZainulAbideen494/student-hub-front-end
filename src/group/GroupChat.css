@@ -15,7 +15,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 90%;
   background-color: #fff;
   border-bottom: 1px solid #e6ecf0;
   z-index: 1000; /* Ensure it is above other content */
@@ -28,8 +28,9 @@
 
 .group-header h1 {
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
   cursor: pointer;
+  font-weight: 100;
   text-align: center;
   color: #333;
 }

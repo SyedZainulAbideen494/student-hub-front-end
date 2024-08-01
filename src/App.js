@@ -30,6 +30,7 @@ import NotificationComponent from "./notifications/NotificationComponent";
 import NotiPage from "./notifications/notiPage";
 import SocialFeed from "./soical feed/socialfeed";
 import ProfilePage from "./profile/ProfilePage";
+import GroupDetailsPage from "./group/GroupDetails";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
   {path: '/noti', element: <NotiPage/>},
   {path: '/social-feed', element: <SocialFeed/>},
   {path: '/profile', element: <ProfilePage/>},
+  {path: "/group-details/:id", element: <GroupDetailsPage />}
 ]);
 
 

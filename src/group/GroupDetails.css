@@ -1,133 +1,181 @@
-/* Modal Overlay */
-.modal-overlay-group-details {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; /* Ensure modal is on top of other content */
+/* Main Container */
+.group-detail-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
-/* Modal Content */
-.modal-content-group-details {
-    background: #ffffff; /* White background */
-    border-radius: 10px; /* Slightly rounded corners */
-    padding: 15px; /* Reduced padding */
-    max-width: 500px; /* Smaller width */
-    width: 90%; /* Responsive width */
-    max-height: 70vh; /* Smaller max height */
-    overflow-y: auto; /* Scroll if content overflows */
-    position: relative; /* For positioning close button */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Softer shadow */
+/* Header */
+.page-header {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    position: relative; /* For positioning the back button */
 }
 
-/* Close Button */
-.close-button-group-details {
+.page-header h1 {
+    font-size: 32px;
+    color: #333;
+    margin: 0;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Back Button */
+.back-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
+    top: 20px;
+    left: 20px;
+    background: #114375;
+    color: #ffffff;
     border: none;
-    font-size: 24px; /* Slightly smaller font size */
+    padding: 10px 15px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.close-button-group-details:hover {
-    color: #ff4d4d; /* Red color on hover */
-}
-
-/* Error Message */
-.error-message-group-details {
-    color: #d9534f; /* Bootstrap red for errors */
-    margin-top: 15px; /* Reduced margin */
-    font-size: 14px;
-}
-
-/* Invite Button */
-.invite-button-group-details {
-    background-color: #007bff; /* Bootstrap blue */
-    color: #ffffff; /* White text */
-    border: none;
-    padding: 10px 20px; /* Reduced padding */
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px; /* Slightly smaller font size */
-    margin-top: 15px; /* Reduced margin */
+    font-size: 16px;
     transition: background-color 0.3s ease;
+    z-index: 1000; /* Ensure it's on top of other content */
 }
 
-.invite-button-group-details:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+.back-button:hover {
+    background-color: #429CF7;
 }
 
-/* Members List Heading */
-.members-heading {
-    margin-top: 15px; /* Reduced margin */
-    font-size: 18px; /* Slightly smaller font size */
-    color: #333333; /* Dark gray for heading */
-    border-bottom: 1px solid #f1f1f1; /* Light border */
-    padding-bottom: 8px; /* Reduced padding */
+/* Card Styles */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
-/* Members Container */
+/* Section Headings */
+.section-heading {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Members Section */
 .members-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px; /* Reduced gap */
-    margin-top: 10px; /* Reduced margin */
+    gap: 20px;
 }
 
-/* Member Card */
 .member-card {
-    background: #ffffff; /* Very light gray background */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Reduced padding */
-    width: 100%; /* Full width */
-    max-width: 220px; /* Reduced width */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    max-width: 240px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
 }
 
 .member-card:hover {
-    transform: translateY(-6px); /* Slightly lift card on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Member Name */
 .member-name {
+    font-size: 18px;
+    color: #333;
     margin: 0;
-    font-size: 16px; /* Slightly smaller font size */
-    color: #333333; /* Dark gray text */
 }
 
-/* Member ID */
-.member-id {
-    font-size: 12px; /* Smaller font size */
-    color: #666666; /* Medium gray text */
+/* Invite Section */
+.invite-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Invite Heading */
-.invite-heading {
-    margin-top: 20px; /* Reduced margin */
-    font-size: 18px; /* Slightly smaller font size */
-    color: #333333; /* Dark gray for heading */
-    border-bottom: 1px solid #f1f1f1; /* Light border */
-    padding-bottom: 8px; /* Reduced padding */
+.invite-input {
+    width: 90%;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Input Styles */
-.modal-content-group-details input[type="text"] {
-    width: calc(100% - 20px); /* Full width minus padding */
-    padding: 10px; /* Reduced padding */
-    border: 1px solid #dcdcdc; /* Light gray border */
-    border-radius: 6px;
-    font-size: 14px; /* Slightly smaller font size */
-    margin-top: 10px; /* Reduced margin */
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+.invite-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.invite-button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.invite-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Success and Error Messages */
+.success-message {
+    color: #28a745;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Footer */
+.page-footer {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.page-footer .quote {
+    font-size: 18px;
+    color: #007bff;
+    margin: 0 0 10px;
+    font-weight: 600;
+}
+
+.page-footer .copyright {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
 }
