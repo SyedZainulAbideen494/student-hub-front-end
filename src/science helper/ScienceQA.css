@@ -1,0 +1,184 @@
+/* ScienceQA.css */
+
+.science-qa-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(to right, #ffffff, #f7f7f7);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .query-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+  
+  .fetch-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fetch-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  .keyboard-container {
+    margin-top: 20px;
+  }
+  
+  .keyboard-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .keyboard-button {
+    flex: 1 1 calc(20% - 10px);
+    margin: 5px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .keyboard-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  .loader-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+  }
+  
+  .loader-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .loader-content::before {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 80px;
+    border: 6px solid #4CAF50;
+    border-radius: 50%;
+    border-top: 6px solid transparent;
+    animation: spin 1.5s linear infinite;
+    margin: 0 auto;
+  }
+  
+  .loader-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-top: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: scroll 4s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .error-message {
+    color: #d9534f;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .pod-container {
+    margin-bottom: 20px;
+  }
+  
+  .pod-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .subpod-container {
+    margin-bottom: 10px;
+  }
+  
+  .subpod-text {
+    font-size: 16px;
+  }
+  
+  .subpod-image {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    .query-input, .fetch-button {
+      font-size: 16px;
+      padding: 12px;
+    }
+  
+    .keyboard-button {
+      font-size: 14px;
+      padding: 10px;
+      flex: 1 1 calc(25% - 10px);
+    }
+  
+    .loader-content::before {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .loader-text {
+      font-size: 14px;
+      margin-top: 15px;
+    }
+  }
