@@ -1,5 +1,3 @@
-/* mathPage.css */
-
 /* General Styles */
 .mathsolver-container {
     display: flex;
@@ -25,15 +23,24 @@
   
   .mathsolver-input-container {
     margin: 20px 0;
+    display: flex;
+    justify-content: center;
   }
   
   .mathsolver-input {
-    width: calc(100% - 100px);
+    width: 100%;
+    max-width: 500px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
     color: #333;
+    transition: border-color 0.3s;
+  }
+  
+  .mathsolver-input:focus {
+    border-color: #007bff;
+    outline: none;
   }
   
   .mathsolver-button {
@@ -45,10 +52,16 @@
     font-size: 1rem;
     cursor: pointer;
     margin-left: 10px;
+    transition: background-color 0.3s;
   }
   
   .mathsolver-button:hover {
     background-color: #0056b3;
+  }
+  
+  .mathsolver-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
   }
   
   .mathsolver-results {
@@ -62,6 +75,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 15px;
+    transition: box-shadow 0.3s;
+  }
+  
+  .mathsolver-result:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .mathsolver-result-title {
