@@ -2,137 +2,178 @@
 .mathsolver-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
     min-height: 100vh;
     background-color: #f9f9f9;
     color: #333;
-    font-family: Arial, sans-serif;
-  }
-  
-  .mathsolver-header {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+}
+
+.mathsolver-header {
     padding: 20px;
     text-align: center;
     background-color: #ffffff;
     border-bottom: 1px solid #ddd;
-  }
-  
-  .mathsolver-title {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mathsolver-title {
     margin: 0;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .mathsolver-input-container {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+.mathsolver-input-container {
     margin: 20px 0;
     display: flex;
-    justify-content: center;
-  }
-  
-  .mathsolver-input {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.mathsolver-input {
     width: 100%;
-    max-width: 500px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    color: #333;
-    transition: border-color 0.3s;
-  }
-  
-  .mathsolver-input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .mathsolver-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s;
-  }
-  
-  .mathsolver-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .mathsolver-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  
-  .mathsolver-results {
-    padding: 20px;
-  }
-  
-  .mathsolver-result {
-    background-color: #fff;
+    max-width: 600px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 15px;
-    transition: box-shadow 0.3s;
-  }
-  
-  .mathsolver-result:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .mathsolver-result-title {
-    margin: 0;
     font-size: 1.2rem;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.mathsolver-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+.mathsolver-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.mathsolver-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.mathsolver-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.mathsolver-results {
+    padding: 20px;
+    overflow: auto; /* Allow scrolling if content exceeds boundaries */
+}
+
+.mathsolver-result {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: box-shadow 0.3s;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.mathsolver-result:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mathsolver-result-title {
+    margin: 0;
+    font-size: 1.5rem;
     color: #007bff;
-  }
-  
-  .mathsolver-result-content {
+}
+
+.mathsolver-result-content {
     white-space: pre-wrap;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #333;
     margin: 10px 0;
-  }
-  
-  .mathsolver-result-image {
+    word-wrap: break-word; /* Allow long words to break and fit within the container */
+}
+
+.mathsolver-result-image {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 10px 0;
-  }
-  
-  .mathsolver-no-images {
+}
+
+.mathsolver-no-images {
     color: #888;
     font-style: italic;
-  }
-  
-  .mathsolver-no-results {
+}
+
+.mathsolver-no-results {
     text-align: center;
     color: #888;
-  }
-  
-  /* Mobile Responsiveness */
-  @media (max-width: 768px) {
+}
+
+/* Keyboard Styles */
+.mathsolver-keyboard {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.mathsolver-key {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.mathsolver-key:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+.mathsolver-key:active {
+    background-color: #ccc;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
     .mathsolver-input {
-      width: calc(100% - 50px);
+        width: calc(100% - 40px);
     }
-  
+
     .mathsolver-button {
-      width: 100%;
-      margin-top: 10px;
+        width: 100%;
+        margin-top: 10px;
     }
-  
+
     .mathsolver-result {
-      padding: 10px;
+        padding: 15px;
     }
-  
+
     .mathsolver-result-title {
-      font-size: 1rem;
+        font-size: 1.2rem;
     }
-  
+
     .mathsolver-result-content {
-      font-size: 0.9rem;
+        font-size: 1rem;
     }
-  }
+}

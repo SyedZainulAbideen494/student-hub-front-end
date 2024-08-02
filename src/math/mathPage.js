@@ -24,6 +24,10 @@ const MathSolver = () => {
     }
   };
 
+  const handleKeyPress = (symbol) => {
+    setQuery(prev => prev + symbol);
+  };
+
   return (
     <div className="mathsolver-container">
       <header className="mathsolver-header">
@@ -39,6 +43,13 @@ const MathSolver = () => {
           <button className="mathsolver-button" onClick={handleCalculate} disabled={loading}>
             {loading ? 'Calculating...' : 'Calculate'}
           </button>
+        </div>
+        <div className="mathsolver-keyboard">
+          {['√', '^', 'π', 'e', '(', ')'].map((key) => (
+            <div key={key} className="mathsolver-key" onClick={() => handleKeyPress(key)}>
+              {key}
+            </div>
+          ))}
         </div>
         {loading ? (
           <MathLoader />
