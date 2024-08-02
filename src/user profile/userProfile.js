@@ -24,11 +24,11 @@ const UserProfile = () => {
         const { data } = await axios.get(`${API_ROUTES.profileView}/${id}`);
         setProfile(data);
         setLoading(false);
-        
+
         // Check if the current user is following this profile
         if (token) {
           const response = await axios.post(`${API_ROUTES.isFollowing}`, { id, token });
-          setIsFollowing(response.data.isFollowing); // Corrected access to response data
+          setIsFollowing(response.data.following); // Corrected access to response data
         }
       } catch (err) {
         console.error('Error fetching profile data:', err);
@@ -101,17 +101,12 @@ const UserProfile = () => {
         <p className="profile-unique-id-user-profile-guest">@{profile.unique_id}</p>
         <p className="profile-location-user-profile-guest">{profile.location}</p>
         <button 
-  className="follow-button-user-profile-guest" 
-  onClick={isFollowing ? handleUnfollow : handleFollow}
->
-  {isFollowing ? <FaUserMinus className="react-icon" /> : <FaUserPlus className="react-icon" />} 
-  {isFollowing ? 'Unfollow' : 'Follow'}
-</button>
-        <div className="profile-stats-user-profile-guest">
-          <div className="profile-stat-user-profile-guest">{profile.following} Following</div>
-          <div className="profile-stat-user-profile-guest">Flashcards: {flashcards.length}</div>
-          <div className="profile-stat-user-profile-guest">Posts: {eduscribes.length}</div>
-        </div>
+          className="follow-button-user-profile-guest" 
+          onClick={isFollowing ? handleUnfollow : handleFollow}
+        >
+          {isFollowing ? <FaUserMinus className="react-icon" /> : <FaUserPlus className="react-icon" />} 
+          {isFollowing ? 'Unfollow' : 'Follow'}
+        </button>
       </div>
       <div className="profile-media-user-profile-guest">
         <div className="profile-tabs-user-profile-guest">
