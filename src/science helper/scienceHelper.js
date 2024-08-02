@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ScienceQA.css';
+import FooterNav from '../app_modules/footernav';
 
 const ScienceQA = () => {
   const [query, setQuery] = useState('');
@@ -82,6 +83,7 @@ const ScienceQA = () => {
       )}
       {error && <p className="error-message">{error}</p>}
       {result && renderPods(result.pods)}
+      <FooterNav/>
     </div>
   );
 };

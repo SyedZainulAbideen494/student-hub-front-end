@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser } from 'react-icons/fa';
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { GiMaterialsScience } from 'react-icons/gi'; // Import a relevant science icon
 import './footer-nav.css';
 import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
@@ -103,12 +104,6 @@ const FooterNav = () => {
                         <span className="btn-label">Pomodoro</span>
                     </button>
                 </Link>
-                <Link to='/math/solver' style={{textDecoration: 'none'}}>
-                <button className='nav-btn-footer-nav'>
-                    <FaCalculator className="icon-footer-nav" />
-                    <span className="btn-label">Math Solver</span>
-                </button>
-            </Link>
                 <Link to='/music' style={{textDecoration: 'none'}}>
                     <button className="nav-btn-footer-nav">
                         <FaMusic className="icon-footer-nav" />
@@ -125,6 +120,12 @@ const FooterNav = () => {
                     <button className="nav-btn-footer-nav">
                         <FaUser className="icon-footer-nav" />
                         <span className="btn-label">Profile</span>
+                    </button>
+                </Link>
+                <Link to='/science/helper' style={{textDecoration: 'none'}}>
+                    <button className="nav-btn-footer-nav">
+                        <GiMaterialsScience className="icon-footer-nav" />
+                        <span className="btn-label">Science Helper</span>
                     </button>
                 </Link>
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>
