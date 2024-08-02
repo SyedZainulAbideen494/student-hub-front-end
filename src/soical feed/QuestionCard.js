@@ -3,6 +3,7 @@ import axios from 'axios';
 import SuccessModal from '../app_modules/SuccessModal';
 import './QuestionCard.css';
 import { FaImage } from 'react-icons/fa';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const QuestionCard = ({ onQuestionSubmit }) => {
   const [question, setQuestion] = useState('');
@@ -26,7 +27,7 @@ const QuestionCard = ({ onQuestionSubmit }) => {
       if (image) formData.append('image', image);
       formData.append('token', token);
   
-      const response = await axios.post('http://localhost:8080/api/add/eduscribes', formData, {
+      const response = await axios.post(API_ROUTES.addEduscribe, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
   

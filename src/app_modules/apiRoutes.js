@@ -51,4 +51,5 @@ export const API_ROUTES = {
   addEduscribeComment: `${API_URL}/api/eduscribes/add/comment`,
   profileView: `${API_URL}/api/profile/view/guest`,
   profileItems: `${API_URL}/api/user/profile/items`,
+  addEduscribe: `${API_URL}/api/add/eduscribes`
 }
