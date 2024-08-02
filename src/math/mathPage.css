@@ -2,6 +2,7 @@
 .mathsolver-container {
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
     min-height: 100vh;
     background-color: #f9f9f9;
     color: #333;
