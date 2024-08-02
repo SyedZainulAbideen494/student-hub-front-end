@@ -32,6 +32,7 @@ import SocialFeed from "./soical feed/socialfeed";
 import ProfilePage from "./profile/ProfilePage";
 import GroupDetailsPage from "./group/GroupDetails";
 import CommentsPage from "./soical feed/commentsPage";
+import UsersProfile from "./user profile/userProfile";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -57,7 +58,8 @@ const router = createBrowserRouter([
   {path: '/social-feed', element: <SocialFeed/>},
   {path: '/profile', element: <ProfilePage/>},
   {path: "/group-details/:id", element: <GroupDetailsPage />},
-  {path: '/comments/:id', element: <CommentsPage/>}
+  {path: '/comments/:id', element: <CommentsPage/>},
+  {path: '/profile/:id', element: <UsersProfile/>}
 ]);
 
 

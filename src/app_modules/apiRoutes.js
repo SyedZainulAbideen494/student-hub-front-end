@@ -1,4 +1,4 @@
-const API_URL = 'https://3034374d9f9f6fe1312b0b98663e7617.serveo.net';
+const API_URL = 'http://localhost:8080';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -48,5 +48,7 @@ export const API_ROUTES = {
   fetchAllEduscribes: `${API_URL}/api/eduscribes`,
   handleLikeEduscribes: `${API_URL}/api/eduscribes/like`,
   fetchEducribeComments: `${API_URL}/api/eduscribes/comments`,
-  addEduscribeComment: `${API_URL}/api/eduscribes/add/comment`
+  addEduscribeComment: `${API_URL}/api/eduscribes/add/comment`,
+  profileView: `${API_URL}/api/profile/view/guest`,
+  profileItems: `${API_URL}/api/user/profile/items`,
 }
