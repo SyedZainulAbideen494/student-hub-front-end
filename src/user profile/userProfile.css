@@ -163,25 +163,68 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.profile-follow-button-user-profile-guest {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007bff;
+
+/* Base styles for the button */
+.follow-button-user-profile-guest {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
+    background: linear-gradient(to right, #6a1b9a, #8e2de2); /* Purple to blue gradient */
+    color: white;
+    font-size: 14px;
+    font-weight: normal;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    position: relative; /* Required for ripple effect */
   }
   
-  .profile-follow-button-user-profile-guest.following {
-    background-color: #6c757d;
+  /* Icon styling */
+  .follow-button-user-profile-guest .react-icon {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
   }
   
-  .profile-follow-button-user-profile-guest:hover {
-    background-color: #0056b3;
+  /* Hover effect */
+  .follow-button-user-profile-guest:hover {
+    background: linear-gradient(to right, #5c2a91, #7e3adf); /* Slightly darker gradient */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .profile-follow-button-user-profile-guest.following:hover {
-    background-color: #5a6268;
+  /* Ripple effect */
+  .follow-button-user-profile-guest:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.4s, height 0.4s, opacity 0.4s;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  
+  /* Ripple animation on click */
+  .follow-button-user-profile-guest:active:after {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    transition: 0s;
+  }
+  
+  /* Adding styles for icons */
+  .follow-button-user-profile-guest .react-icon {
+    font-size: 16px; /* Adjust icon size as needed */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Animated icon on hover */
+  .follow-button-user-profile-guest:hover .react-icon {
+    transform: scale(1.2);
   }

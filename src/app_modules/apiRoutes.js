@@ -51,5 +51,8 @@ export const API_ROUTES = {
   addEduscribeComment: `${API_URL}/api/eduscribes/add/comment`,
   profileView: `${API_URL}/api/profile/view/guest`,
   profileItems: `${API_URL}/api/user/profile/items`,
-  addEduscribe: `${API_URL}/api/add/eduscribes`
+  addEduscribe: `${API_URL}/api/add/eduscribes`,
+  unfollow: `${API_URL}/api/unfollow`,
+  follow: `${API_URL}/api/follow`,
+  isFollowing: `${API_URL}/api/isFollowing`
 }

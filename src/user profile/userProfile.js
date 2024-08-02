@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
-import { FaThumbsUp, FaComment } from 'react-icons/fa';
+import { FaThumbsUp, FaComment, FaUserPlus, FaUserMinus } from 'react-icons/fa';
 import './userProfile.css';
 import FooterNav from '../app_modules/footernav';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -15,7 +15,8 @@ const UserProfile = () => {
   const [flashcards, setFlashcards] = useState([]);
   const [quizzes, setQuizzes] = useState([]);
   const [eduscribes, setEduscribes] = useState([]);
-
+  const [isFollowing, setIsFollowing] = useState(false);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -23,6 +24,12 @@ const UserProfile = () => {
         const { data } = await axios.get(`${API_ROUTES.profileView}/${id}`);
         setProfile(data);
         setLoading(false);
+        
+        // Check if the current user is following this profile
+        if (token) {
+          const response = await axios.post(`${API_ROUTES.isFollowing}`, { id, token });
+          setIsFollowing(response.data.isFollowing); // Corrected access to response data
+        }
       } catch (err) {
         console.error('Error fetching profile data:', err);
         setError('Failed to fetch profile data');
@@ -31,11 +38,10 @@ const UserProfile = () => {
     };
 
     fetchProfile();
-  }, [id]);
+  }, [id, token]);
 
   useEffect(() => {
     const fetchDataForActiveTab = async () => {
-      const token = localStorage.getItem('token');
       if (!token) return;
 
       try {
@@ -56,9 +62,25 @@ const UserProfile = () => {
     };
 
     fetchDataForActiveTab();
-  }, [activeTab, id]);
+  }, [activeTab, id, token]);
 
-
+  const handleFollow = async () => {
+    try {
+      await axios.post(`${API_ROUTES.follow}`, { id, token });
+      setIsFollowing(true);
+    } catch (err) {
+      console.error('Error following user:', err);
+    }
+  };
+  
+  const handleUnfollow = async () => {
+    try {
+      await axios.post(`${API_ROUTES.unfollow}`, { id, token });
+      setIsFollowing(false);
+    } catch (err) {
+      console.error('Error unfollowing user:', err);
+    }
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -72,17 +94,24 @@ const UserProfile = () => {
           src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
           alt="Profile Avatar"
         />
+        
         <h2 className="profile-name-user-profile-guest">{profile.name}</h2>
         <p className="profile-username-user-profile-guest">{profile.user_name}</p>
         <p className="profile-bio-user-profile-guest">{profile.bio}</p>
         <p className="profile-unique-id-user-profile-guest">@{profile.unique_id}</p>
         <p className="profile-location-user-profile-guest">{profile.location}</p>
+        <button 
+  className="follow-button-user-profile-guest" 
+  onClick={isFollowing ? handleUnfollow : handleFollow}
+>
+  {isFollowing ? <FaUserMinus className="react-icon" /> : <FaUserPlus className="react-icon" />} 
+  {isFollowing ? 'Unfollow' : 'Follow'}
+</button>
         <div className="profile-stats-user-profile-guest">
           <div className="profile-stat-user-profile-guest">{profile.following} Following</div>
           <div className="profile-stat-user-profile-guest">Flashcards: {flashcards.length}</div>
           <div className="profile-stat-user-profile-guest">Posts: {eduscribes.length}</div>
         </div>
-    
       </div>
       <div className="profile-media-user-profile-guest">
         <div className="profile-tabs-user-profile-guest">

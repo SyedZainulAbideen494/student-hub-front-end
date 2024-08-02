@@ -16,7 +16,7 @@ const QuestionCard = ({ onQuestionSubmit }) => {
   };
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]); // Save the file object
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async () => {
@@ -34,7 +34,6 @@ const QuestionCard = ({ onQuestionSubmit }) => {
       setMessage('Eduscribe submitted successfully!');
       setModalVisible(true);
   
-      // Hide the modal after 3 seconds
       setTimeout(() => {
         setModalVisible(false);
       }, 3000);
@@ -48,7 +47,6 @@ const QuestionCard = ({ onQuestionSubmit }) => {
       setMessage('Eduscribe submitted successfully!');
       setModalVisible(true);
   
-      // Hide the modal after 3 seconds
       setTimeout(() => {
         setModalVisible(false);
       }, 3000);
@@ -58,26 +56,25 @@ const QuestionCard = ({ onQuestionSubmit }) => {
   };
 
   return (
-    <div className="question-card-social-media">
-      <input
-        type="text"
+    <div className="question-card">
+      <textarea
         placeholder="Share your question..."
         value={question}
         onChange={handleQuestionChange}
-        className="question-input-social-media"
+        className="question-input"
       />
-      <div className="question-actions-social-media">
+      <div className="question-actions">
         <label className="upload-icon-container">
           <input
             type="file"
             accept="image/*"
             onChange={handleImageChange}
             className="upload-input"
-            style={{display: 'none'}}
+            style={{ display: 'none' }}
           />
-          <span className="upload-icon"><FaImage/></span>
+          <span className="upload-icon"><FaImage /></span>
         </label>
-        <button className="send-button-social-media" onClick={handleSubmit}>Send</button>
+        <button className="send-button" onClick={handleSubmit}>Send</button>
       </div>
       <SuccessModal visible={modalVisible} message={message} />
     </div>
