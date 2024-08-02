@@ -6,7 +6,7 @@ import './eduScribe.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 
-const EduScribe = () => {
+const EduScribe = ({ activeTab }) => { // Accept activeTab as a prop
   const [eduscribes, setEduscribes] = useState([]);
   const [liked, setLiked] = useState({});
   const [commentInput, setCommentInput] = useState({});
@@ -14,31 +14,33 @@ const EduScribe = () => {
 
   useEffect(() => {
     const fetchEduscribes = async () => {
-        try {
-          const token = localStorage.getItem('token');
-          if (!token) {
-            throw new Error('User not authenticated');
-          }
-      
-          const { data } = await axios.get(API_ROUTES.fetchAllEduscribes, {
-            headers: {
-              Authorization: token
-            }
-          });
-          setEduscribes(data);
-      
-          // Set initial liked state
-          const likedState = {};
-          data.forEach(eduscribe => {
-            likedState[eduscribe.id] = eduscribe.isLiked > 0;
-          });
-          setLiked(likedState);
-        } catch (error) {
-          console.error('Error fetching Eduscribes:', error);
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('User not authenticated');
         }
-      };
+    
+        const { data } = await axios.get(API_ROUTES.fetchAllEduscribes, {
+          headers: {
+            Authorization: token
+          },
+          params: { tab: activeTab } // Pass the activeTab as a query parameter
+        });
+        setEduscribes(data);
+    
+        // Set initial liked state
+        const likedState = {};
+        data.forEach(eduscribe => {
+          likedState[eduscribe.id] = eduscribe.isLiked > 0;
+        });
+        setLiked(likedState);
+      } catch (error) {
+        console.error('Error fetching Eduscribes:', error);
+      }
+    };
+
     fetchEduscribes();
-  }, []);
+  }, [activeTab]); // Dependency array includes activeTab
 
   const handleLike = async (id) => {
     try {
@@ -58,8 +60,6 @@ const EduScribe = () => {
   const handleCommentChange = (id, value) => {
     setCommentInput((prev) => ({ ...prev, [id]: value }));
   };
-
-
 
   const goToCommentsPage = (id) => {
     navigate(`/comments/${id}`);
@@ -95,16 +95,16 @@ const EduScribe = () => {
             />
           )}
           <div className="eduscribe-actions">
-          <button 
-  className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
-  onClick={() => handleLike(eduscribe.id)}
->
-  <FaRegThumbsUp 
-    className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
-    size={20}
-  />
-  <span>Like</span>
-</button>
+            <button 
+              className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
+              onClick={() => handleLike(eduscribe.id)}
+            >
+              <FaRegThumbsUp 
+                className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
+                size={20}
+              />
+              <span>Like</span>
+            </button>
             <button 
               className="eduscribe-action-button"
               onClick={() => goToCommentsPage(eduscribe.id)}

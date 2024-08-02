@@ -137,48 +137,8 @@ const ProfilePage = () => {
         <p className="profile-bio">{profile.bio}</p>
         <p className="profile-unique-id">@{profile.unique_id}</p>
         <p className="profile-location">{profile.location}</p>
-        <div className="profile-stats">
-          <div className="profile-stat">{profile.following} Following</div>
-          <div className="profile-stat">Flashcards: {flashcards.length}</div>
-          <div className="profile-stat">Posts: {posts.length}</div>
-        </div>
         <div className="profile-actions">
           
-        </div>
-      </div>
-      <div className="profile-media">
-        <div className="profile-tabs">
-          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
-            <button
-              key={tab}
-              className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              {tab}
-            </button>
-          ))}
-          <div className="profile-tab-underline" style={{ width: `${100 / 4}%`, left: `${['Flashcards', 'Quizzes', 'EduScribe', 'Posts'].indexOf(activeTab) * (100 / 4)}%` }} />
-        </div>
-        <div className="profile-content">
-          {activeTab === 'Flashcards' && flashcards.map((card, index) => (
-            <div key={index} className="card flashcard-item">
-              <Link to={`/note/view/${card.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <div className="card-content">{card.title}</div>
-              </Link>
-            </div>
-          ))}
-          {activeTab === 'Quizzes' && quizzes.map((quiz, index) => (
-            <div key={index} className="card quiz-item">
-              <Link to={`/quiz/${quiz.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                <div className="card-content">{quiz.title}</div>
-              </Link>
-            </div>
-          ))}
-          {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
-            <div key={index} className="card edu-scribe-item">
-              <div className="card-content">{item.title}</div>
-            </div>
-          ))}
         </div>
       </div>
       <FooterNav />
