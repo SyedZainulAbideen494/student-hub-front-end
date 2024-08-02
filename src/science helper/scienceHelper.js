@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './ScienceQA.css';
 import FooterNav from '../app_modules/footernav';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const ScienceQA = () => {
   const [query, setQuery] = useState('');
@@ -14,7 +15,7 @@ const ScienceQA = () => {
     setError(null);
 
     try {
-      const response = await axios.get('http://localhost:8080/wolfram/science', {
+      const response = await axios.get(API_ROUTES.scienceProblem, {
         params: { input: query }
       });
 
