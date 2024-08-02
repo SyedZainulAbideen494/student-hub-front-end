@@ -54,5 +54,6 @@ export const API_ROUTES = {
   addEduscribe: `${API_URL}/api/add/eduscribes`,
   unfollow: `${API_URL}/api/unfollow`,
   follow: `${API_URL}/api/follow`,
-  isFollowing: `${API_URL}/api/isFollowing`
+  isFollowing: `${API_URL}/api/isFollowing`,
+  solveMath: `${API_URL}/api/solve-math`
 }

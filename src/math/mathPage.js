@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './mathPage.css';
 import FooterNav from '../app_modules/footernav';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const MathSolver = () => {
   const [query, setQuery] = useState('');
@@ -9,7 +10,7 @@ const MathSolver = () => {
 
   const handleCalculate = async () => {
     try {
-      const response = await axios.post('http://localhost:8080/api/solve-math', { query });
+      const response = await axios.post(API_ROUTES.solveMath, { query });
       console.log('API Response:', response.data); // Log the API response
       setResults(response.data.results);
     } catch (error) {
