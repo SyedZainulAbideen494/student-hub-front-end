@@ -14,7 +14,7 @@ const ScienceQA = () => {
     setError(null);
 
     try {
-      const response = await axios.get('http://localhost:8080/wolfram', {
+      const response = await axios.get('http://localhost:8080/wolfram/science', {
         params: { input: query }
       });
 
