@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaThumbsUp, FaComment } from 'react-icons/fa';
+import { FaRegThumbsUp, FaComment } from 'react-icons/fa';
 import './eduScribe.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
@@ -95,16 +95,16 @@ const EduScribe = () => {
             />
           )}
           <div className="eduscribe-actions">
-            <button 
-              className="eduscribe-action-button" 
-              onClick={() => handleLike(eduscribe.id)}
-            >
-              <FaThumbsUp 
-                color={liked[eduscribe.id] ? 'blue' : 'grey'}
-                size={20}
-              />
-              <span>Like</span>
-            </button>
+          <button 
+  className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
+  onClick={() => handleLike(eduscribe.id)}
+>
+  <FaRegThumbsUp 
+    className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
+    size={20}
+  />
+  <span>Like</span>
+</button>
             <button 
               className="eduscribe-action-button"
               onClick={() => goToCommentsPage(eduscribe.id)}

@@ -32,9 +32,7 @@ const SocialFeed = () => {
     setQuestion(e.target.value);
   };
 
-  const handleQuestionSubmit = () => {
-    // Handle the question submit logic here
-  };
+
 
   useEffect(() => {
     fetchUserProfile();
