@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser } from 'react-icons/fa';
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './footer-nav.css';
@@ -79,6 +79,12 @@ const FooterNav = () => {
                         <span className="btn-label">Notes</span>
                     </button>
                 </Link>
+                <Link to='/math/solver' style={{textDecoration: 'none'}}>
+                    <button className="nav-btn-footer-nav">
+                        <FaCalculator className="icon-footer-nav" />
+                        <span className="btn-label">Math Solver</span>
+                    </button>
+                </Link>
                 <Link to='/quiz/home' style={{textDecoration: 'none'}}>
                     <button className="nav-btn-footer-nav">
                         <FaFlask className="icon-footer-nav" />
@@ -97,6 +103,12 @@ const FooterNav = () => {
                         <span className="btn-label">Pomodoro</span>
                     </button>
                 </Link>
+                <Link to='/math/solver' style={{textDecoration: 'none'}}>
+                <button className='nav-btn-footer-nav'>
+                    <FaCalculator className="icon-footer-nav" />
+                    <span className="btn-label">Math Solver</span>
+                </button>
+            </Link>
                 <Link to='/music' style={{textDecoration: 'none'}}>
                     <button className="nav-btn-footer-nav">
                         <FaMusic className="icon-footer-nav" />

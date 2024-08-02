@@ -33,6 +33,7 @@ import ProfilePage from "./profile/ProfilePage";
 import GroupDetailsPage from "./group/GroupDetails";
 import CommentsPage from "./soical feed/commentsPage";
 import UsersProfile from "./user profile/userProfile";
+import MathSolver from "./math/mathPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -59,7 +60,8 @@ const router = createBrowserRouter([
   {path: '/profile', element: <ProfilePage/>},
   {path: "/group-details/:id", element: <GroupDetailsPage />},
   {path: '/comments/:id', element: <CommentsPage/>},
-  {path: '/profile/:id', element: <UsersProfile/>}
+  {path: '/profile/:id', element: <UsersProfile/>},
+  {path: '/math/solver', element: <MathSolver/>}
 ]);
 
 
