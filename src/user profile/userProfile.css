@@ -172,7 +172,7 @@
     padding: 6px 12px;
     border: none;
     border-radius: 20px;
-    background: linear-gradient(to right, #6a1b9a, #8e2de2); /* Purple to blue gradient */
+    background: linear-gradient(to right, #b474f8, #5f69ff); /* Purple to blue gradient */
     color: white;
     font-size: 14px;
     font-weight: normal;
@@ -190,7 +190,7 @@
   
   /* Hover effect */
   .follow-button-user-profile-guest:hover {
-    background: linear-gradient(to right, #5c2a91, #7e3adf); /* Slightly darker gradient */
+    background: linear-gradient(to right, #b474f8, #5f69ff); /* Slightly darker gradient */
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
