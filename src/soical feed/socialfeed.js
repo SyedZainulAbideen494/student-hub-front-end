@@ -50,20 +50,7 @@ const SocialFeed = () => {
         className="profile-avatar-social-media"
       />
     </header>
-    <div className="tabs-social-media">
-      <button
-        className={`tab-button-social-media ${activeTab === 'ForYou' ? 'active' : ''}`}
-        onClick={() => handleTabSwitch('ForYou')}
-      >
-        For You
-      </button>
-      <button
-        className={`tab-button-social-media ${activeTab === 'Following' ? 'active' : ''}`}
-        onClick={() => handleTabSwitch('Following')}
-      >
-        Following
-      </button>
-    </div>
+   
   <QuestionCard/>
     <EduScribe/>
   </div>
