@@ -74,6 +74,21 @@ const ScienceQA = () => {
       <button onClick={fetchAnswer} className="fetch-button">
         Get Answer
       </button>
+      <div className="keyboard-container">
+        {keyboardKeys.map((row, rowIndex) => (
+          <div key={rowIndex} className="keyboard-row">
+            {row.map((key, keyIndex) => (
+              <button
+                key={keyIndex}
+                onClick={() => handleKeyPress(key)}
+                className="keyboard-button"
+              >
+                {key}
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
       {loading && (
         <div className="loader-modal">
           <div className="loader-content">
