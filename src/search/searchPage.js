@@ -85,7 +85,7 @@ const SearchPage = () => {
     }
 
     return (
-        <div>
+        <div style={{marginBottom: '90px'}}>
             <AppBar position="static" style={{ backgroundColor: '#fff', color: '#000', boxShadow: 'none' }}>
                 <Toolbar style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', padding: '10px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
