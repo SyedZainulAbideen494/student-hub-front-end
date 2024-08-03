@@ -76,6 +76,12 @@ const FooterNav = () => {
                         <span className="btn-label">Math Solver</span>
                     </button>
                 </Link>
+                <Link to='/science/helper' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/science/helper' ? 'active' : ''}`}>
+                        <GiMaterialsScience className="icon-footer-nav" />
+                        <span className="btn-label">Science Helper</span>
+                    </button>
+                </Link>
                 <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
@@ -110,12 +116,6 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/profile' ? 'active' : ''}`}>
                         <FaUser className="icon-footer-nav" />
                         <span className="btn-label">Profile</span>
-                    </button>
-                </Link>
-                <Link to='/science/helper' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/science/helper' ? 'active' : ''}`}>
-                        <GiMaterialsScience className="icon-footer-nav" />
-                        <span className="btn-label">Science Helper</span>
                     </button>
                 </Link>
                 {/* Logout Button */}
