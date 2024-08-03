@@ -32,7 +32,7 @@ const SearchPage = () => {
     const handleSearch = useCallback(
         async (searchQuery) => {
             try {
-                const response = await axios.get('http://localhost:8080/search', {
+                const response = await axios.get(API_ROUTES.search, {
                     params: { query: searchQuery }
                 });
                 setResults(response.data);

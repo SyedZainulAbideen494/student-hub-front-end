@@ -56,5 +56,6 @@ export const API_ROUTES = {
   follow: `${API_URL}/api/follow`,
   isFollowing: `${API_URL}/api/isFollowing`,
   solveMath: `${API_URL}/api/solve-math`,
-  scienceProblem: `${API_URL}/wolfram/science`
+  scienceProblem: `${API_URL}/wolfram/science`,
+  search: `${API_URL}/search`
 }
