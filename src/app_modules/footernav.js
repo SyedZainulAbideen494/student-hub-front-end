@@ -39,6 +39,7 @@ const FooterNav = () => {
 
     return (
         <div className="footer-nav">
+            {/* Primary Buttons */}
             <Link to='/planner' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
                     <HiBookOpen className="icon-footer-nav" />
@@ -57,83 +58,67 @@ const FooterNav = () => {
                     <span className="btn-label">Notes</span>
                 </button>
             </Link>
-            <button className="nav-btn-footer-nav" onClick={togglePopup}>
+            <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
                 <FaBars className="icon-footer-nav" />
                 <span className="btn-label">More</span>
             </button>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
-                <Link to='/planner' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
-                        <HiBookOpen className="icon-footer-nav" />
-                        <span className="btn-label">Planner</span>
-                    </button>
-                </Link>
-                <Link to='/groups' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
-                        <FaUsers className="icon-footer-nav" />
-                        <span className="btn-label">Groups</span>
-                    </button>
-                </Link>
-                <Link to='/notes' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
-                        <FaStickyNote className="icon-footer-nav" />
-                        <span className="btn-label">Notes</span>
-                    </button>
-                </Link>
+                {/* Popup Buttons */}
                 <Link to='/search' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/search' ? 'active' : ''}`}>
                         <FaSearch className="icon-footer-nav" />
                         <span className="btn-label">Search</span>
                     </button>
                 </Link>
                 <Link to='/math/solver' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/math/solver' ? 'active' : ''}`}>
                         <FaCalculator className="icon-footer-nav" />
                         <span className="btn-label">Math Solver</span>
                     </button>
                 </Link>
                 <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
                         <span className="btn-label">Quizzes</span>
                     </button>
                 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/calendar' ? 'active' : ''}`}>
                         <FaCalendarAlt className="icon-footer-nav" />
                         <span className="btn-label">Calendar</span>
                     </button>
                 </Link>
                 <Link to='/pomodoro' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/pomodoro' ? 'active' : ''}`}>
                         <FaClock className="icon-footer-nav" />
                         <span className="btn-label">Pomodoro</span>
                     </button>
                 </Link>
                 <Link to='/music' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/music' ? 'active' : ''}`}>
                         <FaMusic className="icon-footer-nav" />
                         <span className="btn-label">Music</span>
                     </button>
                 </Link>
                 <Link to='/social-feed' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/social-feed' ? 'active' : ''}`}>
                         <FaStream className="icon-footer-nav" />
                         <span className="btn-label">Social Feed</span>
                     </button>
                 </Link>
                 <Link to='/profile' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/profile' ? 'active' : ''}`}>
                         <FaUser className="icon-footer-nav" />
                         <span className="btn-label">Profile</span>
                     </button>
                 </Link>
                 <Link to='/science/helper' style={{ textDecoration: 'none' }}>
-                    <button className="nav-btn-footer-nav">
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/science/helper' ? 'active' : ''}`}>
                         <GiMaterialsScience className="icon-footer-nav" />
                         <span className="btn-label">Science Helper</span>
                     </button>
                 </Link>
+                {/* Logout Button */}
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>
                     <FaSignOutAlt className="icon-footer-nav" />
                     <span className="btn-label">Logout</span>
