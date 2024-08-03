@@ -39,8 +39,15 @@ const CommentsPage = () => {
     }
   };
 
+  const handleBackClick = () => {
+    window.history.back();
+  };
+
   return (
     <div className="comments-page">
+      <button className="back-button" onClick={handleBackClick}>
+        &larr; Back
+      </button>
       <h2 className="comments-heading">Comments</h2>
       <div className="comment-input-container">
         <textarea
