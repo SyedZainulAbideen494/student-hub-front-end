@@ -84,7 +84,7 @@ const DownloadPage = () => {
             <img src={logo} alt="App Logo" className='logo' />
           </div>
           <div className='desktop-menu'>
-            <button onClick={handleDownload} className='bt-header-sectionn'>Download for Android</button>
+            <button onClick={handleDownload} className='btn-header-section'>Download for Android</button>
             <button className='btn-header-section'>Sign Up</button>
             <button className='btn-header-section'>Learn More</button>
           </div>
@@ -92,6 +92,10 @@ const DownloadPage = () => {
             <FaBars />
           </button>
         </header>
+
+        {/* Hero Section */}
+        <section className='hero-section'>
+        </section>
       </div>
     </Fragment>
   );

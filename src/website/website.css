@@ -85,13 +85,14 @@
   }
   
   .modal-btn {
-    background-color: #000000;
+    background-color: black;
     color: white;
     border: none;
     font-size: 17px;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    opacity: 100%;
     text-align: center;
     margin-top: 10px;
   }
@@ -114,7 +115,16 @@
     .desktop-menu {
       display: none;
     }
-    
+    /* Hero Section */
+.hero-section {
+
+    width: 100%;
+    height: 100vh; /* Adjust as needed */
+    background: url('../images/Edusify-banner.png') no-repeat; /* Background image */
+    background-size: contain; /* Ensure the entire image is visible */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    align-items: center;
+  }
     .mobile-menu-btn {
       display: block;
     }
@@ -137,4 +147,16 @@
     to {
       transform: translateY(0);
     }
+  }
+  @media (min-width: 769px) {
+/* Hero Section */
+.hero-section {
+    width: 100%;
+    height: 100vh; /* Adjust height as needed for larger screens */
+    background: url('../images/Edusify-banner.png') no-repeat center center; /* Center background image */
+    background-size: cover; /* Cover the whole width and height */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
   }
