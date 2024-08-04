@@ -92,10 +92,14 @@ const DownloadPage = () => {
             <FaBars />
           </button>
         </header>
-
         {/* Hero Section */}
         <section className='hero-section'>
         </section>
+        <div className='cta-section'>
+  <h2>Transform Your Learning Experience</h2>
+  <h4>Start Your Journey with Edusify Today!</h4>
+  <button className='cta-button'>Start Now</button>
+</div>
       </div>
     </Fragment>
   );
