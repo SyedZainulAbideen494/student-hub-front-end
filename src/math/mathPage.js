@@ -37,7 +37,7 @@ const SimpleCalculator = () => {
         className="calculator-display"
       />
       <div className="calculator-keyboard">
-        {['7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '-', '0', '.', '=', '+', 'C'].map((key) => (
+        {['7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '-', '.', '0', '=', '+', 'C'].map((key) => (
           <button
             key={key}
             onClick={() => {
