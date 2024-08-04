@@ -171,7 +171,8 @@
     padding: 60px 20px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
     overflow: hidden;
   }
   
@@ -184,7 +185,6 @@
   }
   
   .cta-section h2, .cta-section h4 {
-    position: relative;
     font-family: 'Arial', sans-serif;
     z-index: 1;
   }
