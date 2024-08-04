@@ -102,7 +102,7 @@ const DownloadPage = () => {
               words={['Transform Your Learning Experience', 'Start Your Journey with Edusify Today!']}
               loop={true}
               cursor
-              cursorStyle='_'
+              cursorStyle='|'
               typeSpeed={70}
               deleteSpeed={50}
               delaySpeed={1000}
