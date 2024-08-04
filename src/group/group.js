@@ -16,6 +16,8 @@ const GroupsPage = () => {
     const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
     const [invitations, setInvitations] = useState([]);
     const [isInvitationModalVisible, setIsInvitationModalVisible] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [activeTab, setActiveTab] = useState('joined');
     const nav = useNavigate(); 
 
     useEffect(() => {
@@ -99,9 +101,8 @@ const GroupsPage = () => {
             });
             setInvitations(response.data);
             setSuccessMessage(`Invitation ${action}ed successfully!`);
-            setIsInvitationModalVisible(false)
+            setIsInvitationModalVisible(false);
             setTimeout(() => setIsModalVisible(false), 3000);
-            
         } catch (error) {
             console.error('Error responding to invitation:', error);
         }
@@ -112,8 +113,14 @@ const GroupsPage = () => {
     };
 
     const toggleCreateGroupBtn = () => {
-        setShowCreateGroupForm(!showCreateGroupForm)
-    }
+        setShowCreateGroupForm(!showCreateGroupForm);
+    };
+
+    const filteredPublicGroups = publicGroups
+        .filter(group => !joinedGroups.some(joinedGroup => joinedGroup.id === group.id))
+        .filter(group =>
+            group.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
     return (
         <div className="groups-container">
@@ -124,13 +131,39 @@ const GroupsPage = () => {
                 onResponse={handleInvitationResponse}
                 onClose={() => setIsInvitationModalVisible(false)} 
             />
-            <div className="button-container" style={{marginBottom: '30px'}}>
-                <button  className="join-group-button" style={{marginRight: '10px'}} onClick={toggleCreateGroupBtn}>Create Group</button>
-                <button  className="join-group-button" style={{marginLeft: '10px'}} onClick={() => setIsInvitationModalVisible(true)}>Invitations</button>
+            <header className="header">
+                <h1>Groups</h1>
+                <div className="search-container">
+                    <input
+                        type="text"
+                        className="search-input"
+                        placeholder="Search groups..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+            </header>
+            <div className="tab-container">
+                <button
+                    className={`tab-button ${activeTab === 'joined' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('joined')}
+                >
+                    Joined Groups
+                </button>
+                <button
+                    className={`tab-button ${activeTab === 'public' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('public')}
+                >
+                    Public Groups
+                </button>
+            </div>
+            <div className="button-container" style={{ marginBottom: '30px' }}>
+                <button className="join-group-button" onClick={toggleCreateGroupBtn}>Create Group</button>
+                <button className="join-group-button" onClick={() => setIsInvitationModalVisible(true)}>Invitations</button>
             </div>
             {showCreateGroupForm && (
                 <div className="group-creation-form">
-                    <h1 className="form-title">Create Group</h1>
+                    <h2 className="form-title">Create Group</h2>
                     <input
                         type="text"
                         className="group-name-input"
@@ -153,29 +186,33 @@ const GroupsPage = () => {
                         />
                         <label className="checkbox-label">Public</label>
                     </div>
-                    <button className="group-creation-button" onClick={handleCreateGroup}>Create Group</button>
+                    <button className="join-group-button" onClick={handleCreateGroup}>Create Group</button>
                 </div>
             )}
-            <div className="groups-list-container">
-                <h2 className="groups-list-title">Joined Groups</h2>
-                <ul className="groups-list">
-                    {joinedGroups.map((group) => (
-                        <li key={group.id} className="group-item" onClick={() => openGroupChat(group.id)}>
-                            {group.name}
-                        </li>
-                    ))}
-                </ul>
-                </div>
+            <div className={`transition-container ${activeTab === 'joined' ? '' : 'hidden'}`}>
                 <div className="groups-list-container">
-                <h2 className="groups-list-title">Public Groups</h2>
-                <ul className="groups-list" style={{ marginBottom: '50px' }}>
-                    {publicGroups.map((group) => (
-                        <li key={group.id} className="group-item">
-                            {group.name}
-                            <button className="join-group-button" onClick={() => handleJoinGroup(group.id)}>Join</button>
-                        </li>
-                    ))}
-                </ul>
+                    <h2 className="groups-list-title">Joined Groups</h2>
+                    <ul className="groups-list">
+                        {joinedGroups.map((group) => (
+                            <li key={group.id} className="group-item" onClick={() => openGroupChat(group.id)}>
+                                {group.name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+            <div className={`transition-container ${activeTab === 'public' ? '' : 'hidden'}`}>
+                <div className="groups-list-container">
+                    <h2 className="groups-list-title">Public Groups</h2>
+                    <ul className="groups-list">
+                        {filteredPublicGroups.map((group) => (
+                            <li key={group.id} className="group-item">
+                                <span className="group-name">{group.name}</span>
+                                <button className="join-button" onClick={() => handleJoinGroup(group.id)}>Join</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
             <FooterNav />
         </div>
