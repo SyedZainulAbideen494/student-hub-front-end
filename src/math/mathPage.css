@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f9f9f9;
+    background-color: #f0f0f0;
     color: #333;
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -35,7 +35,7 @@
 .mathsolver-input {
     width: 100%;
     max-width: 600px;
-    padding: 12px;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1.2rem;
@@ -51,21 +51,19 @@
 }
 
 .mathsolver-button {
-    padding: 12px 24px;
+    padding: 15px 25px;
     border: none;
     border-radius: 8px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     font-size: 1.2rem;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .mathsolver-button:hover {
     background-color: #0056b3;
-    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .mathsolver-button:disabled {
@@ -127,22 +125,20 @@
 /* Keyboard Styles */
 .mathsolver-keyboard {
     margin: 20px 0;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    justify-content: center;
 }
 
 .mathsolver-key {
-    padding: 10px 15px;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f1f1f1;
     color: #333;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,6 +151,46 @@
 
 .mathsolver-key:active {
     background-color: #ccc;
+}
+
+/* Simple Calculator Keyboard Styles */
+.calculator-keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.calculator-keyboard button {
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.calculator-keyboard button:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+.calculator-keyboard button:active {
+    background-color: #ccc;
+}
+
+.calculator-display {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: right;
+    box-sizing: border-box;
 }
 
 /* Mobile Responsiveness */
@@ -187,33 +223,39 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background: #f0f0f0; /* Adjust background color as needed */
-  }
-  
-  .swtich-mode-btn-math-page {
-    background-color: #7161ef; /* Button background color */
+    background: #f0f0f0;
+}
+
+.math-page-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.switch-mode-btn-math-page {
+    background-color: #7161ef;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px;
     transition: background-color 0.3s;
-  }
-  
-  .swtich-mode-btn-math-page:hover {
-    background-color: #5a4dbf; /* Darker shade for hover effect */
-  }
-  
-  .math-swtich-mode-btn-math-page:disabled {
-    background-color: #cccccc; /* Light grey for disabled state */
+}
+
+.switch-mode-btn-math-page:hover {
+    background-color: #5a4dbf;
+}
+
+.switch-mode-btn-math-page:disabled {
+    background-color: #cccccc;
     cursor: not-allowed;
-  }
-  
-  /* Button Icon Styles */
-  .math-page .icon {
-    margin-right: 8px;
+}
+
+/* Button Icon Styles */
+.math-page .icon {
+    margin-left: 8px;
     vertical-align: middle;
-    font-size: 18px; /* Adjust icon size */
-  }
+    font-size: 18px;
+}
