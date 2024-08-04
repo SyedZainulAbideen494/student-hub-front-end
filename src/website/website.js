@@ -4,6 +4,7 @@ import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './website.css'; // Import the CSS file
 import logo from '../images/Edusify-logo-dark.png';
+import { FaDownload, FaSignInAlt, FaInfoCircle, FaBars, FaTimes } from 'react-icons/fa'; // Font Awesome icons
 
 // Handle file download
 const handleDownload = async () => {
@@ -32,7 +33,7 @@ const handleDownload = async () => {
 // Check token and redirect
 const checkTokenAndRedirect = async (token, navigate) => {
   try {
-    const response = await axios.post(`${API_ROUTES.sessionCheck}`, { token });
+    const response = await axios.post(API_ROUTES.sessionCheck, { token });
 
     if (response.data.exists) {
       navigate('/planner');
@@ -60,25 +61,38 @@ const DownloadPage = () => {
 
   return (
     <Fragment>
-      <div className={`overlay ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(false)}></div>
-      <div className='website-main-div'>
-        <div className='header-section-website'>
-          <header>
-            <img src={logo} alt="Logo" className="logo" />
-            <button className="menu-toggle" onClick={toggleMenu}>
-              {menuOpen ? '×' : '☰'}
+      {/* Modal for small screens */}
+      {menuOpen && (
+        <div className='modal-overlay'>
+          <div className='modal-content'>
+            <button className='modal-close' onClick={toggleMenu}>
+              <FaTimes />
             </button>
-            <nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
-              <button className="nav-close" onClick={toggleMenu}>×</button>
-              <img src={logo} alt="Logo" className="nav-logo" />
-              <div className="nav-buttons">
-                <button className='nav-button download' onClick={handleDownload}>Download</button>
-                <button className='nav-button'>Sign Up</button>
-                <button className='nav-button'>Learn More</button>
-              </div>
-            </nav>
-          </header>
+            <img src={logo} alt="App Logo" className='modal-logo' />
+            <div className='modal-buttons'>
+              <button onClick={handleDownload} className='modal-btn'><FaDownload /> Download for Android</button>
+              <button className='modal-btn'><FaSignInAlt /> Sign Up</button>
+              <button className='modal-btn'><FaInfoCircle /> Learn More</button>
+            </div>
+          </div>
         </div>
+      )}
+      
+      <div className='website-main-div'>
+        <header className='header-section-website'>
+          <div className='logo-container'>
+            <img src={logo} alt="App Logo" className='logo' />
+            <span className='app-name'>Edusify</span>
+          </div>
+          <div className='desktop-menu'>
+            <button onClick={handleDownload} className='btn'>Download for Android</button>
+            <button className='btn'>Sign Up</button>
+            <button className='btn'>Learn More</button>
+          </div>
+          <button className='mobile-menu-btn' onClick={toggleMenu}>
+            <FaBars />
+          </button>
+        </header>
       </div>
     </Fragment>
   );
