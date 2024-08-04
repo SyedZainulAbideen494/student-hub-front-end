@@ -37,6 +37,7 @@ import MathSolver from "./math/mathPage";
 import ScienceQA from "./science helper/scienceHelper";
 import SearchPage from "./search/searchPage";
 import MathPage from "./math/mathPage";
+import DownloadPage from "./website/website";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
   {path: '/calendar', element: <CalendarPage/>},
   {path: '/terms-and-conditions', element: <TermsAndConditions/>},
   {path: '/pomodoro', element: <Pomodoro/>},
-  {path: '/', element: <Website/>},
+  {path: '/', element: <DownloadPage/>},
   {path: '/music', element: <SpotifyPlayer/>},
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},

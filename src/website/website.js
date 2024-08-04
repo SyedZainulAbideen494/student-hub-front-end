@@ -1,11 +1,11 @@
-import React, { Fragment, useEffect } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { Slide } from 'react-awesome-reveal';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import './website.css'; // Import the CSS file
+import logo from '../images/Edusify-logo-dark.png';
 
-
+// Handle file download
 const handleDownload = async () => {
   const response = await fetch(API_ROUTES.downloadAndroid, {
     method: 'GET',
@@ -29,36 +29,57 @@ const handleDownload = async () => {
   a.remove();
 };
 
-
-
+// Check token and redirect
 const checkTokenAndRedirect = async (token, navigate) => {
-    try {
-      const response = await axios.post(`${API_ROUTES.sessionCheck}`, { token });
-  
-      if (response.data.exists) {
-        // Token is valid, redirect to /planner
-        navigate('/planner');
-      } else {
-        console.error('No matching token found.');
-      }
-    } catch (error) {
-      console.error('Error checking token:', error);
+  try {
+    const response = await axios.post(`${API_ROUTES.sessionCheck}`, { token });
+
+    if (response.data.exists) {
+      navigate('/planner');
+    } else {
+      console.error('No matching token found.');
     }
-  };
+  } catch (error) {
+    console.error('Error checking token:', error);
+  }
+};
 
-
+// DownloadPage Component
 const DownloadPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    useEffect(() => {
-      const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
-      checkTokenAndRedirect(token, navigate);
-    }, [navigate]);
+  useEffect(() => {
+    const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
+    checkTokenAndRedirect(token, navigate);
+  }, [navigate]);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <Fragment>
-      
+      <div className={`overlay ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(false)}></div>
+      <div className='website-main-div'>
+        <div className='header-section-website'>
+          <header>
+            <img src={logo} alt="Logo" className="logo" />
+            <button className="menu-toggle" onClick={toggleMenu}>
+              {menuOpen ? '×' : '☰'}
+            </button>
+            <nav className={`nav-menu ${menuOpen ? 'open' : ''}`}>
+              <button className="nav-close" onClick={toggleMenu}>×</button>
+              <img src={logo} alt="Logo" className="nav-logo" />
+              <div className="nav-buttons">
+                <button className='nav-button download' onClick={handleDownload}>Download</button>
+                <button className='nav-button'>Sign Up</button>
+                <button className='nav-button'>Learn More</button>
+              </div>
+            </nav>
+          </header>
+        </div>
+      </div>
     </Fragment>
   );
 };
