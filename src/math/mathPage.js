@@ -153,10 +153,10 @@ const MathPage = () => {
 
   return (
     <div className="math-page">
-      <button onClick={toggleMode}>
+      <button onClick={toggleMode} className='swtich-mode-btn-math-page'>
         {showSolver ? 'Switch to Simple Calculator' : 'Switch to Math Solver'}
       </button>
-      <button onClick={handleVoiceCommand}>
+      <button onClick={handleVoiceCommand} className='swtich-mode-btn-math-page'>
         {isListening ? 'Listening...' : 'Start Voice Command'}
       </button>
       {showSolver ? (

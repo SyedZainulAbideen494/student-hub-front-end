@@ -7,7 +7,7 @@
     color: #333;
     font-family: 'Arial', sans-serif;
     padding: 20px;
-    box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+    box-sizing: border-box;
 }
 
 .mathsolver-header {
@@ -41,7 +41,7 @@
     font-size: 1.2rem;
     color: #333;
     transition: border-color 0.3s, box-shadow 0.3s;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box;
 }
 
 .mathsolver-input:focus {
@@ -60,7 +60,7 @@
     cursor: pointer;
     margin-top: 10px;
     transition: background-color 0.3s, transform 0.2s;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box;
 }
 
 .mathsolver-button:hover {
@@ -75,7 +75,7 @@
 
 .mathsolver-results {
     padding: 20px;
-    overflow: auto; /* Allow scrolling if content exceeds boundaries */
+    overflow: auto;
 }
 
 .mathsolver-result {
@@ -86,7 +86,7 @@
     margin-bottom: 20px;
     padding: 20px;
     transition: box-shadow 0.3s;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box;
 }
 
 .mathsolver-result:hover {
@@ -104,7 +104,7 @@
     font-size: 1.2rem;
     color: #333;
     margin: 10px 0;
-    word-wrap: break-word; /* Allow long words to break and fit within the container */
+    word-wrap: break-word;
 }
 
 .mathsolver-result-image {
@@ -142,7 +142,10 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mathsolver-key:hover {
@@ -177,3 +180,40 @@
         font-size: 1rem;
     }
 }
+
+/* Math Page Styles */
+.math-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f0f0f0; /* Adjust background color as needed */
+  }
+  
+  .swtich-mode-btn-math-page {
+    background-color: #7161ef; /* Button background color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .swtich-mode-btn-math-page:hover {
+    background-color: #5a4dbf; /* Darker shade for hover effect */
+  }
+  
+  .math-swtich-mode-btn-math-page:disabled {
+    background-color: #cccccc; /* Light grey for disabled state */
+    cursor: not-allowed;
+  }
+  
+  /* Button Icon Styles */
+  .math-page .icon {
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 18px; /* Adjust icon size */
+  }
