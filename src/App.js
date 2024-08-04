@@ -36,6 +36,7 @@ import UsersProfile from "./user profile/userProfile";
 import MathSolver from "./math/mathPage";
 import ScienceQA from "./science helper/scienceHelper";
 import SearchPage from "./search/searchPage";
+import MathPage from "./math/mathPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -63,7 +64,7 @@ const router = createBrowserRouter([
   {path: "/group-details/:id", element: <GroupDetailsPage />},
   {path: '/comments/:id', element: <CommentsPage/>},
   {path: '/profile/:id', element: <UsersProfile/>},
-  {path: '/math/solver', element: <MathSolver/>},
+  {path: '/math/solver', element: <MathPage/>},
   {path: '/science/helper', element: <ScienceQA/>},
   {path: '/search', element: <SearchPage/>}
 ]);
