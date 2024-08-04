@@ -258,3 +258,53 @@
   }
 
 
+  .features-section {
+    padding: 2rem;
+  }
+  
+  .features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .feature-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-heading {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+    color: #777777;
+  }
+  
+  @media (max-width: 768px) {
+    .feature-card {
+      width: 100%;
+      max-width: none;
+    }
+  }
