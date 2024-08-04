@@ -82,12 +82,11 @@ const DownloadPage = () => {
         <header className='header-section-website'>
           <div className='logo-container'>
             <img src={logo} alt="App Logo" className='logo' />
-            <span className='app-name'>Edusify</span>
           </div>
           <div className='desktop-menu'>
-            <button onClick={handleDownload} className='btn'>Download for Android</button>
-            <button className='btn'>Sign Up</button>
-            <button className='btn'>Learn More</button>
+            <button onClick={handleDownload} className='bt-header-sectionn'>Download for Android</button>
+            <button className='btn-header-section'>Sign Up</button>
+            <button className='btn-header-section'>Learn More</button>
           </div>
           <button className='mobile-menu-btn' onClick={toggleMenu}>
             <FaBars />
