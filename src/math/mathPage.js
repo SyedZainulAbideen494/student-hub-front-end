@@ -10,7 +10,12 @@ const SimpleCalculator = () => {
   const [expression, setExpression] = useState('');
 
   const handleButtonClick = (value) => {
-    setExpression((prev) => prev + value);
+    const replaceSymbols = {
+      '÷': '/',
+      '×': '*'
+    };
+    const newValue = replaceSymbols[value] || value;
+    setExpression((prev) => prev + newValue);
   };
 
   const handleCalculate = () => {
@@ -31,8 +36,8 @@ const SimpleCalculator = () => {
         placeholder="0"
         className="calculator-display"
       />
-          <div className="calculator-keyboard">
-        {['7', '8', '9', '+', '4', '5', '6', '/', '1', '2', '3', '*', '0', '.', '=', '-', 'c'].map((key) => (
+      <div className="calculator-keyboard">
+        {['7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '-', '0', '.', '=', '+', 'C'].map((key) => (
           <button
             key={key}
             onClick={() => {
