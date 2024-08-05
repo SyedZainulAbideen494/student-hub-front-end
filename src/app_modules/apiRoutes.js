@@ -58,5 +58,5 @@ export const API_ROUTES = {
   solveMath: `${API_URL}/api/solve-math`,
   scienceProblem: `${API_URL}/wolfram/science`,
   search: `${API_URL}/search`,
-  editProfile :'/user/update'
+  editProfile:`${API_URL}/user/update`
 }
