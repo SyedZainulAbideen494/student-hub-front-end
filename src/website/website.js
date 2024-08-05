@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './website.css'; // Import the CSS file
 import logo from '../images/Edusify-logo-dark.png';
 import { FaDownload, FaSignInAlt, FaInfoCircle, FaBars, FaTimes, FaStar, FaCheckCircle } from 'react-icons/fa'; // Font Awesome icons
+import Typewriter from 'typewriter-effect';
 
 // Handle file download
 const handleDownload = async () => {
@@ -65,17 +66,27 @@ const DownloadPage = () => {
         <header className="header-website">
           <div className="logo-website">Edusify</div>
           <nav>
+            <Link to='/sign-up'>
             <a >Sign up</a>
-            <a href="#features">Features</a>
+            </Link>
             <button className="cta-button-website" onClick={handleDownload}>Download Now</button>
           </nav>
         </header>
 
         <div className="hero-website">
-          <h1>Transform Your Study Routine</h1>
-          <p>Discover Edusify, your ultimate study companion.</p>
-          <button className="cta-button-website" onClick={handleDownload}>Download Now</button>
-        </div>
+      <h1>
+        <Typewriter
+          options={{
+            strings: ['Transform Your Study Routine', 'Discover Edusify, your ultimate study companion.'],
+            autoStart: true,
+            loop: true,
+            delay: 75,
+          }}
+        />
+      </h1>
+      <p>Discover Edusify, your ultimate study companion.</p>
+      <button className="cta-button-website" onClick={handleDownload}>Download Now</button>
+    </div>
 
         <div className="intro-website">
           <h2>Why Edusify?</h2>
