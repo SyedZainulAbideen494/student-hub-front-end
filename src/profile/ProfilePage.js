@@ -5,6 +5,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link } from 'react-router-dom';
 import FooterNav from '../app_modules/footernav';
 
+
 const ProfilePage = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -124,8 +125,16 @@ const ProfilePage = () => {
   if (error) return <p>{error}</p>;
   if (!profile) return <p>No profile data available</p>;
 
-  return (
+  return  (
     <div className="profile-page">
+      <header className="profile-header">
+        <h3>Profile</h3>
+        <Link to="/settings">
+          <button className="settings-icon-button">
+            <i className="fas fa-cog"></i> {/* Font Awesome cog icon */}
+          </button>
+        </Link>
+      </header>
       <div className="profile-info">
         <img
           className="profile-avatar"

@@ -197,22 +197,7 @@ const DownloadPage = () => {
           </div>
         </div>
 
-        <div className="testimonials-website">
-          <h2>Testimonials</h2>
-          <div className="testimonials-list">
-            <div className="testimonial-item">
-              <FaStar size={30} color="#ffcc00" />
-              <p>"Edusify has transformed the way I study. Highly recommend!"</p>
-              <p>- Student A</p>
-            </div>
-            <div className="testimonial-item">
-              <FaStar size={30} color="#ffcc00" />
-              <p>"The reminders feature keeps me on track with my assignments."</p>
-              <p>- Student B</p>
-            </div>
-          </div>
-        </div>
-
+   
         <div class="faq-website">
   <h2>Frequently Asked Questions</h2>
   <div class="faq-list">

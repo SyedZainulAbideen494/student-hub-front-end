@@ -213,14 +213,11 @@ const countries = [
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
-        username: '',
         phone: '',
         email: '',
         password: '',
         confirmPassword: '',
-        bio: '',
         unique_id: '',
-        country: ''
     });
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [error, setError] = useState(null);
@@ -270,14 +267,11 @@ const SignUp = () => {
             }
 
             setFormData({
-                username: '',
                 phone: '',
                 email: '',
                 password: '',
                 confirmPassword: '',
-                bio: '',
-                unique_id: '',
-                country: ''
+                unique_id: ''
             });
             setTermsAccepted(false);
             setError(null);
@@ -292,7 +286,7 @@ const SignUp = () => {
         }
     };
 
-    const { username, phone, email, password, confirmPassword, bio, unique_id, country } = formData;
+    const { phone, email, password, confirmPassword, unique_id } = formData;
 
     return (
         <div className="signup-container">
@@ -300,17 +294,7 @@ const SignUp = () => {
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
           {error && <p className="error-message">{error}</p>}
-          <div className="input-container">
-            <FaUser className="icon" />
-            <input
-              type="text"
-              name="username"
-              placeholder="Name"
-              value={username}
-              onChange={handleChange}
-              required
-            />
-          </div>
+
           <div className="input-container">
             <FaEnvelope className="icon" />
             <input
@@ -362,22 +346,6 @@ const SignUp = () => {
             />
           </div>
           <div className="input-container">
-            <FaGlobe className="icon" />
-            <select
-              name="country"
-              value={country}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Country</option>
-              {countries.map((c) => (
-                <option key={c.name} value={c.name}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="input-container">
             <FaUser className="icon" />
             <input
               type="text"
@@ -386,16 +354,6 @@ const SignUp = () => {
               value={unique_id}
               onChange={handleChange}
               required
-            />
-          </div>
-          <div className="input-container">
-            <FaUser className="icon" />
-            <textarea
-              name="bio"
-              placeholder="Bio"
-              value={bio}
-              onChange={handleChange}
-              rows="4"
             />
           </div>
           <div className="checkbox-container">

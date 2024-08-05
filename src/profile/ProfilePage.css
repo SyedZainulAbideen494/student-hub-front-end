@@ -193,3 +193,33 @@
 .add-button.add-post {
     margin-left: 10px;
 }
+
+
+.profile-header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .settings-icon-button {
+    padding: 8px;
+    border: none;
+    background: transparent;
+    font-size: 24px;
+    color: #7161ef;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .settings-icon-button:hover {
+    color: #a38dff;
+  }
+  
+  .settings-icon-button:focus {
+    outline: none;
+  }
