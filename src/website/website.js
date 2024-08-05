@@ -298,17 +298,10 @@ const DownloadPage = () => {
 
         <footer className="footer-website">
           <nav>
-            <a href="#about">About</a>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-            <a href="#contact">Contact</a>
+            <Link to='/terms-and-conditions'>
+            <a>Terms of Service</a>
+            </Link>
           </nav>
-          <div className="social-media-website">
-            {/* Social media icons */}
-          </div>
-          <div className="contact-info-website">
-            <p>Email: info@edusify.com</p>
-          </div>
         </footer>
       </div>
     </Fragment>
