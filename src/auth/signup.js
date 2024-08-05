@@ -305,7 +305,7 @@ const SignUp = () => {
             <input
               type="text"
               name="username"
-              placeholder="Username"
+              placeholder="Name"
               value={username}
               onChange={handleChange}
               required
@@ -382,7 +382,7 @@ const SignUp = () => {
             <input
               type="text"
               name="unique_id"
-              placeholder="Unique ID"
+              placeholder="User Name"
               value={unique_id}
               onChange={handleChange}
               required
