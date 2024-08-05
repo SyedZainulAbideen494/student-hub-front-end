@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import './settings-profile.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import axios from 'axios';
-import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
+import SuccessModal from '../app_modules/SuccessModal';
 
 const SettingsPage = () => {
   const [activeSection, setActiveSection] = useState('Account');
@@ -17,7 +17,7 @@ const SettingsPage = () => {
   });
   const [avatarFile, setAvatarFile] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -56,6 +56,24 @@ const SettingsPage = () => {
     }
   };
 
+  const handleRemoveAvatar = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      if (token) {
+        await axios.post(
+          API_ROUTES.removeAvatar,
+          { unique_id: formData.unique_id },
+          { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+        );
+        setFormData({ ...formData, avatar: 'defPic.png' }); // Set to default picture
+        setModalVisible(true); // Show modal on success
+        setTimeout(() => setModalVisible(false), 3000); // Hide modal after 3 seconds
+      }
+    } catch (error) {
+      console.error('Error removing avatar', error);
+    }
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
@@ -65,8 +83,11 @@ const SettingsPage = () => {
     formDataToSend.append('bio', formData.bio);
     formDataToSend.append('location', formData.location);
     formDataToSend.append('phone_number', formData.phone_number);
+
     if (avatarFile) {
       formDataToSend.append('avatar', avatarFile);
+    } else {
+      formDataToSend.append('avatar', formData.avatar); // Send current or default avatar
     }
 
     try {
@@ -160,6 +181,9 @@ const SettingsPage = () => {
                 onChange={handleAvatarChange}
                 style={{ display: 'none' }}
               />
+              {formData.avatar && (
+                <button type="button" className="remove-avatar-button" onClick={handleRemoveAvatar}>Remove</button>
+              )}
             </div>
 
             <button type="submit">Save Changes</button>

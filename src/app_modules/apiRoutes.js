@@ -58,5 +58,6 @@ export const API_ROUTES = {
   solveMath: `${API_URL}/api/solve-math`,
   scienceProblem: `${API_URL}/wolfram/science`,
   search: `${API_URL}/search`,
-  editProfile:`${API_URL}/user/update`
+  editProfile:`${API_URL}/user/update`,
+  removeAvatar: `${API_URL}/api/remove-avatar`, // Adjust the route as needed
 }
