@@ -278,10 +278,6 @@ const DownloadPage = () => {
     </div>
     <div class="faq-item">
       <h3>Is Edusify available on Android and iOS?</h3>
-      <p>Yes, Edusify is available for download on both Android and iOS platforms. You can also sign up and use it on the web.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Is Edusify available on Android and iOS?</h3>
       <p>Yes, Edusify is downloadable only for Android and iOS platforms must sign up to use the app.</p>
     </div>
     <div class="faq-item">
