@@ -262,7 +262,7 @@ const DownloadPage = () => {
     </div>
     <div class="faq-item">
       <h3>How can I use voice commands?</h3>
-      <p>You can use voice commands to interact with the math and science helper, set tasks, and more within Edusify.</p>
+      <p>You can use voice commands to interact with the math and science helper within Edusify.</p>
     </div>
     <div class="faq-item">
       <h3>Can I add important events to a calendar?</h3>
