@@ -72,7 +72,7 @@ const SettingsPage = () => {
     try {
       if (token) {
         await axios.put(
-          'http://localhost:8080/user/update',
+          API_ROUTES.editProfile,
           formDataToSend,
           { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } }
         );

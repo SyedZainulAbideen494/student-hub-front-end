@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080';
+const API_URL = 'https://d40717580c25ad2f0f25204f51e83db4.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -57,5 +57,6 @@ export const API_ROUTES = {
   isFollowing: `${API_URL}/api/isFollowing`,
   solveMath: `${API_URL}/api/solve-math`,
   scienceProblem: `${API_URL}/wolfram/science`,
-  search: `${API_URL}/search`
+  search: `${API_URL}/search`,
+  editProfile :'/user/update'
 }
