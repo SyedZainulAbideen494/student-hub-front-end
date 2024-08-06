@@ -6,6 +6,7 @@
     background-color: #000000; /* Green background */
     color: white;
     padding: 10px;
+    opacity: 60%;
     border-radius: 15px;
     opacity: 1; /* Make sure it's visible */
     transition: opacity 0.3s ease, transform 0.3s ease;
