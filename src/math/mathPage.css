@@ -8,6 +8,7 @@
     font-family: 'Arial', sans-serif;
     padding: 20px;
     box-sizing: border-box;
+    max-width: 80%;
 }
 
 .mathsolver-header {
@@ -103,6 +104,7 @@
     color: #333;
     margin: 10px 0;
     word-wrap: break-word;
+    max-width: 100%; /* Prevents content from exceeding the viewport */
 }
 
 .mathsolver-result-image {
@@ -238,7 +240,7 @@
     border: none;
     padding: 12px 24px;
     font-size: 16px;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
     margin: 10px;
     transition: background-color 0.3s;
