@@ -59,7 +59,7 @@ const CommerceHelper = () => {
         <h1>Commerce Helper Tool</h1>
         <p>Get answers to your commerce-related queries with ease.</p>
       </header>
-      <main style={{marginBottom: '50px'}}>
+      <main style={{marginBottom: '80px'}}>
         <input
           type="text"
           value={query}
