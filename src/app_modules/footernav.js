@@ -3,6 +3,7 @@ import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, Fa
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; // Import a relevant science icon
+import { MdBusiness } from 'react-icons/md'; // Import a relevant commerce icon (or use a custom icon)
 import './footer-nav.css';
 import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
@@ -65,23 +66,23 @@ const FooterNav = () => {
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
                 {/* Popup Buttons */}
                 <Link to='/planner' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
-                    <HiBookOpen className="icon-footer-nav" />
-                    <span className="btn-label">Planner</span>
-                </button>
-            </Link>
-            <Link to='/groups' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
-                    <FaUsers className="icon-footer-nav" />
-                    <span className="btn-label">Groups</span>
-                </button>
-            </Link>
-            <Link to='/notes' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
-                    <FaStickyNote className="icon-footer-nav" />
-                    <span className="btn-label">Notes</span>
-                </button>
-            </Link>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
+                        <HiBookOpen className="icon-footer-nav" />
+                        <span className="btn-label">Planner</span>
+                    </button>
+                </Link>
+                <Link to='/groups' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
+                        <FaUsers className="icon-footer-nav" />
+                        <span className="btn-label">Groups</span>
+                    </button>
+                </Link>
+                <Link to='/notes' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
+                        <FaStickyNote className="icon-footer-nav" />
+                        <span className="btn-label">Notes</span>
+                    </button>
+                </Link>
                 <Link to='/search' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/search' ? 'active' : ''}`}>
                         <FaSearch className="icon-footer-nav" />
@@ -98,6 +99,12 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/science/helper' ? 'active' : ''}`}>
                         <GiMaterialsScience className="icon-footer-nav" />
                         <span className="btn-label">Science Helper</span>
+                    </button>
+                </Link>
+                <Link to='/commerce/helper' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/commerce/helper' ? 'active' : ''}`}>
+                        <MdBusiness className="icon-footer-nav" />
+                        <span className="btn-label">Commerce Helper</span>
                     </button>
                 </Link>
                 <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
