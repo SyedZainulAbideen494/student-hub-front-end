@@ -59,13 +59,12 @@
 }
 
 .nav-btn-footer-nav:hover .icon-footer-nav {
-    transform: scale(1.1); /* Slightly enlarge icon on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
 }
 
 .btn-label {
-    font-size: 12px; /* Slightly larger font size for better readability */
-    margin-top: 2px;
-    color: #f0f0f0;
+    font-size: 12px; /* Adjust font size */
+    margin-top: 5px; /* Space between icon and text */
 }
 
 .popup-menu-footer-nav {
@@ -75,6 +74,7 @@
     transform: translateX(-50%) translateY(100%);
     width: 100%;
     max-width: 350px;
+    max-height: 300px; /* Set maximum height */
     background: rgba(24, 24, 24, 0.9); /* Dark theme with slightly transparent dark color */
     display: flex;
     flex-direction: column;
@@ -85,17 +85,12 @@
     opacity: 0; /* Initially hidden */
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .popup-menu-footer-nav.show-footer-nav {
     transform: translateX(-50%) translateY(0);
     opacity: 1; /* Fade in */
-}
-
-.popup-menu-footer-nav .nav-btn-footer-nav {
-    font-size: 12px;
-    padding: 8px;
-    min-width: 60px;
 }
 
 .close-btn-footer-nav {
@@ -106,6 +101,9 @@
     background-color: transparent;
     font-size: 16px;
     transition: color 0.3s ease; /* Smooth color transition */
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
 }
 
 .close-btn-footer-nav:hover {
