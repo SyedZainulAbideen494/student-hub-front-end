@@ -8,7 +8,8 @@
     font-family: 'Arial', sans-serif;
     padding: 20px;
     box-sizing: border-box;
-    max-width: 80%;
+    max-width: 90%;
+    border-radius: 25px;
 }
 
 .mathsolver-header {
@@ -35,7 +36,6 @@
 
 .mathsolver-input {
     width: 100%;
-    max-width: 600px;
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
