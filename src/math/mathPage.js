@@ -193,11 +193,11 @@ const MathPage = () => {
       <div className="math-page-header">
         <button onClick={toggleMode} className="switch-mode-btn-math-page">
           {showSolver ? 'Switch to Calculator' : 'Switch to Math Solver'}
-          <FaCalculator className="icon" />
+          <FaCalculator className="icon"  style={{color: 'white'}}/>
         </button>
         <button onClick={handleVoiceCommand} className="switch-mode-btn-math-page">
           {isListening ? 'Listening...' : ''}
-          <FaMicrophone className="icon" />
+          <FaMicrophone className="icon" style={{color: 'white'}}/>
         </button>
       </div>
       {showSolver ? (
