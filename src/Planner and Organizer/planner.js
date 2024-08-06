@@ -5,9 +5,10 @@ import 'react-calendar/dist/Calendar.css';
 import './planner_organizer.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
-import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
+import SuccessModal from '../app_modules/SuccessMessage'; // Import the SuccessModal component
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from 'react-icons/fa'; // Importing icons
+import SuccessMessage from '../app_modules/SuccessMessage';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -21,6 +22,7 @@ function Planner() {
     const [modalMessage, setModalMessage] = useState('');
     const [loading, setLoading] = useState(true); // Add loading state
     const formRef = useRef(null);
+    const [successMessage, setSuccessMessage] = useState('');
 
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
@@ -48,48 +50,46 @@ function Planner() {
         fetchTasks();
     }, []);
 
-    // Handle task addition or update
-    const handleSaveTask = () => {
+    const handleSaveTask = async () => {
         const token = localStorage.getItem('token');
-        if (editingTask) {
-            axios.post(API_ROUTES.editTask, {
-                id: editingTask.id,
-                title,
-                description,
-                due_date: dueDate,
-                priority,
-                token
-            })
-            .then(response => {
-                setTasks(tasks.map(task => task.id === editingTask.id ? { ...task, title, description, due_date: dueDate, priority } : task));
-                resetForm();
-                showModal('Task updated successfully!');
-                scrollToForm();
-            })
-            .catch(error => {
-                console.error('There was an error updating the task!', error);
-            })
-            .finally(() => setLoading(false)); // Stop loading
-        } else {
-            axios.post(API_ROUTES.addTask, {
-                title,
-                description,
-                due_date: dueDate,
-                priority,
-                token
-            })
-            .then(response => {
-                setTasks([...tasks, { id: response.data.id, title, description, due_date: dueDate, priority }]);
-                resetForm();
-                showModal('Task added successfully!');
-            })
-            .catch(error => {
-                console.error('There was an error adding the task!', error);
-            })
-            .finally(() => setLoading(false)); // Stop loading
+        
+        const taskData = {
+            title,
+            description,
+            due_date: dueDate,
+            priority,
+            token
+        };
+    
+        try {
+            if (editingTask) {
+                // Update existing task
+                await axios.post(API_ROUTES.editTask, {
+                    id: editingTask.id,
+                    ...taskData
+                });
+    
+                setTasks(tasks.map(task => task.id === editingTask.id ? { ...task, ...taskData } : task));
+                setSuccessMessage('Task updated successfully!');
+            } else {
+                // Add new task
+                const response = await axios.post(API_ROUTES.addTask, taskData);
+                setTasks([...tasks, { id: response.data.id, ...taskData }]);
+                showModal('Task Added successfully!');
+            }
+            
+            // Reset form and refresh task list
+            resetForm();
+            setTimeout(() => {
+                setSuccessMessage('task Added!'); // Hide message after 3 seconds
+            }, 3000);
+            fetchTasks(); // Refresh the task list
+        } catch (error) {
+            console.error('There was an error with the task operation!', error);
+        } finally {
+            setLoading(false); // Stop loading
         }
     };
-
     // Handle task deletion
     const handleDeleteTask = (id) => {
         const token = localStorage.getItem('token');
@@ -281,7 +281,7 @@ function Planner() {
                 </div>
             </div>
             <FooterNav />
-            {modalVisible && <SuccessModal message={modalMessage} />}
+            {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
         </div>
     );
 }

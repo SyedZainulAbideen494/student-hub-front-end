@@ -1,0 +1,18 @@
+.success-message-sucess-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000; /* Green background */
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    opacity: 1; /* Make sure it's visible */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+.success-message-sucess-modal.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
