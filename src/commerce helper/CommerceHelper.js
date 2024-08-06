@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './CommerceHelper.css';
 import FooterNav from '../app_modules/footernav';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const CommerceHelper = () => {
   const [query, setQuery] = useState('');
@@ -15,7 +16,7 @@ const CommerceHelper = () => {
     setError(null);
   
     try {
-      const response = await axios.post('http://localhost:8080/api/commerce', {
+      const response = await axios.post(API_ROUTES.CommerceHelper, {
         query
       });
       setResult(response.data);
