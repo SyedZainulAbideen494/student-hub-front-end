@@ -66,10 +66,7 @@ const DownloadPage = () => {
         <header className="header-website">
           <div className="logo-website">Edusify</div>
           <nav>
-            <Link to='/sign-up'>
-            <a >Sign up</a>
-            </Link>
-            <button className="cta-button-website" onClick={handleDownload}>Download Now</button>
+           
           </nav>
         </header>
 
@@ -85,13 +82,13 @@ const DownloadPage = () => {
         />
       </h1>
       <p>Discover Edusify, your ultimate study companion.</p>
-      <button className="cta-button-website" onClick={handleDownload}>Download Now</button>
+      <button className="cta-button-website" >Coming Soon!</button>
     </div>
 
         <div className="intro-website">
           <h2>Why Edusify?</h2>
           <p>Simplify your study life with tasks, reminders, group studies, and more.</p>
-          <button className="cta-button-website" onClick={handleDownload}>Download For Android</button>
+          <button className="cta-button-website">Coming Soon!</button>
         </div>
 
         <div className="features-website">
@@ -274,7 +271,7 @@ const DownloadPage = () => {
 
         <div className="call-to-action-website">
           <h2>Ready to Get Started?</h2>
-          <button className="cta-button-website" onClick={handleDownload}>Download Now</button>
+          <button className="cta-button-website">Coming Soon!</button>
         </div>
 
         <footer className="footer-website">
