@@ -5,6 +5,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css'; // Import Quill styles
 import './noteDetailsPage.css';
+import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
 
 const NoteDetailPage = () => {
     const { id } = useParams();
@@ -14,6 +15,8 @@ const NoteDetailPage = () => {
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
     const editorRef = useRef(null);
     const quillRef = useRef(null);
     const nav = useNavigate();
@@ -75,36 +78,46 @@ const NoteDetailPage = () => {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     },
                 });
-                alert('Note deleted successfully!');
-                nav('/notes');
+                setModalMessage('Note deleted successfully!');
+                setShowModal(true);
+                setTimeout(() => {
+                    setShowModal(false);
+                    nav('/notes');
+                }, 3000); // Close the modal after 3 seconds and then navigate
             } catch (error) {
                 console.error('Error deleting note:', error);
-                alert('Failed to delete note.');
+                setModalMessage('Failed to delete note.');
+                setShowModal(true);
+                setTimeout(() => setShowModal(false), 3000); // Close the modal after 3 seconds
             }
         }
     };
-
+    
     const handleUpdateClick = async (e) => {
         e.preventDefault();
-
+    
         const updatedNote = {
             title,
             description,
             headings: quillRef.current.root.innerHTML, // Get editor content
         };
-
+    
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.put(`${API_ROUTES.updateNote}/${id}`, updatedNote, {
+            await axios.put(`${API_ROUTES.updateNote}/${id}`, updatedNote, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
             });
-            alert('Note updated successfully!');
+            setModalMessage('Note updated successfully!');
+            setShowModal(true);
+            setTimeout(() => setShowModal(false), 3000); // Close the modal after 3 seconds
             setEditMode(false);
         } catch (error) {
             console.error('Error updating note:', error);
-            alert('Failed to update note.');
+            setModalMessage('Failed to update note.');
+            setShowModal(true);
+            setTimeout(() => setShowModal(false), 3000); // Close the modal after 3 seconds
         }
     };
 
@@ -158,6 +171,7 @@ const NoteDetailPage = () => {
                 <button onClick={handleEditToggle} className="download-button">{editMode ? 'Cancel' : 'Edit'}</button>
                 <button onClick={handleDeleteClick} className="download-button">Delete</button>
             </div>
+            <SuccessModal visible={showModal} message={modalMessage} />
         </div>
     );
 };
