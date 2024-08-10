@@ -1,4 +1,4 @@
-const API_URL = 'https://763e088137b455424283d887fcbdba4e.serveo.net';
+const API_URL = 'https://c24cd02931c5068eb6fb5bc76a2ffcab.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -60,5 +60,7 @@ export const API_ROUTES = {
   search: `${API_URL}/search`,
   editProfile:`${API_URL}/user/update`,
   removeAvatar: `${API_URL}/api/remove-avatar`, // Adjust the route as needed,
-  CommerceHelper: `${API_URL}/api/commerce`
+  CommerceHelper: `${API_URL}/api/commerce`,
+  updateNote: `${API_URL}/api/update/note`,
+  deleteNote: `${API_URL}/api/delete/note`
 }
