@@ -1,4 +1,4 @@
-const API_URL = 'https://49927db19b3b4113ff9ca574db7fe9eb.serveo.net';
+const API_URL = 'http://localhost:8080';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,

@@ -117,9 +117,13 @@ const DiscussionBoard = () => {
                         params: { after: lastMessageTimestamp } // Fetch messages after the last message timestamp
                     });
                     const newMessages = response.data.messages;
-
+    
                     if (newMessages.length > 0) {
-                        setMessages(prevMessages => [...prevMessages, ...newMessages]);
+                        setMessages(prevMessages => {
+                            const existingMessageIds = new Set(prevMessages.map(msg => msg.id));
+                            const filteredNewMessages = newMessages.filter(msg => !existingMessageIds.has(msg.id));
+                            return [...prevMessages, ...filteredNewMessages];
+                        });
                         const lastMessage = newMessages[newMessages.length - 1];
                         setLastMessageTimestamp(new Date(lastMessage.created_at).toISOString());
                     }
@@ -128,10 +132,10 @@ const DiscussionBoard = () => {
                 }
             }
         };
-
+    
         // Poll every 5 seconds
         const intervalId = setInterval(pollMessages, 2500);
-
+    
         // Clear interval on component unmount
         return () => clearInterval(intervalId);
     }, [id, isMember, lastMessageTimestamp]);
