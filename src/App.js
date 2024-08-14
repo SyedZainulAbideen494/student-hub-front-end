@@ -40,6 +40,7 @@ import MathPage from "./math/mathPage";
 import DownloadPage from "./website/website";
 import SettingsPage from "./profile/settings-profile";
 import CommerceHelper from "./commerce helper/CommerceHelper";
+import NotFoundPage from "./app_modules/404Page";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -71,7 +72,8 @@ const router = createBrowserRouter([
   {path: '/science/helper', element: <ScienceQA/>},
   {path: '/search', element: <SearchPage/>},
   {path: '/settings', element: <SettingsPage/>},
-  {path: '/commerce/helper', element: <CommerceHelper/>}
+  {path: '/commerce/helper', element: <CommerceHelper/>},
+  { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
 
