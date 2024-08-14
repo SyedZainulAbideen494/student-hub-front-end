@@ -12,112 +12,115 @@
 }
 
 /* Header styling */
-.header {
+.groups-header {
     width: 100%;
     max-width: 600px;
     margin-bottom: 20px;
     text-align: center;
 }
 
-.header h1 {
+.groups-header h1 {
     font-size: 28px;
     color: #333;
     margin-bottom: 10px;
 }
 
-.search-container {
+.groups-search-container {
     position: relative;
 }
 
-.search-input {
+.groups-search-input {
     width: 100%;
     padding: 10px 40px 10px 15px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 12px; /* More rounded edges */
     box-sizing: border-box;
     font-size: 16px;
 }
 
-.search-input:focus {
+.groups-search-input:focus {
     border-color: #7161ef;
     outline: none;
 }
 
 /* Button container styling */
-.button-container {
+.groups-button-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 30px;
+    max-width: 500px; /* Adjusted max-width for mobile */
+    margin-bottom: 20px; /* Reduced margin */
+    gap: 10px; /* Spacing between buttons */
 }
 
-.join-group-button {
+/* Group creation and invitations buttons styling */
+.groups-join-group-button {
     background-color: #7161ef;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
+    border-radius: 12px; /* More rounded edges */
+    padding: 12px 24px; /* Increased padding */
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
+    flex: 1; /* Flex property to ensure equal width */
 }
 
-.join-group-button:hover {
+.groups-join-group-button:hover {
     background-color: #5a4be6;
 }
 
 /* Group creation form styling */
-.group-creation-form {
+.groups-group-creation-form {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px; /* Adjusted max-width for mobile */
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 12px; /* More rounded edges */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 30px;
 }
 
-.form-title {
+.groups-form-title {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
 }
 
-.group-name-input,
-.group-description-input {
+.groups-group-name-input,
+.groups-group-description-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 12px; /* More rounded edges */
     box-sizing: border-box;
     margin-bottom: 10px;
     font-size: 16px;
 }
 
-.group-description-input {
+.groups-group-description-input {
     min-height: 100px;
     resize: vertical;
 }
 
-.checkbox-container {
+.groups-checkbox-container {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.public-checkbox {
+.groups-public-checkbox {
     margin-right: 10px;
 }
 
-.checkbox-label {
+.groups-checkbox-label {
     font-size: 16px;
 }
 
 /* Group list styling */
 .groups-list-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px; /* Adjusted max-width for mobile */
     margin-bottom: 30px;
 }
 
@@ -136,7 +139,7 @@
 .group-item {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 12px; /* More rounded edges */
     padding: 15px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -147,53 +150,38 @@
     background-color: #f0f0f0;
 }
 
-.join-group-button {
-    background-color: #7161ef;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s;
-}
-
-.join-group-button:hover {
-    background-color: #5a4be6;
-}
-
 /* Tab container styling */
-.tab-container {
+.groups-tab-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
+    max-width: 500px; /* Adjusted max-width for mobile */
+    margin-bottom: 20px; /* Reduced margin */
+    gap: 10px; /* Spacing between tabs */
 }
 
 /* Tab button styling */
-.tab-button {
+.groups-tab-button {
     background-color: #fafafa;
     color: #333;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px 20px;
+    border-radius: 12px; /* More rounded edges */
+    padding: 12px 24px; /* Increased padding */
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-    flex: 1;
+    flex: 1; /* Flex property to ensure equal width */
     text-align: center;
 }
 
-.tab-button.active {
+.groups-tab-button.groups-active {
     background-color: #7161ef;
     color: #fff;
     border: none;
 }
 
 /* Transition container styling */
-.transition-container {
+.groups-transition-container {
     transition: opacity 0.5s ease;
 }
 
