@@ -17,10 +17,14 @@ const SettingsPage = () => {
   });
   const [avatarFile, setAvatarFile] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoading(true);
+      setError('');
       try {
         const token = localStorage.getItem('token');
         if (token) {
@@ -38,7 +42,9 @@ const SettingsPage = () => {
           });
         }
       } catch (error) {
-        console.error('Error fetching user data', error);
+        setError('Error fetching user data');
+      } finally {
+        setLoading(false);
       }
     };
     fetchUserData();
@@ -57,6 +63,8 @@ const SettingsPage = () => {
   };
 
   const handleRemoveAvatar = async () => {
+    setLoading(true);
+    setError('');
     const token = localStorage.getItem('token');
     try {
       if (token) {
@@ -70,12 +78,16 @@ const SettingsPage = () => {
         setTimeout(() => setModalVisible(false), 3000); // Hide modal after 3 seconds
       }
     } catch (error) {
-      console.error('Error removing avatar', error);
+      setError('Error removing avatar');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
     const token = localStorage.getItem('token');
     const formDataToSend = new FormData();
     formDataToSend.append('unique_id', formData.unique_id);
@@ -101,7 +113,9 @@ const SettingsPage = () => {
         setTimeout(() => setModalVisible(false), 3000); // Hide modal after 3 seconds
       }
     } catch (error) {
-      console.error('Error updating profile', error);
+      setError('Error updating profile');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -123,6 +137,8 @@ const SettingsPage = () => {
         {/* Navigation buttons */}
       </div>
       <div className="settings-content">
+        {loading && <div className="loader">Loading...</div>}
+        {error && <div className="error-message">{error}</div>}
         {activeSection === 'Account' && (
           <form className="settings-form" onSubmit={handleFormSubmit}>
             <label htmlFor="username">User name</label>
