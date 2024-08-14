@@ -120,24 +120,60 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.6);
-    animation: fadeIn 0.5s;
+    background: rgba(0, 0, 0, 0.7); /* Slightly darker background for more focus */
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
+    z-index: 1000; /* Ensure it's on top of other elements */
 }
 
+/* Modal Content */
 .modal-content-pomodoro {
-    background: #fff;
-    padding: 40px;
-    border-radius: 20px; /* Curvier edges */
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 15px; /* Balanced rounded corners */
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow for a lifted effect */
     color: #333;
+    max-width: 500px; /* Restrict width for better design */
+    width: 90%; /* Responsive width */
+    animation: scaleIn 0.3s ease-in-out; /* Smooth scale-in animation */
 }
 
+/* Heading Style */
 .modal-content-pomodoro h3 {
-    margin-bottom: 25px;
-    font-size: 2.2rem;
-    color: #00796b; /* Teal color for heading */
+    margin-bottom: 30px;
+    font-size: 2.5rem; /* Slightly larger for emphasis */
+    color: #009688; /* Vibrant teal for a modern feel */
+    font-weight: 600; /* Stronger font weight */
+    letter-spacing: 0.5px; /* Slightly spaced out letters */
+}
+
+/* Button Style */
+.modal-content-pomodoro button {
+    padding: 10px 25px;
+    background-color: #009688; /* Teal button to match heading */
+    color: #ffffff;
+    border: none;
+    border-radius: 50px; /* Rounder buttons */
+    cursor: pointer;
+    font-size: 1.1rem;
     font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.modal-content-pomodoro button:hover {
+    background-color: #00796b; /* Darker teal on hover */
+    transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.8); }
+    to { transform: scale(1); }
 }
 
 /* Statistics */
