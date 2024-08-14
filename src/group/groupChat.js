@@ -121,9 +121,29 @@ const DiscussionBoard = () => {
                     if (newMessages.length > 0) {
                         setMessages(prevMessages => {
                             const existingMessageIds = new Set(prevMessages.map(msg => msg.id));
-                            const filteredNewMessages = newMessages.filter(msg => !existingMessageIds.has(msg.id));
-                            return [...prevMessages, ...filteredNewMessages];
+    
+                            const updatedMessages = newMessages.map(msg => {
+                                // Check if the message already exists
+                                if (!existingMessageIds.has(msg.id)) {
+                                    return msg;
+                                }
+    
+                                // If the message exists, merge replies
+                                const existingMessage = prevMessages.find(m => m.id === msg.id);
+                                const existingReplyIds = new Set(existingMessage.replies.map(reply => reply.id));
+    
+                                const newReplies = msg.replies.filter(reply => !existingReplyIds.has(reply.id));
+    
+                                return {
+                                    ...existingMessage,
+                                    replies: [...existingMessage.replies, ...newReplies]
+                                };
+                            });
+    
+                            return [...prevMessages, ...updatedMessages];
                         });
+    
+                        // Update the last message timestamp
                         const lastMessage = newMessages[newMessages.length - 1];
                         setLastMessageTimestamp(new Date(lastMessage.created_at).toISOString());
                     }
@@ -133,7 +153,7 @@ const DiscussionBoard = () => {
             }
         };
     
-        // Poll every 5 seconds
+        // Poll every 2.5 seconds
         const intervalId = setInterval(pollMessages, 2500);
     
         // Clear interval on component unmount
@@ -297,33 +317,34 @@ const DiscussionBoard = () => {
                         <div ref={messagesEndRef} />
                     </div>
                     <div className="message-input-container">
-                        {replyToMessageId ? (
-                            <div className="reply-section">
-                                <button onClick={() => setReplyToMessageId(null)}>
-                                    <FaArrowLeft />
-                                </button>
-                                <input
-                                    type="text"
-                                    placeholder="Type your reply..."
-                                    value={replyMessage}
-                                    onChange={(e) => setReplyMessage(e.target.value)}
-                                    ref={inputRef}
-                                />
-                                <button onClick={handleSendReply}>Send Reply</button>
-                            </div>
-                        ) : (
-                            <input
-                                type="text"
-                                placeholder="Type your message..."
-                                value={newMessage}
-                                onChange={(e) => setNewMessage(e.target.value)}
-                                ref={inputRef}
-                            />
-                        )}
-                        <button className='send-btn' onClick={replyToMessageId ? handleSendReply : handleSendMessage}>
-                            <FaArrowRight />
-                        </button>
-                    </div>
+    {replyToMessageId ? (
+
+            <input
+                type="text"
+                className="message-input"
+                placeholder="Type your reply..."
+                value={replyMessage}
+                onChange={(e) => setReplyMessage(e.target.value)}
+                ref={inputRef}
+            />
+    ) : (
+        <input
+            type="text"
+            className="message-input"
+            placeholder="Type your message..."
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            ref={inputRef}
+        />
+    )}
+    <button
+        className="send-btn"
+        aria-label="Send message"
+        onClick={replyToMessageId ? handleSendReply : handleSendMessage}
+    >
+        <FaArrowRight />
+    </button>
+</div>
                 </div>
             )}
             {showModal && (
