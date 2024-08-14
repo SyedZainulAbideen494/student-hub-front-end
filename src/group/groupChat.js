@@ -109,43 +109,27 @@ const DiscussionBoard = () => {
         messagesEndRef.current?.scrollIntoView(); // Automatically scroll to bottom without smooth animation
     }, [messages]);
 
+    
     useEffect(() => {
         const pollMessages = async () => {
             if (isMember) {
                 try {
                     const response = await axios.get(`${API_ROUTES.getGroupDetailsById}/${id}`, {
-                        params: { after: lastMessageTimestamp } // Fetch messages after the last message timestamp
+                        params: { after: lastMessageTimestamp }
                     });
                     const newMessages = response.data.messages;
     
-                    if (newMessages.length > 0) {
-                        setMessages(prevMessages => {
-                            const existingMessageIds = new Set(prevMessages.map(msg => msg.id));
+                    // Filter out messages that are already in the state
+                    const filteredMessages = newMessages.filter(msg => !messages.find(existingMsg => existingMsg.id === msg.id));
     
-                            const updatedMessages = newMessages.map(msg => {
-                                // Check if the message already exists
-                                if (!existingMessageIds.has(msg.id)) {
-                                    return msg;
-                                }
+                    if (filteredMessages.length > 0) {
+                        setMessages(prevMessages => [...prevMessages, ...filteredMessages]);
     
-                                // If the message exists, merge replies
-                                const existingMessage = prevMessages.find(m => m.id === msg.id);
-                                const existingReplyIds = new Set(existingMessage.replies.map(reply => reply.id));
-    
-                                const newReplies = msg.replies.filter(reply => !existingReplyIds.has(reply.id));
-    
-                                return {
-                                    ...existingMessage,
-                                    replies: [...existingMessage.replies, ...newReplies]
-                                };
-                            });
-    
-                            return [...prevMessages, ...updatedMessages];
-                        });
-    
-                        // Update the last message timestamp
-                        const lastMessage = newMessages[newMessages.length - 1];
-                        setLastMessageTimestamp(new Date(lastMessage.created_at).toISOString());
+                        // Update last message timestamp
+                        const lastMessage = filteredMessages[filteredMessages.length - 1];
+                        if (lastMessage && lastMessage.created_at) {
+                            setLastMessageTimestamp(new Date(lastMessage.created_at).toISOString());
+                        }
                     }
                 } catch (error) {
                     console.error('Error polling messages:', error);
@@ -153,12 +137,9 @@ const DiscussionBoard = () => {
             }
         };
     
-        // Poll every 2.5 seconds
-        const intervalId = setInterval(pollMessages, 2500);
-    
-        // Clear interval on component unmount
+        const intervalId = setInterval(pollMessages, 5000); // Adjust the interval as needed
         return () => clearInterval(intervalId);
-    }, [id, isMember, lastMessageTimestamp]);
+    }, [id, isMember, lastMessageTimestamp, messages]);
 
     const checkUserMembership = async () => {
         try {
