@@ -1,79 +1,116 @@
+/* Pomodoro Container */
 .pomodoro-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
     min-height: 100vh;
     justify-content: center;
-    margin-bottom: 30px;
-    background: linear-gradient(135deg, #B4D8E7 0%, #E5EBF1 100%);
-    color: #444;
-    font-family: 'Roboto', sans-serif;
-}
-
-.timer {
-    font-size: 4rem;
-    margin: 20px 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff; /* White background for the container */
     color: #333;
-    transition: background 0.5s, color 0.5s;
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 40px;
 }
 
+/* Timer */
+.timer {
+    font-size: 4.5rem;
+    margin: 20px 0;
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px; /* Curvier edges */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    color: #333;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Timer Flip Effect */
+.timer .inner-timer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+}
+
+.timer .front {
+    background: #fff;
+    border-radius: 20px;
+}
+
+.timer .back {
+    background: #f4f4f4;
+    transform: rotateY(180deg);
+    border-radius: 20px;
+}
+
+.timer.flip .inner-timer {
+    transform: rotateY(180deg);
+}
+
+/* Controls */
 .controls-pomodoro {
     display: flex;
     gap: 20px;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .controls-pomodoro button {
-    padding: 10px 40px;
-    background: #77B5FE;
-    color: #fff;
+    padding: 12px 40px;
+    background: #00796b; /* Teal background */
+    color: #fff; /* White text */
     border: none;
-    border-radius: 5px;
+    border-radius: 20px; /* Curvier edges */
     cursor: pointer;
     transition: background 0.3s, transform 0.3s;
+    font-size: 1rem;
 }
 
 .controls-pomodoro button:hover {
-    background: #60A3D9;
+    background: #004d40; /* Darker teal on hover */
     transform: scale(1.05);
 }
 
+/* Settings */
 .settings-pomodoro {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 30px;
     transition: opacity 0.5s, transform 0.5s;
+    background: #f9f9f9; /* Light grey background */
+    padding: 20px;
+    border-radius: 12px; /* Slightly rounded edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
 }
 
 .settings-pomodoro label {
     margin: 10px 0;
-    font-size: 1.2rem;
-    color: #444;
+    font-size: 1.3rem;
+    color: #333;
 }
 
 .settings-pomodoro input {
-    padding: 10px;
+    padding: 12px;
     font-size: 1.2rem;
-    width: 90%;
-    border: 2px solid #77B5FE;
-    border-radius: 5px;
+    width: 80%;
+    border: 2px solid #ddd;
+    border-radius: 12px; /* Curvier edges */
     margin-top: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #444;
-    transition: background 0.3s, color 0.3s;
+    background: #fff;
+    color: #333;
+    transition: background 0.3s, border-color 0.3s;
 }
 
 .settings-pomodoro input:focus {
     background: #fff;
-    color: #333;
+    border-color: #00796b; /* Teal border on focus */
 }
 
+/* Modal */
 .modal-pomodoro {
     position: fixed;
     top: 0;
@@ -83,25 +120,99 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     animation: fadeIn 0.5s;
 }
 
 .modal-content-pomodoro {
     background: #fff;
-    padding: 30px;
-    border-radius: 10px;
+    padding: 40px;
+    border-radius: 20px; /* Curvier edges */
     text-align: center;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     color: #333;
 }
 
 .modal-content-pomodoro h3 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #444;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    color: #00796b; /* Teal color for heading */
+    font-weight: 500;
 }
 
+/* Statistics */
+.statistics {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0; /* Lighter border */
+    border-radius: 12px; /* Slightly rounded edges */
+    padding: 30px; /* Increased padding for better spacing */
+    margin: 20px 0; /* Adjusted margins for spacing */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: box-shadow 0.3s, transform 0.3s; /* Smooth transitions for shadow and scale */
+    text-align: center; /* Center align text for a uniform look */
+}
+
+.statistics:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+.statistics h3 {
+    font-size: 2rem; /* Larger font size for headings */
+    margin-bottom: 20px; /* Space below heading */
+    color: #00796b; /* Darker teal color for heading */
+    font-weight: 600; /* Bold font weight for emphasis */
+    border-bottom: 2px solid #00796b; /* Add a border below heading */
+    padding-bottom: 10px; /* Space below heading border */
+}
+
+.statistics .stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0; /* Space between items */
+    padding: 10px; /* Padding around each item */
+    border-bottom: 1px solid #e0e0e0; /* Divider line between items */
+}
+
+.statistics .stat-item:last-child {
+    border-bottom: none; /* Remove divider from the last item */
+}
+
+.statistics .stat-label {
+    font-size: 1.1rem; /* Slightly larger font size for labels */
+    color: #555; /* Medium grey color for labels */
+}
+
+.statistics .stat-value {
+    font-size: 1.1rem; /* Slightly larger font size for values */
+    color: #00796b; /* Darker teal color for values */
+    font-weight: 600; /* Bold font weight for values */
+}
+
+/* Motivational Quote */
+.motivational-quote {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0; /* Lighter border */
+    border-radius: 12px; /* Slightly rounded edges */
+    padding: 30px; /* Increased padding for better spacing */
+    margin: 20px 0; /* Adjusted margins for spacing */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: box-shadow 0.3s; /* Smooth transition for shadow on hover */
+}
+
+.motivational-quote:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.motivational-quote p {
+    font-size: 1.3rem; /* Larger font size for better readability */
+    font-style: italic; /* Italicize the quote */
+    color: #00796b; /* Darker teal color for text */
+    text-align: center; /* Center align the text */
+    line-height: 1.5; /* Increase line height for better readability */
+}
+
+/* Keyframes for Modal */
 @keyframes fadeIn {
     from {
         opacity: 0;

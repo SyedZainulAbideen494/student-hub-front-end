@@ -1,0 +1,220 @@
+/* Main container */
+.commerce-helper-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(to right, #ffffff, #f7f7f7);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.page-header p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Query input */
+.query-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.query-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Fetch button */
+.fetch-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fetch-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Keyboard */
+.keyboard-container {
+    margin-top: 20px;
+}
+
+.keyboard-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.keyboard-button {
+    flex: 1 1 calc(20% - 10px);
+    margin: 5px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.keyboard-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Instructions */
+.instructions-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.instructions {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instructions h2 {
+    margin-top: 0;
+}
+
+.instructions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.instructions li {
+    margin: 10px 0;
+}
+
+.show-instructions-button, .hide-instructions-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.show-instructions-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.hide-instructions-button {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.show-instructions-button:hover {
+    background-color: #0056b3;
+}
+
+.hide-instructions-button:hover {
+    background-color: #cc0000;
+}
+
+/* Loading Modal */
+.loader-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.loader-content {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #007bff;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+    font-size: 18px;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff4c4c;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Result container */
+.result-container {
+    margin-top: 20px;
+}
+
+.result-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.result-content {
+    font-size: 16px;
+    color: #555;
+}
