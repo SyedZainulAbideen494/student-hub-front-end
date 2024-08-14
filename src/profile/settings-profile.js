@@ -137,7 +137,7 @@ const SettingsPage = () => {
         {/* Navigation buttons */}
       </div>
       <div className="settings-content">
-        {loading && <div className="loader">Loading...</div>}
+        {loading && <div className="loader"></div>}
         {error && <div className="error-message">{error}</div>}
         {activeSection === 'Account' && (
           <form className="settings-form" onSubmit={handleFormSubmit}>
