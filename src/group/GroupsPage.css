@@ -120,7 +120,7 @@
 /* Group list styling */
 .groups-list-container {
     width: 100%;
-    max-width: 500px; /* Adjusted max-width for mobile */
+    max-width: 800px; /* Adjusted max-width for mobile */
     margin-bottom: 30px;
 }
 
@@ -142,6 +142,7 @@
     border-radius: 12px; /* More rounded edges */
     padding: 15px;
     margin-bottom: 10px;
+    width: 90%;
     cursor: pointer;
     transition: background-color 0.3s;
 }
