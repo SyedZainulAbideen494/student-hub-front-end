@@ -100,6 +100,10 @@ const Welcome = () => {
                                     <li><strong>Calendar:</strong> Manage events, get reminders, and stay organized.</li>
                                     <li><strong>Pomodoro Timer:</strong> Stay focused with our built-in Pomodoro timer.</li>
                                     <li><strong>Music Player:</strong> Play music directly through the app.</li>
+                                    <li><strong>Math Solver:</strong> Solve complex math problems with ease.</li>
+                                    <li><strong>Science Helper:</strong> Get assistance with science topics and experiments.</li>
+                                    <li><strong>Commerce Helper:</strong> Understand and solve commerce-related problems.</li>
+                                    <li><strong>Social Feed:</strong> Stay updated with your peers and share your achievements.</li>
                                 </ul>
                                 <button className="continue-button-welcome-page" onClick={handlePrevious}>Previous</button>
                                 <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
@@ -121,6 +125,7 @@ const Welcome = () => {
                         <main className="welcome-content-welcome-page">
                             <section className="features-welcome-page">
                                 <div className="feature-cards-welcome-page">
+                                    {/* Existing features */}
                                     <div className="feature-card-welcome-page">
                                         <h3>Study Planner</h3>
                                         <p>Organize your tasks and get reminders. View your schedule on a calendar.</p>
@@ -156,30 +161,38 @@ const Welcome = () => {
                                         <p>Play music directly through the app.</p>
                                         <Link to="/music" className="continue-button-welcome-page">Continue to Music Player</Link>
                                     </div>
+                                    {/* New features */}
+                                    <div className="feature-card-welcome-page">
+                                        <h3>Math Solver</h3>
+                                        <p>Solve complex math problems with ease.</p>
+                                        <Link to="/math-solver" className="continue-button-welcome-page">Continue to Math Solver</Link>
+                                    </div>
+                                    <div className="feature-card-welcome-page">
+                                        <h3>Science Helper</h3>
+                                        <p>Get assistance with science topics and experiments.</p>
+                                        <Link to="/science-helper" className="continue-button-welcome-page">Continue to Science Helper</Link>
+                                    </div>
+                                    <div className="feature-card-welcome-page">
+                                        <h3>Commerce Helper</h3>
+                                        <p>Understand and solve commerce-related problems.</p>
+                                        <Link to="/commerce-helper" className="continue-button-welcome-page">Continue to Commerce Helper</Link>
+                                    </div>
+                                    <div className="feature-card-welcome-page">
+                                        <h3>Social Feed</h3>
+                                        <p>Stay updated with your peers and share your achievements.</p>
+                                        <Link to="/social-feed" className="continue-button-welcome-page">Continue to Social Feed</Link>
+                                    </div>
                                 </div>
                                 {!permissionGranted && (
-                <button  className="continue-button-welcome-page" onClick={requestNotificationPermission}>
-                    Enable Notifications
-                </button>
-            )}
-                                <button className="continue-button-welcome-page" onClick={handlePrevious}>Back</button>
-                                <div className="pagination-dots">
-                                    {[1, 2, 3].map((step) => (
-                                        <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
-                                    ))}
-                                </div>
+                                    <button className="continue-button-welcome-page" onClick={requestNotificationPermission}>
+                                        Enable Notifications
+                                    </button>
+                                )}
                             </section>
                         </main>
                     </div>
                 )}
             </div>
-            <div className="pagination-dots">
-                {[1, 2, 3].map((step) => (
-                    <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
-                ))}
-            </div>
-            {/* Button to request notification permission */}
-            
         </div>
     );
 };

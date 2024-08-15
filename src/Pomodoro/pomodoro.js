@@ -217,15 +217,7 @@ const Pomodoro = () => {
                             <span className="stat-label">Break Count:</span>
                             <span className="stat-value">{breakCount}</span>
                         </div>
-                        <div className="stat-item">
-                            <span className="stat-label">Current Streak:</span>
-                            <span className="stat-value">{streakDays} day(s)</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-label">Longest Streak:</span>
-                            <span className="stat-value">{longestStreak} day(s)</span>
-                        </div>
-                        <p>{getMotivationalQuote()}</p>
+                     
                     </div>
                 </div>
             )}
