@@ -6,6 +6,7 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css'; // Import Quill styles
 import './noteDetailsPage.css';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
+import { jsPDF } from 'jspdf';
 
 const NoteDetailPage = () => {
     const { id } = useParams();
@@ -17,6 +18,9 @@ const NoteDetailPage = () => {
     const [description, setDescription] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [userId, setUserId] = useState(null);
+    const [canEdit, setCanEdit] = useState(false);
+    const [noteUserId, setNoteUserId] = useState('') 
     const editorRef = useRef(null);
     const quillRef = useRef(null);
     const nav = useNavigate();
@@ -28,6 +32,7 @@ const NoteDetailPage = () => {
                 setNote(response.data);
                 setTitle(response.data.title);
                 setDescription(response.data.description);
+                setNoteUserId(response.data.user_id)
                 if (quillRef.current) {
                     quillRef.current.root.innerHTML = response.data.headings; // Set editor content
                 }
@@ -41,6 +46,28 @@ const NoteDetailPage = () => {
 
         fetchNote();
     }, [id]);
+
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.post(API_ROUTES.fetchUserProfile, {
+                    token: token
+                });
+
+                setUserId(response.data.id);
+                if (note && response.data.id === noteUserId) {
+                    setCanEdit(true);
+                } else {
+                    setCanEdit(false);
+                }
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
+        };
+
+        fetchUserProfile();
+    }, [note]);
 
     useEffect(() => {
         if (editMode && editorRef.current) {
@@ -92,16 +119,16 @@ const NoteDetailPage = () => {
             }
         }
     };
-    
+
     const handleUpdateClick = async (e) => {
         e.preventDefault();
-    
+
         const updatedNote = {
             title,
             description,
             headings: quillRef.current.root.innerHTML, // Get editor content
         };
-    
+
         try {
             const token = localStorage.getItem('token');
             await axios.put(`${API_ROUTES.updateNote}/${id}`, updatedNote, {
@@ -118,6 +145,43 @@ const NoteDetailPage = () => {
             setModalMessage('Failed to update note.');
             setShowModal(true);
             setTimeout(() => setShowModal(false), 3000); // Close the modal after 3 seconds
+        }
+    };
+
+    const handleDownloadPDF = async () => {
+        if (note) {
+            const doc = new jsPDF();
+            doc.setFontSize(16);
+            doc.text(note.title, 10, 10);
+            doc.setFontSize(12);
+            doc.text(note.description, 10, 20);
+            doc.setFontSize(10);
+            doc.text('Content:', 10, 30);
+    
+            // Create a temporary container for the HTML content
+            const content = document.createElement('div');
+            content.innerHTML = note.headings;
+            document.body.appendChild(content);
+    
+            try {
+                // Use jsPDF's html method to convert HTML to PDF
+                await doc.html(content, {
+                    callback: (doc) => {
+                        // Generate a random 7-digit number for the filename
+                        const randomNum = Math.floor(1000000 + Math.random() * 9000000);
+                        const filename = `${note.title}_${randomNum}_eduify.pdf`;
+                        doc.save(filename);
+                    },
+                    x: 10,
+                    y: 40,
+                    width: 180, // Adjust width to fit your content
+                });
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+            } finally {
+                // Remove the temporary container
+                document.body.removeChild(content);
+            }
         }
     };
 
@@ -167,10 +231,16 @@ const NoteDetailPage = () => {
                     <div dangerouslySetInnerHTML={{ __html: note.headings }} />
                 </div>
             )}
-            <div className="note-actions-note-detail-page">
-                <button onClick={handleEditToggle} className="download-button">{editMode ? 'Cancel' : 'Edit'}</button>
-                <button onClick={handleDeleteClick} className="download-button">Delete</button>
+            <div className="note-actions-note-detail-page" style={{textAlign: 'center'}}>
+            <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
             </div>
+            {canEdit && (
+                <div className="note-actions-note-detail-page">
+                    <button onClick={handleEditToggle} className="download-button">{editMode ? 'Cancel' : 'Edit'}</button>
+                    <button onClick={handleDeleteClick} className="download-button">Delete</button>
+                    
+                </div>
+            )}
             <SuccessModal visible={showModal} message={modalMessage} />
         </div>
     );
