@@ -6,7 +6,8 @@ import Quill from 'quill';
 import 'quill/dist/quill.snow.css'; // Import Quill styles
 import './noteDetailsPage.css';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
-import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const NoteDetailPage = () => {
     const { id } = useParams();
@@ -148,42 +149,44 @@ const NoteDetailPage = () => {
         }
     };
 
+
+
     const handleDownloadPDF = async () => {
-        if (note) {
-            const doc = new jsPDF();
-            doc.setFontSize(16);
-            doc.text(note.title, 10, 10);
-            doc.setFontSize(12);
-            doc.text(note.description, 10, 20);
-            doc.setFontSize(10);
-            doc.text('Content:', 10, 30);
-    
-            // Create a temporary container for the HTML content
-            const content = document.createElement('div');
-            content.innerHTML = note.headings;
-            document.body.appendChild(content);
-    
-            try {
-                // Use jsPDF's html method to convert HTML to PDF
-                await doc.html(content, {
-                    callback: (doc) => {
-                        // Generate a random 7-digit number for the filename
-                        const randomNum = Math.floor(1000000 + Math.random() * 9000000);
-                        const filename = `${note.title}_${randomNum}_eduify.pdf`;
-                        doc.save(filename);
-                    },
-                    x: 10,
-                    y: 40,
-                    width: 180, // Adjust width to fit your content
-                });
-            } catch (error) {
-                console.error('Error generating PDF:', error);
-            } finally {
-                // Remove the temporary container
-                document.body.removeChild(content);
-            }
+    if (note) {
+        const content = document.querySelector('.note-content-note-detail-page');
+
+        // Use html2canvas to capture the content as a canvas
+        const canvas = await html2canvas(content, { scale: 2 }); // Increase scale for better quality
+        const imgData = canvas.toDataURL('image/png');
+
+        // Create a PDF
+        const doc = new jsPDF();
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 295; // A4 height in mm
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        // Add the first page
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        // Add additional pages if content exceeds one page
+        while (heightLeft >= 0) {
+            position -= pageHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
         }
-    };
+
+        // Save the PDF
+        const randomNum = Math.floor(1000000 + Math.random() * 9000000);
+        const filename = `${note.title}_${randomNum}_eduify.pdf`;
+        doc.save(filename);
+    }
+};
+    
+    
 
     if (loading) return <div className="loading">Loading...</div>;
     if (error) return <div className="error">{error}</div>;
