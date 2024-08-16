@@ -99,7 +99,7 @@ const Welcome = () => {
                                     <li><strong>Quizzes:</strong> Create quizzes, challenge friends, and view results.</li>
                                     <li><strong>Calendar:</strong> Manage events, get reminders, and stay organized.</li>
                                     <li><strong>Pomodoro Timer:</strong> Stay focused with our built-in Pomodoro timer.</li>
-                                    <li><strong>Music Player:</strong> Play music directly through the app.</li>
+    
                                     <li><strong>Math Solver:</strong> Solve complex math problems with ease.</li>
                                     <li><strong>Science Helper:</strong> Get assistance with science topics and experiments.</li>
                                     <li><strong>Commerce Helper:</strong> Understand and solve commerce-related problems.</li>
@@ -156,11 +156,7 @@ const Welcome = () => {
                                         <p>Stay focused with our built-in Pomodoro timer.</p>
                                         <Link to="/pomodoro" className="continue-button-welcome-page">Continue to Pomodoro Timer</Link>
                                     </div>
-                                    <div className="feature-card-welcome-page">
-                                        <h3>Music Player</h3>
-                                        <p>Play music directly through the app.</p>
-                                        <Link to="/music" className="continue-button-welcome-page">Continue to Music Player</Link>
-                                    </div>
+                                 
                                     {/* New features */}
                                     <div className="feature-card-welcome-page">
                                         <h3>Math Solver</h3>
