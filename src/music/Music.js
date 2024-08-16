@@ -316,9 +316,7 @@ const SpotifyPlayer = () => {
   return (
     <div className="player-container">
     {/* Header */}
-    <p className="login-message">
-      If the music player is not responding, <a href={API_ROUTES.loginSpotify}>click here</a>
-    </p>
+   
     <header className="spotify-player-header search-bar">
       <h1>Spotify Player</h1>
       {/* Now Playing Card */}
@@ -344,6 +342,9 @@ const SpotifyPlayer = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
     </header>
+    <p className="login-message">
+      If the music player is not responding, <a href={API_ROUTES.loginSpotify}>click here</a>
+    </p>
     {/* Search Results */}
     {searchResults.length > 0 && (
       <section className="search-results">
