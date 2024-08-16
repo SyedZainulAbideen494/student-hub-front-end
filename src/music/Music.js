@@ -343,8 +343,11 @@ const SpotifyPlayer = () => {
       />
     </header>
     <p className="login-message">
-      If the music player is not responding, <a href={API_ROUTES.loginSpotify}>click here</a>
-    </p>
+  If the music player is not responding, <a href={API_ROUTES.loginSpotify}>click here</a>.
+</p>
+<p className="login-message">
+  You require Spotify Premium to use this feature.
+</p>
     {/* Search Results */}
     {searchResults.length > 0 && (
       <section className="search-results">
