@@ -33,9 +33,9 @@
   
   .groups-search-input {
     padding: 8px 12px;
-    border-radius: 50px;
+    border-radius: 9px;
     border: 1px solid #bbb;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     transition: border-color 0.3s ease;
   }
   
