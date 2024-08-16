@@ -152,39 +152,51 @@ const NoteDetailPage = () => {
 
 
     const handleDownloadPDF = async () => {
-    if (note) {
-        const content = document.querySelector('.note-content-note-detail-page');
-
-        // Use html2canvas to capture the content as a canvas
-        const canvas = await html2canvas(content, { scale: 2 }); // Increase scale for better quality
-        const imgData = canvas.toDataURL('image/png');
-
-        // Create a PDF
-        const doc = new jsPDF();
-        const imgWidth = 210; // A4 width in mm
-        const pageHeight = 295; // A4 height in mm
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        let heightLeft = imgHeight;
-        let position = 0;
-
-        // Add the first page
-        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-
-        // Add additional pages if content exceeds one page
-        while (heightLeft >= 0) {
-            position -= pageHeight;
-            doc.addPage();
-            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-            heightLeft -= pageHeight;
+        if (note) {
+            const content = document.querySelector('.note-content-note-detail-page');
+            const doc = new jsPDF();
+            const pageWidth = doc.internal.pageSize.width;
+            const margin = 10;
+            let yOffset = margin;
+    
+            // Function to add content to PDF with handling for page breaks
+            const addContent = (htmlElement) => {
+                return new Promise((resolve, reject) => {
+                    html2canvas(htmlElement, { scale: 2 }).then(canvas => {
+                        const imgData = canvas.toDataURL('image/png');
+                        const imgWidth = pageWidth - 2 * margin;
+                        const imgHeight = canvas.height * imgWidth / canvas.width;
+                        const pageHeight = doc.internal.pageSize.height;
+    
+                        let heightLeft = imgHeight;
+                        let position = yOffset;
+    
+                        doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+                        heightLeft -= pageHeight;
+    
+                        while (heightLeft >= 0) {
+                            doc.addPage();
+                            position = heightLeft - imgHeight;
+                            doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+                            heightLeft -= pageHeight;
+                        }
+    
+                        resolve();
+                    }).catch(err => reject(err));
+                });
+            };
+    
+            // Add content to PDF
+            try {
+                await addContent(content);
+                const randomNum = Math.floor(1000000 + Math.random() * 9000000);
+                const filename = `${note.title}_${randomNum}_eduify.pdf`;
+                doc.save(filename);
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+            }
         }
-
-        // Save the PDF
-        const randomNum = Math.floor(1000000 + Math.random() * 9000000);
-        const filename = `${note.title}_${randomNum}_eduify.pdf`;
-        doc.save(filename);
-    }
-};
+    };
     
     
 
