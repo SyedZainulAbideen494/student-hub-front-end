@@ -1,193 +1,203 @@
-/* General styling for the page container */
 .groups-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    box-sizing: border-box;
-    min-height: 100vh;
-    background-color: #fafafa; /* WhatsApp's light gray background */
-    overflow: auto;
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* WhatsApp-like font */
-}
-
-/* Header styling */
-.groups-header {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.groups-header h1 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.groups-search-container {
-    position: relative;
-}
-
-.groups-search-input {
-    width: 100%;
-    padding: 10px 40px 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 12px; /* More rounded edges */
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-.groups-search-input:focus {
-    border-color: #7161ef;
-    outline: none;
-}
-
-/* Button container styling */
-.groups-button-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header Styling */
+  .groups-header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    max-width: 500px; /* Adjusted max-width for mobile */
-    margin-bottom: 20px; /* Reduced margin */
-    gap: 10px; /* Spacing between buttons */
-}
-
-/* Group creation and invitations buttons styling */
-.groups-join-group-button {
-    background-color: #7161ef;
-    color: #fff;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .groups-header h1 {
+    margin: 0;
+    font-size: 26px;
+    color: #333;
+  }
+  
+  .groups-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .groups-search-container {
+    margin-right: 10px;
+  }
+  
+  .groups-search-input {
+    padding: 8px 12px;
+    border-radius: 50px;
+    border: 1px solid #bbb;
+    background-color: #f3f3f3;
+    transition: border-color 0.3s ease;
+  }
+  
+  .groups-search-input:focus {
+    border-color: #7161ef;
+  }
+  
+  .groups-create-btn-groups {
+    color: #000000;
     border: none;
-    border-radius: 12px; /* More rounded edges */
-    padding: 12px 24px; /* Increased padding */
+    padding: 8px 10px;
+    border-radius: 50%;
+    background-color: transparent;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
-    flex: 1; /* Flex property to ensure equal width */
-}
+    transition: background-color 0.3s ease;
+  }
+  
 
-.groups-join-group-button:hover {
-    background-color: #5a4be6;
-}
-
-/* Group creation form styling */
-.groups-group-creation-form {
-    width: 100%;
-    max-width: 500px; /* Adjusted max-width for mobile */
-    background-color: #fff;
-    border-radius: 12px; /* More rounded edges */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Tab Section */
+  .groups-tab-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .groups-tab-button {
+    flex: 1;
+    padding: 8px;
+    margin: 0 5px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 10px;
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .groups-tab-button:hover {
+    background-color: #d8d8d8;
+    color: #444;
+  }
+  
+  .groups-active {
+    background-color: #7161ef;
+    color: #fff;
+  }
+  
+  .groups-tab-button svg {
+    margin-right: 6px;
+    font-size: 14px;
+  }
+  
+  /* Group Creation Form */
+  .groups-group-creation-form {
     padding: 20px;
-    margin-bottom: 30px;
-}
-
-.groups-form-title {
-    font-size: 24px;
+    background-color: #f8f8f8;
+    border-radius: 12px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .groups-form-title {
+    margin-bottom: 15px;
+    font-size: 20px;
     color: #333;
-}
-
-.groups-group-name-input,
-.groups-group-description-input {
+  }
+  
+  .groups-group-name-input, .groups-group-description-input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 12px; /* More rounded edges */
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.groups-group-description-input {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.groups-checkbox-container {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    background-color: #f4f4f4;
+    transition: border-color 0.3s ease;
+  }
+  
+  .groups-group-name-input:focus, .groups-group-description-input:focus {
+    border-color: #7161ef;
+  }
+  
+  .groups-checkbox-container {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-}
-
-.groups-public-checkbox {
-    margin-right: 10px;
-}
-
-.groups-checkbox-label {
+    margin-bottom: 15px;
+  }
+  
+  .groups-public-checkbox {
+    margin-right: 8px;
+  }
+  
+  .groups-checkbox-label {
     font-size: 16px;
-}
-
-/* Group list styling */
-.groups-list-container {
-    width: 100%;
-    max-width: 800px; /* Adjusted max-width for mobile */
-    margin-bottom: 30px;
-}
-
-.groups-list-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.groups-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.group-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px; /* More rounded edges */
-    padding: 15px;
-    margin-bottom: 10px;
-    width: 90%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.group-item:hover {
-    background-color: #f0f0f0;
-}
-
-/* Tab container styling */
-.groups-tab-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 500px; /* Adjusted max-width for mobile */
-    margin-bottom: 20px; /* Reduced margin */
-    gap: 10px; /* Spacing between tabs */
-}
-
-/* Tab button styling */
-.groups-tab-button {
-    background-color: #fafafa;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 12px; /* More rounded edges */
-    padding: 12px 24px; /* Increased padding */
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    flex: 1; /* Flex property to ensure equal width */
-    text-align: center;
-}
-
-.groups-tab-button.groups-active {
+    color: #555;
+  }
+  
+  .groups-create-btn {
     background-color: #7161ef;
     color: #fff;
     border: none;
-}
-
-/* Transition container styling */
-.groups-transition-container {
-    transition: opacity 0.5s ease;
-}
-
-/* Hidden by default */
-.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .groups-create-btn:hover {
+    background-color: #6053d8;
+  }
+  
+  /* Group List Section */
+  .groups-list-container {
+    margin-top: 20px;
+  }
+  
+  .groups-list-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #444;
+  }
+  
+  .groups-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .group-item {
+    padding: 10px 15px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .group-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .groups-join-group-button {
+    background-color: #7161ef;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .groups-join-group-button:hover {
+    background-color: #6053d8;
+  }
+  
+  .hidden {
+    display: none;
+  }
