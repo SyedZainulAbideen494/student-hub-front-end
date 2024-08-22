@@ -116,3 +116,10 @@
       padding: 12px 25px;
     }
   }
+
+
+.beta-note {
+    font-size: 1rem;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+  }

@@ -4,27 +4,29 @@ import { Link } from 'react-router-dom';
 
 const PricingSection = () => {
   const freeFeatures = [
-    'Basic Task Management',
-    'Limited Study Planner',
-    'Access to Group Study',
-    'Standard Pomodoro Timer',
-    'Basic Analytics',
-    'Daily Quotes',
+    'Manage up to 10 tasks at a time',
+    'Create up to 2 groups',
+    'Join up to 10 groups at once',
+    'Create up to 15 notes at once',
+    '15 math queries per day',
+    '15 science queries per day',
+    '15 commerce queries per day',
+    'Create up to 20 quizzes at a time',
+    'Default, non-changeable Pomodoro Timer',
+    'Manage up to 20 calendar dates at a time',
   ];
 
   const premiumFeatures = [
-    'Customizable Quizzes',
-    'Advanced Pomodoro Timer',
-    'Enhanced Study Planner',
-    'Priority Group Study Access',
-    'Detailed Study Analytics',
-    'Exclusive Daily Quotes',
-    'Priority Support',
-    'Music Player Integration',
-    'Social Feed Integration',
-    'Math & Science Helper',
-    'Aesthetic Notes & Flashcards',
-    'Calendar & Reminders',
+    'Unlimited task management',
+    'Create unlimited groups',
+    'Join unlimited groups',
+    'Create unlimited notes',
+    'Unlimited math queries',
+    'Unlimited science queries',
+    'Unlimited commerce queries',
+    'Create unlimited quizzes',
+    'Customizable Pomodoro Timer',
+    'Unlimited calendar date management',
   ];
 
   const priceInINR = 50;
@@ -33,6 +35,7 @@ const PricingSection = () => {
   return (
     <section className="pricing-section">
       <h2>Choose Your Plan</h2>
+      <p className="beta-note">Currently in Beta: All features are free, no premium version available for now.</p>
       <div className="pricing-cards">
         {/* Free Plan */}
         <div className="pricing-card">
@@ -43,10 +46,10 @@ const PricingSection = () => {
               <li key={index}>✔️ {feature}</li>
             ))}
           </ul>
-          <Link to='/sign-up'>
-          <a className="cta-btn">
-            Select Free Plan
-          </a>
+          <Link to="/sign-up">
+            <span className="cta-btn">
+              Select Free Plan
+            </span>
           </Link>
         </div>
 
@@ -59,10 +62,10 @@ const PricingSection = () => {
               <li key={index}>✔️ {feature}</li>
             ))}
           </ul>
-          <Link to='/sign-up'>
-          <a className="cta-btn">
-            Select Free Plan
-          </a>
+          <Link to="/sign-up">
+            <span className="cta-btn">
+              Select Premium Plan
+            </span>
           </Link>
         </div>
       </div>

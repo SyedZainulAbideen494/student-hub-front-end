@@ -37,7 +37,7 @@ const ForgotPassword = () => {
           <button className="forgot-password__button" type="submit">Send Reset Link</button>
         </form>
         <p className="forgot-password__message">{message}</p>
-        <Link className="forgot-password__link" to="/">Back to Home</Link>
+        <Link className="forgot-password__link" to="/login">Back to Home</Link>
       </main>
       <footer className="forgot-password__footer">
         <p>&copy; 2024 Edusify</p>
