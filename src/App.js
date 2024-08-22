@@ -41,6 +41,8 @@ import DownloadPage from "./website/website";
 import SettingsPage from "./profile/settings-profile";
 import CommerceHelper from "./commerce helper/CommerceHelper";
 import NotFoundPage from "./app_modules/404Page";
+import ForgotPassword from "./auth/forgot-password";
+import ResetPassword from "./auth/ResetPassword";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -73,6 +75,8 @@ const router = createBrowserRouter([
   {path: '/search', element: <SearchPage/>},
   {path: '/settings', element: <SettingsPage/>},
   {path: '/commerce/helper', element: <CommerceHelper/>},
+  {path: '/forgot-password', element: <ForgotPassword/>},
+  {path: '/reset-password/:token', element: <ResetPassword/>},
   { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
