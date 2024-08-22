@@ -1,5 +1,29 @@
 import React from 'react';
 import './FeaturesOverview.css'; // Ensure to import the CSS file
+import { API_ROUTES } from '../app_modules/apiRoutes';
+
+const handleDownload = async () => {
+  const response = await fetch(API_ROUTES.downloadAndroid, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
+  });
+
+  if (!response.ok) {
+    console.error('Failed to download file');
+    return;
+  }
+
+  const blob = await response.blob();
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Edusify.apk'; // Replace with your file name
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
 
 const FeaturesOverview = () => {
     const features = [
@@ -69,7 +93,7 @@ const FeaturesOverview = () => {
                     </div>
                 ))}
             </div>
-            <a href="/download" className="cta-btn-features-section">
+            <a className="cta-btn-features-section" onClick={handleDownload}>
                 Download for Android
             </a>
         </section>

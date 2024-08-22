@@ -1,5 +1,6 @@
 import React from 'react';
 import './FeaturedUseCasesSection.css';
+import { Link } from 'react-router-dom';
 
 const FeaturedUseCasesSection = () => {
   return (
@@ -30,7 +31,9 @@ const FeaturedUseCasesSection = () => {
           <p>Use Edusify to organize and enhance your learning journey, whether for personal growth or professional development.</p>
         </div>
       </div>
-      <a href="#sign-up" className="cta-button">Start Your Journey</a>
+      <Link to='/sign-up'>
+      <a className="cta-button">Start Your Journey</a>
+      </Link>
     </section>
   );
 };

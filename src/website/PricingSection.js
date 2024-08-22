@@ -1,5 +1,6 @@
 import React from 'react';
 import './PricingSection.css';
+import { Link } from 'react-router-dom';
 
 const PricingSection = () => {
   const freeFeatures = [
@@ -42,9 +43,11 @@ const PricingSection = () => {
               <li key={index}>✔️ {feature}</li>
             ))}
           </ul>
-          <a href="/signup" className="cta-btn">
+          <Link to='/sign-up'>
+          <a className="cta-btn">
             Select Free Plan
           </a>
+          </Link>
         </div>
 
         {/* Premium Plan */}
@@ -56,9 +59,11 @@ const PricingSection = () => {
               <li key={index}>✔️ {feature}</li>
             ))}
           </ul>
-          <a href="/signup" className="cta-btn">
-            Select Premium Plan
+          <Link to='/sign-up'>
+          <a className="cta-btn">
+            Select Free Plan
           </a>
+          </Link>
         </div>
       </div>
     </section>
