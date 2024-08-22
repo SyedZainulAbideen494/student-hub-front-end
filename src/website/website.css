@@ -1,254 +1,204 @@
-.header-website {
-  padding: 20px;
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #121212;
-  color: white;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-sizing: border-box;
+  border-bottom: 1px solid #eaeaea;
 }
 
-.header-website .logo-website {
-  font-size: 24px;
+.logo a {
+  font-size: 1.6rem;
   font-weight: bold;
+  color: #333;
+  text-decoration: none;
 }
 
-.header-website nav {
+.nav-menu {
   display: flex;
   align-items: center;
+  list-style: none;
 }
 
-.header-website nav a {
-  margin: 0 15px;
-  color: white;
+.nav-menu a {
+  margin: 0 20px;
+  color: #333;
   text-decoration: none;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.header-website nav a:hover {
-  color: #7161ef;
+.nav-menu a:hover {
+  color: #000;
 }
 
-.header-website .cta-button-website {
+.nav-menu .highlighted {
+  color: #fff;
+  background-color: #000;
   padding: 10px 20px;
-  background-color: #7161ef;
-  border: none;
-  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+.burger-menu {
+  display: none;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  border-radius: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
 }
 
-.header-website .cta-button-website:hover {
-  background-color: #5841d1;
-  transform: scale(1.05);
+.burger-menu .bar {
+  width: 100%;
+  height: 4px;
+  background-color: #333;
+  margin: 4px 0;
 }
 
-.hero-website {
-  padding: 100px 20px;
-  background: linear-gradient(to right, #7161ef, #a38dff);
-  color: white;
+.nav-menu.open {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-sizing: border-box;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  max-width: 280px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.hero-website h1 {
-  font-size: 48px;
-  margin: 0;
+.nav-menu.open a {
+  margin: 10px 0;
+  color: #333;
 }
 
-.hero-website p {
-  font-size: 24px;
-  margin: 20px 0;
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 80vh;
+  background: url('../images/Edusify-banner.png') no-repeat center center/cover;
+  color: #fff;
+  position: relative;
 }
 
-.hero-website .cta-button-website {
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.6rem;
+  margin-bottom: 30px;
+}
+
+.hero-buttons .btn-primary {
   padding: 15px 30px;
-  background-color: white;
-  color: #7161ef;
+  color: #000;
+  background-color: #fff;
   border: none;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  border-radius: 30px;
-}
-
-.hero-website .cta-button-website:hover {
-  background-color: #e6e6ff;
-  transform: scale(1.05);
-}
-
-.intro-website, .call-to-action-website, .features-website, .testimonials-website, .faq-website {
-  padding: 50px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.intro-website h2, .call-to-action-website h2, .features-website h2, .testimonials-website h2, .faq-website h2 {
-  font-size: 36px;
-  margin: 0 0 20px;
-}
-
-.intro-website p, .call-to-action-website p, .features-website p, .testimonials-website p, .faq-website p {
-  font-size: 18px;
-  margin: 0 0 20px;
-}
-
-.intro-website .cta-button-website, .call-to-action-website .cta-button-website, .features-website .cta-button-website, .testimonials-website .cta-button-website, .faq-website .cta-button-website {
-  padding: 10px 20px;
-  background-color: #7161ef;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  border-radius: 30px;
-}
-
-.intro-website .cta-button-website:hover, .call-to-action-website .cta-button-website:hover, .features-website .cta-button-website:hover, .testimonials-website .cta-button-website:hover, .faq-website .cta-button-website:hover {
-  background-color: #5841d1;
-  transform: scale(1.05);
-}
-
-.footer-website {
-  width: 100%;
-  padding: 20px;
-  background-color: #121212;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
-
-.footer-website nav {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.footer-website nav a {
-  margin: 0 15px;
-  color: white;
+  font-size: 1.2rem;
+  margin-right: 15px;
   text-decoration: none;
-  transition: color 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.footer-website nav a:hover {
-  color: #7161ef;
-}
-
-.footer-website .social-media-website {
-  margin-bottom: 20px;
-}
-
-.footer-website .contact-info-website {
-  font-size: 14px;
-}
-
-.footer-website .contact-info-website p {
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .header-website nav a {
-    margin: 0 10px;
-  }
-
-  .hero-website h1 {
-    font-size: 36px;
-  }
-
-  .hero-website p {
-    font-size: 20px;
-  }
-
-  .intro-website h2, .call-to-action-website h2, .features-website h2, .testimonials-website h2, .faq-website h2 {
-    font-size: 28px;
-  }
-
-  .intro-website p, .call-to-action-website p, .features-website p, .testimonials-website p, .faq-website p {
-    font-size: 16px;
-  }
-}
-
-.features-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 200px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.feature-item:hover {
+.hero-buttons .btn-primary:hover {
+  background-color: #f0f0f0;
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.testimonials-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+.hero-buttons .btn-secondary {
+  padding: 15px 30px;
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
-.testimonial-item {
-  width: 80%;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+.hero-buttons .btn-secondary:hover {
+  border-color: #f0f0f0;
+  color: #f0f0f0;
 }
 
-.testimonial-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+  }
 }
 
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
+@media screen and (max-width: 480px) {
+  .burger-menu {
+    width: 28px;
+    height: 22px;
+  }
+
+  .burger-menu .bar {
+    height: 3px;
+    margin: 3px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons .btn-primary,
+  .hero-buttons .btn-secondary {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
 }
 
-.faq-item {
-  width: 80%;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
 
-.faq-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
