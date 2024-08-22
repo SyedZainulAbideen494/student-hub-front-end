@@ -62,5 +62,7 @@ export const API_ROUTES = {
   removeAvatar: `${API_URL}/api/remove-avatar`, // Adjust the route as needed,
   CommerceHelper: `${API_URL}/api/commerce`,
   updateNote: `${API_URL}/api/update/note`,
-  deleteNote: `${API_URL}/api/delete/note`
+  deleteNote: `${API_URL}/api/delete/note`,
+  forgotPassword: `${API_URL}/api/auth/forgot-password`,
+  resetPassword: `${API_URL}/api/auth/reset-password`
 }

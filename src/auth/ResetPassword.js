@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './forgot-password.css'
+import { API_ROUTES } from '../app_modules/apiRoutes';
 const ResetPassword = () => {
   const { token } = useParams();
   const [password, setPassword] = useState('');
@@ -15,7 +16,7 @@ const ResetPassword = () => {
       return;
     }
     try {
-      await axios.post('https://mn4jqd3r-5000.inc1.devtunnels.ms/api/auth/reset-password', { token, password });
+      await axios.post(API_ROUTES.resetPassword, { token, password });
       setMessage('Password successfully reset.');
     } catch (error) {
       setMessage('An error occurred.');
@@ -50,7 +51,7 @@ const ResetPassword = () => {
         <p className="reset-password__message">{message}</p>
       </main>
       <footer className="reset-password__footer">
-        <p>&copy; 2024 YourCompany</p>
+        <p>&copy; 2024 Edusify</p>
       </footer>
     </div>
   );

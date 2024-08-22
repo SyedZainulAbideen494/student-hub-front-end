@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './forgot-password.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const ForgotPassword = () => {
   const [emailOrPhone, setEmailOrPhone] = useState('');
@@ -10,7 +11,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://mn4jqd3r-5000.inc1.devtunnels.ms/api/auth/forgot-password', { emailOrPhone });
+      await axios.post(API_ROUTES.forgotPassword, { emailOrPhone });
       setMessage('Instructions have been sent to your email.');
     } catch (error) {
       setMessage('An error occurred.');
