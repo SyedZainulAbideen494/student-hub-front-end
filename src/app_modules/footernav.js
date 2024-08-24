@@ -138,7 +138,7 @@ const FooterNav = () => {
                     </button>
                 </Link>
                 <Link to='/subscription' style={{ textDecoration: 'none' }}>  {/* Add the new Premium button */}
-                <button className={`nav-btn-footer-nav ${location.pathname === '/premium' ? 'active' : ''}`}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
                     <FaGem className="icon-footer-nav" />
                     <span className="btn-label">Premium</span>
                 </button>
