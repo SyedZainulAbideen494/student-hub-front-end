@@ -65,5 +65,6 @@ export const API_ROUTES = {
   deleteNote: `${API_URL}/api/delete/note`,
   forgotPassword: `${API_URL}/api/auth/forgot-password`,
   resetPassword: `${API_URL}/api/auth/reset-password`,
-  leaveGroup: `${API_URL}/api/leave-group`
+  leaveGroup: `${API_URL}/api/leave-group`,
+  getPremium: `${API_URL}/api/create-checkout-session`
 }
