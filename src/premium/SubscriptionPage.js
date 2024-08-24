@@ -1,7 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import './SubscriptionPage.css'; // Import the CSS file for styling
 
 const freeFeatures = [
   'Manage up to 10 tasks at a time',
@@ -42,28 +42,35 @@ const SubscriptionPage = () => {
   };
 
   return (
-    <div className="subscription-page">
-      <h1>Choose Your Subscription</h1>
-      <div className="plan">
-        <h2>Free Plan</h2>
-        <ul>
+    <section className="pricing-section">
+    <h2>Choose Your Plan</h2>
+    <div className="pricing-cards">
+      {/* Free Plan */}
+      <div className="pricing-card">
+        <h3>Free Plan</h3>
+        <p className="price">$0/month</p>
+        <ul className="features-list">
           {freeFeatures.map((feature, index) => (
-            <li key={index}>{feature}</li>
+            <li key={index}>✔️ {feature}</li>
           ))}
         </ul>
-        <p>Price: Free</p>
       </div>
-      <div className="plan">
-        <h2>Premium Plan</h2>
-        <ul>
+
+      {/* Premium Plan */}
+      <div className="pricing-card">
+        <h3>Premium Plan</h3>
+        <p className="price">$0.60/month</p>
+        <ul className="features-list">
           {premiumFeatures.map((feature, index) => (
-            <li key={index}>{feature}</li>
+            <li key={index}>✔️ {feature}</li>
           ))}
         </ul>
-        <p>$0.60 approx.</p> {/* Display INR and approximate USD */}
-        <button onClick={handleCheckout}>Subscribe</button>
+          <span className="cta-btn" onClick={handleCheckout}>
+            Select Premium Plan
+          </span>
       </div>
     </div>
+  </section>
   );
 };
 

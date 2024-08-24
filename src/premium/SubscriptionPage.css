@@ -1,0 +1,146 @@
+/* General Page Styles */
+.subscription-page {
+    background: #f9f9f9; /* Light background for the page */
+    color: #333; /* Dark text for contrast */
+    font-family: 'Arial', sans-serif;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  /* Heading Styles */
+  .page-title-subscription-page {
+    font-size: 2.5rem;
+    color: #000; /* Black color for the heading */
+    margin-bottom: 2rem;
+  }
+  
+  /* Plan Styles */
+  .plan-subscription-page {
+    background: #ffffff; /* White background for the plan cards */
+    border-radius: 12px; /* Curved edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
+    padding: 2rem;
+    margin: 1rem;
+    width: 100%;
+    max-width: 600px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Plan Card Hover Effect */
+  .plan-subscription-page:hover {
+    transform: translateY(-10px); /* More pronounced lift effect on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for better depth */
+  }
+  
+  /* Plan Heading Styles */
+  .plan-title-subscription-page {
+    font-size: 2rem;
+    color: #000; /* Black color for the plan titles */
+    margin-bottom: 1rem;
+  }
+  
+  /* List Styles */
+  .feature-list-subscription-page {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  .feature-list-subscription-page li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333; /* Dark text for list items */
+  }
+  
+  /* Price and Button Styles */
+  .plan-price-subscription-page {
+    font-size: 1.2rem;
+    color: #000; /* Black color for the price */
+    margin: 1rem 0;
+  }
+  
+  .subscribe-button-subscription-page {
+    background: #000; /* Black button background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 8px; /* Curved edges for button */
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Button Hover Effect */
+  .subscribe-button-subscription-page:hover {
+    background: #333; /* Darker black for hover */
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+  }
+  
+  /* Button Focus Style */
+  .subscribe-button-subscription-page:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .page-title-subscription-page {
+      font-size: 2rem; /* Slightly smaller font size */
+    }
+  
+    .plan-subscription-page {
+      padding: 1.5rem; /* Reduced padding */
+      margin: 0.5rem; /* Reduced margin */
+    }
+  
+    .plan-title-subscription-page {
+      font-size: 1.5rem; /* Slightly smaller font size */
+    }
+  
+    .feature-list-subscription-page li {
+      font-size: 1rem; /* Slightly smaller font size */
+    }
+  
+    .plan-price-subscription-page {
+      font-size: 1rem; /* Slightly smaller font size */
+    }
+  
+    .subscribe-button-subscription-page {
+      padding: 0.5rem 1rem; /* Adjusted padding for smaller screens */
+      font-size: 0.9rem; /* Slightly smaller font size */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .page-title-subscription-page {
+      font-size: 1.5rem; /* Further reduced font size for very small screens */
+    }
+  
+    .plan-subscription-page {
+      padding: 1rem; /* Further reduced padding */
+      margin: 0.5rem; /* Further reduced margin */
+    }
+  
+    .plan-title-subscription-page {
+      font-size: 1.25rem; /* Further reduced font size */
+    }
+  
+    .feature-list-subscription-page li {
+      font-size: 0.9rem; /* Further reduced font size */
+    }
+  
+    .plan-price-subscription-page {
+      font-size: 0.9rem; /* Further reduced font size */
+    }
+  
+    .subscribe-button-subscription-page {
+      padding: 0.5rem 0.75rem; /* Further adjusted padding */
+      font-size: 0.8rem; /* Further reduced font size */
+    }
+  }
+  
