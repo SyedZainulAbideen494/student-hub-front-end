@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './SubscriptionPage.css'; // Import the CSS file for styling
@@ -32,6 +32,21 @@ const premiumFeatures = [
 
 const SubscriptionPage = () => {
   const [token, setToken] = useState(localStorage.getItem('token')); // Replace with your method of obtaining the token
+  const [isPremium, setIsPremium] = useState(false);
+
+  useEffect(() => {
+    const checkPremiumStatus = async () => {
+      try {
+        const response = await axios.post(API_ROUTES.verifyPremium, { token });
+        const { is_premium } = response.data;
+        setIsPremium(is_premium);
+      } catch (error) {
+        console.error('Error verifying premium status:', error);
+      }
+    };
+
+    checkPremiumStatus();
+  }, [token]);
 
   const handleCheckout = async () => {
     try {
@@ -44,35 +59,39 @@ const SubscriptionPage = () => {
 
   return (
     <section className="pricing-section">
-    <h2>Choose Your Plan</h2>
-    <div className="pricing-cards">
-      {/* Free Plan */}
-      <div className="pricing-card">
-        <h3>Free Plan</h3>
-        <p className="price">$0/month</p>
-        <ul className="features-list">
-          {freeFeatures.map((feature, index) => (
-            <li key={index}>✔️ {feature}</li>
-          ))}
-        </ul>
-      </div>
+      <h2>Choose Your Plan</h2>
+      <div className="pricing-cards">
+        {/* Free Plan */}
+        <div className="pricing-card">
+          <h3>Free Plan</h3>
+          <p className="price">$0/month</p>
+          <ul className="features-list">
+            {freeFeatures.map((feature, index) => (
+              <li key={index}>✔️ {feature}</li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Premium Plan */}
-      <div className="pricing-card">
-        <h3>Premium Plan</h3>
-        <p className="price">$0.60/month</p>
-        <ul className="features-list">
-          {premiumFeatures.map((feature, index) => (
-            <li key={index}>✔️ {feature}</li>
-          ))}
-        </ul>
-          <span className="cta-btn" onClick={handleCheckout}>
-            Select Premium Plan
-          </span>
+        {/* Premium Plan */}
+        <div className={`pricing-card ${isPremium ? 'active' : ''}`}>
+          <h3>Premium Plan</h3>
+          <p className="price">$0.60/month</p>
+          <ul className="features-list">
+            {premiumFeatures.map((feature, index) => (
+              <li key={index}>✔️ {feature}</li>
+            ))}
+          </ul>
+          {isPremium ? (
+            <span className="active-label">Active</span>
+          ) : (
+            <span className="cta-btn" onClick={handleCheckout}>
+              Select Premium Plan
+            </span>
+          )}
+        </div>
       </div>
-    </div>
-    <FooterNav/>
-  </section>
+      <FooterNav />
+    </section>
   );
 };
 

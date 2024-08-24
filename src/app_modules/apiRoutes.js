@@ -66,5 +66,6 @@ export const API_ROUTES = {
   forgotPassword: `${API_URL}/api/auth/forgot-password`,
   resetPassword: `${API_URL}/api/auth/reset-password`,
   leaveGroup: `${API_URL}/api/leave-group`,
-  getPremium: `${API_URL}/api/create-checkout-session`
+  getPremium: `${API_URL}/api/create-checkout-session`,
+  verifyPremium: `${API_URL}/api/verifyPremium`
 }
