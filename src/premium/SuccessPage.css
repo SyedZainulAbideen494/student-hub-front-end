@@ -1,0 +1,139 @@
+/* General styling for the success page */
+.success-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f4f6f9;
+    animation: fadeInBackground 1.5s ease-in-out;
+  }
+  
+  .content-success-page {
+    text-align: center;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    animation: fadeInContent 1s ease-in-out;
+  }
+  
+  .icon-success-page {
+    margin-bottom: 1rem;
+    animation: scaleUp 1s ease-in-out;
+  }
+  
+  .headline-success-page {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    animation: fadeInHeadline 1s ease-in-out;
+  }
+  
+  .message-success-page {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    animation: fadeInMessage 1s ease-in-out;
+  }
+  
+  .details-success-page {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1.5rem;
+    animation: fadeInDetails 1s ease-in-out;
+  }
+  
+  .button-success-page {
+    background-color: #1DB954;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: fadeInButton 1s ease-in-out;
+  }
+  
+  .button-success-page:hover {
+    background-color: #17a44b;
+    transform: translateY(-3px);
+  }
+  
+  /* Animations */
+  @keyframes fadeInBackground {
+    from {
+      background: #ffffff;
+    }
+    to {
+      background: #f4f6f9;
+    }
+  }
+  
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleUp {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInHeadline {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInMessage {
+    from {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInDetails {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInButton {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
