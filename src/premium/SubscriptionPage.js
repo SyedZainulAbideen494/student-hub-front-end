@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const freeFeatures = [
   'Manage up to 10 tasks at a time',
@@ -33,7 +34,7 @@ const SubscriptionPage = () => {
 
   const handleCheckout = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/create-checkout-session', { token });
+      const response = await axios.post(API_ROUTES.getPremium, { token });
       window.location.href = response.data.url;
     } catch (error) {
       console.error('Error creating checkout session:', error);
