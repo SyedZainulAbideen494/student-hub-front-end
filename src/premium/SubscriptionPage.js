@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './SubscriptionPage.css'; // Import the CSS file for styling
+import FooterNav from '../app_modules/footernav';
 
 const freeFeatures = [
   'Manage up to 10 tasks at a time',
@@ -70,6 +71,7 @@ const SubscriptionPage = () => {
           </span>
       </div>
     </div>
+    <FooterNav/>
   </section>
   );
 };

@@ -62,6 +62,7 @@
     margin-bottom: 15px;
     padding-left: 20px;
     position: relative;
+    text-align: left;
   }
   
   .features-list li::before {
