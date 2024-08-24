@@ -179,3 +179,31 @@
     color: #666;
     margin: 0;
 }
+
+.leave-group-section {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center;     /* Center the button vertically if the section has height */
+    margin-top: 20px;        /* Add some space above the section */
+}
+
+.leave-group-button {
+    background-color: #ff4d4d; /* Red background color */
+    color: #fff;               /* White text color */
+    border: none;             /* Remove default border */
+    border-radius: 5px;      /* Rounded corners */
+    padding: 10px 20px;      /* Padding for the button */
+    font-size: 16px;         /* Increase font size */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.leave-group-button:hover {
+    background-color: #e60000; /* Darker red on hover */
+    transform: scale(1.05);    /* Slightly enlarge the button */
+}
+
+.leave-group-button:focus {
+    outline: none;           /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3); /* Red shadow on focus */
+}

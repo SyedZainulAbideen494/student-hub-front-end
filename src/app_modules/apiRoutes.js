@@ -64,5 +64,6 @@ export const API_ROUTES = {
   updateNote: `${API_URL}/api/update/note`,
   deleteNote: `${API_URL}/api/delete/note`,
   forgotPassword: `${API_URL}/api/auth/forgot-password`,
-  resetPassword: `${API_URL}/api/auth/reset-password`
+  resetPassword: `${API_URL}/api/auth/reset-password`,
+  leaveGroup: `${API_URL}/api/leave-group`
 }
