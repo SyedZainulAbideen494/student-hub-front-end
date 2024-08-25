@@ -152,7 +152,7 @@ const ProfilePage = () => {
       </div>
       <div className="profile-media">
         <div className="profile-tabs">
-          {['Flashcards', 'Quizzes'].map(tab => (
+          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
             <button
               key={tab}
               className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
@@ -178,6 +178,9 @@ const ProfilePage = () => {
               </Link>
             </div>
           ))}
+        {activeTab === 'EduScribe' ? (
+  <h1 style={{textAlign: 'center'}}>Under maintenance</h1>
+) : null}
         </div>
       </div>
       <FooterNav />
