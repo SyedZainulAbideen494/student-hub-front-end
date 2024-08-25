@@ -139,7 +139,6 @@ const SearchPage = () => {
                                         height: '100%',
                                         padding: '10px',
                                         textAlign: 'center',
-                                        marginBottom: '5px'
                                     }}
                                     onClick={() => nav(card.path)} // Navigate on click
                                 >
