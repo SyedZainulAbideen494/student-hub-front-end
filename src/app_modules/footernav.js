@@ -143,7 +143,6 @@ const FooterNav = () => {
                     <span className="btn-label">Premium</span>
                 </button>
             </Link>
-                {/* Logout Button */}
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>
                     <FaSignOutAlt className="icon-footer-nav" />
                     <span className="btn-label">Logout</span>
