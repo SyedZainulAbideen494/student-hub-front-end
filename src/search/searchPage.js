@@ -112,7 +112,7 @@ const SearchPage = () => {
                     <TextField
                         fullWidth
                         variant="outlined"
-                        placeholder="Search..."
+                        placeholder="Search by unique ID or User Name"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         InputProps={{
