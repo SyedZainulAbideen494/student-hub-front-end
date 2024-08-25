@@ -152,7 +152,7 @@ const ProfilePage = () => {
       </div>
       <div className="profile-media">
         <div className="profile-tabs">
-          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
+          {['Flashcards', 'Quizzes'].map(tab => (
             <button
               key={tab}
               className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
@@ -176,11 +176,6 @@ const ProfilePage = () => {
               <Link to={`/quiz/${quiz.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 <div className="card-content">{quiz.title}</div>
               </Link>
-            </div>
-          ))}
-          {activeTab === 'EduScribe' && eduScribe.map((item, index) => (
-            <div key={index} className="card edu-scribe-item">
-              <div className="card-content">{item.title}</div>
             </div>
           ))}
         </div>
