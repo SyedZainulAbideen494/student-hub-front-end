@@ -55,7 +55,7 @@ const ProfilePage = () => {
           const { data } = await axios.post(API_ROUTES.getUserQuizzes, { token });
           setQuizzes(data);
         } else if (activeTab === 'EduScribe') {
-          const { data } = await axios.post('http://localhost:5000/getEduScribe/user/profile', { token });
+          const { data } = await axios.post(API_ROUTES.getUserOwnProfileEdusify, { token });
           setEduScribe(data);
         } else if (activeTab === 'Posts') {
           const { data } = await axios.post(API_ROUTES.getUserPosts, { token });
@@ -180,7 +180,7 @@ const ProfilePage = () => {
             {activeTab === 'EduScribe' && eduscribes.map((eduscribe) => (
             <div key={eduscribe.id} className="card-user-profile-guest eduscribe-item-user-profile-guest">
               <div className="eduscribe-header">
-                <Link to={`/profile/${profile.user_id}`}>
+                <Link to={`/profile/${profile.id}`}>
                   <img
                     src={`${API_ROUTES.displayImg}/${profile.avatar}`}
                     alt="Profile Avatar"

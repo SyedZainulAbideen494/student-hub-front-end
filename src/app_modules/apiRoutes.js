@@ -67,5 +67,6 @@ export const API_ROUTES = {
   resetPassword: `${API_URL}/api/auth/reset-password`,
   leaveGroup: `${API_URL}/api/leave-group`,
   getPremium: `${API_URL}/api/create-checkout-session`,
-  verifyPremium: `${API_URL}/api/verifyPremium`
+  verifyPremium: `${API_URL}/api/verifyPremium`,
+  getUserOwnProfileEdusify: `${API_URL}/getEduScribe/user/profile`
 }
