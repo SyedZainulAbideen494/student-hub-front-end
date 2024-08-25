@@ -97,7 +97,7 @@ const SearchPage = () => {
     ];
 
     return (
-        <div style={{ marginBottom: '90px' }}>
+        <div style={{ marginBottom: '100px' }}>
             <AppBar position="static" style={{ backgroundColor: '#fff', color: '#000', boxShadow: 'none' }}>
                 <Toolbar style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
                     <Avatar
@@ -106,9 +106,7 @@ const SearchPage = () => {
                         style={{ width: 40, height: 40, cursor: 'pointer' }}
                         onClick={() => nav('/profile')}
                     />
-                    <Typography variant="h6" style={{ fontSize: '1.2rem', cursor: 'pointer' }}>
-                        Search
-                    </Typography>
+                   
                 </Toolbar>
                 <Toolbar style={{ justifyContent: 'center', padding: '10px 20px' }}>
                     <TextField
