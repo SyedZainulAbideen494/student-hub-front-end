@@ -147,7 +147,7 @@ const UserProfile = () => {
                   />
                 </Link>
                 <div className="eduscribe-info">
-                  <Link to={`/profile/${profile.user_id}`} className="eduscribe-username">
+                  <Link to={`/profile/${profile.id}`} className="eduscribe-username">
                     {profile.user_name}
                   </Link>
                   <span className="eduscribe-date">{new Date(eduscribe.created_at).toLocaleString()}</span>
@@ -161,16 +161,6 @@ const UserProfile = () => {
                   className="eduscribe-image"
                 />
               )}
-              <div className="eduscribe-actions">
-                <button className="eduscribe-action-button">
-                  <FaThumbsUp color="grey" size={20} />
-                  <span>Like</span>
-                </button>
-                <button className="eduscribe-action-button">
-                  <FaComment size={20} />
-                  <span>{eduscribe.commentsCount}</span>
-                </button>
-              </div>
             </div>
           ))}
         </div>

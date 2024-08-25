@@ -5,7 +5,6 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link } from 'react-router-dom';
 import FooterNav from '../app_modules/footernav';
 
-
 const ProfilePage = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +12,7 @@ const ProfilePage = () => {
   const [activeTab, setActiveTab] = useState('Flashcards');
   const [flashcards, setFlashcards] = useState([]);
   const [quizzes, setQuizzes] = useState([]);
-  const [eduScribe, setEduScribe] = useState([]);
+  const [eduscribes, setEduScribe] = useState([]);
   const [posts, setPosts] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState({});
   const [touchStartX, setTouchStartX] = useState({});
@@ -56,7 +55,7 @@ const ProfilePage = () => {
           const { data } = await axios.post(API_ROUTES.getUserQuizzes, { token });
           setQuizzes(data);
         } else if (activeTab === 'EduScribe') {
-          const { data } = await axios.post('http://localhost:8080/getEduScribe', { token });
+          const { data } = await axios.post('http://localhost:5000/getEduScribe/user/profile', { token });
           setEduScribe(data);
         } else if (activeTab === 'Posts') {
           const { data } = await axios.post(API_ROUTES.getUserPosts, { token });
@@ -125,7 +124,7 @@ const ProfilePage = () => {
   if (error) return <p>{error}</p>;
   if (!profile) return <p>No profile data available</p>;
 
-  return  (
+  return (
     <div className="profile-page">
       <header className="profile-header">
         <h3>Profile</h3>
@@ -147,7 +146,7 @@ const ProfilePage = () => {
         <p className="profile-unique-id">@{profile.unique_id}</p>
         <p className="profile-location">{profile.location}</p>
         <div className="profile-actions">
-          
+          {/* Additional profile actions can be added here */}
         </div>
       </div>
       <div className="profile-media">
@@ -178,9 +177,33 @@ const ProfilePage = () => {
               </Link>
             </div>
           ))}
-        {activeTab === 'EduScribe' ? (
-  <h1 style={{textAlign: 'center'}}>Under maintenance</h1>
-) : null}
+            {activeTab === 'EduScribe' && eduscribes.map((eduscribe) => (
+            <div key={eduscribe.id} className="card-user-profile-guest eduscribe-item-user-profile-guest">
+              <div className="eduscribe-header">
+                <Link to={`/profile/${profile.user_id}`}>
+                  <img
+                    src={`${API_ROUTES.displayImg}/${profile.avatar}`}
+                    alt="Profile Avatar"
+                    className="eduscribe-avatar"
+                  />
+                </Link>
+                <div className="eduscribe-info">
+                  <Link to={`/profile/${profile.id}`} className="eduscribe-username">
+                    {profile.user_name}
+                  </Link>
+                  <span className="eduscribe-date">{new Date(eduscribe.created_at).toLocaleString()}</span>
+                </div>
+              </div>
+              <div className="eduscribe-content">{eduscribe.content}</div>
+              {eduscribe.image && (
+                <img
+                  src={`${API_ROUTES.displayImg}/${eduscribe.image}`}
+                  alt="Eduscribe"
+                  className="eduscribe-image"
+                />
+              )}
+            </div>
+          ))}
         </div>
       </div>
       <FooterNav />
