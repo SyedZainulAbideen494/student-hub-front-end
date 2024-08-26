@@ -1,77 +1,149 @@
-.group-modal {
-    /* Existing styles */
-    position: relative;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.group-modal-overlay {
-    /* Existing styles */
+.group-modal-overlay-share-flashcard {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.group-modal ul {
+.group-modal-share-flashcard {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-header-share-flashcard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header-share-flashcard h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-button-share-flashcard {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button-share-flashcard:hover {
+    color: #ff4d4d;
+}
+
+.search-bar-share-flashcard {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+.search-bar-share-flashcard input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.search-icon-share-flashcard {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.group-modal-share-flashcard ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.group-modal li {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.group-modal li:hover {
-    background-color: #f5f5f5;
-}
-
-.quick-share {
-    margin-top: 30px;
-    display: inline-flex;
-    gap: 10px;
-}
-
-.quick-share button {
-    display: inline-flex;
+.group-modal-share-flashcard li {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease;
+}
+
+.group-modal-share-flashcard li:hover {
+    background-color: #eaeaea;
+}
+
+.group-modal-share-flashcard button {
+    background-color: #000;
     color: #fff;
-    border-radius: 4px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.group-modal-share-flashcard button:hover {
+    background-color: #333;
+}
+
+.quick-share-share-flashcard {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.share-button-share-flashcard {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.quick-share button:hover {
-    background-color: #0056b3;
+.share-button-share-flashcard:hover {
+    background-color: #333;
 }
 
-.quick-share button svg {
-    margin-right: 8px;
+.share-button-share-flashcard.copied {
+    background-color: #000000; /* Green color for success */
 }
 
-.close-button {
-    padding: 9px 17px;
-    border: none;
-    background-color: #ff4d4d;
-    color: #fff;
-    margin-left: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.share-button-share-flashcard svg {
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }

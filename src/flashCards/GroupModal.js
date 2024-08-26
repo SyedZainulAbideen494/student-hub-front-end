@@ -1,13 +1,19 @@
-import React from 'react';
-import { FaCopy, FaShareAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaCopy, FaShareAlt, FaSearch, FaTimes, FaCheck } from 'react-icons/fa';
 import './GroupModal.css'; // Import your CSS file for styling
 
 const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [copySuccess, setCopySuccess] = useState(false);
+
     // Function to handle copying link to clipboard
     const handleCopyLink = () => {
         const link = `${window.location.origin}/flashcards/${flashcardId}`;
         navigator.clipboard.writeText(link)
-            .then(() => alert('Link copied to clipboard!'))
+            .then(() => {
+                setCopySuccess(true);
+                setTimeout(() => setCopySuccess(false), 2000); // Reset the tick mark after 2 seconds
+            })
             .catch(err => console.error('Error copying link: ', err));
     };
 
@@ -39,26 +45,45 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
         }
     };
 
+    const filteredGroups = groups.filter(group => group.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
-        <div className="group-modal-overlay">
-            <div className="group-modal">
-                <h2>Select a Group to Share</h2>
+        <div className="group-modal-overlay-share-flashcard">
+            <div className="group-modal-share-flashcard">
+                <div className="modal-header-share-flashcard">
+                    <h2>Select a Group to Share</h2>
+                    <button className="close-button-share-flashcard" onClick={onClose}>
+                        <FaTimes />
+                    </button>
+                </div>
+                <div className="search-bar-share-flashcard">
+                    <input
+                        type="text"
+                        placeholder="Search groups..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <FaSearch className="search-icon-share-flashcard" />
+                </div>
                 <ul>
-                    {groups.map(group => (
-                        <li key={group.id} onClick={() => onShare(group.id)}>
+                    {filteredGroups.map(group => (
+                        <li key={group.id}>
                             {group.name}
+                            <button onClick={() => onShare(group.id)}>Send</button>
                         </li>
                     ))}
                 </ul>
-                <div className="quick-share">
-                    <button onClick={handleCopyLink}>
-                        <FaCopy />  
+                <div className="quick-share-share-flashcard">
+                    <button 
+                        onClick={handleCopyLink} 
+                        className={`share-button-share-flashcard ${copySuccess ? 'copied-share-flashcard' : ''}`}
+                    >
+                        {copySuccess ? <FaCheck /> : <FaCopy />}
                     </button>
-                    <button onClick={handleShare}>
-                        <FaShareAlt /> 
+                    <button onClick={handleShare} className="share-button-share-flashcard">
+                        <FaShareAlt />
                     </button>
                 </div>
-                <button className="close-button" onClick={onClose}>Close</button>
             </div>
         </div>
     );
