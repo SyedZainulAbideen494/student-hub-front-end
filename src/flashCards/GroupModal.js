@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCopy, FaShareAlt, FaSearch, FaTimes, FaCheck } from 'react-icons/fa';
+import { FaCopy, FaShareAlt, FaSearch, FaTimes, FaCheck, FaArrowRight } from 'react-icons/fa';
 import './GroupModal.css'; // Import your CSS file for styling
 
 const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
@@ -68,7 +68,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
                     {filteredGroups.map(group => (
                         <li key={group.id}>
                             {group.name}
-                            <button onClick={() => onShare(group.id)}>Send</button>
+                            <button onClick={() => onShare(group.id)}><FaArrowRight/></button>
                         </li>
                     ))}
                 </ul>
