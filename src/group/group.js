@@ -9,8 +9,6 @@ import InvitationModal from './InvitationModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faUsers, faGlobe, faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 
-
-
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
     const [publicGroups, setPublicGroups] = useState([]);
@@ -174,6 +172,9 @@ const GroupsPage = () => {
               onClick={() => setIsInvitationModalVisible(true)}
             >
               <FontAwesomeIcon icon={faEnvelopeOpenText} /> Invitations
+              {invitations.length > 0 && (
+                <span className="invitation-badge">{invitations.length}</span>
+              )}
             </button>
           </div>
     
@@ -226,9 +227,8 @@ const GroupsPage = () => {
               <h2 className="groups-list-title">Public Groups</h2>
               <ul className="groups-list">
                 {filteredPublicGroups.map((group) => (
-                  <li key={group.id} className="group-item">
-                    <span className="group-name">{group.name}</span>
-                    <button className="groups-join-group-button" onClick={() => handleJoinGroup(group.id)}>Join</button>
+                  <li key={group.id} className="group-item" onClick={() => handleJoinGroup(group.id)}>
+                    {group.name}
                   </li>
                 ))}
               </ul>
@@ -237,7 +237,7 @@ const GroupsPage = () => {
     
           <FooterNav />
         </div>
-    );
-};
-
-export default GroupsPage;
+      );
+    };
+    
+    export default GroupsPage;
