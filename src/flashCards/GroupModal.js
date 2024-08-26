@@ -51,8 +51,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
         <div className="group-modal-overlay-share-flashcard">
             <div className="group-modal-share-flashcard">
                 <div className="modal-header-share-flashcard">
-                    <h2>Select a Group to Share</h2>
-                    <button className="close-button-share-flashcard" onClick={onClose}>
+                    <button className="close-button-share-flashcard" onClick={onClose} style={{backgroundColor: 'white', color: 'black'}}>
                         <FaTimes />
                     </button>
                 </div>
