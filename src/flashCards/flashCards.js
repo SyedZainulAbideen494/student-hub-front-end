@@ -8,7 +8,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import GroupModal from './GroupModal';
 import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
-
+import SuccessModal from '../app_modules/SuccessModal';
 
 const FlashcardsPage = () => {
     const [title, setTitle] = useState('');
@@ -25,70 +25,74 @@ const FlashcardsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
     const nav = useNavigate();
     const [editMode, setEditMode] = useState(false);
-const [editingFlashcard, setEditingFlashcard] = useState(null);
+    const [editingFlashcard, setEditingFlashcard] = useState(null);
 
-const handleEditClick = (id) => {
-    const flashcard = notes.find(note => note.id === id);
-    setTitle(flashcard.title);
-    setDescription(flashcard.description);
-    setIsPublic(flashcard.is_public);
-    setEditorContent(flashcard.headings);
-    setEditingFlashcard(id);
-    setEditMode(true);
-};
+    const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control the SuccessModal visibility
+    const [successMessage, setSuccessMessage] = useState(''); // State to store the success message
 
-const handleEditSubmit = async (e) => {
-    e.preventDefault();
+    const handleEditClick = (id) => {
+        const flashcard = notes.find(note => note.id === id);
+        setTitle(flashcard.title);
+        setDescription(flashcard.description);
+        setIsPublic(flashcard.is_public);
+        setEditorContent(flashcard.headings);
+        setEditingFlashcard(id);
+        setEditMode(true);
+    };
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('isPublic', isPublic);
-    formData.append('token', token);
-    formData.append('headings', editorContent);
+    const handleEditSubmit = async (e) => {
+        e.preventDefault();
 
-    images.forEach((image) => {
-        formData.append('images', image);
-    });
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('isPublic', isPublic);
+        formData.append('token', token);
+        formData.append('headings', editorContent);
 
-    try {
-        await axios.put(`${API_ROUTES.addFlashCard}/${editingFlashcard}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
+        images.forEach((image) => {
+            formData.append('images', image);
         });
-        alert('Flashcard updated successfully!');
-        setEditMode(false);
-        setEditingFlashcard(null);
-        setTitle('');
-        setDescription('');
-        setImages([]);
-        setIsPublic(true);
-        setEditorContent('');
-    } catch (error) {
-        console.error('Error updating flashcard:', error);
-        alert('Failed to update flashcard.');
-    }
-};
 
-const handleDeleteClick = async (id) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this flashcard?');
-    if (confirmDelete) {
         try {
-            await axios.delete(`${API_ROUTES.addFlashCard}/${id}`, {
+            await axios.put(`${API_ROUTES.addFlashCard}/${editingFlashcard}`, formData, {
                 headers: {
-                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
                 },
             });
-            alert('Flashcard deleted successfully!');
-            setNotes(notes.filter(note => note.id !== id));
+            alert('Flashcard updated successfully!');
+            setEditMode(false);
+            setEditingFlashcard(null);
+            setTitle('');
+            setDescription('');
+            setImages([]);
+            setIsPublic(true);
+            setEditorContent('');
+            setSuccessMessage('Flashcard updated successfully!');
+            setShowSuccessModal(true); // Show the success modal
         } catch (error) {
-            console.error('Error deleting flashcard:', error);
-            alert('Failed to delete flashcard.');
+            console.error('Error updating flashcard:', error);
+            alert('Failed to update flashcard.');
         }
-    }
-};
+    };
 
+    const handleDeleteClick = async (id) => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this flashcard?');
+        if (confirmDelete) {
+            try {
+                await axios.delete(`${API_ROUTES.addFlashCard}/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+                alert('Flashcard deleted successfully!');
+                setNotes(notes.filter(note => note.id !== id));
+            } catch (error) {
+                console.error('Error deleting flashcard:', error);
+                alert('Failed to delete flashcard.');
+            }
+        }
+    };
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -147,30 +151,41 @@ const handleDeleteClick = async (id) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
         formData.append('isPublic', isPublic);
         formData.append('token', token);
         formData.append('headings', editorContent);
-
+    
         images.forEach((image) => {
             formData.append('images', image);
         });
-
+    
         try {
-            await axios.post(API_ROUTES.addFlashCard, formData, {
+            const response = await axios.post(API_ROUTES.addFlashCard, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            alert('Flashcard saved successfully!');
-            setTitle('');
-            setDescription('');
-            setImages([]);
-            setIsPublic(true);
-            setEditorContent('');
+    
+            if (response.status === 200) {
+                // Log success and update state
+                console.log('Flashcard saved successfully!');
+                setSuccessMessage('Flashcard saved successfully!');
+                setShowSuccessModal(true);
+                
+                // Clear form inputs
+                setTitle('');
+                setDescription('');
+                setImages([]);
+                setIsPublic(true);
+                setEditorContent('');
+            } else {
+                console.error('Failed to save flashcard.');
+                alert('Failed to save flashcard.');
+            }
         } catch (error) {
             console.error('Error saving flashcard:', error);
             alert('Failed to save flashcard.');
@@ -248,6 +263,21 @@ const handleDeleteClick = async (id) => {
 
     return (
         <div className="flashcards-page">
+      {showSuccessModal && (
+    <div className="modal-overlay-flashcard-save">
+        <div className="modal-content-flashcard-save">
+            <div className="modal-header-flashcard-save">
+                <h2>Success!</h2>
+            </div>
+            <div className="modal-body-flashcard-save">
+                <p>Your flashcard has been successfully created!</p>
+            </div>
+            <div className="modal-footer-flashcard-save">
+                <button className="close-button-flashcard-save" onClick={() => setShowSuccessModal(false)}>OK</button>
+            </div>
+        </div>
+    </div>
+)}
             <h1>Create Flashcard</h1>
             <form onSubmit={handleSubmit} className="flashcard-form-flashcards-page">
                 <div className="form-group-flashcards-page">
@@ -334,6 +364,7 @@ const handleDeleteClick = async (id) => {
                     onQuickShare={handleQuickShare}
                 />
             )}
+
         </div>
     );
 };

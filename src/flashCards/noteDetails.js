@@ -21,6 +21,7 @@ const NoteDetailPage = () => {
     const [modalMessage, setModalMessage] = useState('');
     const [userId, setUserId] = useState(null);
     const [canEdit, setCanEdit] = useState(false);
+    const [images, setImages] = useState([]);
     const [noteUserId, setNoteUserId] = useState('') 
     const editorRef = useRef(null);
     const quillRef = useRef(null);
@@ -30,12 +31,18 @@ const NoteDetailPage = () => {
         const fetchNote = async () => {
             try {
                 const response = await axios.get(`${API_ROUTES.getNote}/${id}`);
-                setNote(response.data);
-                setTitle(response.data.title);
-                setDescription(response.data.description);
-                setNoteUserId(response.data.user_id)
+                const noteData = response.data;
+    
+                setNote(noteData);
+                setTitle(noteData.title);
+                setDescription(noteData.description);
+                setNoteUserId(noteData.user_id);
+    
+                // Assuming images are part of noteData
+                setImages(noteData.images || []); // Set images from noteData
+    
                 if (quillRef.current) {
-                    quillRef.current.root.innerHTML = response.data.headings; // Set editor content
+                    quillRef.current.root.innerHTML = noteData.headings; // Set editor content
                 }
             } catch (error) {
                 setError('Error fetching note details.');
@@ -44,7 +51,7 @@ const NoteDetailPage = () => {
                 setLoading(false);
             }
         };
-
+    
         fetchNote();
     }, [id]);
 
@@ -244,6 +251,11 @@ const NoteDetailPage = () => {
                 <div className="note-content-note-detail-page">
                     <p className="note-description-note-detail-page">{note.description}</p>
                     <div dangerouslySetInnerHTML={{ __html: note.headings }} />
+                    <div className="image-gallery">
+            {images.map((image, index) => (
+                <img key={index} src={`${API_ROUTES.displayImg}/${image}`} alt={`Image ${index + 1}`} className="image-item" />
+            ))}
+        </div>
                 </div>
             )}
             <div className="note-actions-note-detail-page" style={{textAlign: 'center'}}>
