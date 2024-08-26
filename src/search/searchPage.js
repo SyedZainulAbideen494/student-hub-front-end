@@ -84,18 +84,18 @@ const SearchPage = () => {
     }
 
     const cardData = [
-        { title: 'Planner', description: 'Plan your studies with your planner and add tasks.', icon: faPencilRuler, gradient: 'linear-gradient(to right, #ff9a9e, #fad0c4)', path: '/planner' },
-        { title: 'Groups', description: 'Create groups, chat with friends, share notes, quizzes, and ask questions.', icon: faUserGroup, gradient: 'linear-gradient(to right, #a1c4fd, #c2e9fb)', path: '/groups' },
-        { title: 'Notes', description: 'Create digital notes, download as PDF, and share with friends.', icon: faBook, gradient: 'linear-gradient(to right, #fbc2eb, #a6c1ee)', path: '/notes' },
-        { title: 'Math Helper', description: 'Get help with math problems.', icon: faCalculator, gradient: 'linear-gradient(to right, #84fab0, #8fd3f4)', path: '/math/solver' },
-        { title: 'Science Helper', description: 'Get help with science questions.', icon: faFlask, gradient: 'linear-gradient(to right, #a18cd1, #fbc2eb)', path: '/science/helper' },
-        { title: 'Commerce Helper', description: 'Get help with commerce questions.', icon: faMoneyBill, gradient: 'linear-gradient(to right, #fdcbf1, #e6dee9)', path: '/commerce/helper' },
-        { title: 'Quizzes', description: 'Create quizzes, share with friends, and see results.', icon: faQuestionCircle, gradient: 'linear-gradient(to right, #cfd9df, #e2ebf0)', path: '/quiz/home' },
-        { title: 'Calendar', description: 'Stay reminded of important dates.', icon: faCalendar, gradient: 'linear-gradient(to right, #FFEB3B, #FFC107)', color: '#000', path: '/calendar' },
-        { title: 'Pomodoro Timer', description: 'Stay productive with Pomodoro timer.', icon: faClock, gradient: 'linear-gradient(to right, #d4fc79, #96e6a1)', path: '/pomodoro' },
-        { title: 'Social Feed', description: 'Stay connected with updates and achievements.', icon: faShareAlt, gradient: 'linear-gradient(to right, #f7971e, #ffd200)', path: '/social-feed' },
+        { title: 'Planner', description: 'Plan your studies with your planner and add tasks.', icon: faPencilRuler, gradient: 'linear-gradient(to right, #ff7e5f, #feb47b)', path: '/planner' },
+        { title: 'Groups', description: 'Create groups, chat with friends, share notes, quizzes, and ask questions.', icon: faUserGroup, gradient: 'linear-gradient(to right, #4facfe, #00f2fe)', path: '/groups' },
+        { title: 'Notes', description: 'Create digital notes, download as PDF, and share with friends.', icon: faBook, gradient: 'linear-gradient(to right, #667eea, #764ba2)', path: '/notes' },
+        { title: 'Math Helper', description: 'Get help with math problems.', icon: faCalculator, gradient: 'linear-gradient(to right, #76b852, #8dc26f)', path: '/math/solver' },
+        { title: 'Science Helper', description: 'Get help with science questions.', icon: faFlask, gradient: 'linear-gradient(to right, #ff5f6d, #ffc371)', path: '/science/helper' },
+        { title: 'Commerce Helper', description: 'Get help with commerce questions.', icon: faMoneyBill, gradient: 'linear-gradient(to right, #ff512f, #dd2476)', path: '/commerce/helper' },
+        { title: 'Quizzes', description: 'Create quizzes, share with friends, and see results.', icon: faQuestionCircle, gradient: 'linear-gradient(to right, #24c6dc, #514a9d)', path: '/quiz/home' },
+        { title: 'Calendar', description: 'Stay reminded of important dates.', icon: faCalendar, gradient: 'linear-gradient(to right, #b24592, #f15f79)', color: '#000', path: '/calendar' },
+        { title: 'Pomodoro Timer', description: 'Stay productive with Pomodoro timer.', icon: faClock, gradient: 'linear-gradient(to right, #e1eec3, #f05053)', path: '/pomodoro' },
+        { title: 'Social Feed', description: 'Stay connected with updates and achievements.', icon: faShareAlt, gradient: 'linear-gradient(to right, #30cfd0, #330867)', path: '/social-feed' },
     ];
-
+    
     return (
         <div style={{ marginBottom: '100px' }}>
             <AppBar position="static" style={{ backgroundColor: '#fff', color: '#000', boxShadow: 'none' }}>
