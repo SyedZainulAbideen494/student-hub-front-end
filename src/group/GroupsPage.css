@@ -2,7 +2,7 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fafafa;
+    background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
@@ -67,7 +67,7 @@
     flex: 1;
     padding: 8px;
     margin: 0 5px;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border: none;
     border-radius: 10px;
     color: #666;
@@ -75,6 +75,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
@@ -85,7 +86,7 @@
   }
   
   .groups-active {
-    background-color: #7161ef;
+    background-color: #000000;
     color: #fff;
   }
   
@@ -169,14 +170,15 @@
   }
   
   .group-item {
-    padding: 10px 15px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
+    padding: 17px 15px;
+    background-color: #ffffff;
+    border-radius: 15px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
   }
   
@@ -213,4 +215,26 @@
     align-items: center;
     justify-content: center;
     font-size: 12px; /* Adjust to fit the content */
+}
+
+.join-btn-group-page {
+  background-color: #000000; /* Black background */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 20px; /* Slightly larger border radius for a softer look */
+  padding: 12px 20px; /* Adjust padding for better size */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.join-btn-group-page:hover {
+  background-color: #333333; /* Slightly lighter background on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+}
+
+.join-btn-group-page:active {
+  transform: translateY(0); /* Return to original position when clicked */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
 }

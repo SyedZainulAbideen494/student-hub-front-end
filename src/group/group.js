@@ -234,6 +234,7 @@ const GroupsPage = () => {
                 {filteredPublicGroups.map((group) => (
                   <li key={group.id} className="group-item" onClick={() => handleJoinGroup(group.id)}>
                     {group.name}
+                    <button className='join-btn-group-page'>Join</button>
                   </li>
                 ))}
               </ul>
