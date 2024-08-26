@@ -1,100 +1,104 @@
-.invitation-modal {
+.invitation-modal-inv-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Slightly darker overlay for better contrast */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Ensure it appears above other content */
-    overflow: auto; /* Allow scrolling if needed */
+    z-index: 1000;
+    overflow: auto;
 }
 
-.modal-content {
-    background: #fff; /* Changed to a soft white */
+.modal-content-inv-modal {
+    background: #fff;
     padding: 20px;
-    border-radius: 10px; /* Slightly more rounded corners */
+    border-radius: 25px;
     width: 90%;
-    max-width: 600px; /* Increased max-width for better content display */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
-    animation: fadeIn 0.3s ease-out; /* Fade-in animation */
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
 }
 
-.invitation-header {
+.invitation-header-inv-modal {
+    font-size: 1.5em;
+    color: #333;
     margin-bottom: 20px;
-    font-size: 1.5em; /* Slightly larger font size for header */
-    color: #333; /* Darker color for better readability */
+    text-align: center;
 }
 
-.invitation-item {
-    margin: 5px auto;
+.close-button-inv-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.close-button-inv-modal:hover {
+    transform: scale(1.1);
+}
+
+.invitation-list-inv-modal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.invitation-item-inv-modal {
+    margin: 10px 0;
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 25px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.invitation-item-inv-modal:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.group-name-inv-modal {
+    font-size: 1.2em;
+    color: #555;
+    flex: 1;
+}
+
+.button-group-inv-modal {
+    display: flex;
+    gap: 10px;
+}
+
+.accept-button-inv-modal, .ignore-button-inv-modal {
+    display: flex;
+    align-items: center;
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: background-color 0.3s; /* Smooth background color transition */
-}
-
-.invitation-item:hover {
-    background-color: #f9f9f9; /* Subtle background color change on hover */
-}
-
-.accept-button, .ignore-button {
-    padding: 6px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Smooth color and scale transitions */
-}
-
-.accept-button {
-    background-color: #4CAF50;
+    background-color: #000000;
     color: white;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-.accept-button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
+.accept-button-inv-modal:hover, .ignore-button-inv-modal:hover {
+    background-color: #000;
+    transform: scale(1.1);
 }
 
-.ignore-button {
-    background-color: #f44336;
-    color: white;
-}
-
-.ignore-button:hover {
-    background-color: #e53935; /* Slightly darker red on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
-}
-
-.close-button {
-    margin-top: 20px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #2196F3;
-    color: white;
-    transition: background-color 0.3s, transform 0.2s; /* Smooth color and scale transitions */
-}
-
-.close-button:hover {
-    background-color: #1e88e5; /* Slightly darker blue on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.icon-inv-modal {
+    font-size: 1.2em;
 }
