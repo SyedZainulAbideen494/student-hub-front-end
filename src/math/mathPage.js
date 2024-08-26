@@ -6,7 +6,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import MathLoader from './mathLoader';
 import { FaCalculator, FaMicrophone } from 'react-icons/fa';
 
-const SimpleCalculator = () => {
+const SimpleCalculator = ({ calculate }) => {
   const [expression, setExpression] = useState('');
 
   const handleButtonClick = (value) => {
@@ -20,11 +20,16 @@ const SimpleCalculator = () => {
 
   const handleCalculate = () => {
     try {
+      // Evaluate the expression
       const result = eval(expression); // Be cautious with eval in production code
       setExpression(result.toString());
     } catch (error) {
       setExpression('Error');
     }
+  };
+
+  const handleBackspace = () => {
+    setExpression((prev) => prev.slice(0, -1));
   };
 
   return (
@@ -37,7 +42,7 @@ const SimpleCalculator = () => {
         className="calculator-display"
       />
       <div className="calculator-keyboard">
-        {['7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '-', '.', '0', '=', '+', 'C'].map((key) => (
+        {['7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '-', '.', '0', '=', '+', 'C', '←'].map((key) => (
           <button
             key={key}
             onClick={() => {
@@ -45,11 +50,13 @@ const SimpleCalculator = () => {
                 handleCalculate();
               } else if (key === 'C') {
                 setExpression('');
+              } else if (key === '←') {
+                handleBackspace();
               } else {
                 handleButtonClick(key);
               }
             }}
-            className={`calculator-key ${key === '=' ? 'equals' : ''} ${key === 'C' ? 'clear' : ''}`}
+            className={`calculator-key ${key === '=' ? 'equals' : ''} ${key === 'C' ? 'clear' : ''} ${key === '←' ? 'backspace' : ''}`}
           >
             {key}
           </button>
@@ -193,12 +200,14 @@ const MathPage = () => {
       <div className="math-page-header">
         <button onClick={toggleMode} className="switch-mode-btn-math-page">
           {showSolver ? 'Switch to Calculator' : 'Switch to Math Solver'}
-          <FaCalculator className="icon"  style={{color: 'white'}}/>
+          <FaCalculator className="icon" style={{ color: 'white' }} />
         </button>
-        <button onClick={handleVoiceCommand} className="switch-mode-btn-math-page">
-          {isListening ? 'Listening...' : ''}
-          <FaMicrophone className="icon" style={{color: 'white'}}/>
-        </button>
+        {showSolver && (
+          <button onClick={handleVoiceCommand} className="switch-mode-btn-math-page">
+            {isListening ? 'Listening...' : ''}
+            <FaMicrophone className="icon" style={{ color: 'white' }} />
+          </button>
+        )}
       </div>
       {showSolver ? (
         <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} />
