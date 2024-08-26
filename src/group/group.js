@@ -118,6 +118,11 @@ const GroupsPage = () => {
         setShowCreateGroupForm(!showCreateGroupForm);
     };
 
+    // Filter groups based on the active tab and search term
+    const filteredJoinedGroups = joinedGroups.filter(group =>
+        group.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const filteredPublicGroups = publicGroups
         .filter(group => !joinedGroups.some(joinedGroup => joinedGroup.id === group.id))
         .filter(group =>
@@ -142,7 +147,7 @@ const GroupsPage = () => {
                 <input
                   type="text"
                   className="groups-search-input"
-                  placeholder="Search groups..."
+                  placeholder="Search groups"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -213,7 +218,7 @@ const GroupsPage = () => {
             <div className="groups-list-container">
               <h2 className="groups-list-title">Joined Groups</h2>
               <ul className="groups-list">
-                {joinedGroups.map((group) => (
+                {filteredJoinedGroups.map((group) => (
                   <li key={group.id} className="group-item" onClick={() => openGroupChat(group.id)}>
                     {group.name}
                   </li>
