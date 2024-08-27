@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FaCopy, FaShareAlt } from 'react-icons/fa';
+import { FaCopy, FaShareAlt, FaSearch, FaCheck, FaTimes, FaArrowRight } from 'react-icons/fa';
 import './quiz.css'; // Import your CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const ShareQuizModal = ({ quizId, onClose }) => {
     const [joinedGroups, setJoinedGroups] = useState([]);
     const [userGroups, setUserGroups] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [copySuccess, setCopySuccess] = useState(false);
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -35,7 +37,10 @@ const ShareQuizModal = ({ quizId, onClose }) => {
     const handleCopyLink = () => {
         const link = `${window.location.origin}/quizzes/${quizId}`;
         navigator.clipboard.writeText(link)
-            .then(() => alert('Link copied to clipboard!'))
+            .then(() => {
+                setCopySuccess(true);
+                setTimeout(() => setCopySuccess(false), 2000); // Reset the tick mark after 2 seconds
+            })
             .catch(err => console.error('Error copying link: ', err));
     };
 
@@ -56,33 +61,47 @@ const ShareQuizModal = ({ quizId, onClose }) => {
         }
     };
 
+    const filteredJoinedGroups = joinedGroups.filter(group => group.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredUserGroups = userGroups.filter(group => group.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
-        <div className="group-modal-overlay">
-            <div className="group-modal">
-                <h2>Select a Group to Share</h2>
-                <ul>
-                    <li><strong>Joined Groups</strong></li>
-                    {joinedGroups.map(group => (
-                        <li key={group.id} onClick={() => handleShare(group.id)}>
-                            {group.name}
-                        </li>
-                    ))}
-                    <li><strong>Other Groups</strong></li>
-                    {userGroups.map(group => (
-                        <li key={group.id} onClick={() => handleShare(group.id)}>
-                            {group.name}
-                        </li>
-                    ))}
-                </ul>
-                <div className="quick-share">
-                    <button onClick={handleCopyLink} className="share-button">
-                        <FaCopy /> Copy Link
-                    </button>
-                    <button onClick={handleShareWhatsApp} className="share-button">
-                        <FaShareAlt /> Share on WhatsApp
+        <div className="group-modal-overlay-share-quiz">
+            <div className="group-modal-share-quiz">
+                <div className="modal-header-share-quiz">
+                    <button className="close-button-share-quiz" onClick={onClose} style={{backgroundColor: 'white', color: 'black'}}>
+                        <FaTimes />
                     </button>
                 </div>
-                <button className="close-button" onClick={onClose}>Close</button>
+                <div className="search-bar-share-quiz">
+                    <input
+                        type="text"
+                        placeholder="Search groups..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <FaSearch className="search-icon-share-quiz" />
+                </div>
+                <ul>
+                    <li><strong>Joined Groups</strong></li>
+                    {filteredJoinedGroups.map(group => (
+                        <li key={group.id} className="group-item-share-quiz" onClick={() => handleShare(group.id)}>
+                            <span>{group.name}</span>
+                            <FaArrowRight className="arrow-icon-share-quiz" />
+                        </li>
+                    ))}
+                   
+                </ul>
+                <div className="quick-share-share-quiz">
+                    <button 
+                        onClick={handleCopyLink} 
+                        className={`share-button-share-quiz ${copySuccess ? 'copied-share-quiz' : ''}`}
+                    >
+                        {copySuccess ? <FaCheck /> : <FaCopy />}
+                    </button>
+                    <button onClick={handleShareWhatsApp} className="share-button-share-quiz">
+                        <FaShareAlt />
+                    </button>
+                </div>
             </div>
         </div>
     );

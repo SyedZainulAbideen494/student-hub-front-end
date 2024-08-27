@@ -244,87 +244,182 @@
     background-color: #0056b3;
 }
 
-/* Modal Styles */
-.group-modal-overlay {
+
+.group-modal-overlay-share-quiz {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 1000;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.group-modal {
-    background: #ffffff;
+.group-modal-share-quiz {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
-    padding: 15px;
-    max-width: 450px;
+    max-width: 500px;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
 }
 
-.group-modal h2 {
-    font-size: 18px;
-    margin-bottom: 12px;
-    color: #333;
+.modal-header-share-quiz {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.group-modal ul {
+.modal-header-share-quiz h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-button-share-quiz {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button-share-quiz:hover {
+    color: #ff4d4d;
+}
+
+.search-bar-share-quiz {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+.search-bar-share-quiz input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: 1rem;
+}
+
+.search-icon-share-quiz {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.group-modal-share-quiz ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.group-modal li {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
+.group-modal-share-quiz li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.group-modal-share-quiz li:hover {
+    background-color: #eaeaea;
+}
+
+.group-modal-share-quiz button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.group-modal-share-quiz button:hover {
+    background-color: #333;
+}
+
+.quick-share-share-quiz {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.share-button-share-quiz {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.group-modal li:hover {
-    background-color: #f0f0f0;
+.share-button-share-quiz:hover {
+    background-color: #333;
 }
 
-.quick-share {
-    margin-top: 10px;
+.share-button-share-quiz.copied-share-quiz {
+    background-color: #28a745; /* Green color for success */
 }
 
-.share-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+.share-button-share-quiz svg {
+    font-size: 1.2rem;
+}
+
+.group-item-share-quiz {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 8px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s;
 }
 
-.share-button:hover {
-    background-color: #0056b3;
+.group-item-share-quiz:hover {
+    background-color: #e0e0e0;
 }
 
-.close-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: #dc3545;
+.arrow-icon-share-quiz {
+    background-color: black;
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
+    border-radius: 50%;
+    padding: 5px;
 }
 
-.close-button:hover {
-    background-color: #c82333;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+
 
 /* Submit Page */
 .submit-page {
