@@ -123,9 +123,9 @@ const QuizHomePage = () => {
                 <div className="quiz-header">
                     <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
                         {quiz.title}
-                    </span>
+                    </span><br/><br/>
                     <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
-                </div>
+                </div><br/>
                 <div className="quiz-actions-quiz-page">
                     <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
                         Share Quiz

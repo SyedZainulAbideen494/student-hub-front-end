@@ -26,7 +26,7 @@
     border-radius: 25px;
     padding: 8px 12px;
     max-width: 100%;
-    width: 100%;
+    width: 90%;
 }
 
 /* Buttons Section */
@@ -112,7 +112,7 @@
     border: none;
     padding: 10px 20px;
     font-size: 0.9rem;
-    border-radius: 25px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
