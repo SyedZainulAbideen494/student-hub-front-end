@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaCopy, FaShareAlt, FaSearch, FaCheck, FaTimes, FaArrowRight } from 'react-icons/fa';
-import './quiz.css'; // Import your CSS file for styling
+import './shareQuizModal.css'; // Import your CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
+
 
 const ShareQuizModal = ({ quizId, onClose }) => {
     const [joinedGroups, setJoinedGroups] = useState([]);

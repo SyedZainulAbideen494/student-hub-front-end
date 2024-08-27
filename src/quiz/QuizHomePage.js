@@ -5,17 +5,19 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import ShareQuizModal from './shareQuizModal';
 import ResultsModal from './resultsModal';
+import ViewQuizModal from './viewQuizModal';
+import { FaSearch } from 'react-icons/fa';
 import './quiz.css';
-import ViewQuizModal from './viewQuizModal'; // Import the ViewQuizModal component
 
 const QuizHomePage = () => {
     const [quizzes, setQuizzes] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [showResultsModal, setShowResultsModal] = useState(false);
-    const [showViewQuizModal, setShowViewQuizModal] = useState(false); // State for view quiz modal
+    const [showViewQuizModal, setShowViewQuizModal] = useState(false);
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const [results, setResults] = useState([]);
-    const [quizResults, setQuizResults] = useState([]); // State for storing quiz results
+    const [quizResults, setQuizResults] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -76,6 +78,14 @@ const QuizHomePage = () => {
         setShowViewQuizModal(false);
     };
 
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredQuizzes = quizzes.filter(quiz =>
+        quiz.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         const year = date.getFullYear();
@@ -85,52 +95,53 @@ const QuizHomePage = () => {
     };
 
     return (
-        <div className="quiz-home-page">
-        <div className="button-group">
-            <button onClick={handleCreateQuiz} className="create-quiz-button-home-page">Create Quiz</button>
-            <button onClick={handleResultsClick} className="results-button-home-page">My Results</button>
+<div className="quiz-home-page-quiz-page">
+    <div className="quiz-header-container-quiz-page">
+        <div className="search-bar-quiz-page">
+            <FaSearch />
+            <input
+                type="text"
+                placeholder="Search quizzes..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                style={{border: 'none'}}
+            />
         </div>
-        <h2 className="quizzes-title-home-page" style={{marginBottom: '40px', marginTop: '40px'}}>Your Quizzes</h2>
-        <ul className="quizzes-list-home-page">
-            {quizzes.map(quiz => (
-                <li key={quiz.id} className="quiz-item-home-page">
-                    <div className="quiz-header">
-                        <span className="quiz-title-home-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-                            {quiz.title}
-                        </span>
-                        <span className="quiz-date-home-page">Created At: {formatDate(quiz.created_at)}</span>
-                    </div>
-                    <div className="quiz-actions">
-                        <button className="share-button-home-page" onClick={() => handleShareClick(quiz)}>
-                            Share
-                        </button>
-                        <button className="view-results-button-home-page" onClick={() => handleViewQuizClick(quiz.id)}>
-                            View Results
-                        </button>
-                    </div>
-                </li>
-            ))}
-        </ul>
-        {showModal && (
-            <ShareQuizModal
-                quizId={selectedQuiz.id}
-                onClose={handleCloseModal}
-            />
-        )}
-        {showResultsModal && (
-            <ResultsModal
-                results={results}
-                onClose={handleCloseResultsModal}
-            />
-        )}
-        {showViewQuizModal && (
-            <ViewQuizModal
-                quizResults={quizResults}
-                onClose={handleCloseViewQuizModal}
-            />
-        )}
-        <FooterNav />
+        <div className="quiz-header-buttons-quiz-page">
+            <button onClick={handleCreateQuiz} className="create-quiz-button-home-page-quiz-page">
+                Create Quiz
+            </button>
+            <button onClick={handleResultsClick} className="results-button-home-page-quiz-page">
+                My Results
+            </button>
+        </div>
     </div>
+    <h2 className="quizzes-title-home-page-quiz-page">Your Quizzes</h2>
+    <ul className="quizzes-list-home-page-quiz-page">
+        {filteredQuizzes.map(quiz => (
+            <li key={quiz.id} className="quiz-item-home-page-quiz-page">
+                <div className="quiz-header">
+                    <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+                        {quiz.title}
+                    </span>
+                    <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
+                </div>
+                <div className="quiz-actions-quiz-page">
+                    <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
+                        Share Quiz
+                    </button>
+                    <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
+                        View Results
+                    </button>
+                </div>
+            </li>
+        ))}
+    </ul>
+    {showModal && <ShareQuizModal quiz={selectedQuiz} onClose={handleCloseModal} />}
+    {showResultsModal && <ResultsModal results={results} onClose={handleCloseResultsModal} />}
+    {showViewQuizModal && <ViewQuizModal quizResults={quizResults} onClose={handleCloseViewQuizModal} />}
+    <FooterNav />
+</div>
     );
 };
 
