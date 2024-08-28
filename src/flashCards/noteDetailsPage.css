@@ -26,7 +26,7 @@
     justify-content: center;
     width: 30px; /* Set width to make it a circle */
     height: 30px; /* Set height to make it a circle */
-    border: 1px solid #504d4d;
+    border: none;
     background-color: transparent;
     color: #007bff;
     border-radius: 50%; /* Ensures the shape is a perfect circle */
