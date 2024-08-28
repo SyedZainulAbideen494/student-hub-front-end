@@ -1,73 +1,73 @@
 /* General Styles */
 .note-detail-page {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #fafafa;
     max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     position: relative;
+    overflow: hidden;
 }
 
 /* Header */
 .note-header-note-detail-page {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
+    border-bottom: 2px solid #ececec;
+    padding-bottom: 15px;
 }
 
 .back-button-note-detail-page {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
-    border: 1px solid #007bff;
-    background-color: #ffffff;
+    justify-content: center;
+    width: 30px; /* Set width to make it a circle */
+    height: 30px; /* Set height to make it a circle */
+    border: 1px solid #504d4d;
+    background-color: transparent;
     color: #007bff;
-    border-radius: 8px;
+    border-radius: 50%; /* Ensures the shape is a perfect circle */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .back-button-note-detail-page:hover {
-    background-color: #007bff;
+    background-color: #000000;
     color: #ffffff;
 }
 
 .arrow-note-detail-page {
-    margin-right: 8px;
     font-size: 18px;
 }
 
 .note-header-note-detail-page h1 {
-    font-size: 28px;
+    font-size: 32px;
     margin: 0;
     color: #333;
+    font-weight: 700;
 }
 
 /* Content */
 .note-content-note-detail-page {
     background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    padding: 25px;
     overflow-y: auto;
+    line-height: 1.6;
 }
 
+/* Note Description */
 .note-description-note-detail-page {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 20px;
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 25px;
 }
 
-.note-content-quill-note-detail-page {
-    margin-bottom: 20px;
-}
-
-/* Editor */
+/* Quill Editor */
 .ql-container {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -80,44 +80,46 @@
 
 .ql-editor {
     min-height: 200px;
-    font-size: 16px;
+    font-size: 18px;
     color: #333;
 }
 
 /* Images Section */
 .note-images-section-note-detail-page {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .note-images-section-note-detail-page h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 26px;
+    margin-bottom: 20px;
     color: #333;
+    font-weight: 600;
 }
 
 .note-image-note-detail-page {
     max-width: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    object-fit: cover;
 }
 
 .note-image-note-detail-page:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Card */
 .card-note-detail-page {
-    padding: 20px;
-    border-radius: 12px;
+    padding: 25px;
+    border-radius: 16px;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
 }
 
 .card-note-detail-page:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-note-detail-page p {
@@ -129,15 +131,16 @@
 .note-actions-note-detail-page {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px;
+    flex-wrap: wrap;
 }
 
 .download-button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #007bff;
     color: #ffffff;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -152,7 +155,7 @@
 .edit-note-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .form-group {
@@ -167,28 +170,40 @@
 
 .form-group input,
 .form-group textarea {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.1);
 }
 
 .form-group textarea {
-    min-height: 100px;
+    min-height: 120px;
 }
 
-
+/* Image Gallery */
 .image-gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .image-item {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }

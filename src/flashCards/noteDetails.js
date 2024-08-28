@@ -215,8 +215,8 @@ const NoteDetailPage = () => {
         <div className="note-detail-page">
             <div className="note-header-note-detail-page">
                 <button className="back-button-note-detail-page" onClick={handleBackClick}>
-                    <span className="arrow-note-detail-page">&#8592;</span> Back
-                </button>
+                    <span className="arrow-note-detail-page">&#8592;</span> 
+                </button><br/>
                 <h1>{editMode ? 'Edit Note' : note.title}</h1>
             </div>
             {editMode ? (
