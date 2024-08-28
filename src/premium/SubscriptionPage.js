@@ -32,7 +32,7 @@ const premiumFeatures = [
 
 const SubscriptionPage = () => {
   const [token, setToken] = useState(localStorage.getItem('token')); // Replace with your method of obtaining the token
-  const [isPremium, setIsPremium] = useState(false);
+  const [isPremium, setIsPremium] = useState(true);
 
   useEffect(() => {
     const checkPremiumStatus = async () => {

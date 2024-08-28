@@ -16,6 +16,9 @@ const ProfilePage = () => {
   const [posts, setPosts] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState({});
   const [touchStartX, setTouchStartX] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -120,6 +123,27 @@ const ProfilePage = () => {
     }
   };
 
+  const openDeleteModal = (id) => {
+    setDeleteId(id);
+    setShowModal(true);
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteId(null);
+    setShowModal(false);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${API_ROUTES.deleteEduScribe}/${deleteId}`);
+      setEduScribe(eduscribes.filter(eduscribe => eduscribe.id !== deleteId));
+      closeDeleteModal();
+    } catch (err) {
+      console.error('Error deleting eduscribe:', err);
+    }
+  };
+  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
   if (!profile) return <p>No profile data available</p>;
@@ -179,7 +203,9 @@ const ProfilePage = () => {
           ))}
             {activeTab === 'EduScribe' && eduscribes.map((eduscribe) => (
             <div key={eduscribe.id} className="card-user-profile-guest eduscribe-item-user-profile-guest">
+              
               <div className="eduscribe-header">
+                
                 <Link to={`/profile/${profile.id}`}>
                   <img
                     src={`${API_ROUTES.displayImg}/${profile.avatar}`}
@@ -187,14 +213,19 @@ const ProfilePage = () => {
                     className="eduscribe-avatar"
                   />
                 </Link>
+     
                 <div className="eduscribe-info">
                   <Link to={`/profile/${profile.id}`} className="eduscribe-username">
                     {profile.user_name}
                   </Link>
                   <span className="eduscribe-date">{new Date(eduscribe.created_at).toLocaleString()}</span>
                 </div>
+                <button className="delete-button" onClick={() => openDeleteModal(eduscribe.id)} style={{marginLeft: '40px'}}>
+<i className="fas fa-trash"></i>
+</button>
               </div>
               <div className="eduscribe-content">{eduscribe.content}</div>
+              
               {eduscribe.image && (
                 <img
                   src={`${API_ROUTES.displayImg}/${eduscribe.image}`}
@@ -202,8 +233,23 @@ const ProfilePage = () => {
                   className="eduscribe-image"
                 />
               )}
+              
             </div>
           ))}
+          
+{showModal && (
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete this EduScribe?</p>
+      <button className="modal-button" onClick={handleDelete}>Yes, Delete</button>
+      <button className="modal-button" onClick={closeDeleteModal}>Cancel</button>
+    </div>
+  </div>
+)}
+
+
+
         </div>
       </div>
       <FooterNav />

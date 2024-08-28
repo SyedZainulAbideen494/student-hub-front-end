@@ -1,59 +1,40 @@
-import React from 'react';
-import './ProfilePage.css';
+<button className="delete-button" onClick={() => openDeleteModal(eduscribe.id)}>
+<i className="fas fa-trash"></i>
+</button>
 
-const dummyProfile = {
-  name: 'Anne Adams',
-  username: '@anne.adams99',
-  location: 'San Jose, CA',
-  stats: {
-    fans: 24000,
-    following: 582,
-    posts: 2129,
-    stories: 91
-  },
-  photos: [
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150'
-  ]
+
+
+
+
+
+{showModal && (
+  <div className="modal-overlay">
+    <div className="modal-content">
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete this EduScribe?</p>
+      <button className="modal-button" onClick={handleDelete}>Yes, Delete</button>
+      <button className="modal-button" onClick={closeDeleteModal}>Cancel</button>
+    </div>
+  </div>
+)}
+
+
+
+
+
+
+
+const handleDelete = async () => {
+  try {
+    await axios.delete(`${API_ROUTES.deleteEduScribe}/${deleteId}`);
+    setEduScribe(eduscribes.filter(eduscribe => eduscribe.id !== deleteId));
+    closeDeleteModal();
+  } catch (err) {
+    console.error('Error deleting eduscribe:', err);
+  }
 };
 
-const ProfilePage = () => {
-  return (
-    <div className="profile-page">
-      <header>
-        <h1>&larr;</h1>
-      </header>
-      <div className="profile">
-        <img className="avatar"src={`${API_ROUTES.displayImg}/${profile.avatar || 'default-avatar-url'}`} alt="avatar" />
-        <h2>{profile.name}</h2>
-        <p>{profile.username}</p>
-        <p>{profile.location}</p>
-        <div className="stats">
-          <div> Fans</div>
-          <div> Following</div>
-          <div> Posts</div>
-          <div> Stories</div>
-        </div>
-        <div className="actions">
-          <button className="follow">Follow</button>
-          <button className="message">Message</button>
-        </div>
-      </div>
-      <div className="media">
-        <div className="tabs">
-          <button>Photo</button>
-          <button>Video</button>
-          <button>About</button>
-          <button>Favorite</button>
-        </div>
-        <div className="photos">
-        
-        </div>
-      </div>
-    </div>
-  );
-}
 
-export default ProfilePage;
+
+const [showModal, setShowModal] = useState(false);
+const [deleteId, setDeleteId] = useState(null);

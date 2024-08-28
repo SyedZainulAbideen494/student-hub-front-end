@@ -15,7 +15,7 @@ const SettingsPage = () => {
     phone_number: '',
     avatar: ''
   });
-  const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarFile, setAvatarFile] = useState('defPic.png');
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
