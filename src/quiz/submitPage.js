@@ -6,6 +6,16 @@ import axios from 'axios';
 import './SubmitQuiz.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
+const tips = [
+  "Great job! Keep practicing to improve even more.",
+  "Awesome work! Try to maintain this streak.",
+  "Excellent score! You're on the right track.",
+  "Good effort! Check out more quizzes to challenge yourself.",
+  "Well done! Remember, practice makes perfect."
+];
+
+const getRandomTip = () => tips[Math.floor(Math.random() * tips.length)];
+
 const SubmitPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,6 +40,13 @@ const SubmitPage = () => {
     setCountUpFinished(true);
   };
 
+  const getMessage = () => {
+    if (score > 90) return 'Exceptional!';
+    if (score > 70) return 'Awesome job!';
+    if (score > 50) return 'Good effort!';
+    return 'Keep practicing!';
+  };
+
   return (
     <div className="submit-page-quiz-complete">
       <header className="header-quiz-complete">
@@ -39,7 +56,7 @@ const SubmitPage = () => {
       <div className="card-quiz-complete">
         {countUpFinished && score > 70 && <Confetti />}
         <p className="message-quiz-complete">
-          {score > 70 ? 'Awesome job!' : 'Keep practicing!'}
+          {getMessage()}
         </p>
         <div className="score-container-quiz-complete">
           <CountUp
@@ -51,20 +68,25 @@ const SubmitPage = () => {
           />
           %
         </div>
+        <p className="tip-quiz-complete">{getRandomTip()}</p>
       </div>
       <div className="previous-results-quiz-complete">
         <h2>Previous Results</h2>
-        {previousResults.map(result => (
-          <div key={result.quiz_id} className="result-item-quiz-complete">
-            <div className="result-header-quiz-complete">
-              <div className="quiz-name-quiz-complete">{result.quiz_title}</div>
-              <div className="score-quiz-complete">{result.score}%</div>
+        {previousResults.length > 0 ? (
+          previousResults.map(result => (
+            <div key={result.quiz_id} className="result-item-quiz-complete">
+              <div className="result-header-quiz-complete">
+                <div className="quiz-name-quiz-complete">{result.quiz_title}</div>
+                <div className="score-quiz-complete">{result.score}%</div>
+              </div>
+              <div className="completed-at-quiz-complete">
+                Completed At: {new Date(result.completed_at).toLocaleString()}
+              </div>
             </div>
-            <div className="completed-at-quiz-complete">
-              Completed At: {new Date(result.completed_at).toLocaleString()}
-            </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No previous results available.</p>
+        )}
       </div>
     </div>
   );
