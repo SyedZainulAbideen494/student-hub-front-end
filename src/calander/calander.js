@@ -236,20 +236,7 @@ const CalendarPage = () => {
                     ))
                 )}
             </div>
-            <div className="activity-list">
-                <Typography variant="h6" className="section-title">Your Activities</Typography>
-                {userActivities.length === 0 ? (
-                    <Typography>No activities available</Typography>
-                ) : (
-                    userActivities.map(activity => (
-                        <Paper key={activity.id} className="activity-item">
-                            <Typography variant="h6">{activity.quiz_title}</Typography>
-                            <Typography>Date: {new Date(activity.completed_at).toLocaleDateString()}</Typography>
-                            <Typography>Score: {activity.score}</Typography>
-                        </Paper>
-                    ))
-                )}
-            </div>
+            
             <FooterNav />
             <SuccessModal visible={modalVisible} message={modalMessage} />
         </div>
