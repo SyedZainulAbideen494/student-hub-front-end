@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import './quiz.css'
+import './QuizPage.css';
 
 const QuizPage = () => {
     const { id } = useParams();
     const [quiz, setQuiz] = useState(null);
     const [questions, setQuestions] = useState([]);
     const [answers, setAnswers] = useState({});
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(null);
     const navigate = useNavigate();
 
@@ -30,69 +31,108 @@ const QuizPage = () => {
         setAnswers({ ...answers, [qId]: aId });
     };
 
- 
-    const handleSubmit = async () => {
+    const handleNext = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }
+    };
+
+    const handlePrevious = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+        }
+    };
+
+    const handleSubmitQuiz = async () => {
         try {
             const token = localStorage.getItem('token');
-            
-            // Convert answers object to an array of objects with answerId and questionId properties
             const answersArray = Object.entries(answers).map(([questionId, answerId]) => ({
                 questionId: parseInt(questionId, 10),
-                answerId: parseInt(answerId, 10)
+                answerId: parseInt(answerId, 10),
             }));
-            
+
             const response = await axios.post(`${API_ROUTES.submitQuiz}`, {
                 token,
                 quizId: parseInt(id, 10),
-                answers: answersArray
+                answers: answersArray,
             });
-      
+
             const score = response.data.score;
             setScore(score);
-      
-            if (score > 70) {
-                navigate('/quiz/submit', { state: { score } });
-            } else {
-                navigate('/quiz/submit', { state: { score } });
-            }
+            navigate('/quiz/submit', { state: { score } });
         } catch (error) {
             console.error('Error submitting quiz:', error.response || error.message);
             alert('An error occurred while submitting the quiz. Please try again later.');
         }
     };
 
-    const handleBackbtn = () => {
-        navigate('/quiz/home')
-    }
-
     return (
-        <div className="quiz-page">
-        {quiz && (
-            <div className="quiz-container">
-                <h2 className="quiz-title">{quiz.title}</h2>
-                <p className="quiz-description">{quiz.description}</p>
-                {questions.map((question) => (
-                    <div key={question.id} className="question-container">
-                        <p className="question-text">{question.question_text}</p>
-                        {question.answers.map((answer) => (
-                            <div key={answer.id} className="answer-container">
-                                <input
-                                    type="radio"
-                                    name={`question${question.id}`}
-                                    value={answer.id}
-                                    onChange={() => handleAnswerChange(question.id, answer.id)}
-                                    className="answer-radio"
-                                />
-                                <span className="answer-text">{answer.answer_text}</span>
-                            </div>
-                        ))}
+        <div className="quiz-page-attend">
+            {quiz && (
+                <>
+                    <div className="quiz-header-attend">
+                        <button onClick={() => navigate('/quiz/home')} className="back-arrow-attend">
+                            ←
+                        </button>
+                        <h2 className="quiz-title-attend">{quiz.title}</h2>
+                        <div className="quiz-progress-attend">
+                            {questions.map((_, index) => (
+                                <span
+                                    key={index}
+                                    className={`progress-circle-attend ${index === currentQuestionIndex ? 'active-attend' : ''}`}
+                                >
+                                    {index + 1}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                ))}
-                <button onClick={handleBackbtn} className="submit-button" style={{marginRight: '20px'}}>Back</button>
-                <button onClick={handleSubmit} className="submit-button">Submit Quiz</button>
-            </div>
-        )}
-    </div>
+
+                    <div className="quiz-container-attend">
+                        <div className="question-container-attend">
+                            <p className="question-text-attend">{questions[currentQuestionIndex]?.question_text}</p>
+                            {questions[currentQuestionIndex]?.answers.map((answer) => (
+                                <div key={answer.id} className="answer-container-attend">
+                                    <input
+                                        type="radio"
+                                        name={`question${questions[currentQuestionIndex].id}`}
+                                        value={answer.id}
+                                        checked={answers[questions[currentQuestionIndex].id] === answer.id}
+                                        onChange={() => handleAnswerChange(questions[currentQuestionIndex].id, answer.id)}
+                                        className="answer-radio-attend"
+                                    />
+                                    <span className="answer-text-attend">{answer.answer_text}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="quiz-footer-attend">
+                            {currentQuestionIndex > 0 && (
+                                <button onClick={handlePrevious} className="navigation-button-attend">
+                                    Previous Question
+                                </button>
+                            )}
+                            {currentQuestionIndex < questions.length - 1 ? (
+                                <button
+                                    onClick={handleNext}
+                                    className="navigation-button-attend"
+                                    disabled={!answers[questions[currentQuestionIndex].id]}
+                                >
+                                    Submit Answer
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={handleSubmitQuiz}
+                                    className="navigation-button-attend"
+                                    disabled={!answers[questions[currentQuestionIndex].id]}
+                                >
+                                    Submit Quiz
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
     );
 };
 
