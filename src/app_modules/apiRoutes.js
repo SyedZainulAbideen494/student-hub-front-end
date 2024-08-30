@@ -69,5 +69,6 @@ export const API_ROUTES = {
   getPremium: `${API_URL}/api/create-checkout-session`,
   verifyPremium: `${API_URL}/api/verifyPremium`,
   getUserOwnProfileEdusify: `${API_URL}/getEduScribe/user/profile`,
-  deleteEduScribe: `${API_URL}/api/deleteEduScribe`
+  deleteEduScribe: `${API_URL}/api/deleteEduScribe`,
+  quizResultsPageAllresults: `${API_URL}/get-user-results`
 }

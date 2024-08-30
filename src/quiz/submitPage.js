@@ -4,6 +4,7 @@ import Confetti from 'react-confetti';
 import CountUp from 'react-countup';
 import axios from 'axios';
 import './SubmitQuiz.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const SubmitPage = () => {
   const location = useLocation();
@@ -16,7 +17,7 @@ const SubmitPage = () => {
 
   useEffect(() => {
     // Fetch previous results from the backend
-    axios.post('http://localhost:5000/get-user-results', { token })
+    axios.post(API_ROUTES.quizResultsPageAllresults, { token })
       .then(response => {
         setPreviousResults(response.data.results);
       })
