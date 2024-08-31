@@ -45,6 +45,15 @@ import ForgotPassword from "./auth/forgot-password";
 import ResetPassword from "./auth/ResetPassword";
 import SubscriptionPage from "./premium/SubscriptionPage";
 import SuccessPage from "./premium/SuccessPage";
+import HelpMain from "./help/helpMain";
+import TaskManagerGuidePage from "./help/TaskmanagerHelp";
+import GroupsGuidePage from "./help/groupshelp";
+import NotesFlashcardsGuidePage from "./help/NotesFlashcardsGuidePage";
+import PomodoroTimerGuidePage from "./help/PomodoroTimerGuidePage";
+import CalendarGuidePage from "./help/CalendarGuidePage";
+import SocialFeedGuidePage from "./help/SocialFeedGuidePage";
+import SubjectHelpersGuidePage from "./help/SubjectHelpersGuidePage";
+import AboutAppPage from "./help/AboutAppPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -81,6 +90,15 @@ const router = createBrowserRouter([
   {path: '/reset-password/:token', element: <ResetPassword/>},
   {path: '/subscription', element: <SubscriptionPage/>},
   {path: '/payment-success', element: <SuccessPage/>},
+  {path: '/help', element: <HelpMain/>},
+  {path: '/task-management-guide/guide', element: <TaskManagerGuidePage/>},
+  {path: '/collaborative-study-groups-guide/guide', element: <GroupsGuidePage/>},
+  {path: '/aesthetic-notes-flashcards-guide/guide', element: <NotesFlashcardsGuidePage/>},
+  {path: '/pomodoro-timer-guide/guide', element: <PomodoroTimerGuidePage/>},
+  {path: '/calendar-reminders-guide/guide', element: <CalendarGuidePage/>},
+  {path: '/social-feed-guide/guide', element: <SocialFeedGuidePage/>},
+  {path: '/subject-helpers-guide/guide', element: <SubjectHelpersGuidePage/>},
+  {path: '/about-app', element: <AboutAppPage/>},
   { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
