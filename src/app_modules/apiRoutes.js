@@ -70,5 +70,5 @@ export const API_ROUTES = {
   verifyPremium: `${API_URL}/api/verifyPremium`,
   getUserOwnProfileEdusify: `${API_URL}/getEduScribe/user/profile`,
   deleteEduScribe: `${API_URL}/api/deleteEduScribe`,
-  quizResultsPageAllresults: `${API_URL}/get-user-results`
+  quizResultsPageAllresults: `${API_URL}/get-user-results`,
 }

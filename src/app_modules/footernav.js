@@ -131,6 +131,12 @@ const FooterNav = () => {
                         <span className="btn-label">Social Feed</span>
                     </button>
                 </Link>
+                <Link to='/music' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/music' ? 'active' : ''}`}>
+                        <FaMusic className="icon-footer-nav" />
+                        <span className="btn-label">Music</span>
+                    </button>
+                </Link>
                 <Link to='/profile' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/profile' ? 'active' : ''}`}>
                         <FaUser className="icon-footer-nav" />

@@ -207,3 +207,45 @@
     outline: none;           /* Remove default focus outline */
     box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3); /* Red shadow on focus */
 }
+
+
+/* Group Avatar Container */
+.group-avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #007bff; /* Border color to match theme */
+    background-color: #f0f0f0; /* Light background color */
+    margin: 0 auto; /* Center horizontally */
+    position: relative;
+}
+
+/* Group Avatar Image */
+.group-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+}
+
+/* Default Icon Styling */
+.default-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 60px; /* Adjust size as needed */
+    color: #007bff; /* Icon color */
+    background-color: #fff; /* Background color for default icon */
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Centered Icon */
+.default-icon .fa-react {
+    font-size: 60px; /* Adjust the icon size as needed */
+}
