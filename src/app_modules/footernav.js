@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaQuestionCircle, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem } from 'react-icons/fa'; // Import FaGem for the diamond icon
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem } from 'react-icons/fa'; // Import FaGem for the diamond icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; 
@@ -40,33 +40,31 @@ const FooterNav = () => {
 
     return (
         <div className="footer-nav">
-        {/* Primary Buttons */}
-        <Link to='/planner' style={{ textDecoration: 'none' }}>
-            <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
-                <HiBookOpen className="icon-footer-nav" />
-                <span className="btn-label">Planner</span>
+            {/* Primary Buttons */}
+            <Link to='/planner' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
+                    <HiBookOpen className="icon-footer-nav" />
+                    <span className="btn-label">Planner</span>
+                </button>
+            </Link>
+            <Link to='/groups' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
+                    <FaUsers className="icon-footer-nav" />
+                    <span className="btn-label">Groups</span>
+                </button>
+            </Link>
+            <Link to='/notes' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
+                    <FaStickyNote className="icon-footer-nav" />
+                    <span className="btn-label">Notes</span>
+                </button>
+            </Link>
+            <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
+                <FaBars className="icon-footer-nav" />
+                <span className="btn-label">More</span>
             </button>
-        </Link>
-        <Link to='/groups' style={{ textDecoration: 'none' }}>
-            <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
-                <FaUsers className="icon-footer-nav" />
-                <span className="btn-label">Groups</span>
-            </button>
-        </Link>
-        <Link to='/notes' style={{ textDecoration: 'none' }}>
-            <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
-                <FaStickyNote className="icon-footer-nav" />
-                <span className="btn-label">Notes</span>
-            </button>
-        </Link>
-        <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
-            <FaBars className="icon-footer-nav" />
-            <span className="btn-label">More</span>
-        </button>
-    
-        <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
-            {/* Popup Buttons */}
-            <div className="icon-container-footer-nav">
+            <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
+                {/* Popup Buttons */}
                 <Link to='/planner' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
                         <HiBookOpen className="icon-footer-nav" />
@@ -139,39 +137,20 @@ const FooterNav = () => {
                         <span className="btn-label">Profile</span>
                     </button>
                 </Link>
-                <Link to='/subscription' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
-                        <FaGem className="icon-footer-nav" />
-                        <span className="btn-label">Premium</span>
-                    </button>
-                </Link>
-                <Link to='/help' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/help' ? 'active' : ''}`}>
-                        <FaQuestionCircle className="icon-footer-nav" />
-                        <span className="btn-label">Help</span>
-                    </button>
-                </Link>
+                <Link to='/subscription' style={{ textDecoration: 'none' }}>  {/* Add the new Premium button */}
+                <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
+                    <FaGem className="icon-footer-nav" />
+                    <span className="btn-label">Premium</span>
+                </button>
+            </Link>
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>
                     <FaSignOutAlt className="icon-footer-nav" />
                     <span className="btn-label">Logout</span>
                 </button>
+                <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
-            <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
         </div>
-    </div>
     );
 };
 
 export default FooterNav;
-
-
-
-
-              {/*
-<Link to='/music' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/music' ? 'active' : ''}`}>
-        <FaMusic className="icon-footer-nav" />
-        <span className="btn-label">Music</span>
-    </button>
-</Link>
-*/}
