@@ -74,7 +74,6 @@
     transform: translateX(-50%) translateY(100%);
     width: 100%;
     max-width: 350px;
-    max-height: 438px; /* Set maximum height */
     background: rgba(24, 24, 24, 0.9); /* Dark theme with slightly transparent dark color */
     display: flex;
     flex-direction: column;
