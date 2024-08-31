@@ -71,4 +71,6 @@ export const API_ROUTES = {
   getUserOwnProfileEdusify: `${API_URL}/getEduScribe/user/profile`,
   deleteEduScribe: `${API_URL}/api/deleteEduScribe`,
   quizResultsPageAllresults: `${API_URL}/get-user-results`,
+  checkUniqueId: `${API_URL}/check-unique-id`,
+  generateAlternatives: `${API_URL}/generate-alternatives`
 }

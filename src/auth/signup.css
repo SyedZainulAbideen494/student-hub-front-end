@@ -1,181 +1,113 @@
-/* signup.css */
-
-/* Container for the signup form */
-.signup-container {
-  width: 100%;
-  max-width: 400px; /* Adjusted for better mobile view */
-  margin: 0 auto;
+.signup-sign-up-page-card {
+  max-width: 400px;
+  margin: auto;
   padding: 20px;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
-/* Loader */
-.signup-container .loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Heading */
-.signup-container h2 {
+.signup-sign-up-page-heading {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 24px;
   color: #333;
-  font-size: 1.5em; /* Responsive font size */
 }
 
-/* Error message */
-.error-message {
-  color: #dc3545; /* Bootstrap's danger color */
-  font-size: 14px;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-/* Form styling */
-.signup-container form {
+.signup-sign-up-page-form {
   display: flex;
   flex-direction: column;
 }
 
-/* Input container */
-.input-container {
-  position: relative;
-  margin-bottom: 20px; /* Increased space for better readability */
-}
-
-/* Icon styling */
-.input-container .icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #6c757d;
-  font-size: 18px;
-}
-
-/* Input fields */
-.input-container input,
-.input-container select,
-.input-container textarea {
-  width: 100%; /* Full width for mobile */
-  padding: 12px 12px 12px 50px; /* Increased padding for better touch targets */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition for focus effect */
-}
-
-/* Input fields on focus */
-.input-container input:focus,
-.input-container select:focus,
-.input-container textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Added shadow effect on focus */
-}
-
-/* Toggle password visibility */
-.toggle-password {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  font-size: 16px; /* Increased font size for better touch targets */
-  color: #007bff;
-}
-
-/* Terms and conditions container */
-.checkbox-container {
+.signup-sign-up-page-input-group {
   display: flex;
   align-items: center;
-  margin-bottom: 20px; /* Increased space for better readability */
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 10px;
+  transition: border-color 0.3s;
 }
 
-/* Terms checkbox */
-.checkbox-container input[type="checkbox"] {
+.signup-sign-up-page-input-group:hover {
+  border-color: #007bff;
+}
+
+.signup-sign-up-page-icon {
   margin-right: 10px;
-  cursor: pointer; /* Ensure pointer cursor for better UX */
+  color: #333;
 }
 
-/* Terms and conditions text */
-.checkbox-container label {
-  font-size: 14px;
-  color: #666;
-}
-
-/* Submit button */
-.signup-container button {
-  background-color: #007bff;
-  color: white;
+.signup-sign-up-page-input {
   border: none;
-  padding: 15px;
-  border-radius: 5px;
-  font-size: 18px; /* Increased font size for readability */
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+}
+
+.signup-sign-up-page-toggle-password {
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform transition for hover effect */
-  width: 100%; /* Full width for mobile */
-  box-sizing: border-box;
+  color: #007bff;
+  font-size: 14px;
+  margin-left: 10px;
 }
 
-/* Submit button hover */
-.signup-container button:hover {
+.signup-sign-up-page-checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.signup-sign-up-page-checkbox {
+  margin-right: 10px;
+}
+
+.signup-sign-up-page-checkbox-label {
+  font-size: 14px;
+}
+
+.signup-sign-up-page-error {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-sign-up-page-status-icon {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.signup-sign-up-page-button {
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-sign-up-page-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.signup-sign-up-page-button:hover:not(:disabled) {
   background-color: #0056b3;
-  transform: scale(1.02); /* Slight scale effect on hover */
 }
 
-/* Disabled button */
-.signup-container button:disabled {
-  background-color: #b0b0b0; /* Gray color for disabled state */
-  cursor: not-allowed; /* Indicate that the button is not interactive */
-  opacity: 0.7; /* Slight transparency for disabled state */
-}
-
-/* Disabled button hover */
-.signup-container button:disabled:hover {
-  transform: none; /* Disable hover effect for disabled button */
-}
-
-/* Don't have an account text */
-.links {
+.signup-sign-up-page-links {
   text-align: center;
   margin-top: 20px;
-  font-size: 14px;
-  color: #666;
 }
 
-/* Link styling */
-.links a {
+.signup-sign-up-page-link {
   color: #007bff;
   text-decoration: none;
-  font-weight: bold;
 }
 
-/* Link hover effect */
-.links a:hover {
+.signup-sign-up-page-link:hover {
   text-decoration: underline;
-}
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .signup-container {
-    padding: 15px;
-  }
-
-  .signup-container h2 {
-    font-size: 1.25em;
-  }
-
-  .input-container input,
-  .input-container select,
-  .input-container textarea {
-    padding: 12px 12px 12px 40px; /* Adjust padding for smaller screens */
-  }
 }

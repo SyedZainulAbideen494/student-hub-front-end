@@ -167,15 +167,6 @@ const SettingsPage = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="location">Location</label>
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-            />
-
             <label htmlFor="phone_number">Phone Number</label>
             <input
               type="tel"

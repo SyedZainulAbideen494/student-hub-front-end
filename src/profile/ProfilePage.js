@@ -168,7 +168,6 @@ const ProfilePage = () => {
         <p className="profile-username">{profile.user_name}</p>
         <p className="profile-bio">{profile.bio}</p>
         <p className="profile-unique-id">@{profile.unique_id}</p>
-        <p className="profile-location">{profile.location}</p>
         <div className="profile-actions">
           {/* Additional profile actions can be added here */}
         </div>
