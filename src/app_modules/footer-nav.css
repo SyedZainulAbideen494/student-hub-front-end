@@ -93,6 +93,47 @@
     opacity: 1; /* Fade in */
 }
 
+/* Container for icons and labels */
+.icon-container-footer-nav {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: center; /* Center items horizontally */
+    gap: 10px; /* Space between items */
+    width: 100%;
+    padding: 10px;
+}
+
+/* Individual icon items */
+.icon-item-footer-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icon-item-footer-nav:hover {
+    color: #ffffff; /* Highlight color on hover */
+}
+
+.icon-item-footer-nav .icon-footer-nav {
+    font-size: 24px; /* Larger icons for better visibility */
+    transition: transform 0.3s ease; /* Smooth icon scaling */
+}
+
+.icon-item-footer-nav:hover .icon-footer-nav {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+.icon-item-footer-nav .btn-label {
+    font-size: 12px; /* Adjust font size */
+    margin-top: 5px; /* Space between icon and text */
+}
+
 .close-btn-footer-nav {
     color: #fff;
     border: none;
