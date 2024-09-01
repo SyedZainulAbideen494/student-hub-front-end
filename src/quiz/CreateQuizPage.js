@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import './quiz.css'
+import './createQuiz.css';
 import FooterNav from '../app_modules/footernav';
+import { FaPlus, FaTrash, FaCheckCircle, FaTimesCircle, FaCheck, FaTimes } from 'react-icons/fa';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const CreateQuizPage = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [questions, setQuestions] = useState([{ text: '', answers: [{ text: '', is_correct: false }] }]);
+    const [showInstructions, setShowInstructions] = useState(false);
     const navigate = useNavigate();
 
     const handleAddQuestion = () => {
@@ -18,6 +21,16 @@ const CreateQuizPage = () => {
     const handleAddAnswer = (index) => {
         const newQuestions = [...questions];
         newQuestions[index].answers.push({ text: '', is_correct: false });
+        setQuestions(newQuestions);
+    };
+
+    const handleRemoveQuestion = (index) => {
+        setQuestions(questions.filter((_, i) => i !== index));
+    };
+
+    const handleRemoveAnswer = (qIndex, aIndex) => {
+        const newQuestions = [...questions];
+        newQuestions[qIndex].answers = newQuestions[qIndex].answers.filter((_, i) => i !== aIndex);
         setQuestions(newQuestions);
     };
 
@@ -49,54 +62,100 @@ const CreateQuizPage = () => {
 
     return (
         <div className="create-quiz-page">
-        <h2 className="create-quiz-title">Create Quiz</h2>
-        <input
-            type="text"
-            placeholder="Quiz Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="quiz-title-input"
-        />
-        <textarea
-            placeholder="Quiz Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="quiz-description-textarea"
-        />
-        {questions.map((question, qIndex) => (
-            <div key={qIndex} className="question-section">
+            <div className="instructions-container">
+                <button onClick={() => setShowInstructions(!showInstructions)} className="instructions-toggle-btn">
+                    {showInstructions ? 'Hide Instructions' : 'View Instructions'}
+                </button>
+                {showInstructions && (
+                    <div className="instructions-modal">
+                        <h3>Instructions</h3>
+                        <p>1. Enter the title and description of your quiz.</p>
+                        <p>2. Add questions and provide answers for each question.</p>
+                        <p>3. Mark the correct answer for each question.</p>
+                        <p>4. Click "Create Quiz" to save your quiz.</p>
+                        <button onClick={() => setShowInstructions(false)} className="close-modal-btn">
+                            <FaTimes /> Close
+                        </button>
+                    </div>
+                )}
+            </div>
+            <div className="quiz-form">
+                <h2 className="form-title">Create Quiz</h2>
                 <input
                     type="text"
-                    placeholder="Question"
-                    value={question.text}
-                    onChange={(e) => handleQuestionChange(qIndex, e)}
-                    className="question-input"
+                    placeholder="Quiz Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    className="form-input"
                 />
-                {question.answers.map((answer, aIndex) => (
-                    <div key={aIndex} className="answer-section">
-                        <input
-                            type="text"
-                            placeholder="Answer"
-                            value={answer.text}
-                            onChange={(e) => handleAnswerChange(qIndex, aIndex, e)}
-                            className="answer-input"
-                        />
-                        <input
-                            type="radio"
-                            name={`correct-${qIndex}`}
-                            checked={answer.is_correct}
-                            onChange={() => handleCorrectChange(qIndex, aIndex)}
-                            className="correct-answer-radio"
-                        />
-                    </div>
-                ))}
-                <button onClick={() => handleAddAnswer(qIndex)} className="add-answer-button">Add Answer</button>
+                <textarea
+                    placeholder="Quiz Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className="form-textarea"
+                />
+                <TransitionGroup>
+                    {questions.map((question, qIndex) => (
+                        <CSSTransition key={qIndex} timeout={300} classNames="fade">
+                            <div className="question-card">
+                                <input
+                                    type="text"
+                                    placeholder="Question"
+                                    value={question.text}
+                                    onChange={(e) => handleQuestionChange(qIndex, e)}
+                                    className="question-input"
+                                />
+                                <div className="actions">
+                                    <button onClick={() => handleRemoveQuestion(qIndex)} className="remove-question-btn">
+                                        <FaTrash />
+                                    </button>
+                                    <button onClick={() => handleAddAnswer(qIndex)} className="add-answer-btn">
+                                        <FaPlus />
+                                    </button>
+                                </div>
+                                <TransitionGroup>
+                                    {question.answers.map((answer, aIndex) => (
+                                        <CSSTransition key={aIndex} timeout={300} classNames="fade">
+                                            <div className="answer-card">
+                                                <input
+                                                    type="text"
+                                                    placeholder="Answer"
+                                                    value={answer.text}
+                                                    onChange={(e) => handleAnswerChange(qIndex, aIndex, e)}
+                                                    className="answer-input"
+                                                />
+                                                <label className="correct-answer-label">
+                                                    <input
+                                                        type="radio"
+                                                        name={`correct-${qIndex}`}
+                                                        checked={answer.is_correct}
+                                                        onChange={() => handleCorrectChange(qIndex, aIndex)}
+                                                        className="correct-answer-radio"
+                                                    />
+                                                    <div className="icon-container">
+                                                        {answer.is_correct ? <FaCheckCircle className="icon correct" /> : <FaTimesCircle className="icon incorrect" />}
+                                                    </div>
+                                                </label>
+                                                <button onClick={() => handleRemoveAnswer(qIndex, aIndex)} className="remove-answer-btn">
+                                                    <FaTrash />
+                                                </button>
+                                            </div>
+                                        </CSSTransition>
+                                    ))}
+                                </TransitionGroup>
+                            </div>
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
+                <div className="form-actions">
+                    <button onClick={handleAddQuestion} className="add-question-btn">
+                        <FaPlus /> Add Question
+                    </button>
+                    <button onClick={handleSubmit} className="submit-quiz-btn">Create Quiz</button>
+                </div>
             </div>
-        ))}
-        <button onClick={handleAddQuestion} className="add-question-button">Add Question</button>
-        <button onClick={handleSubmit} className="submit-quiz-button">Create Quiz</button>
-        <FooterNav/>
-    </div>
+            <FooterNav />
+        </div>
     );
 };
 
