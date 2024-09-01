@@ -171,7 +171,6 @@ function Planner() {
         }
     };
 
-    if (loading) return <LoadingSpinner />; // Show loader if loading
 
     return (
         <div className="App-dashboard-planner">
