@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem } from 'react-icons/fa'; // Import FaGem for the diamond icon
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle } from 'react-icons/fa'; // Import FaGem for the diamond icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; 
@@ -124,6 +124,12 @@ const FooterNav = () => {
                 <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
                     <FaGem className="icon-footer-nav" />
                     <span className="btn-label">Premium</span>
+                </button>
+            </Link>
+            <Link to='/help' style={{ textDecoration: 'none' }}>  {/* Add the new Premium button */}
+                <button className={`nav-btn-footer-nav ${location.pathname === '/help' ? 'active' : ''}`}>
+                    <FaQuestionCircle className="icon-footer-nav" />
+                    <span className="btn-label">Help</span>
                 </button>
             </Link>
                 <button className="nav-btn-footer-nav" onClick={handleLogout}>

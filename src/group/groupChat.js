@@ -137,7 +137,7 @@ const DiscussionBoard = () => {
             }
         };
     
-        const intervalId = setInterval(pollMessages, 5000); // Adjust the interval as needed
+        const intervalId = setInterval(pollMessages, 3000); // Adjust the interval as needed
         return () => clearInterval(intervalId);
     }, [id, isMember, lastMessageTimestamp, messages]);
 
