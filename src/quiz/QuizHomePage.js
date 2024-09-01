@@ -7,6 +7,7 @@ import ShareQuizModal from './shareQuizModal';
 import ResultsModal from './resultsModal';
 import ViewQuizModal from './viewQuizModal';
 import { FaSearch } from 'react-icons/fa';
+import DeleteConfirmationModal from './confrimDeleteModal';
 import './quiz.css';
 
 const QuizHomePage = () => {
@@ -19,6 +20,30 @@ const QuizHomePage = () => {
     const [quizResults, setQuizResults] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+    const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
+    const [quizToDelete, setQuizToDelete] = useState(null);
+    
+    const handleDeleteClick = (quizId) => {
+        setQuizToDelete(quizId);
+        setShowDeleteConfirmationModal(true);
+    };
+
+    const handleDeleteConfirm = async (quizId) => {
+        const token = localStorage.getItem('token');
+        try {
+            await axios.post(API_ROUTES.deleteQuiz, { token, quizId });
+            setQuizzes(quizzes.filter(quiz => quiz.id !== quizId));
+        } catch (error) {
+            console.error('Error deleting quiz:', error);
+        }
+        setShowDeleteConfirmationModal(false);
+    };
+    
+    const handleCloseDeleteConfirmationModal = () => {
+        setShowDeleteConfirmationModal(false);
+        setQuizToDelete(null);
+    };
+
 
     useEffect(() => {
         const fetchQuizzes = async () => {
@@ -119,27 +144,31 @@ const QuizHomePage = () => {
     <h2 className="quizzes-title-home-page-quiz-page">Your Quizzes</h2>
     <ul className="quizzes-list-home-page-quiz-page">
         {filteredQuizzes.map(quiz => (
-            <li key={quiz.id} className="quiz-item-home-page-quiz-page">
-                <div className="quiz-header">
-                    <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-                        {quiz.title}
-                    </span><br/><br/>
-                    <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
-                </div><br/>
-                <div className="quiz-actions-quiz-page">
-                    <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
-                        Share Quiz
-                    </button>
-                    <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
-                        View Results
-                    </button>
-                </div>
-            </li>
+          <li key={quiz.id} className="quiz-item-home-page-quiz-page">
+          <div className="quiz-header">
+              <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+                  {quiz.title}
+              </span><br/><br/>
+              <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
+          </div><br/>
+          <div className="quiz-actions-quiz-page">
+              <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
+                  Share Quiz
+              </button>
+              <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
+                  View Results
+              </button>
+              <button className="delete-button-home-page-quiz-page" onClick={() => handleDeleteClick(quiz.id)}>
+                  Delete Quiz
+              </button>
+          </div>
+      </li>
         ))}
     </ul>
     {showModal && <ShareQuizModal quiz={selectedQuiz} onClose={handleCloseModal} />}
     {showResultsModal && <ResultsModal results={results} onClose={handleCloseResultsModal} />}
     {showViewQuizModal && <ViewQuizModal quizResults={quizResults} onClose={handleCloseViewQuizModal} />}
+    {showDeleteConfirmationModal && <DeleteConfirmationModal quizId={quizToDelete} onConfirm={handleDeleteConfirm} onClose={handleCloseDeleteConfirmationModal} />}
     <FooterNav />
 </div>
     );

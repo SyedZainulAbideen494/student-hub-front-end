@@ -54,11 +54,40 @@ const CreateQuizPage = () => {
         setQuestions(newQuestions);
     };
 
-    const handleSubmit = async () => {
+  const handleSubmit = async () => {
+    // Basic validation
+    if (!title.trim() || !description.trim()) {
+        alert("Please enter both a title and a description for the quiz.");
+        return;
+    }
+
+    // Validate questions
+    for (const question of questions) {
+        if (!question.text.trim()) {
+            alert("Please provide text for all questions.");
+            return;
+        }
+
+        if (question.answers.length === 0 || question.answers.every(answer => !answer.text.trim())) {
+            alert("Each question must have at least one answer.");
+            return;
+        }
+
+        if (!question.answers.some(answer => answer.is_correct)) {
+            alert("Each question must have at least one correct answer.");
+            return;
+        }
+    }
+
+    // Proceed with quiz creation if all validations pass
+    try {
         const token = localStorage.getItem('token');
         await axios.post(API_ROUTES.createQuiz, { token, title, description, questions });
         navigate('/quiz/home');
-    };
+    } catch (error) {
+        console.error("There was an error creating the quiz:", error);
+    }
+};
 
     return (
         <div className="create-quiz-page">

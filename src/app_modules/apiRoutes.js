@@ -72,5 +72,6 @@ export const API_ROUTES = {
   deleteEduScribe: `${API_URL}/api/deleteEduScribe`,
   quizResultsPageAllresults: `${API_URL}/get-user-results`,
   checkUniqueId: `${API_URL}/check-unique-id`,
-  generateAlternatives: `${API_URL}/generate-alternatives`
+  generateAlternatives: `${API_URL}/generate-alternatives`,
+  deleteQuiz: `${API_URL}/api/deleteQuiz`
 }
