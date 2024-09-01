@@ -110,7 +110,7 @@ const CreateQuizPage = () => {
                                         <FaTrash />
                                     </button>
                                     <button onClick={() => handleAddAnswer(qIndex)} className="add-answer-btn">
-                                        <FaPlus />
+                                        <FaPlus /> add answer 
                                     </button>
                                 </div>
                                 <TransitionGroup>
