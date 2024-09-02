@@ -298,3 +298,17 @@
     background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
     color: #ffffff;
 }
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.task {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}

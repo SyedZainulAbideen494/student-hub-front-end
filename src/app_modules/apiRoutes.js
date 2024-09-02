@@ -74,6 +74,4 @@ export const API_ROUTES = {
   checkUniqueId: `${API_URL}/check-unique-id`,
   generateAlternatives: `${API_URL}/generate-alternatives`,
   deleteQuiz: `${API_URL}/api/deleteQuiz`,
-  getGroupTasks: `${API_URL}/api/tasks`,
-  addGroupTask: `${API_URL}/api/tasks/add/group`
 }
