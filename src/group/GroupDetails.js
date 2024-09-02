@@ -36,6 +36,7 @@ const GroupDetailPage = () => {
 
                 const taskResponse = await axios.get(`${API_ROUTES.getGroupTasks}/${id}`);
                 setTasks(taskResponse.data.tasks);
+
             } catch (error) {
                 console.error('Error fetching group details:', error);
             }
@@ -66,6 +67,7 @@ const GroupDetailPage = () => {
             setSuccessMessage('Invitation sent successfully.');
             setIsSuccessModalVisible(true);
             setTimeout(() => setIsSuccessModalVisible(false), 3000);
+
         } catch (error) {
             setErrorMessage(error.message);
         }
@@ -116,15 +118,19 @@ const GroupDetailPage = () => {
             setTasks(taskResponse.data.tasks);
 
             setTimeout(() => setIsSuccessModalVisible(false), 3000);
+
         } catch (error) {
             setErrorMessage(error.message);
         }
     };
 
-    const formatDate = (date) => {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString(undefined, options);
-    };
+    // Utility function to format the date
+const formatDate = (date) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+  };
+
+  
 
     if (!groupDetails) return <div>Loading...</div>;
 
@@ -172,31 +178,31 @@ const GroupDetailPage = () => {
                 </div>
             </section>
 
-            <section className="task-form-groups-page">
-                <div className="card-groups-page">
-                    <h3 className="section-heading-groups-page">Tasks</h3>
-                    <div className="task-input-container-groups-page">
+            <section className="task-form">
+                <div className="card">
+                    <h3 className="section-heading">Tasks</h3>
+                    <div className="task-input-container">
                         <input
                             type="text"
-                            className="task-input-groups-page"
+                            className="task-input"
                             value={taskTitle}
                             onChange={(e) => setTaskTitle(e.target.value)}
                             placeholder="Task Title"
                         />
                         <textarea
-                            className="task-textarea-groups-page"
+                            className="task-textarea"
                             value={taskDescription}
                             onChange={(e) => setTaskDescription(e.target.value)}
                             placeholder="Task Description"
                         />
                         <input
                             type="date"
-                            className="task-input-groups-page"
+                            className="task-input"
                             value={taskDueDate}
                             onChange={(e) => setTaskDueDate(e.target.value)}
                         />
                         <select
-                            className="task-select-groups-page"
+                            className="task-select"
                             value={taskPriority}
                             onChange={(e) => setTaskPriority(e.target.value)}
                         >
@@ -204,18 +210,18 @@ const GroupDetailPage = () => {
                             <option value="normal">Normal</option>
                             <option value="high">High</option>
                         </select>
-                        <button className="task-button-groups-page" onClick={handleAddTask}>Add Task</button>
+                        <button className="task-button" onClick={handleAddTask}>Add Task</button>
                     </div>
-                    {errorMessage && <p className="error-message-groups-page">{errorMessage}</p>}
-                    {successMessage && <p className="success-message-groups-page">{successMessage}</p>}
-                    <div className="tasks-list-groups-page">
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    {successMessage && <p className="success-message">{successMessage}</p>}
+                    <div className="tasks-list">
                         {tasks.length > 0 ? (
                             tasks.map(task => (
-                                <div key={task.id} className="task-container-groups-page">
-                                    <h4 className="task-title-groups-page">{task.title}</h4>
-                                    <p className="task-description-groups-page">{task.description}</p>
-                                    <p className="task-due-date-groups-page">Due: {formatDate(new Date(task.due_date))}</p>
-                                    <p className="task-priority-groups-page">Priority: {task.priority}</p>
+                                <div key={task.id} className="task-container">
+                                    <h4 className="task-title">{task.title}</h4>
+                                    <p className="task-description">{task.description}</p>
+                                    <p className="task-due-date">Due: {formatDate(new Date(task.due_date))}</p>
+                                    <p className="task-priority">Priority: {task.priority}</p>
                                 </div>
                             ))
                         ) : (

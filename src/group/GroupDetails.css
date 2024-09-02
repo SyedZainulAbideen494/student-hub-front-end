@@ -1,144 +1,251 @@
+/* Main Container */
 .group-detail-page {
-    padding: 20px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
-    color: #333;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
+/* Header */
 .page-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 10px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    position: relative; /* For positioning the back button */
 }
 
 .page-header h1 {
+    font-size: 32px;
+    color: #333;
     margin: 0;
-    font-size: 28px;
-    font-weight: 500;
-    color: #111;
 }
 
 .page-header p {
-    margin: 4px 0;
-    color: #555;
-}
-
-.back-button {
-    background: none;
-    border: none;
-    color: #007bff;
-    cursor: pointer;
     font-size: 18px;
-    align-self: flex-start;
+    color: #666;
+    margin: 5px 0;
 }
 
-.members-section, .invite-section, .task-form-groups-page, .leave-group-section {
+/* Back Button */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #114375;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.back-button:hover {
+    background-color: #429CF7;
+}
+
+/* Card Styles */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
 }
 
-.card, .card-groups-page {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover, .card-groups-page:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.section-heading, .section-heading-groups-page {
-    font-size: 20px;
-    margin-bottom: 15px;
+/* Section Headings */
+.section-heading {
+    font-size: 22px;
     color: #333;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 8px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    font-weight: 600;
 }
 
+/* Members Section */
 .members-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
 }
 
 .member-card {
-    background: #f5f5f5;
-    padding: 10px;
-    border-radius: 25px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    width: 100%;
+    max-width: 240px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
 }
 
-.invite-input-container, .task-input-container-groups-page {
+.member-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.member-name {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+/* Invite Section */
+.invite-input-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
-.invite-input, .task-input-groups-page, .task-textarea-groups-page, .task-select-groups-page {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
+.invite-input {
     width: 90%;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
     font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.invite-button, .task-button-groups-page, .leave-group-button {
-    padding: 12px;
+.invite-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.invite-button {
     background-color: #007bff;
-    color: white;
+    color: #ffffff;
     border: none;
-    border-radius: 25px;
+    padding: 12px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.2s ease;
-}
-
-.invite-button:hover, .task-button-groups-page:hover, .leave-group-button:hover {
-    background-color: #0056b3;
-}
-
-.error-message, .success-message, .error-message-groups-page, .success-message-groups-page {
-    color: #d9534f;
-    font-size: 14px;
-}
-
-.tasks-list-groups-page {
-    margin-top: 10px;
-}
-
-.task-container-groups-page {
-    margin-bottom: 12px;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 25px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.task-title-groups-page, .task-due-date-groups-page, .task-priority-groups-page {
-    margin: 0;
     font-weight: 600;
-    color: #333;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.task-description-groups-page {
-    margin: 6px 0;
-    color: #666;
+.invite-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.page-footer {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.page-footer p {
-    margin: 5px 0;
+/* Success and Error Messages */
+.success-message {
+    color: #28a745;
     font-size: 14px;
-    color: #888;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Footer */
+.page-footer {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 30px;
+}
+
+.page-footer .quote {
+    font-size: 18px;
+    color: #007bff;
+    margin: 0 0 10px;
+    font-weight: 600;
+}
+
+.page-footer .copyright {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.leave-group-section {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    align-items: center;     /* Center the button vertically if the section has height */
+    margin-top: 20px;        /* Add some space above the section */
+}
+
+.leave-group-button {
+    background-color: #ff4d4d; /* Red background color */
+    color: #fff;               /* White text color */
+    border: none;             /* Remove default border */
+    border-radius: 5px;      /* Rounded corners */
+    padding: 10px 20px;      /* Padding for the button */
+    font-size: 16px;         /* Increase font size */
+    cursor: pointer;         /* Show pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.leave-group-button:hover {
+    background-color: #e60000; /* Darker red on hover */
+    transform: scale(1.05);    /* Slightly enlarge the button */
+}
+
+.leave-group-button:focus {
+    outline: none;           /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.3); /* Red shadow on focus */
+}
+
+
+/* Group Avatar Container */
+.group-avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #007bff; /* Border color to match theme */
+    background-color: #f0f0f0; /* Light background color */
+    margin: 0 auto; /* Center horizontally */
+    position: relative;
+}
+
+/* Group Avatar Image */
+.group-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+}
+
+/* Default Icon Styling */
+.default-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 60px; /* Adjust size as needed */
+    color: #007bff; /* Icon color */
+    background-color: #fff; /* Background color for default icon */
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Centered Icon */
+.default-icon .fa-react {
+    font-size: 60px; /* Adjust the icon size as needed */
 }
