@@ -73,5 +73,7 @@ export const API_ROUTES = {
   quizResultsPageAllresults: `${API_URL}/get-user-results`,
   checkUniqueId: `${API_URL}/check-unique-id`,
   generateAlternatives: `${API_URL}/generate-alternatives`,
-  deleteQuiz: `${API_URL}/api/deleteQuiz`
+  deleteQuiz: `${API_URL}/api/deleteQuiz`,
+  getGroupTasks: `${API_URL}/api/tasks`,
+  addGroupTask: `${API_URL}/api/tasks/add/group`
 }

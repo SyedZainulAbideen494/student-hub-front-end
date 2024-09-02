@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
-import './GroupDetails.css'; // Import CSS for styling
+import { useParams } from 'react-router-dom';
+import './GroupDetails.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import SuccessModal from '../app_modules/SuccessModal'; // Import SuccessModal for success messages
-import LeaveGroupModal from './LeaveGroupModal'; // Import LeaveGroupModal for leave confirmation
+import SuccessModal from '../app_modules/SuccessModal';
+import LeaveGroupModal from './LeaveGroupModal';
 
 const GroupDetailPage = () => {
     const { id } = useParams();
@@ -16,22 +16,26 @@ const GroupDetailPage = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
     const [isLeaveModalVisible, setIsLeaveModalVisible] = useState(false);
+    const [tasks, setTasks] = useState([]);
+    const [taskTitle, setTaskTitle] = useState('');
+    const [taskDescription, setTaskDescription] = useState('');
+    const [taskDueDate, setTaskDueDate] = useState('');
+    const [taskPriority, setTaskPriority] = useState('normal');
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
             try {
-                // Fetch group details
                 const response = await axios.get(`${API_ROUTES.getGroupDetailsById}/${id}`);
                 setGroupDetails(response.data);
 
-                // Fetch member count
                 const memberCountResponse = await axios.get(`${API_ROUTES.getGroupMemberCount}/${id}`);
                 setMemberCount(memberCountResponse.data.memberCount);
 
-                // Fetch group members
                 const memberResponse = await axios.get(`${API_ROUTES.getGroupMembers}/${id}`);
                 setMembers(memberResponse.data.members);
 
+                const taskResponse = await axios.get(`${API_ROUTES.getGroupTasks}/${id}`);
+                setTasks(taskResponse.data.tasks);
             } catch (error) {
                 console.error('Error fetching group details:', error);
             }
@@ -61,12 +65,7 @@ const GroupDetailPage = () => {
             setErrorMessage('');
             setSuccessMessage('Invitation sent successfully.');
             setIsSuccessModalVisible(true);
-
-            // Hide success modal after 3 seconds
-            setTimeout(() => {
-                setIsSuccessModalVisible(false);
-            }, 3000);
-
+            setTimeout(() => setIsSuccessModalVisible(false), 3000);
         } catch (error) {
             setErrorMessage(error.message);
         }
@@ -76,14 +75,11 @@ const GroupDetailPage = () => {
         const token = localStorage.getItem('token');
 
         try {
-            // Send leave group request to the backend
             await axios.post(
                 `${API_ROUTES.leaveGroup}/${id}`,
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
-
-            // Redirect to groups page after successful leave
             window.location.href = '/groups';
         } catch (error) {
             setErrorMessage('Failed to leave the group. Please try again.');
@@ -94,12 +90,48 @@ const GroupDetailPage = () => {
         setIsSuccessModalVisible(false);
     };
 
+    const handleAddTask = async () => {
+        if (!taskTitle || !taskDueDate) {
+            setErrorMessage('Title and due date are required.');
+            return;
+        }
+
+        try {
+            const token = localStorage.getItem('token');
+            await axios.post(
+                `${API_ROUTES.addGroupTask}`,
+                { title: taskTitle, description: taskDescription, dueDate: taskDueDate, priority: taskPriority, groupId: id },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            setTaskTitle('');
+            setTaskDescription('');
+            setTaskDueDate('');
+            setTaskPriority('normal');
+            setErrorMessage('');
+            setSuccessMessage('Task added successfully.');
+            setIsSuccessModalVisible(true);
+
+            // Update tasks list
+            const taskResponse = await axios.get(`${API_ROUTES.getGroupTasks}/${id}`);
+            setTasks(taskResponse.data.tasks);
+
+            setTimeout(() => setIsSuccessModalVisible(false), 3000);
+        } catch (error) {
+            setErrorMessage(error.message);
+        }
+    };
+
+    const formatDate = (date) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString(undefined, options);
+    };
+
     if (!groupDetails) return <div>Loading...</div>;
 
     return (
         <div className="group-detail-page">
             <header className="page-header">
-                <button className="back-button" onClick={() => window.history.back()}>&larr;</button><br/><br/><br/>
+                <button className="back-button" onClick={() => window.history.back()}>&larr;</button>
                 <h1>{groupDetails.name}</h1>
                 <p>{groupDetails.description}</p>
                 <p>Status: {groupDetails.is_public ? 'Public' : 'Private'}</p>
@@ -137,6 +169,59 @@ const GroupDetailPage = () => {
                     </div>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                     {successMessage && <p className="success-message">{successMessage}</p>}
+                </div>
+            </section>
+
+            <section className="task-form-groups-page">
+                <div className="card-groups-page">
+                    <h3 className="section-heading-groups-page">Tasks</h3>
+                    <div className="task-input-container-groups-page">
+                        <input
+                            type="text"
+                            className="task-input-groups-page"
+                            value={taskTitle}
+                            onChange={(e) => setTaskTitle(e.target.value)}
+                            placeholder="Task Title"
+                        />
+                        <textarea
+                            className="task-textarea-groups-page"
+                            value={taskDescription}
+                            onChange={(e) => setTaskDescription(e.target.value)}
+                            placeholder="Task Description"
+                        />
+                        <input
+                            type="date"
+                            className="task-input-groups-page"
+                            value={taskDueDate}
+                            onChange={(e) => setTaskDueDate(e.target.value)}
+                        />
+                        <select
+                            className="task-select-groups-page"
+                            value={taskPriority}
+                            onChange={(e) => setTaskPriority(e.target.value)}
+                        >
+                            <option value="low">Low</option>
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                        </select>
+                        <button className="task-button-groups-page" onClick={handleAddTask}>Add Task</button>
+                    </div>
+                    {errorMessage && <p className="error-message-groups-page">{errorMessage}</p>}
+                    {successMessage && <p className="success-message-groups-page">{successMessage}</p>}
+                    <div className="tasks-list-groups-page">
+                        {tasks.length > 0 ? (
+                            tasks.map(task => (
+                                <div key={task.id} className="task-container-groups-page">
+                                    <h4 className="task-title-groups-page">{task.title}</h4>
+                                    <p className="task-description-groups-page">{task.description}</p>
+                                    <p className="task-due-date-groups-page">Due: {formatDate(new Date(task.due_date))}</p>
+                                    <p className="task-priority-groups-page">Priority: {task.priority}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No tasks yet.</p>
+                        )}
+                    </div>
                 </div>
             </section>
 
