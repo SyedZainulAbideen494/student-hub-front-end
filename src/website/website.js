@@ -11,9 +11,9 @@ import FeaturedUseCasesSection from './FeaturedUseCasesSection';
 import Modal from './Modal'; // Import the Modal component
 import Footer from './Footer';
 
-// Handle file download
-const handleDownload = async () => {
-  const response = await fetch(API_ROUTES.downloadAndroid, {
+const handleDownloadAndroid = async () => {
+  const url = API_ROUTES.downloadAndroid;
+  const response = await fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/octet-stream',
@@ -21,15 +21,42 @@ const handleDownload = async () => {
   });
 
   if (!response.ok) {
-    console.error('Failed to download file');
+    console.error('Failed to download Android file');
     return;
   }
 
   const blob = await response.blob();
-  const url = window.URL.createObjectURL(blob);
+  const fileName = 'Edusify.apk'; // Replace with your file name
+  const downloadUrl = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url;
-  a.download = 'Edusify.apk'; // Replace with your file name
+  a.href = downloadUrl;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
+
+
+const handleDownloadIOS = async () => {
+  const url = API_ROUTES.downloadIOS;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
+  });
+
+  if (!response.ok) {
+    console.error('Failed to download iOS file');
+    return;
+  }
+
+  const blob = await response.blob();
+  const fileName = 'Educify.shortcut'; // Replace with your file name
+  const downloadUrl = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = downloadUrl;
+  a.download = fileName;
   document.body.appendChild(a);
   a.click();
   a.remove();

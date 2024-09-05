@@ -74,4 +74,5 @@ export const API_ROUTES = {
   checkUniqueId: `${API_URL}/check-unique-id`,
   generateAlternatives: `${API_URL}/generate-alternatives`,
   deleteQuiz: `${API_URL}/api/deleteQuiz`,
+  downloadIOS: `${API_URL}/download/ios`, // Add this line
 }
