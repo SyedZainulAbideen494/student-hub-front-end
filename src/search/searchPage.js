@@ -84,7 +84,7 @@ const SearchPage = () => {
     }
 
     const cardData = [
-        { title: 'Planner', description: 'Plan your studies with your planner and add tasks.', icon: faPencilRuler, gradient: 'linear-gradient(to right, #ff7e5f, #feb47b)', path: '/planner' },
+        { title: 'Planner', description: 'Plan your studies with your planner and add tasks.', icon: faPencilRuler, gradient: 'linear-gradient(to right, #ff7e5f, #feb47b)', path: '/' },
         { title: 'Groups', description: 'Create groups, chat with friends, share notes, quizzes, and ask questions.', icon: faUserGroup, gradient: 'linear-gradient(to right, #4facfe, #00f2fe)', path: '/groups' },
         { title: 'Notes', description: 'Create digital notes, download as PDF, and share with friends.', icon: faBook, gradient: 'linear-gradient(to right, #667eea, #764ba2)', path: '/notes' },
         { title: 'Math Helper', description: 'Get help with math problems.', icon: faCalculator, gradient: 'linear-gradient(to right, #76b852, #8dc26f)', path: '/math/solver' },

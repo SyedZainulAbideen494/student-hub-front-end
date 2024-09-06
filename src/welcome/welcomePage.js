@@ -129,7 +129,7 @@ const Welcome = () => {
                                     <div className="feature-card-welcome-page">
                                         <h3>Study Planner</h3>
                                         <p>Organize your tasks and get reminders. View your schedule on a calendar.</p>
-                                        <Link to="/planner" className="continue-button-welcome-page">Continue to Study Planner</Link>
+                                        <Link to="/" className="continue-button-welcome-page">Continue to Study Planner</Link>
                                     </div>
                                     <div className="feature-card-welcome-page">
                                         <h3>Groups</h3>
