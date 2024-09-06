@@ -205,7 +205,7 @@ const SignUp = () => {
                 <button type="submit" disabled={loading || !termsAccepted} className={`signup-sign-up-page-button ${loading || !termsAccepted ? 'disabled' : ''}`}>Sign Up</button>
             </form>
             <div className="signup-sign-up-page-links">
-                <Link to="/login" className="signup-sign-up-page-link">Already have an account? Login</Link>
+                <Link to="/" className="signup-sign-up-page-link">Already have an account? Login</Link>
             </div>
         </div>
     );
