@@ -142,7 +142,9 @@ const DownloadPage = () => {
             <p>The ultimate study tool for productivity and success.</p>
             <div className="hero-buttons">
               <a href="#signup" className="btn-primary" onClick={openModal}>Get Started for Free</a>
-              <button className="btn-secondary" onClick={() => scrollToSection('features')}>Learn More</button>
+              <Link to='/sign-up'>
+              <button className="btn-secondary">Sign up</button>
+              </Link>
             </div>
           </div>
         </section>
