@@ -27,8 +27,8 @@ const FooterNav = () => {
     return (
         <div className="footer-nav">
             {/* Primary Buttons */}
-            <Link to='/planner' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
+            <Link to='/' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>
                     <HiBookOpen className="icon-footer-nav" />
                     <span className="btn-label">Planner</span>
                 </button>
