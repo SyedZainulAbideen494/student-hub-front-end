@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import './forgot-password.css'
+import { useParams, useNavigate } from 'react-router-dom';
+import './forgot-password.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+
 const ResetPassword = () => {
   const { token } = useParams();
+  const navigate = useNavigate(); // Add useNavigate hook
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -18,6 +20,9 @@ const ResetPassword = () => {
     try {
       await axios.post(API_ROUTES.resetPassword, { token, password });
       setMessage('Password successfully reset.');
+      setTimeout(() => {
+        navigate('/login'); // Redirect to login page after 2 seconds
+      }, 2000);
     } catch (error) {
       setMessage('An error occurred.');
     }
