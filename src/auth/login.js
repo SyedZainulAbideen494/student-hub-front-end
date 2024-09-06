@@ -39,7 +39,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
     const response = await Axios.post(API_ROUTES.sessionCheck, { token });
 
     if (response.data.exists) {
-      nav('/planner');
+      nav('/');
     } else {
       console.error('No matching token found.');
     }
