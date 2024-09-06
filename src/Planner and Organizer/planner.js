@@ -173,20 +173,28 @@ const navigate = useNavigate()
     };
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.post(API_ROUTES.userSessionAut, { token })
-                .then(response => {
-                    if (!response.data.valid) {
-                        navigate('/login');
-                    }
-                })
-                .catch(error => {
-                    console.error('Token validation error:', error);
-                    navigate('/login');
-                });
-        }
-    }, [navigate]);
+        const validateToken = async () => {
+          const token = localStorage.getItem('token');
+    
+          // If no token, redirect to login
+          if (!token) {
+            navigate('/login');
+            return;
+          }
+    
+          try {
+            const response = await axios.post(API_ROUTES.userSessionAut, { token });
+            if (!response.data.valid) {
+              navigate('/login');
+            }
+          } catch (error) {
+            console.error('Error during token validation:', error);
+            navigate('/login');
+          }
+        };
+    
+        validateToken();
+      }, [navigate]);
 
 
     return (
