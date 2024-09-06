@@ -181,7 +181,7 @@ const SearchPage = () => {
                                             style={{ width: 40, height: 40, margin: 'auto' }}
                                         />
                                         <Typography variant="h8" style={{ margin: '10px 0' }}>
-                                            {result.user_name}
+                                            {result.unique_id}
                                         </Typography>
                                     </CardContent>
                                 </Card>
