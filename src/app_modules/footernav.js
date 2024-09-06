@@ -74,7 +74,6 @@ const FooterNav = () => {
             <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
                 <FaBars className="icon-footer-nav" />
                 <span className="btn-label">More{hasProfileIssues && <span className="issue-icon">!</span>}</span>
-                {hasProfileIssues && <span className="issue-icon">!</span>} {/* Red icon for profile issues */}
             </button>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
                 {/* Popup Buttons */}
