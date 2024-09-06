@@ -9,6 +9,7 @@ import SuccessModal from '../app_modules/SuccessMessage'; // Import the SuccessM
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from 'react-icons/fa'; // Importing icons
 import SuccessMessage from '../app_modules/SuccessMessage';
+import { useNavigate } from 'react-router-dom';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -23,7 +24,7 @@ function Planner() {
     const [loading, setLoading] = useState(true); // Add loading state
     const formRef = useRef(null);
     const [successMessage, setSuccessMessage] = useState('');
-
+const navigate = useNavigate()
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
         const year = date.getFullYear();
