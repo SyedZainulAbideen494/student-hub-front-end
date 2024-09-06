@@ -73,7 +73,7 @@ const FooterNav = () => {
             </Link>
             <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
                 <FaBars className="icon-footer-nav" />
-                <span className="btn-label">More</span>
+                <span className="btn-label">More{hasProfileIssues && <span className="issue-icon">!</span>}</span>
                 {hasProfileIssues && <span className="issue-icon">!</span>} {/* Red icon for profile issues */}
             </button>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
@@ -129,8 +129,8 @@ const FooterNav = () => {
                 <Link to='/profile' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/profile' ? 'active' : ''}`}>
                         <FaUser className="icon-footer-nav" />
-                        <span className="btn-label">Profile</span>
-                        {hasProfileIssues && <span className="issue-icon">!</span>} {/* Red icon for profile issues */}
+                        <span className="btn-label">Profile{hasProfileIssues && <span className="issue-icon">!</span>}</span>
+                         {/* Red icon for profile issues */}
                     </button>
                 </Link>
                 <Link to='/subscription' style={{ textDecoration: 'none' }}>
