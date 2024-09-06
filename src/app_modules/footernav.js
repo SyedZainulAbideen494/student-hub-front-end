@@ -19,12 +19,12 @@ const FooterNav = () => {
             axios.post(API_ROUTES.userSessionAut, { token })
                 .then(response => {
                     if (!response.data.valid) {
-                        navigate('/login');
+                        navigate('/');
                     }
                 })
                 .catch(error => {
                     console.error('Token validation error:', error);
-                    navigate('/login');
+                    navigate('/');
                 });
         }
     }, [navigate]);
@@ -35,7 +35,7 @@ const FooterNav = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        navigate('/login');
+        navigate('/');
     };
 
     return (

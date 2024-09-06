@@ -56,7 +56,7 @@ import SubjectHelpersGuidePage from "./help/SubjectHelpersGuidePage";
 import AboutAppPage from "./help/AboutAppPage";
 
 const router = createBrowserRouter([
-  {path: '/login', element: <Login/>},
+  {path: '/', element: <Login/>},
   {path: '/sign-up', element: <SignUp/>},
   {path: '/planner', element: <Dashbaord/>},
   {path: '/notes', element: <FlashcardsPage/>},
@@ -71,7 +71,6 @@ const router = createBrowserRouter([
   {path: '/calendar', element: <CalendarPage/>},
   {path: '/terms-and-conditions', element: <TermsAndConditions/>},
   {path: '/pomodoro', element: <Pomodoro/>},
-  {path: '/', element: <DownloadPage/>},
   {path: '/music', element: <SpotifyPlayer/>},
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},
