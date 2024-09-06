@@ -33,6 +33,21 @@ const Login = () => {
         }
     };
 
+    // Check token and redirect
+const checkTokenAndRedirect = async (token, navigate) => {
+  try {
+    const response = await axios.post(API_ROUTES.sessionCheck, { token });
+
+    if (response.data.exists) {
+      navigate('/planner');
+    } else {
+      console.error('No matching token found.');
+    }
+  } catch (error) {
+    console.error('Error checking token:', error);
+  }
+};
+
     const login = () => {
         setError("");
         Axios.post(API_ROUTES.login, {
