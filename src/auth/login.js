@@ -36,7 +36,7 @@ const Login = () => {
     // Check token and redirect
 const checkTokenAndRedirect = async (token, navigate) => {
   try {
-    const response = await axios.post(API_ROUTES.sessionCheck, { token });
+    const response = await Axios.post(API_ROUTES.sessionCheck, { token });
 
     if (response.data.exists) {
       navigate('/planner');
