@@ -144,7 +144,7 @@ const Welcome = () => {
                                     <div className="feature-card-welcome-page">
                                         <h3>Quizzes</h3>
                                         <p>Create quizzes, challenge friends, and view results.</p>
-                                        <Link to="/quizzes" className="continue-button-welcome-page">Continue to Quizzes</Link>
+                                        <Link to="/quiz/home" className="continue-button-welcome-page">Continue to Quizzes</Link>
                                     </div>
                                     <div className="feature-card-welcome-page">
                                         <h3>Calendar</h3>
