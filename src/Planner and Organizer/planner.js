@@ -183,6 +183,7 @@ const navigate = useNavigate()
                 })
                 .catch(error => {
                     console.error('Token validation error:', error);
+                    navigate('/login');
                 });
         }
     }, [navigate]);

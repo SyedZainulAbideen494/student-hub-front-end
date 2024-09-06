@@ -21,7 +21,7 @@ const FooterNav = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        navigate('/');
+        navigate('/sign-up');
     };
 
     return (
