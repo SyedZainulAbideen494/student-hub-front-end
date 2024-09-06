@@ -39,7 +39,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
     const response = await Axios.post(API_ROUTES.sessionCheck, { token });
 
     if (response.data.exists) {
-      navigate('/planner');
+      nav('/planner');
     } else {
       console.error('No matching token found.');
     }
@@ -50,8 +50,8 @@ const checkTokenAndRedirect = async (token, navigate) => {
 
 useEffect(() => {
   const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
-  checkTokenAndRedirect(token, navigate);
-}, [navigate]);
+  checkTokenAndRedirect(token, nav);
+}, [nav]);
 
     const login = () => {
         setError("");
