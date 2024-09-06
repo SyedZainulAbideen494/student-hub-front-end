@@ -171,6 +171,21 @@ function Planner() {
         }
     };
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            axios.post(API_ROUTES.userSessionAut, { token })
+                .then(response => {
+                    if (!response.data.valid) {
+                        navigate('/login');
+                    }
+                })
+                .catch(error => {
+                    console.error('Token validation error:', error);
+                });
+        }
+    }, [navigate]);
+
 
     return (
         <div className="App-dashboard-planner">

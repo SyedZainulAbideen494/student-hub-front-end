@@ -56,9 +56,9 @@ import SubjectHelpersGuidePage from "./help/SubjectHelpersGuidePage";
 import AboutAppPage from "./help/AboutAppPage";
 
 const router = createBrowserRouter([
-  {path: '/', element: <Login/>},
+  {path: '/login', element: <Login/>},
   {path: '/sign-up', element: <SignUp/>},
-  {path: '/planner', element: <Dashbaord/>},
+  {path: '/', element: <Dashbaord/>},
   {path: '/notes', element: <FlashcardsPage/>},
   {path: '/note/view/:id', element: <NoteDetailPage/>},
   {path: '/groups', element: <GroupsPage/>},
