@@ -171,17 +171,16 @@ const navigate = useNavigate()
             formRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     };
-
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
-    
+      
           // If no token, redirect to login
           if (!token) {
             navigate('/login');
             return;
           }
-    
+      
           try {
             const response = await axios.post(API_ROUTES.userSessionAut, { token });
             if (!response.data.valid) {
@@ -192,8 +191,15 @@ const navigate = useNavigate()
             navigate('/login');
           }
         };
-    
-        validateToken();
+      
+        // Delay the validation by 5 seconds
+        const timeoutId = setTimeout(() => {
+          validateToken();
+        }, 5000);
+      
+        // Cleanup timeout on component unmount
+        return () => clearTimeout(timeoutId);
+      
       }, [navigate]);
 
 
