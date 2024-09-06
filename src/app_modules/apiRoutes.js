@@ -1,4 +1,4 @@
-const API_URL = 'https://mn4jqd3r-8080.inc1.devtunnels.ms';
+const API_URL = 'https://dropment.online';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
