@@ -13,21 +13,7 @@ const FooterNav = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            axios.post(API_ROUTES.userSessionAut, { token })
-                .then(response => {
-                    if (!response.data.valid) {
-                        navigate('/');
-                    }
-                })
-                .catch(error => {
-                    console.error('Token validation error:', error);
-                    navigate('/');
-                });
-        }
-    }, [navigate]);
+    
 
     const togglePopup = () => {
         setPopupVisible(!isPopupVisible);
