@@ -48,6 +48,11 @@ const checkTokenAndRedirect = async (token, navigate) => {
   }
 };
 
+useEffect(() => {
+  const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
+  checkTokenAndRedirect(token, navigate);
+}, [navigate]);
+
     const login = () => {
         setError("");
         Axios.post(API_ROUTES.login, {
