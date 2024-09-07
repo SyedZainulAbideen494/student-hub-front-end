@@ -15,10 +15,12 @@ const SettingsPage = () => {
     phone_number: '',
     avatar: ''
   });
-  const [avatarFile, setAvatarFile] = useState('defPic.png');
+  const [avatarFile, setAvatarFile] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [uniqueIdStatus, setUniqueIdStatus] = useState(''); // New state for unique ID validation
+  const [uniqueIdSuggestions, setUniqueIdSuggestions] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,9 +52,37 @@ const SettingsPage = () => {
     fetchUserData();
   }, []);
 
+  useEffect(() => {
+    const checkUniqueId = async () => {
+      if (formData.unique_id) {
+        try {
+          const response = await fetch(API_ROUTES.checkUniqueId, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ unique_id: formData.unique_id }),
+          });
+          if (response.ok) {
+            setUniqueIdStatus('available');
+          } else {
+            setUniqueIdStatus('taken');
+            setUniqueIdSuggestions([]);
+          }
+        } catch (error) {
+          console.error('Error checking unique_id:', error);
+          setUniqueIdStatus('error');
+        }
+      }
+    };
+    checkUniqueId();
+  }, [formData.unique_id]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    if (name === 'unique_id') {
+      setUniqueIdStatus(''); // Reset status while typing
+    }
   };
 
   const handleAvatarChange = (e) => {
@@ -74,6 +104,7 @@ const SettingsPage = () => {
           { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
         );
         setFormData({ ...formData, avatar: 'defPic.png' }); // Set to default picture
+        setAvatarFile(null); // Clear the file
         setModalVisible(true); // Show modal on success
         setTimeout(() => setModalVisible(false), 3000); // Hide modal after 3 seconds
       }
@@ -86,6 +117,11 @@ const SettingsPage = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (uniqueIdStatus !== 'available') {
+      setError('Unique ID is not available');
+      return; // Prevent form submission if unique ID is not available
+    }
+
     setLoading(true);
     setError('');
     const token = localStorage.getItem('token');
@@ -96,10 +132,9 @@ const SettingsPage = () => {
     formDataToSend.append('location', formData.location);
     formDataToSend.append('phone_number', formData.phone_number);
 
+    // Only append the avatar file if a new file was selected
     if (avatarFile) {
       formDataToSend.append('avatar', avatarFile);
-    } else {
-      formDataToSend.append('avatar', formData.avatar); // Send current or default avatar
     }
 
     try {
@@ -148,6 +183,8 @@ const SettingsPage = () => {
               name="unique_id"
               value={formData.unique_id}
               onChange={handleInputChange}
+              placeholder={uniqueIdStatus === 'taken' ? 'Unique ID already taken' : ''}
+              style={{ borderColor: uniqueIdStatus === 'taken' ? 'red' : 'initial' }}
             />
 
             <label htmlFor="name">Name</label>
@@ -193,7 +230,7 @@ const SettingsPage = () => {
               )}
             </div>
 
-            <button type="submit">Save Changes</button>
+            <button type="submit" disabled={uniqueIdStatus !== 'available'}>Save Changes</button>
           </form>
         )}
         {/* Other sections */}
