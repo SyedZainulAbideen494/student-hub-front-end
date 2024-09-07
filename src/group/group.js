@@ -130,119 +130,127 @@ const GroupsPage = () => {
         );
 
     return (
-        <div className="groups-container">
-          <SuccessModal visible={isModalVisible} message={successMessage} />
-          <InvitationModal
-            visible={isInvitationModalVisible}
-            invitations={invitations}
-            onResponse={handleInvitationResponse}
-            onClose={() => setIsInvitationModalVisible(false)}
-          />
-          
-          {/* Header with Create Group */}
-          <header className="groups-header">
-            <h1>Groups</h1>
-            <div className="groups-actions">
-              <div className="groups-search-container">
-                <input
-                  type="text"
-                  className="groups-search-input"
-                  placeholder="Search groups"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              <button className="groups-create-btn-groups" onClick={toggleCreateGroupBtn}>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </div>
-          </header>
-    
-          {/* Tab Section with Icons */}
-          <div className="groups-tab-container">
-            <button
-              className={`groups-tab-button ${activeTab === 'joined' ? 'groups-active' : ''}`}
-              onClick={() => setActiveTab('joined')}
-            >
-              <FontAwesomeIcon icon={faUsers} /> Joined
-            </button>
-            <button
-              className={`groups-tab-button ${activeTab === 'public' ? 'groups-active' : ''}`}
-              onClick={() => setActiveTab('public')}
-            >
-              <FontAwesomeIcon icon={faGlobe} /> Public
-            </button>
-            <button
-              className="groups-tab-button"
-              onClick={() => setIsInvitationModalVisible(true)}
-            >
-              <FontAwesomeIcon icon={faEnvelopeOpenText} /> Invitations
-              {invitations.length > 0 && (
-                <span className="invitation-badge">{invitations.length}</span>
-              )}
-            </button>
+      <div className="groups-container">
+      <SuccessModal visible={isModalVisible} message={successMessage} />
+      <InvitationModal
+        visible={isInvitationModalVisible}
+        invitations={invitations}
+        onResponse={handleInvitationResponse}
+        onClose={() => setIsInvitationModalVisible(false)}
+      />
+      
+      {/* Header with Create Group */}
+      <header className="groups-header">
+        <h1>Groups</h1>
+        <div className="groups-actions">
+          <div className="groups-search-container">
+            <input
+              type="text"
+              className="groups-search-input"
+              placeholder="Search groups"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-    
-          {/* Group Creation Form */}
-          {showCreateGroupForm && (
-            <div className="groups-group-creation-form">
-              <h2 className="groups-form-title">Create Group</h2>
-              <input
-                type="text"
-                className="groups-group-name-input"
-                placeholder="Group Name"
-                value={newGroup.name}
-                onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
-              />
-              <textarea
-                className="groups-group-description-input"
-                placeholder="Description"
-                value={newGroup.description}
-                onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
-              />
-              <div className="groups-checkbox-container">
-                <input
-                  type="checkbox"
-                  className="groups-public-checkbox"
-                  checked={newGroup.is_public}
-                  onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
-                />
-                <label className="groups-checkbox-label">Public</label>
-              </div>
-              <button className="groups-create-btn" onClick={handleCreateGroup}>Create Group</button>
-            </div>
-          )}
-    
-          {/* Group Lists */}
-          <div className={`groups-transition-container ${activeTab === 'joined' ? '' : 'hidden'}`}>
-            <div className="groups-list-container">
-              <h2 className="groups-list-title">Joined Groups</h2>
-              <ul className="groups-list">
-                {filteredJoinedGroups.map((group) => (
-                  <li key={group.id} className="group-item" onClick={() => openGroupChat(group.id)}>
-                    {group.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-    
-          <div className={`groups-transition-container ${activeTab === 'public' ? '' : 'hidden'}`}>
-            <div className="groups-list-container">
-              <h2 className="groups-list-title">Public Groups</h2>
-              <ul className="groups-list">
-                {filteredPublicGroups.map((group) => (
-                  <li key={group.id} className="group-item" onClick={() => handleJoinGroup(group.id)}>
-                    {group.name}
-                    <button className='join-btn-group-page'>Join</button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-    
-          <FooterNav />
+          <button className="groups-create-btn-groups" onClick={toggleCreateGroupBtn}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
         </div>
+      </header>
+    
+      {/* Tab Section with Icons */}
+      <div className="groups-tab-container">
+        <button
+          className={`groups-tab-button ${activeTab === 'joined' ? 'groups-active' : ''}`}
+          onClick={() => setActiveTab('joined')}
+        >
+          <FontAwesomeIcon icon={faUsers} /> Joined
+        </button>
+        <button
+          className={`groups-tab-button ${activeTab === 'public' ? 'groups-active' : ''}`}
+          onClick={() => setActiveTab('public')}
+        >
+          <FontAwesomeIcon icon={faGlobe} /> Public
+        </button>
+        <button
+          className="groups-tab-button"
+          onClick={() => setIsInvitationModalVisible(true)}
+        >
+          <FontAwesomeIcon icon={faEnvelopeOpenText} /> Invitations
+          {invitations.length > 0 && (
+            <span className="invitation-badge">{invitations.length}</span>
+          )}
+        </button>
+      </div>
+    
+      {/* Group Creation Form */}
+      {showCreateGroupForm && (
+        <div className="groups-group-creation-form">
+          <h2 className="groups-form-title">Create Group</h2>
+          <input
+            type="text"
+            className="groups-group-name-input"
+            placeholder="Group Name"
+            value={newGroup.name}
+            onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
+          />
+          <textarea
+            className="groups-group-description-input"
+            placeholder="Description"
+            value={newGroup.description}
+            onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
+          />
+          <div className="groups-checkbox-container">
+            <input
+              type="checkbox"
+              className="groups-public-checkbox"
+              checked={newGroup.is_public}
+              onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
+            />
+            <label className="groups-checkbox-label">Public</label>
+          </div>
+          <button className="groups-create-btn" onClick={handleCreateGroup}>Create Group</button>
+        </div>
+      )}
+    
+      {/* Group Lists */}
+      <div className={`groups-transition-container ${activeTab === 'joined' ? '' : 'hidden'}`}>
+        <div className="groups-list-container">
+          <h2 className="groups-list-title">Joined Groups</h2>
+          {filteredJoinedGroups.length === 0 ? (
+            <p className="no-groups-message">You haven't joined any groups.</p>
+          ) : (
+            <ul className="groups-list">
+              {filteredJoinedGroups.map((group) => (
+                <li key={group.id} className="group-item" onClick={() => openGroupChat(group.id)}>
+                  {group.name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    
+      <div className={`groups-transition-container ${activeTab === 'public' ? '' : 'hidden'}`}>
+        <div className="groups-list-container">
+          <h2 className="groups-list-title">Public Groups</h2>
+          {filteredPublicGroups.length === 0 ? (
+            <p className="no-groups-message">No public groups found.</p>
+          ) : (
+            <ul className="groups-list">
+              {filteredPublicGroups.map((group) => (
+                <li key={group.id} className="group-item" onClick={() => handleJoinGroup(group.id)}>
+                  {group.name}
+                  <button className='join-btn-group-page'>Join</button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    
+      <FooterNav />
+    </div>
       );
     };
     

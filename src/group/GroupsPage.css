@@ -165,9 +165,9 @@
   }
   
   .group-item {
-    padding: 17px 15px;
+    padding: 30px 15px;
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: 9px;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -232,4 +232,11 @@
 .join-btn-group-page:active {
   transform: translateY(0); /* Return to original position when clicked */
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
+}
+
+.no-groups-message {
+  text-align: center;
+  color: #888;
+  font-size: 1.2em;
+  margin-top: 20px;
 }
