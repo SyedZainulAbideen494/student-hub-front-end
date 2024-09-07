@@ -4,7 +4,6 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
-import { Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import './calendarPage.css';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal
 
@@ -129,113 +128,105 @@ const CalendarPage = () => {
 
     return (
         <div className="calendar-page">
-            <Typography variant="h5" className="header-title-calendar-page" style={{ marginBottom: '30px', marginTop: '20px' }}>Calendar and Activities</Typography>
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
-                    <Paper className="calendar-container">
-                        <Calendar
-                            onChange={onDateChange}
-                            value={selectedDate}
-                            tileClassName={({ date }) => getEventsForDate(date).length > 0 ? 'react-calendar__tile--has-events' : null}
-                        />
-                    </Paper>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <Paper className="event-form">
-                        <Typography variant="h6" className="section-title">Manage Events</Typography>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => toggleFormVisibility(null)}
-                            fullWidth
-                        >
-                            {isFormVisible ? 'Cancel' : 'Add Event'}
-                        </Button>
-                        {isFormVisible && (
-                            <div className="form-container">
-                                <Typography variant="h6" className="section-title">{editingEventId ? 'Edit Event' : 'Add Event'}</Typography>
-                                <TextField
-                                    label="Event Title"
-                                    variant="outlined"
-                                    fullWidth
-                                    value={eventTitle}
-                                    onChange={(e) => setEventTitle(e.target.value)}
-                                    margin="normal"
-                                />
-                                <Typography variant="subtitle1">Select Event Date</Typography>
+            <div className="header-title-calendar-page">Calendar and Activities</div>
+            <div className="content-calendar-page">
+                <div className="calendar-container-calendar-page">
+                    <Calendar
+                        onChange={onDateChange}
+                        value={selectedDate}
+                        tileClassName={({ date }) => getEventsForDate(date).length > 0 ? 'react-calendar__tile--has-events' : null}
+                    />
+                </div>
+                <div className="event-form-calendar-page">
+                    <button
+                        className="toggle-form-button-calendar-page"
+                        onClick={() => toggleFormVisibility(null)}
+                    >
+                        {isFormVisible ? 'Cancel' : 'Add Event'}
+                    </button>
+                    {isFormVisible && (
+                        <div className="form-container-calendar-page">
+                            <div className="section-title-calendar-page">{editingEventId ? 'Edit Event' : 'Add Event'}</div>
+                            <input
+                                type="text"
+                                placeholder="Event Title"
+                                value={eventTitle}
+                                onChange={(e) => setEventTitle(e.target.value)}
+                                className="input-field-calendar-page"
+                            />
+                            <div className="event-date-picker-calendar-page">
+                                <div className="section-title-calendar-page">Select Event Date</div>
                                 <Calendar
                                     onChange={onEventDateChange}
                                     value={eventDate}
-                                    className="event-date-picker"
                                 />
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={editingEventId ? handleEditEvent : handleAddEvent}
-                                    fullWidth
-                                >
-                                    {editingEventId ? 'Update Event' : 'Add Event'}
-                                </Button>
                             </div>
+                            <button
+                                className="submit-button-calendar-page"
+                                onClick={editingEventId ? handleEditEvent : handleAddEvent}
+                            >
+                                {editingEventId ? 'Update Event' : 'Add Event'}
+                            </button>
+                        </div>
+                    )}
+                </div>
+                <div className="event-lists-calendar-page">
+                    <div className="event-list-calendar-page">
+                        <div className="section-title-calendar-page">Events for {selectedDate.toDateString()}</div>
+                        {getEventsForDate(selectedDate).length === 0 ? (
+                            <div>No events for this date</div>
+                        ) : (
+                            getEventsForDate(selectedDate).map(event => (
+                                <div key={event.id} className="event-item-calendar-page">
+                                    <div className="event-title-calendar-page">{event.title}</div>
+                                    <div className="event-date-calendar-page">{formatDate(new Date(event.date))}</div>
+                                    <div className="button-container-calendar-page">
+                                <button
+                                    className="edit-button-calendar-page"
+                                    onClick={() => handleEditEvent(event.id)}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className="delete-button-calendar-page"
+                                    onClick={() => handleDeleteEvent(event.id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                                </div>
+                            ))
                         )}
-                    </Paper>
-                </Grid>
-            </Grid>
-            <div className="event-list">
-                <Typography variant="h6" className="section-title">Events for {selectedDate.toDateString()}</Typography>
-                {getEventsForDate(selectedDate).length === 0 ? (
-                    <Typography>No events for this date</Typography>
-                ) : (
-                    getEventsForDate(selectedDate).map(event => (
-                        <Paper key={event.id} className="event-item">
-                            <Typography variant="h6">{event.title}</Typography>
-                            <Typography>{formatDate(new Date(event.date))}</Typography>
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                onClick={() => handleDeleteEvent(event.id)}
-                            >
-                                Delete
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                onClick={() => toggleFormVisibility(event)}
-                            >
-                                Edit
-                            </Button>
-                        </Paper>
-                    ))
-                )}
+                    </div>
+                    <div className="event-list-calendar-page">
+                        <div className="section-title-calendar-page">All Events</div>
+                        {events.length === 0 ? (
+                            <div>No events available</div>
+                        ) : (
+                            events.map(event => (
+                                <div key={event.id} className="event-item-calendar-page">
+                                    <div className="event-title-calendar-page">{event.title}</div>
+                                    <div className="event-date-calendar-page">{formatDate(new Date(event.date))}</div>
+                                    <div className="button-container-calendar-page">
+                                <button
+                                    className="edit-button-calendar-page"
+                                    onClick={() => handleEditEvent(event.id)}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className="delete-button-calendar-page"
+                                    onClick={() => handleDeleteEvent(event.id)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
             </div>
-            <div className="event-list">
-                <Typography variant="h6" className="section-title">All Events</Typography>
-                {events.length === 0 ? (
-                    <Typography>No events available</Typography>
-                ) : (
-                    events.map(event => (
-                        <Paper key={event.id} className="event-item">
-                            <Typography variant="h6">{event.title}</Typography>
-                            <Typography>{formatDate(new Date(event.date))}</Typography>
-                            <Button
-                                variant="outlined"
-                                color="secondary"
-                                onClick={() => handleDeleteEvent(event.id)}
-                            >
-                                Delete
-                            </Button>
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                onClick={() => toggleFormVisibility(event)}
-                            >
-                                Edit
-                            </Button>
-                        </Paper>
-                    ))
-                )}
-            </div>
-            
             <FooterNav />
             <SuccessModal visible={modalVisible} message={modalMessage} />
         </div>

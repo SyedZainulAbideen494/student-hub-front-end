@@ -1,123 +1,232 @@
 /* General Styles */
 .calendar-page {
-    padding: 20px; /* Adjusted padding for better spacing */
-    background: #f5f5f5; /* Slightly off-white background for a clean look */
-    font-family: 'Roboto', sans-serif; /* Consistent font-family */
+    padding: 10px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Header Title */
 .header-title-calendar-page {
+    margin-bottom: 20px;
     text-align: center;
-    margin-bottom: 20px; /* Adjusted margin for spacing */
-    font-size: 2rem; /* Increased font size for prominence */
-    color: #333; /* Darker text color for better readability */
+    font-size: 2.5em;
+    color: #121212;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+
+.content-calendar-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
 }
 
 /* Calendar Container */
-.calendar-container {
-    padding: 20px; /* Increased padding for better content spacing */
-    background: #ffffff; /* White background for the calendar */
-    border-radius: 8px; /* Rounded corners for a modern look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
-    margin-bottom: 20px; /* Spacing below the calendar */
-    max-height: 600px; /* Adjusted max-height */
-    overflow-y: auto; /* Scroll if content exceeds max-height */
+.calendar-container-calendar-page {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Event Form */
+.event-form-calendar-page {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggle Button */
+.toggle-form-button-calendar-page {
+    background-color: #7161ef;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.toggle-form-button-calendar-page:hover {
+    background-color: #a38dff;
+    transform: scale(1.05);
 }
 
 /* Form Container */
-.event-form {
-    padding: 20px; /* Consistent padding */
-    background: #ffffff; /* White background for the form */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    margin-bottom: 20px; /* Spacing below the form */
+.form-container-calendar-page {
+    margin-top: 10px;
 }
 
-/* Event List Container */
-.event-list {
-    padding: 20px; /* Consistent padding */
-    background: #ffffff; /* White background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    margin-bottom: 20px; /* Spacing below the list */
-    max-height: 600px; /* Adjusted max-height */
-    overflow-y: auto; /* Scroll if content exceeds max-height */
+.section-title-calendar-page {
+    font-size: 1.3em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Activity List Container */
-.activity-list {
-    padding: 20px; /* Consistent padding */
-    background: #ffffff; /* White background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    max-height: 600px; /* Adjusted max-height */
-    overflow-y: auto; /* Scroll if content exceeds max-height */
+.input-field-calendar-page {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
 }
 
-/* Section Title */
-.section-title {
-    text-align: center;
-    margin-bottom: 12px; /* Slightly increased margin for spacing */
-    font-size: 1.2rem; /* Larger font size for section titles */
-    color: #555; /* Slightly lighter color for section titles */
+/* Improved Add Event Form */
+.input-field-calendar-page:focus {
+    border-color: #7161ef;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(113, 97, 239, 0.5);
 }
 
-/* Event Form Input */
-.event-form input {
+.submit-button-calendar-page {
+    background-color: #7161ef;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    margin-top: 10px;
+    cursor: pointer;
     width: 100%;
-    margin-bottom: 12px; /* Increased margin for spacing */
-    font-size: 14px; /* Adjusted font size */
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Event Date Picker */
-.event-date-picker {
-    margin: 12px 0; /* Increased margin for spacing */
+.submit-button-calendar-page:hover {
+    background-color: #a38dff;
+    transform: scale(1.05);
 }
 
-/* Event Form Button */
-.event-form button {
-    margin-top: 12px; /* Increased margin for spacing */
-    font-size: 14px; /* Adjusted font size */
+/* Event Lists */
+.event-lists-calendar-page {
+    width: 100%;
 }
 
-/* Event and Activity Items */
-.event-item, .activity-item {
-    padding: 15px; /* Increased padding for better content spacing */
-    border: 1px solid #ddd;
-    margin-bottom: 12px; /* Increased margin for spacing */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    font-size: 14px; /* Adjusted font size */
+/* Event List */
+.event-list-calendar-page {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Calendar Tile with Events */
+/* Event Item */
+.event-item-calendar-page {
+    margin: 10px 0;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.event-item-calendar-page:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.event-title-calendar-page {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.event-date-calendar-page {
+    color: #666;
+}
+
+/* Buttons Inline in Event Item */
+.button-container-calendar-page {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-button-calendar-page,
+.edit-button-calendar-page {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+.delete-button-calendar-page {
+    background-color: #ff4d4d;
+    color: #ffffff;
+}
+
+.delete-button-calendar-page:hover {
+    background-color: #ff2d2d;
+    transform: scale(1.05);
+}
+
+.edit-button-calendar-page {
+    background-color: #4d79ff;
+    color: #ffffff;
+}
+
+.edit-button-calendar-page:hover {
+    background-color: #2d6ff7;
+    transform: scale(1.05);
+}
+
 .react-calendar__tile--has-events {
-    background: #ffeb3b; /* Highlight events with a bright background */
-    border-radius: 8px; /* Rounded corners */
+    background-color: #d0e7ff !important;
+    border-radius: 15px;
 }
 
-/* Media Queries */
+/* Media Queries for Mobile Optimization */
 @media (max-width: 600px) {
-    .calendar-container, .event-form, .event-list, .activity-list {
-        padding: 15px; /* Adjusted padding for smaller screens */
-        font-size: 14px; /* Adjusted font size for better readability */
+    .header-title-calendar-page {
+        font-size: 1.8em;
+    }
+
+    .toggle-form-button-calendar-page,
+    .submit-button-calendar-page {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    .input-field-calendar-page {
+        width: calc(100% - 20px);
+    }
+
+    .event-item-calendar-page {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .delete-button-calendar-page,
+    .edit-button-calendar-page {
+        padding: 8px 15px;
+        font-size: 0.9em;
     }
 }
 
-@media (max-width: 400px) {
-    .header-title-calendar-page {
-        font-size: 1.5rem; /* Smaller font size for very small screens */
+@media (max-width: 768px) {
+    .content-calendar-page {
+        gap: 20px;
     }
 
-    .section-title {
-        font-size: 1.1rem; /* Smaller font size for section titles */
-    }
-
-    .event-form input, .event-form button {
-        font-size: 13px; /* Slightly smaller font size for inputs and buttons */
-    }
-
-    .event-item, .activity-item {
-        font-size: 13px; /* Slightly smaller font size */
+    .calendar-container-calendar-page,
+    .event-form-calendar-page {
+        padding: 15px;
     }
 }
