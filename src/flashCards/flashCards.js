@@ -217,9 +217,11 @@ const FlashcardsPage = () => {
     };
 
     const handleShareClick = (flashcardId) => {
+        console.log('Selected Flashcard ID:', flashcardId); // Check this log
         setSelectedFlashcardId(flashcardId);
         setShowModal(true);
     };
+    
 
     const handleShareToGroup = async (groupId) => {
         try {
@@ -240,7 +242,14 @@ const FlashcardsPage = () => {
     };
 
     const handleQuickShare = (platform) => {
+        if (!selectedFlashcardId) {
+            console.error('No flashcard selected for sharing.');
+            return;
+        }
+        
         const flashcardUrl = `${window.location.origin}/note/view/${selectedFlashcardId}`;
+        console.log('Flashcard URL:', flashcardUrl); // Check this log
+        
         if (platform === 'whatsapp') {
             window.open(`https://wa.me/?text=${encodeURIComponent(flashcardUrl)}`, '_blank');
         } else if (platform === 'copy') {
@@ -248,6 +257,7 @@ const FlashcardsPage = () => {
             alert('Link copied to clipboard!');
         }
     };
+    
 
     const safeParseJSON = (jsonString) => {
         try {
@@ -358,11 +368,11 @@ const FlashcardsPage = () => {
             <FooterNav />
             {showModal && (
                 <GroupModal
-                    groups={joinedGroups}
-                    onClose={handleModalClose}
-                    onShare={handleShareToGroup}
-                    onQuickShare={handleQuickShare}
-                />
+    groups={joinedGroups}
+    onClose={() => setShowModal(false)}
+    onShare={handleShareToGroup}
+    flashcardId={selectedFlashcardId} // Ensure this is set correctly
+/>
             )}
 
         </div>

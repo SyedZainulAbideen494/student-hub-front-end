@@ -8,7 +8,12 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
 
     // Function to handle copying link to clipboard
     const handleCopyLink = () => {
-        const link = `${window.location.origin}/flashcards/${flashcardId}`;
+        if (!flashcardId) {
+            console.error('Flashcard ID is undefined.');
+            return;
+        }
+    
+        const link = `${window.location.origin}/note/view/${flashcardId}`;
         navigator.clipboard.writeText(link)
             .then(() => {
                 setCopySuccess(true);
@@ -16,10 +21,14 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
             })
             .catch(err => console.error('Error copying link: ', err));
     };
-
-    // Function to handle sharing via WhatsApp
+    
     const handleShareWhatsApp = () => {
-        const link = `${window.location.origin}/flashcards/${flashcardId}`;
+        if (!flashcardId) {
+            console.error('Flashcard ID is undefined.');
+            return;
+        }
+    
+        const link = `${window.location.origin}/note/view/${flashcardId}`;
         const message = `Check out this flashcard: ${link}`;
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
     };
