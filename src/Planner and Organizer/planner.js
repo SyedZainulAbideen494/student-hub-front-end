@@ -266,7 +266,7 @@ const navigate = useNavigate()
                 </button>
             </div>
             <div className="task-list">
-                <h2 className="section-title"><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>
+                <h2 className="section-title" style={{textAlign: 'center'}}><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>
                 <div className="task-container">
                     {getTasksForDate(selectedDate).map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
@@ -288,7 +288,7 @@ const navigate = useNavigate()
                 </div>
             </div>
             <div className="task-list">
-                <h2 className="section-title"><FaTasks /> All Tasks</h2>
+                <h2 className="section-title" style={{textAlign: 'center'}}><FaTasks /> All Tasks</h2>
                 <div className="task-container">
                     {getAllTasks().map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>

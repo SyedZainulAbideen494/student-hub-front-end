@@ -20,7 +20,7 @@
 .content-calendar-page {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
     width: 100%;
     max-width: 1000px;
     padding: 20px;
@@ -116,7 +116,7 @@
 
 /* Event List */
 .event-list-calendar-page {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 15px;
