@@ -3,8 +3,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9; /* Light gray background */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     margin-bottom: 50px;
 }
@@ -129,3 +127,33 @@
 
 
 
+.no-quizzes-message {
+    text-align: center;
+    margin: 20px;
+    font-size: 1.2rem;
+}
+
+.no-quizzes-message p {
+    margin-bottom: 10px;
+    color: #666; /* Adjust as needed */
+}
+
+.create-first-quiz-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #74c69d;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+
+.create-first-quiz-button svg {
+    margin-right: 8px;
+    font-size: 1.2rem; /* Adjust as needed */
+}

@@ -6,7 +6,7 @@ import FooterNav from '../app_modules/footernav';
 import ShareQuizModal from './shareQuizModal';
 import ResultsModal from './resultsModal';
 import ViewQuizModal from './viewQuizModal';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaShareAlt, FaEye, FaTrash, FaPlus } from 'react-icons/fa';
 import DeleteConfirmationModal from './confrimDeleteModal';
 import './quiz.css';
 
@@ -22,7 +22,7 @@ const QuizHomePage = () => {
     const navigate = useNavigate();
     const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
     const [quizToDelete, setQuizToDelete] = useState(null);
-    
+
     const handleDeleteClick = (quizId) => {
         setQuizToDelete(quizId);
         setShowDeleteConfirmationModal(true);
@@ -43,7 +43,6 @@ const QuizHomePage = () => {
         setShowDeleteConfirmationModal(false);
         setQuizToDelete(null);
     };
-
 
     useEffect(() => {
         const fetchQuizzes = async () => {
@@ -120,57 +119,66 @@ const QuizHomePage = () => {
     };
 
     return (
-<div className="quiz-home-page-quiz-page">
-    <div className="quiz-header-container-quiz-page">
-        <div className="search-bar-quiz-page">
-            <FaSearch />
-            <input
-                type="text"
-                placeholder="Search quizzes..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-                style={{border: 'none'}}
-            />
+        <div className="quiz-home-page-quiz-page">
+            <div className="quiz-header-container-quiz-page">
+                <div className="search-bar-quiz-page">
+                    <FaSearch />
+                    <input
+                        type="text"
+                        placeholder="Search quizzes..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                        style={{ border: 'none' }}
+                    />
+                </div>
+                <div className="quiz-header-buttons-quiz-page">
+                    <button onClick={handleCreateQuiz} className="create-quiz-button-home-page-quiz-page">
+                        Create Quiz
+                    </button>
+                    <button onClick={handleResultsClick} className="results-button-home-page-quiz-page">
+                        My Results
+                    </button>
+                </div>
+            </div>
+            <h2 className="quizzes-title-home-page-quiz-page">Your Quizzes</h2>
+            {quizzes.length === 0 ? (
+                <div className="no-quizzes-message">
+                    <p>No quizzes found. Create your first quiz!</p>
+                    <button onClick={handleCreateQuiz} className="create-first-quiz-button">
+                        <FaPlus /> Create Quiz
+                    </button>
+                </div>
+            ) : (
+                <ul className="quizzes-list-home-page-quiz-page">
+                    {filteredQuizzes.map(quiz => (
+                        <li key={quiz.id} className="quiz-item-home-page-quiz-page">
+                            <div className="quiz-header">
+                                <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+                                    {quiz.title}
+                                </span><br /><br />
+                                <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
+                            </div><br />
+                            <div className="quiz-actions-quiz-page">
+                                <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
+                                    <FaShareAlt />
+                                </button>
+                                <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
+                                    <FaEye /> View Results
+                                </button>
+                                <button className="delete-button-home-page-quiz-page" onClick={() => handleDeleteClick(quiz.id)}>
+                                    <FaTrash />
+                                </button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
+            {showModal && <ShareQuizModal quiz={selectedQuiz} onClose={handleCloseModal} />}
+            {showResultsModal && <ResultsModal results={results} onClose={handleCloseResultsModal} />}
+            {showViewQuizModal && <ViewQuizModal quizResults={quizResults} onClose={handleCloseViewQuizModal} />}
+            {showDeleteConfirmationModal && <DeleteConfirmationModal quizId={quizToDelete} onConfirm={handleDeleteConfirm} onClose={handleCloseDeleteConfirmationModal} />}
+            <FooterNav />
         </div>
-        <div className="quiz-header-buttons-quiz-page">
-            <button onClick={handleCreateQuiz} className="create-quiz-button-home-page-quiz-page">
-                Create Quiz
-            </button>
-            <button onClick={handleResultsClick} className="results-button-home-page-quiz-page">
-                My Results
-            </button>
-        </div>
-    </div>
-    <h2 className="quizzes-title-home-page-quiz-page">Your Quizzes</h2>
-    <ul className="quizzes-list-home-page-quiz-page">
-        {filteredQuizzes.map(quiz => (
-          <li key={quiz.id} className="quiz-item-home-page-quiz-page">
-          <div className="quiz-header">
-              <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-                  {quiz.title}
-              </span><br/><br/>
-              <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
-          </div><br/>
-          <div className="quiz-actions-quiz-page">
-              <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
-                  Share Quiz
-              </button>
-              <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
-                  View Results
-              </button>
-              <button className="delete-button-home-page-quiz-page" onClick={() => handleDeleteClick(quiz.id)}>
-                  Delete Quiz
-              </button>
-          </div>
-      </li>
-        ))}
-    </ul>
-    {showModal && <ShareQuizModal quiz={selectedQuiz} onClose={handleCloseModal} />}
-    {showResultsModal && <ResultsModal results={results} onClose={handleCloseResultsModal} />}
-    {showViewQuizModal && <ViewQuizModal quizResults={quizResults} onClose={handleCloseViewQuizModal} />}
-    {showDeleteConfirmationModal && <DeleteConfirmationModal quizId={quizToDelete} onConfirm={handleDeleteConfirm} onClose={handleCloseDeleteConfirmationModal} />}
-    <FooterNav />
-</div>
     );
 };
 
