@@ -30,7 +30,6 @@ const CalendarPage = () => {
         const token = localStorage.getItem('token');
         axios.post(API_ROUTES.fetchEvents, { token })
             .then(response => {
-                console.log('Fetched events:', response.data);
                 setEvents(response.data);
             })
             .catch(error => console.error('Error fetching events:', error));
