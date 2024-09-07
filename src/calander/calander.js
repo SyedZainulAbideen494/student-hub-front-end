@@ -128,7 +128,6 @@ const CalendarPage = () => {
 
     return (
         <div className="calendar-page">
-            <div className="header-title-calendar-page">Calendar and Activities</div>
             <div className="content-calendar-page">
                 <div className="calendar-container-calendar-page">
                     <Calendar
