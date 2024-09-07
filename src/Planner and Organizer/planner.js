@@ -195,7 +195,7 @@ const navigate = useNavigate()
         // Delay the validation by 5 seconds
         const timeoutId = setTimeout(() => {
           validateToken();
-        }, 5000);
+        }, 1000);
       
         // Cleanup timeout on component unmount
         return () => clearTimeout(timeoutId);
