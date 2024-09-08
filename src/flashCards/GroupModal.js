@@ -34,7 +34,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
     };
 
     const handleShare = async () => {
-        const siteURL = `https://edusify.vercel.app/${flashcardId}`; // URL of your flashcard
+        const siteURL = `https://edusify.vercel.app/note/view/${flashcardId}`; // URL of your flashcard
 
         if (navigator.share) {
             try {
