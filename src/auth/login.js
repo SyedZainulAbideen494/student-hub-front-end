@@ -122,7 +122,7 @@ useEffect(() => {
             <FaUser className="icon" />
             <input
               type="text"
-              placeholder="Email, Phone or Username"
+              placeholder="Email"
               value={identifier}
               onChange={handleIdentifierChange}
               required

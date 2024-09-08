@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaLock, FaPhone } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.css'; // Updated CSS file name
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -7,7 +7,6 @@ import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
-        phone: '',
         email: '',
         password: '',
         unique_id: '',
@@ -100,7 +99,6 @@ const SignUp = () => {
             }
 
             setFormData({
-                phone: '',
                 email: '',
                 password: '',
                 unique_id: ''
@@ -124,7 +122,7 @@ const SignUp = () => {
         setUniqueIdSuggestions([]);
     };
 
-    const { phone, email, password, unique_id } = formData;
+    const { email, password, unique_id } = formData;
 
     return (
         <div className="signup-sign-up-page-card">
@@ -140,18 +138,6 @@ const SignUp = () => {
                         name="email"
                         placeholder="Email"
                         value={email}
-                        onChange={handleChange}
-                        required
-                        className="signup-sign-up-page-input"
-                    />
-                </div>
-                <div className="signup-sign-up-page-input-group">
-                    <FaPhone className="signup-sign-up-page-icon" />
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone Number"
-                        value={phone}
                         onChange={handleChange}
                         required
                         className="signup-sign-up-page-input"
@@ -212,4 +198,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
