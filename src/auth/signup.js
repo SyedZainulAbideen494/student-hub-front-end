@@ -188,7 +188,11 @@ const SignUp = () => {
                         I agree to the <Link to='/terms-and-conditions' className="signup-sign-up-page-link">Terms and Conditions</Link>
                     </label>
                 </div>
-                <button type="submit" disabled={loading || !termsAccepted} className={`signup-sign-up-page-button ${loading || !termsAccepted ? 'disabled' : ''}`}>Sign Up</button>
+                <button
+                    type="submit"
+                    disabled={loading || !termsAccepted || uniqueIdStatus === 'taken'}
+                    className={`signup-sign-up-page-button ${loading || !termsAccepted || uniqueIdStatus === 'taken' ? 'disabled' : ''}`}
+                >Sign up</button>
             </form>
             <div className="signup-sign-up-page-links">
                 <Link to="/login" className="signup-sign-up-page-link">Already have an account? Login</Link>
