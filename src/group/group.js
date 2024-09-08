@@ -218,7 +218,13 @@ const GroupsPage = () => {
         <div className="groups-list-container">
           <h2 className="groups-list-title">Joined Groups</h2>
           {filteredJoinedGroups.length === 0 ? (
-            <p className="no-groups-message">You haven't joined any groups.</p>
+               <div className="no-groups-message-card">
+               <p className="no-groups-message">It looks like you haven't joined any groups yet. Let's get you started!</p>
+               <div className="no-groups-buttons">
+                 <button className="no-groups-create-btn" onClick={toggleCreateGroupBtn}>Create Group</button>
+                 <button className="no-groups-switch-btn" onClick={() => setActiveTab('public')}>Join Public Groups</button>
+               </div>
+             </div>
           ) : (
             <ul className="groups-list">
               {filteredJoinedGroups.map((group) => (

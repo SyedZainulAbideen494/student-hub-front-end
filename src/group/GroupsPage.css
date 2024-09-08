@@ -234,9 +234,64 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
 }
 
+/* CSS for No Groups Section */
+
+.no-groups-message-card {
+  background-color: #ffffff; /* Light background for the card */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 1.5rem;
+  max-width: 400px;
+  margin: 1.5rem auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .no-groups-message {
+  color: #333;
   text-align: center;
-  color: #888;
-  font-size: 1.2em;
-  margin-top: 20px;
+  margin-bottom: 1.5rem;
+  font-weight: 500; /* Slightly bolder text */
+}
+
+.no-groups-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.no-groups-create-btn,
+.no-groups-switch-btn {
+  background-color: transparent;
+  color: #74c69d; /* Text color */
+  border: none; 
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  font-weight: 600; /* Bolder text for better readability */
+}
+
+.no-groups-create-btn:hover,
+.no-groups-switch-btn:hover {
+  color: #ffffff; /* Text color on hover */
+  background-color: #74c69d; /* Background color on hover */
+  border-color: #74c69d; /* Border color on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.no-groups-create-btn:focus,
+.no-groups-switch-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
 }
