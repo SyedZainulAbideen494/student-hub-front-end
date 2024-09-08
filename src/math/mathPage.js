@@ -89,6 +89,7 @@ const MathSolver = ({ query, setQuery, handleCalculate }) => {
     <div className="mathsolver-container">
       <header className="mathsolver-header">
         <h1 className="mathsolver-title">Math Helper</h1>
+        <p>(Beta Mode)</p>
         <div className="mathsolver-input-container">
           <input
             type="text"

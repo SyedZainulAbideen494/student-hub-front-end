@@ -83,41 +83,40 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
-      
+
         setLoading(true);
         try {
-          const response = await fetch(API_ROUTES.signup, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-          });
-      
-          if (!response.ok) {
-            const errorData = await response.json();
-            setError(errorData.error || 'Sign-up failed');
-            setLoading(false);
-            return;
-          }
-      
-          setFormData({
-            email: '',
-            password: '',
-            unique_id: '',
-            phone_number: '', 
-          });
-          setTermsAccepted(false);
-          setError(null);
-      
-          console.log('User registered successfully!');
-          nav('/login');
+            const response = await fetch(API_ROUTES.signup, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.error || 'Sign-up failed');
+                setLoading(false);
+                return;
+            }
+
+            setFormData({
+                email: '',
+                password: '',
+                unique_id: '',
+                phone_number: '', // Clear phone_number field
+            });
+            setTermsAccepted(false);
+            setError(null);
+
+            console.log('User registered successfully!');
+            nav('/login');
         } catch (error) {
-          console.error('Error signing up:', error);
-          setError('Error signing up. Please try again later.');
+            console.error('Error signing up:', error);
+            setError('Error signing up. Please try again later.');
         } finally {
-          setLoading(false);
+            setLoading(false);
         }
-      };
-      
+    };
 
     const handleSuggestionClick = (suggestion) => {
         setFormData((prev) => ({ ...prev, unique_id: suggestion }));

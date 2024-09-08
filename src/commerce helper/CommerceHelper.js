@@ -57,7 +57,7 @@ const CommerceHelper = () => {
     <div className="commerce-helper-container">
       <header className="page-header">
         <h1>Commerce Helper Tool</h1>
-        <p>Get answers to your commerce-related queries with ease.</p>
+        <p>Get answers to your commerce-related queries with ease.<br/>(Beta Mode)</p>
       </header>
       <main style={{marginBottom: '80px'}}>
         <input

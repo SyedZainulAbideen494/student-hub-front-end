@@ -74,7 +74,7 @@ const ScienceQA = () => {
     <div className="science-qa-container">
       <header className="page-header">
         <h1>Science Q&A Tool</h1>
-        <p>Get answers to your science-related queries with ease.</p>
+        <p>Get answers to your science-related queries with ease.<br/>(Beta Mode)</p>
       </header>
       <main>
         <input
