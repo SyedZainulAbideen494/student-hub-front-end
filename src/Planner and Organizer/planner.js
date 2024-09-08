@@ -220,7 +220,7 @@ const navigate = useNavigate()
                 />
             </div>
             <div className="task-form" ref={formRef}>
-                <h2 className="section-title">{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
+                <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
                 <div className="form-group">
                     <label htmlFor="task-title">Title:</label>
                     <input
