@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaPhone } from 'react-icons/fa'; // Import FaPhone icon
 import { Link, useNavigate } from 'react-router-dom';
-import './signup.css'; // Updated CSS file name
+import './signup.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 
@@ -10,6 +10,7 @@ const SignUp = () => {
         email: '',
         password: '',
         unique_id: '',
+        phone_number: '', // Add phone_number to the state
     });
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [error, setError] = useState(null);
@@ -101,7 +102,8 @@ const SignUp = () => {
             setFormData({
                 email: '',
                 password: '',
-                unique_id: ''
+                unique_id: '',
+                phone_number: '', // Clear phone_number field
             });
             setTermsAccepted(false);
             setError(null);
@@ -122,7 +124,7 @@ const SignUp = () => {
         setUniqueIdSuggestions([]);
     };
 
-    const { email, password, unique_id } = formData;
+    const { email, password, unique_id, phone_number } = formData; // Destructure phone_number
 
     return (
         <div className="signup-sign-up-page-card">
@@ -174,6 +176,18 @@ const SignUp = () => {
                     />
                     {uniqueIdStatus === 'available' && <span className="signup-sign-up-page-status-icon">&#10003;</span>}
                     {uniqueIdStatus === 'taken' && <span className="signup-sign-up-page-status-icon">&#10007;</span>}
+                </div>
+                <div className="signup-sign-up-page-input-group">
+                    <FaPhone className="signup-sign-up-page-icon" />
+                    <input
+                        type="tel"
+                        name="phone_number"
+                        placeholder="Phone Number"
+                        value={phone_number}
+                        onChange={handleChange}
+                        required
+                        className="signup-sign-up-page-input"
+                    />
                 </div>
                 <div className="signup-sign-up-page-checkbox-container">
                     <input
