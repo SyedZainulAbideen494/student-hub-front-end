@@ -150,7 +150,7 @@ const CalendarPage = () => {
                     </button>
                     {isFormVisible && (
                         <div className="form-container-calendar-page">
-                            <div className="section-title-calendar-page">
+                            <div className="section-title-calendar-page" style={{fontSize: '15px'}}>
                                 {editingEventId ? 'Edit Event' : 'Add New Event'}
                             </div>
                             <input
@@ -161,7 +161,7 @@ const CalendarPage = () => {
                                 className="input-field-calendar-page"
                             />
                             <div className="event-date-picker-calendar-page">
-                                <div className="section-title-calendar-page">Select Event Date</div>
+                                <div className="section-title-calendar-page" style={{fontSize: '15px'}}>Select Event Date</div>
                                 <Calendar
                                     onChange={onEventDateChange}
                                     value={eventDate}

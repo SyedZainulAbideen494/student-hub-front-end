@@ -175,7 +175,6 @@ const FlashcardsPage = () => {
                 console.log('Flashcard saved successfully!');
                 setSuccessMessage('Flashcard saved successfully!');
                 setShowSuccessModal(true);
-                
                 // Clear form inputs
                 setTitle('');
                 setDescription('');
@@ -291,7 +290,7 @@ const FlashcardsPage = () => {
             <h1>Create Flashcard</h1>
             <form onSubmit={handleSubmit} className="flashcard-form-flashcards-page">
                 <div className="form-group-flashcards-page">
-                    <label htmlFor="title">Title:</label>
+                    <label htmlFor="title">Name:</label>
                     <input
                         type="text"
                         id="title"
@@ -301,7 +300,7 @@ const FlashcardsPage = () => {
                     />
                 </div>
                 <div className="form-group-flashcards-page">
-                    <label htmlFor="description">Description:</label>
+                    <label htmlFor="description">Provide a brief description</label>
                     <textarea
                         id="description"
                         value={description}
