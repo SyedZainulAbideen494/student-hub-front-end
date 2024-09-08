@@ -45,7 +45,7 @@ const FooterNav = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        navigate('/sign-up');
+        navigate('/login');
     };
 
     const hasProfileIssues = profile && (!profile.user_name || !profile.bio || !profile.location);
