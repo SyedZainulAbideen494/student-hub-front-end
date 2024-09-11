@@ -1,58 +1,163 @@
+/* Container Styles */
 .signup-sign-up-page-card {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  background: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 90%;
+  max-width: 360px;
+  margin: 20px auto; /* Centered on the page */
+  position: relative;
+  transition: all 0.3s ease-in-out;
 }
 
+/* Heading */
 .signup-sign-up-page-heading {
   text-align: center;
   margin-bottom: 20px;
+  color: #000000; /* Black for text */
   font-size: 24px;
-  color: #333;
 }
 
-.signup-sign-up-page-form {
+/* Progress Bar */
+.progress-bar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
+.progress {
+  flex: 1;
+  height: 6px;
+  background: rgb(136, 136, 136); /* Gradient background */
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress.filled {
+  background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient for filled progress */
+  width: 50%; /* Adjust this value to reflect the progress percentage */
+}
+
+/* Input Group */
 .signup-sign-up-page-input-group {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 10px;
-  transition: border-color 0.3s;
+  margin-bottom: 16px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px;
+  padding: 8px; /* Reduced padding */
+  background-color: #ffffff; /* White background for inputs */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Card shadow */
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .signup-sign-up-page-input-group:hover {
-  border-color: #007bff;
+  border-color: #429CF7; /* Gradient color on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .signup-sign-up-page-icon {
-  margin-right: 10px;
-  color: #333;
+  color: #000000; /* Black for icons */
+  margin-right: 8px;
 }
 
 .signup-sign-up-page-input {
   border: none;
   outline: none;
+  flex: 1;
+  font-size: 14px; /* Reduced font size */
+  color: #000000; /* Black text for inputs */
+  background-color: transparent;
+  padding: 6px; /* Reduced padding */
+}
+
+/* Password Visibility Toggle */
+.signup-sign-up-page-toggle-password {
+  cursor: pointer;
+  color: #000000; /* Black for visibility toggle */
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+/* Unique ID Status Icons */
+.signup-sign-up-page-status-icon {
+  margin-left: 8px;
+  font-size: 14px; /* Adjusted font size */
+}
+
+.available {
+  color: #28a745; /* Green for available */
+}
+
+.taken {
+  color: #dc3545; /* Red for taken */
+}
+
+/* Suggestions */
+.signup-sign-up-page-suggestions {
+  background-color: #ffffff; /* White for suggestions */
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px;
+  padding: 8px; /* Reduced padding */
+  margin-top: -10px;
+  margin-bottom: 16px;
+  max-height: 100px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Card shadow */
+}
+
+.signup-sign-up-page-suggestion {
+  display: block;
+  padding: 6px; /* Reduced padding */
+  background-color: #f8f9fa; /* Light gray for suggestions */
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px; /* Adjusted font size */
+  transition: background-color 0.3s;
+}
+
+.signup-sign-up-page-suggestion:hover {
+  background-color: #e9ecef; /* Slightly darker gray on hover */
+}
+
+/* Button Styles */
+.signup-sign-up-page-button,
+.signup-sign-up-page-submit-button {
+  background-color: #000000; /* Black for buttons */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 15px;
+  cursor: pointer;
   width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s;
   font-size: 16px;
 }
 
-.signup-sign-up-page-toggle-password {
-  cursor: pointer;
-  color: #007bff;
-  font-size: 14px;
-  margin-left: 10px;
+.signup-sign-up-page-button:hover,
+.signup-sign-up-page-submit-button:hover {
+  background-color: #333333; /* Darker black on hover */
 }
 
+.signup-sign-up-page-button:disabled,
+.signup-sign-up-page-submit-button:disabled {
+  background-color: #6c757d; /* Gray for disabled state */
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.signup-sign-up-page-error {
+  color: #dc3545; /* Red for error messages */
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Checkbox and Terms */
 .signup-sign-up-page-checkbox-container {
   display: flex;
   align-items: center;
@@ -65,49 +170,64 @@
 
 .signup-sign-up-page-checkbox-label {
   font-size: 14px;
+  color: #000000; /* Black */
 }
 
-.signup-sign-up-page-error {
-  color: red;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.signup-sign-up-page-status-icon {
-  font-size: 18px;
-  margin-left: 10px;
-}
-
-.signup-sign-up-page-button {
-  padding: 10px;
-  border: none;
-  border-radius: 12px;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.signup-sign-up-page-button:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
-}
-
-.signup-sign-up-page-button:hover:not(:disabled) {
-  background-color: #0056b3;
-}
-
-.signup-sign-up-page-links {
-  text-align: center;
-  margin-top: 20px;
-}
-
+/* Links */
 .signup-sign-up-page-link {
-  color: #007bff;
+  color: #000000; /* Black for links */
   text-decoration: none;
+  font-weight: bold;
 }
 
 .signup-sign-up-page-link:hover {
   text-decoration: underline;
+}
+
+/* Login Link */
+.signup-sign-up-page-login-link {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 480px) {
+  .signup-sign-up-page-card {
+      padding: 15px;
+      width: 95%;
+      margin: 20px auto; /* Centered on the page */
+  }
+
+  .signup-sign-up-page-heading {
+      font-size: 20px;
+  }
+
+  .signup-sign-up-page-input-group {
+      padding: 6px; /* Reduced padding */
+  }
+
+  .signup-sign-up-page-input {
+      margin-bottom: 5px;
+      font-size: 14px; /* Adjusted font size */
+      padding: 4px; /* Reduced padding */
+  }
+
+  .signup-sign-up-page-toggle-password {
+      margin-left: 0;
+  }
+
+  .signup-sign-up-page-suggestion {
+      font-size: 12px; /* Adjusted font size */
+      padding: 4px; /* Reduced padding */
+  }
+
+  .signup-sign-up-page-button,
+  .signup-sign-up-page-submit-button {
+      font-size: 14px;
+  }
+
+  .signup-sign-up-page-error {
+      font-size: 12px;
+  }
 }
