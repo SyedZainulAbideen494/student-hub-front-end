@@ -77,11 +77,13 @@ const EduScribe = ({ activeTab }) => {
               />
             </a>
             <div className="eduscribe-info">
-              <a href={`/profile/${eduscribe.user_id}`} className="eduscribe-username">
-                {eduscribe.user_name}
-              </a>
-              <span className="eduscribe-date">{new Date(eduscribe.created_at).toLocaleString()}</span>
-            </div>
+  <a href={`/profile/${eduscribe.user_id}`} className="eduscribe-username">
+    {eduscribe.user_name || 'User'}
+  </a>
+  <span className="eduscribe-date">
+    {new Date(eduscribe.created_at).toLocaleString()}
+  </span>
+</div>
           </div>
           <div className="eduscribe-content" style={{ whiteSpace: 'pre-wrap' }}>
             {eduscribe.content}
