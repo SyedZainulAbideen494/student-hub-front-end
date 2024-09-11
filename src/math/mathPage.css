@@ -3,27 +3,30 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background: linear-gradient(to right, #e3eafc, #f0f4f8);
     color: #333;
     font-family: 'Arial', sans-serif;
     padding: 20px;
     box-sizing: border-box;
     max-width: 100%;
-    border-radius: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .mathsolver-header {
-    padding: 10px;
+    padding: 20px;
     text-align: center;
     background-color: #ffffff;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px 15px 0 0;
 }
 
 .mathsolver-title {
     margin: 0;
-    font-size: 2rem;
-    color: #007bff;
+    font-size: 2.5rem;
+    color: #4a90e2;
+    font-weight: bold;
 }
 
 .mathsolver-input-container {
@@ -36,26 +39,27 @@
 
 .mathsolver-input {
     width: 100%;
+    max-width: 500px;
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1.2rem;
+    border-radius: 10px;
+    font-size: 1.4rem;
     color: #333;
     transition: border-color 0.3s, box-shadow 0.3s;
     box-sizing: border-box;
 }
 
 .mathsolver-input:focus {
-    border-color: #007bff;
+    border-color: #4a90e2;
     outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
 }
 
 .mathsolver-button {
     padding: 15px 25px;
     border: none;
-    border-radius: 8px;
-    background-color: #007bff;
+    border-radius: 10px;
+    background-color: #4a90e2;
     color: white;
     font-size: 1.2rem;
     cursor: pointer;
@@ -63,8 +67,8 @@
 }
 
 .mathsolver-button:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background-color: #357abd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .mathsolver-button:disabled {
@@ -80,7 +84,7 @@
 .mathsolver-result {
     background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     padding: 20px;
@@ -94,8 +98,9 @@
 
 .mathsolver-result-title {
     margin: 0;
-    font-size: 1.5rem;
-    color: #007bff;
+    font-size: 1.8rem;
+    color: #4a90e2;
+    font-weight: bold;
 }
 
 .mathsolver-result-content {
@@ -135,8 +140,8 @@
 .mathsolver-key {
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f1f1f1;
+    border-radius: 10px;
+    background-color: #f9f9f9;
     color: #333;
     font-size: 1.2rem;
     cursor: pointer;
@@ -147,12 +152,12 @@
 }
 
 .mathsolver-key:hover {
-    background-color: #ddd;
+    background-color: #eee;
     transform: scale(1.05);
 }
 
 .mathsolver-key:active {
-    background-color: #ccc;
+    background-color: #ddd;
 }
 
 /* Simple Calculator Keyboard Styles */
@@ -166,8 +171,8 @@
 .calculator-keyboard button {
     padding: 20px;
     border: none;
-    border-radius: 8px;
-    background-color: #f1f1f1;
+    border-radius: 10px;
+    background-color: #f9f9f9;
     color: #333;
     font-size: 1.5rem;
     cursor: pointer;
@@ -175,12 +180,12 @@
 }
 
 .calculator-keyboard button:hover {
-    background-color: #ddd;
+    background-color: #eee;
     transform: scale(1.05);
 }
 
 .calculator-keyboard button:active {
-    background-color: #ccc;
+    background-color: #ddd;
 }
 
 .calculator-display {
@@ -188,11 +193,12 @@
     max-width: 600px;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1.5rem;
     color: #333;
     text-align: right;
     box-sizing: border-box;
+    background-color: #ffffff;
 }
 
 /* Mobile Responsiveness */
@@ -211,7 +217,7 @@
     }
 
     .mathsolver-result-title {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .mathsolver-result-content {
@@ -225,29 +231,31 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background: #f0f0f0;
+    background: linear-gradient(to right, #e3eafc, #f0f4f8);
 }
 
 .math-page-header {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .switch-mode-btn-math-page {
-    background-color: #7161ef;
+    background-color: #4a90e2;
     color: white;
     border: none;
     padding: 12px 24px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 12px;
     cursor: pointer;
     margin: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .switch-mode-btn-math-page:hover {
-    background-color: #5a4dbf;
+    background-color: #357abd;
+    transform: scale(1.05);
 }
 
 .switch-mode-btn-math-page:disabled {
@@ -259,5 +267,10 @@
 .math-page .icon {
     margin-left: 8px;
     vertical-align: middle;
-    font-size: 18px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.switch-mode-btn-math-page:hover .icon {
+    color: #ffffff;
 }

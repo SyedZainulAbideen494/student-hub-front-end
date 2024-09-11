@@ -20,6 +20,7 @@
 .page-header h1 {
     font-size: 2em;
     margin: 0;
+    color: #333;
 }
 
 .page-header p {
@@ -107,6 +108,7 @@
 
 .instructions h2 {
     margin-top: 0;
+    color: #333;
 }
 
 .instructions ul {
@@ -116,6 +118,8 @@
 
 .instructions li {
     margin: 10px 0;
+    font-size: 16px;
+    color: #666;
 }
 
 .show-instructions-button, .hide-instructions-button {
@@ -184,6 +188,7 @@
 
 .loader-text {
     font-size: 18px;
+    color: #333;
 }
 
 /* Error Message */
@@ -242,4 +247,5 @@
 .card-text {
     font-size: 16px;
     text-align: center;
+    color: #333;
 }
