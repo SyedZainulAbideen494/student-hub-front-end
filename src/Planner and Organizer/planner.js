@@ -177,18 +177,18 @@ const navigate = useNavigate()
       
           // If no token, redirect to login
           if (!token) {
-            navigate('/login');
+            navigate('/sign-up');
             return;
           }
       
           try {
             const response = await axios.post(API_ROUTES.userSessionAut, { token });
             if (!response.data.valid) {
-              navigate('/login');
+              navigate('/sign-up');
             }
           } catch (error) {
             console.error('Error during token validation:', error);
-            navigate('/login');
+            navigate('/sign-up');
           }
         };
       

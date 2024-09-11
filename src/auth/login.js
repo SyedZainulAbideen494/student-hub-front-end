@@ -119,6 +119,7 @@ const Login = () => {
                     ) : (
                         <>
                             <h2>Login</h2>
+                            {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
                             <form onSubmit={handleSubmit}>
                                 <div className="input-container-login">
                                     <FaUser className="icon" />
@@ -156,7 +157,7 @@ const Login = () => {
                             </form>
                         </>
                     )}
-                    {error && <p className="error-message">{error}</p>}
+                  
                 
                     <p className="welcome-message">Welcome back! Please log in to continue.</p>
                 </div>
