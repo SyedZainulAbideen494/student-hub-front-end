@@ -100,7 +100,7 @@ const Login = () => {
                     {otpSent ? (
                         <>
                             <h2>Verify Your OTP</h2>
-                            <p>A verification code has been sent to: <strong>{userEmail}</strong></p>
+                            <p>A verification code has been sent to your email!</p>
                             <form onSubmit={handleSubmit}>
                                 <div className="input-container-login">
                                     <FaLock className="icon" />
