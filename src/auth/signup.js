@@ -206,7 +206,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
                 
                 {step === 2 && (
                     <>
-                        <p className="signup-sign-up-page-info">We need your phone number to send group invites and WhatsApp reminders (testing mode) and for security reasons.</p>
+                        <p className="signup-sign-up-page-info">We need your phone number to send group invites, WhatsApp reminders and for security reasons.</p>
                         <div className="signup-sign-up-page-input-group">
                             <FaPhone className="signup-sign-up-page-icon" />
                             <input
