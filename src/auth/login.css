@@ -1,9 +1,11 @@
-/* login.css */
-
 /* Wrapper for login and spinner */
 .login-wrapper {
   position: relative;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f2f2; /* Light background for better contrast */
 }
 
 /* Spinner */
@@ -22,45 +24,56 @@
 
 /* Login container */
 .login-container {
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 360px; /* Slightly narrower for a compact look */
   padding: 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 16px; /* Rounded edges */
+  border: 1px solid #ddd; /* Softer border color */
+  border-radius: 12px; /* Rounded corners for a modern feel */
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-container:hover {
-  transform: scale(1.01);
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .login-container h2 {
-  font-size: 2rem;
+  font-size: 1.6rem; /* Smaller heading */
   text-align: center;
   margin-bottom: 20px;
   color: #333;
 }
 
-.login-container form {
-  display: flex;
-  flex-direction: column;
+.login-container p {
+  text-align: center;
+  color: #555; /* Softer color for the message */
+  font-size: 0.9rem; /* Smaller text */
+  margin-bottom: 20px;
+}
+
+.welcome-message {
+  font-size: 1.2rem; /* Slightly smaller text for the welcome message */
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .error-message {
   color: #ff6347;
   margin-bottom: 10px;
   text-align: center;
+  font-size: 0.9rem; /* Smaller font size */
 }
 
 .input-container-login {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid #ddd; /* Softer border color */
   padding-bottom: 10px;
+  position: relative;
 }
 
 .input-container-login:last-child {
@@ -68,16 +81,16 @@
 }
 
 .icon {
-  margin-right: 10px;
+  margin-right: 12px; /* Slightly more spacing */
   font-size: 1.2rem;
-  color: #666;
+  color: #777; /* Slightly lighter color */
 }
 
 .login-container input {
   flex: 1;
-  padding: 12px;
+  padding: 12px 40px 12px 12px; /* Space for icon */
   border: 1px solid #ddd;
-  border-radius: 8px; /* Rounded edges */
+  border-radius: 8px;
   font-size: 1rem;
   background: #fff;
   transition: border-color 0.3s ease;
@@ -85,34 +98,36 @@
 
 .login-container input:focus {
   border-color: #007bff;
+  outline: none;
 }
 
-.toggle-password-login {
+.toggle-password-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #666;
   cursor: pointer;
-  font-size: 0.9rem;
-  color: #007bff;
-  margin-left: 10px;
 }
 
-.toggle-password-login:hover {
-  text-decoration: underline;
-  color: #0056b3;
-}
-
+/* Button styling */
 .login-container button[type="submit"] {
-  background-color: #007bff;
+  background-color: #000; /* Black button */
   color: #ffffff;
   border: none;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  border-radius: 8px; /* Rounded edges */
+  padding: 14px 30px; /* Increased padding for wider button */
+  font-size: 0.9rem; /* Smaller font size */
+  border-radius: 8px;
   cursor: pointer;
   margin-top: 15px;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%; /* Full width of the container */
+  text-align: center; /* Center text */
 }
 
 .login-container button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #333; /* Darker black shade for hover */
   transform: scale(1.02);
 }
 

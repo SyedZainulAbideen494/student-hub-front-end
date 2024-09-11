@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaLock, FaUser, FaEnvelope } from 'react-icons/fa';
+import { FaPhone, FaLock, FaUser, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import Axios from 'axios';
@@ -10,7 +10,7 @@ const Login = () => {
     const [identifier, setIdentifier] = useState('');
     const [password, setPassword] = useState('');
     const [otp, setOtp] = useState('');
-    const [phone, setPhone] = useState(''); // State for phone
+    const [phone, setPhone] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [error, setError] = useState("");
     const [otpSent, setOtpSent] = useState(false);
@@ -33,25 +33,25 @@ const Login = () => {
         }
     };
 
-    // Check token and redirect
-const checkTokenAndRedirect = async (token, navigate) => {
-  try {
-    const response = await Axios.post(API_ROUTES.sessionCheck, { token });
+    const checkTokenAndRedirect = async (token) => {
+        try {
+            const response = await Axios.post(API_ROUTES.sessionCheck, { token });
+            if (response.data.exists) {
+                nav('/');
+            } else {
+                console.error('No matching token found.');
+            }
+        } catch (error) {
+            console.error('Error checking token:', error);
+        }
+    };
 
-    if (response.data.exists) {
-      nav('/');
-    } else {
-      console.error('No matching token found.');
-    }
-  } catch (error) {
-    console.error('Error checking token:', error);
-  }
-};
-
-useEffect(() => {
-  const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
-  checkTokenAndRedirect(token, nav);
-}, [nav]);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            checkTokenAndRedirect(token);
+        }
+    }, [nav]);
 
     const login = () => {
         setError("");
@@ -61,103 +61,107 @@ useEffect(() => {
         }).then((response) => {
             setLoading(false);
             if (!response.data.auth) {
-                setError(response.data.message || "An error occurred");
+                setError(response.data.message || "Invalid email or password.");
             } else {
                 setOtpSent(true);
                 setUserEmail(response.data.email);
-                setPhone(response.data.phone); // Store the phone number
+                setPhone(response.data.phone);
             }
         }).catch((error) => {
             setLoading(false);
-            setError("An error occurred while logging in");
+            setError("Error occurred while logging in. Please try again.");
         });
     };
 
     const verifyOTP = () => {
         setError("");
         Axios.post(API_ROUTES.verifyOTP, {
-            phone: phone, // Send phone number for OTP verification
+            phone: phone,
             otp: otp,
         }).then((response) => {
             setLoading(false);
             if (!response.data.auth) {
-                setError(response.data.message || "An error occurred");
+                setError(response.data.message || "OTP verification failed. Please try again.");
             } else {
                 nav("/welcome");
                 localStorage.setItem("token", response.data.token);
             }
         }).catch((error) => {
             setLoading(false);
-            setError("An error occurred while verifying OTP");
+            setError("Error occurred while verifying OTP. Please try again.");
         });
     };
 
     return (
-<div className="login-wrapper">
-  {loading && <LoadingSpinner />}
-  {!loading && (
-    <div className="login-container">
-      <h2>Login</h2>
-      {otpSent && userEmail && (
-        <p>OTP sent to: {userEmail}</p>
-      )}
-      {otpSent ? (
-        <form onSubmit={handleSubmit}>
-          <div className="input-container-login">
-            <FaLock className="icon" />
-            <input
-              type="text"
-              placeholder="Enter OTP"
-              onChange={handleOtpChange}
-              required
-            />
-          </div>
-          <button type="submit" className="login-button">
-            Verify OTP
-          </button>
-        </form>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="input-container-login">
-            <FaUser className="icon" />
-            <input
-              type="text"
-              placeholder="Email"
-              value={identifier}
-              onChange={handleIdentifierChange}
-              required
-            />
-          </div>
-          <div className="input-container-login">
-                                <FaLock className="icon" />
-                                <input
-                                    type={passwordVisible ? 'text' : 'password'}
-                                    placeholder="Password"
-                                    value={password}
-                                    onChange={handlePasswordChange}
-                                    required
-                                    aria-label="Password"
-                                />
-                                <span
-                                    className="toggle-password-login"
-                                    onClick={togglePasswordVisibility}
-                                >
-                                    {passwordVisible ? 'Hide' : 'Show'}
-                                </span>
-                            </div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
-      )}
-      <p className="error-message">{error}</p>
-      <div className="links-login">
-                                <Link to="/forgot-password">Forgot password?</Link><br /><br />
-                                <Link to="/sign-up">Don't have an account?</Link>
-                            </div>
-    </div>
-  )}
-</div>
+        <div className="login-wrapper">
+            {loading && <LoadingSpinner />}
+            {!loading && (
+                <div className="login-container">
+                    {otpSent ? (
+                        <>
+                            <h2>Verify Your OTP</h2>
+                            <p>A verification code has been sent to: <strong>{userEmail}</strong></p>
+                            <form onSubmit={handleSubmit}>
+                                <div className="input-container-login">
+                                    <FaLock className="icon" />
+                                    <input
+                                        type="text"
+                                        placeholder="Enter OTP"
+                                        onChange={handleOtpChange}
+                                        required
+                                    />
+                                </div>
+                                <button type="submit" className="login-button">
+                                    Verify OTP
+                                </button>
+                            </form>
+                        </>
+                    ) : (
+                        <>
+                            <h2>Login</h2>
+                            <form onSubmit={handleSubmit}>
+                                <div className="input-container-login">
+                                    <FaUser className="icon" />
+                                    <input
+                                        type="text"
+                                        placeholder="Email"
+                                        value={identifier}
+                                        onChange={handleIdentifierChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="input-container-login">
+                                    <FaLock className="icon" />
+                                    <input
+                                        type={passwordVisible ? 'text' : 'password'}
+                                        placeholder="Password"
+                                        value={password}
+                                        onChange={handlePasswordChange}
+                                        required
+                                    />
+                                    <span
+                                        className="toggle-password-icon"
+                                        onClick={togglePasswordVisibility}
+                                    >
+                                        {passwordVisible ? <FaEye /> : <FaEyeSlash />}
+                                    </span>
+                                </div>
+                                <button type="submit" className="login-button">
+                                    Login
+                                </button>
+                                <div className="links-login">
+                        <Link to="/forgot-password">Forgot Password?</Link> | 
+                        <Link to="/register"> Register</Link>
+                    </div>
+                            </form>
+                        </>
+                    )}
+                    {error && <p className="error-message">{error}</p>}
+                
+                    <p className="welcome-message">Welcome back! Please log in to continue.</p>
+                </div>
+            )}
+        </div>
     );
 };
 
