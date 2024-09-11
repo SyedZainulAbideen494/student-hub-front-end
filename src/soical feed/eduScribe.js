@@ -6,7 +6,7 @@ import './eduScribe.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 
-const EduScribe = ({ activeTab }) => { // Accept activeTab as a prop
+const EduScribe = ({ activeTab }) => {
   const [eduscribes, setEduscribes] = useState([]);
   const [liked, setLiked] = useState({});
   const [commentInput, setCommentInput] = useState({});
@@ -24,11 +24,10 @@ const EduScribe = ({ activeTab }) => { // Accept activeTab as a prop
           headers: {
             Authorization: token
           },
-          params: { tab: activeTab } // Pass the activeTab as a query parameter
+          params: { tab: activeTab }
         });
         setEduscribes(data);
     
-        // Set initial liked state
         const likedState = {};
         data.forEach(eduscribe => {
           likedState[eduscribe.id] = eduscribe.isLiked > 0;
@@ -40,7 +39,7 @@ const EduScribe = ({ activeTab }) => { // Accept activeTab as a prop
     };
 
     fetchEduscribes();
-  }, [activeTab]); // Dependency array includes activeTab
+  }, [activeTab]);
 
   const handleLike = async (id) => {
     try {
@@ -84,7 +83,7 @@ const EduScribe = ({ activeTab }) => { // Accept activeTab as a prop
               <span className="eduscribe-date">{new Date(eduscribe.created_at).toLocaleString()}</span>
             </div>
           </div>
-          <div className="eduscribe-content">
+          <div className="eduscribe-content" style={{ whiteSpace: 'pre-wrap' }}>
             {eduscribe.content}
           </div>
           {eduscribe.image && (
