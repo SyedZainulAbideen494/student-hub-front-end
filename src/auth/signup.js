@@ -85,7 +85,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
-
+    
         setLoading(true);
         try {
             const response = await fetch(API_ROUTES.signup, {
@@ -93,14 +93,17 @@ const SignUp = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-
+    
             if (!response.ok) {
                 const errorData = await response.json();
                 setError(errorData.error || 'Sign-up failed');
                 setLoading(false);
                 return;
             }
-
+    
+            const data = await response.json();
+            localStorage.setItem('token', data.token); // Store the token
+    
             setFormData({
                 email: '',
                 password: '',
@@ -109,9 +112,9 @@ const SignUp = () => {
             });
             setTermsAccepted(false);
             setError(null);
-
+    
             console.log('User registered successfully!');
-            nav('/login');
+            nav('/welcome'); // Redirect to the welcome page
         } catch (error) {
             console.error('Error signing up:', error);
             setError('Error signing up. Please try again later.');
