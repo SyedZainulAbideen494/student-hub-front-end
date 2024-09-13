@@ -189,7 +189,6 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Container for edit, delete, and download buttons */
 .button-container-note-detail-page {
     display: flex;
@@ -198,6 +197,7 @@
     gap: 10px;
 }
 
+/* Container for download button and download count */
 .download-container {
     display: flex;
     justify-content: space-between;
@@ -239,7 +239,7 @@
 .download-count {
     background-color: #181818;
     color: #fff;
-    padding: 10px 0px;
+    padding: 10px 20px; /* Adjust padding for better appearance */
     border-radius: 30px;
     font-size: 14px;
     font-weight: bold;
@@ -253,21 +253,26 @@
     letter-spacing: 1px;
 }
 
-/* Responsive design for mobile screens */
+/* Ensure buttons are always inline */
+.button-container-note-detail-page {
+    flex-wrap: nowrap;
+}
+
 @media (max-width: 768px) {
+    /* Responsive design for mobile screens */
     .button-container-note-detail-page {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: center;
     }
 
     .download-container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: center;
     }
 
     .download-button, .download-count {
         margin-bottom: 10px;
-        width: 100%;
+        width: auto;
         text-align: center;
     }
 }
