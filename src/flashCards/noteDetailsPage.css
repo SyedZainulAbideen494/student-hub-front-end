@@ -130,29 +130,7 @@
     color: #666;
 }
 
-/* Buttons */
-.note-actions-note-detail-page {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-    flex-wrap: wrap;
-}
 
-.download-button {
-    padding: 12px 25px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.download-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-}
 
 /* Form */
 .edit-note-form {
@@ -209,4 +187,87 @@
 .image-item:hover {
     transform: scale(1.03);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Container for edit, delete, and download buttons */
+.button-container-note-detail-page {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.download-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Common button styles */
+.download-button {
+    background: linear-gradient(135deg, #7161ef, #a38dff);
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(113, 97, 239, 0.5);
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.download-button:hover {
+    background: linear-gradient(135deg, #a38dff, #7161ef);
+    box-shadow: 0 6px 18px rgba(113, 97, 239, 0.8);
+    transform: translateY(-2px);
+}
+
+.download-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 12px rgba(113, 97, 239, 0.5);
+}
+
+/* Download count styles */
+.download-count {
+    background-color: #181818;
+    color: #fff;
+    padding: 10px 0px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.download-count span {
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    .button-container-note-detail-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .download-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .download-button, .download-count {
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
 }

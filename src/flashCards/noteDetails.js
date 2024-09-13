@@ -17,6 +17,7 @@ const NoteDetailPage = () => {
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [downloads, setDownloads] = useState(0);  // State to store the download count
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [userId, setUserId] = useState(null);
@@ -36,6 +37,7 @@ const NoteDetailPage = () => {
                 setNote(noteData);
                 setTitle(noteData.title);
                 setDescription(noteData.description);
+                setDownloads(noteData.downloads || 0);  // Set downloads count
                 setNoteUserId(noteData.user_id);
     
                 // Assuming images are part of noteData
@@ -156,8 +158,6 @@ const NoteDetailPage = () => {
         }
     };
 
-
-
     const handleDownloadPDF = async () => {
         if (note) {
             const content = document.querySelector('.note-content-note-detail-page');
@@ -199,13 +199,17 @@ const NoteDetailPage = () => {
                 const randomNum = Math.floor(1000000 + Math.random() * 9000000);
                 const filename = `${note.title}_${randomNum}_eduify.pdf`;
                 doc.save(filename);
+
+                // Increment download count
+                await axios.post(`${API_ROUTES.incrementDownloadCount}/${id}`);
+                
+                // Update the download count in state after incrementing
+                setDownloads(downloads + 1);
             } catch (error) {
-                console.error('Error generating PDF:', error);
+                console.error('Error generating PDF or updating download count:', error);
             }
         }
     };
-    
-    
 
     if (loading) return <div className="loading">Loading...</div>;
     if (error) return <div className="error">{error}</div>;
@@ -242,33 +246,47 @@ const NoteDetailPage = () => {
                     </div>
                     <div className="form-group note-content-quill-note-detail-page">
                         <label htmlFor="headings">Content:</label>
-                        <div ref={editorRef}></div> {/* Quill editor container */}
+                        <div ref={editorRef} id="headings" />
                     </div>
-                    <button type="submit" className="download-button">Save Changes</button>
-                    <button type="button" onClick={handleEditToggle} className="download-button">Cancel</button>
+                    <button type="submit" className="save-button">Save Note</button>
                 </form>
             ) : (
                 <div className="note-content-note-detail-page">
-                    <p className="note-description-note-detail-page">{note.description}</p>
+                    <h2>{note.description}</h2>
                     <div dangerouslySetInnerHTML={{ __html: note.headings }} />
-                    <div className="image-gallery">
-            {images.map((image, index) => (
-                <img key={index} src={`${API_ROUTES.displayImg}/${image}`} alt={`Image ${index + 1}`} className="image-item" />
-            ))}
-        </div>
                 </div>
             )}
-            <div className="note-actions-note-detail-page" style={{textAlign: 'center'}}>
-            <button onClick={handleDownloadPDF} className="download-button">Download PDF</button>
+
+            {images.length > 0 && (
+                <div className="note-images">
+                    {images.map((image, index) => (
+                        <img
+                            key={index}
+                            src={`${API_ROUTES.getNoteImage}/${image.id}`}
+                            alt={`Note Image ${index + 1}`}
+                            className="note-image"
+                        />
+                    ))}
+                </div>
+            )}
+
+            {canEdit && !editMode && (
+                <div className="button-container-note-detail-page">
+                    <button className="download-button" onClick={handleEditToggle}>
+                        Edit Note
+                    </button>
+                    <button className="download-button" onClick={handleDeleteClick}>
+                        Delete Note
+                    </button>
+                </div>
+            )}
+            <div className="download-container">
+                <button className="download-button" onClick={handleDownloadPDF}>Download PDF</button>
+                <div className="download-count">
+                    <span>Downloads: {downloads}</span> {/* Display download count */}
+                </div>
             </div>
-            {canEdit && (
-                <div className="note-actions-note-detail-page">
-                    <button onClick={handleEditToggle} className="download-button">{editMode ? 'Cancel' : 'Edit'}</button>
-                    <button onClick={handleDeleteClick} className="download-button">Delete</button>
-                    
-                </div>
-            )}
-            <SuccessModal visible={showModal} message={modalMessage} />
+            {showModal && <SuccessModal message={modalMessage} />}
         </div>
     );
 };

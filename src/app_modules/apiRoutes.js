@@ -75,4 +75,5 @@ export const API_ROUTES = {
   generateAlternatives: `${API_URL}/generate-alternatives`,
   deleteQuiz: `${API_URL}/api/deleteQuiz`,
   downloadIOS: `${API_URL}/download/ios`, // Add this line
+  incrementDownloadCount: `${API_URL}/notes/increment-download-count`
 }
