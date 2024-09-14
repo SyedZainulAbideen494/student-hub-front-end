@@ -15,8 +15,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 97%;
-  background-color: #f1f1f1; /* Light grey for a subtle look */
+  width: 95%;
+  background-color: #ffffff; /* Light grey for a subtle look */
   border-bottom: 1px solid #e0e0e0; /* Lighter border */
   z-index: 1000; /* Ensure it is above other content */
   padding: 10px;
