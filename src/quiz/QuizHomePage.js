@@ -62,10 +62,11 @@ const QuizHomePage = () => {
         navigate('/quiz/create');
     };
 
-    const handleShareClick = (quiz) => {
-        setSelectedQuiz(quiz);
-        setShowModal(true);
-    };
+// In QuizHomePage
+const handleShareClick = (quiz) => {
+    setSelectedQuiz(quiz);
+    setShowModal(true);
+};
 
     const handleResultsClick = async () => {
         const token = localStorage.getItem('token');

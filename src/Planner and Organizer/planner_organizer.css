@@ -22,7 +22,7 @@
     line-height: 1.2;
 }
 
-/* Calendar Styles */
+/* Calendar Container */
 .calendar-container {
     display: flex;
     justify-content: center;
@@ -30,50 +30,71 @@
     margin: 30px 0;
 }
 
+/* Calendar Styles */
 .react-calendar {
-    border: 4px solid #429CF7; /* Border color */
+    border: 4px solid #4A90E2; /* Updated border color */
     border-radius: 16px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
     background: #ffffff; /* White background for the calendar */
     padding: 30px;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth border and shadow transition */
 }
 
-/* Tile styles */
+.react-calendar:hover {
+    border-color: #357ABD; /* Darker border on hover */
+    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+/* Tile Styles */
 .react-calendar__tile {
     position: relative;
     padding: 12px;
-    transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s, transform 0.3s; /* Added transform for smooth scaling */
     border-radius: 12px;
+    cursor: pointer; /* Pointer cursor for tiles */
 }
 
+/* Active Tile */
 .react-calendar__tile--active {
-    background: #429CF7;
+    background: #4A90E2; /* Updated active tile color */
     color: #ffffff;
     border-radius: 50%;
+    transform: scale(1.05); /* Slightly enlarge active tile */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
+/* Current Tile */
 .react-calendar__tile--now {
-    border: 2px solid #796BD5; /* Border color */
+    border: 2px solid #357ABD; /* Updated border color */
     border-radius: 50%;
 }
 
+/* Tile with Tasks */
 .react-calendar__tile--has-tasks {
-    background: #e0f0ff; /* Light background for tasks */
+    background: #E8F4FD; /* Lighter background for tasks */
     border-radius: 12px;
 }
 
+/* Task Dot */
 .react-calendar__tile--has-tasks::after {
     content: '';
     position: absolute;
     bottom: 8px;
     right: 8px;
-    width: 10px;
-    height: 10px;
+    width: 12px; /* Slightly larger task dot */
+    height: 12px; /* Slightly larger task dot */
     border-radius: 50%;
-    background: #429CF7; /* Task dot color */
+    background: #4A90E2; /* Updated task dot color */
     border: 2px solid #ffffff;
 }
+
+/* Hover Effect on Tiles */
+.react-calendar__tile:hover {
+    background: #F0F4F8; /* Light background on hover */
+    transform: scale(1.02); /* Slightly enlarge tile on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
 
 /* Style for the select element */
 .task-form select {

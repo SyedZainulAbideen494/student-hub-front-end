@@ -5,7 +5,8 @@ import './shareQuizModal.css'; // Import your CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
 
-const ShareQuizModal = ({ quizId, onClose }) => {
+const ShareQuizModal = ({ quiz, onClose }) => {
+    const quizId = quiz?.id; // Safeguard against undefined or null
     const [joinedGroups, setJoinedGroups] = useState([]);
     const [userGroups, setUserGroups] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
