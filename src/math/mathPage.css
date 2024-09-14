@@ -54,7 +54,7 @@
 .chat-ui {
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 600px;
     overflow: hidden;
 }
 
