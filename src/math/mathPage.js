@@ -55,7 +55,10 @@ const MathSolver = ({ query, setQuery, handleCalculate, handleVoiceCommand }) =>
                 </div>
               ))
             ) : (
-              <p className="chat-no-results">Start typing your math query or use the microphone.</p>
+              /* From Uiverse.io by xXJollyHAKERXx */ 
+<div className="spinner">
+    <div className="spinner1"></div>
+</div>
             )}
           </div>
           <div className="chat-input-container">
