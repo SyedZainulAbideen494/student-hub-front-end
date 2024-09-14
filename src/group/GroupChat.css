@@ -10,17 +10,18 @@
   position: relative;
   overflow: hidden; /* Prevent overflow */
 }
-
 .group-header {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 95%;
-  background-color: #ffffff; /* Light grey for a subtle look */
-  border-bottom: 1px solid #e0e0e0; /* Lighter border */
+  left: 50%;
+  transform: translateX(-50%); /* Center the header horizontally */
+  width: calc(100% - 30px); /* Adjust width to account for padding */
+  background-color: #ffffff; /* White background for a clean look */
+  border-bottom: 1px solid #e0e0e0; /* Light border */
   z-index: 1000; /* Ensure it is above other content */
   padding: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 25px; /* 25px border radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,6 +35,7 @@
   text-align: center;
   color: #333; /* Dark grey for better readability */
 }
+
 
 .group-footer {
   width: 100%;
