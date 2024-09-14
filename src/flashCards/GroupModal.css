@@ -147,3 +147,93 @@
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+.Btn {
+    width: 100px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+  }
+  
+  .text {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+  }
+  
+  .svgIcon {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+  }
+  
+
+
+  .button__share__btn__flashcard {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+    cursor: pointer;
+    transition: 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.svgIcon__share__btn__flashcard {
+    width: 12px;
+    transition: 0.3s;
+}
+
+.svgIcon__share__btn__flashcard path {
+    fill: white;
+}
+
+.button__share__btn__flashcard:hover {
+    width: 140px;
+    border-radius: 50px;
+    background-color: rgb(181, 160, 255);
+    align-items: center;
+    transition: 0.3s;
+}
+
+.button__share__btn__flashcard:hover .svgIcon__share__btn__flashcard {
+    transform: translateY(-200%);
+    transition: 0.3s;
+}
+
+.button__share__btn__flashcard::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Shared!";
+    color: white;
+    font-size: 0px;
+    transition: 0.3s;
+}
+
+.button__share__btn__flashcard:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition: 0.3s;
+}
