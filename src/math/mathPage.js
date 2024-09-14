@@ -1,75 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './mathPage.css';
-import FooterNav from '../app_modules/footernav';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import MathLoader from './mathLoader';
-import { FaCalculator, FaMicrophone } from 'react-icons/fa';
-
-const SimpleCalculator = ({ calculate }) => {
-  const [expression, setExpression] = useState('');
-
-  const handleButtonClick = (value) => {
-    const replaceSymbols = {
-      '÷': '/',
-      '×': '*'
-    };
-    const newValue = replaceSymbols[value] || value;
-    setExpression((prev) => prev + newValue);
-  };
-
-  const handleCalculate = () => {
-    try {
-      // Evaluate the expression
-      const result = eval(expression); // Be cautious with eval in production code
-      setExpression(result.toString());
-    } catch (error) {
-      setExpression('Error');
-    }
-  };
-
-  const handleBackspace = () => {
-    setExpression((prev) => prev.slice(0, -1));
-  };
-
-  return (
-    <div className="simple-calculator">
-      <input
-        type="text"
-        value={expression}
-        onChange={(e) => setExpression(e.target.value)}
-        placeholder="0"
-        className="calculator-display"
-      />
-      <div className="calculator-keyboard">
-        {['7', '8', '9', '÷', '4', '5', '6', '×', '1', '2', '3', '-', '.', '0', '=', '+', 'C', '←'].map((key) => (
-          <button
-            key={key}
-            onClick={() => {
-              if (key === '=') {
-                handleCalculate();
-              } else if (key === 'C') {
-                setExpression('');
-              } else if (key === '←') {
-                handleBackspace();
-              } else {
-                handleButtonClick(key);
-              }
-            }}
-            className={`calculator-key ${key === '=' ? 'equals' : ''} ${key === 'C' ? 'clear' : ''} ${key === '←' ? 'backspace' : ''}`}
-          >
-            {key}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-};
+import { FaMicrophone, FaPaperPlane, FaKeyboard, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Math Solver Component
-const MathSolver = ({ query, setQuery, handleCalculate }) => {
+const MathSolver = ({ query, setQuery, handleCalculate, handleVoiceCommand }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showKeyboard, setShowKeyboard] = useState(false);
 
   const performCalculate = async () => {
     setLoading(true);
@@ -85,92 +26,86 @@ const MathSolver = ({ query, setQuery, handleCalculate }) => {
     }
   };
 
+  const handleSymbolClick = (symbol) => {
+    setQuery(prevQuery => prevQuery + symbol);
+    setShowKeyboard(false);
+  };
+
   return (
     <div className="mathsolver-container">
-      <header className="mathsolver-header">
-        <h1 className="mathsolver-title">Math Helper</h1>
-        <p>(Beta Mode)</p>
-        <div className="mathsolver-input-container">
-          <input
-            type="text"
-            className="mathsolver-input"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Enter calculation"
-          />
-          <button className="mathsolver-button" onClick={performCalculate} disabled={loading}>
-            {loading ? 'Calculating...' : 'Calculate'}
-          </button>
-        </div>
-        <div className="mathsolver-keyboard">
-          {['√', '^', 'π', 'e', '(', ')'].map((key) => (
-            <div key={key} className="mathsolver-key" onClick={() => setQuery((prev) => prev + key)}>
-              {key}
-            </div>
-          ))}
-        </div>
-        {loading ? (
-          <MathLoader />
-        ) : (
-          <div className="mathsolver-results">
+      {loading ? (
+        <MathLoader />
+      ) : (
+        <div className="chat-ui">
+          <div className="chat-messages">
             {results.length > 0 ? (
               results.map((result, index) => (
-                <div key={index} className="mathsolver-result">
-                  <h2 className="mathsolver-result-title">{result.title}</h2>
-                  <pre className="mathsolver-result-content">{result.content || 'No content available'}</pre>
-                  {result.images && result.images.length > 0 ? (
-                    result.images.map((src, i) => (
-                      <img key={i} className="mathsolver-result-image" src={src} alt={`result-image-${i}`} />
-                    ))
-                  ) : (
-                    <p className="mathsolver-no-images">No images available</p>
-                  )}
+                <div key={index} className="chat-message">
+                  <div className="chat-bubble">
+                    <h2 className="chat-result-title">{result.title}</h2>
+                    <pre className="chat-result-content">{result.content || 'No content available'}</pre>
+                    {result.images && result.images.length > 0 ? (
+                      result.images.map((src, i) => (
+                        <img key={i} className="chat-result-image" src={src} alt={`result-image-${i}`} />
+                      ))
+                    ) : (
+                      <p className="chat-no-images">No images available</p>
+                    )}
+                  </div>
                 </div>
               ))
             ) : (
-              <p className="mathsolver-no-results">No results to display</p>
+              <p className="chat-no-results">Start typing your math query or use the microphone.</p>
             )}
           </div>
-        )}
-        <FooterNav />
-      </header>
+          <div className="chat-input-container">
+            <div className="input-group">
+              <input
+                type="text"
+                className="chat-input"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Enter calculation"
+              />
+              <button className="chat-mic-btn" onClick={handleVoiceCommand}>
+                <FaMicrophone />
+              </button>
+              <button className="chat-keyboard-btn" onClick={() => setShowKeyboard(!showKeyboard)}>
+                <FaKeyboard />
+              </button>
+              {showKeyboard && (
+                <div className="keyboard-modal">
+                  <button className="keyboard-btn" onClick={() => handleSymbolClick('√')}>√</button>
+                  <button className="keyboard-btn" onClick={() => handleSymbolClick('^')}>^</button>
+                  <button className="keyboard-btn" onClick={() => handleSymbolClick('π')}>π</button>
+                  <button className="keyboard-btn" onClick={() => handleSymbolClick('e')}>e</button>
+                  <button className="keyboard-btn" onClick={() => handleSymbolClick('(')}>(</button>
+                  <button className="keyboard-btn" onClick={() => handleSymbolClick(')')}>)</button>
+                </div>
+              )}
+            </div>
+            <button className="chat-send-btn" onClick={performCalculate}>
+              <FaArrowRight />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-// Main Component with Toggle and Voice Command
+// Main Component with Voice Command
 const MathPage = () => {
-  const [showSolver, setShowSolver] = useState(true);
   const [query, setQuery] = useState('');
-  const [expression, setExpression] = useState('');
   const [isListening, setIsListening] = useState(false);
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const toggleMode = () => {
-    setShowSolver((prev) => !prev);
-  };
-
-  const calculate = (expression) => {
-    try {
-      const result = eval(expression); // Dangerous in real apps, consider using a safer eval alternative
-      return result;
-    } catch (error) {
-      return 'Error';
-    }
-  };
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleCalculate = async () => {
-    setLoading(true);
     try {
       const response = await axios.post(API_ROUTES.solveMath, { query });
       console.log('API Response:', response.data);
-      setResults(response.data.results);
     } catch (error) {
       console.error('Calculation Error:', error);
-      setResults([{ title: 'Error', content: 'Unable to calculate' }]);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -180,13 +115,8 @@ const MathPage = () => {
       recognition.onstart = () => setIsListening(true);
       recognition.onresult = (event) => {
         const command = event.results[0][0].transcript.toLowerCase();
-        if (showSolver) {
-          setQuery(command);
-          handleCalculate();
-        } else {
-          setExpression(command);
-          calculate(command);
-        }
+        setQuery(command);
+        handleCalculate();
         setIsListening(false);
       };
       recognition.onerror = () => setIsListening(false);
@@ -199,22 +129,12 @@ const MathPage = () => {
   return (
     <div className="math-page">
       <div className="math-page-header">
-        <button onClick={toggleMode} className="switch-mode-btn-math-page">
-          {showSolver ? 'Switch to Calculator' : 'Switch to Math Solver'}
-          <FaCalculator className="icon" style={{ color: 'white' }} />
+        <button className="back-btn" onClick={() => navigate('/')}>
+          <FaArrowLeft />
         </button>
-        {showSolver && (
-          <button onClick={handleVoiceCommand} className="switch-mode-btn-math-page">
-            {isListening ? 'Listening...' : ''}
-            <FaMicrophone className="icon" style={{ color: 'white' }} />
-          </button>
-        )}
+        <h3 className="math-page-heading">Math Solver</h3>
       </div>
-      {showSolver ? (
-        <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} />
-      ) : (
-        <SimpleCalculator calculate={calculate} />
-      )}
+      <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
     </div>
   );
 };

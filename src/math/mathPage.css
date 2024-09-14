@@ -1,276 +1,274 @@
-/* General Styles */
-.mathsolver-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: linear-gradient(to right, #e3eafc, #f0f4f8);
-    color: #333;
-    font-family: 'Arial', sans-serif;
-    padding: 20px;
-    box-sizing: border-box;
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.mathsolver-header {
-    padding: 20px;
-    text-align: center;
-    background-color: #ffffff;
-    border-bottom: 2px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 15px 15px 0 0;
-}
-
-.mathsolver-title {
-    margin: 0;
-    font-size: 2.5rem;
-    color: #4a90e2;
-    font-weight: bold;
-}
-
-.mathsolver-input-container {
-    margin: 20px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.mathsolver-input {
-    width: 100%;
-    max-width: 500px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 1.4rem;
-    color: #333;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    box-sizing: border-box;
-}
-
-.mathsolver-input:focus {
-    border-color: #4a90e2;
-    outline: none;
-    box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
-}
-
-.mathsolver-button {
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-    background-color: #4a90e2;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.mathsolver-button:hover {
-    background-color: #357abd;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.mathsolver-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-}
-
-.mathsolver-results {
-    padding: 20px;
-    overflow: auto;
-}
-
-.mathsolver-result {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 20px;
-    transition: box-shadow 0.3s;
-    box-sizing: border-box;
-}
-
-.mathsolver-result:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.mathsolver-result-title {
-    margin: 0;
-    font-size: 1.8rem;
-    color: #4a90e2;
-    font-weight: bold;
-}
-
-.mathsolver-result-content {
-    white-space: pre-wrap;
-    font-size: 1.2rem;
-    color: #333;
-    margin: 10px 0;
-    word-wrap: break-word;
-    max-width: 100%; /* Prevents content from exceeding the viewport */
-}
-
-.mathsolver-result-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px 0;
-}
-
-.mathsolver-no-images {
-    color: #888;
-    font-style: italic;
-}
-
-.mathsolver-no-results {
-    text-align: center;
-    color: #888;
-}
-
-/* Keyboard Styles */
-.mathsolver-keyboard {
-    margin: 20px 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-.mathsolver-key {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    color: #333;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.mathsolver-key:hover {
-    background-color: #eee;
-    transform: scale(1.05);
-}
-
-.mathsolver-key:active {
-    background-color: #ddd;
-}
-
-/* Simple Calculator Keyboard Styles */
-.calculator-keyboard {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.calculator-keyboard button {
-    padding: 20px;
-    border: none;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    color: #333;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.calculator-keyboard button:hover {
-    background-color: #eee;
-    transform: scale(1.05);
-}
-
-.calculator-keyboard button:active {
-    background-color: #ddd;
-}
-
-.calculator-display {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    color: #333;
-    text-align: right;
-    box-sizing: border-box;
-    background-color: #ffffff;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .mathsolver-input {
-        width: calc(100% - 40px);
-    }
-
-    .mathsolver-button {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .mathsolver-result {
-        padding: 15px;
-    }
-
-    .mathsolver-result-title {
-        font-size: 1.5rem;
-    }
-
-    .mathsolver-result-content {
-        font-size: 1rem;
-    }
-}
-
-/* Math Page Styles */
+/* Math Page Container */
 .math-page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
+    background: #f0f0f5; /* Soft light gray background */
     padding: 20px;
-    background: linear-gradient(to right, #e3eafc, #f0f4f8);
+    box-sizing: border-box;
 }
 
+/* Math Page Header */
 .math-page-header {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
     align-items: center;
+    font-size: 18px; /* Increased font size for better visibility */
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center; /* Center the heading */
 }
 
-.switch-mode-btn-math-page {
-    background-color: #4a90e2;
-    color: white;
+.back-btn {
+    background: transparent;
     border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 12px;
+    color: #007aff; /* Blue color for the back button */
+    font-size: 24px;
     cursor: pointer;
-    margin: 10px;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: color 0.3s, transform 0.2s;
+    margin-right: 15px; /* Space between button and heading */
 }
 
-.switch-mode-btn-math-page:hover {
-    background-color: #357abd;
-    transform: scale(1.05);
+.back-btn:hover {
+    color: #0051a8; /* Darker blue */
+    transform: scale(1.1);
 }
 
-.switch-mode-btn-math-page:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+.back-btn:active {
+    color: #003d7a; /* Even darker blue */
 }
 
-/* Button Icon Styles */
-.math-page .icon {
-    margin-left: 8px;
-    vertical-align: middle;
+/* Math Solver Container */
+.mathsolver-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Chat UI */
+.chat-ui {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    overflow: hidden;
+}
+
+/* Chat Messages */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    background: #f9f9f9; /* Light gray background */
+}
+
+.chat-message {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.chat-bubble {
+    max-width: 85%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    color: #333; /* Darker text color */
+    position: relative;
+    background: #ffffff; /* White background with subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+}
+
+.chat-result-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #007aff; /* Primary blue */
+}
+
+.chat-result-content {
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.chat-result-image {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.chat-no-results {
+    font-size: 14px;
+    color: #999; /* Light gray color */
+    text-align: center;
+}
+
+/* Chat Input Container */
+.chat-input-container {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-top: 1px solid #e0e0e0; /* Light gray border */
+    background: #ffffff;
+    position: relative;
+}
+
+/* Input Group */
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+}
+
+.chat-mic-btn, .chat-keyboard-btn {
+    background: transparent;
+    color: #007aff;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     font-size: 20px;
-    transition: color 0.3s;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    position: absolute;
+    right: 20px; /* Adjust this based on your design */
 }
 
-.switch-mode-btn-math-page:hover .icon {
+.chat-mic-btn {
+    right: 40px; /* Adjust as needed */
+}
+
+.chat-keyboard-btn {
+    right: 10px; /* Adjust as needed */
+}
+
+.chat-mic-btn:hover, .chat-keyboard-btn:hover {
+    background: #007aff;
     color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Keyboard Modal */
+.keyboard-modal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    bottom: 60px; /* Adjust to fit within the input container */
+    width: calc(100% - 20px);
+    left: 10px;
+}
+
+/* Keyboard Buttons */
+.keyboard-btn {
+    background: transparent;
+    color: #007aff;
+    border: 1px solid #007aff;
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.keyboard-btn:hover {
+    background: #007aff;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.keyboard-btn:active {
+    background: #0051a8;
+    color: #ffffff;
+}
+/* Send Button */
+.chat-send-btn {
+    background: linear-gradient(145deg, #007aff, #0051a8); /* Gradient background */
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 40px; /* Smaller width */
+    height: 40px; /* Matching height with width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px; /* Slightly smaller icon */
+    margin-left: 6px; /* Adjusted spacing */
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    position: relative; /* For ripple effect positioning */
+}
+
+/* Send Button Hover State */
+.chat-send-btn:hover {
+    background: linear-gradient(145deg, #0051a8, #003d7a); /* Darker gradient on hover */
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Send Button Active State */
+.chat-send-btn:active {
+    background: linear-gradient(145deg, #003d7a, #002d5a); /* Darkest gradient on active */
+    transform: scale(0.95); /* Slightly shrinks when pressed */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow on active */
+}
+
+/* Ripple Effect */
+.chat-send-btn:focus::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    width: 300%;
+    height: 300%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.chat-send-btn:focus {
+    outline: none;
+    /* Activate ripple effect */
+    animation: ripple 0.6s;
+}
+
+/* Ripple Animation */
+@keyframes ripple {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
