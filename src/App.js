@@ -34,7 +34,7 @@ import GroupDetailsPage from "./group/GroupDetails";
 import CommentsPage from "./soical feed/commentsPage";
 import UsersProfile from "./user profile/userProfile";
 import MathSolver from "./math/mathPage";
-import ScienceQA from "./science helper/scienceHelper";
+import ScienceHelper from "./science helper/scienceHelper";
 import SearchPage from "./search/searchPage";
 import MathPage from "./math/mathPage";
 import DownloadPage from "./website/website";
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
   {path: '/comments/:id', element: <CommentsPage/>},
   {path: '/profile/:id', element: <UsersProfile/>},
   {path: '/math/solver', element: <MathPage/>},
-  {path: '/science/helper', element: <ScienceQA/>},
+  {path: '/science/helper', element: <ScienceHelper/>},
   {path: '/search', element: <SearchPage/>},
   {path: '/settings', element: <SettingsPage/>},
   {path: '/commerce/helper', element: <CommerceHelper/>},

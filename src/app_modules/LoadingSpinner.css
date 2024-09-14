@@ -1,22 +1,72 @@
-/* src/components/LoadingSpinner.css */
-
-.loading-spinner {
+.newtons-cradle {
+    --uib-size: 50px;
+    --uib-speed: 1.2s;
+    --uib-color: #474554;
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100px;
-}
-
-.spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    border-left-color: #007bff;
+    justify-content: center;
+    width: var(--uib-size);
+    height: var(--uib-size);
+   }
+   
+   .newtons-cradle__dot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 25%;
+    transform-origin: center top;
+   }
+   
+   .newtons-cradle__dot::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 25%;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
+    background-color: var(--uib-color);
+   }
+   
+   .newtons-cradle__dot:first-child {
+    animation: swing var(--uib-speed) linear infinite;
+   }
+   
+   .newtons-cradle__dot:last-child {
+    animation: swing2 var(--uib-speed) linear infinite;
+   }
+   
+   @keyframes swing {
+    0% {
+     transform: rotate(0deg);
+     animation-timing-function: ease-out;
+    }
+   
+    25% {
+     transform: rotate(70deg);
+     animation-timing-function: ease-in;
+    }
+   
+    50% {
+     transform: rotate(0deg);
+     animation-timing-function: linear;
+    }
+   }
+   
+   @keyframes swing2 {
+    0% {
+     transform: rotate(0deg);
+     animation-timing-function: linear;
+    }
+   
+    50% {
+     transform: rotate(0deg);
+     animation-timing-function: ease-out;
+    }
+   
+    75% {
+     transform: rotate(-70deg);
+     animation-timing-function: ease-in;
+    }
+   }
+   
