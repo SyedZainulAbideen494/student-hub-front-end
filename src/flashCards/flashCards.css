@@ -257,3 +257,80 @@
         opacity: 1;
     }
 }
+
+
+
+
+
+
+
+
+.check__flashcard__public {
+    cursor: pointer;
+    position: relative;
+    margin: auto;
+    width: 18px;
+    margin-right: 10px;
+    height: 18px;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  .check__flashcard__public:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(34, 50, 84, 0.03);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .check__flashcard__public svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #c8ccd4;
+    stroke-width: 1.5;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.2s ease;
+  }
+  
+  .check__flashcard__public svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+  }
+  
+  .check__flashcard__public svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+  }
+  
+  .check__flashcard__public:hover:before {
+    opacity: 1;
+  }
+  
+  .check__flashcard__public:hover svg {
+    stroke: #4285f4;
+  }
+  
+  #isPublic:checked + .check__terms__box svg {
+    stroke: #4285f4;
+  }
+  
+  #isPublic:checked + .check__terms__box svg path {
+    stroke-dashoffset: 60;
+    transition: all 0.3s linear;
+  }
+  
+  #isPublic:checked + .check__terms__box svg polyline {
+    stroke-dashoffset: 42;
+    transition: all 0.2s linear;
+    transition-delay: 0.15s;
+  }
+  

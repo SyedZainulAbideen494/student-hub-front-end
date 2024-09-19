@@ -275,9 +275,12 @@ const NoteDetailPage = () => {
                     <button className="download-button" onClick={handleEditToggle}>
                         Edit Note
                     </button>
-                    <button className="download-button" onClick={handleDeleteClick}>
-                        Delete Note
-                    </button>
+                    <button className="bin__delete__flashacrd__btn">🗑</button>
+<div className="div__delete__flashacrd__btn" onClick={handleDeleteClick}>
+  <small>
+    <i></i>
+  </small>
+</div>
                 </div>
             )}
             <div className="download-container">
