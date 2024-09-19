@@ -123,7 +123,7 @@ const SignUp = () => {
         }
     };
 
-        // Check token and redirect
+  {/**     // Check token and redirect
 const checkTokenAndRedirect = async (token, navigate) => {
     try {
       const response = await axios.post(API_ROUTES.sessionCheck, { token });
@@ -142,6 +142,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
     const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
     checkTokenAndRedirect(token, nav);
   }, [nav]);
+   */} 
 
     const handleSuggestionClick = (suggestion) => {
         setFormData((prev) => ({ ...prev, unique_id: suggestion }));
@@ -259,15 +260,24 @@ const checkTokenAndRedirect = async (token, navigate) => {
                 {step < 3 && <button type="button" onClick={handleNextStep} className="signup-sign-up-page-button">Next</button>}
                 {step === 3 && (
                     <div>
-                        <div className="signup-sign-up-page-checkbox-container">
+                        <div className="signup-sign-up-page-checkbox-container" style={{marginTop: '20px'}}>
+                            <div>
                             <input
-                                type="checkbox"
-                                id="terms"
-                                checked={termsAccepted}
-                                onChange={handleTermsChange}
-                                required
-                                className="signup-sign-up-page-checkbox"
-                            />
+  type="checkbox" 
+  id="terms" 
+  checked={termsAccepted}
+  onChange={handleTermsChange}
+  required
+  style={{display: 'none'}}
+/>
+<label htmlFor="terms" className="check__terms__box">
+  <svg width="18px" height="18px" viewBox="0 0 18 18">
+    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+    <polyline points="1 9 7 14 15 4"></polyline>
+  </svg>
+</label>
+
+</div>
                             <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
                                 I agree to the <Link to='/terms-and-conditions' className="signup-sign-up-page-link">Terms and Conditions</Link>
                             </label>
