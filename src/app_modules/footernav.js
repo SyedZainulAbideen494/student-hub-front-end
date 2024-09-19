@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle } from 'react-icons/fa';
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; 
@@ -15,38 +15,6 @@ const FooterNav = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
-
-
-    useEffect(() => {
-        const validateToken = async () => {
-          const token = localStorage.getItem('token');
-      
-          // If no token, redirect to login
-          if (!token) {
-            navigate('/sign-up');
-            return;
-          }
-      
-          try {
-            const response = await axios.post(API_ROUTES.userSessionAut, { token });
-            if (!response.data.valid) {
-              navigate('/sign-up');
-            }
-          } catch (error) {
-            console.error('Error during token validation:', error);
-            navigate('/sign-up');
-          }
-        };
-      
-        // Delay the validation by 5 seconds
-        const timeoutId = setTimeout(() => {
-          validateToken();
-        }, 500);
-      
-        // Cleanup timeout on component unmount
-        return () => clearTimeout(timeoutId);
-      
-      }, [navigate]);
 
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -83,7 +51,8 @@ const FooterNav = () => {
     const hasProfileIssues = profile && (!profile.user_name || !profile.bio || !profile.location);
 
     return (
-        <div className={`footer-nav ${isPopupVisible ? 'popup-open' : ''}`}>
+        <div className="footer-nav">
+            {/* Primary Buttons */}
             <Link to='/' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>
                     <HiBookOpen className="icon-footer-nav" />
@@ -107,6 +76,7 @@ const FooterNav = () => {
                 <span className="btn-label">More{hasProfileIssues && <span className="issue-icon">!</span>}</span>
             </button>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
+                {/* Popup Buttons */}
                 <Link to='/search' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/search' ? 'active' : ''}`}>
                         <FaSearch className="icon-footer-nav" />
@@ -159,6 +129,7 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/profile' ? 'active' : ''}`}>
                         <FaUser className="icon-footer-nav" />
                         <span className="btn-label">Profile{hasProfileIssues && <span className="issue-icon">!</span>}</span>
+                         {/* Red icon for profile issues */}
                     </button>
                 </Link>
                 <Link to='/subscription' style={{ textDecoration: 'none' }}>
