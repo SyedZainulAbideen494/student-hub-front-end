@@ -165,6 +165,7 @@ const Pomodoro = () => {
     return (
         <div className="pomodoro-container">
             <h2>{isWork ? 'Study Time' : 'Break Time'}</h2>
+            
             <div className="timer">
                 {formatTime(time)}
             </div>

@@ -432,23 +432,105 @@ const handleRemoveImage = (index) => {
                 <button type="button"><FaSearch /></button>
             </div>
             <div className="flashcard-list-flashcards-page">
-                {filteredNotes.map(note => (
-                    <div key={note.id} className="flashcard-item-flashcards-page">
-                        <h2>{note.title}</h2>
-                        <p>{formatDate(note.created_at)}</p>
-                        {note.images && safeParseJSON(note.images).map((image, index) => (
-                            <img
-                                key={index}
-                                src={`/uploads/${image}`}
-                                alt={`Flashcard image ${index + 1}`}
-                            />
-                        ))}
-                        <div className="flashcard-actions-flashcards-page">
-                            <button onClick={() => handleViewClick(note.id)}><FaEye /> View</button>
-                            <button onClick={() => handleShareClick(note.id)}><FaShare /> Share</button>
-                        </div>
-                    </div>
-                ))}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+  {filteredNotes.map(note => (
+  <div
+  key={note.id}
+  style={{
+    cursor: 'pointer',
+    transition: 'all 0.5s',
+    transform: 'translateY(0)',
+    width: '18rem', // Width remains fixed
+    backgroundColor: '#F9FAFB', // Equivalent to bg-neutral-50 in Tailwind
+    borderRadius: '0.5rem', // Equivalent to rounded-lg in Tailwind
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Equivalent to shadow-xl in Tailwind
+    display: 'flex',
+    flexDirection: 'column', // Ensures content and buttons stack vertically
+    alignItems: 'center',
+    justifyContent: 'space-between', // Pushes content to the top and buttons to the bottom
+    gap: '1rem', // Spacing between elements inside the card
+    padding: '1rem', // Equivalent to px-4 in Tailwind
+    margin: '1rem 0', // Adds vertical spacing between cards
+    transform: 'translateY(0)',
+    minHeight: '8rem', // Minimum height for the card
+  }}
+  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-0.5rem)'}
+  onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+>
+  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
+    <svg
+      style={{
+        stroke: '#A78BFA', // Equivalent to stroke-purple-300 in Tailwind
+        flexShrink: 0,
+        borderRadius: '50%',
+      }}
+      height="50"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 100 100"
+      width="50"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M17.9,60.7A14.3,14.3,0,0,0,32.2,75H64.3a17.9,17.9,0,0,0,0-35.7h-.4a17.8,17.8,0,0,0-35.3,3.6,17.2,17.2,0,0,0,.4,3.9A14.3,14.3,0,0,0,17.9,60.7Z"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="8"
+      />
+    </svg>
+    <div style={{ flexGrow: 1, marginLeft: '1rem' }}>
+      <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{note.title}</span>
+      <p style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+        {note.description}
+      </p>
+    </div>
+  </div>
+  <div style={{ display: 'flex', flexDirection: 'row', gap: '0.5rem', marginTop: 'auto' }}>
+    <button
+      onClick={() => handleViewClick(note.id)}
+      style={{
+        backgroundColor: '#A78BFA', // Matches card theme color
+        color: '#FFFFFF', // White text
+        border: 'none',
+        borderRadius: '0.25rem', // Rounded corners
+        padding: '0.5rem 1rem', // Padding
+        fontSize: '1rem', // Font size
+        fontWeight: '500', // Font weight
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.25rem',
+        transition: 'background-color 0.3s ease',
+      }}
+    >
+      <FaEye /> View
+    </button>
+    <button
+      onClick={() => handleShareClick(note.id)}
+      style={{
+        backgroundColor: '#A78BFA', // Matches card theme color
+        color: '#FFFFFF', // White text
+        border: 'none',
+        borderRadius: '0.25rem', // Rounded corners
+        padding: '0.5rem 1rem', // Padding
+        fontSize: '1rem', // Font size
+        fontWeight: '500', // Font weight
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.25rem',
+        transition: 'background-color 0.3s ease',
+      }}
+    >
+      <FaShare /> Share
+    </button>
+  </div>
+</div>
+
+  ))}
+</div>
+
+
             </div>
             <FooterNav />
             {showModal && (
