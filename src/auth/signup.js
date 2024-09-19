@@ -123,7 +123,7 @@ const SignUp = () => {
         }
     };
 
-  {/**     // Check token and redirect
+    // Check token and redirect
 const checkTokenAndRedirect = async (token, navigate) => {
     try {
       const response = await axios.post(API_ROUTES.sessionCheck, { token });
@@ -142,7 +142,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
     const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
     checkTokenAndRedirect(token, nav);
   }, [nav]);
-   */} 
+
 
     const handleSuggestionClick = (suggestion) => {
         setFormData((prev) => ({ ...prev, unique_id: suggestion }));
