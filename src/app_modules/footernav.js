@@ -16,6 +16,38 @@ const FooterNav = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+
+    useEffect(() => {
+        const validateToken = async () => {
+          const token = localStorage.getItem('token');
+      
+          // If no token, redirect to login
+          if (!token) {
+            navigate('/sign-up');
+            return;
+          }
+      
+          try {
+            const response = await axios.post(API_ROUTES.userSessionAut, { token });
+            if (!response.data.valid) {
+              navigate('/sign-up');
+            }
+          } catch (error) {
+            console.error('Error during token validation:', error);
+            navigate('/sign-up');
+          }
+        };
+      
+        // Delay the validation by 5 seconds
+        const timeoutId = setTimeout(() => {
+          validateToken();
+        }, 500);
+      
+        // Cleanup timeout on component unmount
+        return () => clearTimeout(timeoutId);
+      
+      }, [navigate]);
+
     useEffect(() => {
         const fetchProfileData = async () => {
             try {
