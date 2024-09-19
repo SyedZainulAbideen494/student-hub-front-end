@@ -56,8 +56,11 @@ const MathSolver = ({ query, setQuery, handleCalculate, handleVoiceCommand }) =>
               ))
             ) : (
               /* From Uiverse.io by xXJollyHAKERXx */ 
-<div className="spinner">
-    <div className="spinner1"></div>
+<div className="container__math__solver__animated">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
             )}
           </div>

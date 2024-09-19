@@ -274,28 +274,64 @@
 }
 
 
-/* From Uiverse.io by xXJollyHAKERXx */ 
-.spinner {
-    background-image: linear-gradient(rgb(186, 66, 255) 35%,rgb(0, 225, 255));
-    width: 100px;
-    height: 100px;
-    animation: spinning82341 1.7s linear infinite;
-    text-align: center;
-    border-radius: 50px;
-    filter: blur(1px);
-    box-shadow: 0px -5px 20px 0px rgb(186, 66, 255), 0px 5px 20px 0px rgb(0, 225, 255);
+
+.container__math__solver__animated {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    height: 96px;
+    width: 96px;
+    animation: rotate_3922 1.2s linear infinite;
+    background-color: #9b59b6;
+    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
   }
   
-  .spinner1 {
-    background-color: rgb(36, 36, 36);
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+  .container__math__solver__animated span {
+    position: absolute;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: #9b59b6;
+    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+  }
+  
+  .container__math__solver__animated span:nth-of-type(1) {
+    filter: blur(5px);
+  }
+  
+  .container__math__solver__animated span:nth-of-type(2) {
     filter: blur(10px);
   }
   
-  @keyframes spinning82341 {
+  .container__math__solver__animated span:nth-of-type(3) {
+    filter: blur(25px);
+  }
+  
+  .container__math__solver__animated span:nth-of-type(4) {
+    filter: blur(50px);
+  }
+  
+  .container__math__solver__animated::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: #fff;
+    border: solid 5px #ffffff;
+    border-radius: 50%;
+  }
+  
+  @keyframes rotate_3922 {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  
     to {
-      transform: rotate(360deg);
+      transform: translate(-50%, -50%) rotate(360deg);
     }
   }
+  
+
