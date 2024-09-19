@@ -168,7 +168,8 @@
     min-width: 320px; /* Ensures the card has a minimum width */
     max-width: 320px; /* Maintains a maximum width */
     border-radius: 1rem;
-    background-color: rgba(31, 41, 55, 1);
+    /* Remove the background color */
+    background-color: transparent; /* Or set to a different color if needed */
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.5s ease-in-out;
@@ -228,7 +229,7 @@
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 1);
+    color: rgb(0, 0, 0);
 }
 
 .function__user__profile__guest {
