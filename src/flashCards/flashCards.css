@@ -328,7 +328,7 @@
     transition-delay: 0.15s;
   }
 
-  
+
 
   .image-preview__flashcard__add__images {
     margin-top: 1rem;
@@ -378,3 +378,65 @@
     background: rgba(255, 255, 255, 1);
     color: #c00;
 }
+
+
+/* Share Button Styles */
+.share__btn__flashcard__card {
+    font-family: inherit;
+    font-size: 14px; /* Smaller font size */
+    background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+    color: white;
+    padding: 0.6em 1em; /* Smaller padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 20px; /* Slightly smaller border radius */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    transition: all 0.3s;
+  }
+  
+  .share__btn__flashcard__card:hover {
+    transform: translateY(-2px); /* Smaller hover effect */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .share__btn__flashcard__card:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .share__btn__flashcard__card span {
+    display: block;
+    margin-left: 0.4em;
+    transition: all 0.3s;
+  }
+  
+  .share__btn__flashcard__card svg {
+    width: 20px; /* Smaller icon size */
+    height: 20px;
+    fill: white;
+    transition: all 0.3s;
+  }
+  
+  .share__btn__flashcard__card .svg-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Smaller wrapper size */
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-right: 0.5em;
+    transition: all 0.3s;
+  }
+  
+  .share__btn__flashcard__card:hover .svg-wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .share__btn__flashcard__card:hover svg {
+    transform: rotate(45deg);
+  }
+  
+  
