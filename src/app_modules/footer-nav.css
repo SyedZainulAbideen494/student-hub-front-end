@@ -32,7 +32,7 @@
     text-align: center;
     cursor: pointer;
     padding: 5px;
-    font-size: 12px; /* Smaller font size */
+    font-size: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +46,7 @@
 }
 
 .nav-btn-footer-nav .icon-footer-nav {
-    font-size: 1.2rem; /* Smaller icon size */
+    font-size: 1.2rem;
     transition: transform 0.3s ease;
 }
 
@@ -55,12 +55,12 @@
 }
 
 .nav-btn-footer-nav .btn-label {
-    font-size: 0.7rem; /* Smaller text for button label */
+    font-size: 0.7rem;
 }
 
 .issue-icon {
     color: red;
-    font-size: 0.6rem; /* Smaller size for issue icon */
+    font-size: 0.6rem;
     margin-left: 4px;
     animation: blink 1.5s infinite;
 }
@@ -77,26 +77,44 @@
 .popup-menu-footer-nav {
     display: none;
     position: absolute;
-    bottom: 60px;
-    width: 100%;
+    bottom: -100px;
+    width: calc(100% - 40px);
     background-color: rgba(18, 18, 18, 0.95);
     border-radius: 20px;
-    padding: 15px; /* Reduced padding for smaller space */
+    padding: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
     flex-direction: column;
     align-items: center;
-    transition: transform 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    opacity: 0;
 }
 
 .popup-menu-footer-nav.show-footer-nav {
     display: flex;
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+.popup-menu-footer-nav.show-footer-nav .nav-btn-footer-nav {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .close-btn-footer-nav {
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.2rem; /* Smaller close button */
+    font-size: 1.2rem;
     cursor: pointer;
     position: absolute;
     top: 10px;
