@@ -379,13 +379,22 @@ const FlashcardsPage = () => {
 };
 
 const quillModules = {
-    toolbar: [
+    toolbar: {
+      container: [
         [{ 'header': '1' }, { 'header': '2' }],
         ['bold', 'italic', 'underline'],
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
         [{ 'align': [] }],
-        ['clean']
-    ],
-};
+        ['clean'],
+        [{ 'background': [] }], // Add background color option
+      ],
+      handlers: {
+        'background': function(value) {
+          const quill = this.quill;
+          quill.format('background', value);
+        }
+      }
+    }
+  };
 
 export default FlashcardsPage;
