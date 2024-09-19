@@ -476,3 +476,46 @@
 .text--4__planner__data {
     color: rgba(220,91,183,1);
 }
+
+
+/* Enhanced Styles for Button */
+.Btn__edit__task__planner {
+    position: relative;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    border: none;
+    padding: 0px 15px;
+    background: linear-gradient(135deg, #6a0f9f, #9b5de5);
+    color: white;
+    font-weight: 100;
+    font-size: 14px;
+    margin-right: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.svg__edit__task__planner {
+    width: 16px;
+    position: absolute;
+    right: 10px;
+    fill: white;
+    transition: transform 0.3s, right 0.3s;
+}
+
+.Btn__edit__task__planner:hover {
+    color: rgba(255, 255, 255, 0);
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+
+.Btn__edit__task__planner:hover .svg__edit__task__planner {
+    transform: translateX(-5px);
+    right: 20px;
+}
+
+.Btn__edit__task__planner:active {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+}
