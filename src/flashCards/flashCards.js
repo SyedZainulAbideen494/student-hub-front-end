@@ -310,12 +310,39 @@ const FlashcardsPage = () => {
                 </div>
                 <div className="form-group-flashcards-page">
                     <label htmlFor="images">Images:</label>
-                    <input
-                        type="file"
-                        id="images"
-                        onChange={handleFileChange}
-                        multiple
-                    />
+<div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
+  <div className="md:flex">
+    <div className="w-full p-3">
+      <div
+        className="relative h-48 rounded-lg border-2 border-blue-500 bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer"
+      >
+        <div className="absolute flex flex-col items-center">
+          <img
+            alt="File Icon"
+            className="mb-3"
+            src="https://img.icons8.com/dusk/64/000000/file.png"
+          />
+          <span className="block text-gray-500 font-semibold">
+            Drag &amp; drop your files here
+          </span>
+          <span className="block text-gray-400 font-normal mt-1">
+            or click to upload
+          </span>
+        </div>
+
+        <input
+          name="file-upload"
+          className="absolute inset-0 opacity-0 cursor-pointer"
+          type="file"
+          id="images"
+          onChange={handleFileChange}
+          multiple
+        />
+      </div>
+    </div>
+  </div>
+  </div>
+
                 </div>
                 <div className="form-group-flashcards-page">
   <label htmlFor="isPublic">Public:</label>
@@ -387,27 +414,27 @@ const FlashcardsPage = () => {
     );
 };
 const quillModules = {
-    toolbar: {
-      container: [
-        [{ 'header': '1' }, { 'header': '2' }],
-        ['bold', 'italic', 'underline'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'align': [] }],
-        ['clean'],
-        [{ 'color': [] }, { 'background': [] }] // Add font color and background color
-      ],
-      handlers: {
-        'background': function(value) {
-          const quill = this.quill;
-          quill.format('background', value);
-        },
-        'color': function(value) { // Handler for font color
-          const quill = this.quill;
-          quill.format('color', value);
-        }
+  toolbar: {
+    container: [
+      [{ 'header': '1' }, { 'header': '2' }],
+      ['bold', 'italic', 'underline'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'align': [] }],
+      ['clean'],
+      [{ 'color': [] }, { 'background': [] }] // Add font color and background color
+    ],
+    handlers: {
+      'background': function(value) {
+        const quill = this.quill;
+        quill.format('background', value);
+      },
+      'color': function(value) { // Handler for font color
+        const quill = this.quill;
+        quill.format('color', value);
       }
     }
-  };
-  
+  }
+};
+
 
 export default FlashcardsPage

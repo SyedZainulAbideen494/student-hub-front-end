@@ -272,21 +272,22 @@ const quillModules = {
                 <div className="note-content-note-detail-page">
                     <h2>{note.description}</h2>
                     <div dangerouslySetInnerHTML={{ __html: note.headings }} />
+                    
+{images.length > 0 && (
+                        <div className="image-gallery">
+                            {images.map((img, index) => (
+                                <img 
+                                    key={index}
+                                    src={`${API_ROUTES.displayImg}/${img}`} 
+                                    alt={`Note image ${index + 1}`}
+                                    className="image-item"
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
 
-            {images.length > 0 && (
-                <div className="note-images">
-                    {images.map((image, index) => (
-                        <img
-                            key={index}
-                            src={`${API_ROUTES.getNoteImage}/${image.id}`}
-                            alt={`Note Image ${index + 1}`}
-                            className="note-image"
-                        />
-                    ))}
-                </div>
-            )}
 
             {canEdit && !editMode && (
                 <div className="button-container-note-detail-page">

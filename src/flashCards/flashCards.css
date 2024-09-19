@@ -327,3 +327,10 @@
     transition: all 0.2s linear;
     transition-delay: 0.15s;
   }
+
+  .ql-sketch::before {
+    content: '✏️'; /* You can replace this with an icon or any symbol for sketching */
+    font-size: 16px;
+    display: inline-block;
+  }
+  
