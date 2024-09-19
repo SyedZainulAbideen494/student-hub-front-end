@@ -5,6 +5,7 @@ import { FaThumbsUp, FaComment, FaUserPlus, FaUserMinus } from 'react-icons/fa';
 import './userProfile.css';
 import FooterNav from '../app_modules/footernav';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import Modal from './Modal'; // Create a Modal component for showing user lists
 
 const UserProfile = () => {
   const { id } = useParams();
@@ -16,6 +17,10 @@ const UserProfile = () => {
   const [quizzes, setQuizzes] = useState([]);
   const [eduscribes, setEduscribes] = useState([]);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [followers, setFollowers] = useState([]);
+  const [following, setFollowing] = useState([]);
+  const [showFollowersModal, setShowFollowersModal] = useState(false);
+  const [showFollowingModal, setShowFollowingModal] = useState(false);
   const token = localStorage.getItem('token');
 
   useEffect(() => {
@@ -28,7 +33,7 @@ const UserProfile = () => {
         // Check if the current user is following this profile
         if (token) {
           const response = await axios.post(`${API_ROUTES.isFollowing}`, { id, token });
-          setIsFollowing(response.data.following); // Corrected access to response data
+          setIsFollowing(response.data.following);
         }
       } catch (err) {
         console.error('Error fetching profile data:', err);
@@ -72,7 +77,7 @@ const UserProfile = () => {
       console.error('Error following user:', err);
     }
   };
-  
+
   const handleUnfollow = async () => {
     try {
       await axios.post(`${API_ROUTES.unfollow}`, { id, token });
@@ -82,32 +87,108 @@ const UserProfile = () => {
     }
   };
 
+  const fetchFollowers = async () => {
+    try {
+      const { data } = await axios.get(`${API_ROUTES.profileFollowers}/${id}`);
+      setFollowers(data);
+    } catch (err) {
+      console.error('Error fetching followers:', err);
+    }
+  };
+
+  const fetchFollowing = async () => {
+    try {
+      const { data } = await axios.get(`${API_ROUTES.profileFollowing}/${id}`);
+      setFollowing(data);
+    } catch (err) {
+      console.error('Error fetching following users:', err);
+    }
+  };
+
+  const handleShowFollowersModal = async () => {
+    await fetchFollowers();
+    setShowFollowersModal(true);
+  };
+
+  const handleShowFollowingModal = async () => {
+    await fetchFollowing();
+    setShowFollowingModal(true);
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
   if (!profile) return <p>No profile data available</p>;
 
   return (
     <div className="profile-page-user-profile-guest">
-      <div className="profile-info">
-        <img
-          className="profile-avatar-user-profile-guest"
-          src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
-          alt="Profile Avatar"
-        />
-        
-        <h2 className="profile-name-user-profile-guest">{profile.name}</h2>
-        <p className="profile-username-user-profile-guest">{profile.user_name}</p>
-        <p className="profile-bio-user-profile-guest">{profile.bio}</p>
-        <p className="profile-unique-id-user-profile-guest">@{profile.unique_id}</p>
-        <p className="profile-location-user-profile-guest">{profile.location}</p>
+      <div className="card__user__profile__guest">
+        <div className="infos__user__profile__guest">
+          <div className="image__user__profile__guest">
+            <img
+              src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
+              alt="Profile Avatar"
+            />
+          </div>
+          <div className="info__user__profile__guest">
+            <div>
+              <p className="name__user__profile__guest">{profile.unique_id}</p>
+              <p className="function__user__profile__guest">{profile.bio}</p>
+            </div>
+            <div className="stats__user__profile__guest">
+              <p className="flex__user__profile__guest" onClick={handleShowFollowersModal}>
+                Followers
+                <span className="state-value__user__profile__guest">{profile.followersCount}</span>
+              </p>
+              <p className="flex__user__profile__guest" onClick={handleShowFollowingModal}>
+                Following
+                <span className="state-value__user__profile__guest">{profile.followingCount}</span>
+              </p>
+            </div>
+          </div>
+        </div>
         <button 
           className="follow-button-user-profile-guest" 
           onClick={isFollowing ? handleUnfollow : handleFollow}
         >
-          {isFollowing ? <FaUserMinus className="react-icon" /> : <FaUserPlus className="react-icon" />} 
+          {isFollowing ? <FaUserMinus className="react-icon__user__profile__guest" /> : <FaUserPlus className="react-icon__user__profile__guest" />} 
           {isFollowing ? 'Unfollow' : 'Follow'}
         </button>
       </div>
+
+      {/* Followers Modal */}
+      {showFollowersModal && (
+  <Modal onClose={() => setShowFollowersModal(false)}>
+    <h2 className="modal-title">Followers</h2>
+    <ul className="modal-list">
+      {followers.map(follower => (
+        <Link to={`/profile/${followers.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+        <li key={follower.unique_id} className="modal-list-item">
+          <img src={`${API_ROUTES.displayImg}/${follower.avatar}`} alt={follower.unique_id} className="modal-list-item-img" />
+          <p className="modal-list-item-text">{follower.unique_id}</p>
+        </li>
+        </Link>
+      ))}
+    </ul>
+  </Modal>
+)}
+
+{showFollowingModal && (
+  <Modal onClose={() => setShowFollowingModal(false)}>
+    <h2 className="modal-title">Following</h2>
+    <ul className="modal-list">
+      {following.map(user => (
+        <Link to={`/profile/${following.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+        <li key={user.unique_id} className="modal-list-item">
+          <img src={`${API_ROUTES.displayImg}/${user.avatar}`} alt={user.unique_id} className="modal-list-item-img" />
+          <p className="modal-list-item-text">{user.unique_id}</p>
+        </li>
+        </Link>
+      ))}
+    </ul>
+  </Modal>
+)}
+
+
       <div className="profile-media-user-profile-guest">
         <div className="profile-tabs-user-profile-guest">
           {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (

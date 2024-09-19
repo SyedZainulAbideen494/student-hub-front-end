@@ -1,0 +1,113 @@
+/* Modal container */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Light overlay for better visibility */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInOverlay 0.3s ease-in-out;
+  }
+  
+  /* Modal content */
+  .modal-content {
+    background: #ffffff; /* Light background for light theme */
+    color: #000000; /* Dark text color for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    width: 70%; /* Responsive width */
+    max-width: 500px; /* Maximum width */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    animation: fadeInModal 0.3s ease-in-out;
+  }
+  
+  /* Modal close button */
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #000000; /* Close button color */
+    cursor: pointer;
+  }
+  
+  /* Modal title */
+  .modal-title {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Modal list */
+  .modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; /* Allows scrolling if content overflows */
+    max-height: 300px; /* Adjust based on your design */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #b0b0b0 #f0f0f0; /* Firefox scrollbar colors */
+  }
+  
+  /* Custom scrollbar for Webkit browsers */
+  .modal-list::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .modal-list::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Scrollbar track color */
+  }
+  
+  .modal-list::-webkit-scrollbar-thumb {
+    background: #b0b0b0; /* Scrollbar thumb color */
+    border-radius: 4px;
+  }
+  
+  /* Modal list items */
+  .modal-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .modal-list-item-img {
+    width: 40px; /* Adjust size */
+    height: 40px; /* Adjust size */
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .modal-list-item-text {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  /* Fade-in animations */
+  @keyframes fadeInOverlay {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInModal {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

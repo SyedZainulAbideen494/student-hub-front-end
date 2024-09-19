@@ -163,6 +163,104 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Base styles for the card */
+.card__user__profile__guest {
+    min-width: 320px; /* Ensures the card has a minimum width */
+    max-width: 320px; /* Maintains a maximum width */
+    border-radius: 1rem;
+    background-color: rgba(31, 41, 55, 1);
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+    position: relative;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles for user information */
+.infos__user__profile__guest {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    flex: 1; /* Take up remaining space */
+}
+
+.image__user__profile__guest {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image__user__profile__guest img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.info__user__profile__guest {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name__user__profile__guest {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+}
+
+.function__user__profile__guest {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(156, 163, 175, 1);
+}
+
+.stats__user__profile__guest {
+    width: 90%;
+    border-radius: 0.5rem;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(0, 0, 0, 1);
+}
+
+.flex__user__profile__guest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 4px;
+}
+
+.state-value__user__profile__guest {
+    font-weight: 700;
+    color: rgb(118, 36, 194);
+}
 
 /* Base styles for the button */
 .follow-button-user-profile-guest {
@@ -180,23 +278,26 @@
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     outline: none;
     position: relative; /* Required for ripple effect */
-  }
-  
-  /* Icon styling */
-  .follow-button-user-profile-guest .react-icon {
+    width: 100%; /* Full width */
+    min-width: 120px; /* Minimum width for the button */
+    margin-top: 30px;
+}
+
+/* Icon styling */
+.follow-button-user-profile-guest .react-icon {
     margin-right: 8px;
     transition: transform 0.3s ease;
-  }
-  
-  /* Hover effect */
-  .follow-button-user-profile-guest:hover {
-    background: linear-gradient(to right, #b474f8, #5f69ff); /* Slightly darker gradient */
+}
+
+/* Hover effect */
+.follow-button-user-profile-guest:hover {
+    background: linear-gradient(to right, #9a4cff, #6b6aff); /* Slightly darker gradient */
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Ripple effect */
-  .follow-button-user-profile-guest:after {
+}
+
+/* Ripple effect */
+.follow-button-user-profile-guest:after {
     content: '';
     position: absolute;
     border-radius: 50%;
@@ -208,23 +309,17 @@
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-  }
-  
-  /* Ripple animation on click */
-  .follow-button-user-profile-guest:active:after {
+}
+
+/* Ripple animation on click */
+.follow-button-user-profile-guest:active:after {
     width: 300px;
     height: 300px;
     opacity: 1;
     transition: 0s;
-  }
-  
-  /* Adding styles for icons */
-  .follow-button-user-profile-guest .react-icon {
-    font-size: 16px; /* Adjust icon size as needed */
-    transition: transform 0.3s ease;
-  }
-  
-  /* Animated icon on hover */
-  .follow-button-user-profile-guest:hover .react-icon {
+}
+
+/* Animated icon on hover */
+.follow-button-user-profile-guest:hover .react-icon {
     transform: scale(1.2);
-  }
+}
