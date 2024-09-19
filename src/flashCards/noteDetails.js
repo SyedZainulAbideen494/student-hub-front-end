@@ -229,6 +229,8 @@ const quillModules = {
         }
     };
 
+    
+
     if (loading) return <div className="loading">Loading...</div>;
     if (error) return <div className="error">{error}</div>;
     if (!note) return <div className="no-note">No note found.</div>;

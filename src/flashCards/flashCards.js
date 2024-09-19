@@ -270,6 +270,12 @@ const FlashcardsPage = () => {
         }
     };
 
+
+const handleRemoveImage = (index) => {
+    setImages(images.filter((_, i) => i !== index));
+};
+
+
     return (
         <div className="flashcards-page">
       {showSuccessModal && (
@@ -310,39 +316,83 @@ const FlashcardsPage = () => {
                 </div>
                 <div className="form-group-flashcards-page">
                     <label htmlFor="images">Images:</label>
-<div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
-  <div className="md:flex">
-    <div className="w-full p-3">
-      <div
-        className="relative h-48 rounded-lg border-2 border-blue-500 bg-gray-50 flex justify-center items-center shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out cursor-pointer"
-      >
-        <div className="absolute flex flex-col items-center">
-          <img
-            alt="File Icon"
-            className="mb-3"
-            src="https://img.icons8.com/dusk/64/000000/file.png"
-          />
-          <span className="block text-gray-500 font-semibold">
-            Drag &amp; drop your files here
-          </span>
-          <span className="block text-gray-400 font-normal mt-1">
-            or click to upload
-          </span>
-        </div>
 
-        <input
-          name="file-upload"
-          className="absolute inset-0 opacity-0 cursor-pointer"
-          type="file"
-          id="images"
-          onChange={handleFileChange}
-          multiple
-        />
+
+ <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
+      <div className="md:flex">
+        <div className="w-full p-3">
+          <label
+            htmlFor="file-upload"
+            style={{
+              display: 'block',
+              position: 'relative',
+              height: '12rem',
+              border: '2px solid #3b82f6',
+              backgroundColor: '#ffffff', // White background
+              borderRadius: '0.5rem',
+              cursor: 'pointer',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              transition: 'box-shadow 0.3s ease-in-out',
+              textAlign: 'center', // Center the text
+              overflow: 'hidden' // Hide overflow to avoid any unwanted display
+            }}
+            className="flex justify-center items-center hover:shadow-xl"
+          >
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+              <img
+                alt="File Icon"
+                style={{ marginBottom: '0.75rem' }}
+                src="https://img.icons8.com/dusk/64/000000/file.png"
+              />
+              <span style={{ display: 'block', color: '#6b7280', fontWeight: '600' }}>
+                Drag &amp; drop your images here
+              </span>
+              <span style={{ display: 'block', color: '#9ca3af', marginTop: '0.25rem' }}>
+                or click to upload
+              </span>
+            </div>
+
+            <input
+              type="file"
+              id="file-upload"
+              style={{
+                position: 'absolute',
+                top: '0',
+                right: '0',
+                bottom: '0',
+                left: '0',
+                opacity: '0',
+                cursor: 'pointer'
+              }}
+              onChange={handleFileChange}
+              multiple
+            />
+          </label>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-
+      {/* Preview selected images */}
+      {images.length > 0 && (
+                    <div className="image-preview__flashcard__add__images">
+                        <h3>Selected Images:</h3>
+                        <div className="image-preview-container__flashcard__add__images">
+                        {images.map((image, index) => (
+            <div key={index} className="image-thumbnail__flashcard__add__images">
+                <img
+                    src={URL.createObjectURL(image)}
+                    alt={`Selected image ${index + 1}`}
+                />
+                <button
+                    className="remove-image-button"
+                    onClick={() => handleRemoveImage(index)}
+                >
+                    &times; {/* Represents the "x" symbol */}
+                </button>
+            </div>
+        ))}
+                        </div>
+                    </div>
+                )}
                 </div>
                 <div className="form-group-flashcards-page">
   <label htmlFor="isPublic">Public:</label>
