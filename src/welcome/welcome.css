@@ -231,7 +231,7 @@
     }
 
     .feature-card-welcome-page {
-        width: 60%; /* Make feature cards full width on small screens */
+        width: 80%; /* Make feature cards full width on small screens */
         margin-bottom: 20px; /* Add space between stacked cards */
     }
 

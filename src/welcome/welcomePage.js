@@ -81,40 +81,42 @@ const Welcome = () => {
                         </main>
                     </div>
                 )}
+{currentStep === 2 && (
+    <div className="welcome-section-container">
+        <header className="welcome-header-welcome-page">
+            <h1>About Edusify</h1>
+            <p>Discover how Edusify can help you manage your study and stay organized.</p>
+        </header>
+        <main className="welcome-content-welcome-page">
+            <section className="app-overview-welcome-page">
+                <h2>Features</h2>
+                <p>Edusify offers a variety of features to enhance your study experience:</p>
+                <ul className="features-list">
+                    <li><strong>Study Planner:</strong> Add tasks, get reminders, and view your schedule on a calendar.</li>
+                    <li><strong>Groups:</strong> Create groups with friends or join public groups to ask questions and share knowledge.</li>
+                    <li><strong>Notes:</strong> Create and share notes, and manage your study materials.</li>
+                    <li><strong>Quizzes:</strong> Create quizzes, challenge friends, and view results.</li>
+                    <li><strong>Calendar:</strong> Manage events, get reminders, and stay organized.</li>
+                    <li><strong>Pomodoro Timer:</strong> Stay focused with our built-in Pomodoro timer.</li>
+                    <li><strong>Math Solver:</strong> Solve complex math problems with ease.</li>
+                    <li><strong>Science Helper:</strong> Get assistance with science topics and experiments.</li>
+                    <li><strong>Commerce Helper:</strong> Understand and solve commerce-related problems.</li>
+                    <li><strong>Social Feed:</strong> Stay updated with your peers and share your achievements.</li>
+                </ul>
+                <div className="button-container">
+                    <button className="continue-button-welcome-page" onClick={handlePrevious}>Previous</button>
+                    <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
+                </div>
+                <div className="pagination-dots">
+                    {[1, 2, 3].map((step) => (
+                        <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
+                    ))}
+                </div>
+            </section>
+        </main>
+    </div>
+)}
 
-                {currentStep === 2 && (
-                    <div>
-                        <header className="welcome-header-welcome-page">
-                            <h1>About Edusify</h1>
-                            <p>Discover how Edusify can help you manage your study and stay organized.</p>
-                        </header>
-                        <main className="welcome-content-welcome-page">
-                            <section className="app-overview-welcome-page">
-                                <h2>Features</h2>
-                                <p>Edusify offers a variety of features to enhance your study experience:</p>
-                                <ul>
-                                    <li><strong>Study Planner:</strong> Add tasks, get reminders, and view your schedule on a calendar.</li>
-                                    <li><strong>Groups:</strong> Create groups with friends or join public groups to ask questions and share knowledge.</li>
-                                    <li><strong>Notes:</strong> Create and share notes, and manage your study materials.</li>
-                                    <li><strong>Quizzes:</strong> Create quizzes, challenge friends, and view results.</li>
-                                    <li><strong>Calendar:</strong> Manage events, get reminders, and stay organized.</li>
-                                    <li><strong>Pomodoro Timer:</strong> Stay focused with our built-in Pomodoro timer.</li>
-                                    <li><strong>Math Solver:</strong> Solve complex math problems with ease.</li>
-                                    <li><strong>Science Helper:</strong> Get assistance with science topics and experiments.</li>
-                                    <li><strong>Commerce Helper:</strong> Understand and solve commerce-related problems.</li>
-                                    <li><strong>Social Feed:</strong> Stay updated with your peers and share your achievements.</li>
-                                </ul>
-                                <button className="continue-button-welcome-page" onClick={handlePrevious}>Previous</button>
-                                <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
-                                <div className="pagination-dots">
-                                    {[1, 2, 3].map((step) => (
-                                        <span key={step} className={`dot ${currentStep === step ? 'active' : ''}`} />
-                                    ))}
-                                </div>
-                            </section>
-                        </main>
-                    </div>
-                )}
 
                 {currentStep === 3 && (
                     <div>
