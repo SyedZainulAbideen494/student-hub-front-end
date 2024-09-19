@@ -1,4 +1,4 @@
-/* Common styles for all pages */
+/* Base styles for all pages */
 .welcome-page {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
@@ -11,17 +11,19 @@
     overflow: hidden; /* Prevent scrollbars during animations */
 }
 
+/* Welcome section styling */
 .welcome-section {
     width: 80%;
     max-width: 900px;
     text-align: center;
     margin-bottom: 30px;
     border-radius: 15px; /* Rounded edges for each section */
-    background-color: #fff; /* White background for content sections */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for better depth */
-    padding: 30px;
-    position: absolute;
-    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transitions for animations */
+    background-color: #ffffff; /* White background for content sections */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Soft shadow for better depth */
+    padding: 40px; /* Increased padding for more spacious look */
+    position: relative;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    animation: fadeIn 1s ease, slideUp 1s ease;
 }
 
 .welcome-section.hidden {
@@ -34,15 +36,51 @@
     transform: translateX(0);
 }
 
+/* Heading animation styles */
 .welcome-header-welcome-page {
     margin-bottom: 20px;
 }
 
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #0095f6; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
 .welcome-header-welcome-page h1 {
-    font-size: 28px;
+    font-size: 36px;
     color: #262626;
     margin: 0;
-    transition: color 0.3s; /* Smooth color transition */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #0095f6; /* Typing cursor effect */
+    display: inline-block;
+    position: relative;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 .welcome-header-welcome-page p {
@@ -55,6 +93,7 @@
     color: #0095f6; /* Color change on hover */
 }
 
+/* App overview and features section */
 .app-overview-welcome-page h2, .features-welcome-page h2 {
     font-size: 24px;
     margin-bottom: 15px;
@@ -78,6 +117,7 @@
     margin-bottom: 10px;
 }
 
+/* Continue button styling */
 .continue-button-welcome-page {
     display: inline-block;
     margin: 15px 10px;
@@ -91,6 +131,18 @@
     font-size: 14px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
     transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transitions */
+    animation: popIn 0.3s ease-in-out;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .continue-button-welcome-page:hover {
@@ -99,6 +151,7 @@
     transform: scale(1.05); /* Slightly increase button size on hover */
 }
 
+/* Feature cards styling */
 .feature-cards-welcome-page {
     display: flex;
     flex-wrap: wrap;
@@ -116,6 +169,7 @@
     flex: 1;
     min-width: 230px;
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    animation: fadeIn 0.5s ease;
 }
 
 .feature-card-welcome-page:hover {
@@ -134,6 +188,7 @@
     color: #8e8e8e;
 }
 
+/* Pagination dots styling */
 .pagination-dots {
     margin-top: 20px;
     text-align: center;
@@ -151,4 +206,56 @@
 
 .dot.active {
     background-color: #0095f6;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .welcome-section {
+        padding: 20px; /* Reduce padding on smaller screens */
+        width: 90%; /* Increase the width to fill more space */
+    }
+
+    .welcome-header-welcome-page h1 {
+        font-size: 28px; /* Reduce heading size for better fit */
+        white-space: normal; /* Allow the text to wrap and avoid hiding */
+        border-right: 3px solid #0095f6; /* Adjust typing effect */
+    }
+
+    .welcome-header-welcome-page p {
+        font-size: 16px; /* Reduce font size */
+    }
+
+    .continue-button-welcome-page {
+        padding: 12px 24px; /* Adjust button padding */
+        font-size: 14px; /* Reduce button text size */
+    }
+
+    .feature-card-welcome-page {
+        width: 60%; /* Make feature cards full width on small screens */
+        margin-bottom: 20px; /* Add space between stacked cards */
+    }
+
+    .feature-cards-welcome-page {
+        flex-direction: column; /* Stack feature cards vertically */
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-header-welcome-page h1 {
+        font-size: 24px; /* Further reduce heading size for very small screens */
+    }
+
+    .continue-button-welcome-page {
+        padding: 10px 20px; /* Smaller buttons for very small screens */
+        font-size: 12px;
+    }
+
+    .feature-card-welcome-page h3 {
+        font-size: 18px; /* Reduce feature card title size */
+    }
+
+    .feature-card-welcome-page p {
+        font-size: 12px; /* Reduce feature card description size */
+    }
 }
