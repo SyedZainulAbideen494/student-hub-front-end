@@ -161,7 +161,7 @@ const UserProfile = () => {
     <h2 className="modal-title">Followers</h2>
     <ul className="modal-list">
       {followers.map(follower => (
-        <Link to={`/profile/${followers.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+        <Link to={`/profile/${user.id}`} style={{ textDecoration: 'none', color: 'black'}}>
         <li key={follower.unique_id} className="modal-list-item">
           <img src={`${API_ROUTES.displayImg}/${follower.avatar}`} alt={follower.unique_id} className="modal-list-item-img" />
           <p className="modal-list-item-text">{follower.unique_id}</p>
@@ -177,7 +177,7 @@ const UserProfile = () => {
     <h2 className="modal-title">Following</h2>
     <ul className="modal-list">
       {following.map(user => (
-        <Link to={`/profile/${following.id}`} style={{ textDecoration: 'none', color: 'black'}}>
+        <Link to={`/profile/${user.id}`} style={{ textDecoration: 'none', color: 'black'}}>
         <li key={user.unique_id} className="modal-list-item">
           <img src={`${API_ROUTES.displayImg}/${user.avatar}`} alt={user.unique_id} className="modal-list-item-img" />
           <p className="modal-list-item-text">{user.unique_id}</p>
