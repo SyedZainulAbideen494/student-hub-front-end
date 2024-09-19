@@ -79,24 +79,42 @@ const NoteDetailPage = () => {
         fetchUserProfile();
     }, [note]);
 
-    useEffect(() => {
-        if (editMode && editorRef.current) {
-            quillRef.current = new Quill(editorRef.current, {
-                theme: 'snow',
-                modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3, false] }],
-                        ['bold', 'italic', 'underline'],
-                        [{ list: 'ordered' }, { list: 'bullet' }],
-                        ['link'],
-                    ],
-                },
-            });
-
-            // Set editor content for editing
-            quillRef.current.root.innerHTML = note?.headings || '';
+// Define quillModules outside the useEffect for reusability
+const quillModules = {
+    toolbar: {
+      container: [
+        [{ header: '1' }, { header: '2' }],
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        [{ align: [] }],
+        ['clean'],
+        [{ color: [] }, { background: [] }] // Add font color and background color
+      ],
+      handlers: {
+        background: function (value) {
+          const quill = this.quill;
+          quill.format('background', value);
+        },
+        color: function (value) { // Handler for font color
+          const quill = this.quill;
+          quill.format('color', value);
         }
-    }, [editMode, note]);
+      }
+    }
+  };
+  
+  // Your useEffect hook
+  useEffect(() => {
+    if (editMode && editorRef.current) {
+      quillRef.current = new Quill(editorRef.current, {
+        theme: 'snow',
+        modules: quillModules,  // Use the predefined quillModules
+      });
+  
+      // Set editor content for editing
+      quillRef.current.root.innerHTML = note?.headings || '';
+    }
+  }, [editMode, note]);
 
     const handleBackClick = () => {
         nav('/notes');
@@ -275,12 +293,9 @@ const NoteDetailPage = () => {
                     <button className="download-button" onClick={handleEditToggle}>
                         Edit Note
                     </button>
-                    <button className="bin__delete__flashacrd__btn">🗑</button>
-<div className="div__delete__flashacrd__btn" onClick={handleDeleteClick}>
-  <small>
-    <i></i>
-  </small>
-</div>
+                    <button className="download-button" onClick={handleDeleteClick}>
+                        Delete Note
+                    </button>
                 </div>
             )}
             <div className="download-container">

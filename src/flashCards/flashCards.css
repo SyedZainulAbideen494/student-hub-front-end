@@ -260,18 +260,12 @@
 
 
 
-
-
-
-
-
 .check__flashcard__public {
     cursor: pointer;
     position: relative;
-    margin: auto;
     width: 18px;
-    margin-right: 10px;
     height: 18px;
+    margin-top: 5px; /* Adjust space between checkbox and label */
     -webkit-tap-highlight-color: transparent;
     transform: translate3d(0, 0, 0);
   }
@@ -319,18 +313,17 @@
     stroke: #4285f4;
   }
   
-  #isPublic:checked + .check__terms__box svg {
+  #isPublic:checked + .check__flashcard__public svg {
     stroke: #4285f4;
   }
   
-  #isPublic:checked + .check__terms__box svg path {
+  #isPublic:checked + .check__flashcard__public svg path {
     stroke-dashoffset: 60;
     transition: all 0.3s linear;
   }
   
-  #isPublic:checked + .check__terms__box svg polyline {
+  #isPublic:checked + .check__flashcard__public svg polyline {
     stroke-dashoffset: 42;
     transition: all 0.2s linear;
     transition-delay: 0.15s;
   }
-  

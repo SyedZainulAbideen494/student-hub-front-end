@@ -14,7 +14,7 @@ const FlashcardsPage = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [images, setImages] = useState([]);
-    const [isPublic, setIsPublic] = useState(true);
+    const [isPublic, setIsPublic] = useState(false);
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [notes, setNotes] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -318,14 +318,23 @@ const FlashcardsPage = () => {
                     />
                 </div>
                 <div className="form-group-flashcards-page">
-                    <label htmlFor="isPublic">Public:</label>
-                    <input
-                        type="checkbox"
-                        id="isPublic"
-                        checked={isPublic}
-                        onChange={(e) => setIsPublic(e.target.checked)}
-                    />
-                </div>
+  <label htmlFor="isPublic">Public:</label>
+  <div>
+    <input
+      type="checkbox"
+      id="isPublic"
+      checked={isPublic}
+      onChange={(e) => setIsPublic(e.target.checked)}
+      style={{ display: 'none' }}
+    />
+    <label htmlFor="isPublic" className="check__flashcard__public">
+      <svg width="18px" height="18px" viewBox="0 0 18 18">
+        <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+        <polyline points="1 9 7 14 15 4"></polyline>
+      </svg>
+    </label>
+  </div>
+</div>
                 <div className="form-group-flashcards-page">
                     <label htmlFor="headings">Content:</label>
                     <ReactQuill
@@ -377,7 +386,6 @@ const FlashcardsPage = () => {
         </div>
     );
 };
-
 const quillModules = {
     toolbar: {
       container: [
@@ -386,15 +394,20 @@ const quillModules = {
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
         [{ 'align': [] }],
         ['clean'],
-        [{ 'background': [] }], // Add background color option
+        [{ 'color': [] }, { 'background': [] }] // Add font color and background color
       ],
       handlers: {
         'background': function(value) {
           const quill = this.quill;
           quill.format('background', value);
+        },
+        'color': function(value) { // Handler for font color
+          const quill = this.quill;
+          quill.format('color', value);
         }
       }
     }
   };
+  
 
-export default FlashcardsPage;
+export default FlashcardsPage
