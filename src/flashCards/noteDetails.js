@@ -37,7 +37,7 @@ const NoteDetailPage = () => {
                 setNote(noteData);
                 setTitle(noteData.title);
                 setDescription(noteData.description);
-                setDownloads(noteData.downloads || 0);  // Set downloads count
+                setDownloads(noteData.download_count || 0);  // Set downloads count
                 setNoteUserId(noteData.user_id);
     
                 // Assuming images are part of noteData
@@ -309,7 +309,7 @@ const quillModules = {
    <span className="icon2__download-button"></span>
    <span className="tooltip__download-button">Downloading</span>
 </button>
-                <div className="download-count">
+                <div className="download-count" style={{marginTop: '10px'}}>
                     <span>Downloads: {downloads}</span> {/* Display download count */}
                 </div>
             </div>
