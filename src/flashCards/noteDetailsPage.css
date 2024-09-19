@@ -276,3 +276,249 @@
         text-align: center;
     }
 }
+
+
+
+/* Unified button size: 50px x 50px */
+
+/* Delete Flashcard Button */
+.button__delete__flashcard {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: .3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.svgIcon__delete__flashcard {
+    width: 12px;
+    transition-duration: .3s;
+}
+
+.svgIcon__delete__flashcard path {
+    fill: white;
+}
+
+.button__delete__flashcard:hover {
+    width: 50px; /* Keep width consistent on hover */
+    border-radius: 50px;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+}
+
+.button__delete__flashcard:hover .svgIcon__delete__flashcard {
+    width: 24px; /* Adjust width on hover */
+    transition-duration: .3s;
+    transform: translateY(60%);
+}
+
+.button__delete__flashcard::before {
+    position: absolute;
+    top: -20px;
+    content: "Delete";
+    color: white;
+    transition-duration: .3s;
+    font-size: 0px; /* Adjusted for consistency */
+}
+
+.button__delete__flashcard:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(30px);
+}
+
+/* Download Button */
+.Btn__download-button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+}
+
+.svgIcon__download-button {
+    fill: rgb(214, 178, 255);
+}
+
+.icon2__download-button {
+    width: 18px;
+    height: 5px;
+    border-bottom: 2px solid rgb(182, 143, 255);
+    border-left: 2px solid rgb(182, 143, 255);
+    border-right: 2px solid rgb(182, 143, 255);
+}
+
+.tooltip__download-button {
+    position: absolute;
+    right: -105px;
+    opacity: 0;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .2s;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+}
+
+.tooltip__download-button::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: rgb(12, 12, 12);
+    background-size: 1000%;
+    background-position: center;
+    transform: rotate(45deg);
+    left: -5%;
+    transition-duration: .3s;
+}
+
+.Btn__download-button:hover .tooltip__download-button {
+    opacity: 1;
+}
+
+.Btn__download-button:hover {
+    background-color: rgb(150, 94, 255);
+}
+
+.Btn__download-button:hover .icon2__download-button {
+    border-bottom: 2px solid rgb(235, 235, 235);
+    border-left: 2px solid rgb(235, 235, 235);
+    border-right: 2px solid rgb(235, 235, 235);
+}
+
+.Btn__download-button:hover .svgIcon__download-button {
+    fill: rgb(255, 255, 255);
+    animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+/* Edit Flashcard Button */
+.edit-button__edit__flashcard__btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.edit-svgIcon__edit__flashcard__btn {
+    width: 17px;
+    transition-duration: 0.3s;
+}
+
+.edit-svgIcon__edit__flashcard__btn path {
+    fill: white;
+}
+
+.edit-button__edit__flashcard__btn:hover {
+    width: 50px; /* Keep width consistent on hover */
+    border-radius: 50px;
+    background-color: rgb(255, 69, 69);
+}
+
+.edit-button__edit__flashcard__btn:hover .edit-svgIcon__edit__flashcard__btn {
+    width: 20px; /* Adjust width on hover */
+    transition-duration: 0.3s;
+    transform: translateY(60%);
+    transform: rotate(360deg);
+}
+
+.edit-button__edit__flashcard__btn::before {
+    display: none;
+    content: "Edit";
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 0px; /* Adjusted for consistency */
+}
+
+.edit-button__edit__flashcard__btn:hover::before {
+    display: block;
+    padding-right: 10px;
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+/* Save Flashcard Button */
+.btn__Save__flashcard {
+    text-decoration: none;
+    padding: 20px 40px;
+    font-size: 1em;
+    position: relative;
+    margin: 32px;
+    border: none;
+    background-color: #26caf8;
+    font-weight: 600;
+}
+
+.btn-1__Save__flashcard {
+    overflow: hidden;
+    color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 0 0 rgba(143, 64, 248, 0.5), 0 0 0 0 rgba(39, 200, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-1__Save__flashcard::after {
+    content: "";
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    background-color: #ff3cac;
+    background-image: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
+    z-index: -1;
+    transition: transform 0.5s ease;
+}
+
+.btn-1__Save__flashcard:hover {
+    transform: translate(0, -6px);
+    box-shadow: 10px -10px 25px 0 rgba(143, 64, 248, 0.5), -10px 10px 25px 0 rgba(39, 200, 255, 0.5);
+}
+
+.btn-1__Save__flashcard:hover::after {
+    transform: rotate(150deg);
+}
