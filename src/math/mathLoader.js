@@ -30,7 +30,7 @@ const MathLoader = () => {
           <div className="math-animation-element-math-loader">=</div>
           <div className="math-animation-element-math-loader">{value}</div>
         </div>
-        <div className="loading-message-math-loader">Calculating...</div>
+        <div className="loading-message-math-loader">Loading...</div>
       </div>
     </div>
   );
