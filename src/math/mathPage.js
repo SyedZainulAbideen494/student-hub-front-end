@@ -39,8 +39,7 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
     } finally {
       setLoading(false);
     }
-  };
-
+};
   useEffect(() => {
       // Animate chat messages
       const chatMessages = document.querySelectorAll('.chat-message');
