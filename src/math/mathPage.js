@@ -8,9 +8,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Math Solver Component
 const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
-  const [results, setResults] = useState([
-    { title: 'Welcome!', content: 'Hi there! What can I assist you with today?' }
-  ]);
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showKeyboard, setShowKeyboard] = useState(false);
 
@@ -34,7 +32,7 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
         formattedContent = `<ul>${formattedContent.match(/<li>.*?<\/li>/g).join('')}</ul>`;
       }
 
-      setResults([{ title: 'AI Generated', content: formattedContent || 'No content available' }]);
+      setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
     } catch (error) {
       console.error('Calculation Error:', error);
       setResults([{ title: 'Error', content: 'Unable to calculate' }]);
@@ -77,11 +75,18 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
                               </div>
                           ))
                       ) : (
+                        <div>
                           <div className="container__math__solver__animated">
                               <span></span>
                               <span></span>
                               <span></span>
                               <span></span>
+                          </div>
+                          <div className="chat-message">
+                                  <div className="chat-bubble">
+                                      <div className="chat-result-content">Hey there, What can I do for you today?</div>
+                                  </div>
+                              </div>
                           </div>
                       )}
                   </div>
