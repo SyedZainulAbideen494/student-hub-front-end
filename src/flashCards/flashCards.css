@@ -564,43 +564,41 @@
 
 
   /*create flashcard AI*/
-
   .ai-query-section__flashcard__create {
-    background-color: #1f1f1f; /* Dark background for the section */
+    background-color: #ffffff; /* Light background for the section */
     border-radius: 8px;
     padding: 1.5rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     margin: 1rem 0;
 }
 
 .ai-query-section__flashcard__create h3 {
-    color: #e0e0e0; /* Light gray for headings */
+    color: #333333; /* Dark gray for headings */
     margin-bottom: 1rem;
 }
 
 .ai-query-section__flashcard__create input {
     padding: 0.75rem;
-    border: 1px solid #3f3f3f; /* Border color */
+    border: 1px solid #ccc; /* Border color */
     border-radius: 4px;
-    background-color: #2a2a2a; /* Slightly lighter than the section background */
-    color: #e0e0e0; /* Light text color */
+    background-color: #f7f7f7; /* Slightly darker than the section background */
+    color: #333333; /* Dark text color */
     transition: border-color 0.3s, box-shadow 0.3s;
     width: calc(100% - 2rem); /* Adjust width to account for padding */
 }
 
 .ai-query-section__flashcard__create input:focus {
     border-color: #7161ef; /* Highlight border on focus */
-    box-shadow: 0 0 5px rgba(113, 97, 239, 0.5); /* Focus glow effect */
+    box-shadow: 0 0 5px rgba(113, 97, 239, 0.3); /* Focus glow effect */
     outline: none; /* Remove default outline */
 }
-
 
 .ai-results__flashcard__create {
     margin-top: 1.5rem; /* Space above results */
     padding: 1rem;
-    background-color: #242424; /* Background for results */
+    background-color: #f9f9f9; /* Background for results */
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
 }
 
 .result-item__flashcard__create {
@@ -610,16 +608,14 @@
 }
 
 .result-item__flashcard__create h4 {
-    color: #fff; /* White for result titles */
+    color: #000; /* Black for result titles */
     margin: 0 0 0.5rem; /* Margin below title */
 }
 
 .result-item__flashcard__create div {
-    color: #dcdcdc; /* Slightly lighter gray for content */
+    color: #555555; /* Dark gray for content */
     line-height: 1.5; /* Improved readability */
 }
-
-
 
 
 /* From Uiverse.io by MuhammadHasann */ 

@@ -239,7 +239,7 @@ const performCalculate = async () => {
                 )}
                 </div>
                 <div className="form-group-flashcards-page">
-  <label htmlFor="isPublic">Public:</label>
+  <label htmlFor="isPublic" style={{textAlign: 'left'}}>Public:</label>
   <div>
     <input
       type="checkbox"
