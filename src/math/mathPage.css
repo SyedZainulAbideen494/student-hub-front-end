@@ -385,3 +385,31 @@
 .math-page {
     animation: fadeInUp 0.5s ease forwards;
 }
+
+
+
+.typing-effect {
+    display: inline-block; /* Ensure it behaves like text */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    border-right: 3px solid; /* Create a cursor effect */
+    animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite; /* Typing effect and cursor blink */
+}
+
+@keyframes typing {
+    from {
+        width: 0; /* Start with no width */
+    }
+    to {
+        width: 100%; /* End with full width */
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent; /* Hide the border */
+    }
+    50% {
+        border-color: black; /* Show the border */
+    }
+}

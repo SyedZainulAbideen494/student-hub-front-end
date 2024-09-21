@@ -11,6 +11,25 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showKeyboard, setShowKeyboard] = useState(false);
+  const [typingMessage, setTypingMessage] = useState('');
+
+  useEffect(() => {
+    const message = 'Hi there! What can I assist you with today?';
+    const typingSpeed = 50; // Adjust typing speed (in milliseconds)
+
+    setTypingMessage(''); // Clear the message initially
+
+    const typeMessage = (msg, i) => {
+        if (i < msg.length) {
+            setTypingMessage(msg.slice(0, i + 1)); // Update state to show the typed message
+            setTimeout(() => typeMessage(msg, i + 1), typingSpeed); // Call recursively
+        }
+    };
+
+    typeMessage(message, 0); // Start typing the message
+
+    return () => setTypingMessage(''); // Cleanup on unmount
+}, []); // Empty dependency array to run only once on mount
 
   const performCalculate = async () => {
     if (!query) return; // Prevent calculation with empty query
@@ -84,7 +103,7 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
                           </div>
                           <div className="chat-message">
                                   <div className="chat-bubble">
-                                      <div className="chat-result-content">Hi there! What can I assist you with today?</div>
+                                      <div className="chat-result-content">{typingMessage}</div>
                                   </div>
                               </div>
                           </div>
