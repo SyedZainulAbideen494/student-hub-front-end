@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { FaMicrophone, FaPaperPlane, FaKeyboard, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -14,16 +14,27 @@ const MathSolver = ({ query, setQuery, handleCalculate, handleVoiceCommand }) =>
   const performCalculate = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(API_ROUTES.solveMath, { query });
-      console.log('API Response:', response.data);
-      setResults(response.data.results);
+        const response = await axios.post(API_ROUTES.solveMath, { query });
+        console.log('API Response:', response.data);
+        setResults(response.data.results);
     } catch (error) {
-      console.error('Calculation Error:', error);
-      setResults([{ title: 'Error', content: 'Unable to calculate' }]);
+        console.error('Calculation Error:', error);
+        setResults([{ title: 'Error', content: 'Unable to calculate' }]);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
+useEffect(() => {
+    // Animate chat messages
+    const chatMessages = document.querySelectorAll('.chat-message');
+    chatMessages.forEach((message, index) => {
+        message.classList.add('chat-message-enter');
+        setTimeout(() => {
+            message.classList.add('chat-message-enter-active');
+        }, index * 100); // Stagger animations for each message
+    });
+}, [results]); // Runs when results change
 
   const handleSymbolClick = (symbol) => {
     setQuery(prevQuery => prevQuery + symbol);
