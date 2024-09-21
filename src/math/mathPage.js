@@ -84,7 +84,7 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
                           </div>
                           <div className="chat-message">
                                   <div className="chat-bubble">
-                                      <div className="chat-result-content">Hey there, What can I do for you today?</div>
+                                      <div className="chat-result-content">Hi there! What can I assist you with today?</div>
                                   </div>
                               </div>
                           </div>
