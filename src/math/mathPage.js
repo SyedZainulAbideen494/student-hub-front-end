@@ -7,109 +7,106 @@ import { FaMicrophone, FaPaperPlane, FaKeyboard, FaArrowLeft, FaArrowRight } fro
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Math Solver Component
-const MathSolver = ({ query, setQuery, handleCalculate, handleVoiceCommand }) => {
+const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showKeyboard, setShowKeyboard] = useState(false);
 
   const performCalculate = async () => {
-    setLoading(true);
-    try {
-        const response = await axios.post(API_ROUTES.solveMath, { query });
-        console.log('API Response:', response.data);
-        setResults(response.data.results);
-    } catch (error) {
-        console.error('Calculation Error:', error);
-        setResults([{ title: 'Error', content: 'Unable to calculate' }]);
-    } finally {
-        setLoading(false);
-    }
-};
+      if (!query) return; // Prevent calculation with empty query
 
-useEffect(() => {
-    // Animate chat messages
-    const chatMessages = document.querySelectorAll('.chat-message');
-    chatMessages.forEach((message, index) => {
-        message.classList.add('chat-message-enter');
-        setTimeout(() => {
-            message.classList.add('chat-message-enter-active');
-        }, index * 100); // Stagger animations for each message
-    });
-}, [results]); // Runs when results change
+      setLoading(true);
+      try {
+          const response = await axios.post(API_ROUTES.solveMath, { query });
+          console.log('API Response:', response.data);
+          // Convert **text** to <strong>text</strong>
+          const formattedContent = response.data.response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+          setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
+      } catch (error) {
+          console.error('Calculation Error:', error);
+          setResults([{ title: 'Error', content: 'Unable to calculate' }]);
+      } finally {
+          setLoading(false);
+      }
+  };
+
+  useEffect(() => {
+      // Animate chat messages
+      const chatMessages = document.querySelectorAll('.chat-message');
+      chatMessages.forEach((message, index) => {
+          message.classList.add('chat-message-enter');
+          setTimeout(() => {
+              message.classList.add('chat-message-enter-active');
+          }, index * 100); // Stagger animations for each message
+      });
+  }, [results]);
 
   const handleSymbolClick = (symbol) => {
-    setQuery(prevQuery => prevQuery + symbol);
-    setShowKeyboard(false);
+      setQuery(prevQuery => prevQuery + symbol);
+      setShowKeyboard(false);
   };
 
   return (
-    <div className="mathsolver-container">
-      {loading ? (
-        <MathLoader />
-      ) : (
-        <div className="chat-ui">
-          <div className="chat-messages">
-            {results.length > 0 ? (
-              results.map((result, index) => (
-                <div key={index} className="chat-message">
-                  <div className="chat-bubble">
-                    <h2 className="chat-result-title">{result.title}</h2>
-                    <pre className="chat-result-content">{result.content || 'No content available'}</pre>
-                    {result.images && result.images.length > 0 ? (
-                      result.images.map((src, i) => (
-                        <img key={i} className="chat-result-image" src={src} alt={`result-image-${i}`} />
-                      ))
-                    ) : (
-                      <p className="chat-no-images">No images available</p>
-                    )}
+      <div className="mathsolver-container">
+          {loading ? (
+              <MathLoader />
+          ) : (
+              <div className="chat-ui">
+                  <div className="chat-messages">
+                      {results.length > 0 ? (
+                          results.map((result, index) => (
+                              <div key={index} className="chat-message">
+                                  <div className="chat-bubble">
+                                      <h2 className="chat-result-title">{result.title}</h2>
+                                      <div className="chat-result-content" dangerouslySetInnerHTML={{ __html: result.content }} />
+                                  </div>
+                              </div>
+                          ))
+                      ) : (
+                          <div className="container__math__solver__animated">
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                              <span></span>
+                          </div>
+                      )}
                   </div>
-                </div>
-              ))
-            ) : (
-              /* From Uiverse.io by xXJollyHAKERXx */ 
-<div className="container__math__solver__animated">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-            )}
-          </div>
-          <div className="chat-input-container">
-            <div className="input-group">
-              <input
-                type="text"
-                className="chat-input"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Enter calculation"
-              />
-              <button className="chat-mic-btn" onClick={handleVoiceCommand}>
-                <FaMicrophone />
-              </button>
-              <button className="chat-keyboard-btn" onClick={() => setShowKeyboard(!showKeyboard)}>
-                <FaKeyboard />
-              </button>
-              {showKeyboard && (
-                <div className="keyboard-modal">
-                  <button className="keyboard-btn" onClick={() => handleSymbolClick('√')}>√</button>
-                  <button className="keyboard-btn" onClick={() => handleSymbolClick('^')}>^</button>
-                  <button className="keyboard-btn" onClick={() => handleSymbolClick('π')}>π</button>
-                  <button className="keyboard-btn" onClick={() => handleSymbolClick('e')}>e</button>
-                  <button className="keyboard-btn" onClick={() => handleSymbolClick('(')}>(</button>
-                  <button className="keyboard-btn" onClick={() => handleSymbolClick(')')}>)</button>
-                </div>
-              )}
-            </div>
-            <button className="chat-send-btn" onClick={performCalculate}>
-              <FaArrowRight />
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
+                  <div className="chat-input-container">
+                      <div className="input-group">
+                          <input
+                              type="text"
+                              className="chat-input"
+                              value={query}
+                              onChange={(e) => setQuery(e.target.value)}
+                              placeholder="Enter Question"
+                          />
+                          <button className="chat-mic-btn" onClick={handleVoiceCommand}>
+                              <FaMicrophone />
+                          </button>
+                          <button className="chat-keyboard-btn" onClick={() => setShowKeyboard(!showKeyboard)}>
+                              <FaKeyboard />
+                          </button>
+                          {showKeyboard && (
+                              <div className="keyboard-modal">
+                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('√')}>√</button>
+                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('^')}>^</button>
+                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('π')}>π</button>
+                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('e')}>e</button>
+                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('(')}>(</button>
+                                  <button className="keyboard-btn" onClick={() => handleSymbolClick(')')}>)</button>
+                              </div>
+                          )}
+                      </div>
+                      <button className="chat-send-btn" onClick={performCalculate}>
+                          <FaArrowRight />
+                      </button>
+                  </div>
+              </div>
+          )}
+      </div>
   );
 };
+
 
 // Main Component with Voice Command
 const MathPage = () => {
@@ -149,7 +146,7 @@ const MathPage = () => {
         <button className="back-btn" onClick={() => navigate('/')}>
           <FaArrowLeft />
         </button>
-        <h3 className="math-page-heading">Math Solver</h3>
+        <h3 className="math-page-heading">AI Helper</h3>
       </div>
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
     </div>

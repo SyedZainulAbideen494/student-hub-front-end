@@ -80,7 +80,7 @@ const router = createBrowserRouter([
   {path: "/group-details/:id", element: <GroupDetailsPage />},
   {path: '/comments/:id', element: <CommentsPage/>},
   {path: '/profile/:id', element: <UsersProfile/>},
-  {path: '/math/solver', element: <MathPage/>},
+  {path: '/ai', element: <MathPage/>},
   {path: '/science/helper', element: <ScienceHelper/>},
   {path: '/search', element: <SearchPage/>},
   {path: '/settings', element: <SettingsPage/>},
