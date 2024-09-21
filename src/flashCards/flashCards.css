@@ -568,7 +568,7 @@
   .ai-query-section__flashcard__create {
     background-color: #1f1f1f; /* Dark background for the section */
     border-radius: 8px;
-    padding: 1.5rem;
+    padding: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     margin: 1rem 0;
 }
@@ -597,7 +597,7 @@
 
 .ai-results__flashcard__create {
     margin-top: 1.5rem; /* Space above results */
-    padding: 1rem;
+    padding: 10px;
     background-color: #242424; /* Background for results */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
