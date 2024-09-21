@@ -118,22 +118,11 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
                               onChange={(e) => setQuery(e.target.value)}
                               placeholder="Enter Question"
                           />
-                          <button className="chat-mic-btn" onClick={handleVoiceCommand}>
+                          
+                          <button className="chat-keyboard-btn" onClick={handleVoiceCommand}>
                               <FaMicrophone />
                           </button>
-                          <button className="chat-keyboard-btn" onClick={() => setShowKeyboard(!showKeyboard)}>
-                              <FaKeyboard />
-                          </button>
-                          {showKeyboard && (
-                              <div className="keyboard-modal">
-                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('√')}>√</button>
-                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('^')}>^</button>
-                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('π')}>π</button>
-                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('e')}>e</button>
-                                  <button className="keyboard-btn" onClick={() => handleSymbolClick('(')}>(</button>
-                                  <button className="keyboard-btn" onClick={() => handleSymbolClick(')')}>)</button>
-                              </div>
-                          )}
+
                       </div>
                       <button className="chat-send-btn" onClick={performCalculate}>
                           <FaArrowRight />
