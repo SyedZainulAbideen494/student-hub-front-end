@@ -458,26 +458,27 @@ const handleRemoveImage = (index) => {
   onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
 >
   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
-    <svg
-      style={{
-        stroke: '#A78BFA', // Equivalent to stroke-purple-300 in Tailwind
-        flexShrink: 0,
-        borderRadius: '50%',
-      }}
-      height="50"
-      preserveAspectRatio="xMidYMid meet"
-      viewBox="0 0 100 100"
-      width="50"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M17.9,60.7A14.3,14.3,0,0,0,32.2,75H64.3a17.9,17.9,0,0,0,0-35.7h-.4a17.8,17.8,0,0,0-35.3,3.6,17.2,17.2,0,0,0,.4,3.9A14.3,14.3,0,0,0,17.9,60.7Z"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="8"
-      />
-    </svg>
+  <svg
+  style={{
+    stroke: '#A78BFA', // Equivalent to stroke-purple-300 in Tailwind
+    flexShrink: 0,
+    borderRadius: '50%',
+  }}
+  height="50"
+  preserveAspectRatio="xMidYMid meet"
+  viewBox="0 0 24 24"
+  width="50"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M19 22H8a2 2 0 01-2-2V4a2 2 0 012-2h11a2 2 0 012 2v16a2 2 0 01-2 2zM6 2h1v20H6zM11 5h6M11 9h6M11 13h6"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+  />
+</svg>
+
     <div style={{ flexGrow: 1, marginLeft: '1rem' }}>
       <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{note.title}</span>
       <p style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
