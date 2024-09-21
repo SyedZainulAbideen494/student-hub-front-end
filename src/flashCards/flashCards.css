@@ -60,23 +60,63 @@
     margin-right: 15px;
 }
 
-.flashcard-form-flashcards-page button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    padding: 10px 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+
+
+
+/* From Uiverse.io by Peary74 */
+.save-flashcard-btn {
+    font-family: inherit;
+    font-size: 16px; /* Smaller button size */
+    background: #8bdee9; /* Powder blue background */
+    color: white;
+    fill: rgb(255, 255, 255);
+    padding: 0.5em 0.8em; /* Compact padding */
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between icon and text */
+    cursor: pointer;
+    border: none;
+    border-radius: 12px; /* Slightly smaller border-radius */
+    font-weight: 700; /* Slightly lighter font */
+    transition: background 0.4s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
-.flashcard-form-flashcards-page button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+.save-flashcard-btn span {
+    display: block;
+    margin-left: 0.3em;
+    transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
 }
+
+.save-flashcard-btn svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.4s ease-in-out, fill 0.3s ease-in-out;
+}
+
+.save-flashcard-btn:hover {
+    background: #8ecae6; /* Slightly darker powder blue on hover */
+}
+
+.save-flashcard-btn:hover .svg-wrapper {
+    transform: scale(1.2);
+    transition: transform 0.4s ease-in-out;
+}
+
+.save-flashcard-btn:hover svg {
+    transform: translateX(1.1em) scale(1.1);
+    fill: #fff;
+}
+
+.save-flashcard-btn:hover span {
+    opacity: 0;
+    transform: translateX(10px);
+}
+
+.save-flashcard-btn:active {
+    transform: scale(0.97); /* Gentle scale on click */
+}
+
+  
 
 
 /* Search Bar */
