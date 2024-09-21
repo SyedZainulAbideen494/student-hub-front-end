@@ -1,27 +1,30 @@
+/* Group Chat Layout */
 .group-chat {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   max-width: 600px;
   margin: 0 auto;
-  background-color: #ffffff; /* Changed to white for a cleaner look */
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  overflow: hidden; /* Prevent overflow */
+  overflow: hidden;
 }
+
+/* Header Section */
 .group-header {
   position: fixed;
   top: 0;
   left: 50%;
-  transform: translateX(-50%); /* Center the header horizontally */
-  width: calc(100% - 30px); /* Adjust width to account for padding */
-  background-color: #ffffff; /* White background for a clean look */
-  border-bottom: 1px solid #e0e0e0; /* Light border */
-  z-index: 1000; /* Ensure it is above other content */
+  transform: translateX(-50%);
+  width: calc(100% - 30px);
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
   padding: 10px;
-  border-radius: 25px; /* 25px border radius */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  border-radius: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,125 +36,203 @@
   cursor: pointer;
   font-weight: 500;
   text-align: center;
-  color: #333; /* Dark grey for better readability */
+  color: #333;
 }
 
-
+/* Footer Section */
 .group-footer {
   width: 100%;
   padding: 10px;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
-  background-color: #f1f1f1; /* Light grey to match header */
-  z-index: 1000; /* Ensure it is above other content */
-  border-top: 1px solid #e0e0e0; /* Lighter border */
+  background-color: #f1f1f1;
+  z-index: 1000;
+  border-top: 1px solid #e0e0e0;
 }
 
+/* Chat Content Container */
 .group-chat-container {
   flex-grow: 1;
-  margin-top: 60px; /* Adjust based on header height */
-  margin-bottom: 60px; /* Adjust based on footer height */
+  margin-top: 60px;
+  margin-bottom: 60px;
   overflow-y: auto;
   padding: 10px;
-  background-color: #f7f7f7; /* Very light grey for a softer background */
-  box-sizing: border-box; /* Ensure padding is included in height */
-}
-
-.not-a-member {
-  padding: 15px;
-  background-color: #fff3f3; /* Soft pink for a warning message */
-  color: #d32f2f; /* Red for the warning text */
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.messages-container {
-  max-height: calc(100vh - 120px); /* Adjust based on header and footer height */
-  overflow-y: auto;
-  padding: 10px;
+  background-color: #f7f7f7;
   box-sizing: border-box;
 }
 
+/* Message Card Styling */
 .message-card {
-  background-color: #ffffff; /* White background for messages */
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 70%; /* Messages will take up a maximum of 70% of the chat width */
+  margin: 10px 0;
+  padding: 12px 15px; /* Adjusted padding for a smaller size */
+  border-radius: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  font-size: 13px; /* Smaller font size */
+  line-height: 1.4; /* Slightly tighter line height */
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
-.message-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+/* Message Alignment */
+.message-left {
+  background-color: #e8f4fd; /* Soft blue background for left messages */
+  color: #333;
+  margin-right: auto; /* Aligns the message to the left */
+  border-radius: 25px 25px 25px 5px; /* Different corner style for left messages */
+  padding: 10px 15px; /* Adjusted padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.message-header {
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #616161; /* Medium grey for message header */
-  font-size: 15px;
+.message-right {
+  background: linear-gradient(to right, #6a5acd, #a38dff); /* Softer gradient for right messages */
+  color: white;
+  margin-left: auto; /* Aligns the message to the right */
+  border-radius: 25px 25px 5px 25px; /* Different corner style for right messages */
+  padding: 10px 15px; /* Adjusted padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.message-content {
-  margin-bottom: 10px;
-  font-size: 15px;
-}
-
-.message-content p {
-  margin: 0;
-}
-
+/* Button Styles */
 .flashcard-btn,
 .quiz-btn {
   background-color: #2196f3; /* Blue for buttons */
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 8px 16px; /* Slightly smaller padding */
+  border-radius: 25px; /* Rounded corners */
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
-  display: flex;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  font-size: 14px; /* Smaller font size */
+  font-weight: 600; /* Slightly bolder text */
+  display: inline-flex; /* Centering text vertically */
   align-items: center;
-  gap: 5px;
-  font-size: 15px;
-  font-weight: bold;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .flashcard-btn:hover,
 .quiz-btn:hover {
   background-color: #1976d2; /* Darker blue for hover effect */
+  transform: translateY(-2px); /* Slight lift on hover */
 }
 
-.reply-btn {
-  background-color: transparent;
-  color: #2196f3; /* Blue for reply button */
-  border: none;
-  cursor: pointer;
+.flashcard-btn:active,
+.quiz-btn:active {
+  background-color: #1565c0; /* Even darker blue for active state */
+  transform: translateY(0); /* Reset on click */
+}
+
+.flashcard-btn:focus,
+.quiz-btn:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.5); /* Focus ring for accessibility */
+}
+
+
+/* Replies Container Styling */
+.replies-container {
   margin-top: 10px;
-  font-size: 14px;
-  transition: text-decoration 0.3s;
+  padding-left: 20px; /* Indentation for sub-replies */
+  border-left: 2px solid #ddd; /* Left border to signify a reply thread */
 }
 
-.reply-btn:hover {
-  text-decoration: underline;
+/* Individual Reply Card */
+.reply-card {
+  background-color: #f7f7f7; /* Light background for replies */
+  color: #333;
+  margin: 5px 0;
+  padding: 10px 12px;
+  border-radius: 12px; /* Rounded corners for reply cards */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Reply Header (Username Display) */
+.reply-header {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Reply Content */
+.reply-content {
+  color: #666;
+}
+
+/* Optional: Styling to match the right/left message look for replies */
+.reply-card-right {
+  background-color: #e8f4fd; /* Subtle light blue */
+  margin-left: auto;
+  border-radius: 12px 12px 12px 3px; /* Rounded corners */
+}
+
+.reply-card-left {
+  background-color: #fff;
+  margin-right: auto;
+  border-radius: 12px 12px 3px 12px;
+}
+
+
+/* Message Header */
+.message-header {
+  font-size: 12px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-sender {
+  font-size: 14px;
+  color: #7161ef;
+}
+
+.message-timestamp {
+  font-size: 11px;
+  color: #888;
+}
+
+/* Message Body */
+.message-body {
+  margin-bottom: 10px;
+}
+
+/* Message Footer */
+.message-footer {
+  font-size: 11px;
+  color: #777;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.message-footer-small {
+  font-size: 10px;
 }
 
 .message-input-container {
   display: flex;
   align-items: center;
-  position: fixed; /* Fix position to the bottom */
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 95%;
   padding: 10px;
-  background-color: #ffffff; /* White background for the input area */
-  border-radius: 25px; /* Floating effect */
+  background-color: #ffffff;
+  border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   gap: 10px;
-  z-index: 1000; /* Ensure it is above other content */
+  z-index: 1000;
 }
 
 .message-input-container input {
@@ -159,19 +240,19 @@
   padding: 10px;
   height: 40px;
   border: 1px solid #dcdcdc;
-  border-radius: 25px; /* Floating effect */
+  border-radius: 25px;
   font-size: 15px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box; /* Include padding in width */
+  box-sizing: border-box;
 }
 
 .message-input-container input:focus {
-  border-color: #2196f3; /* Blue for focus state */
+  border-color: #2196f3;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .send-btn {
-  background-color: #2196f3; /* Blue for the send button */
+  background-color: #2196f3;
   color: white;
   border: none;
   padding: 10px;
@@ -186,28 +267,34 @@
 }
 
 .send-btn:hover {
-  background-color: #1976d2; /* Darker blue for hover effect */
+  background-color: #1976d2;
 }
 
-.reply-btn-input-send {
-  background-color: #2196f3; /* Blue for reply button */
-  color: white;
+.reply-btn {
+  background-color: transparent;
+  color: #2196f3;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
   font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
+  transition: text-decoration 0.3s;
 }
 
-.reply-btn-input-send:hover {
-  background-color: #1976d2; /* Darker blue for hover effect */
+.reply-btn:hover {
+  text-decoration: underline;
 }
 
-/* Responsive design */
+/* Not a member message */
+.not-a-member {
+  padding: 15px;
+  background-color: #fff3f3;
+  color: #d32f2f;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
 @media (max-width: 600px) {
   .group-chat {
     max-width: 100%;
@@ -223,35 +310,17 @@
   }
 
   .group-chat-container {
-    margin-top: 50px; /* Adjust based on header height */
-    margin-bottom: 50px; /* Adjust based on footer height */
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .message-card {
+    max-width: 80%; /* Adjust message width on small screens */
   }
 
   .not-a-member {
     padding: 10px;
     font-size: 12px;
-  }
-
-  .message-card {
-    padding: 8px;
-  }
-
-  .message-header {
-    font-size: 12px;
-  }
-
-  .message-content {
-    font-size: 12px;
-  }
-
-  .flashcard-btn,
-  .quiz-btn {
-    padding: 6px 12px;
-    font-size: 12px;
-  }
-
-  .reply-card {
-    padding: 8px;
   }
 
   .message-input-container {
@@ -271,7 +340,7 @@
 
 /* Back Button */
 .header-btn {
-  background-color: #2196f3; /* Blue for back button */
+  background-color: #2196f3;
   color: white;
   border: none;
   padding: 10px;
@@ -285,35 +354,11 @@
 }
 
 .header-btn:hover {
-  background-color: #1976d2; /* Darker blue for hover effect */
+  background-color: #1976d2;
   transform: scale(1.1);
 }
 
 .header-btn:active {
-  background-color: #1565c0; /* Even darker blue for active state */
-  transform: scale(1);
-}
-
-/* Flashcard Button */
-.flashcard-btn {
-  background-color: #2196f3; /* Blue for flashcard button */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.flashcard-btn:hover {
-  background-color: #1976d2; /* Darker blue for hover effect */
-  transform: scale(1.05);
-}
-
-.flashcard-btn:active {
-  background-color: #1565c0; /* Even darker blue for active state */
+  background-color: #1565c0;
   transform: scale(1);
 }

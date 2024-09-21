@@ -24,9 +24,30 @@ const DiscussionBoard = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [isMember, setIsMember] = useState(null);
     const [lastMessageTimestamp, setLastMessageTimestamp] = useState(null); // Track the last message timestamp
-
+    const [currentUserId, setCurrentUserId] = useState(null);
     const inputRef = useRef(null); // Create a ref for the input
     const messagesEndRef = useRef(null);
+
+
+    useEffect(() => {
+      const fetchProfileData = async () => {
+        try {
+          const token = localStorage.getItem('token');
+          if (!token) {
+            console.error('No token found');
+            return;
+          }
+    
+          const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
+          setCurrentUserId(data.id); // Assume `id` is the userId field in the response
+        } catch (err) {
+          console.error('Error fetching profile data:', err);
+        }
+      };
+    
+      fetchProfileData();
+    }, []);
+
 
     useEffect(() => {
         const fetchGroupDetails = async () => {
@@ -255,48 +276,50 @@ const DiscussionBoard = () => {
                 </div>
             ) : (
                 <div className="group-chat-container">
-                    <div className="messages-container">
-                        {messages.map(message => (
-                            <div className="message-card" key={message.id}>
-                                <div className="message-header">
-                                    <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
-                                </div>
-                                <div className="message-content">
-    <p>
-        {message.type === 'flashcard' ? (
-            <button className='flashcard-btn' onClick={() => handleOpenFlashcard(message.content)}>
-                {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
+<div className="messages-container">
+  {messages.map(message => (
+  <div 
+  className={`message-card ${
+    String(message.sender) === String(currentUserId) ? 'message-right' : 'message-left'
+  }`} 
+  key={message.id}
+>
+      <div className="message-header">
+        <strong>{userNameMap[message.sender] || 'Unknown'}</strong>
+      </div>
+      <div className="message-content">
+        <p>
+          {message.type === 'flashcard' ? (
+            <button className="flashcard-btn" onClick={() => handleOpenFlashcard(message.content)}>
+              {flashcardDetailsMap[message.content]?.title || 'Flashcard'}
             </button>
-        ) : message.type === 'quiz' ? (
-            <button className='flashcard-btn' onClick={() => handleOpenQuiz(message.content)}>
-                {'Quiz'}
+          ) : message.type === 'quiz' ? (
+            <button className="flashcard-btn" onClick={() => handleOpenQuiz(message.content)}>
+              {'Quiz'}
             </button>
-        ) : (
+          ) : (
             message.content
-        )}
-    </p>
+          )}
+        </p>
+      </div>
+      {message.replies && message.replies.length > 0 && (
+        <div className="replies-container">
+          {message.replies.map(reply => (
+            <div className="reply-card" key={reply.id}>
+              <div className="reply-header">
+                <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
+              </div>
+              <div className="reply-content">{reply.content}</div>
+            </div>
+          ))}
+        </div>
+      )}
+      <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
+    </div>
+  ))}
+  <div ref={messagesEndRef} />
 </div>
-                                {message.replies && message.replies.length > 0 && (
-                                    <div className="replies-container">
-                                        {message.replies.map(reply => (
-                                            <div className="reply-card" key={reply.id}>
-                                                <div className="reply-header">
-                                                    <strong>{userNameMap[reply.sender] || 'Unknown'}</strong>
-                                                </div>
-                                                <div className="reply-content">
-                                                    {reply.content}
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                                <div>
-                                    <button className="reply-btn" onClick={() => setReplyToMessageId(message.id)}>Reply</button>
-                                </div>
-                            </div>
-                        ))}
-                        <div ref={messagesEndRef} />
-                    </div>
+
                     <div className="message-input-container">
     {replyToMessageId ? (
 
