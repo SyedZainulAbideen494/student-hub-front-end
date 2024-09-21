@@ -63,18 +63,17 @@
 }
 
 /* Message Card Styling */
+/* Message Card Styling */
 .message-card {
   max-width: 70%; /* Messages will take up a maximum of 70% of the chat width */
-  margin: 10px 0;
-  padding: 12px 15px; /* Adjusted padding for a smaller size */
+  margin: 10px 0; /* Vertical margin for spacing */
+  padding: 10px 12px; /* Adjusted padding for compactness */
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
   font-size: 13px; /* Smaller font size */
   line-height: 1.4; /* Slightly tighter line height */
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  word-wrap: break-word; /* Ensure long words break to the next line */
 }
 
 /* Message Alignment */
@@ -83,8 +82,6 @@
   color: #333;
   margin-right: auto; /* Aligns the message to the left */
   border-radius: 25px 25px 25px 5px; /* Different corner style for left messages */
-  padding: 10px 15px; /* Adjusted padding */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .message-right {
@@ -92,8 +89,6 @@
   color: white;
   margin-left: auto; /* Aligns the message to the right */
   border-radius: 25px 25px 5px 25px; /* Different corner style for right messages */
-  padding: 10px 15px; /* Adjusted padding */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 /* Button Styles */
@@ -102,7 +97,7 @@
   background-color: #2196f3; /* Blue for buttons */
   color: white;
   border: none;
-  padding: 8px 16px; /* Slightly smaller padding */
+  padding: 8px 12px; /* Adjusted padding for smaller buttons */
   border-radius: 25px; /* Rounded corners */
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
@@ -114,28 +109,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.flashcard-btn:hover,
-.quiz-btn:hover {
-  background-color: #1976d2; /* Darker blue for hover effect */
-  transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.flashcard-btn:active,
-.quiz-btn:active {
-  background-color: #1565c0; /* Even darker blue for active state */
-  transform: translateY(0); /* Reset on click */
-}
-
-.flashcard-btn:focus,
-.quiz-btn:focus {
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.5); /* Focus ring for accessibility */
-}
-
-
 /* Replies Container Styling */
 .replies-container {
-  margin-top: 10px;
+  margin-top: 5px; /* Adjusted margin for spacing */
   padding-left: 20px; /* Indentation for sub-replies */
   border-left: 2px solid #ddd; /* Left border to signify a reply thread */
 }
@@ -145,17 +121,16 @@
   background-color: #f7f7f7; /* Light background for replies */
   color: #333;
   margin: 5px 0;
-  padding: 10px 12px;
+  padding: 8px 10px; /* Smaller padding for compactness */
   border-radius: 12px; /* Rounded corners for reply cards */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  font-family: 'Arial', sans-serif;
-  font-size: 13px;
-  line-height: 1.4;
+  display: inline-block; /* Ensure replies are inline-block */
+  max-width: 90%; /* Maximum width for replies */
 }
 
 /* Reply Header (Username Display) */
 .reply-header {
-  margin-bottom: 5px;
+  margin-bottom: 3px; /* Smaller margin for a tighter look */
   color: #555;
   font-weight: bold;
 }
@@ -163,19 +138,6 @@
 /* Reply Content */
 .reply-content {
   color: #666;
-}
-
-/* Optional: Styling to match the right/left message look for replies */
-.reply-card-right {
-  background-color: #e8f4fd; /* Subtle light blue */
-  margin-left: auto;
-  border-radius: 12px 12px 12px 3px; /* Rounded corners */
-}
-
-.reply-card-left {
-  background-color: #fff;
-  margin-right: auto;
-  border-radius: 12px 12px 3px 12px;
 }
 
 
