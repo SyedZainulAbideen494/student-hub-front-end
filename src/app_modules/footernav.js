@@ -69,12 +69,13 @@ const FooterNav = () => {
                     <span className="btn-label">Planner</span>
                 </button>
             </Link>
-            <Link to='/groups' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
-                    <FaUsers className="icon-footer-nav" />
-                    <span className="btn-label">Groups</span>
-                </button>
-            </Link>
+
+            <Link to='/ai' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/ai' ? 'active' : ''}`}>
+        <SparkleIcon className="icon-footer-nav" />
+        <span className="btn-label">AI</span>
+    </button>
+</Link>
             <Link to='/notes' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
                     <FaStickyNote className="icon-footer-nav" />
@@ -93,12 +94,12 @@ const FooterNav = () => {
                         <span className="btn-label">Search</span>
                     </button>
                 </Link>
-                <Link to='/ai' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/ai' ? 'active' : ''}`}>
-        <SparkleIcon className="icon-footer-nav" />
-        <span className="btn-label">AI</span>
-    </button>
-</Link>
+                <Link to='/groups' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
+                    <FaUsers className="icon-footer-nav" />
+                    <span className="btn-label">Groups</span>
+                </button>
+            </Link>
                 <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />

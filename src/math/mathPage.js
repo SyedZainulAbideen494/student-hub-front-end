@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // Math Solver Component
 const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState([
+    { title: 'Welcome!', content: 'Hi there! What can I assist you with today?' }
+  ]);
   const [loading, setLoading] = useState(false);
   const [showKeyboard, setShowKeyboard] = useState(false);
 
@@ -32,7 +34,7 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
         formattedContent = `<ul>${formattedContent.match(/<li>.*?<\/li>/g).join('')}</ul>`;
       }
 
-      setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
+      setResults([{ title: 'AI Generated', content: formattedContent || 'No content available' }]);
     } catch (error) {
       console.error('Calculation Error:', error);
       setResults([{ title: 'Error', content: 'Unable to calculate' }]);
