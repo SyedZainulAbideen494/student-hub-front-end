@@ -123,9 +123,9 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Enter Question"
               />
-              <button className="chat-keyboard-btn" onClick={handleVoiceCommand}>
+             {/* <button className="chat-keyboard-btn" onClick={handleVoiceCommand}>
                 <FaMicrophone />
-              </button>
+              </button>*/}
             </div>
             <button className="chat-send-btn" onClick={performCalculate}>
               <FaArrowRight />
