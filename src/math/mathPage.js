@@ -77,62 +77,66 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
       setShowKeyboard(false);
   };
 
-  return (
-      <div className="mathsolver-container">
-          {loading ? (
-              <MathLoader />
-          ) : (
-              <div className="chat-ui">
-                  <div className="chat-messages">
-                      {results.length > 0 ? (
-                          results.map((result, index) => (
-                              <div key={index} className="chat-message">
-                                  <div className="chat-bubble">
-                                      <h2 className="chat-result-title">{result.title}</h2>
-                                      <div className="chat-result-content" dangerouslySetInnerHTML={{ __html: result.content }} />
-                                  </div>
-                              </div>
-                          ))
-                      ) : (
-                        <div>
-                          <div className="container__math__solver__animated">
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                              <span></span>
-                          </div>
-                          <div className="chat-message">
-                                  <div className="chat-bubble">
-                                      <div className="chat-result-content">{typingMessage}</div>
-                                  </div>
-                              </div>
-                          </div>
-                      )}
+  return  (
+    <div className="mathsolver-container">
+      {loading ? (
+         <div className="typing-loader">
+         <span className="typing-dot"></span>
+         <span className="typing-dot"></span>
+         <span className="typing-dot"></span>
+         <span className="typing-dot"></span>
+       </div>
+      ) : (
+        <div className="chat-ui">
+          <div className="chat-messages">
+            {results.length > 0 ? (
+              results.map((result, index) => (
+                <div key={index} className="chat-message">
+                  <div className="chat-bubble">
+                    <h2 className="chat-result-title">{result.title}</h2>
+                    <div className="chat-result-content" dangerouslySetInnerHTML={{ __html: result.content }} />
                   </div>
-                  <div className="chat-input-container">
-                      <div className="input-group">
-                          <input
-                              type="text"
-                              className="chat-input"
-                              value={query}
-                              onChange={(e) => setQuery(e.target.value)}
-                              placeholder="Enter Question"
-                          />
-                          
-                          <button className="chat-keyboard-btn" onClick={handleVoiceCommand}>
-                              <FaMicrophone />
-                          </button>
-
-                      </div>
-                      <button className="chat-send-btn" onClick={performCalculate}>
-                          <FaArrowRight />
-                      </button>
+                </div>
+              ))
+            ) : (
+              <div>
+                <div className="container__math__solver__animated">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="chat-message">
+                  <div className="chat-bubble">
+                    <div className="chat-result-content">{typingMessage}</div>
                   </div>
+                </div>
               </div>
-          )}
-      </div>
+            )}
+          </div>
+          <div className="chat-input-container">
+            <div className="input-group">
+              <input
+                type="text"
+                className="chat-input"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Enter Question"
+              />
+              <button className="chat-keyboard-btn" onClick={handleVoiceCommand}>
+                <FaMicrophone />
+              </button>
+            </div>
+            <button className="chat-send-btn" onClick={performCalculate}>
+              <FaArrowRight />
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
+
 
 
 // Main Component with Voice Command

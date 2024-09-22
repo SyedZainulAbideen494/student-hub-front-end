@@ -413,3 +413,61 @@
         border-color: black; /* Show the border */
     }
 }
+
+
+
+
+
+
+/* Add this to your mathPage.css file */
+
+/* Typing Loader Container */
+.typing-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-top: 10px;
+  }
+  
+  /* Each dot in the typing loader */
+  .typing-dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0;
+    animation: typingDots 1.5s infinite;
+  }
+  
+  /* Animate each dot with different delays */
+  .typing-dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
+  .typing-dot:nth-child(4) {
+    animation-delay: 0.9s;
+  }
+  
+  /* Keyframes for the typing dots animation */
+  @keyframes typingDots {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
