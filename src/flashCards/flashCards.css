@@ -811,3 +811,13 @@
 }
 
   
+
+
+.ql-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ql-toolbar .ql-formats {
+  margin: 5px; /* Adjust spacing */
+}

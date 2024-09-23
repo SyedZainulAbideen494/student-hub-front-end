@@ -392,11 +392,12 @@ const quillModules = {
       [{ 'header': '1' }, { 'header': '2' }],
       ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      ['blockquote', 'code-block'],
-      [{ 'align': [] }],
       ['clean'],
       [{ 'color': [] }, { 'background': [] }],
-      ['link', 'image', 'video'] // Add link and video buttons
+      ['link', 'image'], // Grouped together
+      ['blockquote', 'code-block'], // Grouped together
+      [{ 'align': [] }], // Keep alignment options together
+      ['video'] // Keep video separate for clarity
     ],
     handlers: {
       'background': function(value) {
