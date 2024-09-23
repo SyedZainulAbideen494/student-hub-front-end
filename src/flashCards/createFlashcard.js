@@ -387,13 +387,16 @@ const imageHandler = async () => {
 const quillModules = {
   toolbar: {
     container: [
+      [{ 'font': [] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
       [{ 'header': '1' }, { 'header': '2' }],
-      ['bold', 'italic', 'underline'],
+      ['bold', 'italic', 'underline', 'strike'],
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['blockquote', 'code-block'],
       [{ 'align': [] }],
       ['clean'],
       [{ 'color': [] }, { 'background': [] }],
-      ['image'] // Add image button
+      ['link', 'image', 'video'] // Add link and video buttons
     ],
     handlers: {
       'background': function(value) {
