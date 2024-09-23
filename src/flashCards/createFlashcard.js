@@ -120,6 +120,38 @@ const performCalculate = async () => {
   }
 };
 
+const handleImageUpload = async (file) => {
+  const formData = new FormData();
+  formData.append('image', file);
+  
+  // Adjust the URL according to your API
+  const response = await axios.post('/api/upload', formData, {
+      headers: {
+          'Content-Type': 'multipart/form-data',
+      },
+  });
+  
+  return response.data.imageUrl; // Ensure your API returns the image URL
+};
+
+const imageHandler = async () => {
+  const input = document.createElement('input');
+  input.setAttribute('type', 'file');
+  input.setAttribute('accept', 'image/*');
+  input.click();
+
+  input.onchange = async () => {
+      const file = input.files[0];
+      if (file) {
+          const imageUrl = await handleImageUpload(file);
+          const quill = this.quillRef.getEditor();
+          const range = quill.getSelection();
+          quill.insertEmbed(range.index, 'image', imageUrl);
+      }
+  };
+};
+
+
     return (
         <div className="flashcards-page">
       {showSuccessModal && (
@@ -274,16 +306,17 @@ const performCalculate = async () => {
                         placeholder="Type your question..."
                         style={{ width: '100%', marginBottom: '1rem' }}
                     />
-                    {results.length > 0 && (
-                    <div className="ai-results__flashcard__create">
-                        {results.map((result, index) => (
-                            <div key={index} className="result-item__flashcard__create">
-                                <h4>{result.title}</h4>
-                                <div dangerouslySetInnerHTML={{ __html: result.content }} />
-                            </div>
-                        ))}
-                    </div>
-                )}
+{results.length > 0 && (
+    <div className="ai-results__flashcard__create">
+        {results.map((result, index) => (
+            <div key={index} className="result-item__flashcard__create">
+                <h4>{result.title}</h4>
+                <div dangerouslySetInnerHTML={{ __html: result.content }} />
+            </div>
+        ))}
+    </div>
+)}
+
                     <div class="button-container__generate__text__flashcard__create">
                     <button className="button__generate__text__flashcard__create" type='button' onClick={performCalculate}>
   <div className="dots_border__generate__text__flashcard__create"></div>
@@ -359,16 +392,55 @@ const quillModules = {
       [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       [{ 'align': [] }],
       ['clean'],
-      [{ 'color': [] }, { 'background': [] }] // Add font color and background color
+      [{ 'color': [] }, { 'background': [] }],
+      ['image'] // Add image button
     ],
     handlers: {
       'background': function(value) {
         const quill = this.quill;
         quill.format('background', value);
       },
-      'color': function(value) { // Handler for font color
+      'color': function(value) {
         const quill = this.quill;
         quill.format('color', value);
+      },
+      'image': function() {
+        const quill = this.quill;
+        const fileInput = document.createElement('input');
+        fileInput.setAttribute('type', 'file');
+        fileInput.setAttribute('accept', 'image/*');
+        fileInput.click();
+
+        fileInput.onchange = async () => {
+          const file = fileInput.files[0];
+          if (file) {
+            const formData = new FormData();
+            formData.append('image', file);
+
+            // Upload image to server
+            try {
+              const response = await fetch('https://dropment.online/api/upload/images/flashcard', {
+                method: 'POST',
+                body: formData,
+              });
+              const data = await response.json();
+
+              if (data.imageUrl) {
+                // Insert the image URL into the editor
+                const range = quill.getSelection();
+                quill.insertEmbed(range.index, 'image', data.imageUrl);
+                
+                // Set max width and height for the image
+                const img = quill.root.querySelectorAll('img');
+                img[img.length - 1].style.maxWidth = '100%'; // Set max width
+                img[img.length - 1].style.maxHeight = '400px'; // Set max height
+                img[img.length - 1].style.objectFit = 'contain'; // Maintain aspect ratio
+              }
+            } catch (error) {
+              console.error('Error uploading image:', error);
+            }
+          }
+        };
       }
     }
   }
