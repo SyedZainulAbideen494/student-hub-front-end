@@ -160,7 +160,7 @@ const Welcome = () => {
                                   
                                     {/* New features */}
                                     <div className="feature-card-welcome-page">
-  <h3>AI Solver</h3>
+  <h3>AI</h3>
   <p>Get instant, step-by-step solutions to any problem, from math to science and beyond. Simplify your studies with our AI-powered solver, designed to help you tackle even the most challenging questions.</p>
   <Link to="/ai" className="continue-button-welcome-page">Explore the AI Solver</Link>
 </div>

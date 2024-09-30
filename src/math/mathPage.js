@@ -177,7 +177,7 @@ const MathPage = () => {
         <button className="back-btn" onClick={() => navigate('/')}>
           <FaArrowLeft />
         </button>
-        <h3 className="math-page-heading">AI Helper</h3>
+        <h3 className="math-page-heading">AI</h3>
       </div>
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
     </div>
