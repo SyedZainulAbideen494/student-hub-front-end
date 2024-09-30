@@ -160,10 +160,11 @@ const Welcome = () => {
                                   
                                     {/* New features */}
                                     <div className="feature-card-welcome-page">
-                                        <h3>AI Solver</h3>
-                                        <p>Solve complex  problems with ease.</p>
-                                        <Link to="/ai" className="continue-button-welcome-page">Continue to Math Solver</Link>
-                                    </div>
+  <h3>AI Solver</h3>
+  <p>Get instant, step-by-step solutions to any problem, from math to science and beyond. Simplify your studies with our AI-powered solver, designed to help you tackle even the most challenging questions.</p>
+  <Link to="/ai" className="continue-button-welcome-page">Explore the AI Solver</Link>
+</div>
+
                                     <div className="feature-card-welcome-page">
                                         <h3>Social Feed</h3>
                                         <p>Stay updated with your peers and share your achievements.</p>
