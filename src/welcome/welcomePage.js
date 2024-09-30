@@ -160,19 +160,9 @@ const Welcome = () => {
                                   
                                     {/* New features */}
                                     <div className="feature-card-welcome-page">
-                                        <h3>Math Solver</h3>
-                                        <p>Solve complex math problems with ease.</p>
-                                        <Link to="/math/solver" className="continue-button-welcome-page">Continue to Math Solver</Link>
-                                    </div>
-                                    <div className="feature-card-welcome-page">
-                                        <h3>Science Helper</h3>
-                                        <p>Get assistance with science topics and experiments.</p>
-                                        <Link to="/science/helper" className="continue-button-welcome-page">Continue to Science Helper</Link>
-                                    </div>
-                                    <div className="feature-card-welcome-page">
-                                        <h3>Commerce Helper</h3>
-                                        <p>Understand and solve commerce-related problems.</p>
-                                        <Link to="/commerce/helper" className="continue-button-welcome-page">Continue to Commerce Helper</Link>
+                                        <h3>AI Solver</h3>
+                                        <p>Solve complex  problems with ease.</p>
+                                        <Link to="/ai" className="continue-button-welcome-page">Continue to Math Solver</Link>
                                     </div>
                                     <div className="feature-card-welcome-page">
                                         <h3>Social Feed</h3>
