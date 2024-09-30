@@ -1,7 +1,14 @@
 import React from 'react';
-import './404Page.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom'; // Use this if you're using React Router
+import './404Page.css';
 
 const NotFoundPage = () => {
+  const nav = useNavigate();
+
+  const goBackToHome = () => {
+    nav('/');
+  };
+
   return (
     <div className="main_wrapper">
       <div className="main">
@@ -14,7 +21,7 @@ const NotFoundPage = () => {
           <div className="a_base"></div>
         </div>
         <div className="tv">
-          <div className="cruve">
+          <div className="curve">
             <svg
               viewBox="0 0 189.929 189.929"
               xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +38,7 @@ const NotFoundPage = () => {
             <div className="screen_out">
               <div className="screen_out1">
                 <div className="screen">
-                  <span className="notfound_text"> NOT FOUND</span>
+                  <span className="notfound_text">NOT FOUND</span>
                 </div>
               </div>
             </div>
@@ -42,7 +49,9 @@ const NotFoundPage = () => {
             <div className="line3"></div>
           </div>
           <div className="buttons_div">
-            <div className="b1"><div></div></div>
+            <div className="b1">
+              <div></div>
+            </div>
             <div className="b2"></div>
             <div className="speakers">
               <div className="g1">
@@ -66,9 +75,11 @@ const NotFoundPage = () => {
         <div className="text_4042">0</div>
         <div className="text_4043">4</div>
       </div>
+      <button className="back_button" onClick={goBackToHome}>
+        Back to Home
+      </button>
     </div>
   );
 };
 
 export default NotFoundPage;
-
