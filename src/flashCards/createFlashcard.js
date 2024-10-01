@@ -9,6 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 import GroupModal from './GroupModal';
 import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
 import SuccessModal from '../app_modules/SuccessModal';
+import DOMPurify from 'dompurify';
 
 const CreateFlashcard = () => {
     const [title, setTitle] = useState('');
@@ -151,6 +152,14 @@ const imageHandler = async () => {
   };
 };
 
+const handleCopy = (resultContent) => {
+  // Sanitize the content before setting it to the editor
+  const sanitizedContent = DOMPurify.sanitize(resultContent);
+  // Append the new content to the existing editor content
+  setEditorContent((prevContent) => `${prevContent}\n${sanitizedContent}`);
+};
+
+
 
     return (
         <div className="flashcards-page">
@@ -288,37 +297,38 @@ const imageHandler = async () => {
     </label>
   </div>
 </div>
-                <div className="form-group-flashcards-page">
-                    <label htmlFor="headings">Content:</label>
-                    <ReactQuill
-                        value={editorContent}
-                        onChange={setEditorContent}
-                        modules={quillModules}
-                    />
-                </div>
-{/* AI Query Section */}
-<div className="ai-query-section__flashcard__create">
-                    <h3>Ask the AI:</h3>
-                    <input
-                        type="text"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Type your question..."
-                        style={{ width: '100%', marginBottom: '1rem' }}
-                    />
-{results.length > 0 && (
-    <div className="ai-results__flashcard__create">
-        {results.map((result, index) => (
-            <div key={index} className="result-item__flashcard__create">
-                <h4>{result.title}</h4>
-                <div dangerouslySetInnerHTML={{ __html: result.content }} />
+<div className="form-group-flashcards-page">
+                <label htmlFor="headings">Content:</label>
+                <ReactQuill
+                    value={editorContent}
+                    onChange={setEditorContent}
+                    modules={quillModules}
+                />
             </div>
-        ))}
-    </div>
-)}
+            {/* AI Query Section */}
+            <div className="ai-query-section__flashcard__create">
+                <h3>Ask the AI:</h3>
+                <input
+                    type="text"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Type your question..."
+                    style={{ width: '100%', marginBottom: '1rem' }}
+                />
+                {results.length > 0 && (
+                    <div className="ai-results__flashcard__create">
+                        {results.map((result, index) => (
+                            <div key={index} className="result-item__flashcard__create">
+                                <h4>{result.title}</h4>
+                                <div dangerouslySetInnerHTML={{ __html: result.content }} />
+                                <button onClick={() => handleCopy(result.content)} className='copy-btn-notes-ai' type="button" >Add to content</button>
+                            </div>
+                        ))}
+                    </div>
+                )}
 
                     <div class="button-container__generate__text__flashcard__create">
-                    <button className="button__generate__text__flashcard__create" type='button' onClick={performCalculate}>
+                    <button className="button__generate__text__flashcard__create" type='button' onClick={performCalculate} type="button" >
   <div className="dots_border__generate__text__flashcard__create"></div>
   <svg
     xmlns="http://www.w3.org/2000/svg"
