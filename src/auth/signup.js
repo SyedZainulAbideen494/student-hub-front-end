@@ -24,28 +24,36 @@ const SignUp = () => {
 
     useEffect(() => {
         const checkUniqueId = async () => {
-            if (formData.unique_id) {
-                try {
-                    const response = await fetch(API_ROUTES.checkUniqueId, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ unique_id: formData.unique_id }),
-                    });
-                    if (response.ok) {
-                        setUniqueIdStatus('available');
-                        fetchUniqueIdAlternatives();
-                    } else {
-                        setUniqueIdStatus('taken');
-                        setUniqueIdSuggestions([]);
-                    }
-                } catch (error) {
-                    console.error('Error checking unique_id:', error);
-                    setUniqueIdStatus('error');
-                }
+          if (formData.unique_id) {
+            try {
+              const response = await fetch(API_ROUTES.checkUniqueId, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ unique_id: formData.unique_id }),
+              });
+      
+              if (response.ok) {
+                // Unique ID is available, clear the alternatives
+                setUniqueIdStatus('available');
+                setUniqueIdSuggestions([]); // Clear the suggestions
+              } else {
+                // Unique ID is taken, show alternatives (simulated for now)
+                setUniqueIdStatus('taken');
+                const alternatives = await response.json(); // Assuming server sends alternatives
+                setUniqueIdSuggestions(alternatives);
+              }
+            } catch (error) {
+              console.error('Error checking unique_id:', error);
+              setUniqueIdStatus('error');
+              setUniqueIdSuggestions([]); // Clear the suggestions in case of error
             }
+          }
         };
+      
         checkUniqueId();
-    }, [formData.unique_id]);
+      }, [formData.unique_id]);
+      
+    
 
     const fetchUniqueIdAlternatives = async () => {
         try {

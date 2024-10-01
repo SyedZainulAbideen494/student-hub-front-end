@@ -15,12 +15,13 @@ const SettingsPage = () => {
     phone_number: '',
     avatar: ''
   });
+  const [initialFormData, setInitialFormData] = useState({}); // Store initial data for comparison
   const [avatarFile, setAvatarFile] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [uniqueIdStatus, setUniqueIdStatus] = useState(''); // New state for unique ID validation
-  const [uniqueIdSuggestions, setUniqueIdSuggestions] = useState([]);
+  const [uniqueIdStatus, setUniqueIdStatus] = useState(''); // State for unique ID validation
+  const [hasUniqueIdChanged, setHasUniqueIdChanged] = useState(false); // Track if unique ID has changed
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,14 +35,16 @@ const SettingsPage = () => {
             { token },
             { headers: { 'Content-Type': 'application/json' } }
           );
-          setFormData({
+          const userData = {
             unique_id: response.data.unique_id,
             name: response.data.user_name,
             bio: response.data.bio,
             location: response.data.location,
             phone_number: response.data.phone_number,
             avatar: response.data.avatar
-          });
+          };
+          setFormData(userData);
+          setInitialFormData(userData); // Store initial data for comparison
         }
       } catch (error) {
         setError('Error fetching user data');
@@ -53,8 +56,8 @@ const SettingsPage = () => {
   }, []);
 
   useEffect(() => {
-    const checkUniqueId = async () => {
-      if (formData.unique_id) {
+    if (hasUniqueIdChanged) { // Only check unique ID if it's been changed
+      const checkUniqueId = async () => {
         try {
           const response = await fetch(API_ROUTES.checkUniqueId, {
             method: 'POST',
@@ -65,22 +68,22 @@ const SettingsPage = () => {
             setUniqueIdStatus('available');
           } else {
             setUniqueIdStatus('taken');
-            setUniqueIdSuggestions([]);
           }
         } catch (error) {
           console.error('Error checking unique_id:', error);
           setUniqueIdStatus('error');
         }
-      }
-    };
-    checkUniqueId();
-  }, [formData.unique_id]);
+      };
+      checkUniqueId();
+    }
+  }, [formData.unique_id, hasUniqueIdChanged]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
     if (name === 'unique_id') {
+      setHasUniqueIdChanged(value !== initialFormData.unique_id); // Check if unique_id has changed
       setUniqueIdStatus(''); // Reset status while typing
     }
   };
@@ -117,26 +120,33 @@ const SettingsPage = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (uniqueIdStatus !== 'available') {
+  
+    // Ensure unique_id check only fails if the user changed it to a taken ID
+    if (uniqueIdStatus === 'taken') {
       setError('Unique ID is not available');
       return; // Prevent form submission if unique ID is not available
     }
-
+  
     setLoading(true);
     setError('');
     const token = localStorage.getItem('token');
+  
     const formDataToSend = new FormData();
-    formDataToSend.append('unique_id', formData.unique_id);
-    formDataToSend.append('user_name', formData.name);
-    formDataToSend.append('bio', formData.bio);
-    formDataToSend.append('location', formData.location);
-    formDataToSend.append('phone_number', formData.phone_number);
-
+  
+    // Always send all form fields, whether changed or not
+    formDataToSend.append('unique_id', formData.unique_id || initialFormData.unique_id);
+    formDataToSend.append('user_name', formData.name || initialFormData.name);
+    formDataToSend.append('bio', formData.bio || initialFormData.bio);
+    formDataToSend.append('location', formData.location || initialFormData.location);
+    formDataToSend.append('phone_number', formData.phone_number || initialFormData.phone_number);
+  
     // Only append the avatar file if a new file was selected
     if (avatarFile) {
       formDataToSend.append('avatar', avatarFile);
+    } else {
+      formDataToSend.append('avatar', formData.avatar); // Send existing avatar if not changed
     }
-
+  
     try {
       if (token) {
         await axios.put(
@@ -144,8 +154,8 @@ const SettingsPage = () => {
           formDataToSend,
           { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' } }
         );
-        setModalVisible(true); // Show modal on success
-        setTimeout(() => setModalVisible(false), 3000); // Hide modal after 3 seconds
+        setModalVisible(true); // Show success modal
+        setTimeout(() => setModalVisible(false), 3000); // Hide after 3 seconds
       }
     } catch (error) {
       setError('Error updating profile');
@@ -153,7 +163,7 @@ const SettingsPage = () => {
       setLoading(false);
     }
   };
-
+  
   const handleSectionChange = (section) => {
     setActiveSection(section);
   };
@@ -216,24 +226,20 @@ const SettingsPage = () => {
             <label htmlFor="avatar">Avatar</label>
             <div className="avatar-section">
               {formData.avatar && <img src={`${API_ROUTES.displayImg}/${formData.avatar}`} alt="avatar" className="avatar-preview" />}
-              <label htmlFor="avatar-upload" className="avatar-upload-button">+</label>
               <input
                 type="file"
-                id="avatar-upload"
+                id="avatar"
                 name="avatar"
-                accept="image/*"
                 onChange={handleAvatarChange}
-                style={{ display: 'none' }}
               />
-              {formData.avatar && (
-                <button type="button" className="remove-avatar-button" onClick={handleRemoveAvatar}>Remove</button>
-              )}
+              <button type="button" className="remove-avatar" onClick={handleRemoveAvatar}>Remove Avatar</button>
             </div>
 
-            <button type="submit" disabled={uniqueIdStatus !== 'available'}>Save Changes</button>
+            <button type="submit" className="save-button" disabled={loading}>
+              {loading ? 'Saving...' : 'Save Changes'}
+            </button>
           </form>
         )}
-        {/* Other sections */}
       </div>
       <SuccessModal visible={modalVisible} message="Profile updated successfully!" />
     </div>
@@ -241,3 +247,4 @@ const SettingsPage = () => {
 };
 
 export default SettingsPage;
+
