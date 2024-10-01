@@ -118,6 +118,7 @@ const performCalculate = async () => {
       setResults([{ title: 'Error', content: 'Something went wrong try again' }]);
   } finally {
       setLoading(false);
+      setQuery(''); // Clear the input after calculation
   }
 };
 
