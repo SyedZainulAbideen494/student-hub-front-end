@@ -498,66 +498,50 @@
     text-align: center; /* Center align the text */
   }
 
+
+  
+
+
   /* Button container styling */
-  .button-container__main__page__flashcard__page {
-    display: flex; /* Use flexbox to align buttons inline */
-    justify-content: center; /* Center the buttons horizontally */
-    gap: 1.5rem; /* Space between the buttons */
-    margin: 20px 0; /* Add some vertical spacing */
-  }
-  
-  /* Button styling for flashcard page */
-  .btn__main__page__flashcard__page {
-    width: 10em; /* Smaller width */
-    height: 3em; /* Smaller height */
-    border-radius: 25em; /* Slightly smaller border radius */
-    font-size: 14px; /* Smaller font size */
-    font-family: 'Arial', sans-serif;
-    border: none;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: 0.5s ease;
-    display: flex; /* Center content within the button */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    color: #fff; /* Text color */
-    background-color: #4A90E2; /* Base color */
-  }
-  
-  /* Button icon styling */
-  .btn-icon__main__page__flashcard__page {
-    margin-right: 0.5rem; /* Space between icon and text */
-  }
-  
-  /* Before pseudo-element for hover effect */
-  .btn__main__page__flashcard__page::before {
-    content: '';
-    width: 0;
-    height: 100%;
-    border-radius: 25em; /* Match border radius */
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to right, #4A90E2, #50E3C2);
-    transition: 0.5s ease;
-    display: block;
-    z-index: -1;
-  }
-  
-  /* Hover effect */
-  .btn__main__page__flashcard__page:hover::before {
-    width: 100%;
-  }
-  
-  /* Active button style */
-  .active__main__page__flashcard__page {
-    transform: scale(1.1);
-    background-color: #50E3C2; /* Active button color */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Stronger shadow on active */
-  }
-  
+.button-container__main__page__flashcard__page {
+  display: flex; /* Use flexbox to align buttons inline */
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 1.5rem; /* Space between the buttons */
+  margin: 20px 0; /* Add some vertical spacing */
+}
+
+/* Button styling for flashcard page */
+.btn__main__page__flashcard__page {
+  width: 10em; /* Width of the button */
+  height: 3em; /* Height of the button */
+  border-radius: 30px; /* More rounded corners */
+  font-size: 14px; /* Font size */
+  font-family: 'Arial', sans-serif; /* Font family */
+  border: none; /* Remove border */
+  position: relative;
+  z-index: 1; /* Layering */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  display: flex; /* Center content within the button */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  color: #333; /* Dark text color for contrast */
+  background-color: #e0e0e0; /* Light background color */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Button icon styling */
+.btn-icon__main__page__flashcard__page {
+  margin-right: 0.5rem; /* Space between icon and text */
+}
+
+/* Active button style */
+.active__main__page__flashcard__page {
+  background-color: #4A90E2; /* Active button color */
+  color: #fff; /* Text color for active button */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Stronger shadow on active */
+}
+
+
 
 
 
