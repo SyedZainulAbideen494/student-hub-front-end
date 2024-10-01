@@ -524,8 +524,8 @@
   display: flex; /* Center content within the button */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  color: #333; /* Dark text color for contrast */
-  background-color: #e0e0e0; /* Light background color */
+  color: #ffffff; /* Dark text color for contrast */
+  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
@@ -536,8 +536,9 @@
 
 /* Active button style */
 .active__main__page__flashcard__page {
-  background-color: #4A90E2; /* Active button color */
-  color: #fff; /* Text color for active button */
+  background: transparent;
+  border: 1px solid #4dc7d9;
+  color: #000000; /* Text color for active button */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Stronger shadow on active */
 }
 
