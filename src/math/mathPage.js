@@ -54,7 +54,7 @@ const performCalculate = async () => {
     setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
   } catch (error) {
     console.error('Calculation Error:', error);
-    setResults([{ title: 'Error', content: 'Unable to calculate' }]);
+    setResults([{ title: 'Error', content: 'Something went wrong try again' }]);
   } finally {
     setLoading(false);
     setQuery(''); // Clear the input after calculation
