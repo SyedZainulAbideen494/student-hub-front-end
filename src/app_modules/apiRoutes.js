@@ -77,5 +77,6 @@ export const API_ROUTES = {
   downloadIOS: `${API_URL}/download/ios`, // Add this line
   incrementDownloadCount: `${API_URL}/notes/increment-download-count`,
   profileFollowers: `${API_URL}/api/profile/followers`,
-  profileFollowing: `${API_URL}/api/profile/following`
+  profileFollowing: `${API_URL}/api/profile/following`,
+  flashcardImageUpload: `${API_URL}/api/upload/images/flashcard`
 }

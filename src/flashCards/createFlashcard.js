@@ -423,7 +423,7 @@ const quillModules = {
 
             // Upload image to server
             try {
-              const response = await fetch('https://dropment.online/api/upload/images/flashcard', {
+              const response = await fetch(API_ROUTES.flashcardImageUpload, {
                 method: 'POST',
                 body: formData,
               });
