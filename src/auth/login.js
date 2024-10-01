@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPhone, FaLock, FaUser, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaLock, FaUser, FaEyeSlash, FaEye } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import Axios from 'axios';
@@ -16,6 +16,8 @@ const Login = () => {
     const [otpSent, setOtpSent] = useState(false);
     const [loading, setLoading] = useState(false);
     const [userEmail, setUserEmail] = useState('');
+    const [otpTimer, setOtpTimer] = useState(120); // 2 minutes in seconds
+    const [isTimerActive, setIsTimerActive] = useState(false);
     const nav = useNavigate();
 
     const handleIdentifierChange = (e) => setIdentifier(e.target.value);
@@ -31,6 +33,13 @@ const Login = () => {
         } else {
             verifyOTP();
         }
+    };
+
+    const maskEmail = (email) => {
+        if (!email) return '';
+        const [localPart, domain] = email.split('@');
+        const maskedLocal = localPart.slice(0, 2) + '*****' + localPart.slice(-1);
+        return `${maskedLocal}@${domain}`;
     };
 
     const checkTokenAndRedirect = async (token) => {
@@ -53,6 +62,23 @@ const Login = () => {
         }
     }, [nav]);
 
+    useEffect(() => {
+        let timer;
+        if (isTimerActive) {
+            timer = setInterval(() => {
+                setOtpTimer((prev) => {
+                    if (prev <= 1) {
+                        clearInterval(timer);
+                        setIsTimerActive(false);
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(timer);
+    }, [isTimerActive]);
+
     const login = () => {
         setError("");
         Axios.post(API_ROUTES.login, {
@@ -66,6 +92,7 @@ const Login = () => {
                 setOtpSent(true);
                 setUserEmail(response.data.email);
                 setPhone(response.data.phone);
+                setIsTimerActive(true); // Start the timer when OTP is sent
             }
         }).catch((error) => {
             setLoading(false);
@@ -100,7 +127,8 @@ const Login = () => {
                     {otpSent ? (
                         <>
                             <h2>Verify Your OTP</h2>
-                            <p>A verification code has been sent to your email!</p>
+                            <p>A verification code has been sent to your email {maskEmail(userEmail)}</p>
+                            <p>Time remaining: {Math.floor(otpTimer / 60)}:{otpTimer % 60 < 10 ? `0${otpTimer % 60}` : otpTimer % 60}</p>
                             <form onSubmit={handleSubmit}>
                                 <div className="input-container-login">
                                     <FaLock className="icon" />
@@ -109,9 +137,10 @@ const Login = () => {
                                         placeholder="Enter OTP"
                                         onChange={handleOtpChange}
                                         required
+                                        disabled={!isTimerActive} // Disable input if time is up
                                     />
                                 </div>
-                                <button type="submit" className="login-button">
+                                <button type="submit" className="login-button" disabled={!isTimerActive}>
                                     Verify OTP
                                 </button>
                             </form>
@@ -119,7 +148,7 @@ const Login = () => {
                     ) : (
                         <>
                             <h2>Login</h2>
-                            {error && <p className="error-message" style={{color: 'red'}}>{error}</p>}
+                            {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
                             <form onSubmit={handleSubmit}>
                                 <div className="input-container-login">
                                     <FaUser className="icon" />
@@ -151,14 +180,12 @@ const Login = () => {
                                     Login
                                 </button>
                                 <div className="links-login">
-                        <Link to="/forgot-password">Forgot Password?</Link> | 
-                        <Link to="/sign-up"> Sign up</Link>
-                    </div>
+                                    <Link to="/forgot-password">Forgot Password?</Link> | 
+                                    <Link to="/sign-up"> Sign up</Link>
+                                </div>
                             </form>
                         </>
                     )}
-                  
-                
                     <p className="welcome-message">Welcome back! Please log in to continue.</p>
                 </div>
             )}
