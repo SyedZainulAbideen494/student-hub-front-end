@@ -1,19 +1,17 @@
 /* Message Alignment */
+/* Left Message Styling */
 .message-left {
-  background: linear-gradient(to right, #2f2f2f, #4a4a4a); /* Dark grey gradient for left messages */
-  color: #ffffff; /* White text for better contrast */
+  background: #F7F8FD; /* Solid dark grey for left messages */
+  color: #000000; /* White text for better contrast */
   margin-right: auto; /* Aligns the message to the left */
-  border-radius: 25px 25px 25px 5px; /* Different corner style for left messages */
+  border-radius: 25px 25px 5px 25px; /* Rounded corners */
   padding: 10px 15px; /* Add padding for better spacing */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for depth */
-  font-size: 1rem; /* Adjust font size for better readability */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  font-size: 1rem; /* Adjust font size for readability */
   max-width: 60%; /* Limit the message width */
   transition: background-color 0.3s; /* Smooth background change */
 }
 
-.message-left:hover {
-  background: linear-gradient(to right, #a4d8e1, #c0e1f5); /* Lighten on hover */
-}
 
 /* Group Chat Layout */
 .group-chat {
@@ -97,7 +95,7 @@
 
 /* Right Message Styling */
 .message-right {
-  background: linear-gradient(to right, #6a5acd, #4b0082); /* Deep gradient for contrast */
+  background: #567AF4; /* Slightly lighter grey for right messages */
   color: white; /* Keep text white for readability */
   margin-left: auto; /* Aligns the message to the right */
   border-radius: 25px 25px 5px 25px; /* Rounded corners */
@@ -106,13 +104,8 @@
   font-size: 1rem; /* Optional: adjust font size for readability */
   max-width: 60%; /* Limit the message width */
   transition: background-color 0.3s; /* Smooth background change */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Add a subtle white border for definition */
-  backdrop-filter: blur(5px); /* Optional: add a slight blur effect for a modern look */
 }
 
-.message-right:hover {
-  background: linear-gradient(to right, #6a5acd, #7b82e3); /* Lighten on hover */
-}
 
 /* Button Styles */
 .flashcard-btn,
@@ -156,16 +149,7 @@
   max-width: 90%; /* Maximum width for replies */
 }
 
-/* Message Header */
-.message-header {
-  font-size: 12px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .message-sender {
   font-size: 14px;
