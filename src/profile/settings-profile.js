@@ -223,17 +223,7 @@ const SettingsPage = () => {
               onChange={handleInputChange}
             />
 
-            <label htmlFor="avatar">Avatar</label>
-            <div className="avatar-section">
-              {formData.avatar && <img src={`${API_ROUTES.displayImg}/${formData.avatar}`} alt="avatar" className="avatar-preview" />}
-              <input
-                type="file"
-                id="avatar"
-                name="avatar"
-                onChange={handleAvatarChange}
-              />
-              <button type="button" className="remove-avatar" onClick={handleRemoveAvatar}>Remove Avatar</button>
-            </div>
+
 
             <button type="submit" className="save-button" disabled={loading}>
               {loading ? 'Saving...' : 'Save Changes'}

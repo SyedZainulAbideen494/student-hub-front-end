@@ -81,4 +81,5 @@ export const API_ROUTES = {
   flashcardImageUpload: `${API_URL}/api/upload/images/flashcard`,
   noDetailsUpdateUser: `${API_URL}/api/update-user-details`,
   noDetailPopModalcheck: `${API_URL}/api/check-user-details`,
+  changeAvatar: `${API_URL}/user/update/avatar`,
 }

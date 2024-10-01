@@ -134,23 +134,35 @@
   .avatar-section {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px; /* Increased gap for better spacing */
+    margin-bottom: 30px;
   }
   
   .avatar-preview {
-    width: 50px;
-    height: 50px;
+    width: 60px; /* Slightly larger avatar preview */
+    height: 60px; /* Slightly larger avatar preview */
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #7161ef; /* Added a border for better visibility */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Added shadow for depth */
   }
   
   .avatar-upload-button {
-    display: inline-block;
-    background-color: #ccc;
+    display: flex; /* Use flex for better centering */
+    justify-content: center;
+    align-items: center;
+    background-color: #7161ef; /* Changed background color to a primary color */
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
+    width: 40px; /* Increased button size for easier clicking */
+    height: 40px; /* Increased button size for easier clicking */
     cursor: pointer;
+    color: white; /* Changed text color to white for better contrast */
+    font-weight: bold; /* Made the font bold for emphasis */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transition for effects */
   }
+  
+  .avatar-upload-button:hover {
+    background-color: #5e52cc; /* Darker shade on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+  }
+  
