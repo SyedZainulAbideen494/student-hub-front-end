@@ -8,7 +8,7 @@ const SuccessPage = () => {
   const nav = useNavigate()
 
   const handleGoBack = () => {
-    nav('/planner')
+    nav('/')
   }
 
   useEffect(() => {
