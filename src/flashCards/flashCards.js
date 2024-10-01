@@ -18,7 +18,7 @@ const FlashcardsPage = () => {
           className={`btn__main__page__flashcard__page ${mode === 'view' ? 'active__main__page__flashcard__page' : ''}`}
           onClick={() => setMode('view')}
         >
-          <FaEye className="btn-icon__main__page__flashcard__page" /> View Flashcard
+          <FaEye className="btn-icon__main__page__flashcard__page" /> My Flashcard
         </button>
 
         {/* Create Button */}
