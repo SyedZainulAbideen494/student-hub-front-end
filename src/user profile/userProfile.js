@@ -152,12 +152,13 @@ const UserProfile = () => {
           </div>
         </div>
         <button 
-          className="follow-button-user-profile-guest" 
-          onClick={isFollowing ? handleUnfollow : handleFollow}
-        >
-          {isFollowing ? <FaUserMinus className="react-icon__user__profile__guest" /> : <FaUserPlus className="react-icon__user__profile__guest" />} 
-          {isFollowing ? 'Unfollow' : 'Follow'}
-        </button>
+    className="follow-button-user-profile-guest" 
+    onClick={isFollowing ? handleUnfollow : handleFollow}
+>
+    {isFollowing ? <FaUserMinus className="react-icon__user__profile__guest" /> : <FaUserPlus className="react-icon__user__profile__guest" />} 
+    <span className="button-text">{isFollowing ? 'Unfollow' : 'Follow'}</span>
+</button>
+
       </div>
 
       {/* Followers Modal */}

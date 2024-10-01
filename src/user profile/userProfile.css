@@ -324,3 +324,13 @@
 .follow-button-user-profile-guest:hover .react-icon {
     transform: scale(1.2);
 }
+
+
+.react-icon__user__profile__guest {
+    margin-right: 8px; /* Adjust the spacing as needed */
+}
+
+.follow-button-user-profile-guest {
+    display: flex; /* Use flex to align items properly */
+    align-items: center; /* Center items vertically */
+}
