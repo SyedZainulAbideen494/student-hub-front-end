@@ -93,6 +93,26 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!validateForm()) return;
+
+
+    // Basic validation before submission
+    if (!email.trim() || !phone_number.trim()) {
+        setError('Email and phone number cannot be blank or contain only spaces.');
+        return;
+      }
+  
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const phoneRegex = /^\d{10}$/;
+  
+      if (!emailRegex.test(email)) {
+        setError('Invalid email format.');
+        return;
+      }
+  
+      if (!phoneRegex.test(phone_number)) {
+        setError('Invalid phone number. It must be 10 digits.');
+        return;
+      }
     
         setLoading(true);
         try {
