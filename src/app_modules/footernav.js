@@ -49,7 +49,7 @@ const FooterNav = () => {
         navigate('/login');
     };
 
-    const hasProfileIssues = profile && (!profile.user_name || !profile.bio || !profile.location);
+    const hasProfileIssues = profile && (!profile.user_name || !profile.bio);
 
 
     const SparkleIcon = () => (

@@ -43,6 +43,8 @@ const ProfilePage = () => {
     fetchProfileData();
   }, []);
 
+  const hasProfileIssues = profile && (!profile.user_name || !profile.bio);
+
   useEffect(() => {
     const fetchDataForActiveTab = async () => {
       const token = localStorage.getItem('token');
@@ -154,7 +156,7 @@ const ProfilePage = () => {
         <h3>Profile</h3>
         <Link to="/settings">
           <button className="settings-icon-button">
-            <i className="fas fa-cog"></i> {/* Font Awesome cog icon */}
+            <i className="fas fa-cog">{hasProfileIssues && <span className="issue-icon">!</span>}</i> {/* Font Awesome cog icon */}
           </button>
         </Link>
       </header>
