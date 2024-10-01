@@ -180,14 +180,9 @@ const CalendarPage = () => {
                     <div className="event-list-calendar-page">
                         <div className="section-title-calendar-page">Events on {selectedDate.toDateString()}</div>
                         {getEventsForDate(selectedDate).length === 0 ? (
-                            <div className="no-events-message">
+                            <div className="no-events-message" style={{textAlign: 'center'}}>
                                 <FontAwesomeIcon icon={faExclamationCircle} /> No events for this date. 
-                                <button
-                                    className="btn-add-event"
-                                    onClick={() => toggleFormVisibility(null)}
-                                >
-                                    <FontAwesomeIcon icon={faPlusCircle} /> Add Event
-                                </button>
+                               
                             </div>
                         ) : (
                             getEventsForDate(selectedDate).map(event => (
@@ -215,14 +210,9 @@ const CalendarPage = () => {
                     <div className="event-list-calendar-page">
                         <div className="section-title-calendar-page">All Upcoming Events</div>
                         {events.length === 0 ? (
-                            <div className="no-events-message">
+                            <div className="no-events-message" style={{textAlign: 'center'}}>
                                 <FontAwesomeIcon icon={faExclamationCircle} /> No events available. 
-                                <button
-                                    className="btn-add-event"
-                                    onClick={() => toggleFormVisibility(null)}
-                                >
-                                    <FontAwesomeIcon icon={faPlusCircle} /> Add Event
-                                </button>
+                                
                             </div>
                         ) : (
                             events.map(event => (
