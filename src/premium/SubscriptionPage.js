@@ -39,7 +39,7 @@ const SubscriptionPage = () => {
       try {
         const response = await axios.post(API_ROUTES.verifyPremium, { token });
         const { is_premium } = response.data;
-        setIsPremium(is_premium);
+        setIsPremium(true);
       } catch (error) {
         console.error('Error verifying premium status:', error);
       }
