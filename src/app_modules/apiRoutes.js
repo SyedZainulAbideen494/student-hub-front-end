@@ -78,5 +78,7 @@ export const API_ROUTES = {
   incrementDownloadCount: `${API_URL}/notes/increment-download-count`,
   profileFollowers: `${API_URL}/api/profile/followers`,
   profileFollowing: `${API_URL}/api/profile/following`,
-  flashcardImageUpload: `${API_URL}/api/upload/images/flashcard`
+  flashcardImageUpload: `${API_URL}/api/upload/images/flashcard`,
+  noDetailsUpdateUser: `${API_URL}/api/update-user-details`,
+  noDetailPopModalcheck: `${API_URL}/api/check-user-details`,
 }

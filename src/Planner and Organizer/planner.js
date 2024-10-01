@@ -11,6 +11,7 @@ import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from '
 import SuccessMessage from '../app_modules/SuccessMessage';
 import { useNavigate } from 'react-router-dom';
 import InviteFriends from '../help/InviteFriends';
+import InvalidPhoneEmail from '../app_modules/InvalidUserModal';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -215,6 +216,7 @@ const navigate = useNavigate()
 
     return (
         <div className="App-dashboard-planner">
+           
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="card__planner__data">
             <div className="item__planner__data item--1__planner__data">
@@ -363,6 +365,7 @@ const navigate = useNavigate()
             </div>
             <InviteFriends/>
             <FooterNav />
+            <InvalidPhoneEmail/>
             {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
         </div>
     );
