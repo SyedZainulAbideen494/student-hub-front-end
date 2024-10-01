@@ -1,0 +1,200 @@
+/* InviteFriends.css */
+.invite-friends___inv__friends__mkrt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* InviteFriends.css */
+.invite-friends___inv__friends__mkrt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card___inv__friends__mkrt {
+    width: 190px;
+    height: 254px;
+    background: #07182E;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    z-index: 10; /* Ensuring it’s above other elements */
+    margin-bottom: 50px;
+}
+
+.button___inv__friends__mkrt {
+    position: relative; /* Ensure it's in the normal document flow */
+    margin-top: 10px; /* Space above the button */
+    padding: 10px 22px; /* Ensure padding is sufficient */
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #7d2ae8; /* Ensure contrast */
+    transition: all 0.2s ease;
+    z-index: 20; /* Set a higher z-index for the button */
+}
+
+.invite-message___inv__friends__mkrt {
+    margin-top: 10px;
+    color: #ffffff; /* Optional: set text color for messages */
+}
+
+
+.card___inv__friends__mkrt {
+    width: 190px;
+    height: 254px;
+    background: #07182E;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    z-index: 10; /* Set a high z-index to ensure visibility */
+}
+
+.card___inv__friends__mkrt h2 {
+    z-index: 1;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.card___inv__friends__mkrt p {
+    z-index: 1;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.card___inv__friends__mkrt::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+    height: 130%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+}
+
+@keyframes rotBGimg {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.card___inv__friends__mkrt::after {
+    content: '';
+    position: absolute;
+    background: #07182E;
+    inset: 5px;
+    border-radius: 15px;
+}
+
+.button___inv__friends__mkrt {
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #7d2ae8;
+    transition: all 0.2s ease;
+}
+
+.button___inv__friends__mkrt:active {
+    transform: scale(0.96);
+}
+
+.button___inv__friends__mkrt:before,
+.button___inv__friends__mkrt:after {
+    position: absolute;
+    content: "";
+    width: 150%;
+    left: 50%;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: -1000;
+    background-repeat: no-repeat;
+}
+
+.button___inv__friends__mkrt:hover:before {
+    top: -70%;
+    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+    background-position: 50% 120%;
+    animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+    0% {
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.button___inv__friends__mkrt:hover::after {
+    bottom: -70%;
+    background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+                      radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 50% 0%;
+    animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+    0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    }
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.button___inv__friends__mkrt {
+    position: relative; /* Ensure it's in the normal document flow */
+    margin-top: 10px; /* Add space above the button */
+    padding: 10px 20px; /* Ensure padding is sufficient */
+    background-color: #7d2ae8; /* Ensure background color contrasts with card */
+    color: #fff; /* Ensure text is readable */
+}
+
+
+.invite-message___inv__friends__mkrt {
+    margin-top: 10px;
+    color: #ffffff; /* Optional: set text color for messages */
+}

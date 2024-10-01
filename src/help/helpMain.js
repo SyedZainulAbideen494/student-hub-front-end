@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import './helpMain.css';
+import InviteFriends from './InviteFriends';
 
 const HelpMain = () => {
   const navigate = useNavigate(); // Hook to navigate
@@ -19,6 +20,8 @@ const HelpMain = () => {
       <p className="app-description-help-page">
         Edusify is an all-in-one study app designed to enhance your learning experience with a suite of powerful tools. Stay organized, collaborate, and make studying more enjoyable!
       </p>
+
+      <InviteFriends/>
 
       {/* Features Details */}
       <div className="features-container-help-page">

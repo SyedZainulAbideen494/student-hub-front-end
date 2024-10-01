@@ -10,6 +10,7 @@ import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from 'react-icons/fa'; // Importing icons
 import SuccessMessage from '../app_modules/SuccessMessage';
 import { useNavigate } from 'react-router-dom';
+import InviteFriends from '../help/InviteFriends';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -360,6 +361,7 @@ const navigate = useNavigate()
                     ))}
                 </div>
             </div>
+            <InviteFriends/>
             <FooterNav />
             {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
         </div>

@@ -140,12 +140,12 @@ const SettingsPage = () => {
     formDataToSend.append('location', formData.location || initialFormData.location);
     formDataToSend.append('phone_number', formData.phone_number || initialFormData.phone_number);
   
-    // Only append the avatar file if a new file was selected
     if (avatarFile) {
       formDataToSend.append('avatar', avatarFile);
-    } else {
-      formDataToSend.append('avatar', formData.avatar); // Send existing avatar if not changed
+    } else if (formData.avatar) {
+      formDataToSend.append('avatar', formData.avatar); // Send the existing avatar if it's not changed
     }
+  
   
     try {
       if (token) {
