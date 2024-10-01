@@ -1,3 +1,20 @@
+/* Message Alignment */
+.message-left {
+  background: linear-gradient(to right, #2f2f2f, #4a4a4a); /* Dark grey gradient for left messages */
+  color: #ffffff; /* White text for better contrast */
+  margin-right: auto; /* Aligns the message to the left */
+  border-radius: 25px 25px 25px 5px; /* Different corner style for left messages */
+  padding: 10px 15px; /* Add padding for better spacing */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slightly darker shadow for depth */
+  font-size: 1rem; /* Adjust font size for better readability */
+  max-width: 60%; /* Limit the message width */
+  transition: background-color 0.3s; /* Smooth background change */
+}
+
+.message-left:hover {
+  background: linear-gradient(to right, #a4d8e1, #c0e1f5); /* Lighten on hover */
+}
+
 /* Group Chat Layout */
 .group-chat {
   display: flex;
@@ -7,7 +24,7 @@
   margin: 0 auto;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
   position: relative;
   overflow: hidden;
 }
@@ -22,7 +39,7 @@
   background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
   z-index: 1000;
-  padding: 10px;
+  padding: 15px; /* Increased padding for better spacing */
   border-radius: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -32,9 +49,8 @@
 
 .group-header h1 {
   margin: 0;
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: 500;
+  font-size: 20px; /* Larger font for better readability */
+  font-weight: 600; /* Bolder text */
   text-align: center;
   color: #333;
 }
@@ -42,55 +58,60 @@
 /* Footer Section */
 .group-footer {
   width: 100%;
-  padding: 10px;
+  padding: 15px; /* Increased padding for better spacing */
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
   background-color: #f1f1f1;
   z-index: 1000;
   border-top: 1px solid #e0e0e0;
+  display: flex; /* Flex for better alignment */
+  justify-content: space-between;
 }
 
 /* Chat Content Container */
 .group-chat-container {
   flex-grow: 1;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 70px; /* Adjusted for header height */
+  margin-bottom: 70px; /* Adjusted for footer height */
   overflow-y: auto;
   padding: 10px;
   background-color: #f7f7f7;
   box-sizing: border-box;
 }
 
-
 /* Message Card Styling */
 .message-card {
   max-width: 70%; /* Messages will take up a maximum of 70% of the chat width */
   margin: 10px 0; /* Vertical margin for spacing */
-  padding: 10px 12px; /* Adjusted padding for compactness */
+  padding: 10px 15px; /* Increased padding for comfort */
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
-  font-size: 13px; /* Smaller font size */
-  line-height: 1.4; /* Slightly tighter line height */
+  font-size: 14px; /* Slightly larger font size */
+  line-height: 1.5; /* More spacious line height */
   display: block; /* Ensure each message takes its own line */
   word-wrap: break-word; /* Ensure long words break to the next line */
   position: relative; /* Allows positioning inside */
 }
 
-/* Message Alignment */
-.message-left {
-  background-color: #e8f4fd; /* Soft blue background for left messages */
-  color: #333;
-  margin-right: auto; /* Aligns the message to the left */
-  border-radius: 25px 25px 25px 5px; /* Different corner style for left messages */
+/* Right Message Styling */
+.message-right {
+  background: linear-gradient(to right, #6a5acd, #4b0082); /* Deep gradient for contrast */
+  color: white; /* Keep text white for readability */
+  margin-left: auto; /* Aligns the message to the right */
+  border-radius: 25px 25px 5px 25px; /* Rounded corners */
+  padding: 10px 15px; /* Add some padding for better spacing */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  font-size: 1rem; /* Optional: adjust font size for readability */
+  max-width: 60%; /* Limit the message width */
+  transition: background-color 0.3s; /* Smooth background change */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Add a subtle white border for definition */
+  backdrop-filter: blur(5px); /* Optional: add a slight blur effect for a modern look */
 }
 
-.message-right {
-  background: linear-gradient(to right, #6a5acd, #a38dff); /* Softer gradient for right messages */
-  color: white;
-  margin-left: auto; /* Aligns the message to the right */
-  border-radius: 25px 25px 5px 25px; /* Different corner style for right messages */
+.message-right:hover {
+  background: linear-gradient(to right, #6a5acd, #7b82e3); /* Lighten on hover */
 }
 
 /* Button Styles */
@@ -99,16 +120,21 @@
   background-color: #2196f3; /* Blue for buttons */
   color: white;
   border: none;
-  padding: 8px 12px; /* Adjusted padding for smaller buttons */
+  padding: 12px 10px; /* Adjusted padding for smaller buttons */
   border-radius: 25px; /* Rounded corners */
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
-  font-size: 14px; /* Smaller font size */
-  font-weight: 600; /* Slightly bolder text */
+  font-size: 14px; /* Slightly larger font size */
   display: inline-flex; /* Centering text vertically */
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.flashcard-btn:hover,
+.quiz-btn:hover {
+  background-color: #1976d2; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scale effect */
 }
 
 /* Replies Container Styling */
@@ -123,31 +149,18 @@
   background-color: #f7f7f7; /* Light background for replies */
   color: #333;
   margin: 5px 0;
-  padding: 8px 10px; /* Smaller padding for compactness */
+  padding: 10px 12px; /* Adjusted padding for compactness */
   border-radius: 12px; /* Rounded corners for reply cards */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   display: inline-block; /* Ensure replies are inline-block */
   max-width: 90%; /* Maximum width for replies */
 }
 
-/* Reply Header (Username Display) */
-.reply-header {
-  margin-bottom: 3px; /* Smaller margin for a tighter look */
-  color: #555;
-  font-weight: bold;
-}
-
-/* Reply Content */
-.reply-content {
-  color: #666;
-}
-
-
 /* Message Header */
 .message-header {
   font-size: 12px;
   font-weight: bold;
-  color: #555;
+  color: #ffffff;
   margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
@@ -156,7 +169,7 @@
 
 .message-sender {
   font-size: 14px;
-  color: #7161ef;
+  color: #ffffff;
 }
 
 .message-timestamp {
@@ -184,6 +197,7 @@
   font-size: 10px;
 }
 
+/* Message Input Container */
 .message-input-container {
   display: flex;
   align-items: center;
@@ -191,7 +205,7 @@
   bottom: 0;
   left: 0;
   width: 95%;
-  padding: 10px;
+  padding: 12px; /* Increased padding for better spacing */
   background-color: #ffffff;
   border-radius: 25px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -202,7 +216,7 @@
 .message-input-container input {
   flex-grow: 1;
   padding: 10px;
-  height: 40px;
+  height: 45px; /* Increased height for input */
   border: 1px solid #dcdcdc;
   border-radius: 25px;
   font-size: 15px;
@@ -220,109 +234,83 @@
   color: white;
   border: none;
   padding: 10px;
-  border-radius: 50%;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  transition: background-color 0.3s, transform 0.3s; /* Added transition for button effects */
 }
 
 .send-btn:hover {
-  background-color: #1976d2;
+  background-color: #1976d2; /* Darker blue on hover */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
-.reply-btn {
-  background-color: transparent;
-  color: #2196f3;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 14px;
-  transition: text-decoration 0.3s;
+
+/* Card Container */
+.card-not-a-member-btn {
+  background-color: #fff; /* White background for the card */
+  border-radius: 10px; /* Rounded corners for the card */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  padding: 20px; /* Padding inside the card */
+  max-width: 400px; /* Maximum width of the card */
+  margin: 50px auto; /* Center the card with margin */
+  text-align: center; /* Center text inside the card */
+  display: flex; /* Flexbox for vertical alignment */
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
 }
 
-.reply-btn:hover {
-  text-decoration: underline;
-}
-
-/* Not a member message */
-.not-a-member {
-  padding: 15px;
-  background-color: #fff3f3;
-  color: #d32f2f;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-  .group-chat {
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
-
-  .group-header,
-  .group-footer {
-    padding: 8px;
-    margin: 0;
-    box-shadow: none;
-  }
-
-  .group-chat-container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-
-  .message-card {
-    max-width: 80%; /* Adjust message width on small screens */
-  }
-
-  .not-a-member {
-    padding: 10px;
-    font-size: 12px;
-  }
-
-  .message-input-container {
-    padding: 8px;
-    gap: 5px;
-  }
-
-  .message-input-container input {
-    padding: 8px;
-    font-size: 12px;
-  }
-
-  .send-btn {
-    padding: 8px;
-  }
-}
-
-/* Back Button */
-.header-btn {
-  background-color: #2196f3;
+/* Not a Member Back Button */
+.not-a-member-btn {
+  background-color: #f44336; /* Red for emphasis */
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 50%;
+  padding: 10px 15px; /* Adjust padding for comfort */
+  border-radius: 25px; /* Rounded corners */
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  display: flex;
+  font-size: 14px; /* Consistent font size */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  display: inline-flex; /* Centering text vertically */
   align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.not-a-member-btn:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Reply Button */
+.reply-btn {
+  background-color: transparent; /* Green for a positive action */
+  color: rgb(0, 162, 255);
+  border: none;
+  padding: 10px 15px; /* Adjust padding for comfort */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 14px; /* Consistent font size */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  display: inline-flex; /* Centering text vertically */
+  align-items: center;
+}
+
+/* Header Button */
+.header-btn {
+  background-color: transparent; /* Transparent background for a clean look */
+  border: none; /* No border for a minimalist design */
+  cursor: pointer; /* Pointer cursor for interaction */
+  padding: 10px; /* Padding for comfort */
+  border-radius: 50%; /* Circular shape */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  display: flex; /* Flexbox for centering icon */
+  align-items: center; /* Centering icon vertically */
+  justify-content: center; /* Centering icon horizontally */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .header-btn:hover {
-  background-color: #1976d2;
-  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1); /* Light background on hover for feedback */
+  transform: scale(1.1); /* Slight scale effect on hover */
 }
 
-.header-btn:active {
-  background-color: #1565c0;
-  transform: scale(1);
-}

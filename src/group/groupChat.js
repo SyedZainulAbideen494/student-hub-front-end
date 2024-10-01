@@ -271,9 +271,12 @@ const DiscussionBoard = () => {
                 <h1 onClick={openGroupDetailsPage}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
             </div>
             {isMember === false ? (
-                <div className="not-a-member">
-                    <p>You are not a member of this group. Join to view and participate in the discussion.</p>
-                </div>
+               <div class="card-not-a-member-btn">
+               <h2>Not a member</h2>
+               <p>You are not a member of this gorup!</p>
+               <button class="not-a-member-btn" onClick={handleBackBtn}>Back</button>
+             </div>
+             
             ) : (
                 <div className="group-chat-container">
 <div className="messages-container">
