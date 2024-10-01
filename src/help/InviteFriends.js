@@ -6,12 +6,28 @@ const InviteFriends = () => {
 
     const handleInvite = async () => {
         const siteURL = 'https://edusify-download.vercel.app'; // Your app's download link
-        const inviteText = `Check out the EduIsfy app! Join us at ${siteURL}`;
-
+        const inviteText = `
+    Hey there! 🌟
+    
+    I just discovered this amazing app called **Edusify**, and I think you'll love it! It's an innovative study companion that really enhances the learning experience. With Edusify, you can:
+    
+    - Get instant answers to your questions with the **AI Solver**.
+    - Organize your tasks and stay on top of deadlines with the **Task Manager**.
+    - Join study groups to collaborate and share resources.
+    - Create customizable flashcards and quizzes for effective studying.
+    - Keep track of important dates with the integrated calendar.
+    - Use the **Pomodoro Timer** to boost your productivity.
+    - And so much more!
+    
+    Join me in making studying more engaging and effective! Check it out here: ${siteURL}
+    
+    Can't wait to see you on Edusify! 🚀
+    `;
+    
         if (navigator.share) {
             try {
                 await navigator.share({
-                    title: 'Invite to EduIsfy',
+                    title: 'Join me on Edusify!',
                     text: inviteText,
                     url: siteURL,
                 });
@@ -26,6 +42,7 @@ const InviteFriends = () => {
             setMessage('Invitation shared via WhatsApp!');
         }
     };
+    
 
     return (
         <div className="invite-friends___inv__friends__mkrt">
