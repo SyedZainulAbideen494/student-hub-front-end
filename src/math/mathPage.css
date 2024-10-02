@@ -231,40 +231,7 @@
     position: relative; /* For ripple effect positioning */
 }
 
-/* Send Button Hover State */
-.chat-send-btn:hover {
-    background: linear-gradient(145deg, #0051a8, #003d7a); /* Darker gradient on hover */
-    transform: scale(1.1); /* Slightly larger on hover */
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-}
 
-/* Send Button Active State */
-.chat-send-btn:active {
-    background: linear-gradient(145deg, #003d7a, #002d5a); /* Darkest gradient on active */
-    transform: scale(0.95); /* Slightly shrinks when pressed */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow on active */
-}
-
-/* Ripple Effect */
-.chat-send-btn:focus::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    width: 300%;
-    height: 300%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.5s;
-}
-
-.chat-send-btn:focus {
-    outline: none;
-    /* Activate ripple effect */
-    animation: ripple 0.6s;
-}
 
 /* Ripple Animation */
 @keyframes ripple {
@@ -494,21 +461,7 @@
   }
   
 
-  .chat-info {
-    text-align: center;
-    margin-top: 10px;
-    color: #888; /* Light gray color for the text */
-    font-size: 12px; /* Small text size */
-  }
-  
-  .chat-info small {
-    font-style: italic; /* Italicize the note */
-    display: inline-block;
-    background-color: #f9f9f9; /* Slightly off-white background */
-    padding: 5px 10px;
-    border-radius: 5px; /* Rounded corners */
-    border: 1px solid #ddd; /* Light border for emphasis */
-  }
+
   .chat-message {
     margin: 10px 0;
   }
