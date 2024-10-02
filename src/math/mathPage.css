@@ -493,3 +493,20 @@
     text-decoration: underline;
   }
   
+
+  .chat-info {
+    text-align: center;
+    margin-top: 10px;
+    color: #888; /* Light gray color for the text */
+    font-size: 12px; /* Small text size */
+  }
+  
+  .chat-info small {
+    font-style: italic; /* Italicize the note */
+    display: inline-block;
+    background-color: #f9f9f9; /* Slightly off-white background */
+    padding: 5px 10px;
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ddd; /* Light border for emphasis */
+  }
+  

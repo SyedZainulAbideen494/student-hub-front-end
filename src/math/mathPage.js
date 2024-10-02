@@ -145,6 +145,8 @@ const performCalculate = async () => {
               </div>
             )}
           </div>
+
+
           <div className="chat-input-container">
             <div className="input-group">
               <input
@@ -162,6 +164,10 @@ const performCalculate = async () => {
               <FaArrowRight />
             </button>
           </div>
+                      {/* Add this below the chat messages */}
+                      <div className="chat-info">
+  <small>Note: This chat does not remember previous conversations. Please enter the entire question each time.</small>
+</div>
         </div>
       )}
     </div>
