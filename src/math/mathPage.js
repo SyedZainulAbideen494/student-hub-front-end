@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef  } from 'react';
 import axios from 'axios';
 import './mathPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -102,6 +102,14 @@ const MathSolver = ({ handleVoiceCommand }) => {
     return () => setTypingMessage(''); // Cleanup on unmount
   }, []); // Empty dependency array to run only once on mount
 
+  const messagesEndRef = useRef(null); // Create a ref for scrolling
+
+  // Scroll to the bottom of the chat whenever chatHistory changes
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [chatHistory]);
+
+
   return (
     <div className="mathsolver-container">
       <div className="chat-ui">
@@ -128,6 +136,8 @@ const MathSolver = ({ handleVoiceCommand }) => {
               </div>
             </div>
           )}
+          <div ref={messagesEndRef} />
+
         </div>
         <div className="chat-input-container">
           <div className="input-group">
