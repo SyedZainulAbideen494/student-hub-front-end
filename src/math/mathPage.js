@@ -109,6 +109,9 @@ const performCalculate = async () => {
 
   return  (
     <div className="mathsolver-container">
+                          <div className="chat-info">
+  <small>Note: This chat does not remember previous conversations. Please enter the entire question each time.</small>
+</div>
       {loading ? (
          <div className="typing-loader">
          <span className="typing-dot"></span>
@@ -164,10 +167,7 @@ const performCalculate = async () => {
               <FaArrowRight />
             </button>
           </div>
-                      {/* Add this below the chat messages */}
-                      <div className="chat-info">
-  <small>Note: This chat does not remember previous conversations. Please enter the entire question each time.</small>
-</div>
+
         </div>
       )}
     </div>
