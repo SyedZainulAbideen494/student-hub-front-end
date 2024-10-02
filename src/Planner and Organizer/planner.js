@@ -26,7 +26,9 @@ function Planner() {
     const [loading, setLoading] = useState(true); // Add loading state
     const formRef = useRef(null);
     const [successMessage, setSuccessMessage] = useState('');
-const navigate = useNavigate()
+    const navigate = useNavigate()
+
+    
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
         const year = date.getFullYear();

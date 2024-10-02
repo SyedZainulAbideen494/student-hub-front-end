@@ -10,6 +10,8 @@ import GroupModal from './GroupModal';
 import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
 import SuccessModal from '../app_modules/SuccessModal';
 import DOMPurify from 'dompurify';
+import SuccessMessage from '../app_modules/SuccessMessage';
+
 
 const CreateFlashcard = () => {
     const [title, setTitle] = useState('');
@@ -25,6 +27,9 @@ const CreateFlashcard = () => {
     const [query, setQuery] = useState(''); // State for AI query
     const [results, setResults] = useState([]); // State for results
     const [loading, setLoading] = useState(false); // State for loading
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
 
    const handleFileChange = (e) => {
         setImages(Array.from(e.target.files));
@@ -158,8 +163,16 @@ const handleCopy = (resultContent) => {
   const sanitizedContent = DOMPurify.sanitize(resultContent);
   // Append the new content to the existing editor content
   setEditorContent((prevContent) => `${prevContent}\n${sanitizedContent}`);
+  showModalMessage('Content Added!');
 };
 
+const showModalMessage = (message) => {
+  setModalMessage(message);
+  setModalVisible(true);
+  setTimeout(() => {
+      setModalVisible(false);
+  }, 3000); // Hide modal after 3 seconds
+};
 
 
     return (
@@ -179,6 +192,7 @@ const handleCopy = (resultContent) => {
         </div>
     </div>
 )}
+{modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
             <h1>Create Flashcard</h1>
             <form onSubmit={handleSubmit} className="flashcard-form-flashcards-page">
                 <div className="form-group-flashcards-page">
