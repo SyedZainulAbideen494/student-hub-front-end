@@ -31,6 +31,21 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
     return () => setTypingMessage(''); // Cleanup on unmount
 }, []); // Empty dependency array to run only once on mount
 
+
+const formatContent = (content) => {
+  // Convert ## to <h2> and remove the ## characters
+  content = content.replace(/## (.*?)(?=\n|\r\n)/g, "<h2 class='large-text'>$1</h2>");
+  
+  // Convert **text** to <strong> and remove the ** characters
+  content = content.replace(/\*\*(.*?)\*\*/g, "<strong class='large-text'>$1</strong>");
+  
+  // Convert *text* to <strong> and remove the * characters
+  content = content.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
+  
+  return content;
+};
+
+
 const performCalculate = async () => {
   if (!query) return; // Prevent calculation with empty query
 
@@ -39,20 +54,19 @@ const performCalculate = async () => {
     const response = await axios.post(API_ROUTES.solveMath, { query });
     console.log('API Response:', response.data);
 
-    // Convert **text** to <strong>text</strong>
-    let formattedContent = response.data.response
-
+    // Format content dynamically
+    let formattedContent = formatContent(response.data.response);
 
     setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
   } catch (error) {
     console.error('Calculation Error:', error);
-    setResults([{ title: 'Error', content: "We're sorry, something went wrong. Please try asking a different question or come back later."
- }]);
+    setResults([{ title: 'Error', content: "We're sorry, something went wrong. Please try asking a different question or come back later." }]);
   } finally {
     setLoading(false);
     setQuery(''); // Clear the input after calculation
   }
 };
+
 
 
   useEffect(() => {
