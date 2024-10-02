@@ -50,7 +50,13 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [loading, setLoading] = useState(false);
   const [typingMessage, setTypingMessage] = useState('');
   const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState([
+    {
+      role: 'model',
+      parts: [{ text: 'Hi there! What can I assist you with today?' }],
+    },
+  ]);
+
 
   // Handle sending messages
   const handleSendMessage = async () => {
