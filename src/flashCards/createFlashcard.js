@@ -352,6 +352,7 @@ const showModalMessage = (message) => {
             {/* AI Query Section */}
             <div className="ai-query-section__flashcard__create">
                 <h3>Ask the AI:</h3>
+                <p>Beta mode</p>
                 <input
                     type="text"
                     value={query}
