@@ -148,7 +148,7 @@ const performCalculate = async () => {
     setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
   } catch (error) {
     console.error('Calculation Error:', error);
-    setResults([{ title: 'Error', content: "We're sorry, something went wrong. Please try asking a different question or come back later." }]);
+    setResults([{ title: 'Error', content: "We're sorry, something went wrong. Please try later." }]);
   } finally {
     setLoading(false);
     setQuery(''); // Clear the input after calculation
