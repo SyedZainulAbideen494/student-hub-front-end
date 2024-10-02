@@ -96,6 +96,7 @@ const performCalculate = async () => {
        </div>
       ) : (
         <div className="chat-ui">
+          
           <div className="chat-messages">
             {results.length > 0 ? (
               results.map((result, index) => (
@@ -185,7 +186,9 @@ const MathPage = () => {
         <button className="back-btn" onClick={() => navigate('/')}>
           <FaArrowLeft />
         </button>
-        <h3 className="math-page-heading">AI</h3>
+        <div className="powered-by-gemini">
+        Powered by <span className="gemini-logo">Gemini</span>
+      </div>
       </div>
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
     </div>
