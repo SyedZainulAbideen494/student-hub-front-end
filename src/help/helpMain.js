@@ -46,11 +46,11 @@ const HelpMain = () => {
           <p>Boost your productivity with the Pomodoro Timer, a time management tool that helps you break your study sessions into focused intervals, separated by short breaks to maximize efficiency and reduce burnout.</p>
           <Link to="/pomodoro-timer-guide/guide" className="feature-link-help-page">Learn More</Link>
         </div>
-        <div className="feature-card-help-page">
+        {/*<div className="feature-card-help-page">
           <h3>Music Player</h3>
           <p>Listen to calming or motivational music while you study with our integrated Music Player. Choose from curated playlists that match your mood and keep you focused throughout your sessions.</p>
           <Link to="/music-player-guide/guide" className="feature-link-help-page">Learn More</Link>
-        </div>
+        </div>*/}
         <div className="feature-card-help-page">
           <h3>Calendar & Reminders</h3>
           <p>Plan your study schedule and never miss a deadline with the Calendar & Reminders feature. Set reminders for important dates, exams, and assignments to stay organized and manage your time effectively.</p>
