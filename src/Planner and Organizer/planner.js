@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import InviteFriends from '../help/InviteFriends';
 import InvalidPhoneEmail from '../app_modules/InvalidUserModal';
 import TipBox from '../Tip box/TipBox';
+import FeedbackForm from '../help/FeedbackForm';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -27,8 +28,15 @@ function Planner() {
     const [loading, setLoading] = useState(true); // Add loading state
     const formRef = useRef(null);
     const [successMessage, setSuccessMessage] = useState('');
+    const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
 
+
+        // Toggle feedback form visibility
+        const toggleFeedbackForm = () => {
+            setShowFeedbackForm(prev => !prev);
+        };
+    
 
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
@@ -369,7 +377,15 @@ function Planner() {
                     ))}
                 </div>
             </div>
+           
             <InviteFriends/>
+            <div class="button-container__feedback__btn__planner__page">
+    <button onClick={toggleFeedbackForm} className='feedback__btn__planner__page'>
+        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
+    </button>
+</div>
+
+            {showFeedbackForm && <FeedbackForm />}
             <FooterNav />
             <InvalidPhoneEmail/>
             {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
