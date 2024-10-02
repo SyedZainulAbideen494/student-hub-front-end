@@ -11,8 +11,19 @@ const TipBox = () => {
     "Invite your friends to Edusify to create groups, share flashcards, notes, quizzes, etc."
   ];
 
+  const [shuffledTips, setShuffledTips] = useState([]);
   const [tipIndex, setTipIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  // Function to shuffle the tips array
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
 
   useEffect(() => {
     const lastShownTime = localStorage.getItem('lastTipShown');
@@ -22,12 +33,17 @@ const TipBox = () => {
     if (!lastShownTime || (currentTime - lastShownTime) >= 3 * 60 * 60 * 1000) {
       setIsVisible(true);
       localStorage.setItem('lastTipShown', currentTime); // Update last shown time
+      
+      // Shuffle tips and set initial tip index
+      const shuffled = shuffleArray(tips);
+      setShuffledTips(shuffled);
+      setTipIndex(0);
     }
 
     // Change tip every 3 hours
     const interval = setInterval(() => {
-      setTipIndex((prevIndex) => (prevIndex + 1) % tips.length);
-    }, 3 * 60 * 60 * 1000); 
+      setTipIndex((prevIndex) => (prevIndex + 1) % shuffledTips.length);
+    }, 3 * 60 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -49,7 +65,7 @@ const TipBox = () => {
       <div className="tip-arrow"></div>
       <div className="tip-content">
         <h3 className="tip-heading">Tip</h3>
-        <p>{tips[tipIndex]}</p>
+        <p>{shuffledTips[tipIndex]}</p>
         <button className="close-btn" onClick={handleClose}>X</button>
         <button className="got-it__btn__tip__box" onClick={handleGotIt}>Got it</button>
       </div>
