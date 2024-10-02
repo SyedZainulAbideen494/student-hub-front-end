@@ -102,23 +102,27 @@ const Login = () => {
 
     const verifyOTP = () => {
         setError("");
+        setLoading(true); // Start loading indicator
         Axios.post(API_ROUTES.verifyOTP, {
             phone: phone,
             otp: otp,
         }).then((response) => {
-            setLoading(false);
+            setLoading(false); // Stop loading indicator
+            console.log('OTP Verification Response:', response.data); // Log the response
+    
             if (!response.data.auth) {
                 setError(response.data.message || "OTP verification failed. Please try again.");
             } else {
-                nav("/welcome");
-                localStorage.setItem("token", response.data.token);
+                // If the verification is successful
+                nav("/welcome"); // Navigate to welcome page
             }
         }).catch((error) => {
-            setLoading(false);
+            setLoading(false); // Stop loading indicator
+            console.error("Error occurred while verifying OTP:", error); // Log error
             setError("Error occurred while verifying OTP. Please try again.");
         });
     };
-
+    
     return (
         <div className="login-wrapper">
             {loading && <LoadingSpinner />}
