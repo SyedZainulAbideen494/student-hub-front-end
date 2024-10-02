@@ -41,15 +41,7 @@ const performCalculate = async () => {
 
     // Convert **text** to <strong>text</strong>
     let formattedContent = response.data.response
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
-      .replace(/## (.*?)\n/g, '<h2>$1</h2>') // Convert ## to <h2>
-      .replace(/- (.*?)(?=\n|$)/g, '<li>$1</li>'); // Convert - to <li>
 
-    // Wrap list items in <ul>
-    const hasListItems = /<li>.*?<\/li>/g.test(formattedContent);
-    if (hasListItems) {
-      formattedContent = `<ul>${formattedContent.match(/<li>.*?<\/li>/g).join('')}</ul>`;
-    }
 
     setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
   } catch (error) {
