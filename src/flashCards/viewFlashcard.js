@@ -153,7 +153,7 @@ const ViewFlashCard = () => {
                 
                 {/* Loading or No Notes Messages */}
                 {loading ? (
-                    <div className="loading-message"><LoadingSpinner/>></div>
+                    <div className="loading-message"><LoadingSpinner/></div>
                 ) : noNotes ? (
                     <div className="no-notes-message">No notes found. Please create a flashcard.</div>
                 ) : (
