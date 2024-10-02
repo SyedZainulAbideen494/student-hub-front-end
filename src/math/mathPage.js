@@ -33,17 +33,39 @@ const MathSolver = ({ query, setQuery, handleVoiceCommand }) => {
 
 
 const formatContent = (content) => {
+  // Convert triple backticks to <pre><code> for code blocks
+  content = content.replace(/```(.*?)```/gs, "<pre><code>$1</code></pre>");
+
   // Convert ## to <h2> and remove the ## characters
   content = content.replace(/## (.*?)(?=\n|\r\n)/g, "<h2 class='large-text'>$1</h2>");
-  
+
   // Convert **text** to <strong> and remove the ** characters
   content = content.replace(/\*\*(.*?)\*\*/g, "<strong class='large-text'>$1</strong>");
-  
+
   // Convert *text* to <strong> and remove the * characters
   content = content.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
-  
+
+  // Convert lists (lines starting with *) to <ul> and <li>
+  content = content.replace(/^\* (.*?)(?=\n|\r\n)/gm, "<li>$1</li>"); // Find list items
+
+  // Wrap all <li> elements in a single <ul>
+  content = content.replace(/(<li>.*?<\/li>)/g, "<ul>$1</ul>"); // Wrap in <ul>
+
+  // Convert tables with | to <table>, <tr>, <th>, <td>
+  content = content.replace(/(\|.*?\|)(\n|$)/g, (match) => {
+    const rows = match.split('\n').filter(row => row.trim());
+    const tableRows = rows.map(row => {
+      const cells = row.split('|').filter(cell => cell.trim());
+      const rowContent = cells.map(cell => `<td>${cell.trim()}</td>`).join('');
+      return `<tr>${rowContent}</tr>`;
+    }).join('');
+    return `<table>${tableRows}</table>`;
+  });
+
   return content;
 };
+
+
 
 
 const performCalculate = async () => {
