@@ -137,6 +137,7 @@ const UserProfile = () => {
           <div className="info__user__profile__guest">
             <div>
               <p className="name__user__profile__guest">{profile.unique_id}</p>
+              <p className="user_name__user__profile__guest">{profile.user_name}</p>
               <p className="function__user__profile__guest">{profile.bio}</p>
             </div>
             <div className="stats__user__profile__guest">
