@@ -171,11 +171,6 @@ const Welcome = () => {
                                         <Link to="/social-feed" className="continue-button-welcome-page">Continue to Social Feed</Link>
                                     </div>
                                 </div>
-                                {!permissionGranted && (
-                                    <button className="continue-button-welcome-page" onClick={requestNotificationPermission}>
-                                        Enable Notifications
-                                    </button>
-                                )}
                             </section>
                         </main>
                     </div>
