@@ -425,9 +425,20 @@ const showModalMessage = (message) => {
                 {showFeedbackForm && <FeedbackForm />}
                 </div>
                 <div class="button-container__feedback__btn__planner__page">
-    <button onClick={toggleFeedbackForm} className='feedback__btn__planner__page' type='button'>
-        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
-    </button>
+                <button
+    onClick={toggleFeedbackForm}
+    type='button'
+    style={{
+        backgroundColor: 'transparent',
+        color: '#48cae4',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '10px', // Optional: Add padding for better appearance
+    }}
+>
+    {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
+</button>
+
     
 </div>
                 </div>
