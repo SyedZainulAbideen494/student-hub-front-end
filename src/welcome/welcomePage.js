@@ -132,6 +132,12 @@ const Welcome = () => {
                                         <p>Organize your tasks and get reminders. View your schedule on a calendar.</p>
                                         <Link to="/" className="continue-button-welcome-page">Continue to Study Planner</Link>
                                     </div>
+                                                                       {/* New features */}
+                                                                       <div className="feature-card-welcome-page">
+  <h3>AI</h3>
+  <p>Get instant, step-by-step solutions to any problem, from math to science and beyond. Simplify your studies with our AI-powered solver, designed to help you tackle even the most challenging questions.</p>
+  <Link to="/ai" className="continue-button-welcome-page">Explore the AI Solver</Link>
+</div>
                                     <div className="feature-card-welcome-page">
                                         <h3>Groups</h3>
                                         <p>Create groups with friends or join public groups to ask questions and share knowledge.</p>
@@ -158,12 +164,7 @@ const Welcome = () => {
                                         <Link to="/pomodoro" className="continue-button-welcome-page">Continue to Pomodoro Timer</Link>
                                     </div>
                                   
-                                    {/* New features */}
-                                    <div className="feature-card-welcome-page">
-  <h3>AI</h3>
-  <p>Get instant, step-by-step solutions to any problem, from math to science and beyond. Simplify your studies with our AI-powered solver, designed to help you tackle even the most challenging questions.</p>
-  <Link to="/ai" className="continue-button-welcome-page">Explore the AI Solver</Link>
-</div>
+ 
 
                                     <div className="feature-card-welcome-page">
                                         <h3>Social Feed</h3>
