@@ -509,4 +509,28 @@
     border-radius: 5px; /* Rounded corners */
     border: 1px solid #ddd; /* Light border for emphasis */
   }
+  .chat-message {
+    margin: 10px 0;
+  }
+  
+  .chat-bubble {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .user .chat-bubble {
+    background-color: #e1f5fe; /* User color */
+    align-self: flex-end; /* Align to the right */
+  }
+  
+  .model .chat-bubble {
+    background-color: #fff; /* AI color */
+    align-self: flex-start; /* Align to the left */
+  }
+  
+  .chat-role {
+    font-weight: bold;
+    margin-right: 5px;
+  }
   
