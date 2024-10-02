@@ -52,8 +52,12 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([
     {
+      role: 'user',
+      parts: [{ text: 'Hello' }],
+    },
+    {
       role: 'model',
-      parts: [{ text: 'Hi there! What can I assist you with today?' }],
+      parts: [{ text: 'Great to meet you. What would you like to know?' }],
     },
   ]);
 
@@ -145,9 +149,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Enter Question"
             />
-            <button className="chat-keyboard-btn" onClick={handleVoiceCommand}>
-              <FaMicrophone />
-            </button>
+          
           </div>
           <button className="chat-send-btn" onClick={handleSendMessage}>
             <FaArrowRight />
