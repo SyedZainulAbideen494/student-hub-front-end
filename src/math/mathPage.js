@@ -172,7 +172,7 @@ const performCalculate = async () => {
       )}
     </div>
   );
-};
+}
 
 
 
