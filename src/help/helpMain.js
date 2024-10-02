@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import './helpMain.css';
 import InviteFriends from './InviteFriends';
+import FeedbackForm from './FeedbackForm';
 
 const HelpMain = () => {
   const navigate = useNavigate(); // Hook to navigate
@@ -73,7 +74,7 @@ const HelpMain = () => {
         <p>Discover more about Edusify, its vision, and how it can help you in your educational journey. Learn about our mission to enhance your learning experience.</p>
         <Link to="/about-app" className="about-app-link-help-page">Learn More</Link>
       </div>
-
+    <FeedbackForm/>
       {/* Footer */}
       <footer className="footer-help-page">
         <p>© 2024 Edusify. All rights reserved.</p>
