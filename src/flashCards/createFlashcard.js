@@ -11,6 +11,7 @@ import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
 import SuccessModal from '../app_modules/SuccessModal';
 import DOMPurify from 'dompurify';
 import SuccessMessage from '../app_modules/SuccessMessage';
+import FeedbackForm from '../help/FeedbackForm';
 
 
 const CreateFlashcard = () => {
@@ -29,7 +30,15 @@ const CreateFlashcard = () => {
     const [loading, setLoading] = useState(false); // State for loading
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+    const navigate = useNavigate()
 
+
+        // Toggle feedback form visibility
+        const toggleFeedbackForm = () => {
+            setShowFeedbackForm(prev => !prev);
+        };
+    
 
    const handleFileChange = (e) => {
         setImages(Array.from(e.target.files));
@@ -353,6 +362,8 @@ const showModalMessage = (message) => {
             <div className="ai-query-section__flashcard__create">
                 <h3>Ask the AI:</h3>
                 <p>Beta mode</p>
+              
+            
                 <input
                     type="text"
                     value={query}
@@ -408,6 +419,16 @@ const showModalMessage = (message) => {
   </svg>
   <span className="text_button__generate__text__flashcard__create">{loading ? 'Generating' : 'Generate Info'}</span>
 </button>
+
+</div>
+<div style={{marginBottom: '5px', marginTop: '20px'}}>
+                {showFeedbackForm && <FeedbackForm />}
+                </div>
+                <div class="button-container__feedback__btn__planner__page">
+    <button onClick={toggleFeedbackForm} className='feedback__btn__planner__page' type='button'>
+        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
+    </button>
+    
 </div>
                 </div>
 
