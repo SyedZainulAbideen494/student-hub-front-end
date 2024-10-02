@@ -19,6 +19,7 @@ import { faCalendar, faPencilRuler, faUserGroup, faBook, faCalculator, faFlask, 
 import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
+import './searchPage.css';
 
 const SearchPage = () => {
     const [query, setQuery] = useState('');
@@ -26,6 +27,7 @@ const SearchPage = () => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [page, setPage] = useState(0); // Added state for pagination
     const nav = useNavigate();
 
     const handleSearch = useCallback(
@@ -34,7 +36,9 @@ const SearchPage = () => {
                 const response = await axios.get(API_ROUTES.search, {
                     params: { query: searchQuery }
                 });
+                // Set results and reset page for new queries
                 setResults(response.data);
+                setPage(0);
             } catch (error) {
                 console.error('Error fetching search results:', error);
             }
@@ -49,6 +53,7 @@ const SearchPage = () => {
             debouncedSearch(query);
         } else {
             setResults([]);
+            setPage(0); // Reset page if query is cleared
         }
     }, [query, debouncedSearch]);
 
@@ -75,13 +80,22 @@ const SearchPage = () => {
         fetchProfileData();
     }, []);
 
-    if (loading) {
-        return <CircularProgress />;
-    }
+    const loadMoreResults = () => {
+        setLoading(true);
+        setTimeout(() => {
+            setPage((prevPage) => prevPage + 1); // Load next set of results
+            setLoading(false);
+        }, 2000); // Simulate a 2-second loading time
+    };
+
+
 
     if (error) {
         return <Typography variant="h6" color="error">{error}</Typography>;
     }
+
+    const itemsPerPage = 3; // Number of items to display per page
+    const displayedResults = results.slice(0, (page + 1) * itemsPerPage); // Calculate displayed results based on page
 
     const cardData = [
         { title: 'Planner', description: 'Plan your studies with your planner and add tasks.', icon: faPencilRuler, gradient: 'linear-gradient(to right, #ff7e5f, #feb47b)', path: '/' },
@@ -95,7 +109,7 @@ const SearchPage = () => {
         { title: 'Pomodoro Timer', description: 'Stay productive with Pomodoro timer.', icon: faClock, gradient: 'linear-gradient(to right, #e1eec3, #f05053)', path: '/pomodoro' },
         { title: 'Social Feed', description: 'Stay connected with updates and achievements.', icon: faShareAlt, gradient: 'linear-gradient(to right, #30cfd0, #330867)', path: '/social-feed' },
     ];
-    
+
     return (
         <div style={{ marginBottom: '100px' }}>
             <AppBar position="static" style={{ backgroundColor: '#fff', color: '#000', boxShadow: 'none' }}>
@@ -106,7 +120,6 @@ const SearchPage = () => {
                         style={{ width: 40, height: 40, cursor: 'pointer' }}
                         onClick={() => nav('/profile')}
                     />
-                   
                 </Toolbar>
                 <Toolbar style={{ justifyContent: 'center', padding: '10px 20px' }}>
                     <TextField
@@ -125,7 +138,7 @@ const SearchPage = () => {
                 </Toolbar>
             </AppBar>
             <Container style={{ marginTop: '20px', textAlign: 'center' }}>
-                {results.length === 0 ? (
+                {displayedResults.length === 0 ? (
                     <Grid container spacing={3}>
                         {cardData.map((card, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -161,7 +174,7 @@ const SearchPage = () => {
                     </Grid>
                 ) : (
                     <Grid container spacing={3}>
-                        {results.map((result, index) => (
+                        {displayedResults.map((result, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>
                                 <Card
                                     style={{
@@ -178,9 +191,9 @@ const SearchPage = () => {
                                         <Avatar
                                             src={`${API_ROUTES.displayImg}/${result.avatar}` || 'default-avatar-url'}
                                             alt="Profile Picture"
-                                            style={{ width: 40, height: 40, margin: 'auto' }}
+                                            style={{ width: 60, height: 60, margin: '0 auto 10px' }}
                                         />
-                                        <Typography variant="h8" style={{ margin: '10px 0' }}>
+                                        <Typography variant="body2">
                                             {result.unique_id}
                                         </Typography>
                                     </CardContent>
@@ -189,6 +202,20 @@ const SearchPage = () => {
                         ))}
                     </Grid>
                 )}
+              <div style={{ marginTop: '20px', textAlign: 'center' }}>
+    <div style={{ margin: '20px 0', textAlign: 'center' }}>
+        {!loading && ( // Only show the button when not loading
+            <button
+                onClick={loadMoreResults}
+                className="btn__load__more__search" // Keep this class name
+                disabled={loading}
+            >
+                Load More
+            </button>
+        )}
+    </div>
+    {loading && <CircularProgress style={{ marginTop: '10px' }} />}
+</div>
             </Container>
             <FooterNav />
         </div>
