@@ -12,6 +12,7 @@ import SuccessMessage from '../app_modules/SuccessMessage';
 import { useNavigate } from 'react-router-dom';
 import InviteFriends from '../help/InviteFriends';
 import InvalidPhoneEmail from '../app_modules/InvalidUserModal';
+import TipBox from '../Tip box/TipBox';
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -28,7 +29,7 @@ function Planner() {
     const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate()
 
-    
+
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
         const year = date.getFullYear();
@@ -228,7 +229,7 @@ function Planner() {
 
     return (
         <div className="App-dashboard-planner">
-           
+           <TipBox/>
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="card__planner__data">
             <div className="item__planner__data item--1__planner__data">
