@@ -97,33 +97,39 @@ const handleRemoveImage = (index) => {
 };
 
 
+
+const formatContent = (content) => {
+  // Convert ## to <h2> and remove the ## characters
+  content = content.replace(/## (.*?)(?=\n|\r\n)/g, "<h2 class='large-text'>$1</h2>");
+  
+  // Convert **text** to <strong> and remove the ** characters
+  content = content.replace(/\*\*(.*?)\*\*/g, "<strong class='large-text'>$1</strong>");
+  
+  // Convert *text* to <strong> and remove the * characters
+  content = content.replace(/\*(.*?)\*/g, "<strong>$1</strong>");
+  
+  return content;
+};
+
+
 const performCalculate = async () => {
   if (!query) return; // Prevent calculation with empty query
 
   setLoading(true);
   try {
-      const response = await axios.post(API_ROUTES.solveMath, { query });
-      console.log('API Response:', response.data);
+    const response = await axios.post(API_ROUTES.solveMath, { query });
+    console.log('API Response:', response.data);
 
-      // Convert **text** to <strong>text</strong>
-      let formattedContent = response.data.response
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
-          .replace(/## (.*?)\n/g, '<h2>$1</h2>') // Convert ## to <h2>
-          .replace(/- (.*?)(?=\n|$)/g, '<li>$1</li>'); // Convert - to <li>
+    // Format content dynamically
+    let formattedContent = formatContent(response.data.response);
 
-      // Wrap list items in <ul>
-      const hasListItems = /<li>.*?<\/li>/g.test(formattedContent);
-      if (hasListItems) {
-          formattedContent = `<ul>${formattedContent.match(/<li>.*?<\/li>/g).join('')}</ul>`;
-      }
-
-      setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
+    setResults([{ title: 'Result', content: formattedContent || 'No content available' }]);
   } catch (error) {
-      console.error('Calculation Error:', error);
-      setResults([{ title: 'Error', content: 'Something went wrong try again' }]);
+    console.error('Calculation Error:', error);
+    setResults([{ title: 'Error', content: "We're sorry, something went wrong. Please try asking a different question or come back later." }]);
   } finally {
-      setLoading(false);
-      setQuery(''); // Clear the input after calculation
+    setLoading(false);
+    setQuery(''); // Clear the input after calculation
   }
 };
 
