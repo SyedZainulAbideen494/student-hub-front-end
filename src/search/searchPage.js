@@ -173,6 +173,7 @@ const SearchPage = () => {
                         ))}
                     </Grid>
                 ) : (
+                    <div>
                     <Grid container spacing={3}>
                         {displayedResults.map((result, index) => (
                             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -198,11 +199,11 @@ const SearchPage = () => {
                                         </Typography>
                                     </CardContent>
                                 </Card>
+                                
                             </Grid>
                         ))}
                     </Grid>
-                )}
-              <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                    <div style={{ marginTop: '20px', textAlign: 'center' }}>
     <div style={{ margin: '20px 0', textAlign: 'center' }}>
         {!loading && ( // Only show the button when not loading
             <button
@@ -216,6 +217,9 @@ const SearchPage = () => {
     </div>
     {loading && <CircularProgress style={{ marginTop: '10px' }} />}
 </div>
+                    </div>
+                )}
+             
             </Container>
             <FooterNav />
         </div>
