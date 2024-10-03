@@ -29,45 +29,50 @@ const ProfileAvatar = () => {
     fetchProfileData();
   }, []);
 
+  const MAX_SIZE = 5 * 1024 * 1024; // 5MB size limit
+
+
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setNewAvatar(file);
-      setAvatarPreview(URL.createObjectURL(file));
+    if (file.size > MAX_SIZE || !['image/jpeg', 'image/png'].includes(file.type)) {
+      setError('File size or format not allowed');
+      return;
     }
+    setNewAvatar(file);
+    setAvatarPreview(URL.createObjectURL(file));
   };
 
   const handleAvatarSubmit = async () => {
     try {
       const formData = new FormData();
-      formData.append('avatar', newAvatar);
+      formData.append('avatar', newAvatar); // Ensure this key matches what the server expects
+      
       const token = localStorage.getItem('token');
-
-      await axios.post(API_ROUTES.updateAvatar, formData, {
+      
+      const response = await axios.post(API_ROUTES.updateAvatar, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`, // Ensure the token is valid
         },
       });
-
-      const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
-      setProfile(data);
-      setNewAvatar(null);
-      setAvatarPreview(null);
+      
+      if (response.status === 200) {
+        console.log('Avatar updated successfully');
+      }
     } catch (err) {
-      setError('Error updating avatar');
+      console.error('Error updating avatar:', err.response ? err.response.data : err.message);
     }
   };
 
   const handleRemoveAvatar = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.post(API_ROUTES.updateAvatar, { avatar: 'defPic.png' }, {
+      await axios.delete(API_ROUTES.removeAvatar, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
+  
       const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
       setProfile(data);
       setAvatarPreview(null);
@@ -76,7 +81,7 @@ const ProfileAvatar = () => {
       setError('Error removing avatar');
     }
   };
-
+  
   const handleCancel = () => {
     setAvatarPreview(null);
     setNewAvatar(null);

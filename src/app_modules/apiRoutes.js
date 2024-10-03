@@ -87,5 +87,6 @@ export const API_ROUTES = {
   userBoxDataHome: `${API_URL}/api/getUserData/home/box`,
   todayTaskHome: `${API_URL}/api/tasks/today/data/home`,
   todayEventHome: `${API_URL}/api/events/today/data/home`,
-  updateAvatar: `${API_URL}/api/update-avatar`
+  updateAvatar: `${API_URL}/api/update-avatar`,
+  removeAvatar: `${API_URL}/api/remove-avatar`
 }
