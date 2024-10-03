@@ -243,7 +243,7 @@ function Planner() {
 
     return (
         <div className="App-dashboard-planner">
-           <TipBox/>
+
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="card__planner__data">
             <div className="item__planner__data item--1__planner__data">
@@ -384,14 +384,7 @@ function Planner() {
                 </div>
             </div>
            
-            <InviteFriends/>
-            <div class="button-container__feedback__btn__planner__page">
-    <button onClick={toggleFeedbackForm} className='feedback__btn__planner__page'>
-        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
-    </button>
-</div>
-
-            {showFeedbackForm && <FeedbackForm />}
+           
             <FooterNav />
             <InvalidPhoneEmail/>
             {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}

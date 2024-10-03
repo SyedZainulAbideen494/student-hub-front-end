@@ -83,5 +83,8 @@ export const API_ROUTES = {
   noDetailPopModalcheck: `${API_URL}/api/check-user-details`,
   changeAvatar: `${API_URL}/user/update/avatar`,
   feedbackEduisfy: `${API_URL}/api/feedback`,
-  aiGemini: `${API_URL}/api/chat/ai`
+  aiGemini: `${API_URL}/api/chat/ai`,
+  userBoxDataHome: `${API_URL}/api/getUserData/home/box`,
+  todayTaskHome: `${API_URL}/api/tasks/today/data/home`,
+  todayEventHome: `${API_URL}/api/events/today/data/home`
 }

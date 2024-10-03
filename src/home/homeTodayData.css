@@ -1,0 +1,72 @@
+.today-container__home__page__component {
+    padding: 20px;
+    border-radius: 12px; /* Softer corners */
+    text-align: center; /* Center text in the container */
+    margin-bottom: 60px;
+    margin-top: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.section-header {
+    display: flex; /* Flexbox for header */
+    justify-content: space-between; /* Space between title and button */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Spacing between sections */
+}
+
+.see-all-button {
+    background-color: transparent; /* Transparent button */
+    color: #007aff; /* Apple-like blue color */
+    border: none;
+    border-radius: 20px; /* Rounded edges */
+    padding: 8px 15px; /* Button padding */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for background and text color */
+    font-size: 14px;
+}
+
+.see-all-button:hover {
+    background-color: rgba(0, 122, 255, 0.1); /* Light blue background on hover */
+    color: #0051a8; /* Darker blue on hover */
+}
+
+.event-list__home__page__component,
+.task-list__home__page__component {
+    list-style-type: none;
+    padding: 0;
+}
+
+.event-item__home__page__component,
+.task-item__home__page__component {
+    padding: 25px 15px; /* Reduced padding for a tighter design */
+    border: 1px solid #dee2e6;
+    border-radius: 12px; /* Softer corners */
+    margin: 15px 0; /* Increased margin for better spacing */
+    background-color: #ffffff; /* White background for items */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
+    transition: transform 0.2s ease, box-shadow 0.3s ease; /* Transition effect for lift and shadow */
+    display: flex; /* Flex display for icon and text */
+    align-items: center; /* Center items vertically */
+}
+
+.event-item__home__page__component:hover,
+.task-item__home__page__component:hover {
+    transform: translateY(-2px); /* Slight lift effect on hover */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.event-item__home__page__component svg,
+.task-item__home__page__component svg {
+    margin-right: 10px; /* Space between icon and text */
+    color: #007aff; /* Icon color matching the button */
+    font-size: 1.2em; /* Adjust icon size */
+}
+
+.section__home__page__component {
+    padding: 25px 15px; /* Reduced padding for a tighter design */
+    border-radius: 12px; /* Softer corners */
+    background-color: #ffffff; /* White background for items */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
+    margin-top: 25px;
+}

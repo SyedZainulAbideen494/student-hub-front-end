@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle } from 'react-icons/fa';
-
+import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; 
@@ -16,6 +16,40 @@ const FooterNav = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
+
+    useEffect(() => {
+        const validateToken = async () => {
+          const token = localStorage.getItem('token');
+          console.log('Token from local storage:', token); // Debugging
+    
+          // If no token, redirect to login
+          if (!token) {
+            console.log('No token found, redirecting to sign-up.');
+            navigate('/sign-up');
+            return;
+          }
+    
+          try {
+            const response = await axios.post(API_ROUTES.userSessionAut, { token });
+            console.log('Token validation response:', response.data); // Debugging
+            if (!response.data.valid) {
+              console.log('Invalid token, redirecting to sign-up.');
+              navigate('/sign-up');
+            }
+          } catch (error) {
+            console.error('Error during token validation:', error);
+            navigate('/sign-up');
+          }
+        };
+    
+        // Delay the validation by 5 seconds
+        const timeoutId = setTimeout(() => {
+          validateToken();
+        }, 500);
+    
+        // Cleanup timeout on component unmount
+        return () => clearTimeout(timeoutId);
+    }, [navigate]);
 
     useEffect(() => {
         const fetchProfileData = async () => {
@@ -65,8 +99,8 @@ const FooterNav = () => {
             {/* Primary Buttons */}
             <Link to='/' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>
-                    <HiBookOpen className="icon-footer-nav" />
-                    <span className="btn-label">Planner</span>
+                    <MdDashboard  className="icon-footer-nav" />
+                    <span className="btn-label">Dashboard</span>
                 </button>
             </Link>
 
@@ -76,10 +110,10 @@ const FooterNav = () => {
         <span className="btn-label">AI</span>
     </button>
 </Link>
-            <Link to='/notes' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
-                    <FaStickyNote className="icon-footer-nav" />
-                    <span className="btn-label">Notes</span>
+<Link to='/planner' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
+                    <HiBookOpen className="icon-footer-nav" />
+                    <span className="btn-label">Planner</span>
                 </button>
             </Link>
             <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
@@ -94,6 +128,12 @@ const FooterNav = () => {
                         <span className="btn-label">Search</span>
                     </button>
                 </Link>
+                <Link to='/notes' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/notes' ? 'active' : ''}`}>
+                    <FaStickyNote className="icon-footer-nav" />
+                    <span className="btn-label">Notes</span>
+                </button>
+            </Link>
                 <Link to='/groups' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
                     <FaUsers className="icon-footer-nav" />

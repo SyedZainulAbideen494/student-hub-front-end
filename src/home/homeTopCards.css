@@ -1,0 +1,202 @@
+/* Container for the home page */
+.home-container__home__page__component {
+    padding: 20px;
+    text-align: left;
+    height: 100vh;
+  }
+  
+  /* Home title styling */
+  .home-title__home__page__component {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Boxes container */
+  .top-boxes-container__home__page__component {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 15px;
+  }
+  
+/* Box styling */
+.box__home__page__component {
+    background-color: #f8f9fa; /* Light gray background for the boxes */
+    color: #333; /* Dark text for readability */
+    padding: 17px;
+    border-radius: 15px;
+    box-shadow: 
+      3px 3px 10px rgba(0, 0, 0, 0.05),   /* Softer shadow */
+      6px 6px 15px rgba(0, 0, 0, 0.1),    /* Lighter shadow */
+      -3px -3px 10px rgba(255, 255, 255, 0.9); /* Highlight shadow */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease; /* Added transition for background color */
+    position: relative;
+    min-height: 100px;
+}
+
+/* Hover effect for interaction */
+.box__home__page__component:hover {
+    transform: translateY(-5px);
+    background-color: #e9ecef; /* Slightly darker gray on hover for contrast */
+}
+  
+  /* SVG Icon - smaller, thinner, black & white */
+  .icon__home__page__component {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #000; /* Black stroke */
+    stroke-width: 1.5; /* Thinner stroke */
+    margin-bottom: 10px;
+  }
+  
+  /* Count on top */
+  .count__home__page__component {
+    font-size: 28px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 8px;
+  }
+  
+  /* Box title below the number */
+  .title__home__page__component {
+    font-size: 15px;
+    font-weight: 600;
+    color: #5e5e5e;
+  }
+  
+/* Clean, subtle background gradient */
+.box__home__page__component {
+    box-shadow: 
+      3px 3px 10px rgba(0, 0, 0, 0.05),   /* Softer shadow */
+      6px 6px 15px rgba(0, 0, 0, 0.1),    /* Lighter shadow */
+      -3px -3px 10px rgba(255, 255, 255, 0.9); /* Highlight shadow with increased brightness */
+}
+
+
+
+  /* Container for the home page */
+.home-container__home__page__component {
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  .header__home__page__component {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+  /* Home title styling */
+  .home-title__home__page__component {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+/* Welcome message container */
+.welcome-container__home__page__component {
+    margin-bottom: 5px; /* Spacing between messages */
+  }
+  
+  /* Welcome message styling */
+  .welcome-message__home__page__component {
+    font-size: 24px; /* Larger welcome message */
+    font-weight: 700;
+    color: #333;
+  }
+  
+  /* Subtext styling */
+  .subtext__home__page__component {
+    font-size: 14px;
+    color: #999;
+    margin-top: 3px;
+  }
+
+  /* Add this to your homeTopCards.css */
+
+/* Welcome icon styling */
+.welcome-icon__home__page__component {
+    margin-left: 10px; /* Space between icon and text */
+    color: #ffb703; /* Change icon color */
+    font-size: 18px; /* Size of the icon */
+    vertical-align: middle; /* Align icon with text */
+  }
+  
+
+/* Settings icon styling */
+.settings-icon__home__page__component {
+    margin-left: 20px; /* Space between welcome message and icon */
+    cursor: pointer; /* Show pointer on hover */
+    display: flex;
+    align-items: center; /* Center icon vertically */
+}
+
+/* Adjust icon size */
+.settings-icon__home__page__component i {
+    font-size: 24px; /* Adjust size of the icon */
+    color: #333; /* Icon color */
+}
+
+/* Hover effect for the settings icon */
+.settings-icon__home__page__component:hover {
+    color: #ffb703; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+}
+
+
+.box-1__home__page__component {
+    background-color: #f0f8ff; /* Light blue */
+}
+
+.box-2__home__page__component {
+    background-color: #ffe4e1; /* Light pink */
+}
+
+.box-3__home__page__component {
+    background-color: #fafad2; /* Light goldenrod */
+}
+
+.box-4__home__page__component {
+    background-color: #e6e6fa; /* Lavender */
+}
+
+.box-5__home__page__component {
+    background-color: #fffacd; /* Lemon chiffon */
+}
+
+
+/* Welcome container to display content inline */
+.welcome-container__home__page__component {
+  display: flex; /* Aligns children in a row */
+  align-items: center; /* Centers items vertically */
+  margin-bottom: 5px; /* Spacing between messages */
+}
+
+/* Profile avatar styling */
+.profile-avatar {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 10px; /* Space between the image and text */
+}
+
+/* Welcome message styling */
+.welcome-message__home__page__component {
+  font-size: 24px; /* Larger welcome message */
+  font-weight: 700;
+  color: #333;
+}

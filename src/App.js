@@ -54,11 +54,12 @@ import CalendarGuidePage from "./help/CalendarGuidePage";
 import SocialFeedGuidePage from "./help/SocialFeedGuidePage";
 import SubjectHelpersGuidePage from "./help/SubjectHelpersGuidePage";
 import AboutAppPage from "./help/AboutAppPage";
+import HomeMain from "./home/homeMain";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
   {path: '/sign-up', element: <SignUp/>},
-  {path: '/', element: <Dashbaord/>},
+  {path: '/planner', element: <Dashbaord/>},
   {path: '/notes', element: <FlashcardsPage/>},
   {path: '/note/view/:id', element: <NoteDetailPage/>},
   {path: '/groups', element: <GroupsPage/>},
@@ -98,6 +99,7 @@ const router = createBrowserRouter([
   {path: '/social-feed-guide/guide', element: <SocialFeedGuidePage/>},
   {path: '/subject-helpers-guide/guide', element: <SubjectHelpersGuidePage/>},
   {path: '/about-app', element: <AboutAppPage/>},
+  {path: '/', element: <HomeMain/>},
   { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
