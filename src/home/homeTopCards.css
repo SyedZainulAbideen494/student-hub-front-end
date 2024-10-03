@@ -99,7 +99,7 @@
 
   /* Home title styling */
   .home-title__home__page__component {
-    font-size: 24px;
+    font-size: 12px;
     font-weight: 600;
     color: #333;
   }
@@ -109,12 +109,6 @@
     margin-bottom: 5px; /* Spacing between messages */
   }
   
-  /* Welcome message styling */
-  .welcome-message__home__page__component {
-    font-size: 24px; /* Larger welcome message */
-    font-weight: 700;
-    color: #333;
-  }
   
   /* Subtext styling */
   .subtext__home__page__component {
@@ -129,7 +123,7 @@
 .welcome-icon__home__page__component {
     margin-left: 10px; /* Space between icon and text */
     color: #ffb703; /* Change icon color */
-    font-size: 18px; /* Size of the icon */
+    font-size: 10px; /* Size of the icon */
     vertical-align: middle; /* Align icon with text */
   }
   
@@ -194,7 +188,8 @@
 
 /* Welcome message styling */
 .welcome-message__home__page__component {
-  font-size: 24px; /* Larger welcome message */
+  font-size: 15px; /* Larger welcome message */
   font-weight: 700;
   color: #333;
+  margin-bottom: 25px;
 }
