@@ -1,16 +1,21 @@
-/* Message Alignment */
 /* Left Message Styling */
 .message-left {
-  background: #F7F8FD; /* Solid dark grey for left messages */
-  color: #000000; /* White text for better contrast */
-  margin-right: auto; /* Aligns the message to the left */
+  background: #F7F8FD; /* Light grey for left messages */
+  color: #000000; /* Dark text */
+  align-self: flex-start; /* Aligns the message to the left */
   border-radius: 25px 25px 5px 25px; /* Rounded corners */
-  padding: 10px 15px; /* Add padding for better spacing */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
-  font-size: 1rem; /* Adjust font size for readability */
-  max-width: 60%; /* Limit the message width */
-  transition: background-color 0.3s; /* Smooth background change */
+  padding: 8px 12px; /* Adjusted padding for better bubble size */
+  max-width: 60%; /* Sets a maximum width */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adds shadow */
 }
+
+/* Container Styling */
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns items to the left by default */
+}
+
 
 
 /* Group Chat Layout */
@@ -48,7 +53,7 @@
 .group-header h1 {
   margin: 0;
   font-size: 20px; /* Larger font for better readability */
-  font-weight: 600; /* Bolder text */
+  font-weight: 200; /* Bolder text */
   text-align: center;
   color: #333;
 }
@@ -78,34 +83,30 @@
   box-sizing: border-box;
 }
 
-/* Message Card Styling */
-.message-card {
-  max-width: 70%; /* Messages will take up a maximum of 70% of the chat width */
-  margin: 10px 0; /* Vertical margin for spacing */
-  padding: 10px 15px; /* Increased padding for comfort */
-  border-radius: 25px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
-  font-size: 14px; /* Slightly larger font size */
-  line-height: 1.5; /* More spacious line height */
-  display: block; /* Ensure each message takes its own line */
-  word-wrap: break-word; /* Ensure long words break to the next line */
-  position: relative; /* Allows positioning inside */
-}
-
 /* Right Message Styling */
 .message-right {
-  background: #567AF4; /* Slightly lighter grey for right messages */
-  color: white; /* Keep text white for readability */
-  margin-left: auto; /* Aligns the message to the right */
+  background: #567AF4; /* Blue background for right messages */
+  color: white; /* White text */
+  align-self: flex-end; /* Aligns the message to the right */
   border-radius: 25px 25px 5px 25px; /* Rounded corners */
-  padding: 10px 15px; /* Add some padding for better spacing */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  font-size: 1rem; /* Optional: adjust font size for readability */
-  max-width: 60%; /* Limit the message width */
-  transition: background-color 0.3s; /* Smooth background change */
+  padding: 8px 12px; /* Padding for better size */
+  max-width: 60%; /* Sets a maximum width */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds shadow */
 }
 
+/* General Message Card Styling */
+/* Message Card Styling */
+.message-card {
+  max-width: 70%; /* Ensures the message bubble doesn't become too wide */
+  margin: 10px 0; /* Spacing between messages */
+  padding: 10px 15px; /* Padding for the message */
+  border-radius: 25px; /* Rounded corners */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Adds some shadow for depth */
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  line-height: 1.5; /* Good line spacing */
+  word-wrap: break-word; /* Ensure long words break to the next line */
+}
 
 /* Button Styles */
 .flashcard-btn,
@@ -149,7 +150,9 @@
   max-width: 90%; /* Maximum width for replies */
 }
 
-
+.message-header {
+  font-size: 12px;
+}
 
 .message-sender {
   font-size: 14px;
