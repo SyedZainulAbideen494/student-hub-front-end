@@ -40,7 +40,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
             try {
                 await navigator.share({
                     title: 'My FlashCard',
-                    text: 'My FlashCard from studenthub',
+                    text: 'My FlashCard from Edusify',
                     url: siteURL
                 });
             } catch (error) {
