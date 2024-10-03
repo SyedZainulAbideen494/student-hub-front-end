@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import SuccessMessage from '../app_modules/SuccessMessage';
 import './ProfileAvatar.css'; // Include relevant CSS for styling
 
 const ProfileAvatar = () => {
@@ -9,6 +10,7 @@ const ProfileAvatar = () => {
   const [newAvatar, setNewAvatar] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -30,7 +32,6 @@ const ProfileAvatar = () => {
   }, []);
 
   const MAX_SIZE = 5 * 1024 * 1024; // 5MB size limit
-
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -57,7 +58,9 @@ const ProfileAvatar = () => {
       });
       
       if (response.status === 200) {
-        console.log('Avatar updated successfully');
+        setSuccessMessage('Avatar updated successfully!'); // Set success message
+        const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token }); // Fetch updated profile
+        setProfile(data);
       }
     } catch (err) {
       console.error('Error updating avatar:', err.response ? err.response.data : err.message);
@@ -73,6 +76,7 @@ const ProfileAvatar = () => {
         },
       });
   
+      setSuccessMessage('Avatar removed successfully!'); // Set success message
       const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
       setProfile(data);
       setAvatarPreview(null);
@@ -126,6 +130,9 @@ const ProfileAvatar = () => {
       )}
 
       {error && <p className="error__change__avatar">{error}</p>}
+
+      {/* Render success message if it exists */}
+      {successMessage && <SuccessMessage message={successMessage} onClose={() => setSuccessMessage('')} />}
     </div>
   );
 };
