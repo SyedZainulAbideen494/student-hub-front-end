@@ -43,7 +43,6 @@
     border: 1px solid #dee2e6;
     border-radius: 12px; /* Softer corners */
     margin: 15px 0; /* Increased margin for better spacing */
-    background-color: #ffffff; /* White background for items */
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
     transition: transform 0.2s ease, box-shadow 0.3s ease; /* Transition effect for lift and shadow */
     display: flex; /* Flex display for icon and text */
@@ -61,6 +60,13 @@
     margin-right: 10px; /* Space between icon and text */
     color: #007aff; /* Icon color matching the button */
     font-size: 1.2em; /* Adjust icon size */
+}
+
+.event-item__home__page__component {
+    background-color: #f0f8ff;
+}
+.task-item__home__page__component {
+    background-color: #e6e6fa;
 }
 
 .section__home__page__component {
