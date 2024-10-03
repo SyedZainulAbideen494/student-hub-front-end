@@ -65,9 +65,9 @@ const ProfileAvatar = () => {
   };
 
   return (
-    <div className="profile-avatar-container">
+    <div className="profile-avatar-container__change__avatar">
       <img
-        className="profile-avatar"
+        className="profile-avatar__change__avatar"
         src={avatarPreview || `${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
         alt="Profile Avatar"
       />
@@ -75,13 +75,13 @@ const ProfileAvatar = () => {
       <input type="file" accept="image/*" onChange={handleAvatarChange} />
 
       {avatarPreview && (
-        <div className="avatar-preview-controls">
+        <div className="avatar-preview-controls__change__avatar">
           <button onClick={handleAvatarSubmit}>Save</button>
           <button onClick={handleCancel}>Cancel</button>
         </div>
       )}
       
-      {error && <p className="error">{error}</p>}
+      {error && <p className="error__change__avatar">{error}</p>}
     </div>
   );
 };

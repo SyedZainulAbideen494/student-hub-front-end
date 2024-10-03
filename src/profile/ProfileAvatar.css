@@ -1,10 +1,10 @@
-.profile-avatar-container {
+.profile-avatar-container__change__avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .profile-avatar {
+  .profile-avatar__change__avatar {
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -12,18 +12,18 @@
     margin-bottom: 10px;
   }
   
-  .avatar-preview-controls {
+  .avatar-preview-controls__change__avatar {
     display: flex;
     justify-content: center;
     gap: 10px;
   }
   
-  .avatar-preview-controls button {
+  .avatar-preview-controls__change__avatar button {
     padding: 5px 10px;
     cursor: pointer;
   }
   
-  .error {
+  .error__change__avatar {
     color: red;
   }
   

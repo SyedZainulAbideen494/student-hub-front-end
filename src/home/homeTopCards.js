@@ -54,7 +54,7 @@ const TopBoxes = () => {
         return () => clearTimeout(timeoutId);
     }, [nav]);
 
-    
+
     // Fetch profile data and overview
     useEffect(() => {
         const fetchData = async () => {
@@ -126,9 +126,7 @@ const TopBoxes = () => {
             </>
         )}
     </div>
-    <div className="settings-icon__home__page__component" onClick={handleSettingsClick}>
-        <i className="fas fa-cog"></i> {/* Font Awesome settings icon */}
-    </div>
+    
 </div>
             <p className="subtext__home__page__component">Here's your overview for today</p>
 
