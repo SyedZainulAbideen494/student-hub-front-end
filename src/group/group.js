@@ -12,7 +12,7 @@ import { faPlus, faUsers, faGlobe, faEnvelopeOpenText } from '@fortawesome/free-
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
     const [publicGroups, setPublicGroups] = useState([]);
-    const [newGroup, setNewGroup] = useState({ name: '', description: '', is_public: true });
+    const [newGroup, setNewGroup] = useState({ name: '', description: '', is_public: false });
     const [successMessage, setSuccessMessage] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [showCreateGroupForm, setShowCreateGroupForm] = useState(false);
