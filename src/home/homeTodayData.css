@@ -3,7 +3,7 @@
     border-radius: 12px; /* Softer corners */
     text-align: center; /* Center text in the container */
     margin-bottom: 60px;
-    margin-top: 0px;
+    margin-top: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
