@@ -139,20 +139,11 @@ const Welcome = () => {
   <Link to="/ai" className="continue-button-welcome-page">Explore the AI Solver</Link>
 </div>
                                     <div className="feature-card-welcome-page">
-                                        <h3>Groups</h3>
-                                        <p>Create groups with friends or join public groups to ask questions and share knowledge.</p>
-                                        <Link to="/groups" className="continue-button-welcome-page">Continue to Groups</Link>
-                                    </div>
-                                    <div className="feature-card-welcome-page">
                                         <h3>Notes</h3>
                                         <p>Create and share notes, and manage your study materials.</p>
                                         <Link to="/notes" className="continue-button-welcome-page">Continue to Notes</Link>
                                     </div>
-                                    <div className="feature-card-welcome-page">
-                                        <h3>Quizzes</h3>
-                                        <p>Create quizzes, challenge friends, and view results.</p>
-                                        <Link to="/quiz/home" className="continue-button-welcome-page">Continue to Quizzes</Link>
-                                    </div>
+                                   
                                     <div className="feature-card-welcome-page">
                                         <h3>Calendar</h3>
                                         <p>Manage events, get reminders, and stay organized.</p>
