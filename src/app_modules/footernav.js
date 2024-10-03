@@ -171,12 +171,12 @@ const FooterNav = () => {
                          {/* Red icon for profile issues */}
                     </button>
                 </Link>
-                <Link to='/subscription' style={{ textDecoration: 'none' }}>
+               {/* <Link to='/subscription' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
                         <FaGem className="icon-footer-nav" />
                         <span className="btn-label">Premium</span>
                     </button>
-                </Link>
+                </Link>*/} 
                 <Link to='/help' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/help' ? 'active' : ''}`}>
                         <FaQuestionCircle className="icon-footer-nav" />
