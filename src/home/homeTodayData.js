@@ -59,7 +59,7 @@ const TodayEventsAndTasks = () => {
         <div className="section-header">
             <h2>Today's Events</h2>
             <button className="see-all-button" onClick={handleGoToCalendar}>
-                See All
+                Go to Calendar
             </button>
         </div>
         {events.length > 0 ? (
@@ -79,7 +79,7 @@ const TodayEventsAndTasks = () => {
         <div className="section-header">
             <h2>Today's Tasks</h2>
             <button className="see-all-button" onClick={handleGoToPlanner}>
-                See All
+            Go to Planner
             </button>
         </div>
         {tasks.length > 0 ? (
