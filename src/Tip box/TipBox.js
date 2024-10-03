@@ -8,8 +8,23 @@ const TipBox = () => {
     "Wanna share your flashcards/notes/quizzes with your friends all at once? Create discussion groups and share your notes or quizzes there.",
     "View all the results of your quiz attendees by clicking 'View Results'.",
     "You've got free premium!",
-    "Invite your friends to Edusify to create groups, share flashcards, notes, quizzes, etc."
+    "Invite your friends to Edusify to create groups, share flashcards, notes, quizzes, etc.",
+    "Create AI-generated notes from your study material to save time and get organized quickly.",
+    "Ask the AI to help solve science, commerce, and math problems instantly with step-by-step explanations.",
+    "AI can suggest a study break schedule to maintain your productivity throughout the day.",
+    "Generate and customize flashcards automatically with AI to prepare for exams faster.",
+    "Use AI to create personalized revision schedules leading up to your exams.",
+    "Collaborate in study groups by sharing AI-generated notes and quizzes with others.",
+    "The AI can help you find the best resources to tackle difficult subjects or assignments.",
+    "Get a complete breakdown of any topic by asking the AI for detailed explanations or summaries.",
+    "AI can help you set goals for the day and prioritize tasks in your to-do list.",
+    "Easily adapt your study plan with AI recommendations based on your progress and upcoming deadlines.",
+    "Get daily email reminders about your tasks and events at 7 AM, 3 PM, and 9 PM IST if a task or event deadline is 3 days away, so you're always prepared.",
+    "AI can generate personalized study timetables based on your subjects and deadlines.",
+    "Easily organize your day with tasks, deadlines, and study sessions tracked in the app.",
+    "Stay productive with a built-in Pomodoro timer to track study sessions and breaks."
   ];
+  
 
   const [shuffledTips, setShuffledTips] = useState([]);
   const [tipIndex, setTipIndex] = useState(0);
