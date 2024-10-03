@@ -2,7 +2,6 @@
 .home-container__home__page__component {
     padding: 20px;
     text-align: left;
-
   }
   
   /* Home title styling */
@@ -84,7 +83,6 @@
   /* Container for the home page */
 .home-container__home__page__component {
     padding: 20px;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
