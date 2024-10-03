@@ -29,7 +29,13 @@ const HomeMain = () => {
 </div>
 <div style={{ marginBottom: '90px' }}>
         <div class="button-container__feedback__btn__planner__page">
-    <button onClick={toggleFeedbackForm} className='feedback__btn__planner__page'>
+    <button onClick={toggleFeedbackForm} style={{
+        backgroundColor: 'transparent',
+        color: '#48cae4',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '10px',
+      }} >
         {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
     </button>
 </div>
