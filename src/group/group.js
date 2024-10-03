@@ -201,13 +201,22 @@ const GroupsPage = () => {
             onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
           />
           <div className="groups-checkbox-container">
-            <input
-              type="checkbox"
-              className="groups-public-checkbox"
-              checked={newGroup.is_public}
-              onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
-            />
-            <label className="groups-checkbox-label">Public</label>
+            
+          <input
+  type="checkbox" 
+  id="terms" 
+  checked={newGroup.is_public}
+  onChange={(e) => setNewGroup({ ...newGroup, is_public: e.target.checked })}
+  required
+  style={{display: 'none', alignItems: 'left'}}
+/>
+<label htmlFor="terms" className="check__terms__box">
+  <svg width="18px" height="18px" viewBox="0 0 18 18">
+    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
+    <polyline points="1 9 7 14 15 4"></polyline>
+  </svg>
+  <label className="groups-checkbox-label">Public</label>
+</label>
           </div>
           <button className="groups-create-btn" onClick={handleCreateGroup}>Create Group</button>
         </div>

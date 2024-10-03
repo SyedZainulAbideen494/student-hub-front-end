@@ -93,7 +93,7 @@
   /* Group Creation Form */
   .groups-group-creation-form {
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     border-radius: 12px;
     margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -106,12 +106,12 @@
   }
   
   .groups-group-name-input, .groups-group-description-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
+    width: 90%;
+    padding: 12px;
+    border-radius: 15px;
     border: 1px solid #ccc;
     margin-bottom: 15px;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     transition: border-color 0.3s ease;
   }
   
@@ -120,9 +120,8 @@
   }
   
   .groups-checkbox-container {
-    display: flex;
-    align-items: center;
     margin-bottom: 15px;
+    align-items: left;
   }
   
   .groups-public-checkbox {
@@ -143,11 +142,10 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
   
-  .groups-create-btn:hover {
-    background-color: #6053d8;
-  }
   
+
   /* Group List Section */
   .groups-list-container {
     margin-top: 20px;
