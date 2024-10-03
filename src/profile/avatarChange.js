@@ -42,7 +42,6 @@ const ProfileAvatar = () => {
     setNewAvatar(file);
     setAvatarPreview(URL.createObjectURL(file));
   };
-
   const handleAvatarSubmit = async () => {
     try {
       const formData = new FormData();
@@ -59,14 +58,21 @@ const ProfileAvatar = () => {
       
       if (response.status === 200) {
         setSuccessMessage('Avatar updated successfully!'); // Set success message
-        const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token }); // Fetch updated profile
+        
+        // Fetch updated profile
+        const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
         setProfile(data);
+        
+        // Refresh the page after 2 seconds
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
     } catch (err) {
       console.error('Error updating avatar:', err.response ? err.response.data : err.message);
     }
   };
-
+  
   const handleRemoveAvatar = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -77,14 +83,22 @@ const ProfileAvatar = () => {
       });
   
       setSuccessMessage('Avatar removed successfully!'); // Set success message
+      
+      // Refresh the profile
       const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
       setProfile(data);
       setAvatarPreview(null);
       setNewAvatar(null);
+      
+      // Refresh the page after 2 seconds
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (err) {
       setError('Error removing avatar');
     }
   };
+  
   
   const handleCancel = () => {
     setAvatarPreview(null);
