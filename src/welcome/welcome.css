@@ -41,15 +41,6 @@
     margin-bottom: 20px;
 }
 
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: #0095f6; }
-}
 
 @keyframes fadeIn {
     from {
@@ -77,10 +68,8 @@
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 4px solid #0095f6; /* Typing cursor effect */
     display: inline-block;
     position: relative;
-    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 .welcome-header-welcome-page p {
@@ -89,9 +78,7 @@
     transition: color 0.3s; /* Smooth color transition */
 }
 
-.welcome-header-welcome-page h1:hover, .welcome-header-welcome-page p:hover {
-    color: #0095f6; /* Color change on hover */
-}
+
 
 /* App overview and features section */
 .app-overview-welcome-page h2, .features-welcome-page h2 {
@@ -204,9 +191,7 @@
     transition: background-color 0.3s; /* Smooth transition for active state */
 }
 
-.dot.active {
-    background-color: #0095f6;
-}
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -218,7 +203,6 @@
     .welcome-header-welcome-page h1 {
         font-size: 28px; /* Reduce heading size for better fit */
         white-space: normal; /* Allow the text to wrap and avoid hiding */
-        border-right: 3px solid #0095f6; /* Adjust typing effect */
     }
 
     .welcome-header-welcome-page p {
