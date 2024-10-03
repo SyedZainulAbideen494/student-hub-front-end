@@ -48,7 +48,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
             }
         } else {
             // Fallback for browsers that don't support Web Share API
-            const shareText = 'My FlashCard from studenthub';
+            const shareText = 'My FlashCard from Edusify';
             const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
             window.location.href = shareURL;
         }
