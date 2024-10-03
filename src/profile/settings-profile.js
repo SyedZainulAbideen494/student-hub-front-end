@@ -183,7 +183,7 @@ const SettingsPage = () => {
         {/* Navigation buttons */}
       </div>
       <div className="settings-content">
-       
+        <ProfileAvatar/>
         {loading && <div className="loader"></div>}
         {error && <div className="error-message">{error}</div>}
         {activeSection === 'Account' && (

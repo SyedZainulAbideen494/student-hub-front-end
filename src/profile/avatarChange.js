@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import './ProfileAvatar.css'; // Include any relevant CSS
+import './ProfileAvatar.css'; // Include relevant CSS for styling
 
 const ProfileAvatar = () => {
   const [profile, setProfile] = useState({});
   const [avatarPreview, setAvatarPreview] = useState(null);
+  const [newAvatar, setNewAvatar] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [newAvatar, setNewAvatar] = useState(null);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -49,13 +49,31 @@ const ProfileAvatar = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      // Re-fetch user profile to update avatar
+
       const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
       setProfile(data);
       setNewAvatar(null);
       setAvatarPreview(null);
     } catch (err) {
       setError('Error updating avatar');
+    }
+  };
+
+  const handleRemoveAvatar = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post(API_ROUTES.updateAvatar, { avatar: 'defPic.png' }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
+      setProfile(data);
+      setAvatarPreview(null);
+      setNewAvatar(null);
+    } catch (err) {
+      setError('Error removing avatar');
     }
   };
 
@@ -66,21 +84,42 @@ const ProfileAvatar = () => {
 
   return (
     <div className="profile-avatar-container__change__avatar">
-      <img
-        className="profile-avatar__change__avatar"
-        src={avatarPreview || `${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
-        alt="Profile Avatar"
+      <div className="avatar-wrapper__change__avatar">
+        <img
+          className="profile-avatar__change__avatar"
+          src={avatarPreview || `${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
+          alt="Profile Avatar"
+        />
+
+        {profile.avatar !== 'defPic.png' && (
+          <button className="remove-avatar-btn__change__avatar" onClick={handleRemoveAvatar}>
+            Remove Avatar
+          </button>
+        )}
+      </div>
+
+      {/* Hidden file input */}
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleAvatarChange}
+        className="file-input__change__avatar"
+        id="avatar-input"
+        hidden
       />
 
-      <input type="file" accept="image/*" onChange={handleAvatarChange} />
+      {/* Custom button to trigger file input */}
+      <label htmlFor="avatar-input" className="custom-file-btn__change__avatar">
+        Upload New Avatar
+      </label>
 
       {avatarPreview && (
         <div className="avatar-preview-controls__change__avatar">
-          <button onClick={handleAvatarSubmit}>Save</button>
-          <button onClick={handleCancel}>Cancel</button>
+          <button className="save-btn__change__avatar" onClick={handleAvatarSubmit}>Save</button>
+          <button className="cancel-btn__change__avatar" onClick={handleCancel}>X</button>
         </div>
       )}
-      
+
       {error && <p className="error__change__avatar">{error}</p>}
     </div>
   );
