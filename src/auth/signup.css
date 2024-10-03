@@ -138,10 +138,7 @@
   font-size: 16px;
 }
 
-.signup-sign-up-page-button:hover,
-.signup-sign-up-page-submit-button:hover {
-  background-color: #333333; /* Darker black on hover */
-}
+
 
 .signup-sign-up-page-button:disabled,
 .signup-sign-up-page-submit-button:disabled {
