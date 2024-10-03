@@ -114,6 +114,7 @@ const Login = () => {
                 setError(response.data.message || "OTP verification failed. Please try again.");
             } else {
                 // If the verification is successful
+                localStorage.setItem('token', response.data.token);
                 nav("/welcome"); // Navigate to welcome page
             }
         }).catch((error) => {
