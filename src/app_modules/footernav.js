@@ -14,42 +14,8 @@ const FooterNav = () => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
     const location = useLocation();
-
-    useEffect(() => {
-        const validateToken = async () => {
-          const token = localStorage.getItem('token');
-          console.log('Token from local storage:', token); // Debugging
-    
-          // If no token, redirect to login
-          if (!token) {
-            console.log('No token found, redirecting to sign-up.');
-            navigate('/sign-up');
-            return;
-          }
-    
-          try {
-            const response = await axios.post(API_ROUTES.userSessionAut, { token });
-            console.log('Token validation response:', response.data); // Debugging
-            if (!response.data.valid) {
-              console.log('Invalid token, redirecting to sign-up.');
-              navigate('/sign-up');
-            }
-          } catch (error) {
-            console.error('Error during token validation:', error);
-            navigate('/sign-up');
-          }
-        };
-    
-        // Delay the validation by 5 seconds
-        const timeoutId = setTimeout(() => {
-          validateToken();
-        }, 500);
-    
-        // Cleanup timeout on component unmount
-        return () => clearTimeout(timeoutId);
-    }, [navigate]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchProfileData = async () => {
