@@ -4,6 +4,7 @@ import './settings-profile.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import axios from 'axios';
 import SuccessModal from '../app_modules/SuccessModal';
+import ProfileAvatar from './avatarChange';
 
 const SettingsPage = () => {
   const [activeSection, setActiveSection] = useState('Account');
@@ -182,6 +183,7 @@ const SettingsPage = () => {
         {/* Navigation buttons */}
       </div>
       <div className="settings-content">
+        <ProfileAvatar/>
         {loading && <div className="loader"></div>}
         {error && <div className="error-message">{error}</div>}
         {activeSection === 'Account' && (

@@ -253,7 +253,7 @@ const showModalMessage = (message) => {
                     />
                 </div>
                 <div className="form-group-flashcards-page">
-                    <label htmlFor="description">Provide a brief description</label>
+                    <label htmlFor="description">Provide a brief description (not content)</label>
                     <textarea
                         id="description"
                         value={description}
