@@ -7,13 +7,14 @@
     margin-bottom: 60px;
     align-items: center;
     font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .header-title-calendar-page {
     margin-bottom: 20px;
     text-align: center;
     font-size: 2.2em;
-    width: 90%;
+    width: 100%; /* Set to 100% to prevent exceeding parent */
     color: #121212;
     font-weight: bold;
 }
@@ -23,11 +24,11 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    width: 97%;
+    width: 100%;
     max-width: 1200px; /* Increased max-width for more spacious layout */
     padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
 }
-
 
 /* Event Form */
 .event-form-calendar-page {
@@ -36,57 +37,58 @@
     margin-top: 30px;
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+    width: 100%; /* Ensure it does not exceed parent width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .toggle-form-button-calendar-page-container {
     text-align: center;
 }
 
-
-.toggle-form-button-calendar-page   {
+.toggle-form-button-calendar-page {
     padding: 17px 40px;
     border-radius: 50px;
     cursor: pointer;
     border: 0;
     background-color: #fdfffc;
     box-shadow: rgb(0 0 0 / 10%) 0 0 8px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 12px;
     transition: all 0.5s ease;
-  }
-  
-  .toggle-form-button-calendar-page  :hover {
+}
+
+.toggle-form-button-calendar-page:hover {
     letter-spacing: 4px;
     background-color: rgb(24, 191, 220);
     color: hsl(0, 0%, 100%);
     box-shadow: rgb(24, 191, 220) 0px 7px 29px 0px;
-  }
-  
-  .toggle-form-button-calendar-page  :active {
+}
+
+.toggle-form-button-calendar-page:active {
     letter-spacing: 3px;
     background-color: hsl(24, 191, 220);
     color: hsl(0, 0%, 100%);
     box-shadow: rgb(24, 191, 220) 0px 0px 0px 0px;
     transform: translateY(10px);
     transition: 100ms;
-  }
-  
-  
+}
+
 /* Form Container */
 .form-container-calendar-page {
     margin-top: 10px;
 }
 
 .section-title-calendar-page {
-    font-size: 1.4em; /* Increased font size */
+    font-size: 1em; /* Increased font size */
     color: #333;
     margin-bottom: 15px;
+    text-align: center;
     font-weight: bold;
 }
 
 .input-field-calendar-page {
-    width: calc(100% - 20px);
+    width: calc(100% - 20px); /* This should be fine if the container has padding */
     padding: 14px;
     margin-bottom: 30px;
     border: 1px solid #ccc;
@@ -116,14 +118,13 @@
     width: 200px;
     height: 45px;
     transition: 0.3s;
-  }
-  
-  .submit-button-calendar-page:hover {
+}
+
+.submit-button-calendar-page:hover {
     background-color: #3b82f6;
     box-shadow: 0 0 0 5px #3b83f65f;
     color: #fff;
-  }
-  
+}
 
 /* Event Lists */
 .event-lists-calendar-page {
@@ -232,7 +233,7 @@
     }
 
     .input-field-calendar-page {
-        width: calc(100% - 20px);
+        width: calc(100% - 20px); /* This should be fine */
     }
 
     .event-item-calendar-page {
@@ -268,12 +269,14 @@
     display: inline-flex; /* Align items in a row */
     align-items: center; /* Center the icon and text vertically */
     border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and transform */
+    font-size: 1.1em; /* Slightly larger font size */
+    padding: 10px 15px; /* Padding around the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: background-color 0.2s, transform 0.2s; /* Smooth transition for background color and scaling */
 }
 
-
-.btn-add-event .fa-plus-circle {
-    margin-right: 8px; /* Space between icon and text */
+.btn-add-event:hover {
+    background-color: #74c69d; /* Change background on hover */
+    color: #ffffff; /* Change text color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
 }
