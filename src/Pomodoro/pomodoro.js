@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './pomodoro.css';
 import FooterNav from '../app_modules/footernav';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 // Helper function to format time
 const formatTime = (timeInSeconds) => {
@@ -120,18 +121,77 @@ const Pomodoro = () => {
     }, []);
 
     const handleStartPause = () => {
+        const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    
         if (!isRunning) {
             // Store start time
             localStorage.setItem('startTime', Date.now());
+    
+            // Log the start of the Pomodoro session
+            fetch(API_ROUTES.apiStartPomodoro, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include token in the headers
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Start logged successfully.');
+                } else {
+                    console.error('Failed to log start.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            // Log the stop of the Pomodoro session
+            fetch(API_ROUTES.apiStopPomodoro, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include token in the headers
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Stop logged successfully.');
+                } else {
+                    console.error('Failed to log stop.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         }
+    
         setIsRunning(!isRunning);
     };
-
+    
     const handleReset = () => {
+        const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+    
+        // Log the stop of the Pomodoro session when resetting
+        fetch(API_ROUTES.apiStopPomodoro, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Include token in the headers
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Stop logged successfully on reset.');
+            } else {
+                console.error('Failed to log stop on reset.');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    
+        // Reset the timer
         setIsRunning(false);
         setTime(isWork ? workTime * 60 : breakTime * 60);
         localStorage.removeItem('startTime'); // Clear start time
     };
+    
+    
 
     const handleWorkTimeChange = (e) => {
         const value = Math.max(1, e.target.value);

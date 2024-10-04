@@ -89,5 +89,7 @@ export const API_ROUTES = {
   todayEventHome: `${API_URL}/api/events/today/data/home`,
   updateAvatar: `${API_URL}/api/update-avatar`,
   removeAvatar: `${API_URL}/api/remove-avatar`,
-  inviteFriendToEdusify: `${API_URL}/invite/friend`
+  inviteFriendToEdusify: `${API_URL}/invite/friend`,
+  apiStartPomodoro: `${API_URL}/api/start/pomodoro`,
+  apiStopPomodoro: `${API_URL}/api/stop/pomodoro`
 }
