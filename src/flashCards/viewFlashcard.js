@@ -202,11 +202,11 @@ const ViewFlashCard = () => {
                                         </svg>
     
                                         <div style={{ flexGrow: 1, marginLeft: '1rem' }}>
-                                            <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{note.title}</span>
-                                            <p style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
-                                                {note.description}
-                                            </p>
-                                        </div>
+                    <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{note.title}</span>
+                    <p style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {note.description.length > 20 ? note.description.substring(0, 20) + "..." : note.description}
+                    </p>
+                </div>
                                     </div>
     
                                     {/* Action Buttons */}
