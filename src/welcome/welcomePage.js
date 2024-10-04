@@ -1,83 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './welcome.css';
-import axios from 'axios';
-import { subscribeUser } from '../api/api'; // Correctly import subscribeUser
-import { urlBase64ToUint8Array } from '../utils/webPushUtils';
 
 const Welcome = () => {
-    const [currentStep, setCurrentStep] = useState(1);
     const [transition, setTransition] = useState('');
-    const [subscription, setSubscription] = useState(null);
-    const [permissionGranted, setPermissionGranted] = useState(false);
 
-    // Request notification permission and subscription
-    const requestNotificationPermission = async () => {
-        if ('serviceWorker' in navigator) {
-            try {
-                const swRegistration = await navigator.serviceWorker.register('/service-worker.js');
-                console.log('Service Worker Registered:', swRegistration);
-
-                const permission = await Notification.requestPermission();
-                if (permission === 'granted') {
-                    setPermissionGranted(true);
-                    const subscription = await swRegistration.pushManager.subscribe({
-                        userVisibleOnly: true,
-                        applicationServerKey: urlBase64ToUint8Array('BB0t-WTOpYNRM6b24mcvZKliaHnYK0umXovnqouKrFpSD8Zeq07V9N_z1jTwhenXBJ-Rlf_UxplpYculchlM3ug'),
-                    });
-                    console.log('Push Subscription:', subscription);
-                    setSubscription(subscription);
-                    await subscribeUser(subscription);
-                } else {
-                    console.warn('Notification permission denied');
-                }
-            } catch (error) {
-                console.error('Error registering service worker or subscribing:', error);
-            }
-        }
-    };
-
-    // Call requestNotificationPermission when the component mounts
     useEffect(() => {
-        // You can choose to call this function based on user interaction as well
+        // Trigger the transition className when the component mounts
+        setTransition('show');
     }, []);
 
-    const handleNext = () => {
-        if (currentStep < 3) {
-            setTransition('hidden');
-            setTimeout(() => {
-                setCurrentStep(currentStep + 1);
-                setTransition('show');
-            }, 500);
-        }
-    };
-
-    const handlePrevious = () => {
-        if (currentStep > 1) {
-            setTransition('hidden');
-            setTimeout(() => {
-                setCurrentStep(currentStep - 1);
-                setTransition('show');
-            }, 500);
-        }
-    };
-
     return (
-        <div className="welcome-page">
-            <div className={`welcome-section ${transition}`}>
-                    <div>
-                        <header className="welcome-header-welcome-page">
-                            <h1>Welcome to Edusify!</h1>
-                            <p>Your all-in-one study and organization app.</p>
-                        </header>
-                        <main className="welcome-content-welcome-page">
-                            <Link to='/'>
-                            <button className="continue-button-welcome-page" onClick={handleNext}>Next</button>
-                            </Link>
-                        </main>
-                    </div>
-            </div>
+        <div className="card__container__welcome__user__msg__edusify">
+        <div className="card__welcome__user__msg__edusify">
+        <div className="header__welcome__user__msg__edusify">
+          <span className="icon__welcome__user__msg__edusify">
+            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path clip-rule="evenodd" d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z" fill-rule="evenodd"></path>
+            </svg>
+          </span>
+          <p className="alert__welcome__user__msg__edusify">Welcome to Edusify!</p>
         </div>
+      
+        <p className="message__welcome__user__msg__edusify">
+        Your all-in-one study and organization app.
+        </p>
+      
+        <div className="actions__welcome__user__msg__edusify">
+            <Link to='/'>
+                        <button className="read__welcome__user__msg__edusify">Continue</button>
+                    </Link>
+    
+        </div>
+      </div>
+      </div>
     );
 };
 

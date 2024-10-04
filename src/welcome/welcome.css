@@ -1,245 +1,97 @@
-/* Base styles for all pages */
-.welcome-page {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
-    background-color: #f8f9fa; /* Light background similar to Instagram's */
-    color: #333;
+/* Center the card on the page */
+.card__container__welcome__user__msg__edusify {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden; /* Prevent scrollbars during animations */
-}
-
-/* Welcome section styling */
-.welcome-section {
-    width: 80%;
-    max-width: 900px;
-    text-align: center;
-    margin-bottom: 30px;
-    border-radius: 15px; /* Rounded edges for each section */
-    background-color: #ffffff; /* White background for content sections */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Soft shadow for better depth */
-    padding: 40px; /* Increased padding for more spacious look */
-    position: relative;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    animation: fadeIn 1s ease, slideUp 1s ease;
-}
-
-.welcome-section.hidden {
-    opacity: 0;
-    transform: translateX(-100%);
-}
-
-.welcome-section.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Heading animation styles */
-.welcome-header-welcome-page {
-    margin-bottom: 20px;
-}
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-.welcome-header-welcome-page h1 {
-    font-size: 36px;
-    color: #262626;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
-}
-
-.welcome-header-welcome-page p {
-    font-size: 16px;
-    color: #8e8e8e;
-    transition: color 0.3s; /* Smooth color transition */
-}
-
-
-
-/* App overview and features section */
-.app-overview-welcome-page h2, .features-welcome-page h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.app-overview-welcome-page p, .features-welcome-page ul {
-    font-size: 14px;
-    color: #8e8e8e;
-    text-align: left;
-    margin: 0 auto;
-    max-width: 800px;
-}
-
-.features-welcome-page ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.features-welcome-page li {
-    margin-bottom: 10px;
-}
-
-/* Continue button styling */
-.continue-button-welcome-page {
-    display: inline-block;
-    margin: 15px 10px;
-    padding: 12px 24px;
-    background-color: #0095f6; /* Instagram-like blue */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 25px; /* Rounded edges */
-    font-weight: bold;
-    border: none; /* Remove border for modern look */
-    font-size: 14px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transitions */
-    animation: popIn 0.3s ease-in-out;
-}
-
-@keyframes popIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.continue-button-welcome-page:hover {
-    background-color: #007bb5; /* Slightly darker blue for hover effect */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-    transform: scale(1.05); /* Slightly increase button size on hover */
-}
-
-/* Feature cards styling */
-.feature-cards-welcome-page {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background-color: rgba(243, 244, 246, 1); /* Light background */
 }
 
-.feature-card-welcome-page {
-    background: #ffffff;
-    border-radius: 15px; /* Rounded edges for cards */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    padding: 20px;
-    text-align: center;
-    width: 280px;
-    flex: 1;
-    min-width: 230px;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
-    animation: fadeIn 0.5s ease;
+.card__welcome__user__msg__edusify {
+    max-width: 320px;
+    border-width: 1px;
+    border-color: rgba(219, 234, 254, 1);
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    transition: transform 0.2s ease;
 }
 
-.feature-card-welcome-page:hover {
-    transform: translateY(-8px); /* Enhanced lift effect */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+/* Scale card on hover for effect */
+.card__welcome__user__msg__edusify:hover {
+    transform: scale(1.02);
 }
 
-.feature-card-welcome-page h3 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #262626;
+.header__welcome__user__msg__edusify {
+    display: flex;
+    align-items: center;
+    grid-gap: 1rem;
+    gap: 1rem;
 }
 
-.feature-card-welcome-page p {
-    font-size: 12px;
-    color: #8e8e8e;
+.icon__welcome__user__msg__edusify {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgba(96, 165, 250, 1);
+    padding: 0.5rem;
+    color: rgba(255, 255, 255, 1);
 }
 
-/* Pagination dots styling */
-.pagination-dots {
-    margin-top: 20px;
-    text-align: center;
+.icon__welcome__user__msg__edusify svg {
+    height: 1.5rem; /* Slightly larger icon */
+    width: 1.5rem;
 }
 
-.dot {
-    height: 12px;
-    width: 12px;
-    background-color: #bbb;
-    border-radius: 50%;
+.alert__welcome__user__msg__edusify {
+    font-weight: 600;
+    color: rgba(107, 114, 128, 1);
+    font-size: 1.25rem; /* Increased font size */
+}
+
+.message__welcome__user__msg__edusify {
+    margin-top: 1rem;
+    color: rgba(107, 114, 128, 1);
+    font-size: 1rem; /* Slightly larger font size */
+}
+
+.actions__welcome__user__msg__edusify {
+    margin-top: 1.5rem;
+}
+
+.actions__welcome__user__msg__edusify a {
+    text-decoration: none;
+}
+
+.mark-as-read__welcome__user__msg__edusify,
+.read__welcome__user__msg__edusify {
     display: inline-block;
-    margin: 0 8px;
-    transition: background-color 0.3s; /* Smooth transition for active state */
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
 }
 
-
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    .welcome-section {
-        padding: 20px; /* Reduce padding on smaller screens */
-        width: 90%; /* Increase the width to fill more space */
-    }
-
-    .welcome-header-welcome-page h1 {
-        font-size: 28px; /* Reduce heading size for better fit */
-        white-space: normal; /* Allow the text to wrap and avoid hiding */
-    }
-
-    .welcome-header-welcome-page p {
-        font-size: 16px; /* Reduce font size */
-    }
-
-    .continue-button-welcome-page {
-        padding: 12px 24px; /* Adjust button padding */
-        font-size: 14px; /* Reduce button text size */
-    }
-
-    .feature-card-welcome-page {
-        width: 80%; /* Make feature cards full width on small screens */
-        margin-bottom: 20px; /* Add space between stacked cards */
-    }
-
-    .feature-cards-welcome-page {
-        flex-direction: column; /* Stack feature cards vertically */
-        align-items: center;
-    }
+.read__welcome__user__msg__edusify {
+    background-color: rgba(59, 130, 246, 1);
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(96, 165, 250, 1);
 }
 
-@media (max-width: 480px) {
-    .welcome-header-welcome-page h1 {
-        font-size: 24px; /* Further reduce heading size for very small screens */
-    }
+.mark-as-read__welcome__user__msg__edusify {
+    margin-top: 0.5rem;
+    background-color: rgba(249, 250, 251, 1);
+    color: rgba(107, 114, 128, 1);
+    transition: all .15s ease;
+}
 
-    .continue-button-welcome-page {
-        padding: 10px 20px; /* Smaller buttons for very small screens */
-        font-size: 12px;
-    }
-
-    .feature-card-welcome-page h3 {
-        font-size: 18px; /* Reduce feature card title size */
-    }
-
-    .feature-card-welcome-page p {
-        font-size: 12px; /* Reduce feature card description size */
-    }
+.mark-as-read__welcome__user__msg__edusify:hover {
+    background-color: rgb(230, 231, 233);
 }
