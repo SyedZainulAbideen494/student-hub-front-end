@@ -1,114 +1,191 @@
-/* Container for the entire comments page */
+/* Overall page container */
 .comments-page {
-  padding: 10px;
-  background-color: #f9f9f9;
+  padding: 20px;
+  background-color: #f0f4f8;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Back button */
-.back-button {
-  background-color: transparent;
-  border: none;
-  color: #007bff;
-  font-size: 16px;
+/* Back button styling */
+
+/* From Uiverse.io by Jedi-hongbin */ 
+.back-button__comments__section  {
+  display: flex;
+  height: 3em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
   cursor: pointer;
-  margin-bottom: 15px;
-  padding: 5px;
-}
+  border: none;
+  background: #fff;
+  margin-bottom: 20px;
+ }
+ 
+ .back-button__comments__section  > .back-button__comments__section__svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+ }
+ 
+ .back-button__comments__section :hover > .back-button__comments__section__svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+ }
+ 
+ .back-button__comments__section :hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+ }
 
-/* Heading for the comments section */
+/* Heading styling */
 .comments-heading {
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 25px;
   color: #333;
   text-align: center;
-}
-
-/* Container for the comment input section */
-.comment-input-container {
-  margin-bottom: 20px;
-}
-
-/* Textarea for adding new comments */
-.comment-input {
-  width: 100%;
-  height: 60px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  padding: 8px;
-  box-sizing: border-box;
-  resize: none;
-  font-size: 14px;
-}
-
-/* Submit button for adding comments */
-.comment-submit-button {
-  width: 100%;
-  padding: 8px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
   font-weight: bold;
-  margin-top: 10px;
 }
 
-/* Container for the list of comments */
-.comments-list {
-  margin-bottom: 20px;
-}
-
-/* Individual comment container */
-.comment {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  margin-bottom: 15px;
-  padding: 10px;
+/* Comment input container */
+.comment-input-container {
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  align-items: center;
 }
 
-/* Header section of each comment */
+/* Textarea for adding comments */
+.comment-input {
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  padding: 12px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.comment-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit button styling */
+
+.comment-submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 2px;
+  height: 40px;
+  width: 80%;
+  border: none;
+  background: #a549da3d;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.comment-submit-button {
+  line-height: 22px;
+  font-size: 19px;
+  color: #A649DA;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+}
+
+.comment-submit-button:hover {
+  background: #a549da62;
+}
+
+.comment-submit-button:hover  {
+  animation: lr 1s linear infinite;
+}
+
+@keyframes lr {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-1px);
+  }
+
+  75% {
+    transform: translateX(1px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Comments list container */
+.comments-list {
+  margin-top: 20px;
+}
+
+/* Single comment container */
+.comment {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.comment:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Comment header (avatar + info) */
 .comment-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-/* Avatar of the user who made the comment */
+/* Avatar styling */
 .comment-avatar {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 12px;
   object-fit: cover;
+  border: 2px solid #007bff;
 }
 
-/* Information about the commenter (username and date) */
+/* Comment user info */
 .comment-info {
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  justify-content: center;
 }
 
-/* Username of the commenter */
 .comment-username {
   font-weight: bold;
   color: #333;
+  font-size: 14px;
 }
 
-/* Date when the comment was made */
 .comment-date {
-  color: #888;
+  font-size: 12px;
+  color: #6c757d;
 }
 
-/* Content of the comment */
+/* Comment content */
 .comment-content {
-  font-size: 12px;
-  color: #333;
+  font-size: 14px;
+  color: #495057;
+  line-height: 1.6;
 }
