@@ -8,6 +8,8 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import './calendarPage.css';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal
+import CountUp from 'react-countup';
+
 
 const CalendarPage = () => {
     const [events, setEvents] = useState([]);
@@ -128,11 +130,51 @@ const CalendarPage = () => {
         return events.filter(event => formatDate(new Date(event.date)) === formattedDate);
     };
 
+      // Calculate the number of events
+      const totalEvents = events.length;
+      const todayEvents = events.filter(event => formatDate(new Date(event.date)) === formatDate(new Date())).length;
+      const upcomingEvents = events.filter(event => new Date(event.date) > new Date()).length;
+      const dueEvents = events.filter(event => new Date(event.date) < new Date()).length;
+  
+      const renderStatisticsBoxes = () => {
+          return (
+            <div className="top-boxes-container__home__page__component">
+            <div className={`box__home__page__component box-1__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={totalEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Total Events</h3>
+            </div>
+            <div className={`box__home__page__component box-2__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={todayEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Today's Events</h3>
+            </div>
+            <div className={`box__home__page__component box-3__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={upcomingEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Upcoming Events</h3>
+            </div>
+            <div className={`box__home__page__component box-4__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={dueEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Due Events</h3>
+            </div>
+        </div>
+
+
+          );
+      };
+
     return (
         <div className="calendar-page">
             <h2 className='header-title-calendar-page'>
                 <FontAwesomeIcon icon={faCalendarAlt} /> Calendar
             </h2>
+            {renderStatisticsBoxes()}
             <div className="content-calendar-page">
                 <div className="calendar-container-calendar-page">
                     <Calendar

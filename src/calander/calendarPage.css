@@ -285,3 +285,54 @@
     margin-right: 8px; /* Space between icon and text */
 }
 
+.statistics-boxes__calendar__page {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap onto the next line */
+    justify-content: space-between; /* Space between boxes */
+    margin: 20px 0;
+}
+
+.statistics-box__calendar__page {
+    border: 1px solid #b3e0ff; /* Lighter blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    flex: 0 1 calc(50% - 20px); /* 50% width with margin adjustment */
+    margin: 10px; /* Add margin around boxes */
+    text-align: center; /* Center text */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: transform 0.2s; /* Smooth scaling on hover */
+}
+
+.statistics-box__calendar__page:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+.statistics-box__calendar__page h3 {
+    margin: 0;
+    font-size: 18px; /* Font size for headings */
+    color: #333; /* Darker color for better readability */
+}
+
+.statistics-box__calendar__page p {
+    font-size: 36px; /* Increased font size for numbers */
+    font-weight: bold;
+    margin: 5px 0 0 0;
+    color: #007bff; /* Blue color for numbers */
+}
+
+/* Different light background colors for boxes */
+.bg-light-blue {
+    background-color: #e6f7ff; /* Light blue */
+}
+
+.bg-light-green {
+    background-color: #e6ffe6; /* Light green */
+}
+
+.bg-light-yellow {
+    background-color: #ffffe6; /* Light yellow */
+}
+
+.bg-light-pink {
+    background-color: #ffe6f2; /* Light pink */
+}
