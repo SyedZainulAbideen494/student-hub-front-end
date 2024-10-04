@@ -83,14 +83,11 @@
   fill: #b4b4b4;
 }
   
-
-
   .groups-create-btn-groups {
-    padding: 12px;
+    padding: 10px;
     font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
+    letter-spacing: 1px;
     color: #000;
     background-color: #fff;
     border: none;
