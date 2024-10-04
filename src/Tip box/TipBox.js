@@ -22,7 +22,8 @@ const TipBox = () => {
     "Get daily email reminders about your tasks and events at 7 AM, 3 PM, and 9 PM IST if a task or event deadline is 3 days away, so you're always prepared.",
     "AI can generate personalized study timetables based on your subjects and deadlines.",
     "Easily organize your day with tasks, deadlines, and study sessions tracked in the app.",
-    "Stay productive with a built-in Pomodoro timer to track study sessions and breaks."
+    "Stay productive with a built-in Pomodoro timer to track study sessions and breaks.",
+    "On the planner and calendar pages, click on a date to see the events and tasks scheduled for that date."
   ];
   
 
