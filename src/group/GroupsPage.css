@@ -10,7 +10,6 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
   }
   
   .groups-header h1 {
@@ -27,69 +26,174 @@
   .groups-search-container {
     margin-right: 10px;
   }
+
+
+/* From Uiverse.io by joe-watson-sbf */ 
+.search__group__search__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.search__input__group__search__bar {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: none;
+  color: #646464;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  width: 12em;
+  transition: all ease-in-out .5s;
+  margin-right: -2rem;
+}
+
+.search__input__group__search__bar:hover, .search__input__group__search__bar:focus {
+  box-shadow: 0 0 1em #00000013;
+}
+
+.search__input__group__search__bar:focus {
+  outline: none;
+  background-color: #f0eeee;
+}
+
+.search__input__group__search__bar::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #ccc;
+}
+
+.search__input__group__search__bar:focus + .search__button__group__search__bar {
+  background-color: #f0eeee;
+}
+
+.search__button__group__search__bar {
+  border: none;
+  background-color: #f4f2f2;
+  margin-top: .1em;
+}
+
+.search__button__group__search__bar:hover {
+  cursor: pointer;
+}
+
+.search__icon__group__search__bar {
+  height: 1.3em;
+  width: 1.3em;
+  fill: #b4b4b4;
+}
   
-  .groups-search-input {
-    padding: 8px 12px;
-    border-radius: 9px;
-    border: 1px solid #bbb;
-    background-color: #ffffff;
-    transition: border-color 0.3s ease;
-  }
-  
-  .groups-search-input:focus {
-    border-color: #7161ef;
-  }
-  
+
+
   .groups-create-btn-groups {
-    color: #000000;
-
+    padding: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
     border: none;
-    padding: 8px 10px;
-    border-radius: 50%;
-    background-color: transparent;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    outline: none;
+  }
+  
+  .groups-create-btn-groups:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .groups-create-btn-groups:active {
+    transform: translateY(-1px);
   }
   
 
-  
-  /* Tab Section */
-  .groups-tab-container {
+  .tabs__groups__page__tabs {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.75rem;
+    margin-top: 10px;
+    border-radius: 99px;
+    justify-content: space-around; /* This will space out the tabs evenly */
   }
   
-  .groups-tab-button {
-    flex: 1;
-    padding: 8px;
-    margin: 0 5px;
-    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
-    border: none;
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 14px;
+  .tabs__groups__page__tabs * {
+    z-index: 2;
+  }
+  
+  .container__groups__page__tabs input[type="radio"] {
+    display: none;
+  }
+  
+  .tab__groups__page__tabs {
     display: flex;
-    justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    height: 30px;
+    width: 100px; /* Increase the width to center the text better */
+    font-size: .9rem; /* Slightly increased font-size */
+    color: black;
+    font-weight: 500;
+    border-radius: 99px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: color 0.15s ease-in;
   }
   
+  .notification__groups__page__tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem; /* Slightly larger notification */
+    height: 1rem;
+    font-size: 10px;
+    border-radius: 50%;
+    margin-left: 3px;
+    background-color: #e6eef9;
+    transition: 0.15s ease-in;
+  }
   
-  .groups-active {
-    background: linear-gradient(to right, transparent, transparent); /* Gradient background */
+  .container__groups__page__tabs input[type="radio"]:checked + label {
     color: #000000;
-    font-weight: bold;
+    background-color: #e6eef9;
   }
   
-  .groups-tab-button svg {
-    margin-right: 6px;
-    font-size: 14px;
+  .container__groups__page__tabs input[type="radio"]:checked + label > .notification__groups__page__tabs {
+    background-color: #185ee0;
+    color: #fff;
   }
   
+  .container__groups__page__tabs input[id="radio-1"]:checked ~ .glider__groups__page__tabs {
+    transform: translateX(0);
+  }
+  
+  .container__groups__page__tabs input[id="radio-2"]:checked ~ .glider__groups__page__tabs {
+    transform: translateX(100%);
+  }
+  
+  .container__groups__page__tabs input[id="radio-3"]:checked ~ .glider__groups__page__tabs {
+    transform: translateX(200%);
+  }
+  
+  .glider__groups__page__tabs {
+    position: absolute;
+    display: flex;
+    height: 30px;
+    width: 100px;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.25s ease-out;
+  }
+  
+
+
+
   /* Group Creation Form */
   .groups-group-creation-form {
     padding: 20px;
@@ -232,17 +336,6 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
 }
 
-/* CSS for No Groups Section */
-
-.no-groups-message-card {
-  background-color: #ffffff; /* Light background for the card */
-  border-radius: 0.5rem; /* Rounded corners */
-  padding: 1.5rem;
-  max-width: 400px;
-  margin: 1.5rem auto;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow on click */
-  animation: fadeInUp 0.5s ease-out;
-}
 
 @keyframes fadeInUp {
   from {
@@ -255,41 +348,96 @@
   }
 }
 
-.no-groups-message {
-  color: #333;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-weight: 500; /* Slightly bolder text */
-}
 
-.no-groups-buttons {
+/* Container for centering the loader and the message */
+.no-group-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  min-height: 200px;
+  text-align: center;
+  margin: auto;
 }
 
-.no-groups-create-btn,
-.no-groups-switch-btn {
-  background-color: transparent;
-  color: #74c69d; /* Text color */
-  border: none; 
-  padding: 0.8rem 1.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  font-weight: 600; /* Bolder text for better readability */
+/* Pyramid loader styles */
+.pyramid-loader__no__groups {
+  position: relative;
+  width: 120px; /* Reduced size */
+  height: 120px;
+  display: block;
+  transform-style: preserve-3d;
+  transform: rotateX(-20deg);
 }
 
-.no-groups-create-btn:hover,
-.no-groups-switch-btn:hover {
-  color: #ffffff; /* Text color on hover */
-  background-color: #74c69d; /* Background color on hover */
-  border-color: #74c69d; /* Border color on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
+.wrapper__no__groups {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: spin 4s linear infinite;
 }
 
-.no-groups-create-btn:focus,
-.no-groups-switch-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+@keyframes spin {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Reduced side sizes */
+.pyramid-loader__no__groups .wrapper__no__groups .side__no__groups {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform-origin: center top;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Individual sides with color gradients */
+.pyramid-loader__no__groups .wrapper__no__groups .side1__no__groups {
+  transform: rotateZ(-30deg) rotateY(90deg);
+  background: conic-gradient(#2BDEAC, #F028FD, #D8CCE6, #2F2585);
+}
+
+.pyramid-loader__no__groups .wrapper__no__groups .side2__no__groups {
+  transform: rotateZ(30deg) rotateY(90deg);
+  background: conic-gradient(#2F2585, #D8CCE6, #F028FD, #2BDEAC);
+}
+
+.pyramid-loader__no__groups .wrapper__no__groups .side3__no__groups {
+  transform: rotateX(30deg);
+  background: conic-gradient(#2F2585, #D8CCE6, #F028FD, #2BDEAC);
+}
+
+.pyramid-loader__no__groups .wrapper__no__groups .side4__no__groups {
+  transform: rotateX(-30deg);
+  background: conic-gradient(#2BDEAC, #F028FD, #D8CCE6, #2F2585);
+}
+
+/* Shadow effect */
+.pyramid-loader__no__groups .wrapper__no__groups .shadow__no__groups {
+  width: 45px;
+  height: 45px;
+  background: #8B5AD5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotateX(90deg) translateZ(-30px);
+  filter: blur(8px); /* Reduced blur */
+}
+
+/* Message below the loader */
+.no-group-message {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #555;
+  font-weight: 500;
 }

@@ -49,38 +49,37 @@
     text-align: center;
 }
 
-.toggle-form-button-calendar-page {
-    border: none;
-    color: #fff;
-    background-image: linear-gradient(30deg, #0400ff, #4ce3f7);
-    border-radius: 20px;
-    background-size: 100% auto;
-    font-family: inherit;
-    font-size: 17px;
-    padding: 0.6em 1.5em;
-   }
-   
-   .toggle-form-button-calendar-page:hover {
-    background-position: right center;
-    background-size: 200% auto;
-    -webkit-animation: pulse 2s infinite;
-    animation: pulse512 1.5s infinite;
-   }
-   
-   @keyframes pulse512 {
-    0% {
-     box-shadow: 0 0 0 0 #05bada66;
-    }
-   
-    70% {
-     box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
-    }
-   
-    100% {
-     box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
-    }
-   }
 
+.toggle-form-button-calendar-page   {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+  }
+  
+  .toggle-form-button-calendar-page  :hover {
+    letter-spacing: 4px;
+    background-color: rgb(24, 191, 220);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(24, 191, 220) 0px 7px 29px 0px;
+  }
+  
+  .toggle-form-button-calendar-page  :active {
+    letter-spacing: 3px;
+    background-color: hsl(24, 191, 220);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(24, 191, 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+  }
+  
+  
 /* Form Container */
 .form-container-calendar-page {
     margin-top: 10px;
