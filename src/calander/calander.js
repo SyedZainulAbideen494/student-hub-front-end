@@ -142,12 +142,14 @@ const CalendarPage = () => {
                     />
                 </div>
                 <div className="event-form-calendar-page">
+                    <div className="toggle-form-button-calendar-page-container">
                     <button
                         className="toggle-form-button-calendar-page"
                         onClick={() => toggleFormVisibility(null)}
                     >
                         <FontAwesomeIcon icon={isFormVisible ? faEdit : faPlus} /> {isFormVisible ? 'Cancel' : 'Add Event'}
                     </button>
+                    </div>
                     {isFormVisible && (
                         <div className="form-container-calendar-page">
                             <div className="section-title-calendar-page" style={{fontSize: '15px'}}>
@@ -167,12 +169,14 @@ const CalendarPage = () => {
                                     value={eventDate}
                                 />
                             </div>
+                            <div className="submit-button-calendar-page-container">
                             <button
                                 className="submit-button-calendar-page"
                                 onClick={editingEventId ? handleEditEvent : handleAddEvent}
                             >
-                                {editingEventId ? 'Update Event' : 'Create Event'}
+                                {editingEventId ? 'Update Event' : 'Add to Calendar'}
                             </button>
+                            </div>
                         </div>
                     )}
                 </div>
