@@ -271,15 +271,6 @@ const GroupsPage = () => {
     <div className="groups-list-container">
       {filteredPublicGroups.length === 0 ? (
         <div className="no-group-container">
-        <div className="pyramid-loader__no__groups">
-          <div className="wrapper__no__groups">
-            <span className="side__no__groups side1__no__groups"></span>
-            <span className="side__no__groups side2__no__groups"></span>
-            <span className="side__no__groups side3__no__groups"></span>
-            <span className="side__no__groups side4__no__groups"></span>
-            <span className="shadow__no__groups"></span>
-          </div>  
-        </div>
         <p className="no-group-message">No groups found</p>
       </div>
       ) : (
