@@ -110,7 +110,7 @@ function Planner() {
         axios.post(API_ROUTES.deleteTask, { id, token })
             .then(response => {
                 setTasks(tasks.filter(task => task.id !== id));
-                showModal('Task deleted successfully!');
+                showModal('Task completed!');
             })
             .catch(error => {
                 console.error('There was an error deleting the task!', error);
