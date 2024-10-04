@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './InviteFriends.css'; // Import the CSS file
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const InviteFriends = () => {
     const [message, setMessage] = useState('');
@@ -7,42 +9,47 @@ const InviteFriends = () => {
     const handleInvite = async () => {
         const siteURL = 'https://edusify-download.vercel.app'; // Your app's download link
         const inviteText = `
-    Hey there! 🌟
+        Hey there! 🌟
+        
+        I just discovered this amazing app called **Edusify**, and I think you'll love it! It's an innovative study companion that really enhances the learning experience. With Edusify, you can:
+        
+        - Get instant answers to your questions with the **AI Solver**.
+        - Organize your tasks and stay on top of deadlines with the **Task Manager**.
+        - Join study groups to collaborate and share resources.
+        - Create customizable flashcards and quizzes for effective studying.
+        - Keep track of important dates with the integrated calendar.
+        - Use the **Pomodoro Timer** to boost your productivity.
+        - And so much more!
+        
+        Join me in making studying more engaging and effective! Check it out here: ${siteURL}
+        
+        Can't wait to see you on Edusify! 🚀
+        `;
     
-    I just discovered this amazing app called **Edusify**, and I think you'll love it! It's an innovative study companion that really enhances the learning experience. With Edusify, you can:
-    
-    - Get instant answers to your questions with the **AI Solver**.
-    - Organize your tasks and stay on top of deadlines with the **Task Manager**.
-    - Join study groups to collaborate and share resources.
-    - Create customizable flashcards and quizzes for effective studying.
-    - Keep track of important dates with the integrated calendar.
-    - Use the **Pomodoro Timer** to boost your productivity.
-    - And so much more!
-    
-    Join me in making studying more engaging and effective! Check it out here: ${siteURL}
-    
-    Can't wait to see you on Edusify! 🚀
-    `;
-    
-        if (navigator.share) {
-            try {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) throw new Error('User not authenticated');
+
+            // Send the invite event to the backend to log it
+            await axios.post(API_ROUTES.inviteFriendToEdusify, { token });
+
+            if (navigator.share) {
                 await navigator.share({
                     title: 'Join me on Edusify!',
                     text: inviteText,
                     url: siteURL,
                 });
                 setMessage('Invitation shared successfully!');
-            } catch (error) {
-                console.error('Error sharing:', error);
-                setMessage('Failed to share the invitation. Please try again.');
+            } else {
+                const shareURL = `whatsapp://send?text=${encodeURIComponent(inviteText)}`;
+                window.location.href = shareURL;
+                setMessage('Invitation shared via WhatsApp!');
             }
-        } else {
-            const shareURL = `whatsapp://send?text=${encodeURIComponent(inviteText)}`;
-            window.location.href = shareURL;
-            setMessage('Invitation shared via WhatsApp!');
+        } catch (error) {
+            console.error('Error inviting:', error);
+            setMessage('Failed to share the invitation. Please try again.');
         }
     };
-    
 
     return (
         <div className="invite-friends___inv__friends__mkrt">

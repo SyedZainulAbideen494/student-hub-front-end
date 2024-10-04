@@ -88,5 +88,6 @@ export const API_ROUTES = {
   todayTaskHome: `${API_URL}/api/tasks/today/data/home`,
   todayEventHome: `${API_URL}/api/events/today/data/home`,
   updateAvatar: `${API_URL}/api/update-avatar`,
-  removeAvatar: `${API_URL}/api/remove-avatar`
+  removeAvatar: `${API_URL}/api/remove-avatar`,
+  inviteFriendToEdusify: `${API_URL}/invite/friend`
 }
