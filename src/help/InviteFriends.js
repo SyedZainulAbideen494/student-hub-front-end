@@ -52,16 +52,21 @@ const InviteFriends = () => {
     };
 
     return (
-        <div className="invite-friends___inv__friends__mkrt">
-            <div className="card___inv__friends__mkrt">
-                <h2>Invite Your Friends!</h2>
-                <p>Click the button below to share the app link.</p>
-                <button className="button___inv__friends__mkrt" onClick={handleInvite}>
-                     Invite friends
-                </button>
-                {message && <div className="invite-message___inv__friends__mkrt">{message}</div>}
-            </div>
-        </div>
+<div className="invite-friends___inv__friends__mkrt">
+    <div className="card___inv__friends__mkrt">
+        <h2>Invite Friends</h2>
+        <p>
+            Make studying more fun and productive by inviting your friends to join you on Edusify! 
+            Create study groups, share resources, and even test each other with custom quizzes. 
+            Click the button below to spread the word and level up your study sessions!
+        </p>
+        <button className="button___inv__friends__mkrt" onClick={handleInvite}>
+            Invite Friends Now
+        </button>
+        {message && <div className="invite-message___inv__friends__mkrt">{message}</div>}
+    </div>
+</div>
+
     );
 };
 
