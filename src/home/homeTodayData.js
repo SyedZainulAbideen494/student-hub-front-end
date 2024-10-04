@@ -4,6 +4,8 @@ import { FaCalendarAlt, FaClipboardList } from 'react-icons/fa'; // Import icons
 import axios from 'axios'; // Import axios for API calls
 import './homeTodayData.css'; // Import the CSS file
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import NoContentCardFace from './nocontentcard';
+import NoContentCardTask from './nocontentTaskCArd';
 
 const TodayEventsAndTasks = () => {
     const nav = useNavigate();
@@ -57,10 +59,8 @@ const TodayEventsAndTasks = () => {
         <div className="today-container__home__page__component">
             <div className='section__home__page__component'>
         <div className="section-header">
-            <h2>Today's Events</h2>
-            <button className="see-all-button" onClick={handleGoToCalendar}>
-                Go to Calendar
-            </button>
+            <h2><FaCalendarAlt/> Today's Events</h2>
+           
         </div>
         {events.length > 0 ? (
             <ul className="event-list__home__page__component">
@@ -72,15 +72,14 @@ const TodayEventsAndTasks = () => {
                 ))}
             </ul>
         ) : (
-            <p>No events for today.</p>
+            <NoContentCardFace/>
         )}
+        <button onClick={handleGoToCalendar} className='go-page-home-component-btn'>Go To Calendar</button>
     </div>
     <div className='section__home__page__component'>
         <div className="section-header">
-            <h2>Today's Tasks</h2>
-            <button className="see-all-button" onClick={handleGoToPlanner}>
-            Go to Planner
-            </button>
+            <h2><FaClipboardList/> Today's Tasks</h2>
+           
         </div>
         {tasks.length > 0 ? (
             <ul className="task-list__home__page__component">
@@ -92,8 +91,9 @@ const TodayEventsAndTasks = () => {
                 ))}
             </ul>
         ) : (
-            <p>No tasks for today.</p>
+            <NoContentCardTask/>
         )}
+            <button onClick={handleGoToPlanner} className='go-page-home-component-btn'>Go To Planner</button>
     </div>
     </div>
     );

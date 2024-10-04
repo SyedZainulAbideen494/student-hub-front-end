@@ -1,0 +1,122 @@
+/* General Styles */
+.center__no__content__home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.design__no__content__home {
+    height: 150px;
+    width: 150px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgb(174, 0, 255) 13%, rgb(55, 0, 88) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.color-border__no__content__home {
+    border-radius: 50%;
+    background-color: #ffffff20;
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.1);
+}
+
+.circle-1__no__content__home {
+    height: 160px;
+    width: 160px;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+}
+
+.circle-2__no__content__home {
+    height: 130px;
+    width: 130px;
+}
+
+.circle-3__no__content__home {
+    height: 100px;
+    width: 100px;
+}
+
+.circle-4__no__content__home {
+    height: 75px;
+    width: 75px;
+}
+
+.circle-5__no__content__home {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: inset gray 0px 0px 40px -15px;
+    position: relative;
+}
+
+.in-circle__no__content__home {
+    position: absolute;
+    background-color: #d1d1d1;
+    border-radius: 50%;
+}
+
+.in-circle-1__no__content__home {
+    height: 7px;
+    width: 7px;
+    top: 14px;
+    right: 14px;
+}
+
+.in-circle-2__no__content__home {
+    height: 5px;
+    width: 5px;
+    top: 22px;
+    right: 13px;
+}
+
+.in-circle-3__no__content__home {
+    height: 3px;
+    width: 3px;
+    top: 18px;
+    right: 9px;
+}
+
+/* Mountains */
+.shape__no__content__home {
+    height: 150px;
+    width: 150px;
+    background-color: #484848;
+    transform: rotate(45deg);
+    position: absolute;
+}
+
+.shadow__no__content__home {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+}
+
+.mountain-1__no__content__home {
+    z-index: 1;
+    bottom: -75px;
+    left: -75px;
+}
+
+.mountain-2__no__content__home {
+    bottom: -80px;
+    left: -20px;
+}
+
+.mountain-3__no__content__home {
+    z-index: 2;
+    bottom: -100px;
+    left: 65px;
+}
+
+/* Message Styles */
+.message__no__content__home {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    padding: 8px 15px;
+    border-radius: 15px;
+}

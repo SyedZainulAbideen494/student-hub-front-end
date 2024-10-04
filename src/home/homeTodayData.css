@@ -8,9 +8,9 @@
 }
 
 .section-header {
-    display: flex; /* Flexbox for header */
-    justify-content: space-between; /* Space between title and button */
     align-items: center; /* Center items vertically */
+    font-size: 15px;
+    text-align: center;
     margin-bottom: 20px; /* Spacing between sections */
 }
 
@@ -76,3 +76,34 @@
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
     margin-top: 25px;
 }
+
+
+
+/* From Uiverse.io by cssbuttons-io */ 
+.go-page-home-component-btn {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    margin-top: 30px;
+    outline: none;
+  }
+  
+  .go-page-home-component-btn:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .go-page-home-component-btn:active {
+    transform: translateY(-1px);
+  }
