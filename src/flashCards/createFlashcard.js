@@ -3,11 +3,11 @@ import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './flashCards.css';
 import FooterNav from '../app_modules/footernav';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import GroupModal from './GroupModal';
-import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
+import { FaSave, FaSearch, FaEye, FaShare, FaPlus } from 'react-icons/fa';
 import SuccessModal from '../app_modules/SuccessModal';
 import DOMPurify from 'dompurify';
 import SuccessMessage from '../app_modules/SuccessMessage';
@@ -20,7 +20,10 @@ const CreateFlashcard = () => {
     const [images, setImages] = useState([]);
     const [isPublic, setIsPublic] = useState(false);
     const [token, setToken] = useState(localStorage.getItem('token'));
-    const [editorContent, setEditorContent] = useState('');
+    const location = useLocation();
+const { state } = location;
+const initialContent = state?.editorContent || ''; // Get content from state
+    const [editorContent, setEditorContent] = useState(initialContent);
     const [showModal, setShowModal] = useState(false);
     const nav = useNavigate();
     const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control the SuccessModal visibility
@@ -33,6 +36,18 @@ const CreateFlashcard = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const [error, setError] = useState(false); // State for handling errors
 const [regenerateQuery, setRegenerateQuery] = useState(''); // Store query for regenerate
+
+const scrollToSection = (sectionId) => {
+  document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+};
+
+useEffect(() => {
+  // If initialContent is present, set it to editorContent
+  if (initialContent) {
+    setEditorContent(initialContent);
+    scrollToSection('content')
+  }
+}, [initialContent]);
 
     const navigate = useNavigate()
 
@@ -221,6 +236,9 @@ const showModalMessage = (message) => {
   }, 3000); // Hide modal after 3 seconds
 };
 
+const handleViewFalshCardsClick = () => {
+  nav('/notes/view')
+}
 
     return (
         <div className="flashcards-page">
@@ -240,6 +258,23 @@ const showModalMessage = (message) => {
     </div>
 )}
 {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
+      {/* Button Group */}
+      <div className="button-container__main__page__flashcard__page">
+        {/* View Button */}
+        <button
+          className='btn__main__page__flashcard__page'
+          onClick={handleViewFalshCardsClick}
+        >
+          <FaEye className="btn-icon__main__page__flashcard__page" /> My Flashcard
+        </button>
+
+        {/* Create Button */}
+        <button
+          className='btn__main__page__flashcard__page active__main__page__flashcard__page'
+        >
+          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create Flashcard
+        </button>
+      </div>
             <h1>Create Flashcard</h1>
             <form onSubmit={handleSubmit} className="flashcard-form-flashcards-page">
                 <div className="form-group-flashcards-page">
@@ -359,7 +394,7 @@ const showModalMessage = (message) => {
     </label>
   </div>
 </div>
-<div className="form-group-flashcards-page">
+<div className="form-group-flashcards-page" id="content">
                 <label htmlFor="headings">Content:</label>
                 <ReactQuill
                     value={editorContent}

@@ -10,6 +10,7 @@ import GroupModal from './GroupModal';
 import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
 import SuccessModal from '../app_modules/SuccessModal';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
+import { FaPlus } from 'react-icons/fa';
 
 const ViewFlashCard = () => {
     const [title, setTitle] = useState('');
@@ -136,10 +137,32 @@ const ViewFlashCard = () => {
 
 
 
-
+    const handleCraeteFalshCardsClick = () => {
+        nav('/notes/create')
+      }
+      
 
     return (
             <div className="flashcards-page">
+                  {/* Create Button */}
+              {/* Button Group */}
+      <div className="button-container__main__page__flashcard__page">
+        {/* View Button */}
+        <button
+          className='btn__main__page__flashcard__page active__main__page__flashcard__page'
+         
+        >
+          <FaEye className="btn-icon__main__page__flashcard__page" /> My Flashcard
+        </button>
+
+        {/* Create Button */}
+        <button
+          className='btn__main__page__flashcard__page'
+          onClick={handleCraeteFalshCardsClick}
+        >
+          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create Flashcard
+        </button>
+      </div>
                 {/* Search Bar */}
                 <div className="search-bar-flashcards-page">
                     <input

@@ -117,7 +117,7 @@ const quillModules = {
   }, [editMode, note]);
 
     const handleBackClick = () => {
-        nav('/notes');
+        nav('/notes/view');
     };
 
     const handleEditToggle = () => {
@@ -137,7 +137,7 @@ const quillModules = {
                 setShowModal(true);
                 setTimeout(() => {
                     setShowModal(false);
-                    nav('/notes');
+                    nav('/notes/view');
                 }, 3000); // Close the modal after 3 seconds and then navigate
             } catch (error) {
                 console.error('Error deleting note:', error);

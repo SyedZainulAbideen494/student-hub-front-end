@@ -487,3 +487,25 @@
     margin-right: 5px;
   }
   
+  .create-flashcard-btn_ai__page__container  {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .create-flashcard-btn_ai__page {
+    background-color: #f3f7fe;
+    color: #3b82f6;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    text-align: center;
+    width: 120px;
+    height: 45px;
+    transition: 0.3s;
+  }
+  
+  .create-flashcard-btn_ai__page:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 0 0 5px #3b83f65f;
+    color: #fff;
+  }

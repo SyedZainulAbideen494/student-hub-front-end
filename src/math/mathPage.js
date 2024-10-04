@@ -60,6 +60,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       parts: [{ text: 'Great to meet you. What would you like to know?' }],
     },
   ]);
+  const navigate = useNavigate()
 
 
   // Handle sending messages
@@ -87,6 +88,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
     }
   };
 
+
   useEffect(() => {
     const message = 'Hi there! What can I assist you with today?';
     const typingSpeed = 50; // Adjust typing speed (in milliseconds)
@@ -111,6 +113,12 @@ const MathSolver = ({ handleVoiceCommand }) => {
   }, [chatHistory]);
 
 
+    // New function to handle flashcard creation
+    const handleCreateFlashcard = (content) => {
+      navigate('/notes/create', { state: { editorContent: content } });
+    };
+
+
   return (
     <div className="mathsolver-container">
       <div className="chat-ui">
@@ -123,6 +131,16 @@ const MathSolver = ({ handleVoiceCommand }) => {
                   className="chat-result-content"
                   dangerouslySetInnerHTML={{ __html: result.parts.map(part => part.text).join('') }}
                 />
+                    {result.role === 'model' && index > 1 && ( // Check index > 1 to hide button on the first AI response
+        <div className="create-flashcard-btn_ai__page__container">
+          <button
+            className="create-flashcard-btn_ai__page"
+            onClick={() => handleCreateFlashcard(result.parts[0].text)} // Pass the content
+          >
+            Create Flashcard
+          </button>
+        </div>
+      )}
               </div>
             </div>
           ))}

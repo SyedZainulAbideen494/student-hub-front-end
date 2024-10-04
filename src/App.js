@@ -55,12 +55,13 @@ import SocialFeedGuidePage from "./help/SocialFeedGuidePage";
 import SubjectHelpersGuidePage from "./help/SubjectHelpersGuidePage";
 import AboutAppPage from "./help/AboutAppPage";
 import HomeMain from "./home/homeMain";
+import ViewFlashCard from "./flashCards/viewFlashcard";
+import CreateFlashcard from "./flashCards/createFlashcard";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
   {path: '/sign-up', element: <SignUp/>},
   {path: '/planner', element: <Dashbaord/>},
-  {path: '/notes', element: <FlashcardsPage/>},
   {path: '/note/view/:id', element: <NoteDetailPage/>},
   {path: '/groups', element: <GroupsPage/>},
   {path: '/group-chat/:id', element: <GroupChat/>},
@@ -100,6 +101,8 @@ const router = createBrowserRouter([
   {path: '/subject-helpers-guide/guide', element: <SubjectHelpersGuidePage/>},
   {path: '/about-app', element: <AboutAppPage/>},
   {path: '/', element: <HomeMain/>},
+  {path: '/notes/view', element: <ViewFlashCard/>},
+  {path: '/notes/create', element: <CreateFlashcard/>},
   { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
