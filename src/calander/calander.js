@@ -138,7 +138,7 @@ const CalendarPage = () => {
   
       const renderStatisticsBoxes = () => {
           return (
-            <div className="top-boxes-container__home__page__component">
+            <div className="top-boxes-container__home__page__component" style={{marginTop:'40px', marginBottom: '40px'}}>
             <div className={`box__home__page__component box-1__home__page__component`}>
                 <p className="count__home__page__component">
                     <CountUp end={totalEvents} duration={2} />
