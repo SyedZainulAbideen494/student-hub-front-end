@@ -58,7 +58,7 @@ const QuestionCard = ({ onQuestionSubmit }) => {
   return (
     <div className="question-card">
       <textarea
-        placeholder="Share your question..."
+        placeholder="Share your thoughts..."
         value={question}
         onChange={handleQuestionChange}
         className="question-input"
