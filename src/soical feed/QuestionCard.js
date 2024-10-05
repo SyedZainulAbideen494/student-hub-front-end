@@ -16,7 +16,14 @@ const QuestionCard = ({ onQuestionSubmit }) => {
   };
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+    const selectedImage = e.target.files[0];
+    if (selectedImage) {
+      setImage(selectedImage); // Allow only one image
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setImage(null); // Remove the selected image
   };
 
   const handleSubmit = async () => {
@@ -76,6 +83,29 @@ const QuestionCard = ({ onQuestionSubmit }) => {
         </label>
         <button className="send-button" onClick={handleSubmit}>Send</button>
       </div>
+
+      {/* Image Preview */}
+      {image && (
+        <div className="image-preview__flashcard__add__images">
+          <h3>Selected Image:</h3>
+          <div className="image-preview-container__flashcard__add__images">
+            <div className="image-thumbnail__flashcard__add__images">
+              <img
+                src={URL.createObjectURL(image)}
+                alt="Selected image preview"
+              />
+              <button
+                className="remove-image-button"
+                onClick={handleRemoveImage}
+                type="button"
+              >
+                &times; {/* Represents the "x" symbol */}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <SuccessModal visible={modalVisible} message={message} />
     </div>
   );
