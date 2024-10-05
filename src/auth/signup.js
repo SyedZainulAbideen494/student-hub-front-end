@@ -152,7 +152,7 @@ const SignUp = () => {
     };
 
     // Check token and redirect
-  {/*  const checkTokenAndRedirect = async (token, navigate) => {
+    const checkTokenAndRedirect = async (token, navigate) => {
     try {
       const response = await axios.post(API_ROUTES.sessionCheck, { token });
   
@@ -169,7 +169,7 @@ const SignUp = () => {
   useEffect(() => {
     const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
     checkTokenAndRedirect(token, nav);
-  }, [nav]); */}
+  }, [nav]); 
 
 
     const handleSuggestionClick = (suggestion) => {
