@@ -6,14 +6,13 @@ import FooterNav from '../app_modules/footernav';
 
 const freeFeatures = [
   'Manage up to 10 tasks at a time',
-  'Create up to 2 groups',
-  'Join up to 10 groups at once',
-  'Create up to 15 notes at once',
-  '15 math queries per day',
-  '15 science queries per day',
-  '15 commerce queries per day',
-  'Create up to 20 quizzes at a time',
+  'Join up to 2 groups',
+  'Create up to 15 notes and flashcards at once',
+  '20 AI queries per day',
+  'Create up to 5 quizzes at a time',
+  'Attend only 5 quizzes a day',
   'Default, non-changeable Pomodoro Timer',
+  'No stats shown for Pomodoro Timer',
   'Manage up to 20 calendar dates at a time',
 ];
 
@@ -27,6 +26,7 @@ const premiumFeatures = [
   'Unlimited commerce queries',
   'Create unlimited quizzes',
   'Customizable Pomodoro Timer',
+  'Stats for Pomodoro Time',
   'Unlimited calendar date management',
 ];
 
@@ -75,7 +75,7 @@ const SubscriptionPage = () => {
         {/* Premium Plan */}
         <div className={`pricing-card ${isPremium ? 'active' : ''}`}>
           <h3>Premium Plan</h3>
-          <p className="price">$0.60/month</p>
+          <p className="price">$1.18/month</p>
           <ul className="features-list">
             {premiumFeatures.map((feature, index) => (
               <li key={index}>✔️ {feature}</li>
