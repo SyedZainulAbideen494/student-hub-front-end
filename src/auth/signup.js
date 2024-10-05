@@ -152,7 +152,7 @@ const SignUp = () => {
     };
 
     // Check token and redirect
-const checkTokenAndRedirect = async (token, navigate) => {
+  {/*  const checkTokenAndRedirect = async (token, navigate) => {
     try {
       const response = await axios.post(API_ROUTES.sessionCheck, { token });
   
@@ -169,7 +169,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
   useEffect(() => {
     const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
     checkTokenAndRedirect(token, nav);
-  }, [nav]);
+  }, [nav]); */}
 
 
     const handleSuggestionClick = (suggestion) => {
@@ -189,6 +189,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
     };
 
     return (
+        <div className='signup-sign-up-page-card-main-div-signup'>
         <div className="signup-sign-up-page-card">
             {loading && <LoadingSpinner />}
             <h2 className="signup-sign-up-page-heading">Sign Up</h2>
@@ -202,7 +203,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
                 
                 {step === 1 && (
                     <>
-                        <p className="signup-sign-up-page-info">We need your email and password to send you reminders and for security purposes.</p>
+                        
                         <div className="signup-sign-up-page-input-group">
                             <FaEnvelope className="signup-sign-up-page-icon" />
                             <input
@@ -238,7 +239,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
                 
                 {step === 2 && (
                     <>
-                        <p className="signup-sign-up-page-info">We need your phone number to send group invites, WhatsApp reminders and for security reasons.</p>
+                       
                         <div className="signup-sign-up-page-input-group">
                             <FaPhone className="signup-sign-up-page-icon" />
                             <input
@@ -256,7 +257,6 @@ const checkTokenAndRedirect = async (token, navigate) => {
                 
                 {step === 3 && (
                     <>
-                        <p className="signup-sign-up-page-info">Choose a unique username to create your identity on our platform.</p>
                         <div className={`signup-sign-up-page-input-group ${uniqueIdStatus}`}>
                             <FaUser className="signup-sign-up-page-icon" />
                             <input
@@ -323,6 +323,7 @@ const checkTokenAndRedirect = async (token, navigate) => {
                     Already have an account? <Link to="/login" className="signup-sign-up-page-link">Login here</Link>.
                 </p>
             </form>
+        </div>
         </div>
     );
 };

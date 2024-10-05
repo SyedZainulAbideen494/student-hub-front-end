@@ -1,4 +1,11 @@
 /* Container Styles */
+.signup-sign-up-page-card-main-div-signup {
+display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh; /* Full viewport height to center vertically */
+}
+
 .signup-sign-up-page-card {
   background-color: #ffffff;
   border-radius: 12px;
@@ -9,6 +16,7 @@
   margin: 20px auto; /* Centered on the page */
   position: relative;
   transition: all 0.3s ease-in-out;
+  
 }
 
 /* Heading */
