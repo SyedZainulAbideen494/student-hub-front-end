@@ -15,40 +15,145 @@
     margin-bottom: 30px;
 }
 
-/* Search Bar */
-.search-bar-quiz-page {
+
+/* From Uiverse.io by satyamchaudharydev */ 
+/* From uiverse.io by @satyamchaudharydev */
+/* removing default style of button */
+
+/* Centering the search bar form */
+.search-bar-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically if needed */
+    padding: 20px 0;         /* Optional padding to give space around the search bar */
+}
+/* From Uiverse.io by satyamchaudharydev */
+/* From uiverse.io by @satyamchaudharydev */
+/* removing default style of button */
+.form__search__bar__quiz__page button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+}
+/* styling of whole input container */
+.form__search__bar__quiz__page {
+    --timing: 0.3s;
+    --width-of-input: 300px; /* Increased width for better centering */
+    --height-of-input: 40px;
+    --border-height: 2px;
+    --input-bg: #fff;
+    --border-color: #2f2ee9;
+    --border-radius: 30px;
+    --after-border-radius: 1px;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
     display: flex;
     align-items: center;
-    background-color: #ffffff; /* White background for search */
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    padding: 8px 12px;
-    max-width: 100%;
-    width: 90%;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+    transition: border-radius 0.5s ease;
+    background: var(--input-bg, #fff);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* styling of Input */
+.input__search__bar__quiz__page {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+}
+
+/* styling of animated border */
+.form__search__bar__quiz__page:before {
+    content: "";
+    position: absolute;
+    background: var(--border-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform var(--timing) ease;
+}
+
+/* Hover on Input */
+.form__search__bar__quiz__page:focus-within {
+    border-radius: var(--after-border-radius);
+}
+
+.input__search__bar__quiz__page:focus {
+    outline: none;
+}
+
+/* here is code of animated border */
+.form__search__bar__quiz__page:focus-within:before {
+    transform: scale(1);
+}
+
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset__search__bar__quiz__page {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* close button shown when typing */
+.input__search__bar__quiz__page:not(:placeholder-shown) ~ .reset__search__bar__quiz__page {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* sizing svg icons */
+.form__search__bar__quiz__page .svg__search__bar__quiz__page {
+    width: 17px;
+    margin-top: 3px;
 }
 
 /* Buttons Section */
 .quiz-header-buttons-quiz-page {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px; /* Reduced gap */
 }
 
-.quiz-header-buttons-quiz-page button {
-    background-color: #000000; /* Black background for buttons */
-    color: #ffffff; /* White text */
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border-radius: 25px;
+/* Button Styling */
+.quiz-create-btn-home-page {
+    border: 2px solid #24b4fb;
+    background-color: #24b4fb;
+    border-radius: 0.8em; /* Slightly smaller border radius */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 8px 16px; /* Smaller padding for a more compact button */
+    transition: all ease-in-out 0.2s;
+    font-size: 14px; /* Smaller font size */
 }
 
-.quiz-header-buttons-quiz-page button:hover {
-    background-color: #333333; /* Darker gray */
-    transform: translateY(-2px); /* Subtle lift effect */
+.quiz-create-btn-home-page .quiz-create-btn-home-page-span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    gap: 6px; /* Adds space between icon and text */
 }
+
+.quiz-create-btn-home-page:hover {
+    background-color: #0071e2; /* Darker shade on hover */
+}
+
+.quiz-create-btn-home-page svg {
+    height: 20px; /* Smaller icon size */
+    width: 20px;
+}
+
+
 
 /* Quizzes List */
 .quizzes-title-home-page-quiz-page {
@@ -124,19 +229,63 @@
     outline: none;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Black focus outline */
 }
+.no_quiz_found_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
-
+.card_no-quizzes {
+    width: 200px;
+    height: 250px;
+    border: none;
+    border-radius: 10px;
+    background: radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), 
+                radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), 
+                linear-gradient(135deg, #ff0000 0%, #000036 100%), 
+                radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), 
+                linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%);
+    background-blend-mode: normal, normal, screen, overlay, normal;
+    box-shadow: 0px 0px 10px 1px #000000;
+    margin-bottom: 20px; /* Space between card and message */
+}
 
 .no-quizzes-message {
-    text-align: center;
-    margin: 20px;
-    font-size: 1.2rem;
+    margin: 10px;
+    font-size: 0.9rem; /* Smaller font size */
+    color: #333; /* Adjust the color if needed */
 }
 
 .no-quizzes-message p {
-    margin-bottom: 10px;
-    color: #666; /* Adjust as needed */
+    margin-bottom: 15px;
+    font-size: 0.8rem; /* Smaller font size for the message */
+    color: #666;
 }
+
+/* Styling the "Create Quiz" button */
+.create-first-quiz-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-first-quiz-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.create-first-quiz-button svg {
+    margin-right: 5px; /* Space between the icon and the text */
+}
+
 
 .create-first-quiz-button {
     display: inline-flex;

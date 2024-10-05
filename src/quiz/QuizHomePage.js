@@ -122,33 +122,72 @@ const handleShareClick = (quiz) => {
     return (
         <div className="quiz-home-page-quiz-page">
             <div className="quiz-header-container-quiz-page">
-                <div className="search-bar-quiz-page">
-                    <FaSearch />
-                    <input
-                        type="text"
+<div className='search-bar-container'>
+                <form className="form__search__bar__quiz__page">
+      <button>
+          <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+              <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+      </button>
+      <input 
+                     className="input__search__bar__quiz__page"  
+                     type="text"
                         placeholder="Search quizzes..."
                         value={searchTerm}
                         onChange={handleSearchChange}
-                        style={{ border: 'none' }}
-                    />
-                </div>
+                        style={{ border: 'none' }}/>
+      <button className="reset__search__bar__quiz__page" type="reset">
+          <svg className='svg__search__bar__quiz__page' xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+      </button>
+  </form>
+  </div>
+
                 <div className="quiz-header-buttons-quiz-page">
-                    <button onClick={handleCreateQuiz} className="create-quiz-button-home-page-quiz-page">
-                        Create Quiz
-                    </button>
-                    <button onClick={handleResultsClick} className="results-button-home-page-quiz-page">
-                        My Results
-                    </button>
-                </div>
+    <button className='quiz-create-btn-home-page' onClick={handleCreateQuiz}>
+        <span className='quiz-create-btn-home-page-span'>
+            <svg
+                height="20"
+                width="20"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path>
+            </svg>
+            Create
+        </span>
+    </button>
+
+    <button className='quiz-create-btn-home-page' onClick={handleResultsClick}>
+        <span className='quiz-create-btn-home-page-span'>
+            <svg
+                height="20"
+                width="20"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M5 9h2v10H5V9zm6-4h2v14h-2V5zm6 8h2v6h-2v-6z" fill="currentColor"></path>
+            </svg>
+            My Results
+        </span>
+    </button>
+</div>
+
+
             </div>
-            <h2 className="quizzes-title-home-page-quiz-page">Your Quizzes</h2>
             {quizzes.length === 0 ? (
-                <div className="no-quizzes-message">
-                    <p>No quizzes found. Create your first quiz!</p>
-                    <button onClick={handleCreateQuiz} className="create-first-quiz-button">
-                        <FaPlus /> Create Quiz
-                    </button>
-                </div>
+                  <div className="no_quiz_found_container">
+                  <div className="no-quizzes-message">
+                      <p>No quizzes found. Create your first quiz!</p>
+                  </div>
+                  <div className="card_no-quizzes"></div>
+                  <button onClick={handleCreateQuiz} className="create-first-quiz-button">
+                      <FaPlus /> Create Quiz
+                  </button>
+              </div>
             ) : (
                 <ul className="quizzes-list-home-page-quiz-page">
                     {filteredQuizzes.map(quiz => (
