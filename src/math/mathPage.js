@@ -59,13 +59,18 @@ const MathSolver = ({ handleVoiceCommand }) => {
       role: 'model',
       parts: [{ text: 'Great to meet you. What would you like to know?' }],
     },
-  ]);
-  const navigate = useNavigate()
-
+  ]); // Keep the default messages
+  const [conversationStarted, setConversationStarted] = useState(false); // Track if conversation is started
+  const navigate = useNavigate();
 
   // Handle sending messages
   const handleSendMessage = async () => {
     if (!message.trim()) return;
+
+    // Set conversation as started when user sends the first message
+    if (!conversationStarted) {
+      setConversationStarted(true);
+    }
 
     const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
     setChatHistory(newHistory);
@@ -88,22 +93,10 @@ const MathSolver = ({ handleVoiceCommand }) => {
     }
   };
 
-
-  useEffect(() => {
-    const message = 'Hi there! What can I assist you with today?';
-    const typingSpeed = 50; // Adjust typing speed (in milliseconds)
-
-    const typeMessage = (msg, i) => {
-      if (i < msg.length) {
-        setTypingMessage(msg.slice(0, i + 1)); // Update state to show the typed message
-        setTimeout(() => typeMessage(msg, i + 1), typingSpeed); // Call recursively
-      }
-    };
-
-    typeMessage(message, 0); // Start typing the message
-
-    return () => setTypingMessage(''); // Cleanup on unmount
-  }, []); // Empty dependency array to run only once on mount
+  // New function to handle flashcard creation
+  const handleCreateFlashcard = (content) => {
+    navigate('/notes/create', { state: { editorContent: content } });
+  };
 
   const messagesEndRef = useRef(null); // Create a ref for scrolling
 
@@ -112,38 +105,51 @@ const MathSolver = ({ handleVoiceCommand }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatHistory]);
 
-
-    // New function to handle flashcard creation
-    const handleCreateFlashcard = (content) => {
-      navigate('/notes/create', { state: { editorContent: content } });
-    };
-
+  // Render a default page when no conversation is started
+  const defaultPage = (
+    <div class="container__default__ai__Page">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  );
 
   return (
     <div className="mathsolver-container">
       <div className="chat-ui">
         <div className="chat-messages">
-          {chatHistory.map((result, index) => (
-            <div key={index} className={`chat-message ${result.role}`}>
-              <div className="chat-bubble">
-                <span className="chat-role">{result.role === 'user' ? 'You' : 'AI'}:</span>
-                <div
-                  className="chat-result-content"
-                  dangerouslySetInnerHTML={{ __html: result.parts.map(part => part.text).join('') }}
-                />
-                    {result.role === 'model' && index > 1 && ( // Check index > 1 to hide button on the first AI response
-        <div className="create-flashcard-btn_ai__page__container">
-          <button
-            className="create-flashcard-btn_ai__page"
-            onClick={() => handleCreateFlashcard(result.parts[0].text)} // Pass the content
-          >
-            Create Flashcard
-          </button>
-        </div>
-      )}
-              </div>
-            </div>
-          ))}
+          {/* Show default page when no conversation is initiated by user */}
+          {!conversationStarted ? ( // If conversation has not started
+            defaultPage
+          ) : (
+            chatHistory
+              .slice(2) // Skip the first two default messages
+              .map((result, index) => (
+                <div key={index} className={`chat-message ${result.role}`}>
+                  <div className="chat-bubble">
+                    <span className="chat-role">{result.role === 'user' ? 'You' : 'AI'}:</span>
+                    <div
+                      className="chat-result-content"
+                      dangerouslySetInnerHTML={{
+                        __html: result.parts.map((part) => part.text).join(''),
+                      }}
+                    />
+                    {result.role === 'model' && (
+                      <div className="create-flashcard-btn_ai__page__container">
+                        <button
+                          className="create-flashcard-btn_ai__page"
+                          onClick={() => handleCreateFlashcard(result.parts[0].text)} // Pass the content
+                        >
+                          Create Flashcard
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))
+          )}
+
           {/* Show loader as a message bubble when loading */}
           {loading && (
             <div className="chat-message loader-bubble">
@@ -156,8 +162,9 @@ const MathSolver = ({ handleVoiceCommand }) => {
             </div>
           )}
           <div ref={messagesEndRef} />
-
         </div>
+
+        {/* Chat input */}
         <div className="chat-input-container">
           <div className="input-group">
             <input
@@ -167,7 +174,6 @@ const MathSolver = ({ handleVoiceCommand }) => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Enter Question"
             />
-          
           </div>
           <button className="chat-send-btn" onClick={handleSendMessage}>
             <FaArrowRight />
@@ -177,6 +183,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
     </div>
   );
 };
+
 
 
 
