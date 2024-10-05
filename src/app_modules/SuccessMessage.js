@@ -13,7 +13,7 @@ const SuccessMessage = ({ message, onClose }) => {
             }, 300); // Delay to match the animation duration
 
             return () => clearTimeout(hideTimer);
-        }, 3000);
+        }, 1500);
 
         return () => clearTimeout(timer);
     }, [onClose]);
@@ -21,10 +21,11 @@ const SuccessMessage = ({ message, onClose }) => {
     console.log('Rendering SuccessMessage with message:', message);
 
     return (
-        <div className={`success-message-sucess-modal ${!isVisible ? 'hide' : ''}`}>
+        <div className={`success-message-sucess-modal ${isVisible ? 'show__message__success__modal' : 'hide__message__success__modal'}`}>
             {message}
         </div>
     );
+    
 };
 
 export default SuccessMessage;
