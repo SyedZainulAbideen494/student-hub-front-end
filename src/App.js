@@ -104,7 +104,6 @@ const router = createBrowserRouter([
   {path: '/', element: <HomeMain/>},
   {path: '/notes/view', element: <ViewFlashCard/>},
   {path: '/notes/create', element: <CreateFlashcard/>},
-  {path: '/test/payment', element: <PaymentButton/>},
   { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
