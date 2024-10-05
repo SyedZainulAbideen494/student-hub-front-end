@@ -442,6 +442,7 @@ const handleViewFalshCardsClick = () => {
                 {result.role === 'model' && (
                   <div className="create-flashcard-btn_ai__page__container">
                     <button
+                    type='button'
                       className="create-flashcard-btn_ai__page"
                       onClick={() => handleCopy(result.parts[0].text)} // Ensure handleCopy is defined
                     >
@@ -464,7 +465,7 @@ const handleViewFalshCardsClick = () => {
         />
         
           <div className="sp" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', textAlign: 'center'}}>
-      <button className="sparkle-button" onClick={handleSendMessage}>
+      <button className="sparkle-button" onClick={handleSendMessage} type='button'> 
         <span className="spark"></span>
         <span className="backdrop"></span>
         <svg
