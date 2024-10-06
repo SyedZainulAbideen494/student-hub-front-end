@@ -127,7 +127,6 @@ const ReviewModal = () => {
               value={feedback}
               onChange={(e) => setFeedback(e.target.value)}
               placeholder="Your suggestions matter a lot! Please tell us how we can improve."
-              required
             />
             <button style={{padding: '12px '}} className="later-button__review__give__Eduisyf" type="submit" disabled={loading}>
               {loading ? 'Submitting...' : 'Submit Feedback'}
