@@ -267,9 +267,12 @@ const DiscussionBoard = () => {
     return (
         <div className="group-chat">
             <div className="group-header">
-                <button className="header-btn" onClick={handleBackBtn}><FaArrowLeft /></button>
-                <h1 onClick={openGroupDetailsPage}>{groupDetails ? groupDetails.name : 'Loading...'}</h1>
-            </div>
+  <button style={{backgroundColor: 'transparent'}} className="header-btn__groups__page__chat" onClick={handleBackBtn}><FaArrowLeft /></button>
+  <h1 onClick={openGroupDetailsPage}>
+    {groupDetails ? groupDetails.name : 'Loading...'}
+  </h1>
+</div>
+
             {isMember === false ? (
                <div class="card-not-a-member-btn">
                <h2>Not a member</h2>

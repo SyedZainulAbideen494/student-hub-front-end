@@ -543,11 +543,6 @@
 }
 
 
-
-
-
-
-
   /*create flashcard AI*/
 
   .ai-query-section__flashcard__create {
@@ -603,10 +598,6 @@
     color: #dcdcdc; /* Slightly lighter gray for content */
     line-height: 1.5; /* Improved readability */
 }
-
-
-  
-
 
 .ql-toolbar {
   display: flex;

@@ -9,13 +9,13 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
+{/*Submitiing the forgotpassword */}
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage('');
     setError('');
     setLoading(true);
-
+{/*If the email or phone number is blank */}
     if (!emailOrPhone) {
       setError('Please enter your email or phone number.');
       setLoading(false);

@@ -39,24 +39,48 @@
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 30px);
-  background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
+  background-color: #fafafa; /* Softer background color */
+  border-bottom: 1px solid #ddd; /* Lighter border */
   z-index: 1000;
-  padding: 15px; /* Increased padding for better spacing */
-  border-radius: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 10px; /* Reduced padding for a sleeker look */
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+/* Button Style */
+.header-btn__groups__page__chat {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+  color: #666; /* Subtle button color */
+  transition: color 0.3s ease;
+}
+
+.header-btn__groups__page__chat:hover {
+  color: #333; /* Darker hover effect */
+}
+
+/* Group Name Styling */
 .group-header h1 {
   margin: 0;
-  font-size: 20px; /* Larger font for better readability */
-  font-weight: 200; /* Bolder text */
-  text-align: center;
-  color: #333;
+  font-size: 16px; /* Smaller font size */
+  font-weight: 400; /* Thinner font */
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
+
+.group-header h1:hover {
+  color: #007bff; /* Highlight color on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+  text-decoration: underline; /* Underline to indicate it's clickable */
+}
+
 
 /* Footer Section */
 .group-footer {
@@ -79,7 +103,6 @@
   margin-bottom: 70px; /* Adjusted for footer height */
   overflow-y: auto;
   padding: 10px;
-  background-color: #f7f7f7;
   box-sizing: border-box;
 }
 
@@ -282,22 +305,5 @@
   align-items: center;
 }
 
-/* Header Button */
-.header-btn {
-  background-color: transparent; /* Transparent background for a clean look */
-  border: none; /* No border for a minimalist design */
-  cursor: pointer; /* Pointer cursor for interaction */
-  padding: 10px; /* Padding for comfort */
-  border-radius: 50%; /* Circular shape */
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
-  display: flex; /* Flexbox for centering icon */
-  align-items: center; /* Centering icon vertically */
-  justify-content: center; /* Centering icon horizontally */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
 
-.header-btn:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Light background on hover for feedback */
-  transform: scale(1.1); /* Slight scale effect on hover */
-}
 

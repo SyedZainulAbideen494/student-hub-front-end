@@ -6,32 +6,45 @@
     box-sizing: border-box;
   }
   
-  .settings-header {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .settings-nav {
-    display: flex;
-    position: relative;
-    margin-bottom: 20px;
-    overflow-x: auto;
-  }
-  
-  .settings-nav-button {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    background: transparent;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .settings-nav-button.active {
-    color: #7161ef;
-    font-weight: bold;
-  }
+ /* Header Section */
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers the text initially */
+  position: relative; /* To position the back button absolutely */
+  margin-bottom: 20px;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px;
+  width: 100%;
+}
+
+.settings-header h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+  font-weight: 500;
+}
+
+.settings-nav-button {
+  position: absolute;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.settings-nav-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.settings-nav-button:hover {
+  color: #7161ef;
+}
+
   
   
   .settings-content {
