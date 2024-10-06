@@ -43,17 +43,22 @@ const TipBox = () => {
 
   useEffect(() => {
     const lastShownTime = localStorage.getItem('lastTipShown');
+    const feedbackSubmitted = localStorage.getItem('feedbackSubmitted') === 'true'; // Convert to boolean
+    const nextReviewTime = localStorage.getItem('nextReviewTime');
     const currentTime = Date.now();
 
-    // Check if the tip box was shown within the last 3 hours (10800000 milliseconds)
-    if (!lastShownTime || (currentTime - lastShownTime) >= 3 * 60 * 60 * 1000) {
-      setIsVisible(true);
-      localStorage.setItem('lastTipShown', currentTime); // Update last shown time
-      
-      // Shuffle tips and set initial tip index
-      const shuffled = shuffleArray(tips);
-      setShuffledTips(shuffled);
-      setTipIndex(0);
+    // Check if feedback has been submitted and the next review time is in the future
+    if (feedbackSubmitted && (!nextReviewTime || currentTime >= nextReviewTime)) {
+      // Check if the tip box was shown within the last 3 hours (10800000 milliseconds)
+      if (!lastShownTime || (currentTime - lastShownTime) >= 3 * 60 * 60 * 1000) {
+        setIsVisible(true);
+        localStorage.setItem('lastTipShown', currentTime); // Update last shown time
+
+        // Shuffle tips and set initial tip index
+        const shuffled = shuffleArray(tips);
+        setShuffledTips(shuffled);
+        setTipIndex(0);
+      }
     }
 
     // Change tip every 3 hours
@@ -62,7 +67,8 @@ const TipBox = () => {
     }, 3 * 60 * 60 * 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [tips]);
+
 
   const handleClose = () => {
     setIsVisible(false);
