@@ -1,0 +1,20 @@
+.app-updates {
+    background-color: #ffffff; /* Light background color */
+    border-radius: 25px; /* Border radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Box shadow */
+    padding: 20px; /* Padding for inner content */
+    margin: 20px 8px 30px 8px; /* Margin for spacing */
+    text-align: center; /* Center align text */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  .app-updates h2 {
+    color: #333; /* Dark text color for the heading */
+    margin-bottom: 10px; /* Margin below heading */
+  }
+  
+  .app-updates p {
+    color: #555; /* Slightly lighter text color for the updates */
+    font-size: 1.1rem; /* Font size for the update text */
+  }
+  
