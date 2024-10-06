@@ -1,3 +1,64 @@
+/* Animation for the question card */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.question-card {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 10px auto;
+  animation: fadeIn 0.5s ease; /* Apply the fade-in animation */
+}
+
+/* Enhanced image preview animations */
+.image-preview__flashcard__add__images {
+  margin-top: 15px;
+  opacity: 0; /* Start hidden */
+  transform: translateY(-10px); /* Slightly move it up */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transition properties */
+}
+
+.image-preview-container__flashcard__add__images:hover {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Move to original position */
+}
+
+/* Other button animations */
+.send-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: #fff;
+  transition: background-color 0.3s, transform 0.3s; /* Added transform transition */
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.upload-icon:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+
+
 .question-card {
   padding: 8px;
   border: 1px solid #ddd;
@@ -13,7 +74,7 @@
 .question-input {
   width: 100%;
   padding: 6px;
-  font-size: 14px;
+  font-size: 12px;
   border: 1px solid #ddd;
   border-radius: 6px;
   margin-bottom: 8px;
@@ -86,3 +147,5 @@
   font-size: 18px;
   cursor: pointer;
 }
+
+

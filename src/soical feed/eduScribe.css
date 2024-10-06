@@ -119,3 +119,20 @@
 .eduscribe-like-icon.liked {
   color: blue;
 }
+
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9); /* Start slightly smaller */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* End at normal size */
+  }
+}
+
+.eduscribe-card {
+  /* Existing styles */
+  animation: popIn 0.3s ease-in-out forwards; /* Apply the animation */
+}

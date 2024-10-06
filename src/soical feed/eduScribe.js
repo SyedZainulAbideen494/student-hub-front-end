@@ -11,7 +11,7 @@ const EduScribe = ({ activeTab }) => {
   const [liked, setLiked] = useState({});
   const [commentInput, setCommentInput] = useState({});
   const navigate = useNavigate();
-
+  const [fadeIn, setFadeIn] = useState(false); // New state for fade-in effect
   useEffect(() => {
     const fetchEduscribes = async () => {
       try {
@@ -67,7 +67,10 @@ const EduScribe = ({ activeTab }) => {
   return (
     <div className="eduscribe-container">
       {eduscribes.map((eduscribe) => (
-        <div key={eduscribe.id} className="eduscribe-card">
+         <div 
+         key={eduscribe.id} 
+         className={`eduscribe-card ${fadeIn ? 'fade-in' : ''}`} // Add fade-in class
+       >
           <div className="eduscribe-header">
             <a href={`/profile/${eduscribe.user_id}`}>
               <img
