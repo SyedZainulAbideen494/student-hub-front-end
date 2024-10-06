@@ -14,10 +14,9 @@ const ReviewModal = () => {
   const handleRatingClick = async (rate) => {
     setRating(rate);
     const token = localStorage.getItem('token'); // Retrieve the token from local storage
-  
+    
     // Set feedback message based on rating
     const feedbackMessage = `Rating given: ${rate}`; // Create feedback message
-    setFeedback(feedbackMessage); // Update the feedback state
   
     if (rate >= 4) {
       // Prepare data to send to the backend
@@ -29,8 +28,10 @@ const ReviewModal = () => {
       try {
         // Send the data to the backend
         await axios.post(API_ROUTES.feedbackEduisfy, data);
+        
         // Store the feedback submission state
         localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
+  
         // Redirect to review link after successful submission
         window.open('https://g.page/r/CbK_EhVVrsJqEAI/review', '_blank');
         setIsOpen(false); // Close the modal
@@ -40,6 +41,7 @@ const ReviewModal = () => {
       }
     }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
