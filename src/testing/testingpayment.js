@@ -1,61 +1,63 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const PaymentButton = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [amount, setAmount] = useState("");
+function PaymentForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [amount, setAmount] = useState('');
+  const [paymentUrl, setPaymentUrl] = useState(null);
 
-  const handlePayment = () => {
-    const paymentData = { name, email, phone, amount };
+  const handlePayment = async (e) => {
+    e.preventDefault();
 
-    axios
-      .post("http://localhost:8080/create-payment/insta/mojo", paymentData)
-      .then(response => {
-        // Redirect user to Instamojo payment page
-        if (response.data.paymentUrl) {
-          window.location.href = response.data.paymentUrl;
-        } else {
-          alert("Payment request failed");
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        alert("Payment request error");
+    try {
+      const response = await axios.post('http://localhost:8080/create-payment/insta/mojo', {
+        name,
+        email,
+        phone,
+        amount
       });
+
+      if (response.data.paymentUrl) {
+        setPaymentUrl(response.data.paymentUrl);
+      }
+    } catch (err) {
+      console.error('Error during payment creation:', err.response ? err.response.data : err.message);
+    }
   };
 
   return (
     <div>
-      <h3>Make a Payment</h3>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="tel"
-        placeholder="Phone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Amount"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <button onClick={handlePayment}>Pay Now</button>
+      <h2>Instamojo Payment</h2>
+      <form onSubmit={handlePayment}>
+        <div>
+          <label>Name</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        </div>
+        <div>
+          <label>Phone</label>
+          <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+        </div>
+        <div>
+          <label>Amount</label>
+          <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} required />
+        </div>
+        <button type="submit">Pay Now</button>
+      </form>
+
+      {paymentUrl && (
+        <div>
+          <h3>Proceed with Payment:</h3>
+          <a href={paymentUrl} target="_blank" rel="noopener noreferrer">Pay Here</a>
+        </div>
+      )}
     </div>
   );
-};
+}
 
-export default PaymentButton;
+export default PaymentForm;

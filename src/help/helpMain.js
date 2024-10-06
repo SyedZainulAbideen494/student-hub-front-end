@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faTwitter, faTelegram, faChrome } from '@fortawesome/free-brands-svg-icons';
 import './helpMain.css';
 import InviteFriends from './InviteFriends';
 import FeedbackForm from './FeedbackForm';
@@ -77,9 +79,27 @@ const HelpMain = () => {
     <FeedbackForm/>
       {/* Footer */}
       <footer className="footer-help-page">
-        <p>© 2024 Edusify. All rights reserved.</p>
-        <Link to="/terms-and-conditions" className="footer-link-help-page">Terms and Conditions</Link>
-      </footer>
+  <p>© 2024 Edusify. All rights reserved.</p>
+
+  {/* Social Media Links */}
+  <div className="footer-social-links-help-page">
+    <a href="https://www.instagram.com/edusify.app/" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
+      <FontAwesomeIcon icon={faInstagram} size="2x" />
+    </a>
+    <a href="https://x.com/SyedZain_saz?t=mUNjUKoihNUivIYikdtu3g&s=08" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
+      <FontAwesomeIcon icon={faTwitter} size="2x" />
+    </a>
+    <a href="https://t.me/edusify" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
+      <FontAwesomeIcon icon={faTelegram} size="2x" />
+    </a>
+    <a href="https://edusify-download.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
+      <FontAwesomeIcon icon={faChrome} size="2x" />
+    </a>
+  </div>
+
+  <Link to="/terms-and-conditions" className="footer-link-help-page"><p style={{marginTop:'10px'}}>Terms and Conditions</p></Link>
+</footer>
+
     </div>
   );
 };
