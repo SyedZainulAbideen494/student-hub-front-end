@@ -119,18 +119,20 @@ const TopBoxes = () => {
                     src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
                     alt="Profile Avatar"
                 />
-                <p className="welcome-message__home__page__component">
-            <TypeAnimation
-                sequence={[
-                    `Hi, ${profile?.unique_id || 'User'}!`, // The message to be displayed
-                    2000 // Pause for 2 seconds
-                ]}
-                speed={50} // Typing speed in milliseconds
-                repeat={0} // Number of times to repeat; 0 means no repeat
-                wrapper="span"
-            />
-            <FontAwesomeIcon icon={faGrinBeam} className="welcome-icon__home__page__component" />
-        </p>
+<p className="welcome-message__home__page__component">
+    <TypeAnimation
+        sequence={[
+            `Hi, ${profile?.unique_id || 'User'}!`, // Use template literal correctly
+            2000 // Pause for 2 seconds
+        ]}
+        speed={50} // Typing speed in milliseconds
+        repeat={0} // Number of times to repeat; 0 means no repeat
+        wrapper="span"
+        cursor={false} // Hide the typing cursor
+    />
+    <FontAwesomeIcon icon={faGrinBeam} className="welcome-icon__home__page__component" />
+</p>
+
             </>
         )}
     </div>
