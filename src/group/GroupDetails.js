@@ -49,7 +49,7 @@ const GroupDetailPage = () => {
             setErrorMessage('Phone number is required.');
             return;
         }
-
+    
         try {
             const token = localStorage.getItem('token');
             await axios.post(
@@ -61,16 +61,22 @@ const GroupDetailPage = () => {
             setErrorMessage('');
             setSuccessMessage('Invitation sent successfully.');
             setIsSuccessModalVisible(true);
-
+    
             // Hide success modal after 3 seconds
             setTimeout(() => {
                 setIsSuccessModalVisible(false);
             }, 3000);
-
+    
         } catch (error) {
-            setErrorMessage(error.message);
+            // Check if error.response exists and retrieve the message
+            if (error.response && error.response.data && error.response.data.message) {
+                setErrorMessage(error.response.data.message);
+            } else {
+                setErrorMessage('An unexpected error occurred.'); // Fallback message
+            }
         }
     };
+    
 
     const handleLeaveGroup = async () => {
         const token = localStorage.getItem('token');
