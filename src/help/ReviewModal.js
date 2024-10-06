@@ -11,14 +11,33 @@ const ReviewModal = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [showLater, setShowLater] = useState(false);
 
-  const handleRatingClick = (rate) => {
+  const handleRatingClick = async (rate) => {
     setRating(rate);
+    const token = localStorage.getItem('token'); // Retrieve the token from local storage
+  
+    // Set feedback message based on rating
+    const feedbackMessage = `Rating given: ${rate}`; // Create feedback message
+    setFeedback(feedbackMessage); // Update the feedback state
+  
     if (rate >= 4) {
-      // Store the feedback submission state
-      localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
-      // Redirect to review link immediately if rating is 4 or more
-      window.open('https://g.page/r/CbK_EhVVrsJqEAI/review', '_blank');
-      setIsOpen(false); // Close the modal
+      // Prepare data to send to the backend
+      const data = {
+        token,
+        feedback: feedbackMessage // Use the feedback message here
+      };
+  
+      try {
+        // Send the data to the backend
+        await axios.post(API_ROUTES.feedbackEduisfy, data);
+        // Store the feedback submission state
+        localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
+        // Redirect to review link after successful submission
+        window.open('https://g.page/r/CbK_EhVVrsJqEAI/review', '_blank');
+        setIsOpen(false); // Close the modal
+      } catch (error) {
+        console.error('Error submitting feedback before redirect:', error);
+        // Optionally, handle the error (e.g., show a message to the user)
+      }
     }
   };
 
@@ -29,9 +48,8 @@ const ReviewModal = () => {
   
     // Prepare data to send based on feedback input
     const data = {
-      rating,
-      feedback: feedback.trim() ? feedback : `Rating given: ${rating}`, // If feedback is empty, send the rating
       token,
+      feedback: feedback.trim() ? `${feedback} (Rating: ${rating} star${rating > 1 ? 's' : ''})` : `Rating given: ${rating} star${rating > 1 ? 's' : ''}`, // Include stars in the feedback message
     };
   
     try {
@@ -48,7 +66,6 @@ const ReviewModal = () => {
     }
   };
   
-
   const handleLaterClick = () => {
     // Store the current time in local storage or any other method to show the form again after 8 hours
     const eightHoursLater = new Date(Date.now() + 8 * 60 * 60 * 1000); // Change to 8 hours
@@ -56,7 +73,6 @@ const ReviewModal = () => {
     setShowLater(true);
     setIsOpen(false); // Close the modal
   };
-  
 
   useEffect(() => {
     const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
