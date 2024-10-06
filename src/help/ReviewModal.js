@@ -76,6 +76,7 @@ const ReviewModal = () => {
     <div className="modal-overlay__review__give__Eduisyf">
       <div className="modal-content__review__give__Eduisyf">
         <h2>Rate Your Experience</h2>
+        <p style={{margin: '0px 0px 10px 0px'}}>Help us make Eudisfy better!</p>
         <div className="rating-container__review__give__Eduisyf">
           {[1, 2, 3, 4, 5].map((star) => (
             <span
