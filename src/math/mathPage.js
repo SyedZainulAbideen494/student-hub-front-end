@@ -55,23 +55,26 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const handleSendMessage = async () => {
     if (!message.trim()) return;
     if (!conversationStarted) setConversationStarted(true);
-
+  
     const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
     setChatHistory(newHistory);
     setLoading(true);
-
+  
     try {
       const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory });
       const formattedResponse = formatContent(response.data.response);
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
       setMessage('');
     } catch (error) {
+      // Display the error message from the server
+      const errorMessage = error.response?.data?.error || 'An unexpected error occurred. Please try again later.';
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
     }
   };
-
+  
   const handleCreateFlashcard = (content) => {
     navigate('/notes/create', { state: { editorContent: content } });
   };
