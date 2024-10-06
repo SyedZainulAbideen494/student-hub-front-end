@@ -10,6 +10,9 @@ const AppUpdates = () => {
     "🐛 Bugs fixed in the AI functionalities.",
     "🎨 New UI for the Calendar for improved usability.",
     "👥 New UI for Groups for enhanced collaboration.",
+    "Enhanced Animations: Enjoy improved page animations on the Calendar page for a smoother user experience!",
+    "Introducing the Dashboard: We’ve added a new page, Dashboard, to give you better insights and analytics at a glance.",
+    "We Value Your Feedback: Share your thoughts with us! Visit the Help page and scroll down to the feedback section to let us know how we’re doing."
   ];
 
   return (
