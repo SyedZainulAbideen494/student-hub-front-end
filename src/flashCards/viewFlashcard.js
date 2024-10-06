@@ -160,7 +160,7 @@ const ViewFlashCard = () => {
           className='btn__main__page__flashcard__page'
           onClick={handleCraeteFalshCardsClick}
         >
-          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create Flashcard
+          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create 
         </button>
       </div>
                 {/* Search Bar */}

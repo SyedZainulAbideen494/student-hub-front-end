@@ -293,7 +293,7 @@ const handleViewFalshCardsClick = () => {
         <button
           className='btn__main__page__flashcard__page active__main__page__flashcard__page'
         >
-          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create Flashcard
+          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create 
         </button>
       </div>
             <h1>Create Flashcard</h1>
