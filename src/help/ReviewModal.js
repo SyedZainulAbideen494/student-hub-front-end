@@ -7,7 +7,7 @@ const ReviewModal = () => {
   const [isOpen, setIsOpen] = useState(true); // Modal is open by default
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState('');
   const [showLater, setShowLater] = useState(false);
 
@@ -75,19 +75,34 @@ const ReviewModal = () => {
   };
 
   useEffect(() => {
-    const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
-    const nextReviewTime = localStorage.getItem('nextReviewTime');
-    const now = new Date();
+    const processData = async () => {
+      // Fetch or process any token or other initial data first
+      const token = await localStorage.getItem('token'); // Process token (mock async if needed)
+      const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
+      const nextReviewTime = localStorage.getItem('nextReviewTime');
+      const now = new Date();
 
-    if (feedbackSubmitted === 'true') {
-      setIsOpen(false); // Close the modal if feedback has already been submitted
-    } else if (nextReviewTime && now < new Date(nextReviewTime)) {
-      setShowLater(true);
-      setIsOpen(false); // Close the modal if feedback is not allowed yet
-    }
+      // After token and other data are fetched, process the modal logic
+      if (feedbackSubmitted === 'true') {
+        setIsOpen(false); // Close the modal if feedback has already been submitted
+      } else if (nextReviewTime && now < new Date(nextReviewTime)) {
+        setShowLater(true);
+        setIsOpen(false); // Close the modal if feedback is not allowed yet
+      } else {
+        setIsOpen(true); // Open the modal if all conditions are satisfied
+      }
+
+      setLoading(false); // Set loading to false once processing is complete
+    };
+
+    processData(); // Call the async function to process the token and feedback check
   }, []);
 
+  if (loading) return null; // While loading, do not show anything
+
   if (!isOpen) return null; // If the modal is closed, return null
+
+
 
   return (
     <div className="modal-overlay__review__give__Eduisyf">
