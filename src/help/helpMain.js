@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faTwitter, faTelegram, faChrome } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faTwitter, faTelegram, faChrome, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import './helpMain.css';
 import InviteFriends from './InviteFriends';
 import FeedbackForm from './FeedbackForm';
@@ -94,6 +94,9 @@ const HelpMain = () => {
     </a>
     <a href="https://edusify-download.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
       <FontAwesomeIcon icon={faChrome} size="2x" />
+    </a>
+    <a href="https://g.page/r/CbK_EhVVrsJqEAI/review" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
+      <FontAwesomeIcon icon={faGoogle} size="2x" />
     </a>
   </div>
 
