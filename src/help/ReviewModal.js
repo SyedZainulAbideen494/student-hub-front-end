@@ -78,31 +78,34 @@ const ReviewModal = () => {
 
   useEffect(() => {
     const processData = async () => {
-      // Fetch or process any token or other initial data first
-      const token = await localStorage.getItem('token'); // Process token (mock async if needed)
-      const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
-      const nextReviewTime = localStorage.getItem('nextReviewTime');
-      const now = new Date();
+        // Fetch or process any token or other initial data first
+        const token = await localStorage.getItem('token'); // Process token (mock async if needed)
+        const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
+        const nextReviewTime = localStorage.getItem('nextReviewTime');
+        const lastTipShown = localStorage.getItem('lastTipShown'); // Check if lastTipShown exists
+        const now = new Date();
 
-      // After token and other data are fetched, process the modal logic
-      if (feedbackSubmitted === 'true') {
-        setIsOpen(false); // Close the modal if feedback has already been submitted
-      } else if (nextReviewTime && now < new Date(nextReviewTime)) {
-        setShowLater(true);
-        setIsOpen(false); // Close the modal if feedback is not allowed yet
-      } else {
-        setIsOpen(true); // Open the modal if all conditions are satisfied
-      }
+        // After token and other data are fetched, process the modal logic
+        if (feedbackSubmitted === 'true') {
+            setIsOpen(false); // Close the modal if feedback has already been submitted
+        } else if (nextReviewTime && now < new Date(nextReviewTime)) {
+            setShowLater(true);
+            setIsOpen(false); // Close the modal if feedback is not allowed yet
+        } else if (!lastTipShown) { // Check if lastTipShown is present
+            setIsOpen(false); // Open the modal if lastTipShown is present
+        } else {
+            setIsOpen(true); // Close the modal if lastTipShown is absent
+        }
 
-      setLoading(false); // Set loading to false once processing is complete
+        setLoading(false); // Set loading to false once processing is complete
     };
 
     processData(); // Call the async function to process the token and feedback check
-  }, []);
+}, []);
 
-  if (loading) return null; // While loading, do not show anything
+if (loading) return null; // While loading, do not show anything
 
-  if (!isOpen) return null; // If the modal is closed, return null
+if (!isOpen) return null; // If the modal is closed, return null
 
 
 

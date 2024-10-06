@@ -43,36 +43,40 @@ const TipBox = () => {
 
   useEffect(() => {
     const lastShownTime = localStorage.getItem('lastTipShown');
-    const feedbackSubmitted = localStorage.getItem('feedbackSubmitted') === 'true'; // Convert to boolean
     const nextReviewTime = localStorage.getItem('nextReviewTime');
     const currentTime = Date.now();
-  
-    // If feedbackSubmitted or nextReviewTime is not found, don't show the tip box
-    if (!feedbackSubmitted || !nextReviewTime) {
-      return; // Exit the effect early
-    }
-  
-    // Check if feedback has been submitted and the next review time is in the past or present
-    if (feedbackSubmitted && currentTime >= nextReviewTime) {
-      // Check if the tip box was shown within the last 3 hours (10800000 milliseconds)
-      if (!lastShownTime || (currentTime - lastShownTime) >= 3 * 60 * 60 * 1000) {
+
+    // Show the tip box regardless of feedbackSubmitted and nextReviewTime presence
+    if (lastShownTime) {
+        // Check if the tip box was shown within the last 3 hours (10800000 milliseconds)
+        if (currentTime - lastShownTime >= 3 * 60 * 60 * 1000) {
+            setIsVisible(true);
+            localStorage.setItem('lastTipShown', currentTime); // Update last shown time
+
+            // Shuffle tips and set initial tip index
+            const shuffled = shuffleArray(tips);
+            setShuffledTips(shuffled);
+            setTipIndex(0);
+        }
+    } else {
+        // If lastShownTime is not present, show the tip box for the first time
         setIsVisible(true);
-        localStorage.setItem('lastTipShown', currentTime); // Update last shown time
-  
+        localStorage.setItem('lastTipShown', currentTime); // Set initial last shown time
+
         // Shuffle tips and set initial tip index
         const shuffled = shuffleArray(tips);
         setShuffledTips(shuffled);
         setTipIndex(0);
-      }
     }
-  
+
     // Change tip every 3 hours
     const interval = setInterval(() => {
-      setTipIndex((prevIndex) => (prevIndex + 1) % shuffledTips.length);
+        setTipIndex((prevIndex) => (prevIndex + 1) % shuffledTips.length);
     }, 3 * 60 * 60 * 1000);
-  
+
     return () => clearInterval(interval);
-  }, [tips]);
+}, [tips]);
+
   
 
 
