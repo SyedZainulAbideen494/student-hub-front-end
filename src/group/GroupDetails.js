@@ -99,7 +99,7 @@ const GroupDetailPage = () => {
     return (
         <div className="group-detail-page">
             <header className="page-header">
-                <button className="back-button" onClick={() => window.history.back()}>&larr;</button><br/><br/><br/>
+                <button className="settings-nav-button" onClick={() => window.history.back()}>&larr;</button><br/><br/><br/>
                 <h1>{groupDetails.name}</h1>
                 <p>{groupDetails.description}</p>
                 <p>Status: {groupDetails.is_public ? 'Public' : 'Private'}</p>
