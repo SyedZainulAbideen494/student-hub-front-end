@@ -8,6 +8,8 @@
   margin: 10px auto;
 }
 
+
+
 .question-input {
   width: 100%;
   padding: 6px;
@@ -68,4 +70,19 @@
   display: none;
 }
 
+.image-preview__flashcard__add__images {
+  margin-top: 15px;
+}
 
+.image-thumbnail__flashcard__add__images img {
+  max-width: 100px;
+  border-radius: 4px;
+}
+
+.remove-image-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+}

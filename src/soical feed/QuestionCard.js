@@ -64,50 +64,55 @@ const QuestionCard = ({ onQuestionSubmit }) => {
 
   return (
     <div className="question-card">
-      <textarea
-        placeholder="Share your thoughts..."
-        value={question}
-        onChange={handleQuestionChange}
-        className="question-input"
-      />
-      <div className="question-actions">
-        <label className="upload-icon-container">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="upload-input"
-            style={{ display: 'none' }}
-          />
-          <span className="upload-icon"><FaImage /></span>
-        </label>
-        <button className="send-button" onClick={handleSubmit}>Send</button>
-      </div>
+  
+    
+    <textarea
+      placeholder="Write a question, share your thoughts, or ask for help... "
+      value={question}
+      onChange={handleQuestionChange}
+      className="question-input"
+    />
 
-      {/* Image Preview */}
-      {image && (
-        <div className="image-preview__flashcard__add__images">
-          <h3>Selected Image:</h3>
-          <div className="image-preview-container__flashcard__add__images">
-            <div className="image-thumbnail__flashcard__add__images">
-              <img
-                src={URL.createObjectURL(image)}
-                alt="Selected image preview"
-              />
-              <button
-                className="remove-image-button"
-                onClick={handleRemoveImage}
-                type="button"
-              >
-                &times; {/* Represents the "x" symbol */}
-              </button>
-            </div>
+    <div className="question-actions">
+      <label className="upload-icon-container">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          className="upload-input"
+          style={{ display: 'none' }}
+        />
+        <span className="upload-icon">
+          <FaImage />
+        </span>
+      </label>
+      <button className="send-button" onClick={handleSubmit}>Send</button>
+    </div>
+
+    {/* Image Preview */}
+    {image && (
+      <div className="image-preview__flashcard__add__images">
+        <h3>Selected Image:</h3>
+        <div className="image-preview-container__flashcard__add__images">
+          <div className="image-thumbnail__flashcard__add__images">
+            <img
+              src={URL.createObjectURL(image)}
+              alt="Selected image preview"
+            />
+            <button
+              className="remove-image-button"
+              onClick={handleRemoveImage}
+              type="button"
+            >
+              &times;
+            </button>
           </div>
         </div>
-      )}
+      </div>
+    )}
 
-      <SuccessModal visible={modalVisible} message={message} />
-    </div>
+    <SuccessModal visible={modalVisible} message={message} />
+  </div>
   );
 };
 
