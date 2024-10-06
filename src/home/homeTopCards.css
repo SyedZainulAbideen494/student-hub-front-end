@@ -193,3 +193,39 @@
   color: #333;
   margin-bottom: 25px;
 }
+
+
+/* Define keyframes for the pop-up effect */
+@keyframes pop-up {
+  0% {
+    transform: translateY(20px); /* Start below */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    transform: translateY(0); /* End at original position */
+    opacity: 1; /* End visible */
+  }
+}
+
+/* Apply the animation to the box component */
+.box__home__page__component {
+  animation: pop-up 0.5s ease forwards; /* Animation name, duration, easing, and fill mode */
+  opacity: 0; /* Initially set opacity to 0 */
+}
+
+/* Add delay for each box for staggered animation */
+.box-1__home__page__component {
+  animation-delay: 0s;
+}
+
+.box-2__home__page__component {
+  animation-delay: 0.1s; /* Slight delay */
+}
+
+.box-3__home__page__component {
+  animation-delay: 0.2s; /* Slight delay */
+}
+
+.box-4__home__page__component {
+  animation-delay: 0.3s; /* Slight delay */
+}

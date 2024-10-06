@@ -41,6 +41,7 @@
     "react-spotify-web-playback-sdk": "^3.0.2",
     "react-spring": "^9.7.4",
     "react-swipeable": "^7.0.1",
+    "react-type-animation": "^3.2.0",
     "react-typed": "^2.0.12",
     "slick-carousel": "^1.8.1",
     "socket.io": "^4.7.5",

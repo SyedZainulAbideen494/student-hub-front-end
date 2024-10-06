@@ -6,7 +6,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGrinBeam } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
-
+import { TypeAnimation } from 'react-type-animation';
 
 const TopBoxes = () => {
     const [todayTasks, setTodayTasks] = useState([]);
@@ -120,9 +120,17 @@ const TopBoxes = () => {
                     alt="Profile Avatar"
                 />
                 <p className="welcome-message__home__page__component">
-                    Hi, {profile?.unique_id || 'User'}! 
-                    <FontAwesomeIcon icon={faGrinBeam} className="welcome-icon__home__page__component" />
-                </p>
+            <TypeAnimation
+                sequence={[
+                    `Hi, ${profile?.unique_id || 'User'}!`, // The message to be displayed
+                    2000 // Pause for 2 seconds
+                ]}
+                speed={50} // Typing speed in milliseconds
+                repeat={0} // Number of times to repeat; 0 means no repeat
+                wrapper="span"
+            />
+            <FontAwesomeIcon icon={faGrinBeam} className="welcome-icon__home__page__component" />
+        </p>
             </>
         )}
     </div>
