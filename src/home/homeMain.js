@@ -10,6 +10,7 @@ import QuoteCard from "./dailyquote";
 import { useNavigate } from "react-router-dom";
 import ReviewModal from "../help/ReviewModal";
 import AppUpdates from "./AppUpdates";
+import ExploreCard from "./ExploreCard";
 
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -28,6 +29,7 @@ const HomeMain = () => {
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
         <AppUpdates/>
+        <ExploreCard/>
 <div style={{ margin: '20px 0' }}>
     <InviteFriends />
 </div>

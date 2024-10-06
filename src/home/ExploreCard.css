@@ -1,0 +1,35 @@
+/* Light Mode Styles */
+
+.explore-card {
+    background-color: #ffffff; /* Light background color */
+    border-radius: 25px; /* Border radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Box shadow */
+    padding: 20px; /* Padding for inner content */
+    margin: 20px 8px 30px 8px; /* Margin for spacing */
+    text-align: center; /* Center align text */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+  
+  .explore-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .explore-card-title {
+    color: #333333; /* Darker text for better readability */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .explore-card-description {
+    color: #666666; /* Slightly lighter text for the description */
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  
+  .explore-card:hover {
+    transform: scale(1.05);
+  }
+  
