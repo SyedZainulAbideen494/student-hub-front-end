@@ -465,9 +465,9 @@ const handleViewFalshCardsClick = () => {
         />
         
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', textAlign: 'center'}}>
-      <button className="quiz-create-btn-home-page" onClick={handleSendMessage} type='button'> 
-        Generate Info
-      </button>
+      <button className="Gen_ai_info_flashcards_page" onClick={handleSendMessage} type='button'>
+  <span className="Gen_ai_info_flashcards_span_page">Generate Info</span>
+</button>
       <div className="bodydrop"></div>
       <span aria-hidden="true" className="particle-pen">
         {Array(5)
