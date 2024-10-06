@@ -67,7 +67,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       setMessage('');
     } catch (error) {
       // Display the error message from the server
-      const errorMessage = error.response?.data?.error || 'An unexpected error occurred. Please try again later.';
+      const errorMessage =  'An unexpected error occurred. Please try again later. or try asking a different question';
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
       console.error('Error sending message:', error);
     } finally {
