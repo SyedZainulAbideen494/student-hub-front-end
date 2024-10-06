@@ -8,6 +8,7 @@ import FeedbackForm from "../help/FeedbackForm";
 import InviteFriends from "../help/InviteFriends";
 import QuoteCard from "./dailyquote";
 import { useNavigate } from "react-router-dom";
+import ReviewModal from "../help/ReviewModal";
 
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -21,7 +22,7 @@ const HomeMain = () => {
 
 
     return<Fragment>
-        <TipBox/>
+        <ReviewModal/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
 <div style={{ margin: '20px 0' }}>
