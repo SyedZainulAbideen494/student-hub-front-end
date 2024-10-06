@@ -14,6 +14,8 @@ const ReviewModal = () => {
   const handleRatingClick = (rate) => {
     setRating(rate);
     if (rate >= 4) {
+      // Store the feedback submission state
+      localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
       // Redirect to review link immediately if rating is 4 or more
       window.open('https://g.page/r/CbK_EhVVrsJqEAI/review', '_blank');
       setIsOpen(false); // Close the modal
@@ -24,11 +26,20 @@ const ReviewModal = () => {
     e.preventDefault();
     setLoading(true);
     const token = localStorage.getItem('token'); // Retrieve token from local storage
-
+  
+    // Prepare data to send based on feedback input
+    const data = {
+      rating,
+      feedback: feedback.trim() ? feedback : `Rating given: ${rating}`, // If feedback is empty, send the rating
+      token,
+    };
+  
     try {
-      const response = await axios.post(API_ROUTES.feedbackEduisfy, { feedback, token }); // Send token with feedback
+      const response = await axios.post(API_ROUTES.feedbackEduisfy, data); // Send token with feedback
       setSuccessMessage('Feedback submitted successfully!'); // Set success message
       setFeedback(''); // Clear the feedback after submission
+      localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
+      setIsOpen(false); // Close the modal after successful submission
     } catch (error) {
       console.error('Error submitting feedback:', error);
       setSuccessMessage('Error submitting feedback, please try again.');
@@ -36,6 +47,7 @@ const ReviewModal = () => {
       setLoading(false);
     }
   };
+  
 
   const handleLaterClick = () => {
     // Store the current time in local storage or any other method to show the form again after 3 hours
@@ -46,13 +58,15 @@ const ReviewModal = () => {
   };
 
   useEffect(() => {
+    const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
     const nextReviewTime = localStorage.getItem('nextReviewTime');
-    if (nextReviewTime) {
-      const now = new Date();
-      if (now < new Date(nextReviewTime)) {
-        setShowLater(true);
-        setIsOpen(false); // Close the modal if feedback is not allowed yet
-      }
+    const now = new Date();
+
+    if (feedbackSubmitted === 'true') {
+      setIsOpen(false); // Close the modal if feedback has already been submitted
+    } else if (nextReviewTime && now < new Date(nextReviewTime)) {
+      setShowLater(true);
+      setIsOpen(false); // Close the modal if feedback is not allowed yet
     }
   }, []);
 
