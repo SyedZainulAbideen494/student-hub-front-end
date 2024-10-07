@@ -30,11 +30,6 @@ const ExploreCard = () => {
       link: "/social-feed"
     },
     {
-      title: "Find Study Groups",
-      description: "Connect with peers who are studying similar subjects through the social feed.",
-      link: "/social-feed"
-    },
-    {
       title: "Trend: Share a Day in Your Study Life",
       description: "Create a post about a typical study day and inspire others in the community.",
       link: "/social-feed"
