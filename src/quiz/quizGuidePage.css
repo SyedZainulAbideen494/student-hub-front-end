@@ -1,0 +1,37 @@
+/* quizGuidePage.css */
+
+.guide-page__quiz__guide__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.guide-header__quiz__guide__page {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.back-btn__quiz__guide__page {
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    margin-right: 10px; /* Space between button and title */
+}
+
+.guide-title__quiz__guide__page {
+    font-size: 24px; /* Size of the header */
+    margin: 0; /* Remove default margin */
+}
+
+.guide-content__quiz__guide__page {
+    margin-top: 20px; /* Space above the content */
+    text-align: left; /* Align text to the left */
+}
+
+.guide-content__quiz__guide__page p {
+    margin-bottom: 10px; /* Space between paragraphs */
+    line-height: 1.5; /* Improve readability */
+}

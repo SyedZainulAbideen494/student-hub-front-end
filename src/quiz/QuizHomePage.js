@@ -119,6 +119,10 @@ const handleShareClick = (quiz) => {
         return `${year}-${month}-${day}`;
     };
 
+    const handleGuideClick = () => {
+        navigate('/quiz/guide')
+    }
+
     return (
         <div className="quiz-home-page-quiz-page">
             <div className="quiz-header-container-quiz-page">
@@ -174,6 +178,21 @@ const handleShareClick = (quiz) => {
             My Results
         </span>
     </button>
+
+    <button className='quiz-create-btn-home-page' onClick={handleGuideClick}>
+    <span className='quiz-create-btn-home-page-span'>
+        <svg
+            height="20"
+            width="20"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M4 2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm0 2v16h16V4H4zm6 2h4v2h-4V6zm0 4h4v2h-4v-2zm-6 6h12v2H4v-2z" fill="currentColor"></path>
+        </svg>
+        Guide
+    </span>
+</button>
+
 </div>
 
 

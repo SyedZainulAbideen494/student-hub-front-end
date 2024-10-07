@@ -58,6 +58,7 @@ import HomeMain from "./home/homeMain";
 import ViewFlashCard from "./flashCards/viewFlashcard";
 import CreateFlashcard from "./flashCards/createFlashcard";
 import PaymentButton from "./testing/testingpayment";
+import QuizGuidePage from "./quiz/quizGuidePage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -104,6 +105,7 @@ const router = createBrowserRouter([
   {path: '/', element: <HomeMain/>},
   {path: '/notes/view', element: <ViewFlashCard/>},
   {path: '/notes/create', element: <CreateFlashcard/>},
+  {path: '/quiz/guide', element: <QuizGuidePage/>},
   { path: '*', element: <NotFoundPage /> }, // This catches all undefined routes
 ]);
 
