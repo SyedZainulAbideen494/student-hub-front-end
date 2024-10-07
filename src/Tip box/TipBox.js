@@ -19,7 +19,10 @@ const TipBox = () => {
     "Get daily email reminders about your tasks and events at 7 AM, 3 PM, and 9 PM IST if a task or event deadline is 3 days away, so you're always prepared.",
     "Easily organize your day with tasks, deadlines, and study sessions tracked in the app.",
     "Stay productive with a built-in Pomodoro timer to track study sessions and breaks.",
-    "On the planner and calendar pages, click on a date to see the events and tasks scheduled for that date."
+    "On the planner and calendar pages, click on a date to see the events and tasks scheduled for that date.",
+    "Be the one to kickstart the social feed traffic by sharing your posts and engaging with others.",
+    "Post your study tips on Edusify's social feed to help and inspire the Edusify community.",
+    "Invite your friends, create groups, and share resources to collaborate and learn together."
   ];
   
 
