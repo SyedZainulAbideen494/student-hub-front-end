@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ReviewModal.css'; // Import CSS for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import { useLocation } from 'react-router-dom';
 
 const ReviewModal = () => {
   const [isOpen, setIsOpen] = useState(true); // Modal is open by default
@@ -10,6 +11,7 @@ const ReviewModal = () => {
   const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState('');
   const [showLater, setShowLater] = useState(false);
+  const location = useLocation(); // To get the current location/path
 
   const handleRatingClick = async (rate) => {
     setRating(rate);
@@ -78,34 +80,35 @@ const ReviewModal = () => {
 
   useEffect(() => {
     const processData = async () => {
-        // Fetch or process any token or other initial data first
-        const token = await localStorage.getItem('token'); // Process token (mock async if needed)
-        const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
-        const nextReviewTime = localStorage.getItem('nextReviewTime');
-        const lastTipShown = localStorage.getItem('lastTipShown'); // Check if lastTipShown exists
-        const now = new Date();
+      const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
+      const firstVisitTime = localStorage.getItem('firstVisitTime');
+      const now = new Date().getTime();
 
-        // After token and other data are fetched, process the modal logic
-        if (feedbackSubmitted === 'true') {
-            setIsOpen(false); // Close the modal if feedback has already been submitted
-        } else if (nextReviewTime && now < new Date(nextReviewTime)) {
-            setShowLater(true);
-            setIsOpen(false); // Close the modal if feedback is not allowed yet
-        } else if (!lastTipShown) { // Check if lastTipShown is present
-            setIsOpen(false); // Open the modal if lastTipShown is present
+      // If there's no firstVisitTime, this is the user's first visit
+      if (!firstVisitTime) {
+        // Store the current time as their first visit time
+        localStorage.setItem('firstVisitTime', now);
+        setIsOpen(false); // Do not show the modal right away
+      } else {
+        // Calculate the time difference in hours
+        const hoursSinceFirstVisit = (now - firstVisitTime) / (1000 * 60 * 60); // Convert ms to hours
+
+        // If 8 hours have passed since their first visit, show the modal
+        if (hoursSinceFirstVisit >= 8 && feedbackSubmitted !== 'true') {
+          setIsOpen(true); // Show the modal after 8 hours
         } else {
-            setIsOpen(true); // Close the modal if lastTipShown is absent
+          setIsOpen(false); // Otherwise, don't show it yet
         }
+      }
 
-        setLoading(false); // Set loading to false once processing is complete
+      setLoading(false); // Finished processing, stop loading
     };
 
-    processData(); // Call the async function to process the token and feedback check
-}, []);
+    processData(); // Call the async function to process data
+  }, []);
 
-if (loading) return null; // While loading, do not show anything
-
-if (!isOpen) return null; // If the modal is closed, return null
+  if (loading) return null; // While loading, show nothing
+  if (!isOpen) return null; // If the modal is not open, show nothing
 
 
 
