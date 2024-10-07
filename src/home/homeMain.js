@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ReviewModal from "../help/ReviewModal";
 import AppUpdates from "./AppUpdates";
 import ExploreCard from "./ExploreCard";
+import SeasonalBanner from "./seasionalBanner";
 
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -28,8 +29,8 @@ const HomeMain = () => {
         <TipBox/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
-        <AppUpdates/>
         <ExploreCard/>
+        <AppUpdates/>
 <div style={{ margin: '20px 0' }}>
     <InviteFriends />
 </div>

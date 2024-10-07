@@ -1,0 +1,65 @@
+.banner-container__Seasonal__banner__component {
+    position: relative;
+    border-radius: 15px; /* Reduced curvature */
+    overflow: hidden; /* Ensures the image and content fit within the curved edges */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    margin: 10px; /* Reduced margin */
+    transition: opacity 0.3s; /* Smooth opacity change on hover */
+    touch-action: manipulation; /* Prevents double-tap zoom on mobile */
+  }
+  
+  .banner-container__Seasonal__banner__component:hover {
+    opacity: 0.95; /* Slightly fade the banner on hover */
+  }
+  
+  .banner-image__Seasonal__banner__component {
+    width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+  }
+  
+  .banner-content__Seasonal__banner__component {
+    position: absolute; /* Position the text on top of the image */
+    bottom: 5%; /* Position from the bottom */
+    left: 5%; /* Position from the left */
+    right: 5%; /* Position from the right */
+    color: white; /* Text color */
+    opacity: 0; /* Hide text initially */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+    padding: 8px; /* Reduced padding */
+    border-radius: 8px; /* Rounded edges for content */
+  }
+  
+  .banner-content__Seasonal__banner__component.hovered {
+    opacity: 1; /* Show text when hovered */
+  }
+  
+  .banner-content__Seasonal__banner__component h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.2rem; /* Smaller font size for mobile */
+    text-align: center; /* Center the heading */
+  }
+  
+  .banner-content__Seasonal__banner__component p {
+    margin: 4px 0 0; /* Add some margin for spacing */
+    font-size: 0.9rem; /* Smaller font size for mobile */
+    text-align: center; /* Center the paragraph */
+  }
+  
+  /* Explore Button Styles */
+  .explore-button__Seasonal__banner__component {
+    background-color: rgba(255, 255, 255, 0.7); /* Light background for button */
+    color: #333; /* Dark text color */
+    border: none; /* Remove default border */
+    padding: 8px 12px; /* Reduced padding for button */
+    border-radius: 5px; /* Rounded edges */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition effects */
+    margin-top: 5px; /* Reduced space above the button */
+    font-size: 0.9rem; /* Smaller font size for mobile */
+    width: 100%; /* Full width on mobile */
+  }
+  
+  .explore-button__Seasonal__banner__component:hover {
+    background-color: rgba(255, 255, 255, 1); /* Change background on hover */
+  }
+  
