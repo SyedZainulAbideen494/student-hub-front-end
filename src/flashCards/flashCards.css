@@ -2,7 +2,7 @@
 .flashcards-page {
     font-family: 'Roboto', sans-serif;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #fefeff;
     color: #333;
     margin-bottom: 100px;
 }
@@ -169,9 +169,9 @@
 }
 
 .flashcard-item-flashcards-page {
-    background: #f5f5f5;
+    background: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     padding: 25px;
     margin-bottom: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
