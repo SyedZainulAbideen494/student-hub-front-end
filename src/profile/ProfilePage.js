@@ -162,7 +162,7 @@ const ProfilePage = () => {
       </header>
       <div className="profile-info">
         <img
-          className="profile-avatar"
+          className="profile-avatar__profile"
           src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
           alt="Profile Avatar"
         />

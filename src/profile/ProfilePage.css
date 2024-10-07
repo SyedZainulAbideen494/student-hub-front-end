@@ -14,9 +14,9 @@
     margin-bottom: 20px;
 }
 
-.profile-avatar {
-    width: 60px;
-    height: 60px;
+.profile-avatar__profile {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
 
