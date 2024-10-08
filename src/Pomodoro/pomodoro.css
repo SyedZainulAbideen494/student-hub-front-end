@@ -259,11 +259,6 @@
 }
 
 
-
-
-
-
-
 .inclrease__decrease__pomodror__timer__btn  {
     background-color: transparent; /* Green background */
     color: black; /* White text color */
@@ -273,5 +268,62 @@
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for hover effects */
 }
+
+
+.container__btn__stats__pomodoro__btn__save {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 20px; /* Add some space above the button */
+}
+
+.button__stats__pomodoro__btn__save {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px 8px 16px;
+    gap: 8px;
+    height: 40px;
+    width: 128px;
+    border: none;
+    background: #056bfa27;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.label__stats__pomodoro__btn__save {
+    margin-top: 1px;
+    font-size: 12px; /* Smaller font size */
+    color: #056dfa;
+    letter-spacing: 1px;
+}
+
+.button__stats__pomodoro__btn__save:hover {
+    background: #056bfa49;
+}
+
+.button__stats__pomodoro__btn__save:hover .svg-icon__stats__pomodoro__btn__save {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-8deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(8deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
 
 

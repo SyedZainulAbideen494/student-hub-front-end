@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './pomodoro.css';
 import FooterNav from '../app_modules/footernav';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-
+import html2canvas from 'html2canvas';
+import edusifyLogo from '../images/Edusify-logo.png'
+import { FaClock, FaCoffee, FaClipboardList, FaPause } from 'react-icons/fa'; // Example icons
+import templateImageSrc from '../images/Brown Beige Minimalist Vintage Background Instagram Story.png'; // Import your custom template
+import pauseIcon from '../images/icons8-pause-50.png'
+import coffeeicon from '../images/icons8-coffee-30.png'
+import clockIcon from '../images/icons8-clock-30.png'
+import clipBoardIocn from '../images/icons8-clipboard-50.png'
 // Helper function to format time
 const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -26,7 +33,7 @@ const Pomodoro = () => {
     const [streakDays, setStreakDays] = useState(parseInt(localStorage.getItem('streakDays')) || 0);
     const [longestStreak, setLongestStreak] = useState(parseInt(localStorage.getItem('longestStreak')) || 0);
     const [lastSessionDate, setLastSessionDate] = useState(localStorage.getItem('lastSessionDate'));
-
+    const canvasRef = useRef(null);
 
         // Sound effects
         const studyFinishSound = new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22');
@@ -234,6 +241,81 @@ const Pomodoro = () => {
     };
 
 
+    const saveAsImage = () => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        const templateImage = new Image();
+        templateImage.src = templateImageSrc; // Your template image source
+    
+        templateImage.onload = () => {
+            // Set canvas dimensions for story size (1080x1920)
+            canvas.width = 1080;
+            canvas.height = 1920;
+            
+            ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 48px Arial'; // Increase font size for better visibility
+    
+            // Define a left margin for alignment
+            const leftMargin = 200; // Adjust this value as needed
+    
+            // Create an array of icons and their respective labels and data
+            const statsData = [
+                {
+                    iconSrc: clockIcon, // Replace with your actual clock icon path
+                    label: 'Total Study Time:',
+                    value: formatTime(totalStudyTime),
+                    yPosition: 700
+                },
+                {
+                    iconSrc: coffeeicon, // Replace with your actual coffee icon path
+                    label: 'Total Break Time:',
+                    value: formatTime(totalBreakTime),
+                    yPosition: 850 // Adjusted vertical position
+                },
+                {
+                    iconSrc: clipBoardIocn, // Replace with your actual clipboard icon path
+                    label: 'Session Count:',
+                    value: sessionCount,
+                    yPosition: 1000 // Adjusted vertical position
+                },
+                {
+                    iconSrc: pauseIcon, // Replace with your actual pause icon path
+                    label: 'Break Count:',
+                    value: breakCount,
+                    yPosition: 1150 // Adjusted vertical position
+                },
+            ];
+    
+            // Load all icons and draw statistics
+            const iconPromises = statsData.map((stat) => {
+                return new Promise((resolve) => {
+                    const iconImage = new Image();
+                    iconImage.src = stat.iconSrc;
+    
+                    iconImage.onload = () => {
+                        // Draw the icon and text once it's loaded
+                        ctx.drawImage(iconImage, leftMargin, stat.yPosition - 30, 80, 80); // Draw the icon with left margin
+                        ctx.fillText(stat.label, leftMargin + 100, stat.yPosition); // Label offset from icon
+                        ctx.fillText(stat.value, leftMargin + 500, stat.yPosition); // Value offset from label
+                        resolve(); // Resolve the promise once done
+                    };
+                });
+            });
+    
+            // Once all icons are loaded and drawn, save the canvas as an image
+            Promise.all(iconPromises).then(() => {
+                const imgData = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = imgData;
+                link.download = 'edusify_statistics_story.png'; // Save as story-sized image
+                link.click();
+            });
+        };
+    };
+    
+    
+
     const incrementWorkTime = () => {
         setWorkTime((prev) => prev + 1);
     };
@@ -297,26 +379,46 @@ const Pomodoro = () => {
     </div>
 </label>
 
-                    <div className="statistics">
-                        <h3>Statistics</h3>
-                        <div className="stat-item">
-                            <span className="stat-label">Total Study Time:</span>
-                            <span className="stat-value">{formatTime(totalStudyTime)}</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-label">Total Break Time:</span>
-                            <span className="stat-value">{formatTime(totalBreakTime)}</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-label">Session Count:</span>
-                            <span className="stat-value">{sessionCount}</span>
-                        </div>
-                        <div className="stat-item">
-                            <span className="stat-label">Break Count:</span>
-                            <span className="stat-value">{breakCount}</span>
-                        </div>
-                     
-                    </div>
+<div className="statistics">
+            <h3>Statistics</h3>
+            <div className="stat-item">
+                <FaClock />
+                <span>Total Study Time:</span>
+                <span>{formatTime(totalStudyTime)}</span>
+            </div>
+            <div className="stat-item">
+                <FaCoffee />
+                <span>Total Break Time:</span>
+                <span>{formatTime(totalBreakTime)}</span>
+            </div>
+            <div className="stat-item">
+                <FaClipboardList />
+                <span>Session Count:</span>
+                <span>{sessionCount}</span>
+            </div>
+            <div className="stat-item">
+                <FaPause />
+                <span>Break Count:</span>
+                <span>{breakCount}</span>
+            </div>
+            <div className='container__btn__stats__pomodoro__btn__save'>
+    <button className="button__stats__pomodoro__btn__save" onClick={saveAsImage}>
+        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" className="svg-icon__stats__pomodoro__btn__save">
+            <path
+                d="M7 16l5 5 5-5H7zm0-2h10V4H7v10z"
+                stroke="#056dfa"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+        <span className="label__stats__pomodoro__btn__save">Save & Share</span>
+    </button>
+</div>
+
+
+            <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
+        </div>
                 </div>
             )}
             {showModal && (
