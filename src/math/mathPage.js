@@ -8,8 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import FeedbackForm from '../help/FeedbackForm';
 import { TypeAnimation } from 'react-type-animation';
 
-
-
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;

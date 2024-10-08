@@ -25,12 +25,10 @@ const HomeMain = () => {
 
 
     return<Fragment>
-   
         <TipBox/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
         <ExploreCard/>
-        <AppUpdates/>
 <div style={{ margin: '20px 0' }}>
     <InviteFriends />
 </div>
