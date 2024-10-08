@@ -264,3 +264,14 @@
 
 
 
+.inclrease__decrease__pomodror__timer__btn  {
+    background-color: transparent; /* Green background */
+    color: black; /* White text color */
+    border: none; /* No border */
+    border-radius: 50%; /* Rounded corners */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for hover effects */
+}
+
+

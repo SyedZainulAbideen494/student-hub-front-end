@@ -233,6 +233,23 @@ const Pomodoro = () => {
         }
     };
 
+
+    const incrementWorkTime = () => {
+        setWorkTime((prev) => prev + 1);
+    };
+
+    const decrementWorkTime = () => {
+        setWorkTime((prev) => Math.max(1, prev - 1)); // Prevent going below 1
+    };
+
+    const incrementBreakTime = () => {
+        setBreakTime((prev) => prev + 1);
+    };
+
+    const decrementBreakTime = () => {
+        setBreakTime((prev) => Math.max(1, prev - 1)); // Prevent going below 1
+    };
+
     return (
         <div className="pomodoro-container">
             <h2>{isWork ? 'Study Time' : 'Break Time'}</h2>
@@ -254,23 +271,32 @@ const Pomodoro = () => {
             {!isRunning && (
                 <div className="settings-pomodoro">
                     <label>
-                        Study Time (minutes):
-                        <input
-                            type="number"
-                            value={workTime}
-                            onChange={handleWorkTimeChange}
-                            min="1"
-                        />
-                    </label>
-                    <label>
-                        Break Time (minutes):
-                        <input
-                            type="number"
-                            value={breakTime}
-                            onChange={handleBreakTimeChange}
-                            min="1"
-                        />
-                    </label>
+    Study Time (minutes):
+    <div class="input-group">
+        <button onClick={decrementWorkTime} className='inclrease__decrease__pomodror__timer__btn'>-</button>
+        <input
+            type="number"
+            value={workTime}
+            onChange={handleWorkTimeChange}
+            min="1"
+        />
+        <button onClick={incrementWorkTime} className='inclrease__decrease__pomodror__timer__btn'>+</button>
+    </div>
+</label>
+<label>
+    Break Time (minutes):
+    <div class="input-group">
+        <button onClick={decrementBreakTime} className='inclrease__decrease__pomodror__timer__btn'>-</button>
+        <input
+            type="number"
+            value={breakTime}
+            onChange={handleBreakTimeChange}
+            min="1"
+        />
+        <button onClick={incrementBreakTime} className='inclrease__decrease__pomodror__timer__btn'>+</button>
+    </div>
+</label>
+
                     <div className="statistics">
                         <h3>Statistics</h3>
                         <div className="stat-item">
