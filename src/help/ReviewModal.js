@@ -82,6 +82,7 @@ const ReviewModal = () => {
     const processData = async () => {
       const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
       const firstVisitTime = localStorage.getItem('firstVisitTime');
+      const nextReviewTime = localStorage.getItem('nextReviewTime');
       const now = new Date().getTime();
 
       // If there's no firstVisitTime, this is the user's first visit
@@ -93,11 +94,21 @@ const ReviewModal = () => {
         // Calculate the time difference in hours
         const hoursSinceFirstVisit = (now - firstVisitTime) / (1000 * 60 * 60); // Convert ms to hours
 
-        // If 8 hours have passed since their first visit, show the modal
-        if (hoursSinceFirstVisit >= 8 && feedbackSubmitted !== 'true') {
-          setIsOpen(true); // Show the modal after 8 hours
+        // Check if it's time to show the modal again
+        const eightHoursPassed = hoursSinceFirstVisit >= 8;
+
+        // If 8 hours have passed and feedback hasn't been submitted
+        if (eightHoursPassed && feedbackSubmitted !== 'true') {
+          setIsOpen(true); // Show the modal
         } else {
-          setIsOpen(false); // Otherwise, don't show it yet
+          // Check if the next review time is set and if it has passed
+          if (nextReviewTime) {
+            const nextReviewTimeDate = new Date(nextReviewTime).getTime();
+            if (now >= nextReviewTimeDate && feedbackSubmitted !== 'true') {
+              setIsOpen(true); // Show the modal if 8 hours has passed since "Later" was clicked
+              localStorage.removeItem('nextReviewTime'); // Clear the next review time after showing the modal
+            }
+          }
         }
       }
 
