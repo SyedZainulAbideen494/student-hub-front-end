@@ -395,7 +395,7 @@ const handleViewFalshCardsClick = () => {
           </div>
         )}
       </div>
-                <div className="form-group-flashcards-page">
+                <div className="form-group-flashcards-page" id="content">
   <label htmlFor="isPublic" style={{textAlign: 'left'}}>Public:</label>
   <div>
     <input
@@ -413,7 +413,7 @@ const handleViewFalshCardsClick = () => {
     </label>
   </div>
 </div>
-<div className="form-group-flashcards-page" id="content">
+<div className="form-group-flashcards-page">
                 <label htmlFor="headings">Content:</label>
                 <ReactQuill
                     value={editorContent}
@@ -453,7 +453,7 @@ const handleViewFalshCardsClick = () => {
               </div>
             </div>
           ))}
-          <div ref={messagesEndRef} />
+          <div/>
         </div>
 
         <input
