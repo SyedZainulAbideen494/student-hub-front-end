@@ -157,7 +157,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
                         className="create-flashcard-btn_ai__page"
                         onClick={() => handleCreateFlashcard(result.parts[0].text)}
                       >
-                        Create Flashcard
+                        Create Note
                       </button>
                     </div>
                   )}
