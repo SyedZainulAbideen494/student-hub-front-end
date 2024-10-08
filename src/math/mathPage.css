@@ -511,11 +511,24 @@
   }
 
 
-  /* From Uiverse.io by terenceodonoghue */ 
+/* Wrapper to contain the message and animation */
+.container__default__ai__PageWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Default message styling */
+.default-message {
+  color: #000000;
+  margin-bottom: 70px;
+}
+
+/* Existing animation styles */
 .container__default__ai__Page {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
   border-radius: 50%;
   height: 96px;
   width: 96px;
@@ -563,10 +576,10 @@
 
 @keyframes rotate_3922 {
   from {
-    transform: translate(-50%, -50%) rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }

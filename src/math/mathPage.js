@@ -6,6 +6,9 @@ import MathLoader from './mathLoader';
 import { FaMicrophone, FaPaperPlane, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import FeedbackForm from '../help/FeedbackForm';
+import { TypeAnimation } from 'react-type-animation';
+
+
 
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -107,13 +110,33 @@ const MathSolver = ({ handleVoiceCommand }) => {
   }, []);
 
   const defaultPage = (
-    <div className="container__default__ai__Page">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div className="container__default__ai__PageWrapper">
+      <div className="default-message chat-bubble">
+        <TypeAnimation
+          sequence={[
+            'Hi there!', // Text to type out
+            1000,        // Pause for 1 second
+            'How can I assist you today?', // Next text to type out
+            1000         // Pause for 1 second at the end
+          ]}
+          wrapper="span"
+          cursor={true}
+          repeat={0}   // Set repeat to 0 so it doesn't loop
+          speed={50}   // Adjust typing speed (in ms per character)
+          deletionSpeed={50} // Adjust deletion speed if needed
+          style={{ display: 'inline-block' }}
+        />
+      </div>
+      <div className="container__default__ai__Page">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   );
+  
+  
 
   return (
     <div className="mathsolver-container">
