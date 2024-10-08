@@ -22,7 +22,8 @@ const TipBox = () => {
     "On the planner and calendar pages, click on a date to see the events and tasks scheduled for that date.",
     "Be the one to kickstart the social feed traffic by sharing your posts and engaging with others.",
     "Post your study tips on Edusify's social feed to help and inspire the Edusify community.",
-    "Invite your friends, create groups, and share resources to collaborate and learn together."
+    "Invite your friends, create groups, and share resources to collaborate and learn together.",
+    "You can now print images and save them along with your Pomodoro stats to easily share with others on social media!",
   ];
   
 
