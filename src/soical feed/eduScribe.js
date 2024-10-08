@@ -11,7 +11,7 @@ const EduScribe = ({ activeTab }) => {
   const [liked, setLiked] = useState({});
   const [commentInput, setCommentInput] = useState({});
   const navigate = useNavigate();
-  const [fadeIn, setFadeIn] = useState(false); // New state for fade-in effect
+
   useEffect(() => {
     const fetchEduscribes = async () => {
       try {
@@ -19,17 +19,20 @@ const EduScribe = ({ activeTab }) => {
         if (!token) {
           throw new Error('User not authenticated');
         }
-    
+
         const { data } = await axios.get(API_ROUTES.fetchAllEduscribes, {
           headers: {
             Authorization: token
           },
           params: { tab: activeTab }
         });
-        setEduscribes(data);
-    
+
+        // Shuffle the eduscribes array
+        const shuffledEduscribes = data.sort(() => Math.random() - 0.5);
+        setEduscribes(shuffledEduscribes);
+
         const likedState = {};
-        data.forEach(eduscribe => {
+        shuffledEduscribes.forEach(eduscribe => {
           likedState[eduscribe.id] = eduscribe.isLiked > 0;
         });
         setLiked(likedState);
@@ -67,10 +70,7 @@ const EduScribe = ({ activeTab }) => {
   return (
     <div className="eduscribe-container">
       {eduscribes.map((eduscribe) => (
-         <div 
-         key={eduscribe.id} 
-         className={`eduscribe-card ${fadeIn ? 'fade-in' : ''}`} // Add fade-in class
-       >
+        <div key={eduscribe.id} className="eduscribe-card">
           <div className="eduscribe-header">
             <a href={`/profile/${eduscribe.user_id}`}>
               <img
@@ -80,11 +80,10 @@ const EduScribe = ({ activeTab }) => {
               />
             </a>
             <div className="eduscribe-info">
-  <a href={`/profile/${eduscribe.user_id}`} className="eduscribe-username">
-    {eduscribe.user_name || 'User'}
-  </a>
-
-</div>
+              <a href={`/profile/${eduscribe.user_id}`} className="eduscribe-username">
+                {eduscribe.user_name || 'User'}
+              </a>
+            </div>
           </div>
           <div className="eduscribe-content" style={{ whiteSpace: 'pre-wrap' }}>
             {eduscribe.content}
