@@ -27,6 +27,12 @@ const Pomodoro = () => {
     const [longestStreak, setLongestStreak] = useState(parseInt(localStorage.getItem('longestStreak')) || 0);
     const [lastSessionDate, setLastSessionDate] = useState(localStorage.getItem('lastSessionDate'));
 
+
+        // Sound effects
+        const studyFinishSound = new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22');
+        const breakFinishSound = new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22');
+    
+
     // Check and update streaks
     useEffect(() => {
         const today = new Date().toISOString().split('T')[0];
@@ -90,9 +96,14 @@ const Pomodoro = () => {
         } else if (time === 0) {
             setIsRunning(false);
             setShowModal(true);
+            
             if (isWork) {
                 setSessionCount((prevCount) => prevCount + 1);
+                studyFinishSound.play();
+            } else {
+                breakFinishSound.play();
             }
+            
             setBreakCount((prevCount) => prevCount + 1);
 
             // Switch between work and break
