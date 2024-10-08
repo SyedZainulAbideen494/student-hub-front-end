@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaRegThumbsUp, FaComment } from 'react-icons/fa';
+import { FaRegThumbsUp } from 'react-icons/fa';
 import './eduScribe.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
@@ -9,7 +9,6 @@ import FooterNav from '../app_modules/footernav';
 const EduScribe = ({ activeTab }) => {
   const [eduscribes, setEduscribes] = useState([]);
   const [liked, setLiked] = useState({});
-  const [commentInput, setCommentInput] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,12 +58,21 @@ const EduScribe = ({ activeTab }) => {
     }
   };
 
-  const handleCommentChange = (id, value) => {
-    setCommentInput((prev) => ({ ...prev, [id]: value }));
-  };
-
-  const goToCommentsPage = (id) => {
-    navigate(`/comments/${id}`);
+  const displayLikesCount = (eduscribe) => {
+    // Hard-code likes for specific eduscribe IDs
+    switch (eduscribe.id) {
+      case 11:
+        return "20k";
+      case 12:
+        return "14k";
+      case 15:
+        return "7k";
+      case 18:
+        return "22k";
+      default:
+        // Otherwise, show the actual likes count
+        return eduscribe.likesCount;
+    }
   };
 
   return (
@@ -95,18 +103,18 @@ const EduScribe = ({ activeTab }) => {
               className="eduscribe-image"
             />
           )}
-        <div className="eduscribe-actions">
-  <button 
-    className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
-    onClick={() => handleLike(eduscribe.id)}
-  >
-    <FaRegThumbsUp 
-      className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
-      size={20}
-    />
-    <span>Like {eduscribe.likesCount}</span>
-  </button>
-</div>
+          <div className="eduscribe-actions">
+            <button 
+              className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
+              onClick={() => handleLike(eduscribe.id)}
+            >
+              <FaRegThumbsUp 
+                className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
+                size={20}
+              />
+              <span>Like {displayLikesCount(eduscribe)}</span>
+            </button>
+          </div>
         </div>
       ))}
       <FooterNav />
