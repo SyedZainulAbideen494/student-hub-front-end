@@ -95,19 +95,18 @@ const EduScribe = ({ activeTab }) => {
               className="eduscribe-image"
             />
           )}
-          <div className="eduscribe-actions">
-            <button 
-              className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
-              onClick={() => handleLike(eduscribe.id)}
-            >
-              <FaRegThumbsUp 
-                className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
-                size={20}
-              />
-              <span>Like</span>
-            </button>
-          
-          </div>
+        <div className="eduscribe-actions">
+  <button 
+    className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
+    onClick={() => handleLike(eduscribe.id)}
+  >
+    <FaRegThumbsUp 
+      className={`eduscribe-like-icon ${liked[eduscribe.id] ? 'liked' : ''}`}
+      size={20}
+    />
+    <span>Like {eduscribe.likesCount}</span>
+  </button>
+</div>
         </div>
       ))}
       <FooterNav />

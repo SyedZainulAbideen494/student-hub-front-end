@@ -116,8 +116,8 @@
   transition: color 0.3s;
 }
 
-.eduscribe-like-icon.liked {
-  color: blue;
+.liked {
+  color: rgb(4, 196, 255);
 }
 
 
@@ -135,4 +135,10 @@
 .eduscribe-card {
   /* Existing styles */
   animation: popIn 0.3s ease-in-out forwards; /* Apply the animation */
+}
+
+.likes-count {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #666;
 }
