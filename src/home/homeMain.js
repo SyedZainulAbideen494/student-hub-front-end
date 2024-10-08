@@ -31,7 +31,7 @@ const HomeMain = () => {
         <TodayEventsAndTasks/>
         <ExploreCard/>
 <div style={{ margin: '20px 0' }}>
-    <InviteFriends />
+ 
 </div>
 <div style={{ marginBottom: '90px' }}>
         <div class="button-container__feedback__btn__planner__page">
