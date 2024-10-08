@@ -355,27 +355,27 @@ const Pomodoro = () => {
                     <label>
     Study Time (minutes):
     <div class="input-group">
-        <button onClick={decrementWorkTime} className='inclrease__decrease__pomodror__timer__btn'>-</button>
+
         <input
             type="number"
             value={workTime}
             onChange={handleWorkTimeChange}
             min="1"
         />
-        <button onClick={incrementWorkTime} className='inclrease__decrease__pomodror__timer__btn'>+</button>
+
     </div>
 </label>
 <label>
     Break Time (minutes):
     <div class="input-group">
-        <button onClick={decrementBreakTime} className='inclrease__decrease__pomodror__timer__btn'>-</button>
+
         <input
             type="number"
             value={breakTime}
             onChange={handleBreakTimeChange}
             min="1"
         />
-        <button onClick={incrementBreakTime} className='inclrease__decrease__pomodror__timer__btn'>+</button>
+
     </div>
 </label>
 
