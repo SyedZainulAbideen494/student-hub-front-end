@@ -212,34 +212,22 @@ function Planner() {
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="card__planner__data">
             <div className="item__planner__data item--1__planner__data">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M7 10l5 5 5-5H7z" fill="rgba(149,149,255,1)"></path>
-                </svg>
+              
                 <span className="quantity__planner__data">{todayTasks}</span>
                 <span className="text__planner__data text--1__planner__data"> Today's Tasks </span>
             </div>
             <div className="item__planner__data item--2__planner__data">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M7 10l5 5 5-5H7z" fill="rgba(252,161,71,1)"></path>
-                </svg>
+                
                 <span className="quantity__planner__data">{totalTasks}</span>
                 <span className="text__planner__data text--2__planner__data"> Total Tasks </span>
             </div>
             <div className="item__planner__data item--3__planner__data">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M12 10l5 5 5-5H12z" fill="rgba(66,193,110,1)"></path>
-                </svg>
+               
                 <span className="quantity__planner__data">{highPriorityTasks}</span>
                 <span className="text__planner__data text--3__planner__data"> High Priority </span>
             </div>
             <div className="item__planner__data item--4__planner__data">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path d="M12 14l5 5 5-5H12z" fill="rgba(220,91,183,1)"></path>
-                </svg>
+                
                 <span className="quantity__planner__data">{upcomingTasks}</span>
                 <span className="text__planner__data text--4__planner__data"> Upcoming Tasks </span>
             </div>

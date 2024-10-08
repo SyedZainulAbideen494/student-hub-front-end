@@ -407,9 +407,9 @@
 }
 
 .card__planner__data {
-    width: 240px; 
-    height: 320px;
-    color: white;
+    width: 260px; 
+    height: 290px;
+    color: rgb(0, 0, 0);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -435,46 +435,32 @@
 }
 
 .item--1__planner__data {
-    background: #c7c7ff;
+    background: #f0f8ff;
 }
 
 .item--2__planner__data {
-    background: #ffd8be;
+    background: #ffe4e1;
 }
 
 .item--3__planner__data {
-    background: #a9ecbf;
+    background: #fafad2;
 }
 
 .item--4__planner__data {
-    background: #f3bbe1;
+    background: #e6e6fa;
 }
 
 .quantity__planner__data {
     font-size: 30px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 .text__planner__data {
-    font-size: 14px; 
+    font-size: 12px; 
     font-family: inherit;
     font-weight: 600;
-}
-
-.text--1__planner__data {
-    color: rgba(149,149,255,1);
-}
-
-.text--2__planner__data {
-    color: rgba(252,161,71,1);
-}
-
-.text--3__planner__data {
-    color: rgba(66,193,110,1);
-}
-
-.text--4__planner__data {
-    color: rgba(220,91,183,1);
+    margin-top: 10px;
 }
 
 
