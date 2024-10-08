@@ -106,13 +106,7 @@ const EduScribe = ({ activeTab }) => {
               />
               <span>Like</span>
             </button>
-            <button 
-              className="eduscribe-action-button"
-              onClick={() => goToCommentsPage(eduscribe.id)}
-            >
-              <FaComment size={20} />
-              <span>{eduscribe.commentsCount}</span>
-            </button>
+          
           </div>
         </div>
       ))}
