@@ -243,7 +243,7 @@ const Pomodoro = () => {
             {!isRunning && (
                 <div className="settings-pomodoro">
                     <label>
-                        Work Time (minutes):
+                        Study Time (minutes):
                         <input
                             type="number"
                             value={workTime}
