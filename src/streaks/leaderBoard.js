@@ -152,7 +152,7 @@ const Leaderboard = () => {
     <h2 className="overview-title__leaderboard__page">Top Performers</h2>
     <div className="table-label__leaderboard__page">
       <span className="label__leaderboard__page position__leaderboard__page">Pos</span>
-      <span className="label__leaderboard__page profile__leaderboard__page">Profile</span>
+      <span className="label__leaderboard__page profile__leaderboard__page">Users</span>
       <span className="label__leaderboard__page points__leaderboard__page">Points</span>
     </div>
 
