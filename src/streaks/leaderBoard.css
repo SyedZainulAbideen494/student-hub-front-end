@@ -1,131 +1,127 @@
 .leaderboard__page__container {
-    max-width: 800px;
-    margin-bottom: 30px;
-    padding: 20px;
-    border-radius: 10px;
+    max-width: 800px; /* Keep a moderate width */
+    margin: 20px auto; /* Adjusted margin for a compact look */
+    padding: 15px; /* Reduced padding */
+    border-radius: 12px; /* Slightly rounded corners */
+    background-color: #ffffff; /* Clean background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .header__leaderboard__page {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Margin at the bottom only */
+    margin-bottom: 10px; /* Smaller margin */
 }
 
 .back-btn__leaderboard__page {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 14px; /* Increased font size for visibility */
-    color: #333;
+    color: #000000;
+    font-size: 10px; /* Smaller font size */
 }
 
 .leaderboard-title__leaderboard__page {
-    margin-left: 10px;
-    font-size: 24px; /* Increased size for emphasis */
-    font-weight: bold; /* Bold title */
-    display: flex;
-    align-items: center; /* Align icon and text */
-}
-
-.leaderboard-icon__leaderboard__page {
-    margin-right: 5px; /* Space between icon and title */
-    color: #ffd700; /* Gold color for trophy */
+    flex: 1; /* Allow title to grow */
+    font-size: 22px; /* Smaller title font size */
+    font-weight: bold;
+    text-align: center; /* Center title */
+    color: #333; /* Darker text */
 }
 
 .user-avatar__leaderboard__page {
-    width: 40px; /* Set width for avatar */
-    height: 40px; /* Set height for avatar */
+    width: 35px; /* Smaller avatar size */
+    height: 35px;
     border-radius: 50%; /* Round avatar */
-    margin-left: auto; /* Align avatar to the right */
+    margin-left: 10px; /* Reduced space */
 }
 
 .leaderboard-subtitle__leaderboard__page {
-    font-size: 14px; /* Subtitle font size */
+    font-size: 12px; /* Smaller subtitle font size */
     color: #666; /* Subtitle color */
-    margin-bottom: 20px; /* Margin below the subtitle */
+    margin-bottom: 15px; /* Reduced margin */
+    text-align: center; /* Center subtitle */
 }
 
-
-
-.leaderboard-title__leaderboard__page {
-    margin-left: 10px;
-    font-size: 19px; /* Increased size for emphasis */
-    font-weight: bold; /* Bold title */
+.user-stats__leaderboard__page {
+    display: flex;
+    justify-content: center; /* Center user stats */
+    margin-bottom: 15px; /* Smaller bottom margin */
 }
 
-/* Banner styling for leaderboard */
-.banner__leaderboard__page {
-    width: 100%;
-    height: 200px; /* Adjust height as needed */
-    background-image: url('../images/DALL·E\ 2024-10-09\ 17.30.39\ -\ A\ vibrant\ golden\ leaderboard\ banner\ with\ an\ October\ theme.\ The\ design\ features\ a\ large\ golden\ trophy\ in\ the\ center\,\ surrounded\ by\ autumn\ leaves\,\ pumpk.png');
-    background-size: cover; /* Ensure the image covers the whole area */
-    background-position: center; /* Center the background image */
-    border-radius: 10px; /* Rounded corners */
-    margin-bottom: 40px; /* Space between banner and the rest of the content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+.user-card__leaderboard__page {
+    display: flex;
+    align-items: center;
+    padding: 10px; /* Smaller padding */
+    border-radius: 8px; /* More rounded corners */
+    margin-bottom: 15px; /* Smaller space between cards */
+    width: 90%; /* Maintain width */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Table label styling */
+.position__leaderboard__page {
+    width: 30px; /* Adjusted for smaller size */
+    font-size: 14px; /* Smaller font size */
+    font-weight: bold; /* Bold position */
+}
+
+.avatar__leaderboard__page {
+    width: 35px; /* Smaller avatar size */
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 5px; /* Reduced margin */
+}
+
+.username__leaderboard__page {
+    flex: 1;
+    font-size: 14px; /* Smaller font size */
+    color: #333; /* Darker text */
+}
+
+.points__leaderboard__page {
+    width: 60px; /* Smaller width */
+    text-align: right;
+    font-size: 14px; /* Smaller font size */
+}
+
+.leaderboard-overview__leaderboard__page {
+    margin-top: 20px; /* Reduced margin */
+}
+
+.overview-title__leaderboard__page {
+    font-size: 16px; /* Smaller title font size */
+    font-weight: bold;
+    margin-bottom: 5px; /* Reduced margin */
+    color: #333; /* Darker text */
+}
+
 .table-label__leaderboard__page {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 16px; /* Increased font size */
-    background-color: #f0f0f0; /* Light background */
-    padding: 10px; /* Padding for spacing */
-    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 5px; /* Reduced margin */
+    font-size: 14px; /* Smaller font size */
+    background-color: #f7f7f7; /* Light background */
+    padding: 5px; /* Smaller padding */
+    border-radius: 6px; /* Rounded corners */
 }
 
-.label__leaderboard__page {
-    flex: 1;
-}
-
-/* User list styles remain unchanged, but ensure consistency */
 .user-list__leaderboard__page {
     display: flex;
     flex-direction: column;
 }
 
-/* Other styles as before */
-.user-item__leaderboard__page {
+.user-card__leaderboard__page {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-radius: 16px;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    padding: 10px; /* Smaller padding */
+    border-radius: 8px; /* More rounded corners */
+    margin-bottom: 5px; /* Smaller margin */
+    transition: background-color 0.2s ease; /* Reduced transition speed */
 }
 
-
-.user-item__leaderboard__page:hover {
-    background-color: #f0f0f0;
-}
-
-.position__leaderboard__page {
-    width: 40px; /* Adjusted for mobile */
-    font-size: 14px; /* Adjusted for mobile */
-}
-
-.avatar__leaderboard__page {
-    border-radius: 50%;
-    margin: 0 10px;
-    max-width: 50px; /* Maximum width */
-    max-height: 50px; /* Maximum height */
-    width: 100%; /* Responsive width */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.username__leaderboard__page {
-    flex: 1;
-    font-size: 14px; /* Adjusted for mobile */
-}
-
-.points__leaderboard__page {
-    width: 70px;
-    text-align: right;
-    font-size: 14px; /* Adjusted for mobile */
+.user-card__leaderboard__page:hover {
+    background-color: #f0f0f0; /* Light hover effect */
 }
 
 .gold-bg__leaderboard__page {
@@ -142,4 +138,5 @@
 
 .medal__leaderboard__page {
     margin-left: 5px;
+    font-size: 14px; /* Smaller medal font size */
 }
