@@ -80,6 +80,7 @@ const QuestionCard = ({ onQuestionSubmit }) => {
           accept="image/*"
           onChange={handleImageChange}
           className="upload-input"
+          required
           style={{ display: 'none' }}
         />
         <span className="upload-icon">
