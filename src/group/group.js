@@ -174,14 +174,14 @@ const GroupsPage = () => {
     />
     <label className="tab__groups__page__tabs" htmlFor="radio-1">Joined</label>
 
-    <input
+   {/*  <input
       type="radio"
       id="radio-2"
       name="tabs"
       checked={activeTab === 'public'}
       onChange={() => setActiveTab('public')}
     />
-    <label className="tab__groups__page__tabs" htmlFor="radio-2">Public</label>
+    <label className="tab__groups__page__tabs" htmlFor="radio-2">Public</label>*/}
 
     <input
       type="radio"
