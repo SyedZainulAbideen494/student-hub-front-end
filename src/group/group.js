@@ -218,7 +218,7 @@ const GroupsPage = () => {
         value={newGroup.description}
         onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
       />
-      <div className="groups-checkbox-container">
+     {/* <div className="groups-checkbox-container">
         <input
           type="checkbox"
           id="terms"
@@ -233,7 +233,7 @@ const GroupsPage = () => {
           </svg>
           <label className="groups-checkbox-label">Public</label>
         </label>
-      </div>
+      </div>*/}
       <button className="groups-create-btn" onClick={handleCreateGroup}>Create Group</button>
     </div>
   )}
