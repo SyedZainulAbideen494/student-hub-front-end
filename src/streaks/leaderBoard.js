@@ -17,7 +17,9 @@ const Leaderboard = () => {
     const fetchLeaderboardData = async () => {
       try {
         const response = await axios.get(API_ROUTES.leaderboard);
-        setLeaderboardData(response.data);
+        // Filter out the banned user (user_id 147)
+        const filteredData = response.data.filter(user => user.id !== 147);
+        setLeaderboardData(filteredData);
       } catch (error) {
         console.error('Error fetching leaderboard data:', error);
       }
@@ -74,7 +76,7 @@ const Leaderboard = () => {
   };
 
   const maxPoints = leaderboardData.length > 0 ? Math.max(...leaderboardData.map(user => user.points)) : 1; // Default to 1 to avoid division by zero
- 
+
  
   const ProgressBar = ({ currentPoints, maxPoints, topUserPoints }) => {
     const fillPercentage = (currentPoints / maxPoints) * 100;
@@ -144,8 +146,7 @@ const Leaderboard = () => {
   </div>
 
 {/* Progress Bar */}
- {/* Progress Bar */}
- <ProgressBar currentPoints={userStats.points} maxPoints={maxPoints} topUserPoints={maxPoints} />
+<ProgressBar currentPoints={userStats.points} maxPoints={maxPoints} topUserPoints={maxPoints} />
 
   {/* Leaderboard Overview */}
   <div className="leaderboard-overview__leaderboard__page">
@@ -157,7 +158,7 @@ const Leaderboard = () => {
     </div>
 
     <div className="user-list__leaderboard__page">
-      {leaderboardData.slice(0, 10).map((user, index) => {
+      {leaderboardData.slice(0, 5).map((user, index) => {
         const bgClass = index === 0 ? 'gold-bg__leaderboard__page' :
                         index === 1 ? 'silver-bg__leaderboard__page' :
                         index === 2 ? 'bronze-bg__leaderboard__page' : '';
