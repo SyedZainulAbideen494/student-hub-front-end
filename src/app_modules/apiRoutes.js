@@ -91,5 +91,6 @@ export const API_ROUTES = {
   removeAvatar: `${API_URL}/api/remove-avatar`,
   inviteFriendToEdusify: `${API_URL}/invite/friend`,
   apiStartPomodoro: `${API_URL}/api/start/pomodoro`,
-  apiStopPomodoro: `${API_URL}/api/stop/pomodoro`
+  apiStopPomodoro: `${API_URL}/api/stop/pomodoro`,
+  leaderboard: `${API_URL}/api/leaderboard`
 }

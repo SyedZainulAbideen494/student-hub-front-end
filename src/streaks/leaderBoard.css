@@ -1,0 +1,110 @@
+.leaderboard__page__container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.header__leaderboard__page {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.back-btn__leaderboard__page {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 10px; /* Adjusted for mobile */
+    color: #333;
+}
+
+.leaderboard-title__leaderboard__page {
+    margin-left: 10px;
+    font-size: 20px; /* Adjusted for mobile */
+}
+
+.banner__leaderboard__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+.banner-text__leaderboard__page {
+    font-size: 16px; /* Smaller font size */
+}
+
+.table-label__leaderboard__page {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px; /* Adjusted for mobile */
+}
+
+.label__leaderboard__page {
+    flex: 1;
+}
+
+.user-list__leaderboard__page {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-item__leaderboard__page {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.user-item__leaderboard__page:hover {
+    background-color: #f0f0f0;
+}
+
+.position__leaderboard__page {
+    width: 40px; /* Adjusted for mobile */
+    font-size: 14px; /* Adjusted for mobile */
+}
+
+.avatar__leaderboard__page {
+    border-radius: 50%;
+    margin: 0 10px;
+    max-width: 50px; /* Maximum width */
+    max-height: 50px; /* Maximum height */
+    width: 100%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.username__leaderboard__page {
+    flex: 1;
+    font-size: 14px; /* Adjusted for mobile */
+}
+
+.points__leaderboard__page {
+    width: 70px;
+    text-align: right;
+    font-size: 14px; /* Adjusted for mobile */
+}
+
+.gold-bg__leaderboard__page {
+    background-color: #ffd700;
+}
+
+.silver-bg__leaderboard__page {
+    background-color: #c0c0c0;
+}
+
+.bronze-bg__leaderboard__page {
+    background-color: #cd7f32;
+}
+
+.medal__leaderboard__page {
+    margin-left: 5px;
+}
