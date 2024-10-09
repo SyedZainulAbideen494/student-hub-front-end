@@ -158,7 +158,7 @@ const Leaderboard = () => {
     </div>
 
     <div className="user-list__leaderboard__page">
-      {leaderboardData.slice(0, 5).map((user, index) => {
+      {leaderboardData.slice(0, 10).map((user, index) => {
         const bgClass = index === 0 ? 'gold-bg__leaderboard__page' :
                         index === 1 ? 'silver-bg__leaderboard__page' :
                         index === 2 ? 'bronze-bg__leaderboard__page' : '';
