@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaRegThumbsUp } from 'react-icons/fa';
+import { FaRegThumbsUp, FaTrash } from 'react-icons/fa'; // Import FaTrash for delete icon
 import './eduScribe.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
@@ -9,8 +9,30 @@ import FooterNav from '../app_modules/footernav';
 const EduScribe = ({ activeTab }) => {
   const [eduscribes, setEduscribes] = useState([]);
   const [liked, setLiked] = useState({});
+  const [currentUserId, setCurrentUserId] = useState(null); // Track current user's ID
+  const [deleteId, setDeleteId] = useState(null); // Track eduscribe to delete
   const navigate = useNavigate();
 
+  // Fetch current user profile
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('User not authenticated');
+        }
+
+        const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
+        setCurrentUserId(data.id); // Store the current user's ID
+      } catch (error) {
+        console.error('Error fetching profile data:', error);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+
+  // Fetch all Eduscribes
   useEffect(() => {
     const fetchEduscribes = async () => {
       try {
@@ -26,7 +48,6 @@ const EduScribe = ({ activeTab }) => {
           params: { tab: activeTab }
         });
 
-        // Shuffle the eduscribes array
         const shuffledEduscribes = data.sort(() => Math.random() - 0.5);
         setEduscribes(shuffledEduscribes);
 
@@ -43,6 +64,7 @@ const EduScribe = ({ activeTab }) => {
     fetchEduscribes();
   }, [activeTab]);
 
+  // Handle like functionality
   const handleLike = async (id) => {
     try {
       const token = localStorage.getItem('token');
@@ -58,8 +80,8 @@ const EduScribe = ({ activeTab }) => {
     }
   };
 
+  // Display likes count based on hardcoded IDs
   const displayLikesCount = (eduscribe) => {
-    // Hard-code likes for specific eduscribe IDs
     switch (eduscribe.id) {
       case 11:
         return "20k";
@@ -70,8 +92,17 @@ const EduScribe = ({ activeTab }) => {
       case 18:
         return "22k";
       default:
-        // Otherwise, show the actual likes count
         return eduscribe.likesCount;
+    }
+  };
+
+  // Handle delete eduscribe
+  const handleDelete = async (deleteId) => {
+    try {
+      await axios.delete(`${API_ROUTES.deleteEduScribe}/${deleteId}`);
+      setEduscribes(eduscribes.filter(eduscribe => eduscribe.id !== deleteId));
+    } catch (err) {
+      console.error('Error deleting eduscribe:', err);
     }
   };
 
@@ -91,6 +122,8 @@ const EduScribe = ({ activeTab }) => {
               <a href={`/profile/${eduscribe.user_id}`} className="eduscribe-username">
                 {eduscribe.user_name || 'User'}
               </a>
+              {/* Display delete button if the current user is the owner */}
+              
             </div>
           </div>
           <div className="eduscribe-content" style={{ whiteSpace: 'pre-wrap' }}>
@@ -114,6 +147,11 @@ const EduScribe = ({ activeTab }) => {
               />
               <span>Like {displayLikesCount(eduscribe)}</span>
             </button>
+            {currentUserId === eduscribe.user_id && (
+                <button className="delete-button" onClick={() => handleDelete(eduscribe.id)}style={{marginLeft: '40px'}}>
+                <i className="fas fa-trash"></i>
+                </button>
+              )}
           </div>
         </div>
       ))}
