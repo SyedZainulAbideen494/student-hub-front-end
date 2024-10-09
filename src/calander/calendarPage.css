@@ -278,5 +278,5 @@
 .btn-add-event:hover {
     background-color: #74c69d; /* Change background on hover */
     color: #ffffff; /* Change text color on hover */
-    transform: scale(1.05); /* Slightly increase size on hover */
+    transform: scale(1.05); 
 }
