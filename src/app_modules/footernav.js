@@ -103,7 +103,7 @@ const FooterNav = () => {
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaStickyNote className="icon-footer-nav" />
-                    <span className="btn-label">Notes/Flashcards</span>
+                    <span className="btn-label">Notes</span>
                 </button>
             </Link>
                 <Link to='/groups' style={{ textDecoration: 'none' }}>
