@@ -229,3 +229,50 @@
 .box-4__home__page__component {
   animation-delay: 0.3s; /* Slight delay */
 }
+
+
+/* Icons container styling */
+.icons-container__home__page__component {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes the icons to the right */
+}
+
+/* Leaderboard icon styling */
+.leaderboard-icon__home__page__component {
+  margin-left: 15px;
+  color: #ffb703; /* Default icon color */
+  cursor: pointer;
+  align-items: center;
+  text-align: center; /* Center-align the icon and text */
+  text-decoration: none; /* Remove underline for the entire link */
+}
+
+/* Leaderboard icon text styling */
+.leaderboard-icon__home__page__component p {
+  font-size: 10px;
+  margin-top: 0; /* Remove margin on top */
+  margin-bottom: 0; /* Remove margin on bottom */
+  text-decoration: none; /* Ensure no underline */
+  color: inherit; /* Inherit color from parent */
+}
+
+/* Hover effect for leaderboard icon */
+.leaderboard-icon__home__page__component:hover {
+  color: #ffb703; /* Same color on hover */
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  transition: transform 0.2s ease-in-out;
+}
+
+
+
+
+/* Flex styling for welcome message and icon */
+.welcome-container__home__page__component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+

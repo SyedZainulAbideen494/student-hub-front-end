@@ -5,7 +5,7 @@ import './homeTopCards.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGrinBeam } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
+import { faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
 import { TypeAnimation } from 'react-type-animation';
 
 const TopBoxes = () => {
@@ -119,25 +119,32 @@ const TopBoxes = () => {
                     src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
                     alt="Profile Avatar"
                 />
-<p className="welcome-message__home__page__component">
-    <TypeAnimation
-        sequence={[
-            `Hi, ${profile?.unique_id || 'User'}!`, // Use template literal correctly
-            2000 // Pause for 2 seconds
-        ]}
-        speed={50} // Typing speed in milliseconds
-        repeat={0} // Number of times to repeat; 0 means no repeat
-        wrapper="span"
-        cursor={false} // Hide the typing cursor
-    />
-    <FontAwesomeIcon icon={faGrinBeam} className="welcome-icon__home__page__component" />
-</p>
+                <p className="welcome-message__home__page__component">
+                    <TypeAnimation
+                        sequence={[
+                            `Hi, ${profile?.unique_id || 'User'}!`,
+                            2000 // Pause for 2 seconds
+                        ]}
+                        speed={50} // Typing speed in milliseconds
+                        repeat={0} // Number of times to repeat; 0 means no repeat
+                        wrapper="span"
+                        cursor={false} // Hide the typing cursor
+                    />
+
+                </p>
+                <div className="icons-container__home__page__component">
+  {/* Leaderboard icon */}
+  <Link to='/leaderboard' className="leaderboard-icon__home__page__component">
+    <FontAwesomeIcon icon={faTrophy} size="lg" />
+    <p>New</p>
+  </Link>
+</div>
 
             </>
         )}
     </div>
-    
 </div>
+
             <p className="subtext__home__page__component">Here's your overview for today</p>
 
             <div className="top-boxes-container__home__page__component">
