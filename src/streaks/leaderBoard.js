@@ -17,14 +17,16 @@ const Leaderboard = () => {
     const fetchLeaderboardData = async () => {
       try {
         const response = await axios.get(API_ROUTES.leaderboard);
-        // Filter out the banned user (user_id 147)
-        const filteredData = response.data.filter(user => user.id !== 147);
+  
+        // Filter out the user with user_id 147 (the banned user)
+        const filteredData = response.data.filter(user => user.user_id !== 147);
+  
         setLeaderboardData(filteredData);
       } catch (error) {
         console.error('Error fetching leaderboard data:', error);
       }
     };
-
+  
     const fetchProfileData = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -33,10 +35,10 @@ const Leaderboard = () => {
           setLoading(false);
           return;
         }
-
+  
         const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
         setProfile(data); // Set the profile data
-
+  
         // After fetching the profile data, fetch leaderboard data to check for user's stats
         fetchLeaderboardData();
       } catch (err) {
@@ -46,9 +48,10 @@ const Leaderboard = () => {
         setLoading(false);
       }
     };
-
+  
     fetchProfileData(); // Fetch profile data
   }, []);
+  
 
   useEffect(() => {
     // Check if the profile data is available
@@ -76,7 +79,7 @@ const Leaderboard = () => {
   };
 
   const maxPoints = leaderboardData.length > 0 ? Math.max(...leaderboardData.map(user => user.points)) : 1; // Default to 1 to avoid division by zero
-
+ 
  
   const ProgressBar = ({ currentPoints, maxPoints, topUserPoints }) => {
     const fillPercentage = (currentPoints / maxPoints) * 100;
@@ -146,7 +149,8 @@ const Leaderboard = () => {
   </div>
 
 {/* Progress Bar */}
-<ProgressBar currentPoints={userStats.points} maxPoints={maxPoints} topUserPoints={maxPoints} />
+ {/* Progress Bar */}
+ <ProgressBar currentPoints={userStats.points} maxPoints={maxPoints} topUserPoints={maxPoints} />
 
   {/* Leaderboard Overview */}
   <div className="leaderboard-overview__leaderboard__page">
