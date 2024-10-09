@@ -136,7 +136,7 @@ const TopBoxes = () => {
   {/* Leaderboard icon */}
   <Link to='/leaderboard' className="leaderboard-icon__home__page__component">
     <FontAwesomeIcon icon={faTrophy} size="lg" />
-    <p>New</p>
+    <p>Leaderboard</p>
   </Link>
 </div>
 
