@@ -210,25 +210,25 @@ function Planner() {
         <div className="App-dashboard-planner">
 
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
-            <div className="card__planner__data">
-            <div className="item__planner__data item--1__planner__data">
+            <div className="top-boxes-container__home__page__component">
+            <div className="box__home__page__component box-1__home__page__component">
               
-                <span className="quantity__planner__data">{todayTasks}</span>
+                <span className="count__home__page__component">{todayTasks}</span>
                 <span className="text__planner__data text--1__planner__data"> Today's Tasks </span>
             </div>
-            <div className="item__planner__data item--2__planner__data">
+            <div className="box__home__page__component box-2__home__page__component">
                 
-                <span className="quantity__planner__data">{totalTasks}</span>
+                <span className="count__home__page__component">{totalTasks}</span>
                 <span className="text__planner__data text--2__planner__data"> Total Tasks </span>
             </div>
-            <div className="item__planner__data item--3__planner__data">
+            <div className="box__home__page__component box-3__home__page__component">
                
-                <span className="quantity__planner__data">{highPriorityTasks}</span>
-                <span className="text__planner__data text--3__planner__data"> High Priority </span>
+                <span className="count__home__page__component">{highPriorityTasks}</span>
+                <span className="text__planner__data text--4__planner__data"> High Priority </span>
             </div>
-            <div className="item__planner__data item--4__planner__data">
+            <div className="box__home__page__component box-1__home__page__component">
                 
-                <span className="quantity__planner__data">{upcomingTasks}</span>
+                <span className="count__home__page__component">{upcomingTasks}</span>
                 <span className="text__planner__data text--4__planner__data"> Upcoming Tasks </span>
             </div>
         </div>
