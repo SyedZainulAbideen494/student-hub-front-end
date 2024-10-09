@@ -73,6 +73,40 @@ const Leaderboard = () => {
     nav('/');
   };
 
+  const maxPoints = leaderboardData.length > 0 ? Math.max(...leaderboardData.map(user => user.points)) : 1; // Default to 1 to avoid division by zero
+ 
+ 
+  const ProgressBar = ({ currentPoints, maxPoints, topUserPoints }) => {
+    const fillPercentage = (currentPoints / maxPoints) * 100;
+
+    // Determine the color class based on fill percentage
+    let colorClass = '';
+    if (fillPercentage < 50) {
+        colorClass = 'red';
+    } else if (fillPercentage < 80) {
+        colorClass = 'orange';
+    } else {
+        colorClass = 'green';
+    }
+
+    // Calculate the difference from the top user points
+    const pointsDifference = topUserPoints - currentPoints;
+
+    return (
+        <div className="progress-bar__leaderboard__page">
+            <div
+                className={`progress__leaderboard__page ${colorClass}`}
+                style={{ width: `${fillPercentage}%` }}
+            ></div><br/>
+            <p className="progress-text__leaderboard__page">
+                {pointsDifference > 0 
+                    ? `You're ${pointsDifference} points away from the top!` 
+                    : `You've reached the top!`}
+            </p>
+        </div>
+    );
+};
+
   return (
 <div className="leaderboard__page__container">
   {/* Header Section */}
@@ -92,6 +126,7 @@ const Leaderboard = () => {
   
   <p className="leaderboard-subtitle__leaderboard__page">See how you stack up!</p>
 
+
   {/* User Stats Section */}
   <div className="user-stats__leaderboard__page">
     {userStats.position !== null && (
@@ -107,6 +142,10 @@ const Leaderboard = () => {
       </div>
     )}
   </div>
+
+{/* Progress Bar */}
+ {/* Progress Bar */}
+ <ProgressBar currentPoints={userStats.points} maxPoints={maxPoints} topUserPoints={maxPoints} />
 
   {/* Leaderboard Overview */}
   <div className="leaderboard-overview__leaderboard__page">
@@ -145,6 +184,7 @@ const Leaderboard = () => {
     </div>
   </div>
 </div>
+
   );
 };
 

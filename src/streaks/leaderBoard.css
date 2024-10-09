@@ -140,3 +140,68 @@
     margin-left: 5px;
     font-size: 14px; /* Smaller medal font size */
 }
+
+
+
+
+.user-stats__leaderboard__page {
+    display: flex;               /* Enable flexbox */
+    flex-direction: column;      /* Arrange items vertically */
+    align-items: center;         /* Center items horizontally */
+    margin: 20px 0;             /* Optional margin for spacing */
+}
+
+.progress-bar__leaderboard__page {
+    width: 100%;                  /* Full width */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 5px;         /* Rounded corners */
+    overflow: hidden;            /* Hide overflow */
+    margin: 15px 0;             /* Margins for spacing */         /* Enable flexbox for centering */
+    justify-content: center;     /* Center the contents */
+}
+
+.progress__leaderboard__page {
+    height: 8px;                 /* Height of the progress indicator */
+    border-radius: 5px;         /* Rounded corners */
+    transition: width 0.5s ease; /* Smooth transition */
+}
+
+/* Dynamic colors based on fill percentage */
+.progress__leaderboard__page.red {
+    background-color: #ff4d4d; /* Red for low progress */
+}
+
+.progress__leaderboard__page.orange {
+    background-color: #ffcc00; /* Orange for medium progress */
+}
+
+.progress__leaderboard__page.green {
+    background-color: #4caf50; /* Green for high progress */
+}
+
+.progress-text__leaderboard__page {
+    font-size: 12px;            /* Small font size */
+    color: #666;                /* Subtitle color */
+    text-align: center;         /* Center the text */
+    margin-top: 5px;           /* Margin above the text */
+}
+
+
+/* Animation for page load */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+.leaderboard__page__container {
+    animation: fadeIn 0.5s ease; /* Apply fade-in animation */
+}
