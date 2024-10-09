@@ -92,10 +92,12 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 16px;
     margin-bottom: 10px;
     transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
 }
+
 
 .user-item__leaderboard__page:hover {
     background-color: #f0f0f0;

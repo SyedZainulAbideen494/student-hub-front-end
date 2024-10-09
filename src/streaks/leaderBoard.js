@@ -80,7 +80,7 @@ const Leaderboard = () => {
           <FaArrowLeft size={20} />
         </button>
         <h1 className="leaderboard-title__leaderboard__page">
-          <FaTrophy className="leaderboard-icon__leaderboard__page" />
+          
           Leaderboard
         </h1>
         {profile && ( // Conditionally render the user's avatar
@@ -94,9 +94,8 @@ const Leaderboard = () => {
       <p className="leaderboard-subtitle__leaderboard__page">See how you stack up against others!</p>
 
       {/* User Stats Section */}
-      
-        <div className='banner__leaderboard__page'></div>
-        <div className="user-stats__leaderboard__page">
+      <div className='banner__leaderboard__page'></div>
+      <div className="user-stats__leaderboard__page">
         {/* Render user stats at the top if they exist */}
         {userStats.position !== null && (
           <div className="user-item__leaderboard__page" style={{ backgroundColor: '#ffd700' }}>
@@ -118,7 +117,7 @@ const Leaderboard = () => {
       </div>
 
       <div className="user-list__leaderboard__page">
-        {leaderboardData.map((user, index) => {
+        {leaderboardData.slice(0, 5).map((user, index) => {
           let bgClass = '';
           if (index === 0) bgClass = 'gold-bg__leaderboard__page';
           else if (index === 1) bgClass = 'silver-bg__leaderboard__page';
@@ -142,8 +141,6 @@ const Leaderboard = () => {
             </div>
           );
         })}
-
-      
       </div>
     </div>
   );
