@@ -27,7 +27,7 @@ const FlashcardsPage = () => {
           className={`btn__main__page__flashcard__page ${mode === 'view' ? 'active__main__page__flashcard__page' : ''}`}
           onClick={() => setMode('view')}
         >
-          <FaEye className="btn-icon__main__page__flashcard__page" /> My Flashcard
+          <FaEye className="btn-icon__main__page__flashcard__page" /> My Notes
         </button>
 
         {/* Create Button */}
@@ -35,7 +35,7 @@ const FlashcardsPage = () => {
           className={`btn__main__page__flashcard__page ${mode === 'create' ? 'active__main__page__flashcard__page' : ''}`}
           onClick={() => setMode('create')}
         >
-          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create Flashcard
+          <FaPlus className="btn-icon__main__page__flashcard__page" /> Create Notes
         </button>
       </div>
 

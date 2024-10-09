@@ -152,7 +152,7 @@ const ViewFlashCard = () => {
           className='btn__main__page__flashcard__page active__main__page__flashcard__page'
          
         >
-          <FaEye className="btn-icon__main__page__flashcard__page" /> My Flashcard
+          <FaEye className="btn-icon__main__page__flashcard__page" /> My Notes
         </button>
 
         {/* Create Button */}
@@ -178,7 +178,7 @@ const ViewFlashCard = () => {
                 {loading ? (
                     <div className="loading-message"><LoadingSpinner/></div>
                 ) : noNotes ? (
-                    <div className="no-notes-message">No notes found. Please create a flashcard.</div>
+                    <div className="no-notes-message">No notes found. Please create Notes.</div>
                 ) : (
                     <div className="flashcard-list-flashcards-page">
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

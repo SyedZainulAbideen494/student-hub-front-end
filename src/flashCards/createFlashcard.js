@@ -270,7 +270,7 @@ const handleViewFalshCardsClick = () => {
                 <h2>Success!</h2>
             </div>
             <div className="modal-body-flashcard-save">
-                <p>Your flashcard has been successfully created!</p>
+                <p>Your Notes has been successfully created!</p>
             </div>
             <div className="modal-footer-flashcard-save">
                 <button className="close-button-flashcard-save" onClick={() => setShowSuccessModal(false)}>OK</button>
@@ -286,7 +286,7 @@ const handleViewFalshCardsClick = () => {
           className='btn__main__page__flashcard__page'
           onClick={handleViewFalshCardsClick}
         >
-          <FaEye className="btn-icon__main__page__flashcard__page" /> My Flashcard
+          <FaEye className="btn-icon__main__page__flashcard__page" /> My Notes
         </button>
 
         {/* Create Button */}
@@ -296,7 +296,7 @@ const handleViewFalshCardsClick = () => {
           <FaPlus className="btn-icon__main__page__flashcard__page" /> Create 
         </button>
       </div>
-            <h1>Create Flashcard</h1>
+            <h1>Create Notes</h1>
             <form onSubmit={handleSubmit} className="flashcard-form-flashcards-page">
                 <div className="form-group-flashcards-page">
                     <label htmlFor="title">Name:</label>
@@ -446,7 +446,7 @@ const handleViewFalshCardsClick = () => {
                       className="create-flashcard-btn_ai__page"
                       onClick={() => handleCopy(result.parts[0].text)} // Ensure handleCopy is defined
                     >
-                      Create Flashcard
+                      Create Notes
                     </button>
                   </div>
                 )}
