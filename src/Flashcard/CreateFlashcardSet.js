@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CreateFlashcardSet.css'; // Importing the CSS styles
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const CreateFlashcardSet = () => {
   const [setName, setSetName] = useState('');
@@ -10,7 +11,7 @@ const CreateFlashcardSet = () => {
 
   const createSet = async () => {
     const token = localStorage.getItem('token'); // Get the token from local storage
-    const response = await fetch('http://localhost:8080/api/flashcard-sets/create', {
+    const response = await fetch(API_ROUTES.createFlashcardSet, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
