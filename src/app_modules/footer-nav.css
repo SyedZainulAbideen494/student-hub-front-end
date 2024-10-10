@@ -143,3 +143,11 @@
     font-size: 12px;
     margin-left: 5px;
 }
+
+.new-label-footer-nav {
+    background-color: #ff4747;
+    color: white;
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 5px;
+}

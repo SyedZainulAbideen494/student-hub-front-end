@@ -98,6 +98,7 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
                         <FaTrophy className="icon-footer-nav" />
                         <span className="btn-label">leaderboard</span>
+                        <span className="new-label-footer-nav">New</span> {/* New label */}
                     </button>
                 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
@@ -107,11 +108,13 @@ const FooterNav = () => {
                 </button>
             </Link>
             <Link to='/flashcard' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/flashcard' ? 'active' : ''}`}>
-                    <FaStickyNote className="icon-footer-nav" />
-                    <span className="btn-label">Flashcards</span>
-                </button>
-            </Link>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/flashcard' ? 'active' : ''}`}>
+        <FaStickyNote className="icon-footer-nav" />
+        <span className="btn-label">Flashcards</span>
+        <span className="new-label-footer-nav">New</span> {/* New label */}
+    </button>
+</Link>
+
                 <Link to='/groups' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/groups' ? 'active' : ''}`}>
                     <FaUsers className="icon-footer-nav" />
