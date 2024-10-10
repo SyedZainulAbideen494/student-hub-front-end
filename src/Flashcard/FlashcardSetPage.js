@@ -5,6 +5,7 @@ import SuccessMessage from '../app_modules/SuccessMessage'; // Importing the Suc
 import './FlashcardSetPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import axios from 'axios';
+import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 const FlashcardSetPage = () => {
   const { id } = useParams();
@@ -192,13 +193,22 @@ const FlashcardSetPage = () => {
     }
   };
 
+// Example function to delete a flashcard
+const deleteFlashcard = async (flashcardId) => {
+  try {
+      await axios.delete(`${API_ROUTES.deleteFlashcardIndividual}/${flashcardId}`); // Send delete request to the backend
+      // Refresh the page after deletion
+      window.location.reload(); // This will refresh the entire page
+  } catch (error) {
+      console.error('Error deleting flashcard:', error);
+  }
+};
+
+
   // Return the loading state unconditionally
 if (loading) {
-  return <div>Loading...</div>;
+  return <LoadingSpinner/>;
 }
-
-
-
 
 
   return (
@@ -284,44 +294,47 @@ if (loading) {
   </div>
 </div>
 
-
-
       {/* Button to show the first flashcard */}
       <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
         View 
       </button>
 
 <div className="flashcard__set__page__flashcards">
-  {filteredFlashcards.map((flashcard) => (
-    <div key={flashcard.id} className="flashcard__set__page__flashcard">
-
-      <Link
-  key={flashcard.id}
-  to={`/flashcard/card/view/${flashcard.id}/${id}`} // Use query parameter for setId
-  style={{textDecoration: 'none'}}
->
-  <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
-</Link>
-      <div 
-        ref={el => answerRefs.current[flashcard.id] = el} 
-        className="flashcard__set__page__answer" 
-        style={{
-          maxHeight: answerHeight[flashcard.id] ? `${answerHeight[flashcard.id]}px` : '0',
-          overflow: 'hidden',
-          transition: 'max-height 0.3s ease-in-out', // Smooth transition
-        }}
-      >
-        {flashcard.answer}
-      </div>
-      <button 
-        className="flashcard__set__page__answer-toggle__set__page" 
-        onClick={() => toggleAnswerVisibility(flashcard.id)}
-      >
-        <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`}></i> {/* Arrow Icon */}
-      </button>
-    </div>
-  ))}
-</div>
+            {filteredFlashcards.map((flashcard) => (
+                <div key={flashcard.id} className="flashcard__set__page__flashcard">
+                    <Link
+                        to={`/flashcard/card/view/${flashcard.id}/${id}`} // Use query parameter for setId
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
+                    </Link>
+                    <div
+                        ref={el => answerRefs.current[flashcard.id] = el}
+                        className="flashcard__set__page__answer"
+                        style={{
+                            maxHeight: answerHeight[flashcard.id] ? `${answerHeight[flashcard.id]}px` : '0',
+                            overflow: 'hidden',
+                            transition: 'max-height 0.3s ease-in-out', // Smooth transition
+                        }}
+                    >
+                        {flashcard.answer}
+                    </div>
+                    <button
+                        className="flashcard__set__page__answer-toggle__set__page"
+                        onClick={() => toggleAnswerVisibility(flashcard.id)}
+                    >
+                        <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`}></i> {/* Arrow Icon */}
+                    </button>
+                    {/* Delete Button */}
+                    <button 
+                        className="flashcard__set__page__delete-button"
+                        onClick={() => deleteFlashcard(flashcard.id)} // Call delete function with the flashcard ID
+                    >
+                        Delete
+                    </button>
+                </div>
+            ))}
+        </div>
 
 
 

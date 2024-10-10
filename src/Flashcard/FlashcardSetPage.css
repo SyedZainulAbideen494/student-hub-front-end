@@ -702,3 +702,17 @@
     color: #666;
     margin-top: 10px;
 }
+
+.flashcard__set__page__delete-button {
+    background-color: #d90429; /* Change this to fit your design */
+    color: white;
+    border: none;
+    margin-top: 9px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 25px; /* Rounded corners */
+}
+
+.flashcard__set__page__delete-button:hover {
+    opacity: 0.8; /* Add a hover effect */
+}
