@@ -515,7 +515,7 @@
     background: none; /* No background */
     margin-top: 20px;
     color: #007aff; /* Blue text color */
-    border: 2px solid #007aff; /* Blue border */
+    border: 2px solid transparent; /* Blue border */
     border-radius: 12px; /* Rounded edges */
     padding: 5px 10px; /* Smaller padding for a compact button */
     font-size: 14px; /* Smaller font size */
@@ -731,7 +731,7 @@
   }
   
   .btn-delete-flashcard-set:hover {
-    background-color: #ff1a1a; /* Darker red on hover */
+    background-color: #ff4d4d; /* Darker red on hover */
     transform: translateY(-2px); /* Slight lift on hover */
   }
   

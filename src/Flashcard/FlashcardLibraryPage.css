@@ -1,136 +1,218 @@
 .flashcard__library__page__component__page {
-    padding: 20px;
-    background-color: #f4f7fa; /* Light background color for better contrast */
-  }
-  
-  .header__library__page__component__page {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-bottom: 10px; /* Adds some space at the bottom */
-    border-bottom: 2px solid #ddd; /* Creates a visual separation */
-  }
-  
-  .library-title__library__page__component__page {
-    font-size: 24px;
-    color: #333; /* Darker text color */
-    display: flex;
-    align-items: center; /* Aligns icon with title */
-  }
-  
+  padding: 20px;
+}
 
-  .create-set-button__library__page__component__page {
-    border: none;
-    display: flex;
-    padding: 8px 12px; /* Adjust padding for a more compact button */
-    background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
-    color: #ffffff;
-    font-size: 14px; /* Adjust font size */
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    text-transform: uppercase;
-    vertical-align: middle;
-    align-items: center;
-    border-radius: 0.5rem;
-    user-select: none;
-    gap: 0.5rem; /* Reduced gap for better alignment */
-    box-shadow:
-        0 4px 6px -1px #488aec31,
-        0 2px 4px -1px #488aec17;
-    transition: all 0.6s ease;
+.header__library__page__component__page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.library-title__library__page__component__page {
+  font-size: 24px;
+  color: #333; /* Darker text color */
+  display: flex;
+  align-items: center; /* Aligns icon with title */
+}
+
+.create-set-button__library__page__component__page {
+  border: none;
+  display: flex;
+  padding: 8px 12px; /* Adjust padding for a more compact button */
+  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+  color: #ffffff;
+  font-size: 14px; /* Adjust font size */
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  user-select: none;
+  gap: 0.5rem; /* Reduced gap for better alignment */
+  box-shadow:
+    0 4px 6px -1px #488aec31,
+    0 2px 4px -1px #488aec17;
+  transition: all 0.6s ease;
 }
 
 .create-set-button__library__page__component__page:hover {
-    box-shadow:
-        0 10px 15px -3px #488aec4f,
-        0 4px 6px -2px #488aec17;
+  box-shadow:
+    0 10px 15px -3px #488aec4f,
+    0 4px 6px -2px #488aec17;
 }
 
 .create-set-button__library__page__component__page:focus,
 .create-set-button__library__page__component__page:active {
-    opacity: 0.85;
-    box-shadow: none;
+  opacity: 0.85;
+  box-shadow: none;
 }
 
 .create-set-button__library__page__component__page .create-set-button__library__page__component__page__svg {
-    width: 16px; /* Adjust icon size */
-    height: 16px; /* Adjust icon size */
-    fill: #ffffff; /* Set the fill color to white */
+  width: 16px; /* Adjust icon size */
+  height: 16px; /* Adjust icon size */
+  fill: #ffffff; /* Set the fill color to white */
 }
 
 
-  
-  .set-list__library__page__component__page {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller cards */
-    gap: 20px;
-    padding: 20px;
-    
+.set-card__library__page__component__page {
+  border-radius: 12px; /* Rounded edges for a soft look */
+  padding: 12px; /* Increased padding for better spacing */
+  background-color: #ffffff; /* Clean white background */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition effects */
+  position: relative; /* Allows for pseudo-elements */
+  overflow: hidden; /* Clip overflowing elements */
+  max-width: 320px; /* Set a max width for uniformity */
+  margin: 12px; /* Spacing between cards */
+  cursor: pointer; /* Indicate that the card is clickable */
+}
+
+.set-card__library__page__component__page:hover {
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card-content__library__page__component__page {
+  display: flex;
+  flex-direction: column; /* Column layout for stacking */
+  align-items: flex-start; /* Align items to the left */
+}
+
+.icon-container {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  margin-bottom: 8px; /* Increased space for clarity */
+}
+
+.card-icon {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 28px; /* Moderate icon size */
+  transition: transform 0.2s; /* Smooth transform */
+  color: #A78BFA; /* Primary icon color */
+}
+
+.card-icon:hover {
+  transform: scale(1.1); /* Slight enlargement on hover */
+}
+
+.set-name__library__page__component__page {
+  font-size: 20px; /* Title font larger for emphasis */
+  font-weight: 700; /* Bold for strong emphasis */
+  margin: 12px 0; /* Space above and below title */
+  color: #000; /* Black text color */
+  text-align: center; /* Center the set name */
+  width: 100%; /* Full width for centering */
+}
+
+.set-topic__library__page__component__page,
+.set-subject__library__page__component__page {
+  font-size: 14px; /* Slightly larger for better readability */
+  color: #000; /* Black text color */
+  margin: 2px 0; /* Space between lines */
+  width: 100%; /* Full width to align left */
+}
+
+.topic-icon,
+.subject-icon {
+  margin-right: 6px; /* Space between icon and text */
+  font-size: 16px; /* Consistent icon size */
+  color: #000000; /* Icon color */
+}
+
+.view-icon {
+  margin-right: 4px; /* Space between icon and text */
+  font-size: 16px; /* Consistent icon size */
+  color: white; /* Color for view icon */
+}
+
+.share__btn__flashcard__card__page {
+  display: inline-flex; /* Inline flex for button */
+  align-items: center; /* Center icon and text */
+  background: linear-gradient(135deg, #A78BFA, #9271D5); /* Clean gradient background */
+  color: white; /* Text color */
+  padding: 8px 16px; /* Padding for the button */
+  border-radius: 20px; /* Rounded button edges */
+  text-decoration: none; /* Remove underline */
+  font-weight: 500; /* Medium font weight */
+  transition: background-color 0.2s ease, transform 0.2s ease; /* Smooth background and transform change */
+  font-size: 14px; /* Slightly smaller font size */
+  margin-top: 10px; /* Space above the button */
+}
+
+.share__btn__flashcard__card__page:hover {
+  background: linear-gradient(135deg, #9271D5, #A78BFA); /* Inverted gradient on hover */
+  transform: translateY(-1px); /* Move up slightly on hover */
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+.card-content__library__page__component__page {
+  display: flex;
+  flex-direction: column; /* Column layout for stacking */
+  align-items: flex-start; /* Align items to the left */
+  text-align: center; /* Center text for the card */
+}
+
+.share__btn__flashcard__card__page {
+  display: inline-flex; /* Inline flex for button */
+  align-items: center; /* Center icon and text */
+  justify-content: center; /* Center the button content */
+  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+  color: white; /* Text color */
+  padding: 8px 16px; /* Padding for the button */
+  border-radius: 20px; /* Rounded button edges */
+  text-decoration: none; /* Remove underline */
+  font-weight: 500; /* Medium font weight */
+  transition: background-color 0.2s ease, transform 0.2s ease; /* Smooth background and transform change */
+  font-size: 14px; /* Slightly smaller font size */
+  margin: 10px auto; /* Center button with automatic margins */
+  width: 80%;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .set-card__library__page__component__page {
-    border: none; /* Remove border */
-    border-radius: 15px;
-    padding: 15px;
-    background-color: #ffffff;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  to {
+    opacity: 1;
   }
-  
-  .set-card__library__page__component__page:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+
+
+
+.no-sets-message__library__page__component__page {
+  text-align: center; /* Center text */
+  margin-top: 50px;
+  color: #666; /* Grey color for less emphasis */
+}
+
+.no-sets-title__library__page__component__page {
+  font-size: 20px;
+  margin-top: 10px; /* Space above the title */
+}
+
+.no-sets-description__library__page__component__page {
+  margin-top: 5px; /* Space above the description */
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .set-item__library__page__component__page {
-    text-decoration: none;
-    color: inherit;
+  to {
+    opacity: 1;
   }
-  
-  .icon-container__library__page__component__page {
-    margin-right: 8px; /* Space between icon and title */
-  }
-  
-  .card-content__library__page__component__page {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-  }
-  
-  .set-name__library__page__component__page {
-    font-size: 18px;
-    margin: 10px 0 5px;
-    color: #333;
-  }
-  
-  .set-topic__library__page__component__page,
-  .set-subject__library__page__component__page {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  .share__btn__flashcard__card__page {
-    font-family: inherit;
-    font-size: 14px; /* Smaller font size */
-    background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
-    color: white;
-    padding: 0.6em 1em; /* Smaller padding */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 20px; /* Slightly smaller border radius */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Smaller shadow */
-    transition: all 0.3s;
-    margin-top: 10px;
-    text-decoration: none;
-  }
-  
-  .share__btn__flashcard__card__page:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+}
