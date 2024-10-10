@@ -198,10 +198,7 @@ if (loading) {
   return <div>Loading...</div>;
 }
 
-// Check if stats are available and if there are no cards
-if (!stats) {
-  return <div>No data here, come back later!</div>;
-}
+
 
 
 
