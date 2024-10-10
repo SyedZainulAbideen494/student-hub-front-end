@@ -47,49 +47,29 @@ const FlashcardLibraryPage = () => {
   return (
 <div className="flashcard__library__page__component__page" style={{ marginBottom: '50px' }}>
 {showTutorial && <FlashcardsPageTutorial onComplete={handleTutorialComplete} />}
-  <div className="header__library__page__component__page">
-    <h2 className="library-title__library__page__component__page">
-      <div className="icon-container__library__page__component__page">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="30"
-          height="30"
-          fill="#A78BFA"
-        >
-          <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h14v16z" />
-          <path d="M14 9h-4v2h4V9zm0 3h-4v2h4v-2z" />
-        </svg>
-      </div>
-      Library
-    </h2>
-    <Link to="/create/flashcard" style={{ textDecoration: 'none' }}>
-      <button className="create-set-button__library__page__component__page">
-        <svg
-          aria-hidden="true"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          fill="#ffffff"
-          xmlns="http://www.w3.org/2000/svg"
-          className="create-set-button__library__page__component__page__svg"
-        >
-          <path
-            d="M13.5 3H12H8C6.34315 3 5 4.34315 5 6V18C5 19.6569 6.34315 21 8 21H11M13.5 3L19 8.625M13.5 3V7.625C13.5 8.17728 13.9477 8.625 14.5 8.625H19M19 8.625V11.8125"
-            strokeLinejoin="round"
-            strokeLinecap="round"
-            strokeWidth="2"
-          />
-          <path
-            d="M17 15V18M17 21V18M17 18H14M17 18H20"
-            strokeLinejoin="round"
-            strokeLinecap="round"
-            strokeWidth="2"
-          />
-        </svg>
-        Create
-      </button>
-    </Link>
-  </div>
+<div className="header__library__page__component__page">
+  <h2 className="library-title__library__page__component__page">
+    <div className="icon-container__library__page__component__page">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="30"
+        height="30"
+        className="icon__library__page__component__page"
+      >
+        <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h14v16z" />
+        <path d="M14 9h-4v2h4V9zm0 3h-4v2h4v-2z" />
+      </svg>
+    </div>
+    <span>Library</span>
+  </h2>
+  <Link to="/create/flashcard" style={{ textDecoration: 'none' }}>
+    <button className="create-set-button__library__page__component__page">
+      Create +
+    </button>
+  </Link>
+</div>
+
 
   {sets.length === 0 ? (
     <div className="no-sets-message__library__page__component__page">
