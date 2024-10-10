@@ -98,5 +98,6 @@ export const API_ROUTES = {
   generateFlashcards: `${API_URL}/api/flashcards/generate`,
   updateFlashcardStatus: `${API_URL}/api/flashcards/update-status`,
   getsetdataFlashcard: `${API_URL}/api/flashcard-set/data`,
+  createFlashcardSet: `${API_URL}/api/flashcard-sets/create`,
   fetchStats: (setId) => `${API_URL}/flashcards/stats?set_id=${setId}` // New route
 }
