@@ -35,7 +35,7 @@ const FlashcardSetPage = () => {
     const fetchStats = async () => {
         setLoading(true); // Start loading state before fetching
         try {
-            const response = await axios.get(API_ROUTES.fetchStats(params.id)); // Use the new route
+            const response = await axios.post(API_ROUTES.fetchStats, { set_id: params.id }); // Send set_id in the body
             setStats(response.data);
         } catch (error) {
             console.error('Error fetching stats:', error);
@@ -46,7 +46,6 @@ const FlashcardSetPage = () => {
 
     fetchStats();
 }, [params.id]); // Fetch data whenever setId changes
-
 
 
   useEffect(() => {
