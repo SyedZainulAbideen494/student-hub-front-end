@@ -309,23 +309,7 @@ if (loading) {
 
       {activeTab === 'flashcards' ? (
       <>
-      <div className="search__set__page__add-button">
-        <div className="searchBox__set__page__add-button">
-          <input 
-            type="text" 
-            placeholder="Search flashcards by question" 
-            value={searchQuery} 
-            onChange={(e) => setSearchQuery(e.target.value)} 
-            className="searchInput__set__page__add-button" 
-          />
-          <button className="searchButton__set__page__add-button" onClick={() => { /* Add search functionality here */ }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              {/* SVG Content */}
-            </svg>
-          </button>
-        </div>
-      </div>
-    
+
       {/* Button to show the first flashcard */}
       <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
         View 
