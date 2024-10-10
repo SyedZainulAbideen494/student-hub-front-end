@@ -3,14 +3,15 @@
     font-family: Arial, sans-serif;
   }
 
-  /* Flashcard Set Page Header */
+/* Flashcard Set Page Header */
 .flashcard__set__page__header {
-  padding: 20px;
-  background-color: #F9F9F9; /* Light gray background for a clean look */
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border */
+  padding: 15px 20px;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  position: relative;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
 }
 
 /* Top section with buttons and title */
@@ -18,151 +19,99 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px; /* Spacing between header and details */
 }
 
 /* Back button */
 .flashcard__set__page__back-button {
   background: none;
   border: none;
+  padding: 10px;
   cursor: pointer;
-  padding: 8px;
-  color: #000000; /* Apple-like blue for interactive elements */
-  font-size: 18px;
+  color: #000000; /* Apple-like blue */
+  font-size: 22px;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* Back button hover effect */
-.flashcard__set__page__back-button:hover {
-  transform: scale(1.1); /* Subtle hover effect */
-  color: #000000; /* Darker blue on hover */
-}
 
 /* Page title */
 .flashcard__set__page__title {
-  font-size: 1.6rem;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; /* Apple-like font */
+  font-size: 1.8rem;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   color: #333;
   font-weight: 600;
-  flex-grow: 1;
   text-align: center;
+  flex-grow: 1;
   margin: 0;
   padding: 0;
-  letter-spacing: -0.5px;
 }
 
 /* Delete button */
 .flashcard-set__delete__set {
-  margin-left: auto;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 8px;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease;
-}
-
-/* Delete button hover effect */
-.flashcard-set__delete__set:hover {
-  transform: scale(1.1); /* Slight scaling on hover */
-  background-color: #ef233c; /* Light background on hover */
-}
-
-/* Tooltip styling */
-.tooltipdelete-flashcard-set__delete__set {
-  background-color: #ef233c;
-  border-radius: 12px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 5px;
-  transition: box-shadow 0.2s, background-color 0.2s;
 }
 
-/* Tooltip hover */
-.tooltipdelete-flashcard-set__delete__set:hover {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  background-color: #ef233c;
-  transform: scale(1.05);
+.trash-icon {
+  color: #111111;
+  font-size: 18px;
+  transition: color 0.2s, transform 0.2s;
 }
 
-/* Tooltip text */
-.tooltiptextdelete-flashcard-set__delete__set {
-  visibility: hidden;
-  opacity: 0;
-  background-color: #ef233c;
-  color: #fff;
-  border-radius: 6px;
-  padding: 5px 10px;
-  position: absolute;
-  top: -35px;
-  right: 0;
-  transition: visibility 0.2s, opacity 0.2s;
-  z-index: 1;
-}
 
-/* Show tooltip on hover */
-.tooltipdelete-flashcard-set__delete__set:hover .tooltiptextdelete-flashcard-set__delete__set {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Flashcard Set Page */
+/* Flashcard Set Page Details */
 .flashcard__set__page__details {
-  padding: 12px;
-  margin-bottom: 10px;
-  font-size: 0.9rem; /* Smaller text */
-  color: #444; /* Softer text color */
-  letter-spacing: 0.5px; /* Slight letter spacing for elegance */
-  line-height: 1.6; /* Increase line height for better readability */
+  display: flex;
+  flex-direction: column; /* Stack details vertically */
+  padding: 12px 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
 }
 
+/* Detail items */
 .flashcard__set__page__details p {
-  margin: 6px 0;
   display: flex;
   align-items: center;
-  font-weight: 400; /* Lighter font weight for simpler text */
+  margin: 4px 0; /* Reduced margin for tighter spacing */
+  padding: 4px 0;
+  font-weight: 400;
 }
 
 /* Icons */
 .flashcard__set__page__details i {
-  margin-right: 8px;
-  color: #000000; /* Subtle icon color */
-  font-size: 1rem; /* Smaller icon */
+  margin-right: 8px; /* Space between icon and text */
+  color: #999; /* Lighter icon color */
+  font-size: 1.1rem;
 }
 
 /* Text inside the details */
 .flashcard__set__page__details span {
-  color: #333; /* Darker, but not too bold text */
-  font-weight: 300; /* Lighter weight for a minimal, elegant look */
+  color: #333; /* Slightly darker text */
 }
 
-
-/* Responsive design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .flashcard__set__page__title {
-      font-size: 1.4rem;
-  }
-
-  .flashcard__set__page__header {
-      padding: 15px;
-  }
-
-  .flashcard__set__page__back-button {
-      padding: 6px;
+    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 480px) {
   .flashcard__set__page__title {
-      font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .flashcard__set__page__header {
-      padding: 10px;
-  }
-
-  .flashcard__set__page__back-button {
-      padding: 5px;
+    padding: 10px;
   }
 }
+
+
 
 
 .flashcard__set__page__card {

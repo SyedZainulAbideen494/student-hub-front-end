@@ -263,38 +263,30 @@ if (loading) {
 <div className="flashcard__set__page__header">
     <div className="flashcard__set__page__header__top">
         <button className="flashcard__set__page__back-button" onClick={handleBack}>
-            <i className="fas fa-arrow-left"></i> {/* Back Arrow Icon */}
+            <i className="fas fa-arrow-left"></i>
         </button>
         <h2 className="flashcard__set__page__title">{setName}</h2>
         <button 
             className="flashcard-set__delete__set" 
             onClick={deleteFlashcardSet} 
-            style={{
-                background: 'none',  /* No background */
-                border: 'none',      /* No border */
-                padding: '4px',      /* Small padding */
-                cursor: 'pointer',   /* Pointer on hover */
-                display: 'flex',     /* Flex to align the icon */
-                alignItems: 'center' /* Vertically center icon */
-            }}
         >
-            <FaTrash style={{ color: '#ef233c', fontSize: '18px' }} /> {/* Smaller icon size */}
+            <FaTrash className="trash-icon" />
         </button>
     </div>
-      {/* Subject, Topic, and Number of Flashcards */}
-      <div className="flashcard__set__page__details">
-    <p className="flashcard__set__subject">
-        <i className="fas fa-book"></i> <span>Subject: {subject}</span>
-    </p>
-    <p className="flashcard__set__topic">
-        <i className="fas fa-tag"></i> <span>Topic: {topic}</span>
-    </p>
-    <p className="flashcard__set__count">
-        <i className="fas fa-clone"></i> <span>Flashcards: {flashcards.length}</span>
-    </p>
+    
+    <div className="flashcard__set__page__details">
+        <p className="flashcard__set__subject">
+            <i className="fas fa-book"></i> <span>Subject: {subject}</span>
+        </p>
+        <p className="flashcard__set__topic">
+            <i className="fas fa-tag"></i> <span>Topic: {topic}</span>
+        </p>
+        <p className="flashcard__set__count">
+            <i className="fas fa-clone"></i> <span>Flashcards: {flashcards.length}</span>
+        </p>
+    </div>
 </div>
 
-</div>
 
 
 
