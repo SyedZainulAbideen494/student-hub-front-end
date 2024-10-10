@@ -481,82 +481,91 @@
     background: #007bff; /* Color for underline */
     transition: transform 0.3s; /* Smooth transition for underline */
   }
-  
-  .flashcard {
-    background: white; /* Flashcard background */
-    padding: 15px;
-    border-radius: 8px; /* Rounded corners */
-    margin: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow */
-  }
-  
-  .flashcard__question {
-    display: flex;
-    justify-content: space-between; /* Space between question and arrow */
-  }
-  
-  .flashcard__answer {
-    margin-top: 10px; /* Space above the answer */
-    font-weight: 400; /* Normal weight for answer */
-  }
-  
-
-  .flashcard__set__page__flashcard {
-  border: 1px solid #ddd; /* Add border for better visibility */
-  border-radius: 8px; /* Rounded corners */
+  /* Flashcard Container */
+.flashcard__set__page__flashcard {
+  background: #ffffff; /* White background for the card */
+  border: 1px solid #e0e0e0; /* Lighter border for visibility */
+  border-radius: 12px; /* Slightly more rounded corners */
   margin: 10px 0;
-  padding: 10px;
+  padding: 15px; /* Increased padding for more space */
   position: relative;
-  transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s, transform 0.3s; /* Added transform for hover effect */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 .flashcard__set__page__flashcard:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+  transform: translateY(-2px); /* Lift effect */
 }
 
+/* Flashcard Question */
+.flashcard__set__page__question {
+  font-size: 1.4rem; /* Increased font size for question */
+  font-weight: 600; /* Bold font weight for emphasis */
+  color: #333; /* Darker text color for contrast */
+  margin-bottom: 10px; /* Space below question */
+}
 
-
+/* Flashcard Answer */
 .flashcard__set__page__answer {
-  margin-top: 10px; /* Add spacing above the answer */
-  transition: opacity 0.3s ease-in-out; /* Smooth transition for the answer */
+  margin-top: 10px; /* Space above the answer */
+  opacity: 0; /* Start hidden for animation */
+  transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
 }
 
+/* Show answer when visible */
+.flashcard__set__page__answer.visible {
+  opacity: 1; /* Fully visible when expanded */
+}
 
-.flashcard__set__page__flashcard {
-    border: 1px solid #ddd; /* Add border for better visibility */
-    border-radius: 8px; /* Rounded corners */
-    margin: 10px 0;
-    padding: 10px;
-    position: relative;
-    transition: box-shadow 0.3s;
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack elements vertically */
+/* Answer Toggle Button */
+.flashcard__set__page__answer-toggle__set__page {
+  background: rgba(0, 123, 255, 0.1); /* Transparent background */
+  border: none;
+  cursor: pointer;
+  max-width: 100%; /* Make the button take full width */
+  margin-top: auto; /* Push the button to the bottom */
+  padding: 8px; /* Increased padding for better click area */
+  border-radius: 25px; /* Rounded corners for the button */
+  color: #007bff; /* Blue color */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center content horizontally */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition for background */
+}
+
+.flashcard__set__page__answer-toggle__set__page:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue on hover */
+}
+
+/* Delete Button */
+.flashcard__set__page__delete-button {
+  background: #ef233c; /* Red background */
+  color: #fff; /* White text */
+  border: none;
+  padding: 8px 12px; /* Padding for better click area */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+  margin-top: 10px; /* Space above delete button */
+  transition: background-color 0.3s, transform 0.2s; /* Transition effects */
+}
+
+.flashcard__set__page__delete-button:hover {
+  background-color: #d90429; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .flashcard__set__page__question {
+      font-size: 1.2rem; /* Smaller font size on smaller screens */
   }
-  
-  .flashcard__set__page__answer {
-    margin-top: 10px; /* Add spacing above the answer */
-    opacity: 1; /* Fully visible when expanded */
-    transition: opacity 0.3s ease-in-out; /* Smooth transition for the answer */
+
+  .flashcard__set__page__delete-button {
+      font-size: 0.9rem; /* Smaller font size for delete button */
   }
-  
-  .flashcard__set__page__answer-toggle__set__page {
-    background: transparent; /* Light black background */
-    border: none;
-    cursor: pointer;
-    max-width: 100%; /* Make the button take full width */
-    margin-top: auto; /* Push the button to the bottom */
-    padding: 5px; /* Add some padding for better click area */
-    border-radius: 25px; /* Rounded corners for the button */
-    color: #007bff; /* Change color as needed */
-    border: 1px solid #333;
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center content horizontally */
-  }
-  
-  .flashcard__set__page__answer-toggle__set__page i {
-    width: 80%; /* Set width for the icon */
-    text-align: center; /* Center the icon */
-  }
+}
 
   
   .flashcard__set__page__show-first-btn {
