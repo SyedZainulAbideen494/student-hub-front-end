@@ -281,6 +281,19 @@ if (loading) {
             <FaTrash style={{ color: '#ef233c', fontSize: '18px' }} /> {/* Smaller icon size */}
         </button>
     </div>
+      {/* Subject, Topic, and Number of Flashcards */}
+      <div className="flashcard__set__page__details">
+    <p className="flashcard__set__subject">
+        <i className="fas fa-book"></i> <span>Subject: {subject}</span>
+    </p>
+    <p className="flashcard__set__topic">
+        <i className="fas fa-tag"></i> <span>Topic: {topic}</span>
+    </p>
+    <p className="flashcard__set__count">
+        <i className="fas fa-clone"></i> <span>Flashcards: {flashcards.length}</span>
+    </p>
+</div>
+
 </div>
 
 
