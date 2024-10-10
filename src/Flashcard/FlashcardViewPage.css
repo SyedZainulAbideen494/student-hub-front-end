@@ -1,0 +1,238 @@
+/* General page layout */
+.flashcard__view__page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fefefe; /* Lighter, clean background */
+    padding: 12px; /* Balanced padding */
+    overflow: hidden;
+}
+
+/* Header section */
+.flashcard__view__page__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px; /* Light padding */
+    margin-bottom: 8px; /* Space below the header */
+}
+
+.flashcard__view__page__back-button {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #6e7f90; /* Subtle gray for text */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.flashcard__view__page__back-button:hover {
+    color: #4b596f; /* Darker shade on hover */
+}
+
+.flashcard__view__page__set-name {
+    flex: 1;
+    text-align: center;
+    font-size: 18px; /* Slightly larger font for title */
+    color: #333;
+    font-weight: bold;
+}
+
+/* Content and card styling */
+.flashcard__view__page__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.flashcard__view__page__card {
+    width: 80%;
+    max-width: 360px; /* Wider for better readability */
+    height: 40vh;
+    border-radius: 16px; /* Smooth rounded corners */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    background: linear-gradient(135deg, #f0f9ff, #f0f9ff); /* Light gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    perspective: 1000px;
+    padding: 12px; /* More balanced padding */
+    margin: 12px 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.flashcard__view__page__card__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+/* Front and back of the card */
+.flashcard__view__page__card__front,
+.flashcard__view__page__card__back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 12px;
+    box-sizing: border-box;
+    background: #fff; /* Clean white background for contrast */
+    border-radius: 16px; /* Match card radius */
+}
+
+.flashcard__view__page__card.flipped .flashcard__view__page__card__inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard__view__page__card__back {
+    transform: rotateY(180deg);
+}
+
+/* Question and answer text */
+.flashcard__view__page__question,
+.flashcard__view__page__answer {
+    font-size: 16px; /* Readable size */
+    text-align: center;
+    margin: 0;
+    color: #555; /* Softer text color */
+    overflow-y: auto;
+    padding: 4px 12px;
+}
+
+/* Toggle answer button */
+.flashcard__view__page__toggle-answer-button {
+    margin-top: 12px;
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.flashcard__view__page__toggle-answer-button:hover {
+    color: #333; /* Darker shade on hover */
+}
+
+
+/* Navigation buttons (left-right swipe) */
+.flashcard__view__page__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.flashcard__view__page__nav-button {
+    background: none;
+    border: none;
+    font-size: 20px; /* Comfortable button size */
+    color: #6e7f90;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.flashcard__view__page__nav-button:hover {
+    color: #4b596f;
+}
+
+/* Status buttons */
+.flashcard__view__page__status-buttons {
+    display: flex;
+    gap: 8px; /* More space for better visibility */
+}
+
+.flashcard__view__page__status-button {
+    background-color: #f0f9ff; /* Soft background */
+    color: #333;
+    border: none;
+    border-radius: 16px; /* Softer buttons */
+    padding: 6px 12px; /* Balanced padding */
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.flashcard__view__page__status-button:hover {
+    background-color: #e0f3ff; /* Slight hover effect */
+}
+
+/* Progress bar */
+.flashcard__view__page__progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 10px; /* Slightly larger */
+    margin: 8px 0;
+    position: relative;
+}
+
+.flashcard__view__page__progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #6ec1e4, #3a8eea); /* Color gradient for progress */
+    border-radius: 8px;
+    transition: width 0.3s ease-in-out;
+}
+
+.flashcard__view__page__progress-text {
+    text-align: center;
+    color: #333;
+    font-size: 12px;
+}
+
+/* Instructions section */
+.flashcard__view__page__instructions {
+    font-size: 12px; /* Slightly smaller */
+    text-align: center;
+    color: #666;
+    margin: 8px;
+    padding: 0 8px;
+}
+
+.header-icon_flashcard__view__page {
+    background: transparent; /* Transparent background for minimal look */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    font-size: 18px; /* Adjusted icon size for better visibility */
+    color: #6e7f90; /* Soft gray color for icon */
+    padding: 8px; /* Padding for a clickable area */
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+
+.flashcard__view__page__card {
+    position: absolute; /* Allow positioning within the parent */
+    width: 80%; /* Ensure it takes the full width of the container */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition for transform and opacity */
+    opacity: 1; /* Start fully visible */
+  }
+  
+
+  
+  /* Swipe left effect */
+  .flashcard__view__page__card.swipe-left {
+    transform: translateX(-100%); /* Move left out of view */
+    opacity: 0; /* Fade out */
+  }
+  
+  /* Swipe right effect */
+  .flashcard__view__page__card.swipe-right {
+    transform: translateX(100%); /* Move right out of view */
+    opacity: 0; /* Fade out */
+  }
+  

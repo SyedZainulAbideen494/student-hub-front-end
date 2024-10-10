@@ -1,0 +1,704 @@
+.flashcard__set__page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+.flashcard__set__page__back-button,
+.flashcard__set__page__settings-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.flashcard__set__page__header {
+    padding: 16px;
+    background-color: #ffffff; /* Keep it clean and bright */
+    /* Removed box shadow for a flatter appearance */
+    border-bottom: 1px solid #333;
+}
+
+.flashcard__set__page__title {
+    font-size: 1.6rem; /* Slightly larger for emphasis */
+    font-family: 'Roboto', sans-serif;
+    color: #333333; /* Darker color for better contrast */
+    font-weight: 600;
+    text-align: left; /* Left align for a cleaner look */
+    margin-bottom: 18px;
+}
+
+.flashcard__set__page__details {
+    font-size: 0.9rem;
+    color: #555555; /* Adjusted color for subtlety */
+    text-align: left; /* Left align for consistency */
+    margin-top: 4px; /* Space between title and details */
+}
+
+.flashcard__set__page__details span {
+    display: block; /* Display each detail on a new line */
+    margin-bottom: 2px; /* Space between lines */
+}
+
+.btn__set__page__buttons {
+    background-color: #007AFF;
+    border: none;
+    border-radius: 8px; /* Slightly less rounded for a modern feel */
+    padding: 12px 16px; /* Increased padding for a more substantial button */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn__set__page__buttons:hover {
+    background-color: #005BB5;
+    transform: scale(1.03); /* Slightly reduce scale effect */
+}
+
+.flashcard__set__page__details span {
+    display: flex; /* Align icons and text */
+    align-items: center; /* Center the icon with text */
+}
+
+.flashcard__set__page__details i {
+    margin-right: 4px; /* Space between icon and text */
+    color: #007AFF; /* Match the color of your buttons */
+}
+
+
+.flashcard__set__page__card {
+    background-color: #ffffff; /* Keep cards clean and white */
+    padding: 16px;
+    border-radius: 8px; /* Rounded corners for consistency */
+    margin: 8px 0;
+}
+
+
+.flashcard__set__page__list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flashcard__set__page__card {
+    padding: 12px; /* Slightly increased padding */
+    margin: 8px 0; /* Slightly larger margin */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #333;
+    display: flex; /* Use flex to align icon and text */
+    align-items: center; /* Center icon and text */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flashcard__set__page__icon {
+    margin-right: 10px; /* Space between icon and question text */
+    color: #007AFF; /* Icon color */
+    font-size: 1.2rem; /* Adjust icon size */
+  }
+  
+  .flashcard__set__page__card:hover {
+    background-color: #f0f0f0; /* Lighten background on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  }
+  
+  .flashcard__set__page__no-cards {
+    text-align: center;
+    color: #888;
+    font-size: 1.1rem; /* Slightly larger font size for no cards message */
+  }
+  
+  .search__set__page__add-button {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0; /* Reduced spacing around the search bar */
+  }
+
+  
+  .searchBox__set__page__add-button {
+    display: flex;
+    max-width: 300px; /* Decreased max width for a smaller search bar */
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px; /* Reduced gap between input and button */
+    background: #2f3640;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px; /* Reduced padding for a more compact look */
+  }
+  
+  .searchInput__set__page__add-button {
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-size: 14px; /* Reduced font size for a smaller input */
+    padding: 12px; /* Adjusted padding for the input */
+    width: 100%; /* Make input fill available space */
+  }
+  
+  .searchButton__set__page__add-button {
+    color: white;
+    width: 40px; /* Reduced button size */
+    height: 40px; /* Reduced button size */
+    border-radius: 50%;
+    background: var(--gradient-2, linear-gradient(90deg, #2AF598 0%, #009EFD 100%));
+    border: 0;
+    display: inline-block;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  }
+  
+  .searchButton__set__page__add-button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+    transform: translateY(-2px); /* Slightly adjusted hover effect */
+  }
+  
+  .searchButton__set__page__add-button:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  
+  
+
+/* Fixed + button at bottom right */
+.flashcard__set__page__add-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+
+/* General Modal Styling */
+.flashcard__set__page__modal {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f9f9f9; /* Light background for better contrast */
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow for more elevation */
+    padding: 30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    transform: translateY(100%); /* Initially hidden */
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    z-index: 1000; /* Ensure it's always on top */
+}
+
+/* Centering the modal content */
+.flashcard__set__page__modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduced gap for a more compact look */
+    margin-top: 30px; /* Reduced top margin */
+    text-align: center;
+    align-items: center; /* Center items */
+}
+
+/* Add this for a loading effect on the button */
+.btn__set__page__buttons:disabled {
+    background-color: #ccc; /* Gray background when disabled */
+    cursor: not-allowed; /* Not allowed cursor */
+    opacity: 0.7; /* Slightly transparent */
+}
+
+
+
+
+.flashcard__set__page__modal-active {
+    transform: translateY(0); /* Slide-up transition */
+}
+
+/* Close Button */
+.flashcard__set__page__modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff6b6b; /* Nice red for close icon */
+    transition: color 0.3s ease;
+}
+
+.flashcard__set__page__modal-close:hover {
+    color: #ff4c4c; /* Slightly brighter on hover */
+}
+
+/* Modal Content Styling */
+.flashcard__set__page__modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Reduced gap for a more compact look */
+    margin-top: 30px; /* Reduced top margin */
+    text-align: center;
+}
+
+/* Buttons in the Modal */
+.flashcard__set__page__modal-generate,
+.flashcard__set__page__modal-manual {
+    background-color: #000; /* Black background */
+    color: white; /* White text */
+    border: none;
+    padding: 15px 19px; /* Reduced padding */
+    border-radius: 25px; /* Slightly less curvature */
+    font-size: 16px; /* Smaller text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.flashcard__set__page__modal-generate:hover,
+.flashcard__set__page__modal-manual:hover {
+    transform: translateY(-2px); /* Reduced lift effect */
+    background-color: #444; /* Lighter black on hover */
+}
+
+/* Icon Styling */
+.flashcard__set__page__modal-generate i,
+.flashcard__set__page__modal-manual i {
+    margin-right: 8px; /* Reduced margin */
+    font-size: 18px; /* Smaller icon size */
+}
+
+/* Modal Header */
+.flashcard__set__page__modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Align title and close button */
+    margin-bottom: 15px; /* Add some space below the header */
+}
+
+.flashcard__set__page__modal-title {
+    font-size: 18px; /* Smaller title size */
+    color: #333; /* Darker text for visibility */
+    margin: 0; /* Remove default margin */
+}
+
+.flashcard__set__page__modal-header {
+    display: flex;
+    flex-direction: column; /* Stack header items vertically */
+    align-items: center; /* Center align items */
+    width: 100%; /* Ensure it takes full width */
+}
+
+.flashcard__set__page__modal-title {
+    margin: 0; /* Remove default margin */
+}
+
+
+/* Close Button */
+.flashcard__set__page__modal-close {
+    font-size: 18px; /* Smaller close button size */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000; /* Color for close icon */
+    transition: color 0.3s ease;
+}
+
+.flashcard__set__page__modal-close:hover {
+    color: #ff3b30; /* Red color on hover for close */
+}
+
+
+.btn__set__page__buttons {
+    border: none;
+    width: 12em; /* Reduced width */
+    height: 3em; /* Decreased height to make it shorter */
+    border-radius: 2em; /* Adjusted border-radius for smaller buttons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Reduced gap between elements */
+    background: #000;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+}
+
+.sparkle__set__page__buttons {
+    fill: #AAAAAA;
+    transition: all 800ms ease;
+}
+
+.text__set__page__buttons {
+    font-weight: 600;
+    color: #AAAAAA;
+    font-size: small; /* Changed to small for smaller buttons */
+}
+
+.btn__set__page__buttons:hover {
+    background: linear-gradient(0deg, #A47CF3, #683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+}
+
+.btn__set__page__buttons:hover .text__set__page__buttons {
+    color: white;
+}
+
+.btn__set__page__buttons:hover .sparkle__set__page__buttons {
+    fill: white;
+    transform: scale(1.1); /* Slightly reduce scale effect */
+}
+
+/* Add this to your FlashcardSetPage.css */
+
+.sparkle__set__page__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.animating .sparkle__set__page__buttons {
+    animation: sparkle 0.6s infinite; /* Add sparkle animation */
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(1.2); /* Grow */
+    }
+}
+
+.btn__set__page__buttons {
+    position: relative;
+    overflow: hidden; /* Ensure sparkles don't overflow */
+}
+
+/* Additional styles for button disabled state */
+.btn__set__page__buttons:disabled {
+    background: linear-gradient(0deg, #A47CF3, #683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+}
+
+
+.flashcard__set__page {
+    padding: 20px;
+    background: #f9f9f9; /* Light background */
+  }
+  
+  .flashcard__set__page__header {
+    margin-bottom: 20px;
+  }
+  
+  .flashcard__set__page__tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .tab.active {
+    border-bottom: 2px solid #007bff; /* Underline for active tab */
+    font-weight: bold; /* Make active tab bold */
+  }
+  
+  .underline {
+    height: 2px;
+    background: #007bff; /* Color for underline */
+    transition: transform 0.3s; /* Smooth transition for underline */
+  }
+  
+  .flashcard {
+    background: white; /* Flashcard background */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow */
+  }
+  
+  .flashcard__question {
+    display: flex;
+    justify-content: space-between; /* Space between question and arrow */
+  }
+  
+  .flashcard__answer {
+    margin-top: 10px; /* Space above the answer */
+    font-weight: 400; /* Normal weight for answer */
+  }
+  
+
+  .flashcard__set__page__flashcard {
+  border: 1px solid #ddd; /* Add border for better visibility */
+  border-radius: 8px; /* Rounded corners */
+  margin: 10px 0;
+  padding: 10px;
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+
+.flashcard__set__page__flashcard:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow on hover */
+}
+
+
+
+.flashcard__set__page__answer {
+  margin-top: 10px; /* Add spacing above the answer */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for the answer */
+}
+
+
+.flashcard__set__page__flashcard {
+    border: 1px solid #ddd; /* Add border for better visibility */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px 0;
+    padding: 10px;
+    position: relative;
+    transition: box-shadow 0.3s;
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack elements vertically */
+  }
+  
+  .flashcard__set__page__answer {
+    margin-top: 10px; /* Add spacing above the answer */
+    opacity: 1; /* Fully visible when expanded */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for the answer */
+  }
+  
+  .flashcard__set__page__answer-toggle__set__page {
+    background: transparent; /* Light black background */
+    border: none;
+    cursor: pointer;
+    max-width: 100%; /* Make the button take full width */
+    margin-top: auto; /* Push the button to the bottom */
+    padding: 5px; /* Add some padding for better click area */
+    border-radius: 25px; /* Rounded corners for the button */
+    color: #007bff; /* Change color as needed */
+    border: 1px solid #333;
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center content horizontally */
+  }
+  
+  .flashcard__set__page__answer-toggle__set__page i {
+    width: 80%; /* Set width for the icon */
+    text-align: center; /* Center the icon */
+  }
+
+  
+  .flashcard__set__page__show-first-btn {
+    background: none; /* No background */
+    margin-top: 20px;
+    color: #007aff; /* Blue text color */
+    border: 2px solid #007aff; /* Blue border */
+    border-radius: 12px; /* Rounded edges */
+    padding: 5px 10px; /* Smaller padding for a compact button */
+    font-size: 14px; /* Smaller font size */
+    font-weight: 600; /* Bold font weight */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    display: inline-block; /* Align with other inline elements */
+  }
+  
+  .flashcard__set__page__show-first-btn:hover {
+    background-color: #007aff; /* Blue background on hover */
+    color: white; /* White text on hover */
+  }
+  
+  .flashcard__set__page__show-first-btn:active {
+    transform: scale(0.95); /* Scale down on active/click */
+  }
+  
+
+  .flashcard__set__page__flashcards {
+    display: flex;
+    flex-direction: column; /* Stack flashcards vertically */
+    gap: 10px; /* Space between flashcards */
+}
+
+.flashcard__set__page__flashcard {
+    border: 1px solid #ddd; /* Light border for visibility */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px 0;
+    padding: 20px; /* Increased padding for better spacing */
+    position: relative;
+    transition: box-shadow 0.3s, transform 0.3s; /* Smooth shadow and transform */
+    background-color: #fff; /* White background for contrast */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.flashcard__set__page__flashcard:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.flashcard__set__page__question {
+    font-size: 18px; /* Slightly larger font size */
+    font-weight: bold; /* Bold text for emphasis */
+    margin-bottom: 10px; /* Space below the question */
+    color: #333; /* Darker text color */
+}
+
+.flashcard__set__page__answer {
+    margin-top: 10px; /* Add spacing above the answer */
+    opacity: 1; /* Fully visible when expanded */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for the answer */
+    font-size: 16px; /* Font size for the answer */
+    color: #555; /* Lighter text color */
+}
+
+
+
+/* FlashcardSetPage.css */
+
+.flashcard__set__page {
+    padding: 20px;
+}
+
+
+.tab-navigation {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    position: relative; /* Positioning context for underline */
+}
+
+.tab-button {
+    background: transparent; /* No background */
+    border: none; /* No border */
+    font-size: 16px; /* Slightly smaller font size */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Change cursor to pointer */
+    color: #666; /* Default text color */
+    position: relative; /* Positioning context for underline */
+}
+
+.tab-button:hover {
+    color: #0066FF; /* Change text color on hover */
+}
+
+.tab-button.active {
+    color: #0066FF; /* Active tab text color */
+}
+
+/* Animated underline effect */
+.tab-button::after {
+    content: ''; /* Pseudo-element for underline */
+    position: absolute;
+    left: 50%; /* Center the underline */
+    bottom: -5px; /* Position the underline below the text */
+    width: 0; /* Initial width */
+    height: 2px; /* Height of the underline */
+    background-color: #0066FF; /* Underline color */
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition */
+}
+
+.tab-button.active::after {
+    width: 100%; /* Full width when active */
+    left: 0; /* Align to the left */
+}
+
+
+
+
+/* FlashcardStats.css */
+.stats-container__flashcard__page {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    transition: box-shadow 0.3s ease;
+}
+
+.stats-container__flashcard__page:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.circular-progress__flashcard__page {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.circle__flashcard__page {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #f7f7f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.percentage__flashcard__page {
+    position: absolute;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+.subtext {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.description {
+    font-size: 10px;
+    color: #999;
+    margin: 0;
+}
+
+.stats-details__flashcard__page {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.card-count {
+    margin: 5px 0;
+}
+
+.card-count span {
+    font-weight: bold; /* Bold for emphasis */
+    color: #4caf50; /* Accent color for counts */
+}
+
+.total-cards__flashcard__page {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}

@@ -4,7 +4,7 @@ import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; 
-import { MdBusiness } from 'react-icons/md'; 
+import { MdBusiness, MdNote } from 'react-icons/md'; 
 import './footer-nav.css';
 import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
@@ -104,6 +104,12 @@ const FooterNav = () => {
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaStickyNote className="icon-footer-nav" />
                     <span className="btn-label">Notes</span>
+                </button>
+            </Link>
+            <Link to='/flashcard' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/flashcard' ? 'active' : ''}`}>
+                    <MdNote className="icon-footer-nav" />
+                    <span className="btn-label">Flashcards</span>
                 </button>
             </Link>
                 <Link to='/groups' style={{ textDecoration: 'none' }}>

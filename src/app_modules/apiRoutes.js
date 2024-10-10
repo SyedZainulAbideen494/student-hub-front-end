@@ -92,5 +92,11 @@ export const API_ROUTES = {
   inviteFriendToEdusify: `${API_URL}/invite/friend`,
   apiStartPomodoro: `${API_URL}/api/start/pomodoro`,
   apiStopPomodoro: `${API_URL}/api/stop/pomodoro`,
-  leaderboard: `${API_URL}/api/leaderboard`
+  leaderboard: `${API_URL}/api/leaderboard`,
+  getFlashcards: `${API_URL}/api/flashcard-sets`,
+  flashcardSetGetData: `${API_URL}/api/flashcards/set`,
+  generateFlashcards: `${API_URL}/api/flashcards/generate`,
+  updateFlashcardStatus: `${API_URL}/api/flashcards/update-status`,
+  getsetdataFlashcard: `${API_URL}/api/flashcard-set/data`,
+  fetchStats: (setId) => `${API_URL}/flashcards/stats?set_id=${setId}` // New route
 }

@@ -8,7 +8,6 @@ const SuccessMessage = ({ message, onClose }) => {
         const timer = setTimeout(() => {
             setIsVisible(false);
             const hideTimer = setTimeout(() => {
-                console.log('Hiding success message');
                 onClose();
             }, 300); // Delay to match the animation duration
 
@@ -17,8 +16,6 @@ const SuccessMessage = ({ message, onClose }) => {
 
         return () => clearTimeout(timer);
     }, [onClose]);
-
-    console.log('Rendering SuccessMessage with message:', message);
 
     return (
         <div className={`success-message-sucess-modal ${isVisible ? 'show__message__success__modal' : 'hide__message__success__modal'}`}>

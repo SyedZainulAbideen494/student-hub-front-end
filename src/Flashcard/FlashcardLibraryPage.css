@@ -1,0 +1,136 @@
+.flashcard__library__page__component__page {
+    padding: 20px;
+    background-color: #f4f7fa; /* Light background color for better contrast */
+  }
+  
+  .header__library__page__component__page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px; /* Adds some space at the bottom */
+    border-bottom: 2px solid #ddd; /* Creates a visual separation */
+  }
+  
+  .library-title__library__page__component__page {
+    font-size: 24px;
+    color: #333; /* Darker text color */
+    display: flex;
+    align-items: center; /* Aligns icon with title */
+  }
+  
+
+  .create-set-button__library__page__component__page {
+    border: none;
+    display: flex;
+    padding: 8px 12px; /* Adjust padding for a more compact button */
+    background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+    color: #ffffff;
+    font-size: 14px; /* Adjust font size */
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    user-select: none;
+    gap: 0.5rem; /* Reduced gap for better alignment */
+    box-shadow:
+        0 4px 6px -1px #488aec31,
+        0 2px 4px -1px #488aec17;
+    transition: all 0.6s ease;
+}
+
+.create-set-button__library__page__component__page:hover {
+    box-shadow:
+        0 10px 15px -3px #488aec4f,
+        0 4px 6px -2px #488aec17;
+}
+
+.create-set-button__library__page__component__page:focus,
+.create-set-button__library__page__component__page:active {
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+.create-set-button__library__page__component__page .create-set-button__library__page__component__page__svg {
+    width: 16px; /* Adjust icon size */
+    height: 16px; /* Adjust icon size */
+    fill: #ffffff; /* Set the fill color to white */
+}
+
+
+  
+  .set-list__library__page__component__page {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller cards */
+    gap: 20px;
+    padding: 20px;
+    
+  }
+  
+  .set-card__library__page__component__page {
+    border: none; /* Remove border */
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  .set-card__library__page__component__page:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+  }
+  
+  .set-item__library__page__component__page {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .icon-container__library__page__component__page {
+    margin-right: 8px; /* Space between icon and title */
+  }
+  
+  .card-content__library__page__component__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+  }
+  
+  .set-name__library__page__component__page {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    color: #333;
+  }
+  
+  .set-topic__library__page__component__page,
+  .set-subject__library__page__component__page {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .share__btn__flashcard__card__page {
+    font-family: inherit;
+    font-size: 14px; /* Smaller font size */
+    background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+    color: white;
+    padding: 0.6em 1em; /* Smaller padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 20px; /* Slightly smaller border radius */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+    transition: all 0.3s;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+  
+  .share__btn__flashcard__card__page:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  

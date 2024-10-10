@@ -208,7 +208,7 @@ const ViewFlashCard = () => {
                                     {/* Note Content */}
                                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
                                         <svg
-                                            style={{ stroke: '#A78BFA', flexShrink: 0, borderRadius: '50%' }}
+                                            style={{ stroke: '#A78BFA', flexShrink: 0 }}
                                             height="50"
                                             preserveAspectRatio="xMidYMid meet"
                                             viewBox="0 0 24 24"

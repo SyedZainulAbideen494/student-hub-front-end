@@ -60,6 +60,10 @@ import CreateFlashcard from "./flashCards/createFlashcard";
 import PaymentButton from "./testing/testingpayment";
 import QuizGuidePage from "./quiz/quizGuidePage";
 import Leaderboard from "./streaks/leaderBoard";
+import FlashcardLibraryPage from "./Flashcard/FlashcardLibraryPage";
+import FlashcardSetPage from "./Flashcard/FlashcardSetPage";
+import CreateFlashcardSet from "./Flashcard/CreateFlashcardSet";
+import FlashcardViewPage from "./Flashcard/FlashcardViewPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -108,6 +112,10 @@ const router = createBrowserRouter([
   {path: '/notes/create', element: <CreateFlashcard/>},
   {path: '/quiz/guide', element: <QuizGuidePage/>},
   {path: '/leaderboard', element: <Leaderboard/>},
+  {path: '/flashcard', element: <FlashcardLibraryPage/>},
+  {path: '/flashcard/set/:id', element: <FlashcardSetPage/>},
+  {path: '/create/flashcard', element: <CreateFlashcardSet/>},
+  {path: '/flashcard/card/view/:id/:setId', element: <FlashcardViewPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
