@@ -31,7 +31,10 @@ const FlashcardSetPage = () => {
   const params = useParams()
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [manualQuestion, setManualQuestion] = useState('');
+  const [manualAnswer, setManualAnswer] = useState('');
 
+  
   useEffect(() => {
     const fetchStats = async () => {
         setLoading(true); // Start loading state before fetching
@@ -204,6 +207,49 @@ const deleteFlashcard = async (flashcardId) => {
   }
 };
 
+const createManualFlashcard = async () => {
+  try {
+    const setId = params.id; // Make sure this is correctly defined
+
+    // Send request to your backend to create the flashcard
+    await axios.post(`${API_ROUTES.createFlashcardManually}`, { 
+      question: manualQuestion, 
+      answer: manualAnswer,
+      set_id: setId // Ensure the key matches the server's expectations
+    });
+
+    // Set a success message here
+    setSuccessMessage('Flashcard created successfully!'); // Assuming you have a state for successMessage
+    setModalVisible(false); 
+    // Hide success message after 2 seconds
+    setTimeout(() => {
+      setSuccessMessage(''); // Clear the success message
+      window.location.reload(); // Refresh the page
+    }, 2000);
+
+    // Optionally clear the inputs after creating
+    setManualQuestion('');
+    setManualAnswer('');
+    
+    // Refresh the flashcards
+    fetchFlashcardSetData();
+  } catch (error) {
+    console.error('Error creating manual flashcard:', error);
+  }
+};
+
+
+const deleteFlashcardSet = async () => {
+  try {
+    await axios.delete(`${API_ROUTES.deleteFlashcardSet}/${params.id}`);
+    alert('Flashcard set deleted successfully!'); // Success message
+    fetchFlashcardSetData(); // Refresh the list of flashcard sets
+  } catch (error) {
+    console.error('Error deleting flashcard set:', error);
+    alert('Failed to delete flashcard set. Please try again.'); // Error message
+  }
+};
+
 
   // Return the loading state unconditionally
 if (loading) {
@@ -213,31 +259,36 @@ if (loading) {
 
   return (
     <div className="flashcard__set__page">
-     <div className="flashcard__set__page__header">
-    <div className="flashcard__set__page__header__top">
-        <button className="flashcard__set__page__back-button" onClick={handleBack}>
-            <i className="fas fa-arrow-left"></i> {/* Back Arrow Icon */}
-        </button>
-        <h2 className="flashcard__set__page__title">{setName}</h2>
-    </div>
+<div className="flashcard__set__page__header">
+  <div className="flashcard__set__page__header__top">
+    <button className="flashcard__set__page__back-button" onClick={handleBack}>
+      <i className="fas fa-arrow-left"></i> {/* Back Arrow Icon */}
+    </button>
+    <h2 className="flashcard__set__page__title">{setName}</h2>
+  </div>
 
-    <div className="flashcard__set__page__details">
-        <span className="flashcard__set__page__subject">
-            <i className="fas fa-book"></i> {/* Subject Icon */}
-            Subject: {subject}
-        </span>
-        <br />
-        <span className="flashcard__set__page__topic">
-            <i className="fas fa-tag"></i> {/* Topic Icon */}
-            Topic: {topic}
-        </span>
-        <br />
-        <span className="flashcard__set__page__flashcard-count">
-            <i className="fas fa-id-card"></i> {/* Flashcard Count Icon */}
-            Flashcards: {flashcards.length}
-        </span>
-    </div>
+  <div className="flashcard__set__page__details">
+    <span className="flashcard__set__page__subject">
+      <i className="fas fa-book"></i> {/* Subject Icon */}
+      Subject: {subject}
+    </span>
+    <br />
+    <span className="flashcard__set__page__topic">
+      <i className="fas fa-tag"></i> {/* Topic Icon */}
+      Topic: {topic}
+    </span>
+    <br />
+    <span className="flashcard__set__page__flashcard-count">
+      <i className="fas fa-id-card"></i> {/* Flashcard Count Icon */}
+      Flashcards: {flashcards.length}
+    </span>
+    <br />
+    <button onClick={deleteFlashcardSet} className="btn-delete-flashcard-set">
+      Delete Flashcard Set
+    </button>
+  </div>
 </div>
+
 
 {/* Tab Navigation for Flashcards and Stats */}
 <div className="tab-navigation">
@@ -349,6 +400,7 @@ if (loading) {
       <i className="fas fa-times"></i> {/* Close Icon */}
     </button>
   </div>
+  
   <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
     <button className="flashcard__set__page__modal-generate btn__set__page__buttons" onClick={generateFlashcards} disabled={isGenerating}>
       <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
@@ -358,6 +410,32 @@ if (loading) {
         <span className="text__set__page__buttons">{isGenerating ? 'Generating...' : 'Generate'}</span>
       </div>
     </button>
+
+{/* Manual Flashcard Creation Form */}
+<div className="manual-flashcard-creation__manual__flashcard__form">
+  <h4>Create Manually</h4>
+  <input 
+    type="text" 
+    placeholder="Question" 
+    value={manualQuestion} 
+    onChange={(e) => setManualQuestion(e.target.value)} 
+    className="flashcard-input__manual__flashcard__form" 
+  />
+  <input 
+    type="text" 
+    placeholder="Answer" 
+    value={manualAnswer} 
+    onChange={(e) => setManualAnswer(e.target.value)} 
+    className="flashcard-input__manual__flashcard__form" 
+  />
+  <button 
+    className="flashcard__set__page__manual-create__manual__flashcard__form" 
+    onClick={createManualFlashcard}
+    disabled={!manualQuestion || !manualAnswer} // Disable button if inputs are empty
+  >
+    Create Flashcard
+  </button>
+</div>
 
   </div>
 </div>
