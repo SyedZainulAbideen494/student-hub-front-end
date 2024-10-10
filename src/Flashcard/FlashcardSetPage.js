@@ -6,6 +6,7 @@ import './FlashcardSetPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import axios from 'axios';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
+import { FaTrash } from 'react-icons/fa';
 
 const FlashcardSetPage = () => {
   const { id } = useParams();
@@ -260,34 +261,30 @@ if (loading) {
   return (
     <div className="flashcard__set__page">
 <div className="flashcard__set__page__header">
-  <div className="flashcard__set__page__header__top">
-    <button className="flashcard__set__page__back-button" onClick={handleBack}>
-      <i className="fas fa-arrow-left"></i> {/* Back Arrow Icon */}
-    </button>
-    <h2 className="flashcard__set__page__title">{setName}</h2>
-  </div>
-
-  <div className="flashcard__set__page__details">
-    <span className="flashcard__set__page__subject">
-      <i className="fas fa-book"></i> {/* Subject Icon */}
-      Subject: {subject}
-    </span>
-    <br />
-    <span className="flashcard__set__page__topic">
-      <i className="fas fa-tag"></i> {/* Topic Icon */}
-      Topic: {topic}
-    </span>
-    <br />
-    <span className="flashcard__set__page__flashcard-count">
-      <i className="fas fa-id-card"></i> {/* Flashcard Count Icon */}
-      Flashcards: {flashcards.length}
-    </span>
-    <br />
-    <button onClick={deleteFlashcardSet} className="btn-delete-flashcard-set">
-      Delete Flashcard Set
-    </button>
-  </div>
+    <div className="flashcard__set__page__header__top">
+        <button className="flashcard__set__page__back-button" onClick={handleBack}>
+            <i className="fas fa-arrow-left"></i> {/* Back Arrow Icon */}
+        </button>
+        <h2 className="flashcard__set__page__title">{setName}</h2>
+        <button 
+            className="flashcard-set__delete__set" 
+            onClick={deleteFlashcardSet} 
+            style={{
+                background: 'none',  /* No background */
+                border: 'none',      /* No border */
+                padding: '4px',      /* Small padding */
+                cursor: 'pointer',   /* Pointer on hover */
+                display: 'flex',     /* Flex to align the icon */
+                alignItems: 'center' /* Vertically center icon */
+            }}
+        >
+            <FaTrash style={{ color: '#ef233c', fontSize: '18px' }} /> {/* Smaller icon size */}
+        </button>
+    </div>
 </div>
+
+
+
 
 
 {/* Tab Navigation for Flashcards and Stats */}

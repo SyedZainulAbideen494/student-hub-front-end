@@ -3,66 +3,134 @@
     font-family: Arial, sans-serif;
   }
 
-.flashcard__set__page__back-button,
-.flashcard__set__page__settings-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 8px;
-}
-
+  /* Flashcard Set Page Header */
 .flashcard__set__page__header {
-    padding: 16px;
-    background-color: #ffffff; /* Keep it clean and bright */
-    /* Removed box shadow for a flatter appearance */
-    border-bottom: 1px solid #333;
+  padding: 20px;
+  background-color: #F9F9F9; /* Light gray background for a clean look */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Subtle border */
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
+/* Top section with buttons and title */
+.flashcard__set__page__header__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Back button */
+.flashcard__set__page__back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: #000000; /* Apple-like blue for interactive elements */
+  font-size: 18px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Back button hover effect */
+.flashcard__set__page__back-button:hover {
+  transform: scale(1.1); /* Subtle hover effect */
+  color: #000000; /* Darker blue on hover */
+}
+
+/* Page title */
 .flashcard__set__page__title {
-    font-size: 1.6rem; /* Slightly larger for emphasis */
-    font-family: 'Roboto', sans-serif;
-    color: #333333; /* Darker color for better contrast */
-    font-weight: 600;
-    text-align: left; /* Left align for a cleaner look */
-    margin-bottom: 18px;
+  font-size: 1.6rem;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif; /* Apple-like font */
+  color: #333;
+  font-weight: 600;
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -0.5px;
 }
 
-.flashcard__set__page__details {
-    font-size: 0.9rem;
-    color: #555555; /* Adjusted color for subtlety */
-    text-align: left; /* Left align for consistency */
-    margin-top: 4px; /* Space between title and details */
+/* Delete button */
+.flashcard-set__delete__set {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease;
 }
 
-.flashcard__set__page__details span {
-    display: block; /* Display each detail on a new line */
-    margin-bottom: 2px; /* Space between lines */
+/* Delete button hover effect */
+.flashcard-set__delete__set:hover {
+  transform: scale(1.1); /* Slight scaling on hover */
+  background-color: #ef233c; /* Light background on hover */
 }
 
-.btn__set__page__buttons {
-    background-color: #007AFF;
-    border: none;
-    border-radius: 8px; /* Slightly less rounded for a modern feel */
-    padding: 12px 16px; /* Increased padding for a more substantial button */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+/* Tooltip styling */
+.tooltipdelete-flashcard-set__delete__set {
+  background-color: #ef233c;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: box-shadow 0.2s, background-color 0.2s;
 }
 
-.btn__set__page__buttons:hover {
-    background-color: #005BB5;
-    transform: scale(1.03); /* Slightly reduce scale effect */
+/* Tooltip hover */
+.tooltipdelete-flashcard-set__delete__set:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  background-color: #ef233c;
+  transform: scale(1.05);
 }
 
-.flashcard__set__page__details span {
-    display: flex; /* Align icons and text */
-    align-items: center; /* Center the icon with text */
+/* Tooltip text */
+.tooltiptextdelete-flashcard-set__delete__set {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #ef233c;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  top: -35px;
+  right: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+  z-index: 1;
 }
 
-.flashcard__set__page__details i {
-    margin-right: 4px; /* Space between icon and text */
-    color: #007AFF; /* Match the color of your buttons */
+/* Show tooltip on hover */
+.tooltipdelete-flashcard-set__delete__set:hover .tooltiptextdelete-flashcard-set__delete__set {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .flashcard__set__page__title {
+      font-size: 1.4rem;
+  }
+
+  .flashcard__set__page__header {
+      padding: 15px;
+  }
+
+  .flashcard__set__page__back-button {
+      padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard__set__page__title {
+      font-size: 1.2rem;
+  }
+
+  .flashcard__set__page__header {
+      padding: 10px;
+  }
+
+  .flashcard__set__page__back-button {
+      padding: 5px;
+  }
 }
 
 
@@ -845,3 +913,4 @@
     color: #666; /* Subtle icon color */
   }
   
+
