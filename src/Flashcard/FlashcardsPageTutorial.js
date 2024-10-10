@@ -31,8 +31,8 @@ const FlashcardsPageTutorial = ({ onComplete }) => {
     };
 
     return (
-        <div className="tutorial-overlay__flashcards__modal">
-            <div className="tutorial-content__flashcards__modal">
+        <div className="tutorial-overlay__tutorial__msg__modal">
+            <div className="tutorial-content__tutorial__msg__modal">
                 <h3>{tutorialMessages[currentStep]}</h3>
                 <button onClick={handleNextClick}>
                     {currentStep < tutorialMessages.length - 1 ? 'Next' : 'Got it!'}
