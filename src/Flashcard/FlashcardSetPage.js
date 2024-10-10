@@ -242,8 +242,8 @@ const createManualFlashcard = async () => {
 const deleteFlashcardSet = async () => {
   try {
     await axios.delete(`${API_ROUTES.deleteFlashcardSet}/${params.id}`);
-    alert('Flashcard set deleted successfully!'); // Success message
     fetchFlashcardSetData(); // Refresh the list of flashcard sets
+    nav('/flashcard')
   } catch (error) {
     console.error('Error deleting flashcard set:', error);
     alert('Failed to delete flashcard set. Please try again.'); // Error message
