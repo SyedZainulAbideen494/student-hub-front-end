@@ -791,3 +791,57 @@
     cursor: not-allowed; /* Change cursor to not-allowed */
   }
   
+  
+
+
+  .flashcard__set__page__no-flashcards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    margin: 20px 0;
+  }
+  
+  .flashcard__set__page__empty-icon {
+    margin-bottom: 15px;
+    color: #ccc;
+  }
+  
+  .flashcard__set__page__no-flashcards-message h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .flashcard__set__page__no-flashcards-message p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .flashcard__set__page__add-first-btn {
+    background-color: #f0f0f5; /* Light neutral color */
+    color: #333; /* Soft dark gray for text */
+    border: none;
+    border-radius: 12px; /* More curved edges for a softer look */
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .flashcard__set__page__add-first-btn:hover {
+    background-color: #e0e0e5; /* Slightly darker on hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+  }
+  
+  .flashcard__set__page__add-first-btn i {
+    margin-right: 8px;
+    color: #666; /* Subtle icon color */
+  }
+  
