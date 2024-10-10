@@ -6,11 +6,31 @@ import './homeTodayData.css'; // Import the CSS file
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import NoContentCardFace from './nocontentcard';
 import NoContentCardTask from './nocontentTaskCArd';
+import TodayEventsAndTasksTutorial from './TodayEventsAndTasksTutorial';
 
 const TodayEventsAndTasks = () => {
     const nav = useNavigate();
     const [events, setEvents] = useState([]); // State for events
     const [tasks, setTasks] = useState([]); // State for tasks
+    const [isFirstVisit, setIsFirstVisit] = useState(true);
+
+    useEffect(() => {
+        const visited = localStorage.getItem('hasVisitedTodayEventsAndTasks');
+
+        // Check if the user has visited before
+        if (visited) {
+            // If visited, set isFirstVisit to false
+            setIsFirstVisit(false);
+        }
+    }, []);
+
+    // Function to handle the completion of the tutorial
+    const handleTutorialComplete = () => {
+        setIsFirstVisit(false); // Set the first visit state to false
+        localStorage.setItem('hasVisitedTodayEventsAndTasks', 'true'); // Mark as visited in local storage
+    };
+
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,6 +77,7 @@ const TodayEventsAndTasks = () => {
 
     return (
         <div className="today-container__home__page__component">
+               {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
             <div className='section__home__page__component'>
         <div className="section-header">
             <h2><FaCalendarAlt/> Today's Events</h2>

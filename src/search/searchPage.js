@@ -20,7 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import './searchPage.css';
-
+import SearchPageTutorial from './SearchPageTutorial';
 const SearchPage = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
@@ -29,6 +29,20 @@ const SearchPage = () => {
     const [error, setError] = useState(null);
     const [page, setPage] = useState(0); // Added state for pagination
     const nav = useNavigate();
+    const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
+
+    useEffect(() => {
+        // Check local storage for tutorial completion status
+        const completed = localStorage.getItem('searchPageTutorialComplete');
+        if (completed) {
+            setShowTutorial(false); // Set showTutorial to false if found
+        }
+    }, []);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false); // Hide tutorial when complete
+        localStorage.setItem('searchPageTutorialComplete', 'true'); // Store completion status in local storage
+    };
 
     const handleSearch = useCallback(
         async (searchQuery) => {
@@ -109,6 +123,7 @@ const SearchPage = () => {
 
     return (
         <div style={{ marginBottom: '100px' }}>
+             {showTutorial && <SearchPageTutorial onComplete={handleTutorialComplete} />}
             <AppBar position="static" style={{ backgroundColor: '#fff', color: '#000', boxShadow: 'none' }}>
                 <Toolbar style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
                     <Avatar

@@ -11,6 +11,7 @@ import { FaSave, FaSearch, FaEye, FaShare } from 'react-icons/fa';
 import SuccessModal from '../app_modules/SuccessModal';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaPlus } from 'react-icons/fa';
+import NotesPageTutorial from './NotesPageTutorial';
 
 const ViewFlashCard = () => {
     const [title, setTitle] = useState('');
@@ -32,6 +33,20 @@ const ViewFlashCard = () => {
     const [successMessage, setSuccessMessage] = useState(''); // State to store the success message
     const [loading, setLoading] = useState(true); // Loading state
     const [noNotes, setNoNotes] = useState(false); // State for no notes
+    const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
+
+    useEffect(() => {
+        // Check local storage for tutorial completion status
+        const completed = localStorage.getItem('notesPageTutorialComplete');
+        if (completed) {
+            setShowTutorial(false); // Set showTutorial to false if found
+        }
+    }, []);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false); // Hide tutorial when complete
+        localStorage.setItem('notesPageTutorialComplete', 'true'); // Store completion status in local storage
+    };
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -146,6 +161,7 @@ const ViewFlashCard = () => {
             <div className="flashcards-page">
                   {/* Create Button */}
               {/* Button Group */}
+              {showTutorial && <NotesPageTutorial onComplete={handleTutorialComplete} />}
       <div className="button-container__main__page__flashcard__page">
         {/* View Button */}
         <button

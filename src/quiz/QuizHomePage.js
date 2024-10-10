@@ -9,6 +9,8 @@ import ViewQuizModal from './viewQuizModal';
 import { FaSearch, FaShareAlt, FaEye, FaTrash, FaPlus } from 'react-icons/fa';
 import DeleteConfirmationModal from './confrimDeleteModal';
 import './quiz.css';
+import QuizPageTutorial from './QuizPageTutorial';
+
 
 const QuizHomePage = () => {
     const [quizzes, setQuizzes] = useState([]);
@@ -22,6 +24,21 @@ const QuizHomePage = () => {
     const navigate = useNavigate();
     const [showDeleteConfirmationModal, setShowDeleteConfirmationModal] = useState(false);
     const [quizToDelete, setQuizToDelete] = useState(null);
+    const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
+
+    useEffect(() => {
+        // Check local storage for tutorial completion status
+        const completed = localStorage.getItem('quizPageTutorialComplete');
+        if (completed) {
+            setShowTutorial(false); // Set showTutorial to false if found
+        }
+    }, []);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false); // Hide tutorial when complete
+        localStorage.setItem('quizPageTutorialComplete', 'true'); // Store completion status in local storage
+    };
+
 
     const handleDeleteClick = (quizId) => {
         setQuizToDelete(quizId);
@@ -125,6 +142,7 @@ const handleShareClick = (quiz) => {
 
     return (
         <div className="quiz-home-page-quiz-page">
+             {showTutorial && <QuizPageTutorial onComplete={handleTutorialComplete} />}
             <div className="quiz-header-container-quiz-page">
 <div className='search-bar-container'>
                 <form className="form__search__bar__quiz__page">

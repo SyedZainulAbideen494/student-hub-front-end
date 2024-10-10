@@ -10,6 +10,7 @@ import pauseIcon from '../images/icons8-pause-50.png'
 import coffeeicon from '../images/icons8-coffee-30.png'
 import clockIcon from '../images/icons8-clock-30.png'
 import clipBoardIocn from '../images/icons8-clipboard-50.png'
+import PomodoroPageTutorial from './PomodoroPageTutorial';
 // Helper function to format time
 const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -34,6 +35,19 @@ const Pomodoro = () => {
     const [longestStreak, setLongestStreak] = useState(parseInt(localStorage.getItem('longestStreak')) || 0);
     const [lastSessionDate, setLastSessionDate] = useState(localStorage.getItem('lastSessionDate'));
     const canvasRef = useRef(null);
+    const [showTutorial, setShowTutorial] = useState(true);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false);
+        localStorage.setItem('pomodoroPageTutorialCompleted', 'true'); // Store in local storage
+    };
+
+    useEffect(() => {
+        const isTutorialCompleted = localStorage.getItem('pomodoroPageTutorialCompleted');
+        if (isTutorialCompleted) {
+            setShowTutorial(false);
+        }
+    }, []);
 
         // Sound effects
         const studyFinishSound = new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22');
@@ -334,6 +348,7 @@ const Pomodoro = () => {
 
     return (
         <div className="pomodoro-container">
+              {showTutorial && <PomodoroPageTutorial onComplete={handleTutorialComplete} />}
             <h2>{isWork ? 'Study Time' : 'Break Time'}</h2>
             
             <div className="timer">

@@ -9,7 +9,7 @@ import FooterNav from '../app_modules/footernav';
 import './calendarPage.css';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal
 import CountUp from 'react-countup';
-
+import CalendarPageTutorial from './CalendarPageTutorial';
 
 const CalendarPage = () => {
     const [events, setEvents] = useState([]);
@@ -21,6 +21,20 @@ const CalendarPage = () => {
     const [editingEventId, setEditingEventId] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [showTutorial, setShowTutorial] = useState(true);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false);
+        localStorage.setItem('calendarPageTutorialCompleted', 'true'); // Store in local storage
+    };
+
+    useEffect(() => {
+        const isTutorialCompleted = localStorage.getItem('calendarPageTutorialCompleted');
+        if (isTutorialCompleted) {
+            setShowTutorial(false);
+        }
+    }, []);
+
 
     const formatDate = (date) => {
         const year = date.getFullYear();
@@ -139,6 +153,7 @@ const CalendarPage = () => {
       const renderStatisticsBoxes = () => {
           return (
             <div className="top-boxes-container__home__page__component" style={{marginTop:'40px', marginBottom: '40px'}}>
+            {showTutorial && <CalendarPageTutorial onComplete={handleTutorialComplete} />}
             <div className={`box__home__page__component box-1__home__page__component`}>
                 <p className="count__home__page__component">
                     <CountUp end={totalEvents} duration={2} />

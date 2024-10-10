@@ -3,10 +3,24 @@ import { Link } from 'react-router-dom';
 import './FlashcardLibraryPage.css'; // Import CSS styles for better look
 import FooterNav from '../app_modules/footernav';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import FlashcardsPageTutorial from './FlashcardsPageTutorial';
 
 const FlashcardLibraryPage = () => {
   const [sets, setSets] = useState([]);
+  const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
 
+  useEffect(() => {
+      // Check local storage for tutorial completion status
+      const completed = localStorage.getItem('flashcardsPageTutorialComplete');
+      if (completed) {
+          setShowTutorial(false); // Set showTutorial to false if found
+      }
+  }, []);
+
+  const handleTutorialComplete = () => {
+      setShowTutorial(false); // Hide tutorial when complete
+      localStorage.setItem('flashcardsPageTutorialComplete', 'true'); // Store completion status in local storage
+  };
   useEffect(() => {
     const fetchSets = async () => {
       const token = localStorage.getItem('token'); // Retrieve the token from local storage
@@ -32,6 +46,7 @@ const FlashcardLibraryPage = () => {
 
   return (
 <div className="flashcard__library__page__component__page" style={{ marginBottom: '50px' }}>
+{showTutorial && <FlashcardsPageTutorial onComplete={handleTutorialComplete} />}
   <div className="header__library__page__component__page">
     <h2 className="library-title__library__page__component__page">
       <div className="icon-container__library__page__component__page">

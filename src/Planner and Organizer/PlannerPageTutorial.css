@@ -1,0 +1,43 @@
+/* src/tutorials/PlannerPageTutorial.css */
+
+.tutorial-overlay__planner__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Darker semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.tutorial-content__planner__modal {
+    background: rgba(0, 0, 0, 0.8); /* Transparent black background */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white; /* White text color */
+}
+
+.tutorial-content__planner__modal h3 {
+    margin-bottom: 10px;
+    font-weight: normal; /* Remove bold styling */
+    font-size: 17px; /* Smaller font size for header */
+}
+
+.tutorial-content__planner__modal button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 12px;
+    background: transparent; /* No background for button */
+    color: white; /* White text color for button */
+    border: 1px solid transparent; /* White border for button */
+    border-radius: 5px; /* Rounded button corners */
+    cursor: pointer;
+}
+
+.tutorial-content__planner__modal button:hover {
+    border-color: white; /* Change border color on hover */
+}

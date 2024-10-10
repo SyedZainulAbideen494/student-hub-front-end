@@ -7,7 +7,7 @@ import { FaMicrophone, FaPaperPlane, FaArrowRight, FaArrowLeft } from 'react-ico
 import { useNavigate } from 'react-router-dom';
 import FeedbackForm from '../help/FeedbackForm';
 import { TypeAnimation } from 'react-type-animation';
-
+import AIPageTutorial from './AIPageTutorial';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -46,8 +46,25 @@ const MathSolver = ({ handleVoiceCommand }) => {
   ]);
   const [conversationStarted, setConversationStarted] = useState(false);
   const [listening, setListening] = useState(false); // State for voice recognition
+  const [tutorialComplete, setTutorialComplete] = useState(false); // State to control tutorial visibility
+
+  useEffect(() => {
+      // Check local storage for tutorial completion status
+      const completed = localStorage.getItem('AIPageTutorialComplete');
+      if (completed) {
+          setTutorialComplete(true); // Set tutorialComplete to true if found
+      }
+  }, []);
+
+  const handleTutorialComplete = () => {
+      setTutorialComplete(true); // Hide tutorial when complete
+      localStorage.setItem('AIPageTutorialComplete', 'true'); // Store completion status in local storage
+  };
+
   const navigate = useNavigate();
   const messagesEndRef = useRef(null);
+
+  
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -138,6 +155,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
 
   return (
     <div className="mathsolver-container">
+           {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
       <div className="chat-ui">
         <div className="chat-messages">
           {!conversationStarted ? (

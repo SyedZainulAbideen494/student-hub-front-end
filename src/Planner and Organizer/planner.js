@@ -14,6 +14,8 @@ import InviteFriends from '../help/InviteFriends';
 import InvalidPhoneEmail from '../app_modules/InvalidUserModal';
 import TipBox from '../Tip box/TipBox';
 import FeedbackForm from '../help/FeedbackForm';
+import PlannerPageTutorial from './PlannerPageTutorial';
+
 
 function Planner() {
     const [tasks, setTasks] = useState([]);
@@ -30,6 +32,20 @@ function Planner() {
     const [successMessage, setSuccessMessage] = useState('');
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
+    const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
+
+    useEffect(() => {
+        // Check local storage for tutorial completion status
+        const completed = localStorage.getItem('plannerPageTutorialComplete');
+        if (completed) {
+            setShowTutorial(false); // Set showTutorial to false if found
+        }
+    }, []);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false); // Hide tutorial when complete
+        localStorage.setItem('plannerPageTutorialComplete', 'true'); // Store completion status in local storage
+    };
 
 
         // Toggle feedback form visibility
@@ -208,7 +224,7 @@ function Planner() {
 
     return (
         <div className="App-dashboard-planner">
-
+{showTutorial && <PlannerPageTutorial onComplete={handleTutorialComplete} />}
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="top-boxes-container__home__page__component">
             <div className="box__home__page__component box-1__home__page__component">

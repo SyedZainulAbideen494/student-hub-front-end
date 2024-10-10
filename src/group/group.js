@@ -8,7 +8,7 @@ import SuccessModal from '../app_modules/SuccessModal';
 import InvitationModal from './InvitationModal'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faUsers, faGlobe, faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
-
+import GroupsPageTutorial from './GroupsPageTutorial';
 const GroupsPage = () => {
     const [joinedGroups, setJoinedGroups] = useState([]);
     const [publicGroups, setPublicGroups] = useState([]);
@@ -21,6 +21,20 @@ const GroupsPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeTab, setActiveTab] = useState('joined');
     const nav = useNavigate(); 
+    const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
+
+    useEffect(() => {
+        // Check local storage for tutorial completion status
+        const completed = localStorage.getItem('groupsPageTutorialComplete');
+        if (completed) {
+            setShowTutorial(false); // Set showTutorial to false if found
+        }
+    }, []);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false); // Hide tutorial when complete
+        localStorage.setItem('groupsPageTutorialComplete', 'true'); // Store completion status in local storage
+    };
 
     useEffect(() => {
         const fetchGroups = async () => {
@@ -131,6 +145,7 @@ const GroupsPage = () => {
 
     return (
 <div className="groups-container">
+{showTutorial && <GroupsPageTutorial onComplete={handleTutorialComplete} />}
   <SuccessModal visible={isModalVisible} message={successMessage} />
   <InvitationModal
     visible={isInvitationModalVisible}
