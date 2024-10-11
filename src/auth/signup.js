@@ -284,7 +284,8 @@ const SignUp = () => {
                     </>
                 )}
                 
-
+                {step > 1 && <button type="button" onClick={handlePreviousStep} className="signup-sign-up-page-button">Previous</button>}
+                {step < 3 && <button type="button" onClick={handleNextStep} className="signup-sign-up-page-button">Next</button>}
                 {step === 3 && (
                     <div>
                         <div className="signup-sign-up-page-checkbox-container" style={{marginTop: '20px'}}>
@@ -318,8 +319,6 @@ const SignUp = () => {
                         </button>
                     </div>
                 )}
-                                {step > 1 && <button type="button" onClick={handlePreviousStep} className="signup-sign-up-page-button">Previous</button>}
-                                {step < 3 && <button type="button" onClick={handleNextStep} className="signup-sign-up-page-button">Next</button>}
                 <p className="signup-sign-up-page-login-link">
                     Already have an account? <Link to="/login" className="signup-sign-up-page-link">Login here</Link>.
                 </p>
