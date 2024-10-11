@@ -94,7 +94,7 @@ const FlashcardLibraryPage = () => {
       <Link to={`/flashcard/set/${set.id}`} style={{ textDecoration: 'none' }}>
         <div className="card-content__library__page__component__page">
           <div className="icon-container">
-            <i className="fas fa-book card-icon" aria-hidden="true"></i>
+            
             <h3 className="set-name__library__page__component__page">{set.name}</h3> {/* Centered */}
           </div>
           <div className="icon-container">

@@ -27,93 +27,104 @@ const QuestionCard = ({ onQuestionSubmit }) => {
   };
 
   const handleSubmit = async () => {
+    if (!image) {
+      setMessage('Please select an image before submitting.');
+      setModalVisible(true);
+      setTimeout(() => setModalVisible(false), 3000);
+      return;
+    }
+
     try {
       const token = localStorage.getItem('token');
       const formData = new FormData();
       formData.append('question', question);
       if (image) formData.append('image', image);
       formData.append('token', token);
-  
+
       const response = await axios.post(API_ROUTES.addEduscribe, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
-  
+
       setMessage('Eduscribe submitted successfully!');
       setModalVisible(true);
-  
+
       setTimeout(() => {
         setModalVisible(false);
       }, 3000);
-  
+
       if (typeof onQuestionSubmit === 'function') {
         onQuestionSubmit(question);
       }
       setQuestion('');
       setImage(null);
     } catch (error) {
-      setMessage('Eduscribe submitted successfully!');
+      setMessage('Error submitting Eduscribe, please try again.');
       setModalVisible(true);
-  
+
       setTimeout(() => {
         setModalVisible(false);
       }, 3000);
-  
+
       console.error('Error submitting question:', error.response ? error.response.data : error.message);
     }
   };
 
   return (
     <div className="question-card">
-  
-    
-    <textarea
-      placeholder="Write a question, share your thoughts, or ask for help... "
-      value={question}
-      onChange={handleQuestionChange}
-      className="question-input"
-    />
+      <textarea
+        placeholder="Write a question, share your thoughts, or ask for help..."
+        value={question}
+        onChange={handleQuestionChange}
+        className="question-input"
+      />
 
-    <div className="question-actions">
-      <label className="upload-icon-container">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          className="upload-input"
-          required
-          style={{ display: 'none' }}
-        />
-        <span className="upload-icon">
-          <FaImage />
-        </span>
-      </label>
-      <button className="send-button" onClick={handleSubmit}>Send</button>
-    </div>
+      <div className="question-actions">
+        <label className="upload-icon-container">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="upload-input"
+            required
+            style={{ display: 'none' }}
+          />
+          <span className="upload-icon">
+            <FaImage />
+          </span>
+        </label>
+        <button
+          className="send-button"
+          onClick={handleSubmit}
+          disabled={!question || !image} // Disable until both are filled
+        >
+          Send
+        </button>
+      </div>
 
-    {/* Image Preview */}
-    {image && (
-      <div className="image-preview__flashcard__add__images">
-        <h3>Selected Image:</h3>
-        <div className="image-preview-container__flashcard__add__images">
-          <div className="image-thumbnail__flashcard__add__images">
-            <img
-              src={URL.createObjectURL(image)}
-              alt="Selected image preview"
-            />
-            <button
-              className="remove-image-button"
-              onClick={handleRemoveImage}
-              type="button"
-            >
-              &times;
-            </button>
+      {/* Image Preview */}
+      {image && (
+        <div className="image-preview__flashcard__add__images">
+          <h3>Selected Image:</h3>
+          <div className="image-preview-container__flashcard__add__images">
+            <div className="image-thumbnail__flashcard__add__images">
+              <img
+                src={URL.createObjectURL(image)}
+                alt="Selected image preview"
+              />
+              <button
+                className="remove-image-button"
+                onClick={handleRemoveImage}
+                type="button"
+              >
+                &times;
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    )}
+      )}
 
-    <SuccessModal visible={modalVisible} message={message} />
-  </div>
+      <SuccessModal visible={modalVisible} message={message} />
+    </div>
   );
 };
 
