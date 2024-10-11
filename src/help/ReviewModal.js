@@ -5,7 +5,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { useLocation } from 'react-router-dom';
 
 const ReviewModal = () => {
-  const [isOpen, setIsOpen] = useState(true); // Modal is open by default
+  const [isOpen, setIsOpen] = useState(false); // Modal is initially closed
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(true);
@@ -13,55 +13,44 @@ const ReviewModal = () => {
   const [showLater, setShowLater] = useState(false);
   const location = useLocation(); // To get the current location/path
 
+  // Function to handle rating click
   const handleRatingClick = async (rate) => {
     setRating(rate);
     const token = localStorage.getItem('token'); // Retrieve the token from local storage
     
     // Set feedback message based on rating
-    const feedbackMessage = `Rating given: ${rate}`; // Create feedback message
+    const feedbackMessage = `Rating given: ${rate}`;
   
     if (rate >= 4) {
-      // Prepare data to send to the backend
-      const data = {
-        token,
-        feedback: feedbackMessage // Use the feedback message here
-      };
-  
+      const data = { token, feedback: feedbackMessage };
       try {
-        // Send the data to the backend
         await axios.post(API_ROUTES.feedbackEduisfy, data);
-        
-        // Store the feedback submission state
         localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
-  
-        // Redirect to review link after successful submission
-        window.open('https://g.page/r/CbK_EhVVrsJqEAI/review', '_blank');
+        window.open('https://g.page/r/CbK_EhVVrsJqEAI/review', '_blank'); // Redirect to review link
         setIsOpen(false); // Close the modal
       } catch (error) {
-        console.error('Error submitting feedback before redirect:', error);
-        // Optionally, handle the error (e.g., show a message to the user)
+        console.error('Error submitting feedback:', error);
       }
     }
   };
-  
 
+  // Function to handle feedback form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     const token = localStorage.getItem('token'); // Retrieve token from local storage
   
-    // Prepare data to send based on feedback input
     const data = {
       token,
-      feedback: feedback.trim() ? `${feedback} (Rating: ${rating} star${rating > 1 ? 's' : ''})` : `Rating given: ${rating} star${rating > 1 ? 's' : ''}`, // Include stars in the feedback message
+      feedback: feedback.trim() ? `${feedback} (Rating: ${rating} star${rating > 1 ? 's' : ''})` : `Rating given: ${rating} star${rating > 1 ? 's' : ''}`,
     };
   
     try {
-      const response = await axios.post(API_ROUTES.feedbackEduisfy, data); // Send token with feedback
-      setSuccessMessage('Feedback submitted successfully!'); // Set success message
-      setFeedback(''); // Clear the feedback after submission
+      await axios.post(API_ROUTES.feedbackEduisfy, data); // Send token with feedback
+      setSuccessMessage('Feedback submitted successfully!');
+      setFeedback(''); // Clear the feedback
       localStorage.setItem('feedbackSubmitted', 'true'); // Mark feedback as submitted
-      setIsOpen(false); // Close the modal after successful submission
+      setIsOpen(false); // Close the modal
     } catch (error) {
       console.error('Error submitting feedback:', error);
       setSuccessMessage('Error submitting feedback, please try again.');
@@ -69,50 +58,46 @@ const ReviewModal = () => {
       setLoading(false);
     }
   };
-  
+
+  // Handle "Later" button click
   const handleLaterClick = () => {
-    // Store the current time in local storage or any other method to show the form again after 8 hours
-    const eightHoursLater = new Date(Date.now() + 8 * 60 * 60 * 1000); // Change to 8 hours
-    localStorage.setItem('nextReviewTime', eightHoursLater);
+    const twoHoursLater = new Date(Date.now() + 2 * 60 * 60 * 1000); // 2 hours later
+    localStorage.setItem('nextReviewTime', twoHoursLater); // Set the next review time
     setShowLater(true);
     setIsOpen(false); // Close the modal
   };
 
+  // Function to check if 2 hours of usage have passed since first login
+  const checkUsageTime = () => {
+    const firstSignInTime = localStorage.getItem('firstSignInTime');
+    const now = new Date().getTime();
+  
+    if (firstSignInTime) {
+      const timeElapsed = (now - firstSignInTime) / (1000 * 60 * 60); // Time elapsed in hours
+      return timeElapsed >= 2; // Return true if 2 hours have passed
+    }
+    return false;
+  };
+
+  // Check if feedback should be shown based on user activity
   useEffect(() => {
     const processData = async () => {
       const feedbackSubmitted = localStorage.getItem('feedbackSubmitted');
-      const firstVisitTime = localStorage.getItem('firstVisitTime');
       const nextReviewTime = localStorage.getItem('nextReviewTime');
       const now = new Date().getTime();
 
-      // If there's no firstVisitTime, this is the user's first visit
-      if (!firstVisitTime) {
-        // Store the current time as their first visit time
-        localStorage.setItem('firstVisitTime', now);
-        setIsOpen(false); // Do not show the modal right away
-      } else {
-        // Calculate the time difference in hours
-        const hoursSinceFirstVisit = (now - firstVisitTime) / (1000 * 60 * 60); // Convert ms to hours
-
-        // Check if it's time to show the modal again
-        const eightHoursPassed = hoursSinceFirstVisit >= 8;
-
-        // If 8 hours have passed and feedback hasn't been submitted
-        if (eightHoursPassed && feedbackSubmitted !== 'true') {
-          setIsOpen(true); // Show the modal
-        } else {
-          // Check if the next review time is set and if it has passed
-          if (nextReviewTime) {
-            const nextReviewTimeDate = new Date(nextReviewTime).getTime();
-            if (now >= nextReviewTimeDate && feedbackSubmitted !== 'true') {
-              setIsOpen(true); // Show the modal if 8 hours has passed since "Later" was clicked
-              localStorage.removeItem('nextReviewTime'); // Clear the next review time after showing the modal
-            }
-          }
+      if (!localStorage.getItem('firstSignInTime')) {
+        // If first sign-in time is not stored, store it now
+        localStorage.setItem('firstSignInTime', now);
+        setIsOpen(false); // Don't show modal yet
+      } else if (checkUsageTime() && feedbackSubmitted !== 'true') {
+        // Check if 2 hours have passed since first login
+        if (!nextReviewTime || now >= new Date(nextReviewTime).getTime()) {
+          setIsOpen(true); // Show the modal if 2 hours passed and feedback not submitted
         }
       }
 
-      setLoading(false); // Finished processing, stop loading
+      setLoading(false); // Stop loading after processing
     };
 
     processData(); // Call the async function to process data
@@ -121,13 +106,11 @@ const ReviewModal = () => {
   if (loading) return null; // While loading, show nothing
   if (!isOpen) return null; // If the modal is not open, show nothing
 
-
-
   return (
     <div className="modal-overlay__review__give__Eduisyf">
       <div className="modal-content__review__give__Eduisyf">
         <h2>Rate Your Experience</h2>
-        <p style={{margin: '0px 0px 10px 0px'}}>Help us make Eudisfy better!</p>
+        <p>Help us make Eduisfy better!</p>
         <div className="rating-container__review__give__Eduisyf">
           {[1, 2, 3, 4, 5].map((star) => (
             <span
@@ -139,7 +122,7 @@ const ReviewModal = () => {
             </span>
           ))}
         </div>
-        {rating > 0 && rating < 4 ? ( // Show input only if stars are selected and rating is less than 4
+        {rating > 0 && rating < 4 ? (
           <form className="feedback-form__review__give__Eduisyf" onSubmit={handleSubmit}>
             <textarea
               className="feedback-textarea__review__give__Eduisyf"
@@ -147,18 +130,15 @@ const ReviewModal = () => {
               onChange={(e) => setFeedback(e.target.value)}
               placeholder="Your suggestions matter a lot! Please tell us how we can improve."
             />
-            <button style={{padding: '12px '}} className="later-button__review__give__Eduisyf" type="submit" disabled={loading}>
+            <button className="submit-button__review__give__Eduisyf" type="submit" disabled={loading}>
               {loading ? 'Submitting...' : 'Submit Feedback'}
             </button>
           </form>
         ) : null}
-        {/* Always show the Later button */}
-        <div className="button-container__review__give__Eduisyf">
-          <button className="later-button__review__give__Eduisyf" onClick={handleLaterClick}>
-            Later
-          </button>
-        </div>
-        {showLater && <p className="later-message__review__give__Eduisyf">You can provide feedback again in 3 hours.</p>}
+        <button className="later-button__review__give__Eduisyf" onClick={handleLaterClick}>
+          Later
+        </button>
+        {showLater && <p className="later-message__review__give__Eduisyf">You can provide feedback again in 2 hours.</p>}
         {successMessage && <p className="success-message__review__give__Eduisyf">{successMessage}</p>}
       </div>
     </div>
