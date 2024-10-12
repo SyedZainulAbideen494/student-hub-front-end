@@ -439,20 +439,52 @@ const handleViewFalshCardsClick = () => {
   </div>
 </div>
 
-<div className="form-group-flashcards-page">
-                <label htmlFor="subject">Subject:</label>
-                <select
-                    id="subject"
-                    value={selectedSubject}
-                    onChange={(e) => setSelectedSubject(e.target.value)}
-                >
-                    {subjects.map((subject) => (
-                        <option key={subject.id} value={subject.id}>
-                            {subject.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+<div className="form-group-flashcards-page" style={{
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1.5rem', // Space below the dropdown
+    fontFamily: 'Arial, sans-serif', // Font style
+}}>
+
+    <label htmlFor="subject" style={{
+        fontSize: '1rem',
+        color: '#4B5563', // Soft dark gray for the label
+        marginBottom: '0.5rem', // Space below the label
+    }}>
+        Subject:
+    </label>
+
+    <select
+        id="subject"
+        value={selectedSubject}
+        onChange={(e) => setSelectedSubject(e.target.value)}
+        style={{
+            padding: '0.5rem 1rem', // Padding for a comfortable click area
+            borderRadius: '10px', // Rounded corners for cuteness
+            border: '1px solid #D1D5DB', // Light border
+            backgroundColor: '#FFFBF0', // Soft cream background
+            color: '#3B82F6', // Bright blue text
+            fontSize: '1rem', // Font size
+            fontWeight: '500', // Medium font weight
+            cursor: 'pointer', // Pointer cursor on hover
+            transition: 'background-color 0.3s ease, box-shadow 0.3s ease', // Smooth transition
+            outline: 'none', // Remove outline on focus
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+        }}
+        onFocus={(e) => e.target.style.boxShadow = '0 4px 10px rgba(59, 130, 246, 0.3)'} // Shadow on focus
+        onBlur={(e) => e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)'} // Reset shadow on blur
+    >
+        {subjects.map((subject) => (
+            <option key={subject.id} value={subject.id} style={{
+                backgroundColor: '#FFFBF0', // Soft background for options
+                color: '#3B82F6', // Bright blue text for options
+            }}>
+                {subject.name}
+            </option>
+        ))}
+    </select>
+</div>
+
                 
 <div className="form-group-flashcards-page">
                 <label htmlFor="headings">Content:</label>
