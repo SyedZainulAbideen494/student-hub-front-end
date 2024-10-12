@@ -67,6 +67,7 @@ import TermsAndConditions from "./docs/TermsAndConditions";
 import PrivacyPolicy from "./docs/PrivacyPolicy";
 import MoreInfo from "./docs/MoreInfo";
 import IOSInstructions from "./docs/iosInstructionsPage";
+import Subjects from "./flashCards/subjects/subjectPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -122,6 +123,7 @@ const router = createBrowserRouter([
   {path: '/create/flashcard', element: <CreateFlashcardSet/>},
   {path: '/flashcard/card/view/:id/:setId', element: <FlashcardViewPage/>},
   {path: '/ios/instructions/download', element: <IOSInstructions/>},
+  {path: '/subject/:subjectId', element: <Subjects/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

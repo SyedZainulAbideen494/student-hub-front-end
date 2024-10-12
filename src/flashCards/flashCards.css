@@ -678,3 +678,66 @@
   outline: none; /* Remove outline on focus */
   box-shadow: 0 0 0 3px rgba(113, 97, 239, 0.5); /* Add focus ring for accessibility */
 }
+
+/* Floating create note button */
+.btn__floating__create__note__flashcard__page {
+  position: fixed;
+  bottom: 90px; /* Adjust this value for vertical offset */
+  right: 20px;  /* Use right instead of left for bottom right placement */
+  width: 40px;
+  height: 40px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.btn__floating__create__note__flashcard__page:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
+/* Floating icon inside the button */
+.icon__floating__create__note__flashcard__page {
+  font-size: 1.5rem;
+}
+
+
+.section-toggle {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  margin-bottom: 1.5rem; /* Space between buttons and content below */
+}
+
+.toggle-btn {
+  background-color: #F9FAFB; /* Light background */
+  color: #6B7280; /* Gray text color */
+  border: 1px solid #D1D5DB; /* Light border */
+  border-radius: 0.375rem; /* Rounded corners */
+  padding: 0.5rem 1rem; /* Padding for the button */
+  font-size: 1rem; /* Font size */
+  font-weight: 500; /* Medium font weight */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover and active states */
+  margin: 0 0.5rem; /* Space between buttons */
+}
+
+.toggle-btn:hover {
+  background-color: #E5E7EB; /* Light gray on hover */
+  color: #111827; /* Dark text color on hover */
+}
+
+.toggle-btn.active {
+  background-color: #3B82F6; /* Blue background for active state */
+  color: white; /* White text for active state */
+  border-color: #3B82F6; /* Match border color to background */
+}

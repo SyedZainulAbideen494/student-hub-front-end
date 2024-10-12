@@ -43,8 +43,31 @@ const [chatHistory, setChatHistory] = useState([
 ]);
 const [conversationStarted, setConversationStarted] = useState(false);
 const [showFeedbackForm, setShowFeedbackForm] = useState(false);
-const messagesEndRef = useRef(null);
+const [subjects, setSubjects] = useState([]);
+const [selectedSubject, setSelectedSubject] = useState('');
 
+
+const messagesEndRef = useRef(null);
+useEffect(() => {
+  fetchSubjects(); // Fetch subjects when the component mounts
+}, []);
+
+const fetchSubjects = async () => {
+  setLoading(true); // Set loading to true before fetching
+  try {
+      const response = await axios.get(API_ROUTES.fetchsubjects, {
+          headers: {
+              'Authorization': `Bearer ${token}`,
+          },
+      });
+      setSubjects(response.data); // Assuming response.data is an array of { id, subject }
+      setSelectedSubject(response.data.length > 0 ? response.data[0].id : ''); // Set default selected subject to the first one
+  } catch (error) {
+      console.error('Error fetching subjects:', error);
+  } finally {
+      setLoading(false); // Set loading to false after fetching
+  }
+};
 const scrollToSection = (sectionId) => {
   document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
 };
@@ -81,7 +104,8 @@ useEffect(() => {
         formData.append('isPublic', isPublic);
         formData.append('token', token);
         formData.append('headings', editorContent);
-    
+        formData.append('subjectId', selectedSubject); // Send selected subject ID
+
         images.forEach((image) => {
             formData.append('images', image);
         });
@@ -104,6 +128,7 @@ useEffect(() => {
                 setImages([]);
                 setIsPublic(true);
                 setEditorContent('');
+                 setSelectedSubject(subjects[0]?.id || '');
             } else {
                 console.error('Failed to save flashcard.');
                 alert('Failed to save flashcard.');
@@ -413,6 +438,22 @@ const handleViewFalshCardsClick = () => {
     </label>
   </div>
 </div>
+
+<div className="form-group-flashcards-page">
+                <label htmlFor="subject">Subject:</label>
+                <select
+                    id="subject"
+                    value={selectedSubject}
+                    onChange={(e) => setSelectedSubject(e.target.value)}
+                >
+                    {subjects.map((subject) => (
+                        <option key={subject.id} value={subject.id}>
+                            {subject.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+                
 <div className="form-group-flashcards-page">
                 <label htmlFor="headings">Content:</label>
                 <ReactQuill

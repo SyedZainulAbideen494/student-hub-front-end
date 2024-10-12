@@ -1,4 +1,4 @@
-const API_URL = 'https://dropment.online';
+const API_URL = 'http://localhost:8080';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -102,5 +102,8 @@ export const API_ROUTES = {
   fetchStats: `${API_URL}/api/flashcards/stats`, // New route
   deleteFlashcardIndividual: `${API_URL}/api/flashcards/individual`,
   createFlashcardManually: `${API_URL}/api/flashcards/create/manual`,
-  deleteFlashcardSet: `${API_URL}/api/flashcards/set/delete`
+  deleteFlashcardSet: `${API_URL}/api/flashcards/set/delete`,
+  createSubject: `${API_URL}/api/create-subject`,
+  fetchsubjects: `${API_URL}/api/get/user/subjects`,
+  fetchSubjectNotes: `${API_URL}/api/flashcards`
 }

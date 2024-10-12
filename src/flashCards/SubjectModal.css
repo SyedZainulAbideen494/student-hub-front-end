@@ -1,0 +1,124 @@
+/* Modal Container (default visible state) */
+.modal__subject__creation__container__create__subject__modal {
+    position: fixed;
+    bottom: 0;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure centering */
+    width: 90%;
+    background-color: white;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slide-up__create__subject__modal 0.3s ease-in-out forwards;
+    transition: all 0.3s ease-in-out;
+    max-width: 600px; /* Max width for larger screens */
+    margin: 0 auto;
+}
+
+/* Animation for sliding up the modal */
+@keyframes slide-up__create__subject__modal {
+    from {
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation for sliding down when closing the modal */
+@keyframes slide-down__create__subject__modal {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+    }
+}
+
+/* Close modal state */
+.modal__subject__creation__container__create__subject__modal.close-modal {
+    animation: slide-down__create__subject__modal 0.3s ease-in-out forwards;
+}
+
+/* Modal content wrapper */
+.modal__content__subject__creation__create__subject__modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Modal heading */
+.modal__header__create__subject__modal h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Centered Input Field */
+.modal__input__create__subject__modal {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Modal actions (buttons) styling */
+.modal__actions__subject__creation__create__subject__modal {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Modal action buttons */
+.modal__button__create__subject__modal {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 40%; /* Button width for better mobile responsiveness */
+    text-align: center;
+}
+
+/* Cancel button styling */
+.modal__button__cancel__create__subject__modal {
+    background-color: #000000;
+    color: white;
+}
+
+
+/* Create button styling */
+.modal__button__submit__create__subject__modal {
+    background-color: #000000;
+    color: white;
+}
+
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .modal__subject__creation__container__create__subject__modal {
+        padding: 15px;
+    }
+
+    .modal__button__create__subject__modal {
+        width: 45%; /* Adjust buttons for smaller screens */
+    }
+
+    .modal__input__create__subject__modal {
+        width: 95%;
+    }
+}
