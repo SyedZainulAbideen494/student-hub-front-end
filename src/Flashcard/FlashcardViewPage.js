@@ -126,7 +126,7 @@ const FlashcardViewPage = () => {
     setTimeout(() => {
       setMotivationalMessage(""); // Clear the message after a delay
       nextFlashcard();
-    }, 500); // Move to the next card after the animation
+    }, 1000); // Move to the next card after the animation
   };
   
 
