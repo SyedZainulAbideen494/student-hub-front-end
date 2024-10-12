@@ -1,0 +1,42 @@
+.instructions-container__ios__instructions {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title__ios__instructions {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .intro__ios__instructions {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .steps__ios__instructions {
+    margin-top: 20px;
+  }
+  
+  .step__ios__instructions {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+  }
+  
+  .step-title__ios__instructions {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .step-description__ios__instructions {
+    font-size: 14px;
+    margin: 0;
+  }
+  
