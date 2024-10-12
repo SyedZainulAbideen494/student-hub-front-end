@@ -682,10 +682,10 @@
 /* Floating create note button */
 .btn__floating__create__note__flashcard__page {
   position: fixed;
-  bottom: 90px; /* Adjust this value for vertical offset */
+  bottom: 100px; /* Adjust this value for vertical offset */
   right: 20px;  /* Use right instead of left for bottom right placement */
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background-color: #000000;
   color: white;
   border: none;
