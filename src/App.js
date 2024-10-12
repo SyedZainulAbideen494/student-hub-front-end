@@ -20,7 +20,6 @@ import CreateQuizPage from "./quiz/CreateQuizPage";
 import QuizPage from "./quiz/QuizPage";
 import SubmitPage from "./quiz/submitPage";
 import CalendarPage from "./calander/calander";
-import TermsAndConditions from "./auth/terms-conditions";
 import Pomodoro from "./Pomodoro/pomodoro";
 import Website from "./website/website";
 import SpotifyPlayer from "./music/Music";
@@ -64,6 +63,9 @@ import FlashcardLibraryPage from "./Flashcard/FlashcardLibraryPage";
 import FlashcardSetPage from "./Flashcard/FlashcardSetPage";
 import CreateFlashcardSet from "./Flashcard/CreateFlashcardSet";
 import FlashcardViewPage from "./Flashcard/FlashcardViewPage";
+import TermsAndConditions from "./docs/TermsAndConditions";
+import PrivacyPolicy from "./docs/PrivacyPolicy";
+import MoreInfo from "./docs/MoreInfo";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -79,6 +81,8 @@ const router = createBrowserRouter([
   {path: '/quiz/submit', element: <SubmitPage/>},
   {path: '/calendar', element: <CalendarPage/>},
   {path: '/terms-and-conditions', element: <TermsAndConditions/>},
+  {path: '/privacy-policy', element: <PrivacyPolicy/>},
+  {path: '/more-info', element: <MoreInfo/>},
   {path: '/pomodoro', element: <Pomodoro/>},
   {path: '/music', element: <SpotifyPlayer/>},
   {path: '/callback', element: <Callback/>},
