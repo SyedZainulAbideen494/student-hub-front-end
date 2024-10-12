@@ -272,8 +272,9 @@ const SignUp = () => {
                             aria-label="Accept Terms and Conditions"
                         />
                         <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
-                            I agree to the <Link to="/terms" className="signup-sign-up-page-link">Terms and Conditions</Link>
+                            I agree to the <Link to="/terms" className="signup-sign-up-page-link" style={{color: 'black'}}>Terms and Conditions</Link>
                         </label>
+                       
                     </div>
                 </>
             )}
@@ -290,6 +291,21 @@ const SignUp = () => {
                 </button>
             )}
         </form>
+        <p style={{ 
+  textAlign: 'center', 
+  fontSize: '14px', 
+  color: '#333', 
+  marginTop: '20px' 
+}}>
+  Already have an account? 
+  <span style={{ 
+    fontWeight: 'bold', 
+    color: '#007bff' 
+  }}>
+    <Link to='/login' style={{color: 'black'}}>Login</Link>
+  </span>
+</p>
+
     </div>
 </div>
 
