@@ -293,49 +293,50 @@ const ViewFlashCard = () => {
     ) : (
         <div className="subject-list">
             {subjects.map(subject => (
-                <div
-                    key={subject.id}
-                    style={{
-                        cursor: 'pointer',
-                        transition: 'all 0.5s',
-                        transform: 'translateY(0)',
-                        width: '18rem',
-                        backgroundColor: '#F9FAFB',
-                        borderRadius: '0.5rem',
-                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '1rem',
-                        padding: '1rem',
-                        margin: '1rem 0',
-                        minHeight: '8rem',
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-0.5rem)')}
-                    onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
-                    onClick={() => nav(`/subject/${subject.id}`)} // Navigate to the subject page
-                >
-                    {/* Subject Content */}
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
-                        <svg
-                            style={{ stroke: '#A78BFA', flexShrink: 0 }}
-                            height="50"
-                            preserveAspectRatio="xMidYMid meet"
-                            viewBox="0 0 24 24"
-                            width="50"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
-                                fill="#A78BFA" // Change color here if needed
-                            />
-                        </svg>
-                        <div style={{ flexGrow: 1, marginLeft: '1rem' }}>
-                            <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{subject.name}</span>
-                        </div>
-                    </div>
-                </div>
+              <div
+              key={subject.id}
+              style={{
+                  cursor: 'pointer',
+                  transition: 'all 0.5s',
+                  transform: 'translateY(0)',
+                  width: '18rem',
+                  backgroundColor: '#FFFFFF', // White background
+                  borderRadius: '0.5rem',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center', // Center items horizontally
+                  justifyContent: 'center', // Center items vertically
+                  gap: '1rem',
+                  padding: '1rem',
+                  margin: '1rem auto', // Center card horizontally with 'auto' margins
+                  minHeight: '8rem',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-0.5rem)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(0)')}
+              onClick={() => nav(`/subject/${subject.id}`)} // Navigate to the subject page
+          >
+              {/* Subject Content */}
+              <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
+                  <svg
+                      style={{ stroke: '#A78BFA', flexShrink: 0 }}
+                      height="50"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                      width="50"
+                      xmlns="http://www.w3.org/2000/svg"
+                  >
+                      <path
+                          d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
+                          fill="#A78BFA" // Keep icon color
+                      />
+                  </svg>
+                  <div style={{ flexGrow: 1, marginLeft: '1rem', textAlign: 'center' }}>
+                      <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{subject.name}</span>
+                  </div>
+              </div>
+          </div>
+          
             ))}
         </div>
     )}
