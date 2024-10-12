@@ -3,6 +3,7 @@ import { FaUser, FaEnvelope, FaLock, FaPhone, FaCheckCircle, FaTimesCircle, FaAr
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import axios from 'axios';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 const SignUp = () => {
@@ -163,6 +164,27 @@ const SignUp = () => {
     const handlePreviousStep = () => {
         if (step === 2) setStep(1);
     };
+
+    
+    const checkTokenAndRedirect = async (token) => {
+        try {
+            const response = await axios.post(API_ROUTES.sessionCheck, { token });
+            if (response.data.exists) {
+                nav('/');
+            } else {
+                console.error('No matching token found.');
+            }
+        } catch (error) {
+            console.error('Error checking token:', error);
+        }
+    };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            checkTokenAndRedirect(token);
+        }
+    }, [nav]);
 
     return (
 <div className="signup-sign-up-page-card-main-div-signup">
