@@ -302,7 +302,7 @@ const SignUp = () => {
     fontWeight: 'bold', 
     color: '#007bff' 
   }}>
-    <Link to='/login' style={{color: 'black'}}>Login</Link>
+    <Link to='/login' style={{color: 'black'}}> Login</Link>
   </span>
 </p>
 
