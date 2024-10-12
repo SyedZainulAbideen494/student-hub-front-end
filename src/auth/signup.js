@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaLock, FaPhone, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaPhone, FaCheckCircle, FaTimesCircle, FaArrowLeft, FaUserPlus, FaArrowRight } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import axios from 'axios';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 const SignUp = () => {
@@ -19,59 +18,50 @@ const SignUp = () => {
     const [loading, setLoading] = useState(false);
     const [uniqueIdStatus, setUniqueIdStatus] = useState('');
     const [uniqueIdSuggestions, setUniqueIdSuggestions] = useState([]);
-    const [step, setStep] = useState(1); // Step tracking
+    const [step, setStep] = useState(1);
     const nav = useNavigate();
 
+    // Auto-fill implementation for username, email, phone number
+    useEffect(() => {
+        const savedData = localStorage.getItem('signupData');
+        if (savedData) {
+            setFormData(JSON.parse(savedData));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('signupData', JSON.stringify(formData));
+    }, [formData]);
+
+    // Check if the unique ID is available
     useEffect(() => {
         const checkUniqueId = async () => {
-          if (formData.unique_id) {
-            try {
-              const response = await fetch(API_ROUTES.checkUniqueId, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ unique_id: formData.unique_id }),
-              });
-      
-              if (response.ok) {
-                // Unique ID is available, clear the alternatives
-                setUniqueIdStatus('available');
-                setUniqueIdSuggestions([]); // Clear the suggestions
-              } else {
-                // Unique ID is taken, show alternatives (simulated for now)
-                setUniqueIdStatus('taken');
-                const alternatives = await response.json(); // Assuming server sends alternatives
-                setUniqueIdSuggestions(alternatives);
-              }
-            } catch (error) {
-              console.error('Error checking unique_id:', error);
-              setUniqueIdStatus('error');
-              setUniqueIdSuggestions([]); // Clear the suggestions in case of error
-            }
-          }
-        };
-      
-        checkUniqueId();
-      }, [formData.unique_id]);
-      
-    
+            if (formData.unique_id) {
+                try {
+                    const response = await fetch(API_ROUTES.checkUniqueId, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ unique_id: formData.unique_id }),
+                    });
 
-    const fetchUniqueIdAlternatives = async () => {
-        try {
-            const response = await fetch(API_ROUTES.generateAlternatives, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ unique_id: formData.unique_id }),
-            });
-            if (response.ok) {
-                const { alternatives } = await response.json();
-                setUniqueIdSuggestions(alternatives);
-            } else {
-                console.error('Error fetching alternatives');
+                    if (response.ok) {
+                        setUniqueIdStatus('available');
+                        setUniqueIdSuggestions([]);
+                    } else {
+                        setUniqueIdStatus('taken');
+                        const alternatives = await response.json();
+                        setUniqueIdSuggestions(alternatives);
+                    }
+                } catch (error) {
+                    console.error('Error checking unique_id:', error);
+                    setUniqueIdStatus('error');
+                    setUniqueIdSuggestions([]);
+                }
             }
-        } catch (error) {
-            console.error('Error fetching alternatives:', error);
-        }
-    };
+        };
+
+        checkUniqueId();
+    }, [formData.unique_id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -82,9 +72,39 @@ const SignUp = () => {
 
     const handleTermsChange = (e) => setTermsAccepted(e.target.checked);
 
+    // Phone number validation to enforce +91 format
+    const validatePhoneNumber = (phone) => {
+        // Regex to match either a 10-digit number or a 12-digit number with +91
+        const phoneRegex = /^(\+91)?\d{10}$/;
+        return phoneRegex.test(phone);
+    };
+    
+
+    // Validate email format
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
     const validateForm = () => {
         if (!termsAccepted) {
             setError('You must agree to the terms and conditions');
+            return false;
+        }
+        if (!formData.email || !validateEmail(formData.email)) {
+            setError('Please enter a valid email address');
+            return false;
+        }
+        if (!formData.password) {
+            setError('Please enter a password');
+            return false;
+        }
+        if (!formData.unique_id) {
+            setError('Please enter a username');
+            return false;
+        }
+        if (!formData.phone_number || !validatePhoneNumber(formData.phone_number)) {
+            setError('Phone number must be in the format +91XXXXXXXXXX');
             return false;
         }
         return true;
@@ -94,26 +114,6 @@ const SignUp = () => {
         e.preventDefault();
         if (!validateForm()) return;
 
-
-    // Basic validation before submission
-    if (!email.trim() || !phone_number.trim()) {
-        setError('Email and phone number cannot be blank or contain only spaces.');
-        return;
-      }
-  
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const phoneRegex = /^\d{10}$/;
-  
-      if (!emailRegex.test(email)) {
-        setError('Invalid email format.');
-        return;
-      }
-  
-      if (!phoneRegex.test(phone_number)) {
-        setError('Invalid phone number. It must be 10 digits.');
-        return;
-      }
-    
         setLoading(true);
         try {
             const response = await fetch(API_ROUTES.signup, {
@@ -121,17 +121,18 @@ const SignUp = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-    
+
             if (!response.ok) {
                 const errorData = await response.json();
                 setError(errorData.error || 'Sign-up failed');
                 setLoading(false);
                 return;
             }
-    
+
             const data = await response.json();
-            localStorage.setItem('token', data.token); // Store the token
-    
+            localStorage.setItem('token', data.token);
+
+            // Reset form
             setFormData({
                 email: '',
                 password: '',
@@ -140,9 +141,7 @@ const SignUp = () => {
             });
             setTermsAccepted(false);
             setError(null);
-    
-            console.log('User registered successfully!');
-            nav('/welcome'); // Redirect to the welcome page
+            nav('/welcome');
         } catch (error) {
             console.error('Error signing up:', error);
             setError('Error signing up. Please try again later.');
@@ -151,180 +150,149 @@ const SignUp = () => {
         }
     };
 
-    // Check token and redirect
-    const checkTokenAndRedirect = async (token, navigate) => {
-    try {
-      const response = await axios.post(API_ROUTES.sessionCheck, { token });
-  
-      if (response.data.exists) {
-        nav('/');
-      } else {
-        console.error('No matching token found.');
-      }
-    } catch (error) {
-      console.error('Error checking token:', error);
-    }
-  };
-  
-  useEffect(() => {
-    const token = localStorage.getItem('token'); // Replace with actual token retrieval logic
-    checkTokenAndRedirect(token, nav);
-  }, [nav]); 
-
-
     const handleSuggestionClick = (suggestion) => {
         setFormData((prev) => ({ ...prev, unique_id: suggestion }));
         setUniqueIdStatus('available');
         setUniqueIdSuggestions([]);
     };
 
-    const { email, password, unique_id, phone_number } = formData;
-
     const handleNextStep = () => {
-        if (step < 3) setStep(step + 1);
+        if (step === 1) setStep(2);
     };
 
     const handlePreviousStep = () => {
-        if (step > 1) setStep(step - 1);
+        if (step === 2) setStep(1);
     };
 
     return (
-        <div className='signup-sign-up-page-card-main-div-signup'>
-        <div className="signup-sign-up-page-card">
-            {loading && <LoadingSpinner />}
-            <h2 className="signup-sign-up-page-heading">Sign Up</h2>
-            <div className="progress-bar">
-                <div className={`progress ${step >= 1 ? 'filled' : ''}`}></div>
-                <div className={`progress ${step >= 2 ? 'filled' : ''}`}></div>
-                <div className={`progress ${step >= 3 ? 'filled' : ''}`}></div>
-            </div>
-            <form onSubmit={handleSubmit} className="signup-sign-up-page-form">
-                {error && <p className="signup-sign-up-page-error">{error}</p>}
-                
-                {step === 1 && (
-                    <>
-                        
-                        <div className="signup-sign-up-page-input-group">
-                            <FaEnvelope className="signup-sign-up-page-icon" />
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Email"
-                                value={email}
-                                onChange={handleChange}
-                                required
-                                className="signup-sign-up-page-input"
-                            />
-                        </div>
-                        <div className="signup-sign-up-page-input-group">
-                            <FaLock className="signup-sign-up-page-icon" />
-                            <input
-                                type={passwordVisible ? 'text' : 'password'}
-                                name="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={handleChange}
-                                required
-                                className="signup-sign-up-page-input"
-                            />
-                            <span
-                                className="signup-sign-up-page-toggle-password"
-                                onClick={togglePasswordVisibility}
-                            >
-                                {passwordVisible ? 'Hide' : 'Show'}
-                            </span>
-                        </div>
-                    </>
-                )}
-                
-                {step === 2 && (
-                    <>
-                       
-                        <div className="signup-sign-up-page-input-group">
-                            <FaPhone className="signup-sign-up-page-icon" />
-                            <input
-                                type="tel"
-                                name="phone_number"
-                                placeholder="Phone Number"
-                                value={phone_number}
-                                onChange={handleChange}
-                                required
-                                className="signup-sign-up-page-input"
-                            />
-                        </div>
-                    </>
-                )}
-                
-                {step === 3 && (
-                    <>
-                        <div className={`signup-sign-up-page-input-group ${uniqueIdStatus}`}>
-                            <FaUser className="signup-sign-up-page-icon" />
-                            <input
-                                type="text"
-                                name="unique_id"
-                                placeholder="User Name"
-                                value={unique_id}
-                                onChange={handleChange}
-                                required
-                                className="signup-sign-up-page-input"
-                            />
-                            {uniqueIdStatus === 'available' && <FaCheckCircle className="signup-sign-up-page-status-icon available" />}
-                            {uniqueIdStatus === 'taken' && <FaTimesCircle className="signup-sign-up-page-status-icon taken" />}
-                        </div>
-                        {uniqueIdSuggestions.length > 0 && (
-                            <div className="signup-sign-up-page-suggestions">
-                                <p>Suggestions:</p>
-                                {uniqueIdSuggestions.map((suggestion) => (
-                                    <span key={suggestion} onClick={() => handleSuggestionClick(suggestion)} className="signup-sign-up-page-suggestion">
-                                        {suggestion}
-                                    </span>
-                                ))}
-                            </div>
-                        )}
-                    </>
-                )}
-                
-                {step > 1 && <button type="button" onClick={handlePreviousStep} className="signup-sign-up-page-button">Previous</button>}
-                {step < 3 && <button type="button" onClick={handleNextStep} className="signup-sign-up-page-button">Next</button>}
-                {step === 3 && (
-                    <div>
-                        <div className="signup-sign-up-page-checkbox-container" style={{marginTop: '20px'}}>
-                            <div>
-                            <input
-  type="checkbox" 
-  id="terms" 
-  checked={termsAccepted}
-  onChange={handleTermsChange}
-  required
-  style={{display: 'none'}}
-/>
-<label htmlFor="terms" className="check__terms__box">
-  <svg width="18px" height="18px" viewBox="0 0 18 18">
-    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-    <polyline points="1 9 7 14 15 4"></polyline>
-  </svg>
-</label>
-
-</div>
-                            <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
-                                I agree to the <Link to='/terms-and-conditions' className="signup-sign-up-page-link">Terms and Conditions</Link>
-                            </label>
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={loading || !termsAccepted || uniqueIdStatus === 'taken'}
-                            className="signup-sign-up-page-submit-button"
-                        >
-                            {loading ? 'Signing Up...' : 'Sign Up'}
-                        </button>
+<div className="signup-sign-up-page-card-main-div-signup">
+    <div className="signup-sign-up-page-card">
+        {step === 2 && (
+            <button className="signup-sign-up-page-back-btn" onClick={handlePreviousStep}>
+                <FaArrowLeft />
+            </button>
+        )}
+        {loading && <LoadingSpinner />}
+        <h2 className="signup-sign-up-page-heading">
+ Create Your Account
+        </h2>
+        <p className="signup-sign-up-page-subtext">Welcome! Let’s get you started with Edusify.</p>
+        <form onSubmit={handleSubmit} className="signup-sign-up-page-form">
+            {error && <p className="signup-sign-up-page-error">{error}</p>}
+            
+            {step === 1 && (
+                <>
+                    <div className="signup-sign-up-page-input-group">
+                        <FaEnvelope className="signup-sign-up-page-icon" />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="signup-sign-up-page-input"
+                            autoComplete="email"
+                            aria-label="Enter your email"
+                        />
                     </div>
-                )}
-                <p className="signup-sign-up-page-login-link">
-                    Already have an account? <Link to="/login" className="signup-sign-up-page-link">Login here</Link>.
-                </p>
-            </form>
-        </div>
-        </div>
+                    <div className="signup-sign-up-page-input-group">
+                        <FaLock className="signup-sign-up-page-icon" />
+                        <input
+                            type={passwordVisible ? 'text' : 'password'}
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            className="signup-sign-up-page-input"
+                            autoComplete="new-password"
+                            aria-label="Enter your password"
+                        />
+                        <span
+                            className="signup-sign-up-page-toggle-password"
+                            onClick={togglePasswordVisibility}
+                        >
+                            {passwordVisible ? 'Hide' : 'Show'}
+                        </span>
+                    </div>
+                    <div className="signup-sign-up-page-input-group">
+                        <FaPhone className="signup-sign-up-page-icon" />
+                        <input
+                            type="tel"
+                            name="phone_number"
+                            placeholder="Phone Number"
+                            value={formData.phone_number}
+                            onChange={handleChange}
+                            required
+                            className="signup-sign-up-page-input"
+                            autoComplete="tel"
+                            aria-label="Enter your phone number"
+                        />
+                    </div>
+                </>
+            )}
+
+            {step === 2 && (
+                <>
+                    <div className={`signup-sign-up-page-input-group ${uniqueIdStatus}`}>
+                        <FaUser className="signup-sign-up-page-icon" />
+                        <input
+                            type="text"
+                            name="unique_id"
+                            placeholder="User Name"
+                            value={formData.unique_id}
+                            onChange={handleChange}
+                            required
+                            className="signup-sign-up-page-input"
+                            autoComplete="username"
+                            aria-label="Enter your username"
+                        />
+                        {uniqueIdStatus === 'available' && <FaCheckCircle className="signup-sign-up-page-status-icon available" />}
+                        {uniqueIdStatus === 'taken' && <FaTimesCircle className="signup-sign-up-page-status-icon taken" />}
+                    </div>
+                    {uniqueIdSuggestions.length > 0 && (
+                        <div className="signup-sign-up-page-suggestions">
+                            <p>Suggestions:</p>
+                            {uniqueIdSuggestions.map((suggestion) => (
+                                <span key={suggestion} onClick={() => handleSuggestionClick(suggestion)} className="signup-sign-up-page-suggestion">
+                                    {suggestion}
+                                </span>
+                            ))}
+                        </div>
+                    )}
+                    <div className="signup-sign-up-page-checkbox-container" style={{ marginTop: '20px' }}>
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            checked={termsAccepted}
+                            onChange={handleTermsChange}
+                            required
+                            className="signup-sign-up-page-checkbox"
+                            aria-label="Accept Terms and Conditions"
+                        />
+                        <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
+                            I agree to the <Link to="/terms" className="signup-sign-up-page-link">Terms and Conditions</Link>
+                        </label>
+                    </div>
+                </>
+            )}
+
+            {step === 1 && (
+                <button type="button" onClick={handleNextStep} className="signup-sign-up-page-submit-button">
+                    <FaArrowRight className="signup-sign-up-page-button-icon" /> Continue to Edusify
+                </button>
+            )}
+
+            {step === 2 && (
+                <button type="submit" disabled={!termsAccepted} className="signup-sign-up-page-submit-button">
+                    <FaCheckCircle className="signup-sign-up-page-button-icon" /> Sign Up
+                </button>
+            )}
+        </form>
+    </div>
+</div>
+
     );
 };
 
