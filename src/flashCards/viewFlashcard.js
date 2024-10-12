@@ -192,9 +192,15 @@ const ViewFlashCard = () => {
       const closeSubjectModal = () => setShowSubjectModal(false); // Close modal
   
       const handleCreateSubject = (subjectName) => {
-          // Logic for subject creation (can be linked to an API)
-          closeSubjectModal();
-      };
+        // Your logic to create the subject goes here
+    
+        // Close the modal after creating the subject
+        closeSubjectModal();
+    
+        // Refresh the page
+        window.location.reload();
+    };
+    
 
     return (
             <div className="flashcards-page">
