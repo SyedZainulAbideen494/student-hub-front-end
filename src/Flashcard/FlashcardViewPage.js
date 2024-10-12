@@ -117,12 +117,18 @@ const FlashcardViewPage = () => {
     if (direction === 'left') {
       handleStatusUpdate("I Don't Know");
       setSwipeDirection('swipe-left');
+      setMotivationalMessage("I don't know");
     } else if (direction === 'right') {
       handleStatusUpdate('I Know');
       setSwipeDirection('swipe-right');
+      setMotivationalMessage("I know");
     }
-    setTimeout(nextFlashcard, 500); // Move to the next card after the animation
+    setTimeout(() => {
+      setMotivationalMessage(""); // Clear the message after a delay
+      nextFlashcard();
+    }, 500); // Move to the next card after the animation
   };
+  
 
   const handlers = useSwipeable({
     onSwipedLeft: () => handleSwipe('left'), // Update status and go to the next card
@@ -198,7 +204,11 @@ const FlashcardViewPage = () => {
   </button>
 </div>
 
-
+{motivationalMessage && (
+    <div className="flashcard__view__page__swipe-message" style={{ textAlign: 'center', marginTop: '20px', fontSize: '16px', fontWeight: 'bold' }}>
+      {motivationalMessage}
+    </div>
+  )}
 
    
   </div>
