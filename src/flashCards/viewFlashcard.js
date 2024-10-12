@@ -301,7 +301,7 @@ const ViewFlashCard = () => {
                   transform: 'translateY(0)',
                   width: '18rem',
                   backgroundColor: '#FFFFFF', // White background
-                  borderRadius: '0.5rem',
+                  borderRadius: '25px',
                   boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                   display: 'flex',
                   flexDirection: 'column',
