@@ -308,7 +308,7 @@ const ViewFlashCard = () => {
                   alignItems: 'center', // Center items horizontally
                   justifyContent: 'center', // Center items vertically
                   gap: '1rem',
-                  padding: '1rem',
+                  padding: '10px',
                   margin: '1rem auto', // Center card horizontally with 'auto' margins
                   minHeight: '8rem',
               }}
