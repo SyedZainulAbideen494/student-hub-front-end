@@ -719,25 +719,27 @@
 }
 
 .toggle-btn {
-  background-color: #F9FAFB; /* Light background */
-  color: #6B7280; /* Gray text color */
-  border: 1px solid #D1D5DB; /* Light border */
-  border-radius: 0.375rem; /* Rounded corners */
+  background-color: #FFFBF0; /* Soft cream background for a cute look */
+  color: #3B82F6; /* Bright blue text color */
+  border: 1px solid #E5E7EB; /* Light border */
+  border-radius: 20px; /* More rounded corners for a cute appearance */
   padding: 0.5rem 1rem; /* Padding for the button */
-  font-size: 1rem; /* Font size */
+  font-size: 0.875rem; /* Smaller font size for a sleek appearance */
   font-weight: 500; /* Medium font weight */
   cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover and active states */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover and active states */
   margin: 0 0.5rem; /* Space between buttons */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .toggle-btn:hover {
-  background-color: #E5E7EB; /* Light gray on hover */
-  color: #111827; /* Dark text color on hover */
+  background-color: #FEF6E9; /* Light peach on hover */
+  color: #3B82F6; /* Keep the text bright blue on hover */
 }
 
 .toggle-btn.active {
-  background-color: #3B82F6; /* Blue background for active state */
+  background-color: #93C5FD; /* Light blue background for active state */
   color: white; /* White text for active state */
-  border-color: #3B82F6; /* Match border color to background */
+  border-color: #93C5FD; /* Match border color to text color */
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); /* Shadow to elevate the active button */
 }
