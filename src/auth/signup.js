@@ -184,7 +184,7 @@ const SignUp = () => {
         if (token) {
             checkTokenAndRedirect(token);
         }
-    }, [nav]);
+    }, [nav]); 
 
     return (
 <div className="signup-sign-up-page-card-main-div-signup">
@@ -195,13 +195,13 @@ const SignUp = () => {
             </button>
         )}
         {loading && <LoadingSpinner />}
-        <h2 className="signup-sign-up-page-heading">
- Create Your Account
-        </h2>
-        <p className="signup-sign-up-page-subtext">Welcome! Let’s get you started with Edusify.</p>
+        <h2 className="signup-sign-up-page-heading">Create Your Account</h2>
+        <p className="signup-sign-up-page-subtext">
+        Welcome to Edusify: Your Free AI-Powered Platform for Students!
+        </p>
+
         <form onSubmit={handleSubmit} className="signup-sign-up-page-form">
             {error && <p className="signup-sign-up-page-error">{error}</p>}
-            
             {step === 1 && (
                 <>
                     <div className="signup-sign-up-page-input-group">
@@ -296,14 +296,13 @@ const SignUp = () => {
                         <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
                             I agree to the <Link to="/terms" className="signup-sign-up-page-link" style={{color: 'black'}}>Terms and Conditions</Link>
                         </label>
-                       
                     </div>
                 </>
             )}
 
             {step === 1 && (
                 <button type="button" onClick={handleNextStep} className="signup-sign-up-page-submit-button">
-                    <FaArrowRight className="signup-sign-up-page-button-icon" /> Continue to Edusify
+                    <FaArrowRight className="signup-sign-up-page-button-icon" /> Start Your Journey with Edusify
                 </button>
             )}
 
@@ -313,23 +312,15 @@ const SignUp = () => {
                 </button>
             )}
         </form>
-        <p style={{ 
-  textAlign: 'center', 
-  fontSize: '14px', 
-  color: '#333', 
-  marginTop: '20px' 
-}}>
-  Already have an account? 
-  <span style={{ 
-    fontWeight: 'bold', 
-    color: '#007bff' 
-  }}>
-    <Link to='/login' style={{color: 'black'}}> Login</Link>
-  </span>
-</p>
-
+        <p style={{ textAlign: 'center', fontSize: '14px', color: '#333', marginTop: '20px' }}>
+            Already have an account?
+            <span style={{ fontWeight: 'bold', color: '#007bff' }}>
+                <Link to='/login' style={{color: 'black'}}> Login</Link>
+            </span>
+        </p>
     </div>
 </div>
+
 
     );
 };

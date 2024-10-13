@@ -3,36 +3,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 100vh;
   background-color: #f9fafb;
   padding: 20px;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 /* Card styles */
 .signup-sign-up-page-card {
   background-color: #fff;
-  padding: 30px; /* Keep padding as original */
-  border-radius: 15px; /* Keep border radius as original */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Keep shadow as original */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
   width: 100%;
-  max-width: 400px; /* Keep max width as original */
+  max-width: 450px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-sign-up-page-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.18);
 }
 
 /* Heading */
 .signup-sign-up-page-heading {
-  font-size: 26px; /* Original heading size */
-  font-weight: 600;
-  margin-bottom: 10px; /* Original margin */
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
   text-align: center;
-  color: #333;
+  color: #222;
+  background: -webkit-linear-gradient(45deg, #6b8ce0, #9ad3de);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Subtext */
 .signup-sign-up-page-subtext {
-  font-size: 14px; /* Original subtext size */
-  color: #777;
+  font-size: 14px;
+  color: #666;
   text-align: center;
-  margin-bottom: 25px; /* Original margin */
+  margin-bottom: 25px;
 }
 
 /* Form styles */
@@ -44,51 +55,68 @@
 /* Input group */
 .signup-sign-up-page-input-group {
   position: relative;
-  margin-bottom: 15px; /* Original margin */
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
+}
+
+.signup-sign-up-page-input-group:before {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 10px;
+  height: 2px;
+  width: 100%;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.signup-sign-up-page-input-group:focus-within:before {
+  background-color: #6b8ce0;
 }
 
 /* Input icons */
 .signup-sign-up-page-icon {
   position: absolute;
-  left: 10px; /* Original spacing */
-  color: #000;
-  font-size: 20px; /* Original icon size */
+  left: 10px;
+  color: #6b8ce0;
+  font-size: 18px;
   z-index: 100;
 }
 
 /* Input field */
 .signup-sign-up-page-input {
   width: 100%;
-  padding: 10px 10px 10px 40px; /* Keep original padding */
-  border: 1px solid #ccc;
-  border-radius: 10px; /* Keep original border radius */
+  padding: 10px 10px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   background-color: #ffffff;
   color: #333;
-  font-size: 14px; /* Keep original input text size */
+  font-size: 14px;
   outline: none;
-  transition: border-color 0.3s ease; /* Keep original transition */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .signup-sign-up-page-input:focus {
-  border-color: #000;
+  border-color: #6b8ce0;
+  box-shadow: 0 0 8px rgba(107, 140, 224, 0.3);
+  width: 80%;
 }
 
 /* Toggle password visibility */
 .signup-sign-up-page-toggle-password {
   position: absolute;
-  right: 10px; /* Original spacing */
-  font-size: 14px; /* Original toggle text size */
-  color: #666;
+  right: 10px;
+  font-size: 14px;
+  color: #999;
   cursor: pointer;
 }
 
 /* Unique ID status icons */
 .signup-sign-up-page-status-icon {
   position: absolute;
-  right: 10px; /* Original spacing */
-  font-size: 14px; /* Original icon size */
+  right: 10px;
+  font-size: 18px;
 }
 
 .signup-sign-up-page-status-icon.available {
@@ -103,75 +131,82 @@
 .signup-sign-up-page-checkbox-container {
   display: flex;
   align-items: center;
+  margin-top: 15px;
 }
 
 .signup-sign-up-page-checkbox {
-  margin-right: 8px; /* Keep original spacing */
+  margin-right: 8px;
 }
 
 .signup-sign-up-page-checkbox-label {
-  font-size: 14px; /* Keep original label text size */
+  font-size: 14px;
   color: #333;
 }
 
 /* Suggestions */
 .signup-sign-up-page-suggestions {
-  margin-top: 10px; /* Keep original margin */
-  font-size: 14px; /* Keep original suggestion text size */
+  margin-top: 10px;
+  font-size: 14px;
   color: #555;
 }
 
 .signup-sign-up-page-suggestion {
   cursor: pointer;
   display: inline-block;
-  padding: 5px; /* Keep original padding */
+  padding: 5px;
   border-radius: 5px;
-  background-color: #f1f1f1;
+  background-color: #e0f7fa;
   margin-right: 5px;
+  color: #007bff;
 }
 
 .signup-sign-up-page-suggestion:hover {
-  background-color: #e0e0e0; /* Keep original hover effect */
+  background-color: #b2ebf2;
 }
 
 /* Error message */
 .signup-sign-up-page-error {
   color: #f44336;
-  margin-bottom: 10px; /* Keep original margin */
-  font-size: 14px; /* Keep original error text size */
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 /* Buttons */
 .signup-sign-up-page-submit-button {
   width: 100%;
-  padding: 10px; /* Keep original padding */
+  padding: 12px;
   border: none;
-  border-radius: 10px; /* Keep original border radius */
-  background-color: #000;
+  border-radius: 10px;
+  background-color: #6b8ce0;
   color: #fff;
-  font-size: 14px; /* Keep original button text size */
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 15px; /* Keep original margin */
-  transition: background-color 0.3s ease; /* Keep original transition */
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
 }
 
 .signup-sign-up-page-submit-button:hover {
-  background-color: #333; /* Keep original hover effect */
+  background-color: #547bcd;
 }
 
-/* Disabled state styles */
-.signup-sign-up-page-submit-button:disabled {
-  background-color: #ccc; /* Light gray background when disabled */
-  color: #999; /* Gray text color when disabled */
-  cursor: not-allowed; /* Change cursor to indicate it's disabled */
+/* Continue button */
+.signup-sign-up-page-continue-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffcc80;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
 }
 
-/* Button group */
-.signup-sign-up-page-buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+.signup-sign-up-page-continue-button:hover {
+  background-color: #ffa726;
 }
 
 /* Back button */
@@ -181,7 +216,7 @@
   left: 20px;
   background-color: transparent;
   border: none;
-  color: #000;
+  color: #6b8ce0;
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -189,31 +224,70 @@
 }
 
 .signup-sign-up-page-back-btn:hover {
-  color: #666;
+  color: #547bcd;
 }
 
 .signup-sign-up-page-back-btn svg {
   margin-right: 5px;
 }
 
+.signup-tagline {
+  font-size: 1.25rem; /* Increased font size for tagline */
+  margin-bottom: 20px; /* Spacing below tagline */
+  font-weight: 500; /* Medium weight for emphasis */
+  color: #007aff; /* Apple blue color for the tagline */
+}
+
+.signup-sign-up-page-benefits {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.signup-sign-up-page-benefits li {
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center items vertically */
+  font-size: 1rem; /* Font size for benefits */
+  margin-bottom: 15px; /* Spacing between items */
+  animation: fadeIn 0.5s; /* Add fade-in animation */
+  color: #555; /* Slightly muted color for text */
+}
+
+.signup-sign-up-page-benefits li svg {
+  color: #007aff; /* Icon color matching the tagline */
+  margin-right: 8px; /* Spacing between icon and text */
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Hover effect for benefits */
+.signup-sign-up-page-benefits li:hover {
+  transform: scale(1.02); /* Slight scale effect */
+  transition: transform 0.2s ease; /* Smooth transition */
+}
+
 /* Mobile Responsiveness */
 @media screen and (max-width: 600px) {
   .signup-sign-up-page-card {
-    padding: 20px; /* Keep original padding */
-    max-width: 100%; /* Keep original max width */
-  }
-
-  .signup-sign-up-page-input {
-    font-size: 12px; /* Keep original input text size */
-    padding: 17px 8px 17px 40px; /* Keep original padding */
+    padding: 20px;
+    max-width: 100%;
   }
 
   .signup-sign-up-page-heading {
-    font-size: 20px; /* Keep original heading size */
+    font-size: 24px;
   }
 
   .signup-sign-up-page-submit-button {
-    padding: 12px; /* Keep original button padding */
-    font-size: 12px; /* Keep original button text size */
+    padding: 12px;
+    font-size: 14px;
   }
 }
