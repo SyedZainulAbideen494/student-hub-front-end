@@ -38,7 +38,7 @@
 .create-set-button__library__page__component__page {
   border: none;
   display: flex;
-  padding: 6px 10px; /* Smaller padding for sleek look */
+  padding: 12px 17px; /* Smaller padding for sleek look */
   background: #1c1c1e; /* Premium dark black */
   color: #ffffff; /* White text */
   font-size: 12px; /* Slightly smaller font size */
