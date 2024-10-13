@@ -85,7 +85,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       setMessage('');
     } catch (error) {
       // Display the error message from the server
-      const errorMessage = 'Oops! Something went wrong. Please try again later. If the problem continues, consider rephrasing your question, as it may be a "RECITATION" content.';
+      const errorMessage = 'Oops! Something went wrong. Please try again later. If the problem continues, consider rephrasing your question, as it may be a "RECITATION" content. Or there might be issue with Google Gemini';
 
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
       console.error('Error sending message:', error);
