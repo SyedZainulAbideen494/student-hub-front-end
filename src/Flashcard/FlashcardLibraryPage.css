@@ -150,24 +150,6 @@
   color: white; /* Color for view icon */
 }
 
-.share__btn__flashcard__card__page {
-  display: inline-flex; /* Inline flex for button */
-  align-items: center; /* Center icon and text */
-  background: linear-gradient(135deg, #A78BFA, #9271D5); /* Clean gradient background */
-  color: white; /* Text color */
-  padding: 8px 16px; /* Padding for the button */
-  border-radius: 20px; /* Rounded button edges */
-  text-decoration: none; /* Remove underline */
-  font-weight: 500; /* Medium font weight */
-  transition: background-color 0.2s ease, transform 0.2s ease; /* Smooth background and transform change */
-  font-size: 14px; /* Slightly smaller font size */
-  margin-top: 10px; /* Space above the button */
-}
-
-.share__btn__flashcard__card__page:hover {
-  background: linear-gradient(135deg, #9271D5, #A78BFA); /* Inverted gradient on hover */
-  transform: translateY(-1px); /* Move up slightly on hover */
-}
 
 .fade-in {
   opacity: 0;
@@ -187,14 +169,14 @@
   justify-content: center; /* Center the button content */
   background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
   color: white; /* Text color */
-  padding: 8px 16px; /* Padding for the button */
-  border-radius: 20px; /* Rounded button edges */
+  padding: 10px 16px; /* Padding for the button */
+  border-radius: 15px; /* Rounded button edges */
   text-decoration: none; /* Remove underline */
   font-weight: 500; /* Medium font weight */
   transition: background-color 0.2s ease, transform 0.2s ease; /* Smooth background and transform change */
   font-size: 14px; /* Slightly smaller font size */
-  margin: 10px auto; /* Center button with automatic margins */
-  width: 80%;
+  margin: 20px auto; /* Center button with automatic margins */
+  width: 50%;
 }
 
 
