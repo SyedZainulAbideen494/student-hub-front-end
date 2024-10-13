@@ -1,25 +1,30 @@
-/* Main container */
 .signup-sign-up-page-card-main-div-signup {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f9fafb;
   padding: 20px;
-  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%); /* Very soft pastel gradient */
 }
+
 
 /* Card styles */
 .signup-sign-up-page-card {
-  background-color: #fff;
+  background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%); /* Soft gradient background */
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
   width: 100%;
   max-width: 450px;
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.signup-sign-up-page-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
+}
+
 
 .signup-sign-up-page-card:hover {
   transform: translateY(-5px);
@@ -36,6 +41,15 @@
   background: -webkit-linear-gradient(45deg, #6b8ce0, #9ad3de);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.signup-sign-up-page-heading-step-2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  text-align: center;
+  color: #222;
 }
 
 /* Subtext */
@@ -100,7 +114,6 @@
 .signup-sign-up-page-input:focus {
   border-color: #6b8ce0;
   box-shadow: 0 0 8px rgba(107, 140, 224, 0.3);
-  width: 80%;
 }
 
 /* Toggle password visibility */
@@ -120,7 +133,7 @@
 }
 
 .signup-sign-up-page-status-icon.available {
-  color: #4caf50;
+  color: #000000;
 }
 
 .signup-sign-up-page-status-icon.taken {
@@ -135,7 +148,7 @@
 }
 
 .signup-sign-up-page-checkbox {
-  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .signup-sign-up-page-checkbox-label {
@@ -177,7 +190,7 @@
   padding: 12px;
   border: none;
   border-radius: 10px;
-  background-color: #6b8ce0;
+  background-color: #000000;
   color: #fff;
   font-size: 16px;
   font-weight: 600;
@@ -212,12 +225,12 @@
 /* Back button */
 .signup-sign-up-page-back-btn {
   position: absolute;
-  top: 20px;
+  top: 15px;
   left: 20px;
   background-color: transparent;
   border: none;
-  color: #6b8ce0;
-  font-size: 18px;
+  color: #000000;
+  font-size: 12px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -291,3 +304,32 @@
     font-size: 14px;
   }
 }
+
+
+.signup-sign-up-page-input-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.signup-sign-up-page-username-prefix {
+  position: absolute;
+  left: 10px; /* Adjust as necessary */
+  color: #888; /* Lighter color for the prefix */
+  font-size: 16px; /* Match the font size of the input */
+}
+
+.signup-sign-up-page-input {
+  padding-left: 30px; /* Make space for the prefix */
+  /* Other existing styles for input */
+}
+
+/* Disabled state styling */
+.signup-sign-up-page-submit-button:disabled {
+  background-color: #5c5c5c; /* Light blue background for disabled state */
+  color: #999; /* Light gray text color */
+  cursor: not-allowed; /* Not-allowed cursor */
+  opacity: 0.7; /* Slightly transparent */
+  transform: none; /* Remove any hover effects */
+}
+

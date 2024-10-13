@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaLock, FaPhone, FaCheckCircle, FaTimesCircle, FaArrowLeft, FaUserPlus, FaArrowRight } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaLock, FaPhone, FaCheckCircle, FaTimesCircle, FaArrowLeft, FaUserPlus, FaArrowRight, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -166,7 +166,7 @@ const SignUp = () => {
     };
 
     
-    const checkTokenAndRedirect = async (token) => {
+  {/*   const checkTokenAndRedirect = async (token) => {
         try {
             const response = await axios.post(API_ROUTES.sessionCheck, { token });
             if (response.data.exists) {
@@ -184,7 +184,7 @@ const SignUp = () => {
         if (token) {
             checkTokenAndRedirect(token);
         }
-    }, [nav]); 
+    }, [nav]); */}
 
     return (
 <div className="signup-sign-up-page-card-main-div-signup">
@@ -195,10 +195,23 @@ const SignUp = () => {
             </button>
         )}
         {loading && <LoadingSpinner />}
-        <h2 className="signup-sign-up-page-heading">Create Your Account</h2>
-        <p className="signup-sign-up-page-subtext">
-        Welcome to Edusify: Your Free AI-Powered Platform for Students!
-        </p>
+        
+        {/* Step 1 Heading */}
+        {step === 1 && (
+            <>
+                <h2 className="signup-sign-up-page-heading">Create Your Account</h2>
+                <p className="signup-sign-up-page-subtext">
+                    Welcome to Edusify: Your Free AI-Powered Platform for Students!
+                </p>
+            </>
+        )}
+        
+        {/* Step 2 Heading */}
+        {step === 2 && (
+            <>
+                <h2 className="signup-sign-up-page-heading-step-2">Choose Your Username</h2>
+            </>
+        )}
 
         <form onSubmit={handleSubmit} className="signup-sign-up-page-form">
             {error && <p className="signup-sign-up-page-error">{error}</p>}
@@ -235,7 +248,7 @@ const SignUp = () => {
                             className="signup-sign-up-page-toggle-password"
                             onClick={togglePasswordVisibility}
                         >
-                            {passwordVisible ? 'Hide' : 'Show'}
+                            {passwordVisible ? <FaEyeSlash /> : <FaEye />} {/* Change the icon based on visibility */}
                         </span>
                     </div>
                     <div className="signup-sign-up-page-input-group">
@@ -255,60 +268,60 @@ const SignUp = () => {
                 </>
             )}
 
-            {step === 2 && (
-                <>
-                    <div className={`signup-sign-up-page-input-group ${uniqueIdStatus}`}>
-                        <FaUser className="signup-sign-up-page-icon" />
-                        <input
-                            type="text"
-                            name="unique_id"
-                            placeholder="User Name"
-                            value={formData.unique_id}
-                            onChange={handleChange}
-                            required
-                            className="signup-sign-up-page-input"
-                            autoComplete="username"
-                            aria-label="Enter your username"
-                        />
-                        {uniqueIdStatus === 'available' && <FaCheckCircle className="signup-sign-up-page-status-icon available" />}
-                        {uniqueIdStatus === 'taken' && <FaTimesCircle className="signup-sign-up-page-status-icon taken" />}
-                    </div>
-                    {uniqueIdSuggestions.length > 0 && (
-                        <div className="signup-sign-up-page-suggestions">
-                            <p>Suggestions:</p>
-                            {uniqueIdSuggestions.map((suggestion) => (
-                                <span key={suggestion} onClick={() => handleSuggestionClick(suggestion)} className="signup-sign-up-page-suggestion">
-                                    {suggestion}
-                                </span>
-                            ))}
-                        </div>
-                    )}
-                    <div className="signup-sign-up-page-checkbox-container" style={{ marginTop: '20px' }}>
-                        <input
-                            type="checkbox"
-                            id="terms"
-                            checked={termsAccepted}
-                            onChange={handleTermsChange}
-                            required
-                            className="signup-sign-up-page-checkbox"
-                            aria-label="Accept Terms and Conditions"
-                        />
-                        <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
-                            I agree to the <Link to="/terms" className="signup-sign-up-page-link" style={{color: 'black'}}>Terms and Conditions</Link>
-                        </label>
-                    </div>
-                </>
-            )}
+{step === 2 && (
+    <>
+        <div className={`signup-sign-up-page-input-group ${uniqueIdStatus}`}>
+            <span className="signup-sign-up-page-username-prefix">@</span> {/* Prefix for the username */}
+            <input
+                type="text"
+                name="unique_id"
+                placeholder="User Name"
+                value={formData.unique_id}
+                onChange={handleChange}
+                required
+                className="signup-sign-up-page-input"
+                autoComplete="username"
+                aria-label="Enter your username"
+            />
+            {uniqueIdStatus === 'available' && <FaCheckCircle className="signup-sign-up-page-status-icon available" />}
+            {uniqueIdStatus === 'taken' && <FaTimesCircle className="signup-sign-up-page-status-icon taken" />}
+        </div>
+        {uniqueIdSuggestions.length > 0 && (
+            <div className="signup-sign-up-page-suggestions">
+                <p>Suggestions:</p>
+                {uniqueIdSuggestions.map((suggestion) => (
+                    <span key={suggestion} onClick={() => handleSuggestionClick(suggestion)} className="signup-sign-up-page-suggestion">
+                        {suggestion}
+                    </span>
+                ))}
+            </div>
+        )}
+        <div className="signup-sign-up-page-checkbox-container" style={{ marginTop: '20px' }}>
+            <input
+                type="checkbox"
+                id="terms"
+                checked={termsAccepted}
+                onChange={handleTermsChange}
+                required
+                className="signup-sign-up-page-checkbox"
+                aria-label="Accept Terms and Conditions"
+            />
+            <label htmlFor="terms" className="signup-sign-up-page-checkbox-label">
+                I agree to the <Link to="/terms" className="signup-sign-up-page-link" style={{ color: 'black' }}>Terms and Conditions</Link>
+            </label>
+        </div>
+    </>
+)}
 
             {step === 1 && (
                 <button type="button" onClick={handleNextStep} className="signup-sign-up-page-submit-button">
-                    <FaArrowRight className="signup-sign-up-page-button-icon" /> Start Your Journey with Edusify
+                    Start Your Journey with Edusify
                 </button>
             )}
 
             {step === 2 && (
                 <button type="submit" disabled={!termsAccepted} className="signup-sign-up-page-submit-button">
-                    <FaCheckCircle className="signup-sign-up-page-button-icon" /> Sign Up
+                     Sign Up
                 </button>
             )}
         </form>
@@ -320,6 +333,7 @@ const SignUp = () => {
         </p>
     </div>
 </div>
+
 
 
     );
