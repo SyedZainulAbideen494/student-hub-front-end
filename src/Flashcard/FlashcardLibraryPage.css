@@ -80,7 +80,7 @@
 
 
 .set-card__library__page__component__page {
-  border-radius: 12px; /* Rounded edges for a soft look */
+  border-radius: 25px; /* Rounded edges for a soft look */
   padding: 20px; /* Increased padding for better spacing */
   background-color: #ffffff; /* Clean white background */
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
