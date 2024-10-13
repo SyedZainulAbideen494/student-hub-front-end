@@ -5,10 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   padding: 0 20px; /* Add some padding to make it feel balanced */
-  background-color: #f9f9f9; /* Light grey Apple-like background */
-  border-bottom: 1px solid #e0e0e0; /* Thin, clean border */
+  background-color: #ffffff; /* Light grey Apple-like background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
 }
 
@@ -89,7 +88,7 @@
   position: relative; /* Allows for pseudo-elements */
   overflow: hidden; /* Clip overflowing elements */
   max-width: 320px; /* Set a max width for uniformity */
-  margin: 12px; /* Spacing between cards */
+  margin: 20px 12px; /* Spacing between cards */
   cursor: pointer; /* Indicate that the card is clickable */
 }
 
