@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   padding: 0 20px; /* Add some padding to make it feel balanced */
   background-color: #ffffff; /* Light grey Apple-like background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
