@@ -109,9 +109,7 @@ const FlashcardLibraryPage = () => {
               Subject: <strong>{set.subject}</strong>
             </span>
           </div>
-          <Link to={`/flashcard/set/${set.id}`} className="share__btn__flashcard__card__page">
-            <i className="fas fa-eye view-icon" aria-hidden="true"></i> View
-          </Link>
+      
         </div>
       </Link>
     </div>
