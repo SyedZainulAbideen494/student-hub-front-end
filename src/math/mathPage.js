@@ -47,6 +47,10 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [conversationStarted, setConversationStarted] = useState(false);
   const [listening, setListening] = useState(false); // State for voice recognition
   const [tutorialComplete, setTutorialComplete] = useState(false); // State to control tutorial visibility
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedback, setFeedback] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [loadingFeedback, setLoadingFeedback] = useState(false);
 
   useEffect(() => {
       // Check local storage for tutorial completion status
@@ -84,15 +88,21 @@ const MathSolver = ({ handleVoiceCommand }) => {
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
       setMessage('');
     } catch (error) {
-      // Display the error message from the server
-      const errorMessage = 'Oops! Something went wrong. Please try again later. If the problem continues, consider rephrasing your question, as it may be a "RECITATION" content. Or there might be issue with Google Gemini';
-
+      const errorMessage = (
+        <>
+          Oops! Something went wrong. Please try again later.
+          <button className="report-problem-btn" onClick={() => setShowFeedbackModal(true)}>
+            Report Problem
+          </button>
+        </>
+      );
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
     }
   };
+  
   
   const handleCreateFlashcard = (content) => {
     navigate('/notes/create', { state: { editorContent: content } });
@@ -124,6 +134,25 @@ const MathSolver = ({ handleVoiceCommand }) => {
     }
   }, []);
 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const token = localStorage.getItem('token'); // Retrieve token from local storage
+
+    try {
+      const response = await axios.post(API_ROUTES.feedbackEduisfy, { feedback, token }); // Send token with feedback
+      setSuccessMessage('Feedback submitted successfully!'); // Set success message
+      setFeedback(''); // Clear the feedback after submission
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      setSuccessMessage('Error submitting feedback, please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const defaultPage = (
     <div className="container__default__ai__PageWrapper">
       <div className="default-message chat-bubble">
@@ -142,6 +171,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
           style={{ display: 'inline-block' }}
         />
       </div>
+
       <div className="container__default__ai__Page">
         <span></span>
         <span></span>
@@ -157,6 +187,31 @@ const MathSolver = ({ handleVoiceCommand }) => {
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
       <div className="chat-ui">
+      {showFeedbackModal && (
+        <div className="feedback-modal">
+          <div className="feedback-modal-content">
+            <h2>Report a Problem</h2>
+            <form onSubmit={handleSubmit}>
+              <textarea
+                value={feedback}
+                onChange={(e) => setFeedback(e.target.value)}
+                placeholder="Describe the issue"
+                required
+              />
+               <div class="feedback-modal-buttons">
+
+
+              <button type="submit" disabled={loadingFeedback}>
+                {loadingFeedback ? 'Submitting...' : 'Submit'}
+              </button>
+              <button onClick={() => setShowFeedbackModal(false)} type='button'>Close</button>
+              {successMessage && <p>{successMessage}</p>}
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      )}
         <div className="chat-messages">
           {!conversationStarted ? (
             defaultPage
@@ -216,6 +271,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
               <FaMicrophone className={listening ? 'listening' : ''} />
             </button>
           )}
+          
         </div>
       </div>
     </div>
