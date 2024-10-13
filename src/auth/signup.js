@@ -166,7 +166,7 @@ const SignUp = () => {
     };
 
     
-  {/*   const checkTokenAndRedirect = async (token) => {
+     const checkTokenAndRedirect = async (token) => {
         try {
             const response = await axios.post(API_ROUTES.sessionCheck, { token });
             if (response.data.exists) {
@@ -184,7 +184,7 @@ const SignUp = () => {
         if (token) {
             checkTokenAndRedirect(token);
         }
-    }, [nav]); */}
+    }, [nav]); 
 
     return (
 <div className="signup-sign-up-page-card-main-div-signup">
