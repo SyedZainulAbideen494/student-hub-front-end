@@ -106,7 +106,7 @@ const UnitConverter = () => {
                 <FontAwesomeIcon icon={faArrowLeft} size="lg" />
             </button>
             <h1>Unit Converter</h1>
-            <button className="clear-button" onClick={clearInput}>
+            <button className="clear-button__toolkit__unitConverter" onClick={clearInput}>
                 <FontAwesomeIcon icon={faTimes} size="lg" />
             </button>
         </div>
@@ -175,7 +175,7 @@ const UnitConverter = () => {
             />
         </div>
         
-        <div className="divider"></div>
+        <div className="divider__toolkit__unitConverter"></div>
         
         {conversionText && <p>{conversionText}</p>}
         

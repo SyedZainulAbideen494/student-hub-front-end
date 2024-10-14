@@ -71,6 +71,7 @@ import Subjects from "./flashCards/subjects/subjectPage";
 import Calculator from "./toolkit/Calculator";
 import GpaCalculator from "./toolkit/GpaCalculator";
 import UnitConverter from "./toolkit/UnitConverter";
+import ToolkitPage from "./toolkit/toolkitMainpage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -127,6 +128,7 @@ const router = createBrowserRouter([
   {path: '/flashcard/card/view/:id/:setId', element: <FlashcardViewPage/>},
   {path: '/ios/instructions/download', element: <IOSInstructions/>},
   {path: '/subject/:subjectId', element: <Subjects/>},
+  {path: '/toolkit', element: <ToolkitPage/>},
   {path: '/toolkit/calculator', element: <Calculator/>},
   {path: '/toolkit/gpa/calculator', element: <GpaCalculator/>},
   {path: '/toolkit/unitconverter', element: <UnitConverter/>},

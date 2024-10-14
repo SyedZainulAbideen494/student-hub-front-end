@@ -1,0 +1,141 @@
+.toolkit__main__page {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background-color: #e7f3ff; /* Soft light background color */
+    min-height: 100vh;
+    margin-bottom: 70px;
+}
+
+.toolkit__header__page {
+    background-color: #ffffff; /* White header background */
+    color: #333; /* Darker text color for contrast */
+    padding: 15px;
+    text-align: center;
+    border-radius: 12px; /* Rounded edges for the header */
+}
+
+.header__title__page {
+    font-size: 1.8em; /* Slightly larger heading size for emphasis */
+    margin: 0; /* Remove default margin */
+    font-weight: 700; /* Bolder font weight for the title */
+    color: #3a6c9a; /* Soft blue color for the header text */
+}
+
+.app__list__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.app__card__page {
+    background-color: #ffffff; /* Card background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    margin: 15px;
+    padding: 20px;
+    width: 90%; /* Responsive width */
+    max-width: 350px; /* Max width for cards */
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s; /* Added transition for box shadow */
+}
+
+.app__card__page:hover {
+    transform: scale(1.02); /* Slight scale effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
+}
+
+.app__description__page {
+    color: #555; /* Darker text for description */
+    margin: 10px 0; /* Space around the description */
+}
+
+.app__author__page {
+    color: #999; /* Lighter text for author */
+    font-size: 0.9em; /* Slightly smaller font size */
+    margin-bottom: 15px; /* Space below the author */
+}
+
+.open__app__button__page {
+    background-color: #70b5f7; /* Softer button color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 8px; /* Rounded button edges */
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s; /* Added transform transition */
+}
+
+.open__app__button__page:hover {
+    background-color: #0084ff; /* Darker button color on hover */
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+
+
+
+
+.suggestion__form__container__toolkit__main__page {
+    margin-top: 2rem; /* Add spacing above the suggestion form */
+    padding: 1.5rem; /* Increased padding for better spacing */
+    border: 1px solid #e1e1e1; /* Lighter border for a softer look */
+    border-radius: 12px; /* More subtle round corners */
+    text-align: center;
+    background-color: #ffffff; /* White background for a clean look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.suggestion__form__container__toolkit__main__page h2 {
+    margin-bottom: 1rem; /* Spacing below the heading */
+    font-size: 1.5rem; /* Larger font size for the heading */
+    color: #333; /* Darker color for better contrast */
+}
+
+.suggestion__form__container__toolkit__main__page textarea {
+    width: 90%; /* Full width for the textarea */
+    padding: 0.75rem; /* Increased padding for comfort */
+    border: 1px solid #ccc; /* Border for the textarea */
+    border-radius: 12px; /* Rounded corners for the textarea */
+    resize: none; /* Disable resizing */
+    transition: border-color 0.3s ease; /* Transition effect for border color */
+}
+
+.suggestion__form__container__toolkit__main__page textarea:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+}
+
+.submit__button__toolkit__main__page {
+    margin-top: 1rem; /* Increased spacing above button */
+    padding: 0.75rem 1.5rem; /* Increased padding for a bigger button */
+    background-color: #70b5f7; /* Primary button color */
+    color: white; /* White text for contrast */
+    border: none; /* Remove border */
+    width: 100%;
+    border-radius: 12px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition effects */
+    font-size: 1rem; /* Font size for the button */
+}
+
+.submit__button__toolkit__main__page:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+}
+
+.submit__button__toolkit__main__page:disabled {
+    background-color: #cccccc; /* Grey out button when loading */
+    cursor: not-allowed; /* Not-allowed cursor when disabled */
+}
+
+.success__message__toolkit__main__page {
+    margin-top: 0.5rem; /* Spacing above success message */
+    color: #28a745; /* Green text for success messages */
+    font-weight: bold; /* Bold text for emphasis */
+    transition: opacity 0.5s ease; /* Smooth fade-in effect */
+    opacity: 0; /* Start hidden */
+}
+
+.success__message__toolkit__main__page.show {
+    opacity: 1; /* Show success message */
+}

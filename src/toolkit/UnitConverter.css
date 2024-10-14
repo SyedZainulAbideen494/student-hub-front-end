@@ -126,9 +126,9 @@
 }
 
 /* Clear Button Styles */
-.clear-button {
-    background-color: #ff5252; /* Bright red color for clear action */
-    color: #ffffff; /* White text color */
+.clear-button__toolkit__unitConverter {
+    background-color: transparent; /* Bright red color for clear action */
+    color: #90caf9; /* White text color */
     border: none; /* No border */
     border-radius: 8px; /* Rounded corners */
     padding: 10px 15px; /* Padding for better click area */
@@ -138,13 +138,12 @@
 }
 
 /* Hover Effect */
-.clear-button:hover {
-    background-color: #e63946; /* Darker red on hover */
+.clear-button__toolkit__unitConverter:hover {
     transform: translateY(-2px); /* Slight lift effect */
 }
 
 /* Focus Effect */
-.clear-button:focus {
+.clear-button__toolkit__unitConverter:focus {
     outline: none; /* Remove default outline */
     box-shadow: 0 0 0 2px rgba(255, 82, 82, 0.5); /* Subtle glow effect on focus */
 }

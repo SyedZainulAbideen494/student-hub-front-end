@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -143,6 +143,12 @@ const FooterNav = () => {
                         <span className="btn-label">Social Feed</span>
                     </button>
                 </Link>
+                <Link to='/toolkit' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/toolkit' ? 'active' : ''}`}>
+                    <FaToolbox className="icon-footer-nav" />
+                    <span className="btn-label">Toolkit <span className='new-label-footer-nav'>New</span></span>
+                </button>
+            </Link>
                 <Link to='/profile' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/profile' ? 'active' : ''}`}>
                         <FaUser className="icon-footer-nav" />
