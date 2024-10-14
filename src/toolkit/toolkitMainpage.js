@@ -38,7 +38,7 @@ const ToolkitPage = () => {
     return (
         <div className="toolkit__main__page">
             <header className="toolkit__header__page">
-                <h1 className="header__title__page">Toolkit</h1>
+                <h1 className="header__title__page__toolkit">Toolkit</h1>
             </header>
             <div className="app__list__page">
                 <div className="app__card__page">
