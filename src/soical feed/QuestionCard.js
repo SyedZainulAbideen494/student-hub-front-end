@@ -27,8 +27,9 @@ const QuestionCard = ({ onQuestionSubmit }) => {
   };
 
   const handleSubmit = async () => {
-    if (!image) {
-      setMessage('Please select an image before submitting.');
+    // Show error if the question is empty
+    if (!question) {
+      setMessage('Please enter a question before submitting.');
       setModalVisible(true);
       setTimeout(() => setModalVisible(false), 3000);
       return;
@@ -85,7 +86,6 @@ const QuestionCard = ({ onQuestionSubmit }) => {
             accept="image/*"
             onChange={handleImageChange}
             className="upload-input"
-            required
             style={{ display: 'none' }}
           />
           <span className="upload-icon">
@@ -95,7 +95,7 @@ const QuestionCard = ({ onQuestionSubmit }) => {
         <button
           className="send-button"
           onClick={handleSubmit}
-          disabled={!question || !image} // Disable until both are filled
+          disabled={!question} // Only disable if question is empty
         >
           Send
         </button>

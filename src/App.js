@@ -68,6 +68,9 @@ import PrivacyPolicy from "./docs/PrivacyPolicy";
 import MoreInfo from "./docs/MoreInfo";
 import IOSInstructions from "./docs/iosInstructionsPage";
 import Subjects from "./flashCards/subjects/subjectPage";
+import Calculator from "./toolkit/Calculator";
+import GpaCalculator from "./toolkit/GpaCalculator";
+import UnitConverter from "./toolkit/UnitConverter";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -124,6 +127,9 @@ const router = createBrowserRouter([
   {path: '/flashcard/card/view/:id/:setId', element: <FlashcardViewPage/>},
   {path: '/ios/instructions/download', element: <IOSInstructions/>},
   {path: '/subject/:subjectId', element: <Subjects/>},
+  {path: '/toolkit/calculator', element: <Calculator/>},
+  {path: '/toolkit/gpa/calculator', element: <GpaCalculator/>},
+  {path: '/toolkit/unitconverter', element: <UnitConverter/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

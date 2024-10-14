@@ -1,0 +1,123 @@
+.header__cute__toolKit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #ffffff; /* Keep the header background white for contrast */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.back__button__cute__toolKit {
+    background-color: transparent; /* Make the background transparent */
+    border: none; /* Remove border */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.back__button__cute__toolKit i {
+    font-size: 16px; /* Adjust icon size */
+    color: #000000; /* Icon color */
+}
+
+.header__title__cute__toolKit {
+    font-size: 24px;
+    color: #333; /* Title color */
+    font-weight: bold; /* Make title bold for better visibility */
+}
+
+.body__cute__toolKit {
+    font-family: 'Comic Sans MS', sans-serif; /* Playful font */
+    background-color: #f0f8ff; /* Light pastel background for the body */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    width: 100vw; /* Full width of the viewport */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.calculator__cute__toolKit {
+    background-color: #ffffff; /* White background for the calculator */
+    border-radius: 20px; /* More rounded corners */
+    padding: 30px; /* Increased padding for better spacing */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    width: 300px; /* Increased width for better spacing */
+}
+
+.display__cute__toolKit {
+    background-color: #faf0e6; /* Light beige display */
+    border-radius: 15px; /* Rounded display */
+    padding: 20px; /* Increased padding */
+    text-align: right;
+    font-size: 1.4em; /* Slightly larger font size */
+    color: #333;
+    margin-bottom: 20px; /* Increased bottom margin for more space */
+    min-height: 70px; /* Increased minimum height */
+}
+
+.input__cute__toolKit {
+    color: #7d7d7d;
+}
+
+.result__cute__toolKit {
+    color: #8fbc8f;
+}
+
+.buttons__cute__toolKit {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px; /* Slightly larger gap between buttons */
+}
+
+.button__cute__toolKit {
+    background-color: #ffefd5; /* Pastel peach */
+    border: none;
+    padding: 15px;
+    font-size: 1em; /* Slightly larger font size */
+    border-radius: 15px; /* Rounder buttons */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05); /* Softer shadow */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button__cute__toolKit:hover {
+    background-color: #ffe4b5; /* Lighter peach on hover */
+}
+
+.button__cute__toolKit:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.zero__cute__toolKit {
+    grid-column: span 2;
+}
+
+.operator__cute__toolKit {
+    background-color: #add8e6; /* Light blue for operators */
+    color: #fff;
+}
+
+.operator__cute__toolKit:hover {
+    background-color: #87cefa;
+}
+
+.clear__cute__toolKit {
+    background-color: #ffb6c1; /* Light pink */
+    color: #fff;
+}
+
+.clear__cute__toolKit:hover {
+    background-color: #ff91a4; /* Softer hover effect */
+}
+
+.equals__cute__toolKit {
+    background-color: #98fb98; /* Pastel green for equals */
+    color: #fff;
+}
+
+.equals__cute__toolKit:hover {
+    background-color: #90ee90;
+}

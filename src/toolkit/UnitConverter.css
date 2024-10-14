@@ -1,0 +1,150 @@
+/* Unit Converter Container */
+.unit-converter__toolkit__unitConverter {
+    padding: 20px;
+    max-width: 500px; /* Max width for desktop */
+    margin: 40px auto; /* Center the container */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Header Styles */
+.header__toolkit__unitConverter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between title and buttons */
+    margin-bottom: 20px;
+}
+
+.back-button__toolkit__unitConverter {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #6d6d6d; /* Soft gray for icons */
+}
+
+.header__toolkit__unitConverter h1 {
+    font-size: 24px; /* Smaller size for title */
+    color: #333; /* Dark text color */
+    margin: 0;
+}
+
+/* Select Styles */
+.select__toolkit__unitConverter {
+    margin: 10px 0;
+}
+
+.select__toolkit__unitConverter select {
+    margin-top: 5px;
+    padding: 12px; /* Padding for select fields */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: #f1f8ff; /* Soft light blue background */
+    width: 100%; /* Full width */
+    font-size: 14px; /* Smaller text size */
+    color: #333; /* Text color */
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Input Styles */
+.input__toolkit__unitConverter {
+    margin: 10px 0;
+}
+
+.input__toolkit__unitConverter input {
+    padding: 12px; /* Padding for input fields */
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: #f1f8ff; /* Soft light blue background */
+    width: 92%; /* Full width */
+    font-size: 14px; /* Smaller text size */
+    color: #333; /* Text color */
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Focus Styles */
+.select__toolkit__unitConverter select:focus,
+.input__toolkit__unitConverter input:focus {
+    outline: none;
+    border-color: #90caf9; /* Soft blue on focus */
+    background-color: #ffffff; /* Change background on focus */
+}
+
+/* Result Styles */
+.result__toolkit__unitConverter {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #e8f5e9; /* Light green background */
+    border: 1px solid #c8e6c9; /* Light green border */
+    color: #333; /* Text color */
+}
+
+/* Divider Styles */
+.unit-converter__toolkit__unitConverter .divider {
+    height: 1px;
+    background-color: #e0e0e0; /* Light gray */
+    margin: 20px 0; /* Added margin for separation */
+}
+
+/* Animation */
+.animation__fadeIn {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .unit-converter__toolkit__unitConverter {
+        padding: 15px; /* Adjusted padding for smaller screens */
+        margin: 20px; /* Reduced margin */
+    }
+
+    .header__toolkit__unitConverter h1 {
+        font-size: 20px; /* Smaller title for mobile */
+    }
+
+    .select__toolkit__unitConverter select,
+    .input__toolkit__unitConverter input {
+        font-size: 12px; /* Smaller text size for inputs */
+        padding: 10px; /* Adjusted padding for inputs */
+    }
+
+    .result__toolkit__unitConverter {
+        font-size: 14px; /* Smaller text for results */
+    }
+}
+
+/* Clear Button Styles */
+.clear-button {
+    background-color: #ff5252; /* Bright red color for clear action */
+    color: #ffffff; /* White text color */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for better click area */
+    font-size: 16px; /* Font size for text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition effects */
+}
+
+/* Hover Effect */
+.clear-button:hover {
+    background-color: #e63946; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Focus Effect */
+.clear-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 2px rgba(255, 82, 82, 0.5); /* Subtle glow effect on focus */
+}
