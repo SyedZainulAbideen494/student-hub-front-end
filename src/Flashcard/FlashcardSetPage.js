@@ -378,13 +378,8 @@ if (loading) {
       
             {/* Status Section */}
             <div className="flashcard__set__page__status">
-              <strong>Status:</strong>{" "}
-              {flashcard.status !== null
-                ? flashcard.status === "I Know"
-                  ? "I know this"
-                  : "I don't know this"
-                : "No status yet"}
-            </div>
+    <strong>Status:</strong> {flashcard.status || 'No Status Available'}
+  </div>
           </div>
 
           ))
