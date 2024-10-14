@@ -347,35 +347,45 @@ if (loading) {
        
         ) : (
           filteredFlashcards.map((flashcard) => (
-<div key={flashcard.id} className="flashcard__set__page__flashcard">
-    <Link to={`/flashcard/card/view/${flashcard.id}/${id}`} style={{ textDecoration: 'none' }}>
-        <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
-    </Link>
-    <div
-        ref={(el) => (answerRefs.current[flashcard.id] = el)}
-        className="flashcard__set__page__answer"
-        style={{
-            maxHeight: answerHeight[flashcard.id] ? `${answerHeight[flashcard.id]}px` : '0',
-            overflow: 'hidden',
-            transition: 'max-height 0.3s ease-in-out',
-        }}
-    >
-        {flashcard.answer}
-    </div>
-    <button
-        className="flashcard__set__page__answer-toggle__set__page"
-        onClick={() => toggleAnswerVisibility(flashcard.id)}
-    >
-        <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`}></i>
-    </button>
-    {/* Delete Button */}
-    <button
-        className="flashcard__set__page__delete-button"
-        onClick={() => deleteFlashcard(flashcard.id)}
-    >
-        <i className="fas fa-trash"></i> {/* Trash icon for delete button */}
-    </button>
-</div>
+            <div key={flashcard.id} className="flashcard__set__page__flashcard">
+            <Link to={`/flashcard/card/view/${flashcard.id}/${id}`} style={{ textDecoration: 'none' }}>
+              <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
+            </Link>
+            <div
+              ref={(el) => (answerRefs.current[flashcard.id] = el)}
+              className="flashcard__set__page__answer"
+              style={{
+                maxHeight: answerHeight[flashcard.id] ? `${answerHeight[flashcard.id]}px` : '0',
+                overflow: 'hidden',
+                transition: 'max-height 0.3s ease-in-out',
+              }}
+            >
+              {flashcard.answer}
+            </div>
+            <button
+              className="flashcard__set__page__answer-toggle__set__page"
+              onClick={() => toggleAnswerVisibility(flashcard.id)}
+            >
+              <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`}></i>
+            </button>
+            {/* Delete Button */}
+            <button
+              className="flashcard__set__page__delete-button"
+              onClick={() => deleteFlashcard(flashcard.id)}
+            >
+              <i className="fas fa-trash"></i>
+            </button>
+      
+            {/* Status Section */}
+            <div className="flashcard__set__page__status">
+              <strong>Status:</strong>{" "}
+              {flashcard.status !== null
+                ? flashcard.status === "I Know"
+                  ? "I know this"
+                  : "I don't know this"
+                : "No status yet"}
+            </div>
+          </div>
 
           ))
         )}

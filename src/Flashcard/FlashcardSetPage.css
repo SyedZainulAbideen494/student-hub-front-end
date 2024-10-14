@@ -903,3 +903,8 @@
   }
   
 
+
+  .flashcard__set__page__status {
+    margin-top: 8px;
+    text-align: center;
+  }
