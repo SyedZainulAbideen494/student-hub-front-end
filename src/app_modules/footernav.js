@@ -137,12 +137,12 @@ const FooterNav = () => {
                         <span className="btn-label">Pomodoro</span>
                     </button>
                 </Link>
-                <Link to='/social-feed' style={{ textDecoration: 'none' }}>
+               {/*  <Link to='/social-feed' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/social-feed' ? 'active' : ''}`}>
                         <FaStream className="icon-footer-nav" />
                         <span className="btn-label">Social Feed</span>
                     </button>
-                </Link>
+                </Link> */} 
                 <Link to='/toolkit' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/toolkit' ? 'active' : ''}`}>
                     <FaToolbox className="icon-footer-nav" />
