@@ -274,10 +274,13 @@ const updateFlashcardStatus = async (flashcardId, status) => {
 
       // Update score logic based on status
       if (status === 'I Know') {
-
+        // Any custom logic for "I Know" status
       } else {
-
+        // Any custom logic for "I Don't Know" status
       }
+
+      // Refresh the page after success
+      window.location.reload(); 
     } else {
       console.error('Failed to update flashcard status');
     }
