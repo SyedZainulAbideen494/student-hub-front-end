@@ -72,6 +72,8 @@ import Calculator from "./toolkit/Calculator";
 import GpaCalculator from "./toolkit/GpaCalculator";
 import UnitConverter from "./toolkit/UnitConverter";
 import ToolkitPage from "./toolkit/toolkitMainpage";
+import EduFeed from "./eduFeed/feed-page";
+import CreateStory from "./eduFeed/story/addStory";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -132,6 +134,8 @@ const router = createBrowserRouter([
   {path: '/toolkit/calculator', element: <Calculator/>},
   {path: '/toolkit/gpa/calculator', element: <GpaCalculator/>},
   {path: '/toolkit/unitconverter', element: <UnitConverter/>},
+  {path: '/edufeed', element: <EduFeed/>},
+  {path: '/create/story', element: <CreateStory/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

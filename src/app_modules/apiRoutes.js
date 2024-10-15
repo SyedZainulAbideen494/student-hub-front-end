@@ -105,5 +105,7 @@ export const API_ROUTES = {
   deleteFlashcardSet: `${API_URL}/api/flashcards/set/delete`,
   createSubject: `${API_URL}/api/create-subject`,
   fetchsubjects: `${API_URL}/api/get/user/subjects`,
-  fetchSubjectNotes: `${API_URL}/api/flashcards`
+  fetchSubjectNotes: `${API_URL}/api/flashcards`,
+  fetchUserStories: `${API_URL}/fetchStories`,  // Backend route to fetch stories
+  addStory: `${API_URL}/addStory`,             
 }

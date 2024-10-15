@@ -1,0 +1,46 @@
+/* Stories section */
+.stories__eduFeed__main__page {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 16px;
+    background-color: #fff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .story__add__eduFeed__main__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .story__add__container__eduFeed__main__page {
+    text-align: center;
+  }
+  
+  .add__icon__eduFeed__main__page {
+    font-size: 40px;
+    color: #0095f6;
+    margin-top: 5px;
+  }
+  
+  .stories__list__eduFeed__main__page {
+    display: flex;
+    align-items: center;
+  }
+  
+  .story__item__eduFeed__main__page {
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  .story__avatar__eduFeed__main__page {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #ff8501;
+  }
+  

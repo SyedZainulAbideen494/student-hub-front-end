@@ -227,27 +227,36 @@ function Planner() {
 {showTutorial && <PlannerPageTutorial onComplete={handleTutorialComplete} />}
             <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
             <div className="top-boxes-container__home__page__component">
-            <div className="box__home__page__component box-1__home__page__component">
-              
-                <span className="count__home__page__component">{todayTasks}</span>
-                <span className="text__planner__data text--1__planner__data"> Today's Tasks </span>
-            </div>
-            <div className="box__home__page__component box-2__home__page__component">
-                
-                <span className="count__home__page__component">{totalTasks}</span>
-                <span className="text__planner__data text--2__planner__data"> Total Tasks </span>
-            </div>
-            <div className="box__home__page__component box-3__home__page__component">
-               
-                <span className="count__home__page__component">{highPriorityTasks}</span>
-                <span className="text__planner__data text--4__planner__data"> High Priority </span>
-            </div>
-            <div className="box__home__page__component box-1__home__page__component">
-                
-                <span className="count__home__page__component">{upcomingTasks}</span>
-                <span className="text__planner__data text--4__planner__data"> Upcoming Tasks </span>
-            </div>
-        </div>
+    <div className="box__home__page__component box-1__home__page__component">
+        <svg className="icon__home__page__component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+        </svg>
+        <span className="count__home__page__component">{todayTasks}</span>
+        <span className="text__planner__data text--1__planner__data">Today's Tasks</span>
+    </div>
+    <div className="box__home__page__component box-2__home__page__component">
+        <svg className="icon__home__page__component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M4 4h16v16H4V4zm0-2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4z" />
+        </svg>
+        <span className="count__home__page__component">{totalTasks}</span>
+        <span className="text__planner__data text--2__planner__data">Total Tasks</span>
+    </div>
+    <div className="box__home__page__component box-3__home__page__component">
+        <svg className="icon__home__page__component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M19 13H5v-2h14v2zm0 5H5v-2h14v2zM5 6h14v2H5V6z" />
+        </svg>
+        <span className="count__home__page__component">{highPriorityTasks}</span>
+        <span className="text__planner__data text--4__planner__data">High Priority</span>
+    </div>
+    <div className="box__home__page__component box-4__home__page__component">
+        <svg className="icon__home__page__component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2L1 21h22L12 2zm0 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" />
+        </svg>
+        <span className="count__home__page__component">{upcomingTasks}</span>
+        <span className="text__planner__data text--4__planner__data">Upcoming Tasks</span>
+    </div>
+</div>
+
 
 
             <div className="calendar-container">
