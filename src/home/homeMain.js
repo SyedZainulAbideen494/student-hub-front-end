@@ -28,7 +28,6 @@ const HomeMain = () => {
         <TipBox/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
-        <ExploreCard/>
 <div style={{ margin: '20px 0' }}>
  <InviteFriends/>
 </div>
