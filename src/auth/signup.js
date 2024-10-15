@@ -73,13 +73,13 @@ const SignUp = () => {
 
     const handleTermsChange = (e) => setTermsAccepted(e.target.checked);
 
-    // Phone number validation to enforce +91 format
-    const validatePhoneNumber = (phone) => {
-        // Regex to match either a 10-digit number or a 12-digit number with +91
-        const phoneRegex = /^(\+91)?\d{10}$/;
-        return phoneRegex.test(phone);
-    };
-    
+// Phone number validation to enforce 10, 12, 13, or 14-digit format, with optional '+'
+const validatePhoneNumber = (phone) => {
+    // Regex to match 10, 12, 13, or 14-digit phone numbers, with an optional '+' at the beginning
+    const phoneRegex = /^(\+)?(\d{10}|\d{12}|\d{13}|\d{14})$/;
+    return phoneRegex.test(phone);
+};
+
 
     // Validate email format
     const validateEmail = (email) => {
