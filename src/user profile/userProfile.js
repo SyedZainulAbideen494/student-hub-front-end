@@ -216,7 +216,7 @@ const UserProfile = () => {
 
       <div className="profile-media-user-profile-guest">
         <div className="profile-tabs-user-profile-guest">
-          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
+          {['Notes', 'Quizzes', 'EduScribe'].map(tab => (
             <button
               key={tab}
               className={`profile-tab-user-profile-guest ${activeTab === tab ? 'active' : ''}`}
@@ -225,10 +225,10 @@ const UserProfile = () => {
               {tab}
             </button>
           ))}
-          <div className="profile-tab-underline-user-profile-guest" style={{ width: `${100 / 3}%`, left: `${['Flashcards', 'Quizzes', 'EduScribe'].indexOf(activeTab) * (100 / 3)}%` }} />
+          <div className="profile-tab-underline-user-profile-guest" style={{ width: `${100 / 3}%`, left: `${['Notes', 'Quizzes', 'EduScribe'].indexOf(activeTab) * (100 / 3)}%` }} />
         </div>
         <div className="profile-content-user-profile-guest">
-          {activeTab === 'Flashcards' && flashcards.map((card, index) => (
+          {activeTab === 'Notes' && flashcards.map((card, index) => (
             <div key={index} className="card-user-profile-guest flashcard-item-user-profile-guest">
               <Link to={`/note/view/${card.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 <div className="card-content-user-profile-guest">{card.title}</div>
