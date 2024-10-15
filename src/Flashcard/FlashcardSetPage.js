@@ -34,7 +34,15 @@ const FlashcardSetPage = () => {
   const [loading, setLoading] = useState(true);
   const [manualQuestion, setManualQuestion] = useState('');
   const [manualAnswer, setManualAnswer] = useState('');
+  const [menuVisible, setMenuVisible] = useState({});
 
+  const toggleMenu = (id) => {
+    setMenuVisible((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+  
   
   useEffect(() => {
     const fetchStats = async () => {
@@ -251,6 +259,35 @@ const deleteFlashcardSet = async () => {
   }
 };
 
+const updateFlashcardStatus = async (flashcardId, status) => {
+  try {
+    const response = await fetch(`${API_ROUTES.updateFlashcardStatus}/${flashcardId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ status }),
+    });
+
+    if (response.ok) {
+      console.log(`Status updated to "${status}" for flashcard ID ${flashcardId}`);
+
+      // Update score logic based on status
+      if (status === 'I Know') {
+
+      } else {
+
+      }
+    } else {
+      console.error('Failed to update flashcard status');
+    }
+  } catch (error) {
+    console.error('Error updating flashcard status:', error);
+  }
+};
+
+
+
 
   // Return the loading state unconditionally
 if (loading) {
@@ -347,10 +384,71 @@ if (loading) {
        
         ) : (
           filteredFlashcards.map((flashcard) => (
-            <div key={flashcard.id} className="flashcard__set__page__flashcard">
-            <Link to={`/flashcard/card/view/${flashcard.id}/${id}`} style={{ textDecoration: 'none' }}>
-              <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
-            </Link>
+            <div key={flashcard.id} className="flashcard__set__page__flashcard" style={{ display: 'flex', flexDirection: 'column', position: 'relative', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '10px', marginBottom: '10px' }}>
+  
+            {/* Question and Options (Three Dots) */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Link to={`/flashcard/card/view/${flashcard.id}/${id}`} style={{ textDecoration: 'none', flexGrow: 1 }}>
+                <h4 className="flashcard__set__page__question" style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>{flashcard.question}</h4>
+              </Link>
+          
+              {/* Top right menu (3 dots) */}
+              <div className="flashcard__set__page__options" style={{ position: 'relative' }}>
+                <button className="flashcard__set__page__menu-button" style={{ background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => toggleMenu(flashcard.id)}>
+                  <i className="fas fa-ellipsis-v" style={{ fontSize: '18px' }}></i>
+                </button>
+                {menuVisible[flashcard.id] && (
+  <div className="flashcard__set__page__dropdown" style={{
+    position: 'absolute', 
+    top: '20px', 
+    right: '-10px', // Move it more to the left
+    background: '#fff', 
+    border: '1px solid #e0e0e0', 
+    borderRadius: '6px', 
+    zIndex: 10, 
+    boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
+    width: '180px', // Increase the width for more space
+  }}>
+    <button onClick={() => deleteFlashcard(flashcard.id)} style={{ 
+      display: 'block', 
+      padding: '8px', 
+      width: '100%', 
+      textAlign: 'left', 
+      background: 'none', 
+      border: 'none', 
+      cursor: 'pointer' 
+    }}>
+      <i className="fas fa-trash"></i> Delete
+    </button>
+    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Know')} style={{ 
+      display: 'block', 
+      padding: '8px', 
+      width: '100%', 
+      textAlign: 'left', 
+      background: 'none', 
+      border: 'none', 
+      cursor: 'pointer' 
+    }}>
+      <i className="fas fa-check"></i> Mark as I Know
+    </button>
+    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Don\'t Know')} style={{ 
+      display: 'block', 
+      padding: '8px', 
+      width: '100%', 
+      textAlign: 'left', 
+      background: 'none', 
+      border: 'none', 
+      cursor: 'pointer' 
+    }}>
+      <i className="fas fa-times"></i> Mark as I Don't Know
+    </button>
+  </div>
+)}
+
+              </div>
+            </div>
+          
+            {/* Flashcard Answer */}
             <div
               ref={(el) => (answerRefs.current[flashcard.id] = el)}
               className="flashcard__set__page__answer"
@@ -358,29 +456,26 @@ if (loading) {
                 maxHeight: answerHeight[flashcard.id] ? `${answerHeight[flashcard.id]}px` : '0',
                 overflow: 'hidden',
                 transition: 'max-height 0.3s ease-in-out',
+                padding: answerHeight[flashcard.id] ? '10px 0' : '0',
               }}
             >
               {flashcard.answer}
             </div>
+          
             <button
               className="flashcard__set__page__answer-toggle__set__page"
               onClick={() => toggleAnswerVisibility(flashcard.id)}
+              style={{ background: 'none', border: 'none', padding: '8px', cursor: 'pointer', textAlign: 'center', marginTop: '8px' }}
             >
-              <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`}></i>
+              <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`} style={{ fontSize: '16px' }}></i>
             </button>
-            {/* Delete Button */}
-            <button
-              className="flashcard__set__page__delete-button"
-              onClick={() => deleteFlashcard(flashcard.id)}
-            >
-              <i className="fas fa-trash"></i>
-            </button>
-      
+          
             {/* Status Section */}
-            <div className="flashcard__set__page__status">
-    <strong>Status:</strong> {flashcard.status || 'No Status Available'}
-  </div>
+            <div className="flashcard__set__page__status" style={{ marginTop: '10px', fontSize: '14px', color: '#757575' }}>
+              <strong>Status:</strong> {flashcard.status || 'No Status Available'}
+            </div>
           </div>
+          
 
           ))
         )}
