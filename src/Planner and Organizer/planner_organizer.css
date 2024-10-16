@@ -539,3 +539,90 @@
     outline: none; /* Remove default focus outline */
     box-shadow: 0 0 0 3px rgba(113, 97, 239, 0.5); /* Custom focus outline */
 }
+
+
+
+.ai-task-generator__planner__page__ai__gen {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  
+  .form-header__planner__page__ai__gen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .form-heading__planner__page__ai__gen {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .beta-tag__planner__page__ai__gen {
+    font-size: 12px;
+    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .form-container__planner__page__ai__gen {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .input-group__planner__page__ai__gen {
+    margin-bottom: 18px;
+  }
+  
+  .input-label__planner__page__ai__gen {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  .input-field__planner__page__ai__gen {
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .input-field__planner__page__ai__gen:focus {
+    border-color: #007aff; /* Apple-like blue focus color */
+    box-shadow: 0 0 10px rgba(0, 122, 255, 0.25);
+  }
+  
+  .generate-button__planner__page__ai__gen {
+    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  
+  .generate-button__planner__page__ai__gen:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+  

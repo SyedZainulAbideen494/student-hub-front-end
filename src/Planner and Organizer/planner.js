@@ -33,6 +33,18 @@ function Planner() {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
     const [showTutorial, setShowTutorial] = useState(true); // State to control tutorial visibility
+    const [isGenerating, setIsGenerating] = useState(false);
+    const [mainTask, setMainTask] = useState('');
+    const [days, setDays] = useState(1);
+    
+    const handleGenerate = (e) => {
+      e.preventDefault();
+      if (!mainTask || !days) {
+        console.error('Please enter a task and a number of days');
+        return;
+      }
+      generateTasks(mainTask, days); // Pass the input values dynamically
+    };
 
     useEffect(() => {
         // Check local storage for tutorial completion status
@@ -220,6 +232,43 @@ function Planner() {
         setPriority(task.priority);
         scrollToForm();
     };
+
+    const generateTasks = async (mainTask, days) => {
+        setIsGenerating(true); // Start generating
+        try {
+          const response = await fetch(API_ROUTES.generateAITasks, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              mainTask, // Pass the dynamic task
+              days, // Pass the dynamic days
+              token: localStorage.getItem('token'), // Fetch the token dynamically
+            }),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to generate tasks');
+          }
+      
+          const data = await response.json();
+          setTasks((prevTasks) => [...prevTasks, ...data.tasks]); // Append new tasks
+          setSuccessMessage('Tasks generated successfully!');
+      
+          // Hide success message after 2 seconds
+          setTimeout(() => {
+            setSuccessMessage('');
+            window.location.reload(); // Refresh the page
+          }, 2000);
+        } catch (error) {
+          console.error('Error occurred:', error);
+        } finally {
+          setIsGenerating(false); // End generating
+        }
+      };
+      
+      
     
 
     return (
@@ -272,6 +321,57 @@ function Planner() {
                     )}
                 />
             </div>
+
+
+<div className="ai-task-generator__planner__page__ai__gen">
+<span className="beta-tag__planner__page__ai__gen">New</span>
+  <div className="form-header__planner__page__ai__gen">
+    <h2 className="form-heading__planner__page__ai__gen">
+      Generate Tasks Using AI 
+    </h2>
+  </div>
+  
+  <form onSubmit={handleGenerate} className="form-container__planner__page__ai__gen">
+    <div className="input-group__planner__page__ai__gen">
+      <label className="input-label__planner__page__ai__gen">
+        What is the task?
+        <input
+          type="text"
+          value={mainTask}
+          onChange={(e) => setMainTask(e.target.value)}
+          placeholder="E.g., Complete business assignment"
+          required
+          className="input-field__planner__page__ai__gen"
+        />
+      </label>
+    </div>
+
+    <div className="input-group__planner__page__ai__gen">
+      <label className="input-label__planner__page__ai__gen">
+        Days to complete:
+        <input
+          type="number"
+          value={days}
+          onChange={(e) => setDays(e.target.value)}
+          min="1"
+          placeholder="Enter number of days"
+          className="input-field__planner__page__ai__gen"
+          required
+        />
+      </label>
+    </div>
+
+    <button
+      type="submit"
+      disabled={isGenerating}
+      className="generate-button__planner__page__ai__gen"
+    >
+      {isGenerating ? 'Generating...' : 'Generate'}
+    </button>
+  </form>
+</div>
+
+
             <div className="task-form" ref={formRef}>
                 <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
                 <div className="form-group">
