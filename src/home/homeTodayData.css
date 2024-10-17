@@ -107,3 +107,22 @@
   .go-page-home-component-btn:active {
     transform: translateY(-1px);
   }
+
+
+  .toggle-view-btn__view__type__date {
+    background-color: #f8f9fa; /* Light background */
+    color: #007bff; /* Soft blue text */
+    border: 1px solid #dee2e6; /* Light border */
+    padding: 8px; /* Padding for comfortable spacing */
+    border-radius: 8px; /* Rounded corners for elegance */
+    font-size: 12px; /* Small, readable text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+}
+
+
+.toggle-view-btn__view__type__date:active {
+    background-color: #dee2e6; /* Even darker on click */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Slight shadow on click */
+}

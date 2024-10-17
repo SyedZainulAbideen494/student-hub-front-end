@@ -13,110 +13,115 @@ const TodayEventsAndTasks = () => {
     const [events, setEvents] = useState([]); // State for events
     const [tasks, setTasks] = useState([]); // State for tasks
     const [isFirstVisit, setIsFirstVisit] = useState(true);
+    const [viewMode, setViewMode] = useState('today'); // Add state for toggling view mode (today/upcoming)
 
     useEffect(() => {
         const visited = localStorage.getItem('hasVisitedTodayEventsAndTasks');
 
         // Check if the user has visited before
         if (visited) {
-            // If visited, set isFirstVisit to false
             setIsFirstVisit(false);
         }
     }, []);
 
-    // Function to handle the completion of the tutorial
     const handleTutorialComplete = () => {
-        setIsFirstVisit(false); // Set the first visit state to false
-        localStorage.setItem('hasVisitedTodayEventsAndTasks', 'true'); // Mark as visited in local storage
+        setIsFirstVisit(false);
+        localStorage.setItem('hasVisitedTodayEventsAndTasks', 'true');
     };
-
-    
 
     useEffect(() => {
         const fetchData = async () => {
-            const token = localStorage.getItem('token'); // Get token from local storage
-            if (!token) return; // Exit if token is not present
+            const token = localStorage.getItem('token');
+            if (!token) return;
 
             try {
-                const todayDate = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+                const todayDate = new Date().toISOString().split('T')[0]; // Today's date
 
-                // Fetch today's tasks using POST request
-                const tasksResponse = await axios.post(API_ROUTES.todayTaskHome, {
-                    due_date: todayDate,
-                }, {
-                    headers: {
-                        'Authorization': token, // Send token in headers
-                    },
-                });
-                setTasks(tasksResponse.data); // Set tasks
+                // Determine the date range based on the viewMode (today/upcoming)
+                const dateFilter = viewMode === 'today' ? { due_date: todayDate } : { upcoming: true };
 
-                // Fetch today's events using POST request
-                const eventsResponse = await axios.post(API_ROUTES.todayEventHome, {
-                    event_date: todayDate,
-                }, {
-                    headers: {
-                        'Authorization': token, // Send token in headers
-                    },
+                // Fetch tasks
+                const tasksResponse = await axios.post(API_ROUTES.todayTaskHome, dateFilter, {
+                    headers: { 'Authorization': token },
                 });
-                setEvents(eventsResponse.data); // Set events
+                setTasks(tasksResponse.data);
+
+                // Fetch events
+                const eventsResponse = await axios.post(API_ROUTES.todayEventHome, dateFilter, {
+                    headers: { 'Authorization': token },
+                });
+                setEvents(eventsResponse.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
-        fetchData(); // Call the fetchData function
-    }, []); // Run only once when the component mounts
+        fetchData();
+    }, [viewMode]); // Re-fetch data whenever the viewMode changes
 
     const handleGoToPlanner = () => {
-        nav('/planner'); // Replace with your planner route
+        nav('/planner');
     };
 
     const handleGoToCalendar = () => {
-        nav('/calendar'); // Replace with your calendar route
+        nav('/calendar');
+    };
+
+    // Toggle between today's view and upcoming view
+    const toggleViewMode = () => {
+        setViewMode(viewMode === 'today' ? 'upcoming' : 'today');
     };
 
     return (
         <div className="today-container__home__page__component">
-               {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
+            {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
             <div className='section__home__page__component'>
-        <div className="section-header">
-            <h2><FaCalendarAlt/> Today's Events</h2>
-           
+                <div className="section-header">
+                    <h2>
+                        <FaCalendarAlt /> {viewMode === 'today' ? "Today's Events" : 'Upcoming Events'}
+                    </h2>
+                    <button onClick={toggleViewMode} className='toggle-view-btn__view__type__date'>
+                        {viewMode === 'today' ? 'See Upcoming Events' : 'See Today’s Events'}
+                    </button>
+                </div>
+                {events.length > 0 ? (
+                    <ul className="event-list__home__page__component">
+                        {events.map((event, index) => (
+                            <li key={index} className="event-item__home__page__component">
+                                <FaCalendarAlt /> {/* Event icon */}
+                                <strong>{event.title}</strong> {/* Display event title */}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <NoContentCardFace />
+                )}
+                <button onClick={handleGoToCalendar} className='go-page-home-component-btn'>Go To Calendar</button>
+            </div>
+            <div className='section__home__page__component'>
+                <div className="section-header">
+                    <h2>
+                        <FaClipboardList /> {viewMode === 'today' ? "Today's Tasks" : 'Upcoming Tasks'}
+                    </h2>
+                    <button onClick={toggleViewMode} className='toggle-view-btn__view__type__date'>
+                        {viewMode === 'today' ? 'See Upcoming Tasks' : 'See Today’s Tasks'}
+                    </button>
+                </div>
+                {tasks.length > 0 ? (
+                    <ul className="task-list__home__page__component">
+                        {tasks.map((task, index) => (
+                            <li key={index} className="task-item__home__page__component">
+                                <FaClipboardList /> {/* Task icon */}
+                                {task.title} - Priority: {task.priority} {/* Display task title and priority */}
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <NoContentCardTask />
+                )}
+                <button onClick={handleGoToPlanner} className='go-page-home-component-btn'>Go To Planner</button>
+            </div>
         </div>
-        {events.length > 0 ? (
-            <ul className="event-list__home__page__component">
-                {events.map((event, index) => (
-                    <li key={index} className="event-item__home__page__component">
-                        <FaCalendarAlt /> {/* Event icon */}
-                        <strong>{event.title}</strong> {/* Display event title */}
-                    </li>
-                ))}
-            </ul>
-        ) : (
-            <NoContentCardFace/>
-        )}
-        <button onClick={handleGoToCalendar} className='go-page-home-component-btn'>Go To Calendar</button>
-    </div>
-    <div className='section__home__page__component'>
-        <div className="section-header">
-            <h2><FaClipboardList/> Today's Tasks</h2>
-           
-        </div>
-        {tasks.length > 0 ? (
-            <ul className="task-list__home__page__component">
-                {tasks.map((task, index) => (
-                    <li key={index} className="task-item__home__page__component">
-                        <FaClipboardList /> {/* Task icon */}
-                        {task.title} - Priority: {task.priority} {/* Display task title and priority */}
-                    </li>
-                ))}
-            </ul>
-        ) : (
-            <NoContentCardTask/>
-        )}
-            <button onClick={handleGoToPlanner} className='go-page-home-component-btn'>Go To Planner</button>
-    </div>
-    </div>
     );
 };
 
