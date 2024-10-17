@@ -108,5 +108,6 @@ export const API_ROUTES = {
   fetchSubjectNotes: `${API_URL}/api/flashcards`,
   fetchUserStories: `${API_URL}/fetchStories`,  // Backend route to fetch stories
   addStory: `${API_URL}/addStory`,            
-  generateAITasks: `${API_URL}/api/tasks/generate` 
+  generateAITasks: `${API_URL}/api/tasks/generate`,
+  sendEmailAsAdmin: `${API_URL}/send-emails/all-users/admin`
 }

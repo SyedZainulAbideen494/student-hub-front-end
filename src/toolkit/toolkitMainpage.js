@@ -3,7 +3,7 @@ import axios from 'axios'; // Import axios for API requests
 import { Link } from 'react-router-dom'; // Import Link for routing
 import './ToolkitPage.css'; // Import CSS for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalculator, faChartBar, faArrowsAltV } from '@fortawesome/free-solid-svg-icons'; // Icons for GPA Calculator and Unit Converter
+import { faCalculator, faChartBar, faArrowsAltV, faClipboardList } from '@fortawesome/free-solid-svg-icons'; // Icons for GPA Calculator and Unit Converter
 import FooterNav from '../app_modules/footernav';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
@@ -41,6 +41,18 @@ const ToolkitPage = () => {
                 <h1 className="header__title__page__toolkit">Toolkit</h1>
             </header>
             <div className="app__list__page">
+            <div className="app__card__page">
+    <FontAwesomeIcon icon={faClipboardList} size="2x" />
+    <h2>Report Card Maker</h2>
+    <p className="app__description__page">
+        Create report cards with ease.
+    </p>
+    <p className="app__author__page">by Edusify</p>
+    <Link to="/toolkit/report-card-maker" className="open__app__button__page" style={{ textDecoration: 'none' }}>
+        Open App
+    </Link>
+</div>
+
                 <div className="app__card__page">
                     <FontAwesomeIcon icon={faCalculator} size="2x" />
                     <h2>Calculator</h2>

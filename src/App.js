@@ -74,6 +74,8 @@ import UnitConverter from "./toolkit/UnitConverter";
 import ToolkitPage from "./toolkit/toolkitMainpage";
 import EduFeed from "./eduFeed/feed-page";
 import CreateStory from "./eduFeed/story/addStory";
+import EmailSender from "./Email sender/EmailSender";
+import ReportCardMaker from "./toolkit/ReportCardMaker";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -136,6 +138,8 @@ const router = createBrowserRouter([
   {path: '/toolkit/unitconverter', element: <UnitConverter/>},
   {path: '/edufeed', element: <EduFeed/>},
   {path: '/create/story', element: <CreateStory/>},
+  {path: '/admin/send/email/all/users/not/allowed/here', element: <EmailSender/>},
+  {path: '/toolkit/report-card-maker', element: <ReportCardMaker/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -1,0 +1,248 @@
+/* Main container styling */
+.report-card-maker__container__report__card__maker {
+    max-width: 100%;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    color: #333; /* Soft black for text */
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Heading styling */
+  .report-card-maker__heading__report__card__maker {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333; /* Soft black for heading */
+  }
+  
+  /* Subject input container */
+  .subject-input__container__report__card__maker {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .subject-input__container__report__card__maker input {
+    padding: 12px;
+    border: 1px solid #d1d1d6;
+    border-radius: 12px;
+    background-color: #fff;
+    font-size: 16px;
+    color: #333; /* Soft black for input text */
+    transition: border-color 0.3s ease;
+  }
+  
+  .subject-input__container__report__card__maker input:focus {
+    border-color: #333; /* Soft black for focus */
+    outline: none;
+  }
+  
+  /* Buttons */
+  .add-subject__button__report__card__maker,
+  .generate-report__button__report__card__maker,
+  .download-pdf__button__report__card__maker {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #333; /* Soft black for buttons */
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-subject__button__report__card__maker:hover,
+  .generate-report__button__report__card__maker:hover,
+  .download-pdf__button__report__card__maker:hover {
+    background-color: #000;
+  }
+  
+  /* Subject list */
+  .subject-list__container__report__card__maker {
+    margin-top: 20px;
+  }
+  
+  .subject-list__container__report__card__maker h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333; /* Soft black for headings */
+  }
+  
+  .subject-list__container__report__card__maker ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .subject-list__container__report__card__maker li {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333; /* Soft black for list items */
+  }
+  
+  .edit-subject__button__report__card__maker {
+    background: none;
+    border: none;
+    color: #333; /* Soft black for edit icon */
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Report table */
+  .report-card__table__report__card__maker {
+    margin-top: 20px;
+  }
+  
+  .report-card__table__report__card__maker table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #333;
+  }
+  
+  .report-card__table__report__card__maker th,
+  .report-card__table__report__card__maker td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .report-card__table__report__card__maker th {
+    background-color: #f1f1f1;
+  }
+  
+/* Success modal container */
+.success-modal__report__card__maker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Backdrop */
+    z-index: 999; /* Ensure it's on top */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+  
+  /* Modal content styling */
+  .success-message__report__card__maker {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadein 0.5s ease-in-out;
+  }
+  
+  /* SVG icon spacing */
+  .success-message__report__card__maker svg {
+    margin-right: 8px;
+  }
+  
+  /* Fade-in keyframe for the modal */
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Show modal when active */
+  .success-modal__report__card__maker.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Close button (optional) */
+  .success-message__close__button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .success-message__close__button:hover {
+    color: #000;
+  }
+  
+  
+  /* Responsive Design */
+  @media (min-width: 768px) {
+    .report-card-maker__container__report__card__maker {
+      max-width: 60%;
+    }
+    
+    .subject-input__container__report__card__maker {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  
+    .add-subject__button__report__card__maker,
+    .generate-report__button__report__card__maker,
+    .download-pdf__button__report__card__maker {
+      width: auto;
+      display: inline-block;
+      margin-right: 8px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .report-card-maker__container__report__card__maker {
+      max-width: 40%;
+    }
+  
+    .report-card-maker__heading__report__card__maker {
+      font-size: 28px;
+    }
+  
+    .subject-list__container__report__card__maker h3 {
+      font-size: 20px;
+    }
+  }
+
+  .back-button__report__card__maker {
+    display: flex;
+    align-items: center;
+    background-color: transparent; /* Primary color */
+    color: rgb(0, 0, 0); /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 10px 15px; /* Padding for comfort */
+    font-size: 12px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+    margin-bottom: 20px; /* Space below the button */
+  }
+  
+
+  
