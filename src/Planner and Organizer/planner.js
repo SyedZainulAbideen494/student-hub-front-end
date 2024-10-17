@@ -260,7 +260,7 @@ function Planner() {
           setTimeout(() => {
             setSuccessMessage('');
             window.location.reload(); // Refresh the page
-          }, 2000);
+          }, 100);
         } catch (error) {
           console.error('Error occurred:', error);
         } finally {
