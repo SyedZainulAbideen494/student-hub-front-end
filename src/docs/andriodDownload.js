@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './DownloadPage.css';
+import logo from '../images/Edusify-removebg-preview.png'; // Make sure the logo path is correct
 
-const DownloadPageAndorid = () => {
+const DownloadPageAndroid = () => {
   const [isInAppBrowser, setIsInAppBrowser] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
@@ -47,19 +48,37 @@ const DownloadPageAndorid = () => {
     }
   };
 
-  return (
-    <div className="download-page__download__andorid">
-      <div className="download-container__download__andorid">
-        <h1 className="download-title__download__andorid">Install Our App</h1>
-        <p className="download-description__download__andorid">Get the best experience by adding our app to your home screen.</p>
+  const app = {
+    title: "Edusify",
+    description:
+      "Edusify is your all-in-one learning companion, offering curated educational content and tools for optimal learning experiences. Download the app to elevate your studies today.",
+    image: "https://via.placeholder.com/150",
+    rating: 4.8,
+    size: "100MB",
+    version: "2.0.1",
+    lastUpdated: "Oct 18, 2024",
+  };
 
-        {/* PWA Install Button */}
-        <button className="install-button__download__andorid" onClick={handleInstallClick}>
-          Install App
-        </button>
+  return (
+    <div className="download-page__android__download">
+      <div className="app-details-page__android__download">
+        <div className="app-header-details__android__download">
+          <img src={logo} alt={app.title} className="app-icon__android__download" />
+          <div className="app-info__android__download">
+            <h1>{app.title}</h1>
+            <p className="app-rating__android__download">⭐ {app.rating} • Version {app.version}</p>
+            <p className="app-updated__android__download">Last updated: {app.lastUpdated}</p>
+            <button className="download-btn__android__download" onClick={handleInstallClick}>Download</button>
+          </div>
+        </div>
+
+        <div className="app-description__android__download">
+          <h2>About this app</h2>
+          <p>{app.description}</p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default DownloadPageAndorid;
+export default DownloadPageAndroid;

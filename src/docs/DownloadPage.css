@@ -1,63 +1,115 @@
-/* General styling for the page */
-.download-page__download__andorid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f9f9f9; /* Light background for a clean look */
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Clean font similar to Apple */
+
+
+/* Container for the download page */
+.download-page__android__download {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  max-width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+/* Header logo styling */
+.app-header__android__download {
+  margin-bottom: 40px;
+}
+
+/* App details styling */
+.app-details-page__android__download {
+  width: 100%;
+  max-width: 800px;
+  background-color: #000000;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Header section of the app details */
+.app-header-details__android__download {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-icon__android__download {
+  width: 50px;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+.app-info__android__download h1 {
+  font-size: 28px;
+  margin: 0;
+  color: #fff;
+}
+
+.app-rating__android__download {
+  font-size: 16px;
+  color: #bbb;
+}
+
+.app-updated__android__download {
+  font-size: 14px;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* Button Styling */
+.download-btn__android__download {
+  padding: 12px 30px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* App description */
+.app-description__android__download h2 {
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+.app-description__android__download p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #d3d3d3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-header-details__android__download {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .download-container__download__andorid {
-    background-color: white;
-    padding: 40px;
-    border-radius: 20px; /* More pronounced rounded edges */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    text-align: center;
-    max-width: 450px; /* Wider for better readability */
+
+  .app-icon__android__download {
+    width: 50px;
+    height: 50px;
   }
-  
-  .download-title__download__andorid {
-    font-size: 28px; /* Larger title for emphasis */
-    margin-bottom: 15px;
-    color: #333; /* Dark text for contrast */
+
+  .app-info__android__download h1 {
+    font-size: 24px;
   }
-  
-  .download-description__download__andorid {
+
+  .download-btn__android__download {
+    padding: 10px 25px;
     font-size: 16px;
-    margin-bottom: 25px;
-    color: #666; /* Medium grey text for description */
   }
-  
-  .install-button__download__andorid {
-    background-color: #007aff; /* iOS blue */
-    color: white; /* White text */
-    border: none;
-    padding: 12px 24px; /* Increased padding for a button-like appearance */
-    border-radius: 25px; /* Rounded edges */
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
-    font-weight: 600; /* Bolder text for prominence */
+
+  .app-description__android__download h2 {
+    font-size: 20px;
   }
-  
-  .install-button__download__andorid:hover {
-    background-color: #0051a8; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  /* Optional: Add a footer link for opening in browser */
-  .alternative-link__download__andorid {
-    margin-top: 20px;
-  }
-  
-  .alternative-link__download__andorid a {
-    color: #007aff; /* Link color */
-    text-decoration: none; /* Remove underline */
-    font-weight: 500; /* Medium font weight */
-  }
-  
-  .alternative-link__download__andorid a:hover {
-    text-decoration: underline; /* Underline on hover for clarity */
-  }
-  
+}
