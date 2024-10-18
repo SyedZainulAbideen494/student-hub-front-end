@@ -77,6 +77,8 @@ import CreateStory from "./eduFeed/story/addStory";
 import EmailSender from "./Email sender/EmailSender";
 import ReportCardMaker from "./toolkit/ReportCardMaker";
 import DownloadPageAndorid from "./docs/andriodDownload";
+import DocumentLockerPage from "./documnet locker/DocumentLockerPage";
+import CreateFolderPage from "./documnet locker/CreateFolderPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -142,6 +144,8 @@ const router = createBrowserRouter([
   {path: '/admin/send/email/all/users/not/allowed/here', element: <EmailSender/>},
   {path: '/toolkit/report-card-maker', element: <ReportCardMaker/>},
   {path: '/android/download', element: <DownloadPageAndorid/>},
+  {path: '/create-folder', element: <CreateFolderPage/>},
+  {path: '/document/locker', element: <DocumentLockerPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
