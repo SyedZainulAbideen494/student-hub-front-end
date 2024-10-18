@@ -1,0 +1,63 @@
+/* General styling for the page */
+.download-page__download__andorid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9f9f9; /* Light background for a clean look */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Clean font similar to Apple */
+  }
+  
+  .download-container__download__andorid {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px; /* More pronounced rounded edges */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: center;
+    max-width: 450px; /* Wider for better readability */
+  }
+  
+  .download-title__download__andorid {
+    font-size: 28px; /* Larger title for emphasis */
+    margin-bottom: 15px;
+    color: #333; /* Dark text for contrast */
+  }
+  
+  .download-description__download__andorid {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #666; /* Medium grey text for description */
+  }
+  
+  .install-button__download__andorid {
+    background-color: #007aff; /* iOS blue */
+    color: white; /* White text */
+    border: none;
+    padding: 12px 24px; /* Increased padding for a button-like appearance */
+    border-radius: 25px; /* Rounded edges */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    font-weight: 600; /* Bolder text for prominence */
+  }
+  
+  .install-button__download__andorid:hover {
+    background-color: #0051a8; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  /* Optional: Add a footer link for opening in browser */
+  .alternative-link__download__andorid {
+    margin-top: 20px;
+  }
+  
+  .alternative-link__download__andorid a {
+    color: #007aff; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 500; /* Medium font weight */
+  }
+  
+  .alternative-link__download__andorid a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+  }
+  
