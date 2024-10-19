@@ -146,7 +146,7 @@ const FooterNav = () => {
                 <Link to='/toolkit' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/toolkit' ? 'active' : ''}`}>
                     <FaToolbox className="icon-footer-nav" />
-                    <span className="btn-label">Toolkit <span className='new-label-footer-nav'>New</span></span>
+                    <span className="btn-label">Toolkit</span>
                 </button>
             </Link>
                 <Link to='/profile' style={{ textDecoration: 'none' }}>
