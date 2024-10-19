@@ -110,46 +110,49 @@ const DownloadPageAndroid = () => {
   
 
   return (
-    <div className="download-page__android__download">
-      <div className="app-details-page__android__download">
-        <div className="app-header-details__android__download">
-          <img src={logo} alt={app.title} className="app-icon__android__download" />
-          <div className="app-info__android__download">
-            <h1>{app.title}</h1>
-            <p className="app-rating__android__download">⭐ {app.rating} • Version {app.version}</p>
-            <p className="app-updated__android__download">Last updated: {app.lastUpdated}</p>
-            <button className="download-btn__android__download" onClick={handleInstallClick}>Download</button>
-          </div>
-        </div>
-
-        <div className="app-description__android__download">
-          <h2>About this app</h2>
-          <p>{app.description}</p>
-        </div>
-
-        <div className="app-features__android__download">
-          <h2>Key Features</h2>
-          <ul>
-            {app.features.map((feature, index) => (
-              <li key={index}>• {feature}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="app-testimonials__android__download">
-  <h2>User Testimonials</h2>
-  <div className="testimonials-container__android__download">
-    {app.testimonials.map((testimonial, index) => (
-      <div key={index} className="testimonial-card__android__download">
-        <p className="testimonial-feedback__android__download">"{testimonial.feedback}"</p>
-        <p className="testimonial-author__android__download"><strong>- {testimonial.name}</strong></p>
+<div className="download-page__android__download">
+  <div className="app-details-page__android__download">
+    <div className="app-header-details__android__download">
+      <img src={logo} alt={app.title} className="app-icon__android__download" />
+      <div className="app-info__android__download">
+        <h1>{app.title}</h1>
+        <p className="app-rating__android__download">
+          ⭐⭐⭐⭐⭐ {app.rating} • Version {app.version}
+        </p>
+        <p className="app-downloads__android__download">97,000+ downloads</p> {/* Added downloads info here */}
+        <p className="app-updated__android__download">Last updated: {app.lastUpdated}</p>
+        <button className="download-btn__android__download" onClick={handleInstallClick}>Download</button>
       </div>
-    ))}
+    </div>
+
+    <div className="app-description__android__download">
+      <h2>About this app</h2>
+      <p>{app.description}</p>
+    </div>
+
+    <div className="app-features__android__download">
+      <h2>Key Features</h2>
+      <ul>
+        {app.features.map((feature, index) => (
+          <li key={index}>• {feature}</li>
+        ))}
+      </ul>
+    </div>
+
+    <div className="app-testimonials__android__download">
+      <h2>User Testimonials</h2>
+      <div className="testimonials-container__android__download">
+        {app.testimonials.map((testimonial, index) => (
+          <div key={index} className="testimonial-card__android__download">
+            <p className="testimonial-feedback__android__download">"{testimonial.feedback}"</p>
+            <p className="testimonial-author__android__download"><strong>- {testimonial.name}</strong></p>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </div>
 
-      </div>
-    </div>
   );
 };
 
