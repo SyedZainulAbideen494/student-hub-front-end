@@ -284,6 +284,13 @@ const MathPage = () => {
   const [query, setQuery] = useState('');
   const [isListening, setIsListening] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate hook
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+
+      // Toggle feedback form visibility
+      const toggleFeedbackForm = () => {
+          setShowFeedbackForm(prev => !prev);
+      };
+
 
   const handleCalculate = async () => {
     try {
@@ -322,6 +329,21 @@ const MathPage = () => {
       </div>
       </div>
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
+      <div>
+        <div class="button-container__feedback__btn__planner__page">
+    <button onClick={toggleFeedbackForm} style={{
+        backgroundColor: 'transparent',
+        color: '#48cae4',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '10px',
+      }} >
+        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
+    </button>
+</div>
+
+            {showFeedbackForm && <FeedbackForm />}
+</div>
     </div>
   );
 };
