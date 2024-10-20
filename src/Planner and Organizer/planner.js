@@ -323,8 +323,8 @@ function Planner() {
             </div>
 
 
-<div className="ai-task-generator__planner__page__ai__gen">
-<span className="beta-tag__planner__page__ai__gen">New</span>
+            <div className="ai-task-generator__planner__page__ai__gen">
+            <span className="beta-tag__planner__page__ai__gen">New</span>
   <div className="form-header__planner__page__ai__gen">
     <h2 className="form-heading__planner__page__ai__gen">
       Generate Tasks Using AI 
@@ -334,21 +334,25 @@ function Planner() {
   <form onSubmit={handleGenerate} className="form-container__planner__page__ai__gen">
     <div className="input-group__planner__page__ai__gen">
       <label className="input-label__planner__page__ai__gen">
-        What is the task?
+        Task Description:
         <input
           type="text"
           value={mainTask}
           onChange={(e) => setMainTask(e.target.value)}
-          placeholder="E.g., Complete business assignment"
+          placeholder="E.g., Study for Math test covering chapters 1-3"
           required
           className="input-field__planner__page__ai__gen"
         />
       </label>
+      <small className="input-hint__planner__page__ai__gen">
+        Be specific. Include the subject, chapters, or details. 
+        (e.g., "Study for Math, chapters 1-3" or "Prepare for exams: subjects & chapters.")
+      </small>
     </div>
 
     <div className="input-group__planner__page__ai__gen">
       <label className="input-label__planner__page__ai__gen">
-        Days to complete:
+        Days to Complete:
         <input
           type="number"
           value={days}
@@ -359,6 +363,9 @@ function Planner() {
           required
         />
       </label>
+      <small className="input-hint__planner__page__ai__gen">
+        Specify how many days you'll need for this task.
+      </small>
     </div>
 
     <button
@@ -370,6 +377,7 @@ function Planner() {
     </button>
   </form>
 </div>
+
 
 
             <div className="task-form" ref={formRef}>
