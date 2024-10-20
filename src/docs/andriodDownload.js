@@ -32,6 +32,27 @@ const DownloadPageAndroid = () => {
     if (deferredPrompt) {
       deferredPrompt.prompt();
       const choiceResult = await deferredPrompt.userChoice;
+  
+      // Log download request to the server
+      const response = await fetch('https://dropment.online/api/log-download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          outcome: choiceResult.outcome,
+          appTitle: app.title, // You can include more data as needed
+          timestamp: new Date().toISOString(),
+        }),
+      });
+  
+      if (response.ok) {
+        console.log('Download request logged successfully');
+      } else {
+        console.error('Failed to log download request');
+      }
+  
+      // Log user's choice
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
       } else {
@@ -40,7 +61,6 @@ const DownloadPageAndroid = () => {
       setDeferredPrompt(null);
     }
   };
-
   const handleOpenInBrowser = () => {
     const newWindow = window.open('https://edusify-download.vercel.app', '_blank');
     if (newWindow) {
@@ -116,10 +136,14 @@ const DownloadPageAndroid = () => {
       <img src={logo} alt={app.title} className="app-icon__android__download" />
       <div className="app-info__android__download">
         <h1>{app.title}</h1>
-        <p className="app-rating__android__download">
-          ⭐⭐⭐⭐⭐ {app.rating} • Version {app.version}
-        </p>
-        <p className="app-downloads__android__download">97,000+ downloads</p> {/* Added downloads info here */}
+        <div className="app-rating-container__android__download">
+          <span className="app-rating__android__download">
+            ⭐⭐⭐⭐⭐ 
+          </span>
+          <span className="app-rating-value__android__download">{app.rating}</span><br/><br/>
+          <span className="app-version__android__download">• Version {app.version}</span>
+        </div>
+        <p className="app-downloads__android__download">97,000+ downloads</p>
         <p className="app-updated__android__download">Last updated: {app.lastUpdated}</p>
         <button className="download-btn__android__download" onClick={handleInstallClick}>Download</button>
       </div>
@@ -152,6 +176,7 @@ const DownloadPageAndroid = () => {
     </div>
   </div>
 </div>
+
 
   );
 };

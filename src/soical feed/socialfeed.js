@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FaPoll, FaSearch, FaThumbsUp, FaComment, FaShare } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import './socialfeed.css';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import FooterNav from '../app_modules/footernav';
+import './socialfeed.css';
 import EduScribe from './eduScribe';
-import { QuestionAnswer } from '@mui/icons-material';
 import QuestionCard from './QuestionCard';
 
 const SocialFeed = () => {
   const [activeTab, setActiveTab] = useState('ForYou');
-  const [question, setQuestion] = useState('');
   const [profile, setProfile] = useState({ avatar: 'default-avatar-url' });
 
   const fetchUserProfile = async () => {
@@ -25,14 +20,6 @@ const SocialFeed = () => {
 
   const handleTabSwitch = (tab) => {
     setActiveTab(tab);
-  };
-
-  const handleQuestionChange = (e) => {
-    setQuestion(e.target.value);
-  };
-
-  const handleQuestionSubmit = () => {
-    // Handle the question submit logic here
   };
 
   useEffect(() => {
@@ -63,8 +50,8 @@ const SocialFeed = () => {
           Following
         </button>
       </div>
-      <QuestionCard/>
-      <EduScribe activeTab={activeTab}/> {/* Pass activeTab as a prop */}
+      <QuestionCard />
+      <EduScribe activeTab={activeTab} /> {/* Pass activeTab as a prop */}
     </div>
   );
 }
