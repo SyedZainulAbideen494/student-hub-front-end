@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './DownloadPage.css';
 import logo from '../images/Edusify-removebg-preview.png'; // Ensure the logo path is correct
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const DownloadPageAndroid = () => {
   const [isInAppBrowser, setIsInAppBrowser] = useState(false);
@@ -34,7 +35,7 @@ const DownloadPageAndroid = () => {
       const choiceResult = await deferredPrompt.userChoice;
   
       // Log download request to the server
-      const response = await fetch('https://dropment.online/api/log-download', {
+      const response = await fetch(API_ROUTES.apiLogDownload, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

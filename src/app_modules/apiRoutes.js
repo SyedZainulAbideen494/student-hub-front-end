@@ -109,5 +109,6 @@ export const API_ROUTES = {
   fetchUserStories: `${API_URL}/fetchStories`,  // Backend route to fetch stories
   addStory: `${API_URL}/addStory`,            
   generateAITasks: `${API_URL}/api/tasks/generate`,
-  sendEmailAsAdmin: `${API_URL}/send-emails/all-users/admin`
+  sendEmailAsAdmin: `${API_URL}/send-emails/all-users/admin`,
+  apiLogDownload: `${API_URL}/api/log-download`
 }
