@@ -162,10 +162,11 @@ const ViewFlashCard = () => {
     };
 
     const handleShareClick = (flashcardId) => {
-        console.log('Selected Flashcard ID:', flashcardId); // Check this log
-        setSelectedFlashcardId(flashcardId);
-        setShowModal(true);
+        console.log('Selected Flashcard ID:', flashcardId); // Check the log
+        setSelectedFlashcardId(flashcardId); // Ensure the flashcardId is set
+        setShowModal(true); // Then open the modal
     };
+    
     
 
     const handleShareToGroup = async (groupId) => {
@@ -446,12 +447,14 @@ const ViewFlashCard = () => {
 
             {/* Group Modal */}
             {showModal && (
-                <GroupModal
-                    groups={joinedGroups}
-                    onClose={() => setShowModal(false)}
-                    onShare={handleShareToGroup}
-                />
-            )}
+    <GroupModal
+        groups={joinedGroups}
+        onClose={() => setShowModal(false)}
+        onShare={handleShareToGroup}
+        flashcardId={selectedFlashcardId} // Pass the selected flashcard ID here
+    />
+)}
+
     {showSubjectModal && (
                 <SubjectModal
                     onClose={closeSubjectModal}
