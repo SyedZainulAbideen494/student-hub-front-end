@@ -27,6 +27,28 @@ const NoteDetailPage = () => {
     const editorRef = useRef(null);
     const quillRef = useRef(null);
     const nav = useNavigate();
+    const [subjects, setSubjects] = useState([]);
+    const [selectedSubject, setSelectedSubject] = useState(''); // For storing selected subject
+
+    // Fetch the subjects on component mount
+    useEffect(() => {
+        fetchSubjects();
+    }, []);
+
+    const fetchSubjects = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(API_ROUTES.fetchsubjects, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            setSubjects(response.data); // Assuming response.data is an array of { id, subject }
+            setSelectedSubject(response.data.length > 0 ? response.data[0].id : ''); // Set default selected subject to the first one
+        } catch (error) {
+            console.error('Error fetching subjects:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchNote = async () => {
@@ -150,13 +172,14 @@ const quillModules = {
 
     const handleUpdateClick = async (e) => {
         e.preventDefault();
-
+    
         const updatedNote = {
             title,
             description,
             headings: quillRef.current.root.innerHTML, // Get editor content
+            subject: selectedSubject, // Add selected subject
         };
-
+    
         try {
             const token = localStorage.getItem('token');
             await axios.put(`${API_ROUTES.updateNote}/${id}`, updatedNote, {
@@ -175,6 +198,7 @@ const quillModules = {
             setTimeout(() => setShowModal(false), 3000); // Close the modal after 3 seconds
         }
     };
+    
 
     const handleDownloadPDF = async () => {
         if (note) {
@@ -264,6 +288,56 @@ const quillModules = {
                             required
                         ></textarea>
                     </div>
+                    <div className="form-group-flashcards-page" style={{
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1.5rem', // Space below the dropdown
+    fontFamily: 'Arial, sans-serif', // Font style
+}}>
+    <label htmlFor="subject" style={{
+        fontSize: '1rem',
+        color: '#4B5563', // Soft dark gray for the label
+        marginBottom: '0.5rem', // Space below the label
+    }}>Subject:</label>
+    <select
+        id="subject"
+        value={selectedSubject}
+        onChange={(e) => setSelectedSubject(e.target.value)}
+        style={{
+            padding: '0.5rem 1rem', // Padding for a comfortable click area
+            borderRadius: '10px', // Rounded corners for cuteness
+            border: '1px solid #D1D5DB', // Light border
+            backgroundColor: '#FFFBF0', // Soft cream background
+            color: '#3B82F6', // Bright blue text
+            fontSize: '1rem', // Font size
+            fontWeight: '500', // Medium font weight
+            cursor: 'pointer', // Pointer cursor on hover
+            transition: 'background-color 0.3s ease, box-shadow 0.3s ease', // Smooth transition
+            outline: 'none', // Remove outline on focus
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+        }}
+        onFocus={(e) => e.target.style.boxShadow = '0 4px 10px rgba(59, 130, 246, 0.3)'} // Shadow on focus
+        onBlur={(e) => e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)'} // Reset shadow on blur
+    >
+        {/* Add "None" option at the top */}
+        <option value="0" style={{
+            backgroundColor: '#FFFBF0', // Soft background for options
+            color: '#3B82F6', // Bright blue text for options
+        }}>
+            None
+        </option>
+        {/* Map through subjects */}
+        {subjects.map((subject) => (
+            <option key={subject.id} value={subject.id} style={{
+                backgroundColor: '#FFFBF0', // Soft background for options
+                color: '#3B82F6', // Bright blue text for options
+            }}>
+                {subject.name}
+            </option>
+        ))}
+    </select>
+</div>
+
                     <div className="form-group note-content-quill-note-detail-page">
                         <label htmlFor="headings">Content:</label>
                         <div ref={editorRef} id="headings" />

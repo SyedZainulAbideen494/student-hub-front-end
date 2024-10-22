@@ -474,6 +474,15 @@ const handleViewFalshCardsClick = () => {
         onFocus={(e) => e.target.style.boxShadow = '0 4px 10px rgba(59, 130, 246, 0.3)'} // Shadow on focus
         onBlur={(e) => e.target.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)'} // Reset shadow on blur
     >
+        {/* Add "None" option */}
+        <option value="0" style={{
+            backgroundColor: '#FFFBF0', // Soft background for options
+            color: '#3B82F6', // Bright blue text for options
+        }}>
+            None
+        </option>
+
+        {/* Map through subjects */}
         {subjects.map((subject) => (
             <option key={subject.id} value={subject.id} style={{
                 backgroundColor: '#FFFBF0', // Soft background for options
@@ -484,6 +493,7 @@ const handleViewFalshCardsClick = () => {
         ))}
     </select>
 </div>
+
 
                 
 <div className="form-group-flashcards-page">
