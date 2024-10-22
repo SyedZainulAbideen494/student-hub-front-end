@@ -50,19 +50,46 @@ const Subjects = () => {
         console.log("Add your first note button clicked");
     };
 
+    const handleDeleteSubject = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this subject?');
+        if (!confirmDelete) return; // If user cancels, do nothing
+
+        try {
+            await axios.delete(`${API_ROUTES.subjectDelete}/${subjectId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            // Redirect to /notes/view after successful deletion
+            nav('/notes/view');
+        } catch (error) {
+            console.error('Error deleting subject:', error);
+            setError('Failed to delete subject.'); // Handle error
+        }
+    };
+
     if (loading) return <div>Loading...</div>; // Display loading message
     if (error) return <div>{error}</div>; // Display error message
 
     return (
         <div className="flashcards-page">
             {/* Header Section */}
-            <div className="flashcards__subject__header" style={{ display: 'flex', alignItems: 'center', padding: '0.5rem 1rem', borderBottom: '1px solid #E5E7EB', textAlign: 'center' }}>
+            <div className="flashcards__subject__header" style={{ display: 'flex', alignItems: 'center', padding: '0.9rem 1rem', borderBottom: '1px solid #E5E7EB', textAlign: 'center' }}>
                 <button onClick={handleBackClick} style={{ marginRight: '0.5rem', background: 'none', border: 'none', cursor: 'pointer' }}>
                     <svg style={{ stroke: '#A78BFA', height: '20', width: '20' }} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15 18l-6-6 6-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                     </svg>
                 </button>
                 <h1 style={{ color: 'black', fontSize: '1.25rem', margin: 0 }}>{subjectName || 'Subject'}</h1> {/* Display subject name or default to 'Subject' */}
+                <button   style={{
+    position: 'absolute',  // Position it absolutely within its container
+    top: '10px',           // Adjust for vertical positioning
+    right: '10px',         // Adjust for horizontal positioning   // Optional: remove background     // Optional: remove border for cleaner look
+    padding: '10px',          // Remove padding for SVG
+    cursor: 'pointer'      // Change cursor to pointer on hover
+  }} className="button__delete__flashcard" onClick={handleDeleteSubject}>
+  <svg viewBox="0 0 448 512" className="svgIcon__delete__flashcard"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
+</button>
             </div>
 
             <div className="flashcards-list">

@@ -111,5 +111,6 @@ export const API_ROUTES = {
   generateAITasks: `${API_URL}/api/tasks/generate`,
   sendEmailAsAdmin: `${API_URL}/send-emails/all-users/admin`,
   apiLogDownload: `${API_URL}/api/log-download`,
-  fetchAiChatHistory: `${API_URL}/api/chat/history/ai`
+  fetchAiChatHistory: `${API_URL}/api/chat/history/ai`,
+  subjectDelete: `${API_URL}/subjects/delete`
 }
