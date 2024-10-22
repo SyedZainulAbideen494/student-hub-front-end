@@ -81,9 +81,11 @@ const MathSolver = ({ handleVoiceCommand }) => {
     const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
     setChatHistory(newHistory);
     setLoading(true);
+    
+    const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
   
     try {
-      const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory });
+      const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
       const formattedResponse = formatContent(response.data.response);
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
       setMessage('');
@@ -102,6 +104,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       setLoading(false);
     }
   };
+  
   
   
   const handleCreateFlashcard = (content) => {
@@ -318,6 +321,10 @@ const MathPage = () => {
     }
   };
 
+  const clickChatHistory = () => {
+    navigate('/ai/chat/history')
+  }
+
   return (
     <div className="math-page">
       <div className="math-page-header">
@@ -325,7 +332,7 @@ const MathPage = () => {
           <FaArrowLeft />
         </button>
         <div className="powered-by-gemini">
-        Powered by <span className="gemini-logo">Gemini</span>
+        Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
       </div>
       </div>
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
