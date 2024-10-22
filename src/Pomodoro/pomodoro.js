@@ -330,21 +330,11 @@ const Pomodoro = () => {
     
     
 
-    const incrementWorkTime = () => {
-        setWorkTime((prev) => prev + 1);
-    };
-
-    const decrementWorkTime = () => {
-        setWorkTime((prev) => Math.max(1, prev - 1)); // Prevent going below 1
-    };
-
-    const incrementBreakTime = () => {
-        setBreakTime((prev) => prev + 1);
-    };
-
-    const decrementBreakTime = () => {
-        setBreakTime((prev) => Math.max(1, prev - 1)); // Prevent going below 1
-    };
+    const handleResetPomodro = () => {
+        setWorkTime(25); // Reset work time to 25 minutes
+        setBreakTime(5);  // Reset break time to 0 minutes
+      };
+    
 
     return (
         <div className="pomodoro-container">
@@ -375,7 +365,6 @@ const Pomodoro = () => {
             type="number"
             value={workTime}
             onChange={handleWorkTimeChange}
-            min="1"
         />
 
     </div>
@@ -387,11 +376,12 @@ const Pomodoro = () => {
         <input
             type="number"
             value={breakTime}
-            onChange={handleBreakTimeChange}
-            min="1"
         />
 
     </div>
+    <div>
+        <button onClick={handleResetPomodro}>Reset to 25:00</button>
+      </div>
 </label>
 
 <div className="statistics">
