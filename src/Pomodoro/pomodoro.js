@@ -397,6 +397,40 @@ const Pomodoro = () => {
 </div>
 
 </label>
+<div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+  <button 
+onClick={() => {
+    // Clear specific localStorage items
+    localStorage.removeItem('workTime');
+    localStorage.removeItem('breakTime');
+    localStorage.removeItem('time');
+    localStorage.removeItem('isRunning');
+    localStorage.removeItem('totalStudyTime');
+    localStorage.removeItem('totalBreakTime');
+    localStorage.removeItem('sessionCount');
+    localStorage.removeItem('breakCount');
+    localStorage.removeItem('streakDays');
+    localStorage.removeItem('longestStreak');
+    localStorage.removeItem('lastSessionDate');
+    
+    
+    // Refresh the page
+    window.location.reload();
+  }}
+  
+    style={{
+      backgroundColor: '#ff5c5c',  // Red color for delete action
+      color: 'white',
+      border: 'none',
+      padding: '5px 10px',  // Small button with padding
+      borderRadius: '5px',
+      fontSize: '12px',  // Smaller font size
+      cursor: 'pointer'
+    }}
+  >
+    Reset All Stats
+  </button>
+</div>
 
 <div className="statistics">
             <h3>Statistics</h3>
