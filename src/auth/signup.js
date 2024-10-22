@@ -166,7 +166,7 @@ const validatePhoneNumber = (phone) => {
     };
 
     
-     const checkTokenAndRedirect = async (token) => {
+   const checkTokenAndRedirect = async (token) => {
         try {
             const response = await axios.post(API_ROUTES.sessionCheck, { token });
             if (response.data.exists) {
@@ -184,7 +184,7 @@ const validatePhoneNumber = (phone) => {
         if (token) {
             checkTokenAndRedirect(token);
         }
-    }, [nav]); 
+    }, [nav]);  
 
     return (
 <div className="signup-sign-up-page-card-main-div-signup">
@@ -271,7 +271,7 @@ const validatePhoneNumber = (phone) => {
 {step === 2 && (
     <>
         <div className={`signup-sign-up-page-input-group ${uniqueIdStatus}`}>
-            <span className="signup-sign-up-page-username-prefix">@</span> {/* Prefix for the username */}
+            <span className="signup-sign-up-page-username-prefix"><FaUser/></span> {/* Prefix for the username */}
             <input
                 type="text"
                 name="unique_id"
