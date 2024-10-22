@@ -379,9 +379,23 @@ const Pomodoro = () => {
         />
 
     </div>
-    <div>
-        <button onClick={handleResetPomodro}>Reset to 25:00</button>
-      </div>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+  <button 
+    onClick={handleResetPomodro} 
+    style={{
+      backgroundColor: '#4a90e2',
+      color: 'white',
+      border: 'none',
+      padding: '5px 10px',  // Small button with padding
+      borderRadius: '5px',
+      fontSize: '12px',  // Smaller font size
+      cursor: 'pointer'
+    }}
+  >
+    Reset to 25:00
+  </button>
+</div>
+
 </label>
 
 <div className="statistics">
