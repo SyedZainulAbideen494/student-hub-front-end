@@ -393,6 +393,7 @@ const Pomodoro = () => {
         <input
             type="number"
             value={breakTime}
+            onChange={handleBreakTimeChange}
         />
 
     </div>
