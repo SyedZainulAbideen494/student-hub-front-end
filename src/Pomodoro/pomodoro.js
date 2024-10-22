@@ -331,10 +331,27 @@ const Pomodoro = () => {
     
 
     const handleResetPomodro = () => {
+        // Reset work time and break time in state
         setWorkTime(25); // Reset work time to 25 minutes
-        setBreakTime(5);  // Reset break time to 0 minutes
+        setBreakTime(5);  // Reset break time to 5 minutes
+      
+        // Update the time based on the current mode (work or break)
+        if (isWork) {
+          setTime(25 * 60); // Set work time to 25 minutes in seconds
+        } else {
+          setTime(5 * 60); // Set break time to 5 minutes in seconds
+        }
+      
+        // Update the values in localStorage
+        localStorage.setItem('workTime', 25);
+        localStorage.setItem('breakTime', 5);
+        localStorage.setItem('time', isWork ? 25 * 60 : 5 * 60);
+      
+        // Refresh the page to apply changes
+        window.location.reload();
       };
-    
+      
+      
 
     return (
         <div className="pomodoro-container">
