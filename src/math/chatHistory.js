@@ -106,7 +106,6 @@ const ChatHistoryPage = () => {
             </div>
           ))
         )}
-        <div ref={messagesEndRef} />
       </div>
     </div>
   );
