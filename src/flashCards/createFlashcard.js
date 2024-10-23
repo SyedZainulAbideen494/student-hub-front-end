@@ -204,31 +204,28 @@ useEffect(() => {
 
 const handleSendMessage = async () => {
   if (!message.trim()) return;
-
-  if (!conversationStarted) {
-    setConversationStarted(true);
-  }
+  if (!conversationStarted) setConversationStarted(true);
 
   const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
   setChatHistory(newHistory);
   setLoading(true);
-  setMessage('');
+  
+  const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
 
   try {
-    const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory });
-    const formattedResponse = formatContent(response.data.response); // Ensure this function is defined
-
-    setChatHistory((prev) => [
-      ...prev,
-      { role: 'model', parts: [{ text: formattedResponse }] },
-    ]);
+    const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
+    const formattedResponse = formatContent(response.data.response);
+    setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
+    setMessage('');
   } catch (error) {
+    const errorMessage = (
+      <>
+        Oops! Something went wrong. Please try again later.
+      
+      </>
+    );
+    setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
     console.error('Error sending message:', error);
-    // Add an error message to the chatHistory for user feedback
-    setChatHistory((prev) => [
-      ...prev,
-      { role: 'model', parts: [{ text: 'An error occurred. Please try again.' }] },
-    ]);
   } finally {
     setLoading(false);
   }
