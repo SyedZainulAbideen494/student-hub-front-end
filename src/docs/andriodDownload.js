@@ -186,9 +186,10 @@ if (isInAppBrowser) {
                    Instagram browser doesn't support downloads. 
               </p>
               <p style={{ marginTop: '10px' }}>
-                  📱 Tap the three dots in the top right corner and
-                  select "Open in Chrome" to proceed.
+                  📱 Tap the <strong>three dots</strong> in the top right corner and
+                  select <strong>"Open in Chrome"</strong> to proceed.
               </p>
+              <p>Or</p>
               <a
                   href={window.location.href}
                   target="_blank"
