@@ -358,6 +358,7 @@ function Planner() {
           value={days}
           onChange={(e) => setDays(e.target.value)}
           min="1"
+          max="10" // Added max attribute
           placeholder="Enter number of days"
           className="input-field__planner__page__ai__gen"
           required
