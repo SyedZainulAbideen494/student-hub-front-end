@@ -78,6 +78,8 @@ import DownloadPageAndorid from "./docs/andriodDownload";
 import DocumentLockerPage from "./documnet locker/DocumentLockerPage";
 import CreateFolderPage from "./documnet locker/CreateFolderPage";
 import ChatHistoryPage from "./math/chatHistory";
+import YouTubeSearch from "./youtube/YouTubeSearch";
+import VideoPage from "./youtube/VideoPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -144,6 +146,8 @@ const router = createBrowserRouter([
   {path: '/create-folder', element: <CreateFolderPage/>},
   {path: '/document/locker', element: <DocumentLockerPage/>},
   {path:'/ai/chat/history', element: <ChatHistoryPage/>},
+  {path:'/youtube', element: <YouTubeSearch/>},
+  {path: '/video/:videoId', element: <VideoPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

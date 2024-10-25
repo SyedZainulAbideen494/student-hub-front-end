@@ -69,11 +69,6 @@
     font-size: 1rem;
 }
 
-.controls-pomodoro button:hover {
-    background: #004d40; /* Darker teal on hover */
-    transform: scale(1.05);
-}
-
 /* Settings */
 .settings-pomodoro {
     display: flex;
