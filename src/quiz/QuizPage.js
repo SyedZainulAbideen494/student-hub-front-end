@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './QuizPage.css';
@@ -12,6 +12,44 @@ const QuizPage = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(null);
     const navigate = useNavigate();
+    const nav = useNavigate()
+    const token = localStorage.getItem('token');
+    const location = useLocation();
+
+    useEffect(() => {
+        const validateToken = async () => {
+          const token = localStorage.getItem('token');
+          console.log('Token from local storage:', token); // Debugging
+    
+          // If no token, redirect to login
+          if (!token) {
+            console.log('No token found, redirecting to sign-up.');
+            nav('/sign-up');
+            return;
+          }
+    
+          try {
+            const response = await axios.post(API_ROUTES.userSessionAut, { token });
+            console.log('Token validation response:', response.data); // Debugging
+            if (!response.data.valid) {
+              console.log('Invalid token, redirecting to sign-up.');
+              nav('/sign-up');
+            }
+          } catch (error) {
+            console.error('Error during token validation:', error);
+            nav('/sign-up');
+          }
+        };
+    
+        // Delay the validation by 5 seconds
+        const timeoutId = setTimeout(() => {
+          validateToken();
+        }, 500);
+    
+        // Cleanup timeout on component unmount
+        return () => clearTimeout(timeoutId);
+    }, [nav]);
+
 
     useEffect(() => {
         const fetchQuiz = async () => {
