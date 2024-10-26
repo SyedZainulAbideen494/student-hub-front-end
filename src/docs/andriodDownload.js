@@ -62,6 +62,8 @@ const DownloadPageAndroid = () => {
       setDeferredPrompt(null);
     }
   };
+
+  
   const handleOpenInBrowser = () => {
     const newWindow = window.open('https://edusify-download.vercel.app', '_blank');
     if (newWindow) {
@@ -226,7 +228,7 @@ if (isInAppBrowser) {
           <span className="app-rating-value__android__download">{app.rating}</span><br/><br/>
           <span className="app-version__android__download">• Version {app.version}</span>
         </div>
-        <p className="app-downloads__android__download">97,000+ downloads</p>
+        <p className="app-downloads__android__download">150,000+ downloads</p>
         <p className="app-updated__android__download">Last updated: {app.lastUpdated}</p>
         <button className="download-btn__android__download" onClick={handleInstallClick}>Download</button>
       </div>
