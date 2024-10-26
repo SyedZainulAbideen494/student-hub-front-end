@@ -70,7 +70,7 @@ const CreateFlashcardSet = () => {
           />
           <input
             type="text"
-            placeholder="Topic"
+            placeholder="Topic (Name)"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             className="input__create__flashcard___page"
