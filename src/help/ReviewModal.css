@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,20 +15,23 @@
 /* Main content area of the modal */
 .modal-content__review__give__Eduisyf {
     background: white;
-    padding: 30px; /* Increased padding for a spacious look */
-    border-radius: 16px; /* More curvature */
+    padding: 20px; /* Reduced padding for a more compact look */
+    border-radius: 25px; /* More curvature for an Apple-like aesthetic */
     max-width: 400px;
-    width: 80%; /* Adjusted width for smaller screens */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: calc(100% - 40px); /* Added spacing on sides */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Softer shadow */
     display: flex;
+    margin: 10px;
     flex-direction: column;
     align-items: center; /* Center align items */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 /* Heading style */
 .modal-content__review__give__Eduisyf h2 {
     text-align: center;
-    font-size: 18px; /* Increased font size for better readability */
+    font-size: 20px; /* Slightly larger for emphasis */
+    color: #333; /* Darker color for better readability */
 }
 
 /* Star rating container */
@@ -43,7 +46,7 @@
     font-size: 30px;
     cursor: pointer;
     color: lightgray;
-    margin: 0 5px; /* Added margin for spacing */
+    margin: 0 4px; /* Slightly reduced margin for better spacing */
 }
 
 .star__review__give__Eduisyf.selected__review__give__Eduisyf {
@@ -55,16 +58,16 @@
     display: flex;
     flex-direction: column;
     width: 100%; /* Ensure full width for the form */
-    margin-top: 20px; /* Spacing above the form */
+    margin-top: 15px; /* Spacing above the form */
 }
 
 .feedback-textarea__review__give__Eduisyf {
-    width: 100%;
-    height: 100px; /* Increased height for better input area */
+    width: 90%;
+    height: 100px; /* Height for input area */
     margin-bottom: 10px;
-    border-radius: 8px; /* Curved edges */
+    border-radius: 10px; /* Rounded edges */
     padding: 10px; /* Inner padding */
-    border: 1px solid #ccc;
+    border: 1px solid #ddd; /* Lighter border color */
     font-size: 14px; /* Smaller font size */
     resize: none; /* Disable resizing */
     transition: border 0.2s; /* Smooth transition for focus */
@@ -76,53 +79,29 @@
     font-style: italic;
 }
 
-
 /* Button styles */
 .submit-button__review__give__Eduisyf,
-.later-button__review__give__Eduisyf,
-.close-button__review__give__Eduisyf {
-    flex: 1; /* Make buttons equal width */
-    height: 45px; /* Increased height for better touch targets */
+.later-button__review__give__Eduisyf {
+    width: 100%; /* Full width buttons */
+    height: 45px; /* Consistent button height */
     cursor: pointer;
-    color: #fff;
-    font-size: 16px; /* Slightly larger font size for readability */
-    border-radius: 0.5rem; /* More subtle rounding */
+    font-size: 16px; /* Readable font size */
+    border-radius: 22px; /* Rounded edges for buttons */
     border: none;
-    padding: 10px 8px;
-    position: relative;
-    background: #100720; /* Dark background */
-    transition: background-color 0.3s, transform 0.3s; /* Smoother transitions */
-    margin: 0 10px; /* Increase horizontal spacing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    padding: 10px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+    margin-top: 10px; /* Spacing between buttons */
 }
 
-/* Button hover effects */
-.submit-button__review__give__Eduisyf:hover,
-.later-button__review__give__Eduisyf:hover,
-.close-button__review__give__Eduisyf:hover {
-    background-color: #292929; /* Darker background on hover */
+.later-button__review__give__Eduisyf {
+    background-color: transparent;
+    border: 2px solid black;
 }
 
-/* Background effect for buttons */
-.submit-button__review__give__Eduisyf::after,
-.later-button__review__give__Eduisyf::after,
-.close-button__review__give__Eduisyf::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255, 94, 247, 1) 17.8%, rgba(2, 245, 255, 1) 100.2%);
-    filter: blur(10px);
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-/* Button active effects */
-.submit-button__review__give__Eduisyf:active,
-.later-button__review__give__Eduisyf:active,
-.close-button__review__give__Eduisyf:active {
-    transform: scale(0.95) rotate(2deg); /* Slight rotation for button press */
+.submit-button__review__give__Eduisyf {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
 }
 
 /* Success message styling */
