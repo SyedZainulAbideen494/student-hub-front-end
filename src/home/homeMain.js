@@ -26,6 +26,7 @@ const HomeMain = () => {
 
     return<Fragment>
         <TipBox/>
+        <ReviewModal/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
 <div style={{ margin: '20px 0' }}>

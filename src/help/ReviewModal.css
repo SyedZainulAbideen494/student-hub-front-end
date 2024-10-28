@@ -76,29 +76,24 @@
     font-style: italic;
 }
 
-/* Button container */
-.button-container__review__give__Eduisyf {
-    display: flex;
-    justify-content: space-between; /* Space between buttons */
-    width: 100%; /* Ensure full width for the container */
-    margin-top: 10px; /* Spacing above buttons */
-}
 
 /* Button styles */
 .submit-button__review__give__Eduisyf,
 .later-button__review__give__Eduisyf,
 .close-button__review__give__Eduisyf {
     flex: 1; /* Make buttons equal width */
-    height: 40px;
+    height: 45px; /* Increased height for better touch targets */
     cursor: pointer;
     color: #fff;
-    font-size: 14px;
-    border-radius: 1rem;
+    font-size: 16px; /* Slightly larger font size for readability */
+    border-radius: 0.5rem; /* More subtle rounding */
     border: none;
+    padding: 10px 8px;
     position: relative;
-    background: #100720;
-    transition: 0.2s;
-    margin: 0 5px; /* Horizontal spacing */
+    background: #100720; /* Dark background */
+    transition: background-color 0.3s, transform 0.3s; /* Smoother transitions */
+    margin: 0 10px; /* Increase horizontal spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
 
 /* Button hover effects */
@@ -127,8 +122,7 @@
 .submit-button__review__give__Eduisyf:active,
 .later-button__review__give__Eduisyf:active,
 .close-button__review__give__Eduisyf:active {
-    transform: scale(0.95) rotate(2deg);
-    transition: 0.3s;
+    transform: scale(0.95) rotate(2deg); /* Slight rotation for button press */
 }
 
 /* Success message styling */
