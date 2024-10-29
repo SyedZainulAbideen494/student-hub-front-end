@@ -410,7 +410,7 @@ const Pomodoro = () => {
       cursor: 'pointer'
     }}
   >
-    Reset to 25:00
+    Reset timer
   </button>
 </div>
 
