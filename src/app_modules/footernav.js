@@ -123,6 +123,7 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
                         <span className="btn-label">Quizzes</span>
+                        <span className='new-label-footer-nav'>New - generate quiz using AI</span>
                     </button>
                 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
