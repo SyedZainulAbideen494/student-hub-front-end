@@ -38,18 +38,18 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
-
 .quiz-progress-attend {
     display: flex;
     align-items: center;
-    overflow-x: auto;
+    overflow-x: auto; /* Allows horizontal scrolling */
     white-space: nowrap;
     justify-content: center;
+    padding: 10px; /* Optional padding */
 }
 
 .progress-circle-attend {
-    width: 30px; /* Increased size */
-    height: 30px; /* Increased size */
+    width: 5vw; /* Adjust for responsiveness */
+    height: 5vw; /* Adjust for responsiveness */
     border-radius: 50%;
     border: 1px solid #ffffff;
     display: flex;
@@ -58,13 +58,23 @@
     margin-left: 5px;
     cursor: default;
     color: #ffffff;
-    font-size: 16px; /* Adjusted for better visibility */
+    font-size: 2vw; /* Responsive font size */
 }
 
 .progress-circle-attend.active-attend {
     background-color: #ffffff;
     color: #478DFE;
 }
+
+/* Media Query for Smaller Screens */
+@media (max-width: 600px) {
+    .progress-circle-attend {
+        width: 7vw; /* Adjust size for small screens */
+        height: 7vw; /* Adjust size for small screens */
+        font-size: 3vw; /* Adjust font size for small screens */
+    }
+}
+
 
 .quiz-container-attend {
     padding: 20px;

@@ -113,16 +113,6 @@ const QuizPage = () => {
                             ←
                         </button>
                         <h2 className="quiz-title-attend">{quiz.title}</h2>
-                        <div className="quiz-progress-attend">
-                            {questions.map((_, index) => (
-                                <span
-                                    key={index}
-                                    className={`progress-circle-attend ${index === currentQuestionIndex ? 'active-attend' : ''}`}
-                                >
-                                    {index + 1}
-                                </span>
-                            ))}
-                        </div>
                     </div>
 
                     <div className="quiz-container-attend">
