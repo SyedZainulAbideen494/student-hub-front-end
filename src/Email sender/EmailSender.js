@@ -9,7 +9,7 @@ const EmailSender = () => {
 
     const handleSendEmails = async () => {
         try {
-            const response = await fetch(API_ROUTES.sendEmailAsAdmin, {
+            const response = await fetch('http://localhost:8080/send-emails/all-users/admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

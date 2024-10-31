@@ -140,6 +140,10 @@ const handleShareClick = (quiz) => {
         navigate('/quiz/guide')
     }
 
+    const handleAiCreateClick = () => {
+        navigate('/quiz/ai')
+    }
+
     return (
         <div className="quiz-home-page-quiz-page">
              {showTutorial && <QuizPageTutorial onComplete={handleTutorialComplete} />}
@@ -193,11 +197,11 @@ const handleShareClick = (quiz) => {
                 <path d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M5 9h2v10H5V9zm6-4h2v14h-2V5zm6 8h2v6h-2v-6z" fill="currentColor"></path>
             </svg>
-            My Results
+            Results
         </span>
     </button>
 
-    <button className='quiz-create-btn-home-page' onClick={handleGuideClick}>
+    <button className='quiz-create-btn-home-page' onClick={handleAiCreateClick}>
     <span className='quiz-create-btn-home-page-span'>
         <svg
             height="20"
@@ -205,11 +209,12 @@ const handleShareClick = (quiz) => {
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <path d="M4 2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2zm0 2v16h16V4H4zm6 2h4v2h-4V6zm0 4h4v2h-4v-2zm-6 6h12v2H4v-2z" fill="currentColor"></path>
+            <path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 14h2v2h-2v-2zm-4 0h2v2H9v-2zm0-4h2v2H9v-2zm8 0h2v2h-2v-2zm-8-4h2v2H9V8zm4 0h2v2h-2V8zm4 0h2v2h-2V8z" fill="currentColor"/>
         </svg>
-        Guide
+        Create with AI
     </span>
 </button>
+
 
 </div>
 
@@ -221,8 +226,8 @@ const handleShareClick = (quiz) => {
                       <p>No quizzes found. Create your first quiz!</p>
                   </div>
                   <div className="card_no-quizzes"></div>
-                  <button onClick={handleCreateQuiz} className="create-first-quiz-button">
-                      <FaPlus /> Create Quiz
+                  <button onClick={handleAiCreateClick} className="create-first-quiz-button">
+                      <FaPlus /> Create Quiz with AI
                   </button>
               </div>
             ) : (

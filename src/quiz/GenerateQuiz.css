@@ -1,0 +1,95 @@
+/* Main container styling */
+.generate-quiz-container__quiz__ai__gen {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Header styling */
+.header__quiz__ai__gen {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+}
+
+/* Back button styling */
+.back-button__quiz__ai__gen {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+    padding: 4px;
+    margin-right: auto;
+    transition: color 0.2s ease;
+}
+
+.back-button__quiz__ai__gen:hover {
+    color: #007aff;
+}
+
+/* Title styling */
+.title__quiz__ai__gen {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #333;
+    margin: 8px 0;
+}
+
+/* Form styling */
+.generate-quiz-form__quiz__ai__gen {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 90%;
+    margin-top: 8px;
+}
+
+/* Label styling */
+.label__quiz__ai__gen {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+/* Input styling */
+.input__quiz__ai__gen {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input__quiz__ai__gen:focus {
+    border-color: #007aff;
+}
+
+/* Centered button container */
+.centered-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px; /* Space above the button */
+}
+
+/* Error message styling */
+.error-message__quiz__ai__gen {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}

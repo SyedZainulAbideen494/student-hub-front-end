@@ -80,6 +80,8 @@ import CreateFolderPage from "./documnet locker/CreateFolderPage";
 import ChatHistoryPage from "./math/chatHistory";
 import YouTubeSearch from "./youtube/YouTubeSearch";
 import VideoPage from "./youtube/VideoPage";
+import EmailFetcher from "./Email sender/emailFetcher";
+import GenerateQuiz from "./quiz/GenerateQuiz";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -148,6 +150,8 @@ const router = createBrowserRouter([
   {path:'/ai/chat/history', element: <ChatHistoryPage/>},
   {path:'/youtube', element: <YouTubeSearch/>},
   {path: '/video/:videoId', element: <VideoPage/>},
+  {path: '/email/fetch', element: <EmailFetcher/>},
+  {path: '/quiz/ai', element: <GenerateQuiz/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
