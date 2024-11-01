@@ -354,7 +354,7 @@ if (loading) {
 
       {/* Button to show the first flashcard */}
       <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
-        View 
+        Swipe Mode 
       </button>
     
       <div className="flashcard__set__page__flashcards">
