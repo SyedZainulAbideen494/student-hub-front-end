@@ -658,8 +658,8 @@ const quillModules = {
                 
                 // Set max width and height for the image
                 const img = quill.root.querySelectorAll('img');
-                img[img.length - 1].style.maxWidth = '100%'; // Set max width
-                img[img.length - 1].style.maxHeight = '400px'; // Set max height
+                img[img.length - 1].style.maxWidth = '200px'; // Set max width
+                img[img.length - 1].style.maxHeight = '100%'; // Set max height
                 img[img.length - 1].style.objectFit = 'contain'; // Maintain aspect ratio
               }
             } catch (error) {
