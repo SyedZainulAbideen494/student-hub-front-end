@@ -79,7 +79,7 @@ const DownloadPageAndroid = () => {
     rating: 4.8,
     size: "100MB",
     version: "2.0.1",
-    lastUpdated: "Oct 18, 2024",
+    lastUpdated: "Nov 2, 2024",
     features: [
       "Personalized learning paths",
       "Offline access to materials",
@@ -220,7 +220,7 @@ if (isInAppBrowser) {
     <div className="app-header-details__android__download">
       <img src={logo} alt={app.title} className="app-icon__android__download" />
       <div className="app-info__android__download">
-        <h1>{app.title}</h1>
+        <h1>{app.title}</h1><br/>
         <div className="app-rating-container__android__download">
           <span className="app-rating__android__download">
             ⭐⭐⭐⭐⭐ 
