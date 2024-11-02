@@ -180,11 +180,12 @@ const DocumentLockerPage = () => {
   {/* Fixed Add Button */}
   <Button 
     type="primary" 
-    shape="circle" 
+    shape="round" // Change to round for a wider effect
     icon={<PlusOutlined />} 
     onClick={showModal} 
-    style={{ position: 'fixed', bottom: 100, right: 20 }}
-  />
+    style={{ position: 'fixed', bottom: 100, right: 20, width: '40px', height: '40px' }} // Set fixed width and height
+/>
+
 
   <Modal
     title={isFolderView ? "Create Folder" : "Add Document"}
