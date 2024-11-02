@@ -71,6 +71,7 @@ const FolderPage = () => {
       handleCancelModal();
     } catch (error) {
       console.error('Error during document upload:', error.response ? error.response.data : error);
+      message.error('Failed to upload document. Please try again.');
     }
   };
 
@@ -82,54 +83,62 @@ const FolderPage = () => {
     setFileList([]);
   };
 
-  const filteredDocuments = documents.filter(doc => doc.title.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredDocuments = documents.filter(doc => 
+    doc.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div style={{ padding: 20 }}>
-      <header style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <header style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <Button 
           type="link" 
           icon={<ArrowLeftOutlined />} 
           onClick={() => navigate(-1)} 
-          style={{ fontSize: '16px', marginRight: '10px' }} 
+          style={{ fontSize: '20px', marginRight: '10px' }} 
         />
-        <Title level={4} style={{ margin: 0, fontSize: '20px' }}>{folderName}</Title>
+        <Title level={4} style={{ margin: 0, fontSize: '24px' }}>{folderName}</Title>
       </header>
       
-      {/* Centered Search Bar */}
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <Input 
           placeholder="Search documents..." 
           prefix={<SearchOutlined />} 
           value={searchTerm} 
           onChange={handleSearchChange} 
-          style={{ width: 300 }} 
+          style={{ width: 300, borderRadius: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} 
         />
       </div>
-      <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '60%', margin: '0 auto' }}>
+
       <Title level={5} style={{ marginBottom: 10 }}>Documents in this Folder</Title>
-      <List
-        bordered
-        dataSource={filteredDocuments}
-        renderItem={item => (
-          <List.Item>
-            <div style={{ flex: 1 }}>
-              <Text strong>{item.title}</Text> - <Text type="secondary">{item.description}</Text>
-            </div>
-            <Button type="link" onClick={() => navigate(`/document/view/${item.id}`)}>
-              View
-            </Button>
-          </List.Item>
- 
-        )}
-      />
-         </div>
+      <div style={{ maxHeight: '300px', overflowY: 'auto', marginBottom: '20px', border: '1px solid #d9d9d9', borderRadius: '10px', padding: '10px', backgroundColor: '#f9f9f9' }}>
+        <List
+          bordered
+          dataSource={filteredDocuments}
+          renderItem={item => (
+            <List.Item style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ flex: 1 }}>
+                <Text strong>{item.title}</Text> - <Text type="secondary">{item.description}</Text>
+              </div>
+              <Button 
+                type="link" 
+                onClick={() => navigate(`/document/view/${item.id}`)}
+                style={{ color: '#1890ff' }}
+              >
+                View
+              </Button>
+            </List.Item>
+          )}
+        />
+      </div>
+
       <Modal
         title="Add Document"
         visible={isModalVisible}
         onCancel={handleCancelModal}
         onOk={handleUploadDocument}
         okText="Upload"
+        cancelText="Cancel"
+        style={{ borderRadius: '10px' }}
       >
         <Input placeholder="Document Title" value={docTitle} onChange={(e) => setDocTitle(e.target.value)} style={{ marginBottom: 10 }} />
         <Input.TextArea placeholder="Description (optional)" value={docDescription} onChange={(e) => setDocDescription(e.target.value)} style={{ marginBottom: 10 }} />
@@ -139,16 +148,13 @@ const FolderPage = () => {
         </Upload>
       </Modal>
 
-      {/* Fixed and Rounded Add Document Button */}
-      <div style={{ position: 'fixed', bottom: 50, right: 20 }}>
-        <Button 
-          type="primary" 
-          shape="circle" 
-          icon={<PlusOutlined />} 
-          onClick={() => setIsModalVisible(true)} 
-          style={{ position: 'fixed', bottom: 20, right: 20, width: '50px', height: '50px' }} 
-        />
-      </div>
+      <Button 
+        type="primary" 
+        shape="circle" 
+        icon={<PlusOutlined />} 
+        onClick={() => setIsModalVisible(true)} 
+        style={{ position: 'fixed', bottom: '20px', right: '20px', width: '56px', height: '56px', borderRadius: '28px' }} 
+      />
     </div>
   );
 };

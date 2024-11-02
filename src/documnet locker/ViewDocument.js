@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { message, Input, Button, Card, Row, Col, Modal } from 'antd';
+import { message, Input, Button, Card, Row, Col, Modal, Spin } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import './DocumentView.css'; // Assuming you have a CSS file for additional styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import './DocumentView.css'; // Assuming you have a CSS file for additional styling
 
 const DocumentView = () => {
   const { id } = useParams();
@@ -14,6 +14,8 @@ const DocumentView = () => {
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false); // Loading state for password submission
+  const [imagePreviewVisible, setImagePreviewVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null); // State for selected image
 
   useEffect(() => {
     // Fetch the document only once when the component mounts
@@ -56,6 +58,16 @@ const DocumentView = () => {
     navigate(-1);
   };
 
+  const handleImageClick = (file) => {
+    setSelectedImage(file); // Set the selected image
+    setImagePreviewVisible(true); // Show the image preview modal
+  };
+
+  const handleModalClose = () => {
+    setImagePreviewVisible(false); // Hide the image preview modal
+    setSelectedImage(null); // Clear the selected image
+  };
+
   // Password modal
   const passwordModal = () => (
     <Modal
@@ -64,6 +76,7 @@ const DocumentView = () => {
       onCancel={handleBack}
       footer={null}
       centered
+      style={{ borderRadius: '10px' }} // Rounded modal
     >
       <form onSubmit={handlePasswordSubmit} className="password-form__view__doc__page">
         <Input.Password
@@ -77,7 +90,7 @@ const DocumentView = () => {
           type="primary"
           htmlType="submit"
           loading={loading} // Show loading spinner
-          style={{ borderRadius: '10px' }}
+          style={{ borderRadius: '10px', width: '100%' }}
         >
           Submit
         </Button>
@@ -90,20 +103,25 @@ const DocumentView = () => {
   }
 
   return (
-    <div className="document-view__view__doc__page">
-      <header className="document-header__view__doc__page">
+    <div className="document-view__view__doc__page" style={{ padding: '20px' }}>
+      <header className="document-header__view__doc__page" style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <Button
           type="link"
           icon={<ArrowLeftOutlined />}
           onClick={handleBack}
           style={{ padding: 0, fontSize: '24px', color: '#1890ff' }} // Highlight the back button
         />
-        <div className="document-header-content__view__doc__page">
-          <h2 style={{ fontSize: '20px', margin: 0, fontWeight: '200' }}>{doc.title}</h2>
+        <div style={{ marginLeft: '16px' }}>
+          <h2 style={{ fontSize: '24px', margin: 0, fontWeight: '600' }}>{doc.title}</h2>
           <p style={{ fontSize: '16px', color: '#999', margin: '5px 0 0 0' }}>{doc.description}</p>
         </div>
       </header>
-      <div>
+
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+          <Spin size="large" />
+        </div>
+      ) : (
         <Row gutter={[16, 16]}>
           {files.length > 0 ? (
             files.map((file) => (
@@ -115,18 +133,44 @@ const DocumentView = () => {
                       src={`${API_ROUTES.displayImg}/${file.file_name}`}
                       alt={file.file_name}
                       className="responsive-image__view__doc__page"
+                      style={{ borderRadius: '10px 10px 0 0', objectFit: 'cover', height: '150px' }} // Rounded corners and cover fit
                     />
                   }
                   className="file-card__view__doc__page"
+                  style={{ borderRadius: '10px' }} // Rounded card
                 >
+                  <Button 
+                    type="primary" 
+                    style={{ width: '100%', borderRadius: '10px' }} 
+                    onClick={() => handleImageClick(file)}
+                  >
+                    View
+                  </Button>
                 </Card>
               </Col>
             ))
           ) : (
-            <p>No associated images found for this document.</p>
+            <p style={{ textAlign: 'center', width: '100%' }}>No associated files found for this document.</p>
           )}
         </Row>
-      </div>
+      )}
+
+      {/* Modal for image preview */}
+      <Modal
+        visible={imagePreviewVisible}
+        onCancel={handleModalClose}
+        footer={null}
+        centered
+        style={{ maxWidth: '90%', maxHeight: '90%', borderRadius: '10px' }} // Ensure modal is centered and fits well
+      >
+        {selectedImage && (
+          <img
+            src={`${API_ROUTES.displayImg}/${selectedImage.file_name}`}
+            alt={selectedImage.file_name}
+            style={{ width: '100%', height: 'auto', borderRadius: '10px' }} // Responsive image style
+          />
+        )}
+      </Modal>
     </div>
   );
 };
