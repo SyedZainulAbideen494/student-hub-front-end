@@ -184,7 +184,7 @@ const DocumentLockerPage = () => {
     shape="round" // Change to round for a wider effect
     icon={<PlusOutlined />} 
     onClick={showModal} 
-    style={{ position: 'fixed', bottom: 100, right: 20, width: '60px', height: '60px' }} // Set fixed width and height
+    style={{ position: 'fixed', bottom: 100, right: 20, width: '50px', height: '50px' }} // Set fixed width and height
 />
 
 

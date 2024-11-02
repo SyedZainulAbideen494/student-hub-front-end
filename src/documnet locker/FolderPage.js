@@ -146,7 +146,7 @@ const FolderPage = () => {
           shape="circle" 
           icon={<PlusOutlined />} 
           onClick={() => setIsModalVisible(true)} 
-          style={{ position: 'fixed', bottom: 100, right: 20, width: '60px', height: '60px' }} 
+          style={{ position: 'fixed', bottom: 20, right: 20, width: '50px', height: '50px' }} 
         />
       </div>
     </div>
