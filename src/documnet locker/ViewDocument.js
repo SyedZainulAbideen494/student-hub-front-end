@@ -119,7 +119,6 @@ const DocumentView = () => {
                   }
                   className="file-card__view__doc__page"
                 >
-                  <Card.Meta title={file.file_name} />
                 </Card>
               </Col>
             ))
