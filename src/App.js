@@ -150,7 +150,6 @@ const router = createBrowserRouter([
   {path:'/ai/chat/history', element: <ChatHistoryPage/>},
   {path:'/youtube', element: <YouTubeSearch/>},
   {path: '/video/:videoId', element: <VideoPage/>},
-  {path: '/email/fetch', element: <EmailFetcher/>},
   {path: '/quiz/ai', element: <GenerateQuiz/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
