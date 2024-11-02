@@ -61,7 +61,7 @@ const DocumentView = () => {
     <Modal
       title="Enter Document Password"
       visible={!isAuthenticated}
-      onCancel={() => setPassword('')}
+      onCancel={handleBack}
       footer={null}
       centered
     >
