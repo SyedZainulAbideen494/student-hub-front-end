@@ -131,6 +131,7 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
         <FaFolder className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
         <span className="btn-label">Document Locker</span>
+        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
