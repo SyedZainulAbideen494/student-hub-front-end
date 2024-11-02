@@ -149,102 +149,132 @@ const DocumentLockerPage = () => {
   const filteredDocuments = documents.filter(doc => doc.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-<div style={{ padding: 20 }}>
-  <header style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-  <Input 
-    placeholder="Search..."
-    prefix={<SearchOutlined />}
-    value={searchTerm}
-    onChange={handleSearchChange}
-    style={{ width: '90%' }} // Corrected width syntax
-/>
-
-  </header>
-
-  <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: 20 }}>
-    <Button 
-      type={isFolderView ? 'primary' : 'default'}
-      icon={<FolderOutlined />}
-      onClick={() => toggleView('folder')}
-    >
-      Folder
-    </Button>
-    <Button 
-      type={!isFolderView ? 'primary' : 'default'}
-      icon={<FileOutlined />}
-      onClick={() => toggleView('document')}
-    >
-      Document
-    </Button>
-  </div>
-
-  {/* Fixed Add Button */}
-  <Button 
-    type="primary" 
-    shape="round" // Change to round for a wider effect
-    icon={<PlusOutlined />} 
-    onClick={showModal} 
-    style={{ position: 'fixed', bottom: 100, right: 20, width: '50px', height: '50px' }} // Set fixed width and height
-/>
-
-
-  <Modal
-    title={isFolderView ? "Create Folder" : "Add Document"}
-    visible={isModalVisible}
-    onCancel={handleCancel}
-    onOk={isFolderView ? handleFolderSubmit : handleDocSubmit}
-    okText="Submit"
-  >
-    {renderModalContent()}
-  </Modal>
-
-  {/* Display Folders */}
-  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-  {isFolderView && (
-  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '60%', margin: '0 auto' }}>
-    <Title level={4} style={{ textAlign: 'center' }}>Folders</Title>
-    <List
-      bordered
-      dataSource={folders}
-      renderItem={item => (
-        <List.Item onClick={() => handleViewFolder(item.id)} style={{ cursor: 'pointer', textAlign: 'center' }}>
-          {item.name}
-        </List.Item>
-      )}
-    />
-  </div>
-)}
-
-{/* Display Documents */}
-{!isFolderView && (
-  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '60%', margin: '0 auto' }}>
-    <Title level={4} style={{ textAlign: 'center' }}>Documents</Title>
-    <List
-      bordered
-      dataSource={filteredDocuments}
-      renderItem={item => (
-        <List.Item style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <div><strong>{item.title}</strong></div>
-          <div style={{ color: '#888' }}>{item.description}</div>
-          <Button 
-            type="link" 
-            style={{ marginTop: '5px' }} 
-            onClick={() => handleViewDocument(item.id, !!item.password)}
-          >
-            View
-          </Button>
-        </List.Item>
-      )}
-    />
-  </div>
-)}
-
-  </div>
-
-  <FooterNav />
-</div>
-
+    <div style={{ padding: 20, fontFamily: 'Arial, sans-serif' }}>
+      <header style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <Input
+          placeholder="Search..."
+          prefix={<SearchOutlined />}
+          value={searchTerm}
+          onChange={handleSearchChange}
+          style={{
+            width: '90%',
+            borderRadius: '20px', // Rounded corners for the input
+            border: '1px solid #d9d9d9',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          }}
+        />
+      </header>
+  
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 20 }}>
+        <Button
+          type={isFolderView ? 'primary' : 'default'}
+          icon={<FolderOutlined />}
+          onClick={() => toggleView('folder')}
+          style={{ margin: '0 10px', borderRadius: '20px' }} // Rounded corners for buttons
+        >
+          Folder
+        </Button>
+        <Button
+          type={!isFolderView ? 'primary' : 'default'}
+          icon={<FileOutlined />}
+          onClick={() => toggleView('document')}
+          style={{ margin: '0 10px', borderRadius: '20px' }}
+        >
+          Document
+        </Button>
+      </div>
+  
+      {/* Fixed Add Button */}
+      <Button
+        type="primary"
+        shape="round"
+        icon={<PlusOutlined />}
+        onClick={showModal}
+        style={{
+          position: 'fixed',
+          bottom: 100,
+          right: 20,
+          width: '50px', // Adjusted width
+          height: '50px', // Adjusted height
+          borderRadius: '50%',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+        }}
+      />
+  
+      <Modal
+        title={isFolderView ? "Create Folder" : "Add Document"}
+        visible={isModalVisible}
+        onCancel={handleCancel}
+        onOk={isFolderView ? handleFolderSubmit : handleDocSubmit}
+        okText="Submit"
+        style={{ borderRadius: '10px' }} // Rounded modal
+      >
+        {renderModalContent()}
+      </Modal>
+  
+      {/* Display Folders */}
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+        {isFolderView && (
+          <div style={{ maxHeight: '300px', overflowY: 'auto', padding: '10px', width: '80%', margin: '0 auto' }}>
+            <Title level={4} style={{ textAlign: 'center', color: '#333' }}>Folders</Title>
+            <List
+              bordered
+              dataSource={folders}
+              renderItem={item => (
+                <List.Item
+                  onClick={() => handleViewFolder(item.id)}
+                  style={{
+                    cursor: 'pointer',
+                    textAlign: 'center',
+                    transition: 'background 0.3s',
+                    '&:hover': { background: '#f0f0f0' }, // Hover effect
+                  }}
+                >
+                  {item.name}
+                </List.Item>
+              )}
+            />
+          </div>
+        )}
+  
+        {/* Display Documents */}
+        {!isFolderView && (
+          <div style={{ maxHeight: '300px', overflowY: 'auto', padding: '10px', width: '80%', margin: '0 auto' }}>
+            <Title level={4} style={{ textAlign: 'center', color: '#333' }}>Documents</Title>
+            <List
+              bordered
+              dataSource={filteredDocuments}
+              renderItem={item => (
+                <List.Item
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    transition: 'background 0.3s',
+                    '&:hover': { background: '#f0f0f0' }, // Hover effect
+                  }}
+                >
+                  <div style={{ fontWeight: 'bold', color: '#000' }}>{item.title}</div>
+                  <div style={{ color: '#888' }}>{item.description}</div>
+                  <Button
+                    type="link"
+                    style={{ marginTop: '5px', color: '#1890ff' }}
+                    onClick={() => handleViewDocument(item.id, !!item.password)}
+                  >
+                    View
+                  </Button>
+                </List.Item>
+              )}
+            />
+          </div>
+        )}
+      </div>
+  
+      <FooterNav />
+    </div>
   );
+  
 };
 
 export default DocumentLockerPage;
