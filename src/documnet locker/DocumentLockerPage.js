@@ -201,7 +201,7 @@ const DocumentLockerPage = () => {
   {/* Display Folders */}
   <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
   {isFolderView && (
-  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '75%', margin: '0 auto' }}>
+  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '60%', margin: '0 auto' }}>
     <Title level={4} style={{ textAlign: 'center' }}>Folders</Title>
     <List
       bordered
@@ -217,7 +217,7 @@ const DocumentLockerPage = () => {
 
 {/* Display Documents */}
 {!isFolderView && (
-  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '75%', margin: '0 auto' }}>
+  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '60%', margin: '0 auto' }}>
     <Title level={4} style={{ textAlign: 'center' }}>Documents</Title>
     <List
       bordered

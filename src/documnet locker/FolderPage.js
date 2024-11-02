@@ -106,7 +106,7 @@ const FolderPage = () => {
           style={{ width: 300 }} 
         />
       </div>
-      <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '75%', margin: '0 auto' }}>
+      <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '60%', margin: '0 auto' }}>
       <Title level={5} style={{ marginBottom: 10 }}>Documents in this Folder</Title>
       <List
         bordered
