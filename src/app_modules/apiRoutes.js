@@ -113,5 +113,12 @@ export const API_ROUTES = {
   apiLogDownload: `${API_URL}/api/log-download`,
   fetchAiChatHistory: `${API_URL}/api/chat/history/ai`,
   subjectDelete: `${API_URL}/subjects/delete`,
-  generateAiQuiz: `${API_URL}/api/quiz/generate`
+  generateAiQuiz: `${API_URL}/api/quiz/generate`,
+  viewDocument: `${API_URL}/api/documents/view`,
+  getFolderDocuments: `${API_URL}/api/documents/getByFolder`,
+  getFolderDetails: `${API_URL}/api/folders/get/details`,
+  addDocument: `${API_URL}/api/documents/add`,
+  addFolder: `${API_URL}/api/folders/add`,
+  getFolders: `${API_URL}/api/folders/get`,
+  getDocuments: `${API_URL}/api/documents/get`,
 }

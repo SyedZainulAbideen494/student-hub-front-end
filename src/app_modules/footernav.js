@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -126,6 +126,13 @@ const FooterNav = () => {
                         <span className='new-label-footer-nav'>New - generate quiz using AI</span>
                     </button>
                 </Link>
+                   {/* New Document Locker Link */}
+                   <Link to='/document-locker' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
+        <FaFolder className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
+        <span className="btn-label">Document Locker</span>
+    </button>
+</Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/calendar' ? 'active' : ''}`}>
                         <FaCalendarAlt className="icon-footer-nav" />

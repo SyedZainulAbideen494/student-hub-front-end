@@ -75,13 +75,14 @@ import ToolkitPage from "./toolkit/toolkitMainpage";
 import EmailSender from "./Email sender/EmailSender";
 import ReportCardMaker from "./toolkit/ReportCardMaker";
 import DownloadPageAndorid from "./docs/andriodDownload";
-import DocumentLockerPage from "./documnet locker/DocumentLockerPage";
-import CreateFolderPage from "./documnet locker/CreateFolderPage";
 import ChatHistoryPage from "./math/chatHistory";
 import YouTubeSearch from "./youtube/YouTubeSearch";
 import VideoPage from "./youtube/VideoPage";
 import EmailFetcher from "./Email sender/emailFetcher";
 import GenerateQuiz from "./quiz/GenerateQuiz";
+import DocumentLockerPage from "./documnet locker/DocumentLockerPage";
+import DocumentViewPage from "./documnet locker/ViewDocument";
+import FolderPage from "./documnet locker/FolderPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -145,12 +146,13 @@ const router = createBrowserRouter([
   {path: '/admin/send/email/all/users/not/allowed/here', element: <EmailSender/>},
   {path: '/toolkit/report-card-maker', element: <ReportCardMaker/>},
   {path: '/android/download', element: <DownloadPageAndorid/>},
-  {path: '/create-folder', element: <CreateFolderPage/>},
-  {path: '/document/locker', element: <DocumentLockerPage/>},
   {path:'/ai/chat/history', element: <ChatHistoryPage/>},
   {path:'/youtube', element: <YouTubeSearch/>},
   {path: '/video/:videoId', element: <VideoPage/>},
   {path: '/quiz/ai', element: <GenerateQuiz/>},
+  {path:'/document-locker', element: <DocumentLockerPage/>},
+  {path: '/document/view/:id', element: <DocumentViewPage/>},
+  {path: '/folder/:id', element: <FolderPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -1,0 +1,44 @@
+.document-view__view__doc__page {
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    max-width: 1200px; /* Max width for larger screens */
+    margin: 0 auto; /* Center the content */
+  }
+  
+  .document-header__view__doc__page {
+    display: flex;
+    align-items: flex-start; /* Align items to the start */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8; /* Subtle bottom border for separation */
+    padding-bottom: 10px; /* Padding for the bottom */
+  }
+  
+  .document-header-content__view__doc__page {
+    margin-left: 10px; /* Spacing between back button and text */
+  }
+  
+  .document-description__view__doc__page {
+    font-size: 16px;
+    color: #555; /* Softer color for the description */
+    margin-bottom: 20px;
+  }
+  
+  .file-card__view__doc__page {
+    border-radius: 15px; /* Rounded card corners */
+    overflow: hidden; /* Ensure image stays within card bounds */
+  }
+  
+  .responsive-image__view__doc__page {
+    width: 100%;
+    height: auto; /* Responsive image */
+    border-radius: 15px 15px 0 0; /* Rounded top corners */
+  }
+  
+  .password-form__view__doc__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px; /* Limit the width of the password form */
+    margin: 0 auto; /* Center the form */
+  }
+  

@@ -1,169 +1,248 @@
 import React, { useState, useEffect } from 'react';
+import { Modal, Button, Input, Upload, message, Select, List, Typography } from 'antd';
+import { PlusOutlined, FolderOutlined, FileOutlined, SearchOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaFolder, FaPaperclip } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import FooterNav from '../app_modules/footernav';
+import { API_ROUTES } from '../app_modules/apiRoutes';
+
+const { Option } = Select;
+const { Title } = Typography;
 
 const DocumentLockerPage = () => {
-    const [folders, setFolders] = useState([]);
-    const [documents, setDocuments] = useState([]);
-    const [search, setSearch] = useState('');
-    const [selectedTab, setSelectedTab] = useState('folders'); // Track active tab
-    const [selectedFolderId, setSelectedFolderId] = useState(null);
-    const [newDocName, setNewDocName] = useState('');
-    const [newDocDescription, setNewDocDescription] = useState('');
-    const [selectedFile, setSelectedFile] = useState(null);
-    const navigate = useNavigate(); // Initialize useNavigate
+  const [isFolderView, setIsFolderView] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [folders, setFolders] = useState([]);
+  const [documents, setDocuments] = useState([]);
+  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [folderName, setFolderName] = useState('');
+  const [docTitle, setDocTitle] = useState('');
+  const [docDescription, setDocDescription] = useState('');
+  const [docPassword, setDocPassword] = useState('');
+  const [fileList, setFileList] = useState([]);
+  const navigate = useNavigate()
+  useEffect(() => {
+    fetchFolders();
+    fetchDocuments();
+  }, [selectedFolder]); // Fetch documents when selectedFolder changes
 
-    useEffect(() => {
-        // Fetch folders
-        axios.get(`http://localhost:8080/api/folders?userId=1`).then(response => {
-            setFolders(response.data);
-        });
-    }, []);
+  const fetchFolders = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(API_ROUTES.getFolders, { token });
+      setFolders(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    // Fetch documents for the selected folder
-    const fetchDocumentsForFolder = (folderId) => {
-        axios.get(`http://localhost:8080/api/documents?userId=1&folderId=${folderId}`).then(response => {
-            setDocuments(response.data);
-        });
-    };
+  const fetchDocuments = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(API_ROUTES.getDocuments, { token, folderId: selectedFolder });
+      setDocuments(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    // Handle document search
-    const handleSearch = () => {
-        axios.get(`http://localhost:8080/api/search?userId=1&keyword=${search}`).then(response => {
-            setDocuments(response.data);
-        });
-    };
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
-    // Handle document upload
-    const handleUploadDocument = () => {
-        if (!selectedFile || !newDocName) {
-            alert("Please select a file and provide a document name!");
-            return;
-        }
+  const toggleView = (view) => {
+    setIsFolderView(view === 'folder');
+  };
 
-        const formData = new FormData();
-        formData.append('document', selectedFile);
-        formData.append('docName', newDocName);
-        formData.append('description', newDocDescription);
-        formData.append('userId', 1);
-        formData.append('folderId', selectedFolderId || "Uncategorized"); // Default to 'Uncategorized'
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
-        axios.post('http://localhost:8080/api/document', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' },
-        })
-        .then(() => {
-            setNewDocName('');
-            setNewDocDescription('');
-            setSelectedFile(null);
-            setSelectedFolderId(null);
-            // Fetch updated documents
-            if (selectedFolderId) {
-                fetchDocumentsForFolder(selectedFolderId);
-            }
-        })
-        .catch((error) => {
-            console.error("Error uploading document:", error);
-        });
-    };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    resetForm();
+  };
 
-    return (
-        <div className="document-locker__main__page">
-            <div className="search-bar">
-                <input
-                    type="text"
-                    placeholder="Search documents..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <button onClick={handleSearch}>Search</button>
-            </div>
+  const resetForm = () => {
+    setFolderName('');
+    setDocTitle('');
+    setDocDescription('');
+    setDocPassword('');
+    setFileList([]);
+  };
 
-            <div className="tab-section">
-                <button
-                    className={`tab-button ${selectedTab === 'folders' ? 'active' : ''}`}
-                    onClick={() => setSelectedTab('folders')}
-                >
-                    <FaFolder />
-                    Folders
-                </button>
-                <button
-                    className={`tab-button ${selectedTab === 'documents' ? 'active' : ''}`}
-                    onClick={() => {
-                        setSelectedTab('documents');
-                        setDocuments([]); // Clear documents when switching tabs
-                    }}
-                >
-                    <FaPaperclip />
-                    Documents
-                </button>
-            </div>
+  const handleFolderSubmit = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      await axios.post(API_ROUTES.addFolder, { folderName, token });
+      message.success('Folder created successfully');
+      fetchFolders();
+      handleCancel();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-            {selectedTab === 'folders' && (
-                <div className="folder-section doc__locker__page">
-                    <h3>Folders</h3>
-                    <div className="folder-cards">
-                        {folders.map((folder) => (
-                           <div 
-                           key={folder.id} 
-                           className="folder-card" 
-                           onClick={() => {
-                               navigate(`/folder/${folder.id}`); // Navigate to the folder's page
-                           }}
-                       >
-                           <FaFolder className="folder-icon" />
-                           <span>{folder.folder_name}</span>
-                       </div>
-                        ))}
-                    </div>
-                    <Link to="/create-folder" className="create-folder-button">
-                        Create New Folder
-                    </Link>
-                </div>
-            )}
+  const handleDocSubmit = async () => {
+    const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('token', token);
+    formData.append('title', docTitle);
+    formData.append('description', docDescription);
+    formData.append('password', docPassword);
+    formData.append('folderId', selectedFolder);
+    fileList.forEach(file => formData.append('files', file.originFileObj));
 
-            {selectedTab === 'documents' && (
-                <div className="document-section doc__locker__page">
-                    <h3>Documents</h3>
-                    <ul>
-                        {documents.map((doc) => (
-                            <li key={doc.id}>
-                                <span>{doc.doc_name}</span>
-                                <a href={`http://localhost:8080/api/download/${doc.id}`}>Download</a>
-                            </li>
-                        ))}
-                    </ul>
+    try {
+      await axios.post(API_ROUTES.addDocument, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      message.success('Document uploaded successfully');
+      fetchDocuments();
+      handleCancel();
+    } catch (error) {
+      console.error('Error during document upload:', error.response ? error.response.data : error);
+    }
+  };
 
-                    <h3>Upload New Document</h3>
-                    <input
-                        type="text"
-                        placeholder="Document Name"
-                        value={newDocName}
-                        onChange={(e) => setNewDocName(e.target.value)}
-                    />
-                    <textarea
-                        placeholder="Description"
-                        value={newDocDescription}
-                        onChange={(e) => setNewDocDescription(e.target.value)}
-                    />
-                    <input
-                        type="file"
-                        onChange={(e) => setSelectedFile(e.target.files[0])}
-                    />
-                    <label>Select Folder (Optional):</label>
-                    <select value={selectedFolderId || ''} onChange={(e) => setSelectedFolderId(e.target.value)}>
-                        <option value="">Uncategorized</option>
-                        {folders.map((folder) => (
-                            <option key={folder.id} value={folder.id}>
-                                {folder.folder_name}
-                            </option>
-                        ))}
-                    </select>
-                    <button onClick={handleUploadDocument}>Upload Document</button>
-                </div>
-            )}
+  const handleFileChange = ({ fileList }) => setFileList(fileList);
+
+  const renderModalContent = () => {
+    if (isFolderView) {
+      return <Input placeholder="Folder Name" value={folderName} onChange={(e) => setFolderName(e.target.value)} />;
+    } else {
+      return (
+        <div>
+          <Input placeholder="Document Title" value={docTitle} onChange={(e) => setDocTitle(e.target.value)} style={{ marginBottom: 10 }} />
+          <Input.TextArea placeholder="Description (optional)" value={docDescription} onChange={(e) => setDocDescription(e.target.value)} style={{ marginBottom: 10 }} />
+          <Input.Password placeholder="Password (optional)" value={docPassword} onChange={(e) => setDocPassword(e.target.value)} style={{ marginBottom: 10 }} />
+          <Upload multiple onChange={handleFileChange} fileList={fileList}>
+            <Button icon={<PlusOutlined />}>Upload Images</Button>
+          </Upload>
+          <Select
+            placeholder="Select Folder (optional)"
+            onChange={(value) => setSelectedFolder(value)}
+            style={{ width: '100%', marginTop: 10 }}
+          >
+            <Option value={null}>None</Option>
+            {folders.map(folder => (
+              <Option key={folder.id} value={folder.id}>{folder.name}</Option>
+            ))}
+          </Select>
         </div>
-    );
+      );
+    }
+  };
+
+  const handleViewDocument = (documentId, passwordRequired) => {
+      // Directly navigate to the document view page
+      navigate(`/document/view/${documentId}`);
+  };
+
+  const handleViewFolder = (folderId) => {
+    navigate(`/folder/${folderId}`);
+  };
+
+  const filteredDocuments = documents.filter(doc => doc.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  return (
+<div style={{ padding: 20 }}>
+  <header style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+    <Input 
+      placeholder="Search..."
+      prefix={<SearchOutlined />}
+      value={searchTerm}
+      onChange={handleSearchChange}
+      style={{ width: 200 }}
+    />
+  </header>
+
+  <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: 20 }}>
+    <Button 
+      type={isFolderView ? 'primary' : 'default'}
+      icon={<FolderOutlined />}
+      onClick={() => toggleView('folder')}
+    >
+      Folder
+    </Button>
+    <Button 
+      type={!isFolderView ? 'primary' : 'default'}
+      icon={<FileOutlined />}
+      onClick={() => toggleView('document')}
+    >
+      Document
+    </Button>
+  </div>
+
+  {/* Fixed Add Button */}
+  <Button 
+    type="primary" 
+    shape="circle" 
+    icon={<PlusOutlined />} 
+    onClick={showModal} 
+    style={{ position: 'fixed', bottom: 100, right: 20 }}
+  />
+
+  <Modal
+    title={isFolderView ? "Create Folder" : "Add Document"}
+    visible={isModalVisible}
+    onCancel={handleCancel}
+    onOk={isFolderView ? handleFolderSubmit : handleDocSubmit}
+    okText="Submit"
+  >
+    {renderModalContent()}
+  </Modal>
+
+  {/* Display Folders */}
+  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+  {isFolderView && (
+  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '75%', margin: '0 auto' }}>
+    <Title level={4} style={{ textAlign: 'center' }}>Folders</Title>
+    <List
+      bordered
+      dataSource={folders}
+      renderItem={item => (
+        <List.Item onClick={() => handleViewFolder(item.id)} style={{ cursor: 'pointer', textAlign: 'center' }}>
+          {item.name}
+        </List.Item>
+      )}
+    />
+  </div>
+)}
+
+{/* Display Documents */}
+{!isFolderView && (
+  <div style={{ maxHeight: '300px', overflowY: 'auto', paddingRight: '10px', paddingBottom: '80px', width: '75%', margin: '0 auto' }}>
+    <Title level={4} style={{ textAlign: 'center' }}>Documents</Title>
+    <List
+      bordered
+      dataSource={filteredDocuments}
+      renderItem={item => (
+        <List.Item style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div><strong>{item.title}</strong></div>
+          <div style={{ color: '#888' }}>{item.description}</div>
+          <Button 
+            type="link" 
+            style={{ marginTop: '5px' }} 
+            onClick={() => handleViewDocument(item.id, !!item.password)}
+          >
+            View
+          </Button>
+        </List.Item>
+      )}
+    />
+  </div>
+)}
+
+  </div>
+
+  <FooterNav />
+</div>
+
+  );
 };
 
 export default DocumentLockerPage;
