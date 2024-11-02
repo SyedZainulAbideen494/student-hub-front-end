@@ -151,13 +151,14 @@ const DocumentLockerPage = () => {
   return (
 <div style={{ padding: 20 }}>
   <header style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-    <Input 
-      placeholder="Search..."
-      prefix={<SearchOutlined />}
-      value={searchTerm}
-      onChange={handleSearchChange}
-      style={{ width: 200 }}
-    />
+  <Input 
+    placeholder="Search..."
+    prefix={<SearchOutlined />}
+    value={searchTerm}
+    onChange={handleSearchChange}
+    style={{ width: '90%' }} // Corrected width syntax
+/>
+
   </header>
 
   <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: 20 }}>
