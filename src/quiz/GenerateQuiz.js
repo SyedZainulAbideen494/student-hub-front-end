@@ -135,23 +135,29 @@ const formatDate = (dateString) => {
             <div className="card_no-quizzes"></div>
         </div>
       ) : (
-          <ul className="quizzes-list-home-page-quiz-page" style={{marginTop:'20px'}}>
-              {filteredQuizzes.map(quiz => (
-                  <li key={quiz.id} className="quiz-item-home-page-quiz-page">
-                      <div className="quiz-header">
-                          <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-                              {quiz.title}
-                          </span><br /><br />
-                          <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
-                      </div><br />
-                      <div className="quiz-actions-quiz-page">
-                          <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-                              <FaPlay />
-                          </button>
-                      </div>
-                  </li>
-              ))}
-          </ul>
+        <div style={{ textAlign: 'center', width: '100%' }}>
+  <h2 className="quizzes-heading" style={{ marginTop: '20px', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>
+    Your Quizzes
+  </h2>
+  <ul className="quizzes-list-home-page-quiz-page" style={{ marginTop: '20px', width: '80%', marginLeft: 'auto', marginRight: 'auto' }}>
+    {filteredQuizzes.map(quiz => (
+      <li key={quiz.id} className="quiz-item-home-page-quiz-page">
+        <div className="quiz-header">
+          <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+            {quiz.title}
+          </span><br /><br />
+          <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
+        </div><br />
+        <div className="quiz-actions-quiz-page">
+          <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+            <FaPlay />
+          </button>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
       )}
       </div>
   );
