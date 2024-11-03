@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import './GenerateQuiz.css'; // Import the new CSS file
+import axios from 'axios';
+import { FaSearch, FaShareAlt, FaEye, FaTrash, FaPlus, FaPlay } from 'react-icons/fa';
 
 const GenerateQuiz = () => {
   const [subject, setSubject] = useState('');
@@ -9,6 +11,8 @@ const GenerateQuiz = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [quizzes, setQuizzes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const generateQuiz = async (e) => {
     e.preventDefault();
@@ -40,7 +44,34 @@ const GenerateQuiz = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchQuizzes = async () => {
+        const token = localStorage.getItem('token');
+        try {
+            const response = await axios.post(API_ROUTES.getUserQuizzes, { token });
+            setQuizzes(response.data);
+        } catch (error) {
+            console.error('Error fetching quizzes:', error);
+        }
+    };
+
+    fetchQuizzes();
+}, []);
+
+const filteredQuizzes = quizzes.filter(quiz =>
+  quiz.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = (`0${date.getMonth() + 1}`).slice(-2);
+  const day = (`0${date.getDate()}`).slice(-2);
+  return `${year}-${month}-${day}`;
+};
+
   return (
+    <div>
     <div className="generate-quiz-container__quiz__ai__gen">
       <header className="header__quiz__ai__gen">
         <button className="back-button__quiz__ai__gen" onClick={() => navigate(-1)}>
@@ -96,6 +127,33 @@ const GenerateQuiz = () => {
       </form>
       {error && <p className="error-message__quiz__ai__gen">Error: {error}</p>}
     </div>
+          {quizzes.length === 0 ? (
+            <div className="no_quiz_found_container" style={{marginTop:'20px'}}>
+            <div className="no-quizzes-message">
+                <p>No quizzes found. Create your first quiz!</p>
+            </div>
+            <div className="card_no-quizzes"></div>
+        </div>
+      ) : (
+          <ul className="quizzes-list-home-page-quiz-page" style={{marginTop:'20px'}}>
+              {filteredQuizzes.map(quiz => (
+                  <li key={quiz.id} className="quiz-item-home-page-quiz-page">
+                      <div className="quiz-header">
+                          <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+                              {quiz.title}
+                          </span><br /><br />
+                          <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
+                      </div><br />
+                      <div className="quiz-actions-quiz-page">
+                          <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+                              <FaPlay />
+                          </button>
+                      </div>
+                  </li>
+              ))}
+          </ul>
+      )}
+      </div>
   );
 };
 
