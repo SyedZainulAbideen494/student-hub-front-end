@@ -24,6 +24,11 @@ const Calculator = () => {
     setResult('');
   };
 
+    // New function to handle backspace
+    const backspace = () => {
+      setInput(input.slice(0, -1));
+    };
+
   return (
     <div>
       <header className="header__cute__toolKit">
@@ -50,12 +55,15 @@ const Calculator = () => {
             <div onClick={() => handleClick('4')} className="button__cute__toolKit">4</div>
             <div onClick={() => handleClick('5')} className="button__cute__toolKit">5</div>
             <div onClick={() => handleClick('6')} className="button__cute__toolKit">6</div>
+            <div onClick={() => calculate()} className="button__cute__toolKit equals__cute__toolKit">=</div>
             <div onClick={() => handleClick('1')} className="button__cute__toolKit">1</div>
             <div onClick={() => handleClick('2')} className="button__cute__toolKit">2</div>
             <div onClick={() => handleClick('3')} className="button__cute__toolKit">3</div>
-            <div onClick={() => calculate()} className="button__cute__toolKit equals__cute__toolKit">=</div>
-            <div onClick={() => handleClick('0')} className="button__cute__toolKit zero__cute__toolKit">0</div>
+            <div onClick={() => handleClick('0')} className="button__cute__toolKit zero__cute__toolKit">0</div> 
             <div onClick={() => handleClick('.')} className="button__cute__toolKit">.</div>
+            <div onClick={backspace} className="button__cute__toolKit backspace__cute__toolKit">
+              <i className="fas fa-backspace"></i> {/* Font Awesome backspace icon */}
+            </div>
           </div>
         </div>
       </div>
