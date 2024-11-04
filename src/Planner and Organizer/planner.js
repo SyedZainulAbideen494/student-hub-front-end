@@ -263,7 +263,7 @@ function Planner() {
           setTimeout(() => {
             setSuccessMessage('');
             window.location.reload();
-          }, 2000);
+          }, 10);
         } catch (error) {
           console.error('Error occurred:', error);
         } finally {
