@@ -36,15 +36,8 @@ function Planner() {
     const [isGenerating, setIsGenerating] = useState(false);
     const [mainTask, setMainTask] = useState('');
     const [days, setDays] = useState(1);
-    
-    const handleGenerate = (e) => {
-      e.preventDefault();
-      if (!mainTask || !days) {
-        console.error('Please enter a task and a number of days');
-        return;
-      }
-      generateTasks(mainTask, days); // Pass the input values dynamically
-    };
+    const [taskStyle, setTaskStyle] = useState('detailed');
+
 
     useEffect(() => {
         // Check local storage for tutorial completion status
@@ -233,8 +226,17 @@ function Planner() {
         scrollToForm();
     };
 
-    const generateTasks = async (mainTask, days) => {
-        setIsGenerating(true); // Start generating
+    const handleGenerate = (e) => {
+        e.preventDefault();
+        if (!mainTask || !days) {
+          console.error('Please enter a task and a number of days');
+          return;
+        }
+        generateTasks(mainTask, days, taskStyle);
+      };
+    
+      const generateTasks = async (mainTask, days, taskStyle) => {
+        setIsGenerating(true);
         try {
           const response = await fetch(API_ROUTES.generateAITasks, {
             method: 'POST',
@@ -242,29 +244,30 @@ function Planner() {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              mainTask, // Pass the dynamic task
-              days, // Pass the dynamic days
-              token: localStorage.getItem('token'), // Fetch the token dynamically
+              mainTask,
+              days,
+              taskStyle,
+              token: localStorage.getItem('token'),
             }),
           });
-      
+    
           if (!response.ok) {
             throw new Error('Failed to generate tasks');
           }
-      
+    
           const data = await response.json();
-          setTasks((prevTasks) => [...prevTasks, ...data.tasks]); // Append new tasks
+          setTasks((prevTasks) => [...prevTasks, ...data.tasks]);
           setSuccessMessage('Tasks generated successfully!');
-      
+    
           // Hide success message after 2 seconds
           setTimeout(() => {
             setSuccessMessage('');
-            window.location.reload(); // Refresh the page
-          }, 100);
+            window.location.reload();
+          }, 2000);
         } catch (error) {
           console.error('Error occurred:', error);
         } finally {
-          setIsGenerating(false); // End generating
+          setIsGenerating(false);
         }
       };
       
@@ -368,7 +371,18 @@ function Planner() {
         Specify how many days you'll need for this task.
       </small>
     </div>
-
+    <div className="input-group__planner__page__ai__gen">
+          <label className="input-label__planner__page__ai__gen">
+            Task Style:
+            <select value={taskStyle} onChange={(e) => setTaskStyle(e.target.value)} className="input-field__planner__page__ai__gen">
+              <option value="detailed">Detailed</option>
+              <option value="minimal">Minimal</option>
+            </select>
+          </label>
+          <small className="input-hint__planner__page__ai__gen">
+            Choose your preferred task style.
+          </small>
+        </div>
     <button
       type="submit"
       disabled={isGenerating}
