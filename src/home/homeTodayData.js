@@ -7,6 +7,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import NoContentCardFace from './nocontentcard';
 import NoContentCardTask from './nocontentTaskCArd';
 import TodayEventsAndTasksTutorial from './TodayEventsAndTasksTutorial';
+import StudyNotes from './StudyNotes';
 
 const TodayEventsAndTasks = () => {
     const nav = useNavigate();
@@ -75,6 +76,7 @@ const TodayEventsAndTasks = () => {
     return (
         <div className="today-container__home__page__component">
             {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
+            <StudyNotes/>
             <div className='section__home__page__component'>
                 <div className="section-header">
                     <h2>

@@ -1,4 +1,4 @@
-const API_URL = 'https://srv594954.hstgr.cloud';
+const API_URL = 'https://srv594954.hstgr.cloud';//https://srv594954.hstgr.cloud
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
@@ -121,4 +121,7 @@ export const API_ROUTES = {
   addFolder: `${API_URL}/api/folders/add`,
   getFolders: `${API_URL}/api/folders/get`,
   getDocuments: `${API_URL}/api/documents/get`,
+  deleteStickyNote: `${API_URL}/api/sticky-notes/delete`,
+  addStickyNote: `${API_URL}/api/sticky-notes/add`,
+  getStickyNotes: `${API_URL}/api/sticky-notes/get`
 }

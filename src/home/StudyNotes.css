@@ -1,0 +1,248 @@
+.event-list__home__page__component__sticky__notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center; /* Center align items */
+    padding: 20px;
+}
+
+.note-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 8px;
+    width: 160px;
+    border-radius: 8px;
+    background-color: #fefefe;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.view-note-btn {
+    background: transparent;
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s;
+}
+
+
+
+.modal__view__note__Section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content__view__note__Section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 90%;
+    width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #333;
+}
+
+.close__view__note__Section {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.delete-note-btn {
+    background-color: transparent;
+    border: 1px solid #333;
+
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.modal__create__sticky__note__Section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+    z-index: 10000;
+}
+
+.modal-content__create__sticky__note__Section {
+    background: #fff;
+    border-radius: 12px; /* Slightly increased border radius for a smoother look */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
+    padding: 30px; /* Increased padding for more space */
+    width: 90%;
+    max-width: 500px;
+    margin: 0 20px; /* Added margin to ensure space on the sides */
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.3s forwards;
+}
+
+.color-picker-group__create__sticky__note {
+    display: flex;
+    justify-content: center; /* Center the color pickers */
+    align-items: center; /* Align items vertically */
+    margin: 20px 0; /* Added margin for spacing */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for contrast */
+    padding: 10px; /* Padding around the color pickers */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.color-picker__create__sticky__note,
+.font-color-picker__create__sticky__note {
+    margin: 0 10px; /* Margin between the pickers */
+    width: 40px; /* Fixed width for color pickers */
+    height: 40px; /* Fixed height for color pickers */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for interaction */
+    transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.color-picker__create__sticky__note:focus,
+.font-color-picker__create__sticky__note:focus {
+    border-color: #007bff; /* Highlight border on focus */
+    outline: none; /* Remove outline */
+}
+
+
+.close__create__sticky__note__Section {
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    float: right;
+}
+
+.title__create__sticky__note {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+}
+
+.input__create__sticky__note,
+.textarea__create__sticky__note {
+    width: 90%; /* Set input width to 90% */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.input__create__sticky__note:focus,
+.textarea__create__sticky__note:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.color-picker-group__create__sticky__note {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.bookmarkBtn__save__sticky__note-container {
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically if needed */
+    margin-top: 20px;
+    text-align: center; /* Center text in case of multi-line text */
+}
+
+.bookmarkBtn__save__sticky__note {
+    width: 100px;
+    height: 40px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.349);
+    background-color: rgb(12, 12, 12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+}
+
+.IconContainer__save__sticky__note {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(to bottom, rgb(255, 136, 255), rgb(172, 70, 255));
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    transition-duration: 0.3s;
+}
+
+.icon__save__sticky__note {
+    border-radius: 1px;
+}
+
+.text__save__sticky__note {
+    height: 100%;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    transition-duration: 0.3s;
+    font-size: 1.04em;
+}
+
+.bookmarkBtn__save__sticky__note:hover .IconContainer__save__sticky__note {
+    width: 90px;
+    transition-duration: 0.3s;
+}
+
+.bookmarkBtn__save__sticky__note:hover .text__save__sticky__note {
+    transform: translate(10px);
+    width: 0;
+    font-size: 0;
+    transition-duration: 0.3s;
+}
+
+.bookmarkBtn__save__sticky__note:active {
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+}
+
+
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
