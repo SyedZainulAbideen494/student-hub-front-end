@@ -154,11 +154,10 @@
 }
 
 
-
 /* Quizzes List */
 .quizzes-title-home-page-quiz-page {
     font-size: 1.8rem;
-    color: #333333;
+    color: #333; /* Dark gray for the title */
     margin-bottom: 25px;
     text-align: center;
 }
@@ -171,64 +170,65 @@
 
 .quiz-item-home-page-quiz-page {
     background-color: #ffffff; /* White background */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     border: none;
-    border-radius: 25px;
+    border-radius: 15px; /* Slightly rounded corners */
     padding: 20px;
     margin-bottom: 20px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .quiz-item-home-page-quiz-page:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
     transform: translateY(-2px); /* Subtle lift effect */
 }
 
 .quiz-title-home-page-quiz-page {
-    font-size: 1.4rem;
-    color: #1e88e5; /* Blue */
+    font-size: 1.6rem; /* Slightly larger title */
+    color: #007AFF; /* Apple-like blue for links */
     cursor: pointer;
     text-decoration: none;
     transition: color 0.3s ease;
-    border-radius: 25px;
 }
 
 .quiz-title-home-page-quiz-page:hover {
-    color: #1565c0; /* Darker blue */
+    color: #0051A8; /* Darker blue on hover */
     text-decoration: underline;
 }
 
 .quiz-date-home-page-quiz-page {
     font-size: 0.9rem;
-    color: #757575; /* Dark gray */
+    color: #888; /* Lighter gray for date */
+    margin-top: 5px; /* Added margin for spacing */
 }
 
 .quiz-actions-quiz-page {
     display: flex;
-    gap: 10px;
+    gap: 12px; /* Consistent spacing */
     margin-top: 15px;
 }
 
 .quiz-actions-quiz-page button {
-    background-color: #000000; /* Black background for buttons */
-    color: #ffffff; /* White text */
+    background-color: #F0F0F0; /* Light gray background for buttons */
+    color: #333; /* Dark gray text */
     border: none;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    border-radius: 20px;
+    padding: 10px 18px; /* Comfortable padding */
+    font-size: 0.95rem; /* Consistent font size */
+    border-radius: 20px; /* Rounded corners */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .quiz-actions-quiz-page button:hover {
-    background-color: #333333; /* Darker gray */
-    transform: translateY(-2px); /* Subtle lift effect */
+    background-color: #E1E1E1; /* Slightly darker gray on hover */
+    transform: translateY(-1px); /* Subtle lift effect */
 }
 
 .quiz-actions-quiz-page button:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2); /* Black focus outline */
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.5); /* Apple blue focus outline */
 }
+
 
 
 .no_quiz_found_container {
