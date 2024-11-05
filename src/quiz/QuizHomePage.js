@@ -236,51 +236,52 @@ const handleShareClick = (quiz) => {
               </div>
             ) : (
 <ul className="quizzes-list-home-page-quiz-page">
-    {filteredQuizzes.map(quiz => (
-        <li key={quiz.id} className="quiz-item-home-page-quiz-page">
-            <div className="quiz-header">
-                <span 
-                    className="quiz-title-home-page-quiz-page" 
-                    onClick={() => navigate(`/quiz/${quiz.id}`)}
-                    role="button" 
-                    tabIndex={0} 
-                    onKeyPress={(e) => e.key === 'Enter' && navigate(`/quiz/${quiz.id}`)}
-                >
-                    {quiz.title}
-                </span>
-                <br /><br/>
-                <span className="quiz-date-home-page-quiz-page">
-                    Created At: {formatDate(quiz.created_at)}
-                </span>
-            </div>
-            <div className="quiz-actions-quiz-page">
-                <button 
-                    className="share-button-home-page-quiz-page" 
-                    onClick={() => handleShareClick(quiz)}
-                    aria-label="Share Quiz"
-                >
-                    <FaShareAlt />
-                </button>
-                <button 
-                    className="view-answers-button-home-page-quiz-page" 
-                    onClick={() => handleQuizAnswers(quiz.id)} 
-                    aria-label="View Quiz Answers"
-                >
-                    <div className="view-answers-content">
-                        <FaEye />
-                        <span> View Answers</span>
-                    </div>
-                </button>
-                <button 
-                    className="view-results-button-home-page-quiz-page" 
-                    onClick={() => handleViewQuizClick(quiz.id)} 
-                    aria-label="View Quiz Results"
-                >
+{filteredQuizzes.reverse().map(quiz => (
+    <li key={quiz.id} className="quiz-item-home-page-quiz-page">
+        <div className="quiz-header">
+            <span 
+                className="quiz-title-home-page-quiz-page" 
+                onClick={() => navigate(`/quiz/${quiz.id}`)}
+                role="button" 
+                tabIndex={0} 
+                onKeyPress={(e) => e.key === 'Enter' && navigate(`/quiz/${quiz.id}`)}
+            >
+                {quiz.title}
+            </span>
+            <br /><br/>
+            <span className="quiz-date-home-page-quiz-page">
+                Created At: {formatDate(quiz.created_at)}
+            </span>
+        </div>
+        <div className="quiz-actions-quiz-page">
+            <button 
+                className="share-button-home-page-quiz-page" 
+                onClick={() => handleShareClick(quiz)}
+                aria-label="Share Quiz"
+            >
+                <FaShareAlt />
+            </button>
+            <button 
+                className="view-answers-button-home-page-quiz-page" 
+                onClick={() => handleQuizAnswers(quiz.id)} 
+                aria-label="View Quiz Answers"
+            >
+                <div className="view-answers-content">
                     <FaEye />
-                </button>
-            </div>
-        </li>
-    ))}
+                    <span> View Answers</span>
+                </div>
+            </button>
+            <button 
+                className="view-results-button-home-page-quiz-page" 
+                onClick={() => handleViewQuizClick(quiz.id)} 
+                aria-label="View Quiz Results"
+            >
+                <FaEye />
+            </button>
+        </div>
+    </li>
+))}
+
 </ul>
 
             )}
