@@ -154,13 +154,6 @@
 }
 
 
-/* Quizzes List */
-.quizzes-title-home-page-quiz-page {
-    font-size: 1.8rem;
-    color: #333; /* Dark gray for the title */
-    margin-bottom: 25px;
-    text-align: center;
-}
 
 .quizzes-list-home-page-quiz-page {
     list-style-type: none;
@@ -184,8 +177,8 @@
 }
 
 .quiz-title-home-page-quiz-page {
-    font-size: 1.6rem; /* Slightly larger title */
-    color: #007AFF; /* Apple-like blue for links */
+    font-size: 1rem; /* Slightly larger title */
+    color: #000000; /* Apple-like blue for links */
     cursor: pointer;
     text-decoration: none;
     transition: color 0.3s ease;

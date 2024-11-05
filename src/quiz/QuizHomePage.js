@@ -248,7 +248,7 @@ const handleShareClick = (quiz) => {
                 >
                     {quiz.title}
                 </span>
-                <br />
+                <br /><br/>
                 <span className="quiz-date-home-page-quiz-page">
                     Created At: {formatDate(quiz.created_at)}
                 </span>
