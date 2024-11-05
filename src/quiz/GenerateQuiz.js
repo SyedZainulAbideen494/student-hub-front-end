@@ -70,6 +70,10 @@ const formatDate = (dateString) => {
   return `${year}-${month}-${day}`;
 };
 
+const handleQuizAnswers = (quizId) => {
+  navigate(`/quiz/answers/${quizId}`); // Navigate to the quiz answers page with the quiz ID
+};
+
   return (
     <div>
     <div className="generate-quiz-container__quiz__ai__gen">
@@ -152,6 +156,16 @@ const formatDate = (dateString) => {
           <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
             <FaPlay />
           </button>
+          <button 
+                    className="view-answers-button-home-page-quiz-page" 
+                    onClick={() => handleQuizAnswers(quiz.id)} 
+                    aria-label="View Quiz Answers"
+                >
+                    <div className="view-answers-content">
+                        <FaEye />
+                        <span> View Answers</span>
+                    </div>
+                </button>
         </div>
       </li>
     ))}
