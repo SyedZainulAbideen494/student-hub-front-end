@@ -86,6 +86,8 @@ import FolderPage from "./documnet locker/FolderPage";
 import CanvasPage from "./canvas/canvas";
 import NotesList from "./canvas/NotesList";
 import QuizAnswersPage from "./quiz/quizAnswers";
+import WhatsNew from "./what's New/whatsnew";
+import AdminPage from "./what's New/AdminPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -159,6 +161,8 @@ const router = createBrowserRouter([
   {path: '/canvas', element: <CanvasPage/>},
   {path:'/canvas/list', element: <NotesList/>},
   {path: '/quiz/answers/:id',element:<QuizAnswersPage/>},
+  {path: '/whats-new', element: <WhatsNew/>},
+  {path: '/whats-new-admin', element: <AdminPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

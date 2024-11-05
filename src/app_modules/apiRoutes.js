@@ -125,5 +125,7 @@ export const API_ROUTES = {
   addStickyNote: `${API_URL}/api/sticky-notes/add`,
   getStickyNotes: `${API_URL}/api/sticky-notes/get`,
   getQuizAnswers: `${API_URL}/quiz/answers`,
-  updateStickyNote: `${API_URL}/api/sticky-notes/pin`
+  updateStickyNote: `${API_URL}/api/sticky-notes/pin`,
+  getWhatsNew: `${API_URL}/api/updates/get`,
+  addWhatsNew: `${API_URL}/api/updates/add`
 }
