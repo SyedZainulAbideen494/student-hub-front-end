@@ -13,9 +13,8 @@ const QuizAnswersPage = () => {
   useEffect(() => {
     const fetchQuizAnswers = async () => {
       try {
-        // Use params.quizId to ensure you are fetching the correct quiz
-        const response = await axios.get(`${API_ROUTES.getQuizAnswers}/${params.id}`); // Ensure the parameter matches
-        console.log('Fetched quiz data:', response.data); // Log fetched data for debugging
+        const response = await axios.get(`${API_ROUTES.getQuizAnswers}/${params.id}`);
+        console.log('Fetched quiz data:', response.data);
         setQuiz(response.data);
       } catch (error) {
         setError('Failed to load quiz answers');
@@ -24,47 +23,49 @@ const QuizAnswersPage = () => {
     };
 
     fetchQuizAnswers();
-  }, [params.quizId]);
+  }, [params.id]);
 
   if (error) return <p>{error}</p>;
   if (!quiz) return <p>Loading...</p>;
 
   return (
-    <div className="quiz-answers-page__quiz__ans__page">
-      {/* Header */}
-      <header className="quiz-header__quiz__ans__page">
-        <button className="back-button__quiz__ans__page" onClick={() => navigate(-1)}>
-          ← 
-        </button>
-        <h1>{quiz.title}</h1>
-      </header>
+    <div className="quiz-answers-page__quiz__Answer__page">
+    {/* Header */}
+    <header className="quiz-header__quiz__Answer__page">
+      <button className="back-button__quiz__Answer__page" onClick={() => navigate(-1)}>
+        ← 
+      </button>
+      <h1 className="quiz-title__quiz__Answer__page">{quiz.title}</h1>
+    </header>
 
-      <p className="quiz-description__quiz__ans__page">{quiz.description}</p>
+    <p className="quiz-description__quiz__Answer__page">{quiz.description}</p>
 
-      {quiz.questions.map((question, index) => (
-        <section key={index} className="question-section__quiz__ans__page">
-          <h2>Question {index + 1}: {question.question_text}</h2>
-          <ul className="answer-list__quiz__ans__page">
-            {question.answers.map((answer, answerIndex) => (
-              <li
-                key={answerIndex}
-                className={`answer-item__quiz__ans__page ${answer.is_correct ? 'correct__quiz__ans__page' : 'incorrect__quiz__ans__page'}`}
-              >
-                {answer.answer_text} {answer.is_correct ? '(Correct)' : '(Incorrect)'}
-              </li>
-            ))}
-          </ul>
-          {/* Display explanation below all answers */}
-          <div className="explanation-section">
+    {quiz.questions.map((question, index) => (
+      <section key={index} className="question-section__quiz__Answer__page">
+        <h2 className="question-title__quiz__Answer__page">Question {index + 1}: {question.question_text}</h2>
+        <ul className="answer-list__quiz__Answer__page">
+          {question.answers.map((answer, answerIndex) => (
+            <li
+              key={answerIndex}
+              className={`answer-item__quiz__Answer__page ${answer.is_correct ? 'correct__quiz__Answer__page' : 'incorrect__quiz__Answer__page'}`}
+            >
+              {answer.answer_text} {answer.is_correct ? '(Correct)' : '(Incorrect)'}
+            </li>
+          ))}
+        </ul>
+        {/* Display explanation below all answers */}
+        <div className="explanation-section__quiz__Answer__page">
+          <p className="explanation-text__quiz__Answer__page">
             {question.answers.length > 0 && question.answers[0].explanation ? (
-              <p className="explanation-text"><em>Explanation: {question.answers[0].explanation}</em></p>
+              <em>Explanation: {question.answers[0].explanation}</em>
             ) : (
-              <p className="explanation-text"><em>No explanation available.</em></p>
+              <em>No explanation available.</em>
             )}
-          </div>
-        </section>
-      ))}
-    </div>
+          </p>
+        </div>
+      </section>
+    ))}
+  </div>
   );
 };
 
