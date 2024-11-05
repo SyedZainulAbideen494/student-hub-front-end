@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 const WhatsNew = () => {
     const [updates, setUpdates] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
     const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
@@ -12,8 +14,15 @@ const WhatsNew = () => {
     }, []);
 
     const fetchUpdates = async () => {
-        const response = await axios.get(API_ROUTES.getWhatsNew);
-        setUpdates(response.data);
+        setLoading(true); // Set loading to true before fetching
+        try {
+            const response = await axios.get(API_ROUTES.getWhatsNew);
+            setUpdates(response.data);
+        } catch (error) {
+            console.error('Error fetching updates:', error);
+        } finally {
+            setLoading(false); // Set loading to false after fetching
+        }
     };
 
     const handleBack = () => {
@@ -31,25 +40,38 @@ const WhatsNew = () => {
                 </button>
                 <h2 style={styles.pageTitle}>What's New</h2>
             </div>
-            <div style={styles.updatesContainer}>
-                {updates.map((update) => (
-                    <div 
-                        key={update.id} 
-                        className="update-card__page" 
-                        style={styles.updateCard}
-                    >
-                        <h3 style={styles.updateTitle}>{update.title}</h3>
-                        <p style={styles.updateContent}>{update.content}</p>
-                        <small style={styles.updateDate}>
-    {new Date(update.created_at).toLocaleDateString()}
-</small>
-
-                    </div>
-                ))}
-            </div>
+            {loading ? ( // Show loading indicator while fetching
+                <div style={{ 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    margin: '20px 0', 
+                    height: '100px' // Set a height to center vertically
+                }}>
+                    <LoadingSpinner />
+                </div>
+                
+            ) : (
+                <div style={styles.updatesContainer}>
+                    {updates.map((update) => (
+                        <div 
+                            key={update.id} 
+                            className="update-card__page" 
+                            style={styles.updateCard}
+                        >
+                            <h3 style={styles.updateTitle}>{update.title}</h3>
+                            <p style={styles.updateContent}>{update.content}</p>
+                            <small style={styles.updateDate}>
+                                {new Date(update.created_at).toLocaleDateString()}
+                            </small>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
+
 
 // CSS in JS for better readability and customization
 const styles = {
