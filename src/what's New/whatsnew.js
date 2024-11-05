@@ -41,8 +41,9 @@ const WhatsNew = () => {
                         <h3 style={styles.updateTitle}>{update.title}</h3>
                         <p style={styles.updateContent}>{update.content}</p>
                         <small style={styles.updateDate}>
-                            {new Date(update.created_at).toLocaleString()}
-                        </small>
+    {new Date(update.created_at).toLocaleDateString()}
+</small>
+
                     </div>
                 ))}
             </div>
