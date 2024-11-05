@@ -245,16 +245,32 @@ const handleShareClick = (quiz) => {
                                 <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
                             </div><br />
                             <div className="quiz-actions-quiz-page">
-                                <button className="share-button-home-page-quiz-page" onClick={() => handleShareClick(quiz)}>
-                                    <FaShareAlt />
-                                </button>
-                                <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
-                                    <FaEye /> View Results
-                                </button>
-                                <button className="view-results-button-home-page-quiz-page" onClick={() => handleQuizAnswers(quiz.id)}>
-                                    <FaEye /> View Answers
-                                </button>
-                            </div>
+    <button 
+        className="share-button-home-page-quiz-page" 
+        onClick={() => handleShareClick(quiz)}
+        aria-label="Share Quiz"
+    >
+        <FaShareAlt />
+    </button>
+    <button 
+        className="view-answers-button-home-page-quiz-page" 
+        onClick={() => handleQuizAnswers(quiz.id)} 
+        aria-label="View Quiz Answers"
+    >
+        <div className="view-answers-content">
+            <FaEye />
+            <span> View Answers</span>
+        </div>
+    </button>
+    <button 
+        className="view-results-button-home-page-quiz-page" 
+        onClick={() => handleViewQuizClick(quiz.id)} 
+        aria-label="View Quiz Results"
+    >
+        <FaEye />
+    </button>
+</div>
+
                         </li>
                     ))}
                 </ul>
