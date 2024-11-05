@@ -144,6 +144,10 @@ const handleShareClick = (quiz) => {
         navigate('/quiz/ai')
     }
 
+    const handleQuizAnswers = (quizId) => {
+        navigate(`/quiz/answers/${quizId}`); // Navigate to the quiz answers page with the quiz ID
+      };
+
     return (
         <div className="quiz-home-page-quiz-page">
              {showTutorial && <QuizPageTutorial onComplete={handleTutorialComplete} />}
@@ -247,8 +251,8 @@ const handleShareClick = (quiz) => {
                                 <button className="view-results-button-home-page-quiz-page" onClick={() => handleViewQuizClick(quiz.id)}>
                                     <FaEye /> View Results
                                 </button>
-                                <button className="delete-button-home-page-quiz-page" onClick={() => handleDeleteClick(quiz.id)}>
-                                    <FaTrash />
+                                <button className="view-results-button-home-page-quiz-page" onClick={() => handleQuizAnswers(quiz.id)}>
+                                    <FaEye /> View Answers
                                 </button>
                             </div>
                         </li>

@@ -123,5 +123,6 @@ export const API_ROUTES = {
   getDocuments: `${API_URL}/api/documents/get`,
   deleteStickyNote: `${API_URL}/api/sticky-notes/delete`,
   addStickyNote: `${API_URL}/api/sticky-notes/add`,
-  getStickyNotes: `${API_URL}/api/sticky-notes/get`
+  getStickyNotes: `${API_URL}/api/sticky-notes/get`,
+  getQuizAnswers: `${API_URL}/quiz/answers`
 }

@@ -83,6 +83,9 @@ import GenerateQuiz from "./quiz/GenerateQuiz";
 import DocumentLockerPage from "./documnet locker/DocumentLockerPage";
 import DocumentViewPage from "./documnet locker/ViewDocument";
 import FolderPage from "./documnet locker/FolderPage";
+import CanvasPage from "./canvas/canvas";
+import NotesList from "./canvas/NotesList";
+import QuizAnswersPage from "./quiz/quizAnswers";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -153,6 +156,9 @@ const router = createBrowserRouter([
   {path:'/document-locker', element: <DocumentLockerPage/>},
   {path: '/document/view/:id', element: <DocumentViewPage/>},
   {path: '/folder/:id', element: <FolderPage/>},
+  {path: '/canvas', element: <CanvasPage/>},
+  {path:'/canvas/list', element: <NotesList/>},
+  {path: '/quiz/answers/:id',element:<QuizAnswersPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
