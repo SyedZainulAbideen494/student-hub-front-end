@@ -31,6 +31,7 @@
     color: #007aff;
     font-size: 22px;
     transition: all 0.3s ease;
+    margin-top: 5px;
 }
 
 .monthly__stats-back-button:hover {
