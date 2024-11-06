@@ -31,7 +31,7 @@ const GenerateQuiz = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to generate quiz');
+        throw new Error('Failed to generate quiz, please try again');
       }
 
       const data = await response.json();
