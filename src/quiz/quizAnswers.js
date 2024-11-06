@@ -54,15 +54,6 @@ const QuizAnswersPage = () => {
           ))}
         </ul>
         {/* Display explanation below all answers */}
-        <div className="explanation-section__quiz__Answer__page">
-          <p className="explanation-text__quiz__Answer__page">
-            {question.answers.length > 0 && question.answers[0].explanation ? (
-              <em>Explanation: {question.answers[0].explanation}</em>
-            ) : (
-              <em>No explanation available.</em>
-            )}
-          </p>
-        </div>
       </section>
     ))}
   </div>

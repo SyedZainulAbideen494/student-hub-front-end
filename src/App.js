@@ -88,6 +88,7 @@ import NotesList from "./canvas/NotesList";
 import QuizAnswersPage from "./quiz/quizAnswers";
 import WhatsNew from "./what's New/whatsnew";
 import AdminPage from "./what's New/AdminPage";
+import WeeklyStats from "./weekly stats/weeklystats";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -163,6 +164,7 @@ const router = createBrowserRouter([
   {path: '/quiz/answers/:id',element:<QuizAnswersPage/>},
   {path: '/whats-new', element: <WhatsNew/>},
   {path: '/whats-new-admin', element: <AdminPage/>},
+  {path: '/weekly-stats', element: <WeeklyStats/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
