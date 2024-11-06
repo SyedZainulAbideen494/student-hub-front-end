@@ -271,13 +271,6 @@ const handleShareClick = (quiz) => {
                     <span> View Answers</span>
                 </div>
             </button>
-            <button 
-                className="view-results-button-home-page-quiz-page" 
-                onClick={() => handleViewQuizClick(quiz.id)} 
-                aria-label="View Quiz Results"
-            >
-                <FaEye />
-            </button>
         </div>
     </li>
 ))}

@@ -1,11 +1,13 @@
 .flashcard__library__page__component__page {
-  padding: 20px;
+  padding: 4px;
+  background-color: #fcfbfb;
 }
 .header__library__page__component__page {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 60px;
+  border-radius: 25px;
   padding: 0 20px; /* Add some padding to make it feel balanced */
   background-color: #ffffff; /* Light grey Apple-like background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
@@ -77,77 +79,69 @@
 }
 
 
-
-
 .set-card__library__page__component__page {
-  border-radius: 25px; /* Rounded edges for a soft look */
-  padding: 20px; /* Increased padding for better spacing */
-  background-color: #ffffff; /* Clean white background */
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition effects */
-  position: relative; /* Allows for pseudo-elements */
-  overflow: hidden; /* Clip overflowing elements */
-  max-width: 320px; /* Set a max width for uniformity */
-  margin: 20px 12px; /* Spacing between cards */
-  cursor: pointer; /* Indicate that the card is clickable */
+  border-radius: 20px; /* Soft rounded edges */
+  padding: 24px; /* Increased padding for spacious look */
+  background: linear-gradient(135deg, #F8F9FB, #FFFFFF); /* Subtle gradient background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Depth with a gentle shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
+  max-width: 320px; /* Consistent width */
+  margin: 20px 12px; /* Space between cards */
+  cursor: pointer; /* Indicate clickability */
+  overflow: hidden; /* Hide overflow for cleaner look */
 }
 
 .set-card__library__page__component__page:hover {
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-4px); /* Lift effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
 .card-content__library__page__component__page {
   display: flex;
-  flex-direction: column; /* Column layout for stacking */
-  align-items: flex-start; /* Align items to the left */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .icon-container {
   display: flex;
-  align-items: center; /* Center items vertically */
-  margin-bottom: 8px; /* Increased space for clarity */
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .card-icon {
-  margin-right: 8px; /* Space between icon and text */
-  font-size: 28px; /* Moderate icon size */
-  transition: transform 0.2s; /* Smooth transform */
-  color: #A78BFA; /* Primary icon color */
+  margin-right: 10px;
+  font-size: 24px; /* Consistent icon size */
+  color: #6c63ff; /* Branded color for icons */
+  transition: color 0.2s, transform 0.3s ease; /* Smooth hover transition */
 }
 
 .card-icon:hover {
-  transform: scale(1.1); /* Slight enlargement on hover */
+  color: #4e44b6; /* Darker shade on hover */
+  transform: scale(1.1); /* Slight enlargement */
 }
 
 .set-name__library__page__component__page {
-  font-size: 20px; /* Title font larger for emphasis */
-  font-weight: 700; /* Bold for strong emphasis */
-  margin: 12px 0; /* Space above and below title */
-  color: #000; /* Black text color */
-  text-align: center; /* Center the set name */
-  width: 100%; /* Full width for centering */
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #333; /* Darker text color for readability */
+  text-align: center;
+  width: 100%;
 }
 
 .set-topic__library__page__component__page,
 .set-subject__library__page__component__page {
-  font-size: 14px; /* Slightly larger for better readability */
-  color: #000; /* Black text color */
-  margin: 2px 0; /* Space between lines */
-  width: 100%; /* Full width to align left */
+  font-size: 14px;
+  color: #666; /* Subtle grey color */
+  margin: 4px 0; /* Space between topic and subject */
+  width: 100%;
 }
 
 .topic-icon,
 .subject-icon {
-  margin-right: 6px; /* Space between icon and text */
-  font-size: 16px; /* Consistent icon size */
-  color: #000000; /* Icon color */
-}
-
-.view-icon {
-  margin-right: 4px; /* Space between icon and text */
-  font-size: 16px; /* Consistent icon size */
-  color: white; /* Color for view icon */
+  margin-right: 6px;
+  font-size: 16px;
+  color: #000000; /* Matching color for consistency */
 }
 
 
@@ -161,22 +155,6 @@
   flex-direction: column; /* Column layout for stacking */
   align-items: flex-start; /* Align items to the left */
   text-align: center; /* Center text for the card */
-}
-
-.share__btn__flashcard__card__page {
-  display: inline-flex; /* Inline flex for button */
-  align-items: center; /* Center icon and text */
-  justify-content: center; /* Center the button content */
-  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
-  color: white; /* Text color */
-  padding: 10px 16px; /* Padding for the button */
-  border-radius: 15px; /* Rounded button edges */
-  text-decoration: none; /* Remove underline */
-  font-weight: 500; /* Medium font weight */
-  transition: background-color 0.2s ease, transform 0.2s ease; /* Smooth background and transform change */
-  font-size: 14px; /* Slightly smaller font size */
-  margin: 20px auto; /* Center button with automatic margins */
-  width: 50%;
 }
 
 
