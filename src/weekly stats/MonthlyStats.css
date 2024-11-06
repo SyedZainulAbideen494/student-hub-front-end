@@ -1,0 +1,122 @@
+/* General Container */
+.monthly__stats-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4A4A4A;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #f9fafb;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.monthly__stats-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+/* Back Button */
+.monthly__stats-back-button {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #007aff;
+    font-size: 22px;
+    transition: all 0.3s ease;
+}
+
+.monthly__stats-back-button:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Page Title */
+.monthly__stats-page-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+    text-align: center;
+}
+
+/* Section Header */
+.monthly__stats-section-header {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.monthly__stats-icon {
+    margin-right: 10px;
+    font-size: 26px;
+    color: #007aff;
+}
+
+/* Section Wrapper */
+.monthly__stats-section {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Stat Box */
+.monthly__stats-stat-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.monthly__stats-stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Stat Label */
+.monthly__stats-stat-label {
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Stat Value */
+.monthly__stats-stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Hover Effects */
+.monthly__stats-stat-box:hover {
+    background-color: #e7f3ff;
+    border-color: #007aff;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

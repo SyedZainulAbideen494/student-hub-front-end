@@ -1,4 +1,4 @@
-import React,{Fragment, useState} from "react";
+import React,{Fragment, useEffect, useState} from "react";
 import './homeMain.css'
 import HomeTopBoxes from "./homeTopCards";
 import TodayEventsAndTasks from "./homeTodayData";
@@ -12,7 +12,8 @@ import ReviewModal from "../help/ReviewModal";
 import AppUpdates from "./AppUpdates";
 import ExploreCard from "./ExploreCard";
 import SeasonalBanner from "./seasionalBanner";
-
+import axios from "axios";
+import { API_ROUTES } from "../app_modules/apiRoutes";
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
@@ -22,6 +23,27 @@ const HomeMain = () => {
         const toggleFeedbackForm = () => {
             setShowFeedbackForm(prev => !prev);
         };
+
+        const token = localStorage.getItem('token'); // Replace with your auth token retrieval method
+
+        // Function to log daily login
+        const logDailyLogin = async () => {
+          try {
+            const response = await axios.post(
+              API_ROUTES.trackLogins,
+              {},
+              { headers: { Authorization: token } }
+            );
+          } catch (error) {
+            console.error('Error logging daily login:', error);
+          }
+        };
+      
+      
+        // Log login on component mount
+        useEffect(() => {
+          logDailyLogin();
+        }, []);
 
 
     return<Fragment>

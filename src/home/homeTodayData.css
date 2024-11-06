@@ -129,59 +129,67 @@
 
 
 
-.Btn-Container__whstaNeww_btn {
-    display: flex;
-    width: 160px;  /* Reduced size */
-    height: 50px;  /* Reduced height */
-    background-color: #1d2129;
-    border-radius: 30px;  /* Slightly smaller border radius */
-    box-shadow: 0px 5px 10px #bebebe;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-    cursor: pointer;
-    margin: 0 auto;  /* Center horizontally */
+.Btn-Container__multiple {
+  display: flex;
+  gap: 10px; /* Added space between buttons */
+  justify-content: center;
+}
+
+.Btn-Container__whstaNeww_btn,
+.Btn-Container__monthlyStats_btn {
+  display: flex;
+  width: 140px; /* Reduced width */
+  height: 45px; /* Reduced height */
+  background-color: #1d2129;
+  border-radius: 30px;
+  box-shadow: 0px 5px 10px #bebebe;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.icon-Container__whstaNeww_btn,
+.icon-Container__monthlyStats_btn {
+  width: 30px; /* Adjusted size */
+  height: 30px; /* Adjusted size */
+  background-color: #f59aff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid #1d2129;
+}
+
+.text__whstaNeww_btn,
+.text__monthlyStats_btn {
+  width: calc(100px - 30px); /* Adjusted width */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9em; /* Slightly smaller font */
+  letter-spacing: 1px;
+}
+
+.Btn-Container__whstaNeww_btn svg,
+.Btn-Container__monthlyStats_btn svg {
+  transition-duration: 1.5s;
+}
+
+.Btn-Container__whstaNeww_btn:hover .icon-Container__whstaNeww_btn svg,
+.Btn-Container__monthlyStats_btn:hover .icon-Container__monthlyStats_btn svg {
+  animation: arrow__whstaNeww_btn 1s linear infinite;
+}
+
+@keyframes arrow__whstaNeww_btn {
+  0% {
+    opacity: 0;
+    margin-left: 0px;
   }
-  
-  .icon-Container__whstaNeww_btn {
-    width: 35px;  /* Reduced size */
-    height: 35px;  /* Reduced size */
-    background-color: #f59aff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 3px solid #1d2129;
+  100% {
+    opacity: 1;
+    margin-left: 5px;  /* Adjusted margin */
   }
-  
-  .text__whstaNeww_btn {
-    width: calc(120px - 35px);  /* Adjusted width based on new button size */
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1em;  /* Slightly smaller font */
-    letter-spacing: 1px;  /* Adjusted letter spacing */
-  }
-  
-  .icon-Container__whstaNeww_btn svg {
-    transition-duration: 1.5s;
-  }
-  
-  .Btn-Container__whstaNeww_btn:hover .icon-Container__whstaNeww_btn svg {
-    transition-duration: 1.5s;
-    animation: arrow__whstaNeww_btn 1s linear infinite;
-  }
-  
-  @keyframes arrow__whstaNeww_btn {
-    0% {
-      opacity: 0;
-      margin-left: 0px;
-    }
-    100% {
-      opacity: 1;
-      margin-left: 5px;  /* Adjusted margin */
-    }
-  }
-  
+}

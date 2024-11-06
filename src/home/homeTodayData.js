@@ -77,32 +77,51 @@ const TodayEventsAndTasks = () => {
         nav('/whats-new');
     };
 
+    const handleGoToMonthlyStats = () => {
+        nav('/monthly-stats')
+    }
+
     return (
         <div className="today-container__home__page__component">
             {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
-            <button className="Btn-Container__whstaNeww_btn" onClick={handleGoToWhatsNew}>
-      <span className="text__whstaNeww_btn">What's New</span>
-      <span className="icon-Container__whstaNeww_btn">
-        <svg
-          width="16"
-          height="19"
-          viewBox="0 0 16 19"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="1.61321" cy="1.61321" r="1.5" fill="black"></circle>
-          <circle cx="5.73583" cy="1.61321" r="1.5" fill="black"></circle>
-          <circle cx="5.73583" cy="5.5566" r="1.5" fill="black"></circle>
-          <circle cx="9.85851" cy="5.5566" r="1.5" fill="black"></circle>
-          <circle cx="9.85851" cy="9.5" r="1.5" fill="black"></circle>
-          <circle cx="13.9811" cy="9.5" r="1.5" fill="black"></circle>
-          <circle cx="5.73583" cy="13.4434" r="1.5" fill="black"></circle>
-          <circle cx="9.85851" cy="13.4434" r="1.5" fill="black"></circle>
-          <circle cx="1.61321" cy="17.3868" r="1.5" fill="black"></circle>
-          <circle cx="5.73583" cy="17.3868" r="1.5" fill="black"></circle>
-        </svg>
-      </span>
-    </button>
+            <div className="Btn-Container__multiple">
+  <button className="Btn-Container__whstaNeww_btn" onClick={handleGoToWhatsNew}>
+    <span className="text__whstaNeww_btn">What's New</span>
+    <span className="icon-Container__whstaNeww_btn">
+      <svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="1.61321" cy="1.61321" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="1.61321" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="5.5566" r="1.5" fill="black"></circle>
+        <circle cx="9.85851" cy="5.5566" r="1.5" fill="black"></circle>
+        <circle cx="9.85851" cy="9.5" r="1.5" fill="black"></circle>
+        <circle cx="13.9811" cy="9.5" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="13.4434" r="1.5" fill="black"></circle>
+        <circle cx="9.85851" cy="13.4434" r="1.5" fill="black"></circle>
+        <circle cx="1.61321" cy="17.3868" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="17.3868" r="1.5" fill="black"></circle>
+      </svg>
+    </span>
+  </button>
+
+  <button className="Btn-Container__monthlyStats_btn" onClick={handleGoToMonthlyStats}>
+    <span className="text__monthlyStats_btn">Monthly Stats</span>
+    <span className="icon-Container__monthlyStats_btn">
+      <svg width="16" height="19" viewBox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="1.61321" cy="1.61321" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="1.61321" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="5.5566" r="1.5" fill="black"></circle>
+        <circle cx="9.85851" cy="5.5566" r="1.5" fill="black"></circle>
+        <circle cx="9.85851" cy="9.5" r="1.5" fill="black"></circle>
+        <circle cx="13.9811" cy="9.5" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="13.4434" r="1.5" fill="black"></circle>
+        <circle cx="9.85851" cy="13.4434" r="1.5" fill="black"></circle>
+        <circle cx="1.61321" cy="17.3868" r="1.5" fill="black"></circle>
+        <circle cx="5.73583" cy="17.3868" r="1.5" fill="black"></circle>
+      </svg>
+    </span>
+  </button>
+</div>
+
             <StudyNotes/>
             <div className='section__home__page__component'>
                 <div className="section-header">

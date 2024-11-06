@@ -127,5 +127,7 @@ export const API_ROUTES = {
   getQuizAnswers: `${API_URL}/quiz/answers`,
   updateStickyNote: `${API_URL}/api/sticky-notes/pin`,
   getWhatsNew: `${API_URL}/api/updates/get`,
-  addWhatsNew: `${API_URL}/api/updates/add`
+  addWhatsNew: `${API_URL}/api/updates/add`,
+  trackLogins: `${API_URL}/login-track`,
+  getMonthlystats: `${API_URL}/api/stats/monthly`
 }
