@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './MonthlyStats.css'; // Import the CSS file
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import { FaTasks, FaClipboardList, FaTrophy, FaStopwatch, FaRegStar, FaRobot, FaSignInAlt, FaAngleLeft } from 'react-icons/fa'; // Import icons from FontAwesome
+import { FaTasks, FaClipboardList, FaTrophy, FaStopwatch, FaRegStar, FaRobot, FaSignInAlt, FaAngleLeft, FaQuestionCircle } from 'react-icons/fa'; // Import icons from FontAwesome
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { useSpring, animated } from 'react-spring';
 
@@ -18,6 +18,7 @@ const MonthlyStats = () => {
     });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [modalVisible, setModalVisible] = useState(false);
 
     const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, config: { tension: 170, friction: 26 } });
 
@@ -52,6 +53,21 @@ const MonthlyStats = () => {
         fetchStats();
     }, []);
 
+    const getCurrentMonth = () => {
+        const date = new Date();
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+        return monthNames[date.getMonth()];
+    };
+
+    // Handle click to show the modal
+    const handleQuestionClick = () => {
+        setModalVisible(true);
+        setTimeout(() => setModalVisible(false), 4000); // Hide the modal after 4 seconds
+    };
+
     if (loading) return <LoadingSpinner />;
     if (error) return <p>{error}</p>;
 
@@ -62,6 +78,9 @@ const MonthlyStats = () => {
                     <FaAngleLeft />
                 </button>
                 <h2 className="monthly__stats-page-title">My Monthly Summary</h2>
+                <span className="question-icon__stats-stat" onClick={handleQuestionClick}>
+                            <FaQuestionCircle />
+                        </span>
             </div>
 
             {/* Animated Sections */}
@@ -115,6 +134,13 @@ const MonthlyStats = () => {
                     </div>
                 </div>
             </animated.div>
+
+            {/* Modal */}
+            {modalVisible && (
+                <div className="stats-modal__stats-stat">
+                    <p>These stats represent your performance for {getCurrentMonth()}.</p>
+                </div>
+            )}
         </div>
     );
 };
