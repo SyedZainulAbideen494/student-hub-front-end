@@ -88,21 +88,22 @@ const QuizPage = () => {
                 questionId: parseInt(questionId, 10),
                 answerId: parseInt(answerId, 10),
             }));
-
+    
             const response = await axios.post(`${API_ROUTES.submitQuiz}`, {
                 token,
                 quizId: parseInt(id, 10),
                 answers: answersArray,
             });
-
+    
             const score = response.data.score;
             setScore(score);
-            navigate('/quiz/submit', { state: { score } });
+            navigate('/quiz/submit', { state: { score, quizId: id } }); // Pass quiz ID here
         } catch (error) {
             console.error('Error submitting quiz:', error.response || error.message);
             alert('An error occurred while submitting the quiz. Please try again later.');
         }
     };
+    
 
     return (
         <div className="quiz-page-attend">

@@ -20,13 +20,13 @@ const SubmitPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const score = location.state?.score || 0;
+  const quizId = location.state?.quizId; // Retrieve quiz ID
   const [countUpFinished, setCountUpFinished] = useState(false);
   const [previousResults, setPreviousResults] = useState([]);
   
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    // Fetch previous results from the backend
     axios.post(API_ROUTES.quizResultsPageAllresults, { token })
       .then(response => {
         setPreviousResults(response.data.results);
@@ -69,6 +69,12 @@ const SubmitPage = () => {
           %
         </div>
         <p className="tip-quiz-complete">{getRandomTip()}</p>
+        <button
+          className="answers-button-quiz-complete"
+          onClick={() => navigate(`/quiz/answers/${quizId}`)} // Navigate to answers page with quiz ID
+        >
+          View Answers
+        </button>
       </div>
       <div className="previous-results-quiz-complete">
         <h2>Previous Results</h2>
