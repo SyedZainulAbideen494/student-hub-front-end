@@ -122,8 +122,7 @@ const FooterNav = () => {
                 <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
-                        <span className="btn-label">Quizzes</span>
-                        <span className='new-label-footer-nav'>New - generate quiz using AI</span>
+                        <span className="btn-label">AI Powered Quiz</span>
                     </button>
                 </Link>
                    {/* New Document Locker Link */}
@@ -131,7 +130,6 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
         <FaFolder className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
         <span className="btn-label">Document Locker</span>
-        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
