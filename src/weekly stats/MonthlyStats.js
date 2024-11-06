@@ -68,7 +68,12 @@ const MonthlyStats = () => {
         setTimeout(() => setModalVisible(false), 4000); // Hide the modal after 4 seconds
     };
 
-    if (loading) return <LoadingSpinner />;
+    if (loading) return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <LoadingSpinner />
+        </div>
+      );
+      
     if (error) return <p>{error}</p>;
 
     return (

@@ -14,10 +14,10 @@
 .monthly__stats-header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Use space-between to push the elements apart */
+    justify-content: space-between;
     position: relative;
-    margin-bottom: 30px;
-    width: 100%; /* Ensure it takes up the full width */
+    margin-bottom: 40px; /* Increased margin for breathing room */
+    width: 100%;
 }
 
 /* Back Button */
@@ -30,7 +30,7 @@
     border: none;
     background: none;
     color: #007aff;
-    font-size: 22px;
+    font-size: 24px; /* Slightly larger for better clickability */
     transition: all 0.3s ease;
     margin-top: 5px;
 }
@@ -41,21 +41,20 @@
 
 /* Page Title */
 .monthly__stats-page-title {
-    font-size: 23px;
+    font-size: 20px; /* Larger for emphasis */
     font-weight: 600;
-    margin: 0;
     color: #333;
     text-align: center;
-    flex-grow: 1; /* Ensures the title takes as much space as possible */
-    text-align: left; /* Align the title to the left */
+    flex-grow: 1;
+    margin-bottom: 15px; /* Space after title */
 }
 
 /* Style for the question mark icon */
 .question-icon__stats-stat {
-    font-size: 17px;
+    font-size: 20px; /* Larger for visibility */
     color: #1d2129;
     cursor: pointer;
-    margin-left: 10px; /* Add space between title and icon */
+    margin-left: 15px;
 }
 
 /* Style for the modal */
@@ -64,11 +63,11 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8); /* Darker for contrast */
     color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 1em;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1.1em;
     z-index: 100;
     transition: opacity 0.3s ease;
 }
@@ -79,15 +78,6 @@
 }
 
 
-
-/* Page Title */
-.monthly__stats-page-title {
-    font-size: 23px;
-    font-weight: 600;
-    margin: 0;
-    color: #333;
-    text-align: center;
-}
 
 /* Section Header */
 .monthly__stats-section-header {
