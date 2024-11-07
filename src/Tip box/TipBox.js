@@ -3,28 +3,26 @@ import './TipBox.css';
 
 const TipBox = () => {
   const tips = [
-    "Stay organized by categorizing your notes by subjects in the Notes section.",
-    "Use the Planner to set task priorities and get email reminders before deadlines.",
-    "AI in Edusify can help answer your study questions – save them directly as notes!",
-    "Add events to the Calendar and get reminders 3 days before important dates.",
-    "Follow your friends to view their public notes, quizzes, and Edusicribes.",
-    "The Pomodoro Timer can boost your focus – track your stats and share them!",
-    "Generate flashcards with AI or manually and swipe to track your progress.",
-    "Customizable notes allow you to add links, images, and videos for deeper learning.",
-    "Use the social feed to share your thoughts and stay motivated with others.",
-    "Use the search feature to find and follow friends easily on Edusify.",
-    "Check the leaderboard to see who’s the most active and challenge yourself!",
-    "Set task due dates and receive automatic email reminders to stay ahead of deadlines.",
-    "Save time by using AI-generated notes and flashcards for quick studying.",
-    "Create quizzes and share them with friends to test each other’s knowledge.",
-    "Stay accountable by joining groups to share notes, quizzes, and collaborate.",
-    "Swipe through flashcards to mark what you know and don’t know, improving retention.",
-    "Download your notes as PDF files for offline study sessions.",
-    "Create custom tasks and events to stay on top of all your assignments.",
-    "Regularly review your dashboard for a quick overview of your day’s tasks and events.",
-    "Stay consistent with the Pomodoro timer to improve productivity and focus."
-  ];
-  
+    "Organize your notes by subjects.",
+    "Use Edusify’s AI assistant to answer questions and save them directly to your notes!",
+    "Get reminders three days before important dates by adding events to your Calendar.",
+    "Follow friends to view their public notes, quizzes, and activity in your social feed.",
+    "Boost focus with the Pomodoro Timer and review your productivity stats each week.",
+    "Create flashcards with AI or manually, and swipe to mark what you know and what needs review.",
+    "Personalize sticky notes on your dashboard with custom colors and font styles.",
+    "Challenge yourself with the leaderboard – see how you compare with others in productivity!",
+    "Save time by using AI-generated notes, flashcards, and quizzes for efficient study sessions.",
+    "Create and share quizzes with friends – test each other’s knowledge and have fun learning.",
+    "Download notes as PDFs to study offline anytime, anywhere.",
+    "Track your learning streaks and see your progress grow day by day.",
+    "Review your dashboard regularly to stay on top of today’s tasks, events, and goals.",
+    "Log in each day to keep your learning streak alive and build consistent study habits.",
+    "Access monthly and weekly reports to see your progress and areas to improve.",
+    "Add tasks, and easily manage all your assignments in one place.",
+    "Use the new sticky notes feature to jot down quick reminders and to-do’s on your dashboard.",
+    "Get inspired by new updates and tips in your weekly progress report on Edusify."
+];
+
 
   const [shuffledTips, setShuffledTips] = useState([]);
   const [tipIndex, setTipIndex] = useState(0);
