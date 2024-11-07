@@ -36,7 +36,11 @@ const Pomodoro = () => {
     const [lastSessionDate, setLastSessionDate] = useState(localStorage.getItem('lastSessionDate'));
     const canvasRef = useRef(null);
     const [showTutorial, setShowTutorial] = useState(true);
+    const [darkMode, setDarkMode] = useState(false);
 
+    const toggleTheme = () => {
+      setDarkMode(!darkMode);
+    };
     const handleTutorialComplete = () => {
         setShowTutorial(false);
         localStorage.setItem('pomodoroPageTutorialCompleted', 'true'); // Store in local storage
@@ -354,7 +358,11 @@ const Pomodoro = () => {
       
 
     return (
-        <div className="pomodoro-container">
+        <div className={`pomodoro-container ${darkMode ? 'dark-mode' : ''}`}>
+        <button onClick={toggleTheme} className="theme-toggle-btn">
+          {darkMode ? 'Light Theme' : 'Dark Theme'}
+        </button>
+  
               {showTutorial && <PomodoroPageTutorial onComplete={handleTutorialComplete} />}
             <h2>{isWork ? 'Study Time' : 'Break Time'}</h2>
             
@@ -363,7 +371,7 @@ const Pomodoro = () => {
             </div>
             
             <div className="controls-pomodoro">
-                <button onClick={handleStartPause}>
+                <button onClick={handleStartPause} className='theme-toggle-btn'>
                     {isRunning ? 'Pause' : 'Start'}
                 </button>
                 {isRunning && (
@@ -399,16 +407,7 @@ const Pomodoro = () => {
     </div>
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
   <button 
-    onClick={handleResetPomodro} 
-    style={{
-      backgroundColor: '#4a90e2',
-      color: 'white',
-      border: 'none',
-      padding: '5px 10px',  // Small button with padding
-      borderRadius: '5px',
-      fontSize: '12px',  // Smaller font size
-      cursor: 'pointer'
-    }}
+    onClick={handleResetPomodro}  className='theme-toggle-btn-rest-btn'
   >
     Reset timer
   </button>
@@ -417,6 +416,7 @@ const Pomodoro = () => {
 </label>
 <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
   <button 
+   className='theme-toggle-btn-rest-btn'
 onClick={() => {
     // Clear specific localStorage items
     localStorage.removeItem('workTime');
@@ -436,15 +436,7 @@ onClick={() => {
     window.location.reload();
   }}
   
-    style={{
-      backgroundColor: '#ff5c5c',  // Red color for delete action
-      color: 'white',
-      border: 'none',
-      padding: '5px 10px',  // Small button with padding
-      borderRadius: '5px',
-      fontSize: '12px',  // Smaller font size
-      cursor: 'pointer'
-    }}
+
   >
     Reset All Stats
   </button>
