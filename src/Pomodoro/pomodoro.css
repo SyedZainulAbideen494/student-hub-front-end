@@ -69,18 +69,13 @@
     font-size: 1rem;
 }
 
-.controls-pomodoro button:hover {
-    background: #333; /* Darker black for hover in light mode */
-}
+
 
 .dark-mode .controls-pomodoro button {
     background: #fff; /* White background for dark mode */
     color: #000; /* Black text for dark mode */
 }
 
-.dark-mode .controls-pomodoro button:hover {
-    background: #ddd; /* Light gray hover for dark mode */
-}
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
@@ -101,10 +96,6 @@
 .dark-mode .theme-toggle-btn {
     background: #fff; /* White background for dark mode */
     color: #000; /* Black text for dark mode */
-}
-
-.dark-mode .theme-toggle-btn:hover {
-    background: #ddd; /* Light gray hover for dark mode */
 }
 
 /* Settings Button and Reset Button */
@@ -167,23 +158,6 @@
     letter-spacing: 0.5px; /* Slightly spaced out letters */
 }
 
-/* Button Style */
-.modal-content-pomodoro button {
-    padding: 10px 25px;
-    background-color: #009688; /* Teal button to match heading */
-    color: #ffffff;
-    border: none;
-    border-radius: 50px; /* Rounder buttons */
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
-}
-
-.modal-content-pomodoro button:hover {
-    background-color: #00796b; /* Darker teal on hover */
-    transform: translateY(-3px); /* Subtle lift on hover */
-}
 
 /* Animations */
 @keyframes fadeIn {
@@ -350,22 +324,12 @@
     box-sizing: border-box;
 }
 
-/* Button Hover Effects */
-.theme-toggle-btn-rest-btn:hover {
-    background: #00796b; /* Darker shade of teal */
-    transform: translateY(-3px);
-}
-
-
 
 /* Adjust the buttons to be the same width */
 .theme-toggle-btn-rest-btn {
     width: 200px; /* Ensures both buttons have the same width */
     padding: 12px 0; /* Vertically centered padding */
 }
-
-
-
 
 /* Pomodoro Container */
 .pomodoro-container {
