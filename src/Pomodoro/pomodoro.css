@@ -453,3 +453,119 @@
     background-color: #333;
     color: #80cbc4;
 }
+
+
+
+/* Switch Container */
+.switch__dark__Light__pomodoro {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 34px;
+  }
+  
+  /* Hide default checkbox */
+  .switch__dark__Light__pomodoro input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* Slider styling */
+  .slider__dark__Light__pomodoro {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #73C0FC;
+    transition: 0.4s;
+    border-radius: 30px;
+  }
+  
+  /* Toggle circle on the slider */
+  .slider__dark__Light__pomodoro:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    left: 2px;
+    bottom: 2px;
+    z-index: 2;
+    background-color: #e8e8e8;
+    transition: 0.4s;
+  }
+  
+  /* Sun icon */
+  .sun__dark__Light__pomodoro svg {
+    position: absolute;
+    top: 6px;
+    left: 36px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Moon icon */
+  .moon__dark__Light__pomodoro svg {
+    fill: #73C0FC;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Sun rotation animation */
+  .switch__dark__Light__pomodoro:hover .sun__dark__Light__pomodoro svg {
+    animation: rotate 15s linear infinite;
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Moon tilting animation */
+  .switch__dark__Light__pomodoro:hover .moon__dark__Light__pomodoro svg {
+    animation: tilt 5s linear infinite;
+  }
+  
+  @keyframes tilt {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    75% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  /* Slider background change when toggled */
+  .input__dark__Light__pomodoro:checked + .slider__dark__Light__pomodoro {
+    background-color: #183153;
+  }
+  
+  /* Box shadow effect for focus state */
+  .input__dark__Light__pomodoro:focus + .slider__dark__Light__pomodoro {
+    box-shadow: 0 0 1px #183153;
+  }
+  
+  /* Move toggle circle on checked */
+  .input__dark__Light__pomodoro:checked + .slider__dark__Light__pomodoro:before {
+    transform: translateX(30px);
+  }
+  
