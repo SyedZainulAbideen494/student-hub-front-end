@@ -63,7 +63,7 @@ const FlashcardLibraryPage = () => {
   };
 
   return (
-    <div className="flashcard__library__page__component__page">
+    <div className="flashcard__library__page__component__page" style={{marginBottom: '60px'}}>
       {showTutorial && <FlashcardsPageTutorial onComplete={handleTutorialComplete} />}
 
       <div className="header__library__page__component__page">
