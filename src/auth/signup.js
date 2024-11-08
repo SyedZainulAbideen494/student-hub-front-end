@@ -75,9 +75,7 @@ const SignUp = () => {
 
 // Phone number validation to enforce 10, 12, 13, or 14-digit format, with optional '+'
 const validatePhoneNumber = (phone) => {
-    // Regex to match 10, 12, 13, or 14-digit phone numbers, with an optional '+' at the beginning
-    const phoneRegex = /^(\+)?(\d{10}|\d{12}|\d{13}|\d{14})$/;
-    return phoneRegex.test(phone);
+
 };
 
 
@@ -104,7 +102,7 @@ const validatePhoneNumber = (phone) => {
             setError('Please enter a username');
             return false;
         }
-        if (!formData.phone_number || !validatePhoneNumber(formData.phone_number)) {
+        if (!formData.phone_number) {
             setError('Phone number must be in the format +91XXXXXXXXXX');
             return false;
         }
