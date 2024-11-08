@@ -77,13 +77,13 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const handleSendMessage = async () => {
     if (!message.trim()) return;
     if (!conversationStarted) setConversationStarted(true);
-  
+
     const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
     setChatHistory(newHistory);
     setLoading(true);
-    
+
     const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
-  
+
     try {
       const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
       const formattedResponse = formatContent(response.data.response);
@@ -92,7 +92,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
     } catch (error) {
       const errorMessage = (
         <>
-          Oops! Something went wrong. Please try again later Reasons - too long text or repetivie message.
+          Oops! Something went wrong. Please try again later. Reasons - too long text or repetitive message.
           <button className="report-problem-btn" onClick={() => setShowFeedbackModal(true)}>
             Report Problem
           </button>
@@ -153,6 +153,13 @@ const MathSolver = ({ handleVoiceCommand }) => {
       setSuccessMessage('Error submitting feedback, please try again.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent default behavior (like form submission)
+      handleSendMessage();
     }
   };
 
@@ -255,20 +262,20 @@ const MathSolver = ({ handleVoiceCommand }) => {
         </div>
 
         {/* Chat input */}
-        <div className="chat-input-container">
-          <div className="input-group">
+        <div className="chat-input-container-ai">
+          <div className="input-group-ai">
             <input
               type="text"
-              className="chat-input"
+              className="chat-input-ai"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Enter Question"
             />
           </div>
           {message.trim() ? (
-            <button className="chat-send-btn" onClick={handleSendMessage}>
-              <FaArrowRight />
-            </button>
+         <button className="chat-send-btn" onClick={handleSendMessage}>
+         <FaArrowRight />
+       </button>
           ) : (
             <button className="chat-send-btn" onClick={listening ? stopListening : startListening}>
               <FaMicrophone className={listening ? 'listening' : ''} />

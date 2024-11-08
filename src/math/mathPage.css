@@ -114,7 +114,7 @@
 }
 
 /* Chat Input Container */
-.chat-input-container {
+.chat-input-container-ai {
     display: flex;
     align-items: center;
     padding: 12px;
@@ -124,17 +124,16 @@
 }
 
 /* Input Group */
-.input-group {
+.input-group-ai {
     position: relative;
     display: flex;
     align-items: center;
-    flex: 1;
-    gap: 10px;
 }
 
-.chat-input {
+.chat-input-ai {
     flex: 1;
-    padding: 12px 20px;
+    padding: 12px;
+    width: 60%;
     border: 1px solid #d0d0d0;
     border-radius: 20px;
     font-size: 16px;
@@ -173,45 +172,7 @@
     transform: scale(1.1);
 }
 
-/* Keyboard Modal */
-.keyboard-modal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
-    background: #ffffff;
-    border: 1px solid #d0d0d0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    bottom: 60px; /* Adjust to fit within the input container */
-    width: calc(100% - 20px);
-    left: 10px;
-}
 
-/* Keyboard Buttons */
-.keyboard-btn {
-    background: transparent;
-    color: #007aff;
-    border: 1px solid #007aff;
-    border-radius: 5px;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-
-.keyboard-btn:hover {
-    background: #007aff;
-    color: #ffffff;
-    transform: scale(1.1);
-}
-
-.keyboard-btn:active {
-    background: #0051a8;
-    color: #ffffff;
-}
 /* Send Button */
 .chat-send-btn {
     background: linear-gradient(145deg, #007aff, #0051a8); /* Gradient background */
