@@ -122,3 +122,15 @@
         width: 95%;
     }
 }
+
+
+.icon-selection, .color-selection {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.icon-options, .color-options {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
