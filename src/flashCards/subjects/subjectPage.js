@@ -86,7 +86,7 @@ const Subjects = () => {
     return (
         <div className="flashcards-page">
             {/* Header Section */}
-            <div className="flashcards__subject__header" style={{ display: 'flex', alignItems: 'center', padding: '0.9rem 1rem', borderBottom: '1px solid #E5E7EB', textAlign: 'center' }}>
+            <div className="flashcards__subject__header" style={{ display: 'flex', alignItems: 'center', padding: '0.9rem 1rem', borderBottom: '1px solid #E5E7EB', textAlign: 'center', marginBottom:' 50px' }}>
                 <button onClick={handleBackClick} style={{ marginRight: '0.5rem', background: 'none', border: 'none', cursor: 'pointer' }}>
                     <svg style={{ stroke: '#A78BFA', height: '20', width: '20' }} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15 18l-6-6 6-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
@@ -134,12 +134,12 @@ const Subjects = () => {
 
                             {/* Note Content */}
                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
-                                <svg style={{ stroke: '#A78BFA', flexShrink: 0 }} height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg">
+                                <svg style={{ stroke: '#8bdee9', flexShrink: 0 }} height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M19 22H8a2 2 0 01-2-2V4a2 2 0 012-2h11a2 2 0 012 2v16a2 2 0 01-2 2zM6 2h1v20H6zM11 5h6M11 9h6M11 13h6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                                 </svg>
 
                                 <div style={{ flexGrow: 1, marginLeft: '1rem' }}>
-                                    <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{flashcard.title}</span>
+                                    <span style={{ fontWeight: 'bold', color: 'black' }}>{flashcard.title}</span>
                                     <p style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                                         {flashcard.description.length > 20 ? flashcard.description.substring(0, 20) + "..." : flashcard.description}
                                     </p>
