@@ -283,8 +283,8 @@
 
 /* Delete Flashcard Button */
 .button__delete__flashcard {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: rgb(20, 20, 20);
     border: none;
