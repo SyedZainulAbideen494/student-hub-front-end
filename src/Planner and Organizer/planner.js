@@ -325,6 +325,52 @@ function Planner() {
                 />
             </div>
 
+            <div className="task-form" ref={formRef}>
+                <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
+                <div className="form-group">
+                    <label htmlFor="task-title">Title:</label>
+                    <input
+                        id="task-title"
+                        type="text"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="task-description">Description:</label>
+                    <textarea
+                        id="task-description"
+                        placeholder="Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    ></textarea>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="task-due-date">Due Date:</label>
+                    <input
+                        id="task-due-date"
+                        type="date"
+                        value={dueDate}
+                        onChange={(e) => setDueDate(e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="task-priority">Priority:</label>
+                    <select
+                        id="task-priority"
+                        value={priority}
+                        onChange={(e) => setPriority(e.target.value)}
+                    >
+                        <option value="Low">Low</option>
+                        <option value="Normal">Normal</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <button onClick={handleSaveTask}>
+                    {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
+                </button>
+            </div>
 
             <div className="ai-task-generator__planner__page__ai__gen">
   <div className="form-header__planner__page__ai__gen">
@@ -408,52 +454,7 @@ function Planner() {
 </div>
   </form>
 </div>
-            <div className="task-form" ref={formRef}>
-                <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
-                <div className="form-group">
-                    <label htmlFor="task-title">Title:</label>
-                    <input
-                        id="task-title"
-                        type="text"
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-description">Description:</label>
-                    <textarea
-                        id="task-description"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-due-date">Due Date:</label>
-                    <input
-                        id="task-due-date"
-                        type="date"
-                        value={dueDate}
-                        onChange={(e) => setDueDate(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-priority">Priority:</label>
-                    <select
-                        id="task-priority"
-                        value={priority}
-                        onChange={(e) => setPriority(e.target.value)}
-                    >
-                        <option value="Low">Low</option>
-                        <option value="Normal">Normal</option>
-                        <option value="High">High</option>
-                    </select>
-                </div>
-                <button onClick={handleSaveTask}>
-                    {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
-                </button>
-            </div>
+
             <div className="task-list">
                 <h2 className="section-title" style={{textAlign: 'center'}}><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>
                 <div className="task-container">
