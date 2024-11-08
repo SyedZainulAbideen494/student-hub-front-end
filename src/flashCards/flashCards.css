@@ -743,3 +743,31 @@
   border-color: #93C5FD; /* Match border color to text color */
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); /* Shadow to elevate the active button */
 }
+
+
+
+.add-subject-btn-create-note-page {
+  font-family: inherit;
+  font-size: 14px; /* Smaller font size */
+  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+  color: white;
+  padding: 0.6em 1em; /* Smaller padding */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 20px; /* Slightly smaller border radius */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.add-subject-btn-create-note-page:hover {
+  background-color: #e0f0ff; /* Slightly darker shade on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.add-subject-btn-create-note-page:active {
+  background-color: #d0eaff; /* Deeper shade when pressed */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Slightly reduced shadow */
+}

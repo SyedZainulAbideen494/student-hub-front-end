@@ -12,7 +12,7 @@ import SuccessModal from '../app_modules/SuccessModal';
 import DOMPurify from 'dompurify';
 import SuccessMessage from '../app_modules/SuccessMessage';
 import FeedbackForm from '../help/FeedbackForm';
-
+import SubjectModal from './SubjectModal ';
 
 const CreateFlashcard = () => {
     const [title, setTitle] = useState('');
@@ -45,7 +45,7 @@ const [conversationStarted, setConversationStarted] = useState(false);
 const [showFeedbackForm, setShowFeedbackForm] = useState(false);
 const [subjects, setSubjects] = useState([]);
 const [selectedSubject, setSelectedSubject] = useState('');
-
+const [showSubjectModal, setShowSubjectModal] = useState(false); 
 
 const messagesEndRef = useRef(null);
 useEffect(() => {
@@ -283,6 +283,17 @@ const handleViewFalshCardsClick = () => {
   nav('/notes/view')
 }
 
+const openSubjectModal = () => setShowSubjectModal(true); // Open modal
+const closeSubjectModal = () => setShowSubjectModal(false); // Close modal
+
+const handleCreateSubject = (subjectName) => {
+  // Your logic to create the subject goes here
+
+  // Close the modal after creating the subject
+  fetchSubjects()
+
+};
+
     return (
         <div className="flashcards-page">
       {showSuccessModal && (
@@ -489,6 +500,12 @@ const handleViewFalshCardsClick = () => {
             </option>
         ))}
     </select>
+    <button
+   onClick={openSubjectModal}
+    type='button'
+     className='add-subject-btn-create-note-page'>
+    Add subject
+    </button>
 </div>
 
 
@@ -601,7 +618,12 @@ const handleViewFalshCardsClick = () => {
 </button>
 
             </form>
-           
+            {showSubjectModal && (
+                <SubjectModal
+                    onClose={closeSubjectModal}
+                    onCreate={handleCreateSubject}
+                />
+            )}
             <FooterNav />
         </div>
     );
