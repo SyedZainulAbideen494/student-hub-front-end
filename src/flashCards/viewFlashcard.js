@@ -254,43 +254,48 @@ const ViewFlashCard = () => {
     {/* Check if there are subjects available */}
     {subjects.length === 0 ? (
         <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '2rem',
-            border: '1px dashed #D1D5DB', // Dashed border for emphasis
-            borderRadius: '0.5rem',
-            backgroundColor: '#F9FAFB', // Soft background
-            margin: '1rem', // Space around the message
-        }}>
-            <p style={{
-                color: '#6B7280', // Soft gray for the message text
-                fontSize: '1.25rem', // Slightly larger text for visibility
-                textAlign: 'center', // Center align text
-                marginBottom: '1rem', // Space below the message
-            }}>
-                You have no subjects added yet! Add your first subject.
-            </p>
-            <button 
-                onClick={openSubjectModal} 
-                style={{
-                    padding: '0.5rem 1rem',
-                    borderRadius: '10px',
-                    border: 'none',
-                    backgroundColor: '#3B82F6', // Bright blue button
-                    color: 'white', // White text
-                    fontSize: '1rem',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.3s ease',
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563EB'} // Darken on hover
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3B82F6'} // Reset on leave
-            >
-                Add Subject
-            </button>
-        </div>
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '2rem',
+    border: '1px solid #E5E7EB', // Softer border color
+    borderRadius: '0.75rem',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)', // Subtle shadow for depth
+    margin: '1rem', // Space around the message
+    maxWidth: '400px', // Limit width to keep it compact
+    textAlign: 'center', // Center align content within the box
+}}>
+    <p style={{
+        color: '#4B5563', // Darker gray for better readability
+        fontSize: '15px', // Balanced font size
+        fontWeight: '600', // Slightly bolder for emphasis
+        lineHeight: '1.5', // Improve readability
+        marginBottom: '1.5rem', // Increase space below the message
+    }}>
+        add your first subject.
+    </p>
+    <button
+        onClick={openSubjectModal}
+        style={{
+            padding: '0.75rem 1.5rem',
+            borderRadius: '12px',
+            border: 'none',
+            backgroundColor: '#2563EB', // Deep blue for primary button
+            color: 'white', // White text for contrast
+            fontSize: '1rem',
+            fontWeight: '600',
+            cursor: 'pointer',
+            boxShadow: '0 4px 10px rgba(37, 99, 235, 0.2)', // Add subtle button shadow
+            transition: 'all 0.3s ease',
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1E40AF'} // Darken on hover
+        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#2563EB'} // Reset on leave
+    >
+        Add Subject
+    </button>
+</div>
+
     ) : (
         <div className="subject-list">
             {subjects.map(subject => (
