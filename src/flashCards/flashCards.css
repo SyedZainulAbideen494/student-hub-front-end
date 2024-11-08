@@ -528,9 +528,8 @@
 /* Active button style */
 .active__main__page__flashcard__page {
   background: transparent;
-  border: 1px solid #4dc7d9;
+  border: 1px solid none;
   color: #000000; /* Text color for active button */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Stronger shadow on active */
 }
 
 
@@ -729,7 +728,7 @@
 }
 
 .toggle-btn.active {
-  background-color: #93C5FD; /* Light blue background for active state */
+  background-color: #00b4d8; /* Light blue background for active state */
   color: white; /* White text for active state */
   border-color: #93C5FD; /* Match border color to text color */
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); /* Shadow to elevate the active button */
