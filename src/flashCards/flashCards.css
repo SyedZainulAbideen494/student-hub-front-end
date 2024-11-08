@@ -117,8 +117,6 @@
 }
 
   
-
-
 /* Search Bar */
 .search-bar-flashcards-page {
     display: flex;
@@ -489,17 +487,10 @@
 }
 
 
-
-
-
-/* Main Page CSS */
 /* Main Page CSS */
 .container__main__page__flashcard__page {
     text-align: center; /* Center align the text */
   }
-
-
-  
 
 
   /* Button container styling */

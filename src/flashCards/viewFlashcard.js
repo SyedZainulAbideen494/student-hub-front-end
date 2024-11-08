@@ -324,23 +324,24 @@ const ViewFlashCard = () => {
           >
               {/* Subject Content */}
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
-                  <svg
-                      style={{ stroke: '#A78BFA', flexShrink: 0 }}
-                      height="50"
-                      preserveAspectRatio="xMidYMid meet"
-                      viewBox="0 0 24 24"
-                      width="50"
-                      xmlns="http://www.w3.org/2000/svg"
-                  >
-                      <path
-                          d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
-                          fill="#A78BFA" // Keep icon color
-                      />
-                  </svg>
-                  <div style={{ flexGrow: 1, marginLeft: '1rem', textAlign: 'center' }}>
-                      <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{subject.name}</span>
-                  </div>
-              </div>
+  <svg
+    style={{ stroke: '#5AC8FA', flexShrink: 0 }} // Change to a lighter blue color
+    height="50"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 24 24"
+    width="50"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
+      fill="#5AC8FA" // Light blue color for icon fill
+    />
+  </svg>
+  <div style={{ flexGrow: 1, marginLeft: '1rem', textAlign: 'center' }}>
+    <span style={{ fontWeight: 'bold', color: '#5AC8FA' }}>{subject.name}</span> {/* Lighter blue text */}
+  </div>
+</div>
+
           </div>
           
             ))}
@@ -393,12 +394,12 @@ const ViewFlashCard = () => {
                 >
                   {/* Note Content */}
                   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
-                    <svg style={{ stroke: '#A78BFA', flexShrink: 0 }} height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg">
+                    <svg style={{ stroke: '#5AC8FA', flexShrink: 0 }} height="50" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" width="50" xmlns="http://www.w3.org/2000/svg">
                       <path d="M19 22H8a2 2 0 01-2-2V4a2 2 0 012-2h11a2 2 0 012 2v16a2 2 0 01-2 2zM6 2h1v20H6zM11 5h6M11 9h6M11 13h6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                     </svg>
 
                     <div style={{ flexGrow: 1, marginLeft: '1rem' }}>
-                      <span style={{ fontWeight: 'bold', color: '#A78BFA' }}>{note.title}</span>
+                      <span style={{ fontWeight: 'bold', color: 'back' }}>{note.title}</span>
                       <p style={{
                         display: '-webkit-box',
                         WebkitLineClamp: 3,
