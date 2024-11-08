@@ -327,7 +327,6 @@ function Planner() {
 
 
             <div className="ai-task-generator__planner__page__ai__gen">
-            <span className="beta-tag__planner__page__ai__gen">New</span>
   <div className="form-header__planner__page__ai__gen">
     <h2 className="form-heading__planner__page__ai__gen">
       Generate Tasks Using AI 
@@ -383,18 +382,32 @@ function Planner() {
             Choose your preferred task style.
           </small>
         </div>
+        <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
     <button
-      type="submit"
-      disabled={isGenerating}
-      className="generate-button__planner__page__ai__gen"
+  className="flashcard__set__page__modal-generate btn__set__page__buttons"
+  type='submit'
+  disabled={isGenerating}
+>
+  <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+    <svg
+      height="24"
+      width="24"
+      fill="#FFFFFF"
+      viewBox="0 0 24 24"
+      data-name="Layer 1"
+      id="Layer_1"
+      className="sparkle__set__page__buttons"
     >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
+    <span className="text__set__page__buttons">
       {isGenerating ? 'Generating...' : 'Generate'}
-    </button>
+    </span>
+  </div>
+</button>
+</div>
   </form>
 </div>
-
-
-
             <div className="task-form" ref={formRef}>
                 <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
                 <div className="form-group">
