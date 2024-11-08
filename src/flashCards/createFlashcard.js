@@ -504,7 +504,7 @@ const handleCreateSubject = (subjectName) => {
    onClick={openSubjectModal}
     type='button'
      className='add-subject-btn-create-note-page'>
-    Add subject
+    Add New subject
     </button>
 </div>
 
