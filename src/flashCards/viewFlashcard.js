@@ -298,86 +298,87 @@ const ViewFlashCard = () => {
 </div>
 
     ) : (
-      <div className="subject-list" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', // Even smaller columns for mobile
-        gap: '1rem', // More spacing for a cleaner look
-        padding: '1rem', // Added padding for better grid aesthetics
-    }}>
-      {subjects.map(subject => (
-        <div
-          key={subject.id}
+<div className="subject-list" style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', // Compact grid layout
+    gap: '1.25rem', // Added spacing between items
+    padding: '1.5rem', // Adequate padding around the grid
+}}>
+  {subjects.map(subject => (
+    <div
+      key={subject.id}
+      style={{
+        cursor: 'pointer',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth hover effect
+        transform: 'translateY(0)',
+        backgroundColor: '#FFFFFF', // Clean white background
+        borderRadius: '16px', // Subtle, modern rounded corners
+        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', // Light and refined shadow
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem', // Consistent gap between elements
+        padding: '12px', // Balanced padding
+        margin: '0', // No extra margin for alignment
+        minHeight: '8rem', // Compact, sleek card height
+        transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.transform = 'translateY(-0.3rem)';
+        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+      }}
+      onClick={() => nav(`/subject/${subject.id}`)} // Navigate to the subject page
+    >
+      {/* Subject Content */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}>
+        <svg
           style={{
-            cursor: 'pointer',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth transition for hover effect
-            transform: 'translateY(0)',
-            backgroundColor: '#FFFFFF', // Clean white background
-            borderRadius: '18px', // More rounded corners
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)', // Subtle shadow for a lighter, more luxurious look
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.5rem', // More space between items for cleaner layout
-            padding: '12px', // Slightly more padding for comfort
-            margin: '0', // No extra margin for grid alignment
-            minHeight: '8rem', // Slightly taller cards for a balanced layout
-            transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+            stroke: '#00b4d8', // Modern green tone for icon stroke
+            width: '32px', // Moderate icon size
+            height: '32px',
+            marginBottom: '0.5rem', // Slight spacing between icon and text
           }}
-          onMouseEnter={e => {
-            e.currentTarget.style.transform = 'translateY(-0.3rem)';
-            e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.1)';
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.05)';
-          }}
-          onClick={() => nav(`/subject/${subject.id}`)} // Navigate to the subject page
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Subject Content */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column',
+          <path
+            d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
+            fill="#00b4d8" // Fresh green icon fill
+          />
+        </svg>
+        <div style={{
+          textAlign: 'center',
+          overflow: 'hidden',
+        }}>
+          <span style={{
+            fontFamily: 'San Francisco, Helvetica Neue, Arial, sans-serif', // Sleek font
+            fontWeight: '500', // Medium font weight
+            color: '#333', // Dark gray text for good contrast
+            fontSize: '0.9rem', // Moderate size for readability
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap', // Prevent text overflow
+            maxWidth: '120px', // Restrict width for better alignment
+            lineHeight: '1.2',
           }}>
-            <svg
-              style={{
-                stroke: '#5AC8FA', // Light blue stroke color
-                width: '36px', // Slightly larger icon for better visibility
-                height: '36px',
-                marginBottom: '0.5rem', // More breathing room
-              }}
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
-                fill="#5AC8FA" // Light blue color for icon fill
-              />
-            </svg>
-            <div style={{
-              textAlign: 'center',
-              overflow: 'hidden',
-            }}>
-              <span style={{
-                fontWeight: '600', // Slightly bolder font for better emphasis
-                color: '#5AC8FA', // Light blue color for the text
-                fontSize: '1rem', // Standard text size for clarity
-                textOverflow: 'ellipsis',
-                overflow: 'hidden',
-                whiteSpace: 'nowrap', // Prevent text from overflowing
-                maxWidth: '110px', // Restrict width for mobile screens
-                lineHeight: '1.2',
-              }}>
-                {subject.name}
-              </span>
-            </div>
-          </div>
+            {subject.name}
+          </span>
         </div>
-      ))}
+      </div>
     </div>
-    
+  ))}
+</div>
+
     )}
 
     <button className='btn__floating__create__note__flashcard__page' onClick={openSubjectModal}>
