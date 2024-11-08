@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom'; // Assuming you're using react-router for routing
 import { API_ROUTES } from '../../app_modules/apiRoutes';
+import BookOpenAnimation from '../../app_modules/loaders/bookOpen';
 
 const Subjects = () => {
     const { subjectId } = useParams(); // Get subjectId from URL parameters
@@ -68,7 +69,18 @@ const Subjects = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>; // Display loading message
+    if (loading) return <div style={{
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh', 
+        position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        backgroundColor: '#F9FAFB'
+    }}><BookOpenAnimation/></div>; // Display loading message
     if (error) return <div>{error}</div>; // Display error message
 
     return (

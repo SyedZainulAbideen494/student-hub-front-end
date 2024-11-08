@@ -13,6 +13,7 @@ import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaPlus } from 'react-icons/fa';
 import NotesPageTutorial from './NotesPageTutorial';
 import SubjectModal from './SubjectModal ';  // Create this modal
+import BookOpenAnimation from '../app_modules/loaders/bookOpen';
 
 
 const ViewFlashCard = () => {
@@ -359,7 +360,7 @@ const ViewFlashCard = () => {
   <div className="notes-section">
     {/* Loading or No Notes Messages */}
     {loading ? (
-      <div className="loading-message"><LoadingSpinner /></div>
+      <div className="loading-message"><BookOpenAnimation/></div>
     ) : (
       <>
         {filteredNotes.length === 0 ? (
