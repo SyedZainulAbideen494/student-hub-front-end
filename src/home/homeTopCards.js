@@ -19,7 +19,8 @@ const TopBoxes = () => {
     const nav = useNavigate()
     const token = localStorage.getItem('token');
     const location = useLocation();
-
+   
+    
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
@@ -132,7 +133,13 @@ const TopBoxes = () => {
                     />
 
                 </p>
-
+                <div className="icons-container__home__page__component">
+  {/* Leaderboard icon */}
+  <Link to='/streaks' className="leaderboard-icon__home__page__component">
+    <FontAwesomeIcon icon={faFire} size="lg" />
+    <p>Streaks</p>
+  </Link>
+</div>
 
             </>
         )}
