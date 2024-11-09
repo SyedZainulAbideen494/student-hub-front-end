@@ -129,5 +129,6 @@ export const API_ROUTES = {
   getWhatsNew: `${API_URL}/api/updates/get`,
   addWhatsNew: `${API_URL}/api/updates/add`,
   trackLogins: `${API_URL}/login-track`,
-  getMonthlystats: `${API_URL}/api/stats/monthly`
+  getMonthlystats: `${API_URL}/api/stats/monthly`,
+  getStreaks: `${API_URL}/api/streak`
 }

@@ -5,7 +5,7 @@ import './homeTopCards.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
+import { faFire, faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
 import { TypeAnimation } from 'react-type-animation';
 
 const TopBoxes = () => {
@@ -19,7 +19,24 @@ const TopBoxes = () => {
     const nav = useNavigate()
     const token = localStorage.getItem('token');
     const location = useLocation();
+    const [streakData, setStreakData] = useState(null);
 
+    useEffect(() => {
+      const fetchStreaks = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) return console.error('No token found!');
+  
+        try {
+          const response = await axios.post(API_ROUTES.getStreaks, { token });
+          setStreakData(response.data);
+        } catch (error) {
+          console.error('Error fetching streak data:', error);
+          setStreakData({ error: 'Failed to load streak data.' });
+        }
+      };
+      fetchStreaks();
+    }, []);
+    
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
@@ -134,9 +151,9 @@ const TopBoxes = () => {
                 </p>
                 <div className="icons-container__home__page__component">
   {/* Leaderboard icon */}
-  <Link to='/leaderboard' className="leaderboard-icon__home__page__component">
-    <FontAwesomeIcon icon={faTrophy} size="lg" />
-    <p>Leaderboard</p>
+  <Link to='/streaks' className="leaderboard-icon__home__page__component">
+    <FontAwesomeIcon icon={faFire} size="lg" />
+    <p>Streak {streakData.streakCount} Days</p>
   </Link>
 </div>
 

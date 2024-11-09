@@ -241,7 +241,7 @@
 /* Leaderboard icon styling */
 .leaderboard-icon__home__page__component {
   margin-left: 15px;
-  color: #ffb703; /* Default icon color */
+  color:linear-gradient(135deg, #ff00ff, #ff4d4d); /* Default icon color */
   cursor: pointer;
   align-items: center;
   text-align: center; /* Center-align the icon and text */
@@ -251,7 +251,7 @@
 /* Leaderboard icon text styling */
 .leaderboard-icon__home__page__component p {
   font-size: 10px;
-  margin-top: 0; /* Remove margin on top */
+  margin-top: 4px; /* Remove margin on top */
   margin-bottom: 0; /* Remove margin on bottom */
   text-decoration: none; /* Ensure no underline */
   color: inherit; /* Inherit color from parent */

@@ -1,0 +1,166 @@
+.streaks__Page__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff00ff, #ff4d4d);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    position: relative;
+  }
+  
+  .streaks__Page__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    z-index: 1000;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .streaks__Page__header-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .streaks__Page__back-btn,
+  .streaks__Page__info-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .streaks__Page__back-btn:hover,
+  .streaks__Page__info-btn:hover {
+    color: #ff1493;
+  }
+  
+  .streaks__Page__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px; /* Adjusted for the fixed header */
+  }
+  
+  .streaks__Page__icon {
+    font-size: 70px;
+    margin-bottom: 20px;
+    animation: bounce 1s infinite alternate;
+  }
+  
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
+  
+  .streaks__Page__count {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .streaks__Page__week-container {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 350px;
+    margin: 20px 0;
+  }
+  
+  .streaks__Page__day {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 50%;
+    background-color: #444;
+    color: #fff;
+    transition: 0.3s ease;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .streaks__Page__day.active {
+    background-color: #ff1493;
+  }
+  
+  .streaks__Page__message {
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 0 20px;
+    color: #ffd700;
+  }
+  
+  .streaks__Page__loading {
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .streaks__Page__instructions-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    margin: 0 20px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .streaks__Page__modal-content {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 350px;
+    width: 90%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .streaks__Page__modal-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .streaks__Page__modal-list {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .streaks__Page__close-btn {
+    background-color: #ff1493;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .streaks__Page__close-btn:hover {
+    background-color: #ff007f;
+  }
+  
