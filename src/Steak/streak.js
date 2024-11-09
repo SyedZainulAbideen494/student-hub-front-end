@@ -41,7 +41,7 @@ const Streaks = () => {
           <div className="streaks__Page__modal-content">
             <h3 className="streaks__Page__modal-title">How to Gain Streaks</h3>
             <ul className="streaks__Page__modal-list">
-              <li>Complete your daily tasks consistently.</li>
+              <li>Add and complete tasks daily.</li>
               <li>Log in every day to keep your streak going.</li>
               <li>Stay engaged with the app each week to maintain your streak!</li>
             </ul>
