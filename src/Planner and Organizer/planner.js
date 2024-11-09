@@ -37,6 +37,7 @@ function Planner() {
     const [mainTask, setMainTask] = useState('');
     const [days, setDays] = useState(1);
     const [taskStyle, setTaskStyle] = useState('detailed');
+    const [emailReminder, setEmailReminder] = useState(false); // state to track the email reminder toggle
 
 
     useEffect(() => {
@@ -93,6 +94,7 @@ function Planner() {
             description,
             due_date: dueDate,
             priority,
+            email_reminder: emailReminder, // Include email reminder in task data
             token
         };
     
@@ -116,7 +118,7 @@ function Planner() {
             // Reset form and refresh task list
             resetForm();
             setTimeout(() => {
-                setSuccessMessage('task Added!'); // Hide message after 3 seconds
+                setSuccessMessage('Task Added!'); // Hide message after 3 seconds
             }, 3000);
             fetchTasks(); // Refresh the task list
         } catch (error) {
@@ -125,6 +127,8 @@ function Planner() {
             setLoading(false); // Stop loading
         }
     };
+
+
     // Handle task deletion
     const handleDeleteTask = (id) => {
         const token = localStorage.getItem('token');
@@ -272,6 +276,10 @@ function Planner() {
       };
       
       
+      const handleToggleReminder = () => {
+        setEmailReminder(prevState => !prevState);
+    };
+    
     
 
     return (
@@ -326,51 +334,67 @@ function Planner() {
             </div>
 
             <div className="task-form" ref={formRef}>
-                <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
-                <div className="form-group">
-                    <label htmlFor="task-title">Title:</label>
-                    <input
-                        id="task-title"
-                        type="text"
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-description">Description:</label>
-                    <textarea
-                        id="task-description"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-due-date">Due Date:</label>
-                    <input
-                        id="task-due-date"
-                        type="date"
-                        value={dueDate}
-                        onChange={(e) => setDueDate(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-priority">Priority:</label>
-                    <select
-                        id="task-priority"
-                        value={priority}
-                        onChange={(e) => setPriority(e.target.value)}
-                    >
-                        <option value="Low">Low</option>
-                        <option value="Normal">Normal</option>
-                        <option value="High">High</option>
-                    </select>
-                </div>
-                <button onClick={handleSaveTask}>
-                    {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
-                </button>
-            </div>
+    <h2 className="section-title" style={{ textAlign: 'center' }}>
+        {editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}
+    </h2>
+    <div className="form-group">
+        <label htmlFor="task-title">Title:</label>
+        <input
+            id="task-title"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+        />
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-description">Description:</label>
+        <textarea
+            id="task-description"
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+        />
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-due-date">Due Date:</label>
+        <input
+            id="task-due-date"
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+        />
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-priority">Priority:</label>
+        <select
+            id="task-priority"
+            value={priority}
+            onChange={(e) => setPriority(e.target.value)}
+        >
+            <option value="Low">Low</option>
+            <option value="Normal">Normal</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+    <div className="form-group">
+        <label htmlFor="task-email-reminder">Email Reminder:</label>
+        <label className="switch__email_reminder">
+            <input
+                type="checkbox"
+                id="task-email-reminder"
+                className="toggle-input-tasks-email" // Add class name here
+                checked={emailReminder}
+                onChange={handleToggleReminder} // Toggle the state
+            />
+            <span className="slider__email_reminder"></span>
+        </label>
+    </div>
+    <button onClick={() => handleSaveTask(emailReminder)}>
+        {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
+    </button>
+</div>
+
 
             <div className="ai-task-generator__planner__page__ai__gen">
   <div className="form-header__planner__page__ai__gen">
