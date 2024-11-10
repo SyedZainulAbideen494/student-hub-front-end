@@ -20,7 +20,68 @@ const TopBoxes = () => {
     const token = localStorage.getItem('token');
     const location = useLocation();
    
+    useEffect(() => {
+        const requestNotificationPermission = async () => {
+            if (Notification.permission === 'default') {
+                const permission = await Notification.requestPermission();
+                console.log(`Notification permission status: ${permission}`);
+            }
+        };
     
+        const scheduleReminder = () => {
+            const intervalId = setInterval(() => {
+                const now = new Date();
+
+    
+                // Define times for the reminders
+                const reminders = [
+                    { hour: 7, minute: 0, message: "Good morning! Time to rise and shine and get back on track!" },
+                    { hour: 15, minute: 0, message: "Afternoon motivation: Keep going, you're doing great!" },
+                    { hour: 21, minute: 0, message: "Night reminder: Time to wind down and review your progress!" },
+                    { hour: 23, minute: 25, message: "Night reminder: Time to wind down and review your progress!" },
+                ];
+    
+                // Check if current time matches any of the reminder times
+                reminders.forEach(reminder => {
+                    if (now.getHours() === reminder.hour && now.getMinutes() === reminder.minute) {
+                        console.log(`Target time reached for ${reminder.message}`);
+                        showNotification(reminder.message);
+                        clearInterval(intervalId); // Stop checking after sending notification
+                    }
+                });
+            }, 10000); // Check every 10 seconds for testing
+        };
+    
+        const showNotification = (message) => {
+            if (Notification.permission === 'granted') {
+                console.log("Permission granted. Displaying notification...");
+    
+                // Customize the notification based on the time of day
+                const title = "Pomodoro Reminder";
+                const body = message;
+                const icon = 'your-icon-url-here'; // Add your icon URL here for a better look
+    
+                new Notification(title, {
+                    body,
+                    icon,
+                    tag: title, // Tagging the notification to avoid multiple notifications
+                    vibrate: [200, 100, 200], // Optional: vibration pattern
+                    actions: [
+                        { action: 'open', title: 'Get Started' }
+                    ]
+                });
+            } else {
+                console.log("Notification permission not granted or denied.");
+            }
+        };
+    
+        requestNotificationPermission();
+        scheduleReminder();
+    }, []);
+    
+    
+    
+
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
