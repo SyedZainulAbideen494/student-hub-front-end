@@ -241,7 +241,7 @@
 /* Leaderboard icon styling */
 .leaderboard-icon__home__page__component {
   margin-left: 15px;
-  color:linear-gradient(135deg, #ff00ff, #ff4d4d); /* Default icon color */
+  color: #ffb703; /* Default icon color */
   cursor: pointer;
   align-items: center;
   text-align: center; /* Center-align the icon and text */

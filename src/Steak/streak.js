@@ -3,8 +3,6 @@ import axios from 'axios';
 import './Streaks.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
-const daysOfWeek = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-
 const Streaks = () => {
   const [streakData, setStreakData] = useState(null);
   const [showInstructions, setShowInstructions] = useState(false);
@@ -43,7 +41,7 @@ const Streaks = () => {
             <ul className="streaks__Page__modal-list">
               <li>Add and complete tasks daily.</li>
               <li>Log in every day to keep your streak going.</li>
-              <li>Stay engaged with the app each week to maintain your streak!</li>
+              <li>Stay engaged with the app to maintain your streak!</li>
             </ul>
             <button className="streaks__Page__close-btn" onClick={toggleInstructions}>Got it</button>
           </div>
@@ -56,13 +54,6 @@ const Streaks = () => {
           <div className="streaks__Page__main">
             <div className="streaks__Page__icon">🔥</div>
             <h1 className="streaks__Page__count">{streakData.streakCount} days streak</h1>
-            <div className="streaks__Page__week-container">
-              {streakData.streakWeekData && streakData.streakWeekData.map((completed, index) => (
-                <div key={index} className={`streaks__Page__day ${completed ? 'active' : ''}`}>
-                  {daysOfWeek[index]}
-                </div>
-              ))}
-            </div>
           </div>
         )
       ) : (
