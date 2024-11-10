@@ -41,6 +41,7 @@
     "react-icons": "^5.2.1",
     "react-konva": "^18.2.10",
     "react-modal": "^3.16.1",
+    "react-native": "^0.76.1",
     "react-native-push-notification": "^8.1.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.25.1",

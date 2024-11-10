@@ -11,8 +11,6 @@ import coffeeicon from '../images/icons8-coffee-30.png'
 import clockIcon from '../images/icons8-clock-30.png'
 import clipBoardIocn from '../images/icons8-clipboard-50.png'
 import PomodoroPageTutorial from './PomodoroPageTutorial';
-
-
 // Helper function to format time
 const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
@@ -39,22 +37,6 @@ const Pomodoro = () => {
     const canvasRef = useRef(null);
     const [showTutorial, setShowTutorial] = useState(true);
     const [darkMode, setDarkMode] = useState(false);
-
-    const showPomodoroNotification = (status) => {
-        if (status === "running" && Notification.permission === "granted") {
-          new Notification("Pomodoro Timer", {
-            body: "Pomodoro is running! Stay focused!",
-            icon: "/path/to/your/icon.png",  // Optional, add an icon path if needed
-          });
-        }
-      };
-    
-      // Request Notification permission on component mount
-      useEffect(() => {
-        if (Notification.permission !== "granted") {
-          Notification.requestPermission();
-        }
-      }, []);
 
     const toggleTheme = () => {
       setDarkMode(!darkMode);
@@ -192,7 +174,6 @@ const Pomodoro = () => {
             .then(response => {
                 if (response.ok) {
                     console.log('Start logged successfully.');
-                    showPomodoroNotification("running");  
                 } else {
                     console.error('Failed to log start.');
                 }
