@@ -192,7 +192,7 @@ const Pomodoro = () => {
             .then(response => {
                 if (response.ok) {
                     console.log('Start logged successfully.');
-                    showPomodoroNotification("your pomodoro is running");  
+                    showPomodoroNotification("running");  
                 } else {
                     console.error('Failed to log start.');
                 }
