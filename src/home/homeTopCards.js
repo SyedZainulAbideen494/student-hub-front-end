@@ -20,8 +20,7 @@ const TopBoxes = () => {
     const token = localStorage.getItem('token');
     const location = useLocation();
    
-
-
+    
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
