@@ -1,81 +1,41 @@
 import React, { useEffect, useState } from "react";
-import './TipBox.css';
+import './TipBox.css'; // Ensure the CSS styles are still appropriate
+import axios from "axios";
+import { API_ROUTES } from "../app_modules/apiRoutes";
 
 const TipBox = () => {
-  const tips = [
-    "Organize your notes by subjects.",
-    "Use Edusify’s AI assistant to answer questions and save them directly to your notes!",
-    "Get reminders three days before important dates by adding events to your Calendar.",
-    "Follow friends to view their public notes, quizzes, and activity in your social feed.",
-    "Boost focus with the Pomodoro Timer and review your productivity stats each week.",
-    "Create flashcards with AI or manually, and swipe to mark what you know and what needs review.",
-    "Personalize sticky notes on your dashboard with custom colors and font styles.",
-    "Challenge yourself with the leaderboard – see how you compare with others in productivity!",
-    "Save time by using AI-generated notes, flashcards, and quizzes for efficient study sessions.",
-    "Create and share quizzes with friends – test each other’s knowledge and have fun learning.",
-    "Download notes as PDFs to study offline anytime, anywhere.",
-    "Track your learning streaks and see your progress grow day by day.",
-    "Review your dashboard regularly to stay on top of today’s tasks, events, and goals.",
-    "Log in each day to keep your learning streak alive and build consistent study habits.",
-    "Access monthly and weekly reports to see your progress and areas to improve.",
-    "Add tasks, and easily manage all your assignments in one place.",
-    "Use the new sticky notes feature to jot down quick reminders and to-do’s on your dashboard.",
-    "Get inspired by new updates and tips in your weekly progress report on Edusify."
-];
-
-
-  const [shuffledTips, setShuffledTips] = useState([]);
-  const [tipIndex, setTipIndex] = useState(0);
+  const [streakInfo, setStreakInfo] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  // Function to shuffle the tips array
-  const shuffleArray = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
+  const [streakCount, setStreakCount] = useState(0);
 
   useEffect(() => {
-    const lastShownTime = localStorage.getItem('lastTipShown');
-    const nextReviewTime = localStorage.getItem('nextReviewTime');
+    const lastShownTime = localStorage.getItem('lastStreakShown');
     const currentTime = Date.now();
 
-    // Show the tip box regardless of feedbackSubmitted and nextReviewTime presence
-    if (lastShownTime) {
-        // Check if the tip box was shown within the last 3 hours (10800000 milliseconds)
-        if (currentTime - lastShownTime >= 3 * 60 * 60 * 1000) {
-            setIsVisible(true);
-            localStorage.setItem('lastTipShown', currentTime); // Update last shown time
+    if (!lastShownTime || currentTime - lastShownTime >= 3 * 60 * 60 * 1000) {
+      fetchStreakData();
+      setIsVisible(true);
+      localStorage.setItem('lastStreakShown', currentTime); // Update last shown time
+    }
+  }, []);
 
-            // Shuffle tips and set initial tip index
-            const shuffled = shuffleArray(tips);
-            setShuffledTips(shuffled);
-            setTipIndex(0);
-        }
-    } else {
-        // If lastShownTime is not present, show the tip box for the first time
-        setIsVisible(true);
-        localStorage.setItem('lastTipShown', currentTime); // Set initial last shown time
-
-        // Shuffle tips and set initial tip index
-        const shuffled = shuffleArray(tips);
-        setShuffledTips(shuffled);
-        setTipIndex(0);
+  const fetchStreakData = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found!');
+      return;
     }
 
-    // Change tip every 3 hours
-    const interval = setInterval(() => {
-        setTipIndex((prevIndex) => (prevIndex + 1) % shuffledTips.length);
-    }, 3 * 60 * 60 * 1000);
-
-    return () => clearInterval(interval);
-}, [tips]);
-
-  
-
+    try {
+      const response = await axios.post(API_ROUTES.getStreaks, { token });
+      const { streakCount: count, hasCompletedToday } = response.data;
+      setStreakCount(count);
+      setStreakInfo({ streakCount: count, hasCompletedToday });
+    } catch (error) {
+      console.error('Error fetching streak data:', error);
+      setStreakInfo({ error: 'Failed to load streak data.' });
+    }
+  };
 
   const handleClose = () => {
     setIsVisible(false);
@@ -84,19 +44,61 @@ const TipBox = () => {
   const handleGotIt = () => {
     setTimeout(() => {
       setIsVisible(false);
-    }, 500); // Close after 2 seconds
+    }, 500); // Close after 0.5 seconds
   };
 
-  if (!isVisible) return null;
+  const streakMessage = () => {
+    if (streakCount < 7) return "You're off to a solid start! Keep going!";
+    if (streakCount >= 8 && streakCount <= 15) return "Great work! Keep up the momentum!";
+    if (streakCount >= 16 && streakCount <= 30) return "Awesome! You're on fire!";
+    return "Unstoppable! You've earned mastery status! Keep pushing!";
+  };
+
+  const fireEmoji = () => {
+    if (streakCount < 7) return "🔥"; // Grey fire
+    if (streakCount >= 8 && streakCount <= 15) return "🔥"; // Orange fire
+    if (streakCount > 15) return "🔥"; // Purple fire
+  };
+
+  const fireColor = () => {
+    if (streakCount < 7) return "#B0B0B0"; // Grey fire
+    if (streakCount >= 8 && streakCount <= 15) return "#FF6A00"; // Orange fire
+    if (streakCount > 15) return "#9B4DFF"; // Purple fire
+  };
+
+  if (!isVisible || !streakInfo) return null;
 
   return (
     <div className="tip-box">
       <div className="tip-arrow"></div>
       <div className="tip-content">
-        <h3 className="tip-heading">Tip</h3>
-        <p>{shuffledTips[tipIndex]}</p>
+        <h3 className="tip-heading">Streak</h3>
+        <div className="streak-counter">
+          <span className="streak-number">{streakCount}</span>
+          <span className="fire-emoji" style={{ color: fireColor() }}>
+            {fireEmoji()}
+          </span>
+        </div>
+        <p className="streak-message">{streakMessage()}</p>
+        <p style={{
+  fontSize: '12px',
+  color: '#555',
+  fontWeight: '600',
+  textAlign: 'center',
+  marginTop: '8px',
+  lineHeight: '1.4',
+  letterSpacing: '0.5px'
+}}>
+  Keep adding and completing tasks daily to maintain your streak!
+</p>
+
+
         <button className="close-btn" onClick={handleClose}>X</button>
-        <button className="got-it__btn__tip__box" onClick={handleGotIt}>Got it</button>
+        <button 
+          className={`got-it__btn__tip__box ${streakCount > 30 ? 'untappable' : ''}`} 
+          onClick={streakCount <= 30 ? handleGotIt : null}>
+          Got it
+        </button>
       </div>
     </div>
   );
