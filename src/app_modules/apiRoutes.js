@@ -1,4 +1,4 @@
-const API_URL = 'https://srv594954.hstgr.cloud';//https://srv594954.hstgr.cloud
+const API_URL = 'https://srv594954.hstgr.cloud'; //https://srv594954.hstgr.cloud
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
