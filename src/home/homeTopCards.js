@@ -58,7 +58,7 @@ const TopBoxes = () => {
                 // Customize the notification based on the time of day
                 const title = "Pomodoro Reminder";
                 const body = message;
-                const icon = 'https://edusify-download.vercel.app/static/media/Edusify-removebg-preview.88731903640917039997.png'; // Add your icon URL here for a better look
+                const icon = 'your-icon-url-here'; // Add your icon URL here for a better look
     
                 new Notification(title, {
                     body,
