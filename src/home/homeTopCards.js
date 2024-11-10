@@ -44,7 +44,6 @@ const TopBoxes = () => {
                 // Check if current time matches any of the reminder times
                 reminders.forEach(reminder => {
                     if (now.getHours() === reminder.hour && now.getMinutes() === reminder.minute) {
-                        console.log(`Target time reached for ${reminder.message}`);
                         showNotification(reminder.message);
                         clearInterval(intervalId); // Stop checking after sending notification
                     }
@@ -59,7 +58,7 @@ const TopBoxes = () => {
                 // Customize the notification based on the time of day
                 const title = "Pomodoro Reminder";
                 const body = message;
-                const icon = 'your-icon-url-here'; // Add your icon URL here for a better look
+                const icon = 'https://edusify-download.vercel.app/static/media/Edusify-removebg-preview.88731903640917039997.png'; // Add your icon URL here for a better look
     
                 new Notification(title, {
                     body,
