@@ -247,7 +247,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#fff2f2'} // very light hover color
     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ffe6e6'} // reset color on mouse leave
   >
-    Clear Chat History
+    Clear Previous Messages
   </button>
 </div>
 
