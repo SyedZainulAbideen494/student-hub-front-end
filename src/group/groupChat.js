@@ -5,7 +5,7 @@ import './GroupChat.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import GroupDetailModal from './GroupDetails';
 import SuccessModal from '../app_modules/SuccessModal';
-import { FaArrowLeft, FaBook, FaQuestionCircle, FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaBook, FaQuestionCircle, FaArrowRight, FaUser } from 'react-icons/fa';
 
 const DiscussionBoard = () => {
     const { id } = useParams();
@@ -266,10 +266,13 @@ const DiscussionBoard = () => {
 
     return (
         <div className="group-chat">
-            <div className="group-header">
-  <button style={{backgroundColor: 'transparent'}} className="header-btn__groups__page__chat" onClick={handleBackBtn}><FaArrowLeft /></button>
+<div className="group-header">
+  <button style={{backgroundColor: 'transparent'}} className="header-btn__groups__page__chat" onClick={handleBackBtn}>
+    <FaArrowLeft />
+  </button>
   <h1 onClick={openGroupDetailsPage}>
     {groupDetails ? groupDetails.name : 'Loading...'}
+    <FaUser style={{marginLeft: '8px', fontSize: '1.2em'}} />+ {/* Add user icon with some styling */}
   </h1>
 </div>
 
