@@ -192,11 +192,68 @@ const MathSolver = ({ handleVoiceCommand }) => {
       handleSendMessage(); // Trigger the message send when pressing Enter
     }
   };
+
+  useEffect(() => {
+    const completed = localStorage.getItem('AIPageTutorialComplete');
+    if (completed) {
+      setTutorialComplete(true);
+    }
+    const storedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    if (storedChatHistory.length > 0) {
+      setChatHistory(storedChatHistory);
+      setConversationStarted(true);
+    } else {
+      setChatHistory([
+        { role: 'user', parts: [{ text: 'Hello' }] },
+        { role: 'model', parts: [{ text: 'Great to meet you. What would you like to know?' }] }
+      ]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (conversationStarted) {
+      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+    }
+  }, [chatHistory, conversationStarted]);
+
+  const handleClearHistory = () => {
+    localStorage.removeItem('chatHistory');
+    setChatHistory([
+      { role: 'user', parts: [{ text: 'Hello' }] },
+      { role: 'model', parts: [{ text: 'Great to meet you. What would you like to know?' }] }
+    ]);
+    setConversationStarted(false);
+  };
   
 
   return (
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
+           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
+  <button
+    onClick={handleClearHistory}
+    style={{
+      backgroundColor: '#ffe6e6',       // even softer pink background
+      color: '#333',                    // dark text color for contrast
+      border: '1px solid #ffd6d6',      // very light pink border for a softer effect
+      padding: '4px 8px',               // smaller padding
+      borderRadius: '8px',              // slightly rounded corners
+      cursor: 'pointer',                // pointer cursor on hover
+      fontSize: '12px',                 // smaller font size
+      outline: 'none',                  // no outline
+      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)', // softer, lighter shadow
+      transition: 'background-color 0.2s ease'      // smooth transition on hover
+    }}
+    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#fff2f2'} // very light hover color
+    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ffe6e6'} // reset color on mouse leave
+  >
+    Clear Chat History
+  </button>
+</div>
+
+
+
+
       <div className="chat-ui">
       {showFeedbackModal && (
         <div className="feedback-modal">
@@ -286,6 +343,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
           
         </div>
       </div>
+    
     </div>
   );
 };
