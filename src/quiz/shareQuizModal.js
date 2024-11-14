@@ -37,7 +37,7 @@ const ShareQuizModal = ({ quiz, onClose }) => {
     }, []);
 
     const handleCopyLink = () => {
-        const link = `${window.location.origin}/quizzes/${quizId}`;
+        const link = `${window.location.origin}/quiz/${quizId}`;
         navigator.clipboard.writeText(link)
             .then(() => {
                 setCopySuccess(true);
