@@ -224,22 +224,10 @@ const MathSolver = ({ handleVoiceCommand }) => {
     ]);
     setConversationStarted(false);
   };
-
-
-  const clickChatHistory = () => {
-    navigate('/ai/chat/history')
-  }
+  
 
   return (
     <div className="mathsolver-container">
-           <div className="math-page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>
-          <FaArrowLeft />
-        </button>
-        <div className="powered-by-gemini">
-        Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
-      </div>
-      </div>
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
   <button
@@ -400,12 +388,22 @@ const MathPage = () => {
     }
   };
 
-
+  const clickChatHistory = () => {
+    navigate('/ai/chat/history')
+  }
 
   return (
     <div className="math-page">
-      <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} /> 
-    {/*  <div>
+      <div className="math-page-header">
+        <button className="back-btn" onClick={() => navigate('/')}>
+          <FaArrowLeft />
+        </button>
+        <div className="powered-by-gemini">
+        Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
+      </div>
+      </div>
+      <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
+      <div>
         <div class="button-container__feedback__btn__planner__page">
     <button onClick={toggleFeedbackForm} style={{
         backgroundColor: 'transparent',
@@ -419,7 +417,7 @@ const MathPage = () => {
 </div>
 
             {showFeedbackForm && <FeedbackForm />}
-</div> */}
+</div>
     </div>
   );
 };
