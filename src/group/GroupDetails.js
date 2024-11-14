@@ -40,9 +40,12 @@ const GroupDetailPage = () => {
         fetchGroupDetails();
     }, [id]);
 
-    const handlePhoneNumberChange = (e) => {
-        setPhoneNumber(e.target.value);
+    const handlePhoneNumberChange = (event) => {
+        // Remove any spaces from the input value
+        const value = event.target.value.replace(/\s+/g, '');
+        setPhoneNumber(value);
     };
+    
 
     const handleInvite = async () => {
         if (!phoneNumber) {
