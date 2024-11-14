@@ -6,7 +6,7 @@ import FooterNav from '../app_modules/footernav';
 import ShareQuizModal from './shareQuizModal';
 import ResultsModal from './resultsModal';
 import ViewQuizModal from './viewQuizModal';
-import { FaSearch, FaShareAlt, FaEye, FaTrash, FaPlus } from 'react-icons/fa';
+import { FaSearch, FaShareAlt, FaEye, FaTrash, FaPlus, FaPlay } from 'react-icons/fa';
 import DeleteConfirmationModal from './confrimDeleteModal';
 import './quiz.css';
 import QuizPageTutorial from './QuizPageTutorial';
@@ -271,6 +271,9 @@ const handleShareClick = (quiz) => {
                     <span> View Answers</span>
                 </div>
             </button>
+            <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
+            <FaPlay />
+          </button>
         </div>
     </li>
 ))}
