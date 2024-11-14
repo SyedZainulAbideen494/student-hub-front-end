@@ -405,6 +405,21 @@ const MathPage = () => {
   return (
     <div className="math-page">
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} /> 
+    {/*  <div>
+        <div class="button-container__feedback__btn__planner__page">
+    <button onClick={toggleFeedbackForm} style={{
+        backgroundColor: 'transparent',
+        color: '#48cae4',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '10px',
+      }} >
+        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
+    </button>
+</div>
+
+            {showFeedbackForm && <FeedbackForm />}
+</div> */}
     </div>
   );
 };
