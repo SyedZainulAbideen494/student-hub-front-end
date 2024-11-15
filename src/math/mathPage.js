@@ -249,8 +249,9 @@ const MathSolver = ({ handleVoiceCommand }) => {
   >
     Clear Previous Messages
   </button>
-</div>
 
+</div>
+<p>We are facing problem with ai, we will fix it in sometime</p>
 
 
 
@@ -332,7 +333,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
               />
           </div>
           {message.trim() ? (
-            <button className="chat-send-btn" onClick={handleSendMessage}>
+            <button className="chat-send-btn" onClick={handleSendMessage} disabled>
               <FaArrowRight />
             </button>
           ) : (
