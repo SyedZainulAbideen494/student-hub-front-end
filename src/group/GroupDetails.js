@@ -131,7 +131,7 @@ const GroupDetailPage = () => {
             <section className="invite-section">
                 <div className="card">
                     <h3 className="section-heading">Invite Members</h3>
-                    <p style={{fontSize: '14px'}}>Enter phone number used while creating Edusify account, don't add space while entering phone number</p>
+                    <p style={{fontSize: '14px'}}>Enter phone number used while creating Edusify account</p>
                     <div className="invite-input-container">
                         <input
                             type="text"

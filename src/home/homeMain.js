@@ -47,7 +47,6 @@ const HomeMain = () => {
 
 
     return<Fragment>
-        <TipBox/>
         <ReviewModal/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>

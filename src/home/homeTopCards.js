@@ -135,9 +135,9 @@ const TopBoxes = () => {
                 </p>
                 <div className="icons-container__home__page__component">
   {/* Leaderboard icon */}
-  <Link to='/streaks' className="leaderboard-icon__home__page__component">
-    <FontAwesomeIcon icon={faFire} size="lg" />
-    <p>Streaks</p>
+  <Link to='/leaderboard' className="leaderboard-icon__home__page__component">
+    <FontAwesomeIcon icon={faTrophy} size="lg" />
+    <p>Leaderboard</p>
   </Link>
 </div>
 
