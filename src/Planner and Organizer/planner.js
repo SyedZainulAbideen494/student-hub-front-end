@@ -374,6 +374,7 @@ function Planner() {
 
             <div className="ai-task-generator__planner__page__ai__gen">
   <div className="form-header__planner__page__ai__gen">
+    <p>Currently our AI is not working, we are actively working on a fix!</p>
     <h2 className="form-heading__planner__page__ai__gen">
       Generate Tasks Using AI 
     </h2>
@@ -429,7 +430,7 @@ function Planner() {
           </small>
         </div>
         <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
-    <button
+  {/*   <button
   className="flashcard__set__page__modal-generate btn__set__page__buttons"
   type='submit'
   disabled={isGenerating}
@@ -450,7 +451,7 @@ function Planner() {
       {isGenerating ? 'Generating...' : 'Generate'}
     </span>
   </div>
-</button>
+</button>*/}
 </div>
   </form>
 </div>

@@ -334,7 +334,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
               />
           </div>
           {message.trim() ? (
-            <button className="chat-send-btn" onClick={handleSendMessage} disabled>
+            <button className="chat-send-btn" onClick={handleSendMessage}>
               <FaArrowRight />
             </button>
           ) : (
