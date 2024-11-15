@@ -229,8 +229,6 @@ const MathSolver = ({ handleVoiceCommand }) => {
   return (
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
-           <p>We are currently working on Fixing our AI. Please check back later. We apologize for any inconvenience caused.</p>
-
            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
   <button
     onClick={handleClearHistory}

@@ -491,14 +491,13 @@ if (loading) {
       <div className={`flashcard__set__page__modal ${modalVisible ? 'flashcard__set__page__modal-active' : ''}`}>
         <div className="flashcard__set__page__modal-header" style={{ textAlign: 'center' }}>
           <h3 className="flashcard__set__page__modal-title">Create Flashcards</h3>
-          <p>Currently our AI is not working, we are actively working on a fix!</p>
           <button className="flashcard__set__page__modal-close" onClick={toggleModal}>
             <i className="fas fa-times"></i>
           </button>
         </div>
     
         <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
-       {/*  <button
+        <button
   className="flashcard__set__page__modal-generate btn__set__page__buttons"
   onClick={generateFlashcards}
   disabled={isGenerating}
@@ -519,7 +518,7 @@ if (loading) {
       {isGenerating ? 'Generating...' : 'Generate using AI'}
     </span>
   </div>
-</button>*/}
+</button>
 
     
           {/* Manual Flashcard Creation Form */}
