@@ -26,7 +26,6 @@ const TipBox = () => {
       "Pro Tip: Don’t want to write notes? Let the AI Assistant do the heavy lifting while you sip your coffee. ☕️",
       "Pro Tip: Stuck in a lecture? Let the AI Assistant create notes for you. It’s like having a personal note-taker, but cooler.",
       "Feeling lazy? Let the AI Assistant take care of the notes. You focus on your snack break 🍿.",
-      "AI Tip: Can’t write fast enough? Let our Assistant summarize your lecture in a snap—no pen required!",
       "Quick Tip: AI Assistant + topic details = Instant Notes. It’s basically a superpower you didn’t know you had.",
       "Pro Tip: If you’re tired of scribbling notes, let the AI Assistant work its magic. You’ll be amazed at the results!",
       "Tip: Don’t feel like writing? AI Assistant’s got your back. Generate your notes faster than you can say ‘study break’!",
