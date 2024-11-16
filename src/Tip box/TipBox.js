@@ -113,30 +113,35 @@ const TipBox = () => {
   const handleButtonClick = () => {
     // Check the tip type and navigate based on the message content
     if (tipType === 'interactiveTip') {
-      // Navigate to AI Assistant page (replace with your route)
+      // Navigate to AI Assistant page
       navigate('/ai');
     } else if (tipType === 'quickTask') {
-      // Navigate to Planner page (replace with your route)
+      // Navigate to Planner page
       navigate('/planner');
     } else if (tipType === 'peerComparison') {
-      // Navigate to Peer Comparison page (replace with your route)
+      // Navigate to Peer Comparison page
       navigate('/leaderboard');
-    } else if (tipType === 'featureDiscovery') {
-      // Navigate dynamically based on the content of the feature tip
-      if (tipContent.includes("Pomodoro")) {
-        navigate('/pomodoro'); // Navigate to Pomodoro page
-      } else if (tipContent.includes("Calendar")) {
-        navigate('/calendar'); // Navigate to Calendar page
-      } else if (tipContent.includes("Document Locker")) {
-        navigate('/document-locker'); // Navigate to Document Locker page
+    }  else if (tipType === 'featureDiscovery') {
+      console.log('Feature Discovery Tip:', tipContent); // Debugging the tip content
+      if (tipContent.toLowerCase().includes("pomodoro")) {
+        console.log('Navigating to Pomodoro');
+        navigate('/pomodoro');
+      } else if (tipContent.toLowerCase().includes("calendar")) {
+        console.log('Navigating to Calendar');
+        navigate('/calendar');
+      } else if (tipContent.toLowerCase().includes("document locker")) {
+        console.log('Navigating to Document Locker');
+        navigate('/document-locker');
       } else {
-        navigate('/feature-discovery'); // Default feature page
+        console.log('Navigating to Feature Discovery');
+        navigate('/feature-discovery');
       }
-    } else if (tipType === 'additionalFunTips') {
-      // Handle any fun tips here (e.g., navigate to a fun feature page)
+    }else if (tipType === 'additionalFunTips') {
+      // Handle any fun tips here
       navigate('/');
     }
   };
+  
 
   if (!isVisible || !tipContent) return null;
 
