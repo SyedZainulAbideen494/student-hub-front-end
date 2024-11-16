@@ -89,28 +89,68 @@ const TipBox = () => {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
-  const generateTip = () => {
-    // Randomly pick a tip type to display
-    const availableTipTypes = Object.keys(tips);
+// Advanced Fisher-Yates shuffle with multiple rounds for better randomness
+const shuffleArray = (array) => {
+  let shuffledArray = [...array];
 
-    if (availableTipTypes.length === 0) return; // No tips available, stop showing
+  // Multiple shuffle rounds for better randomness
+  for (let round = 0; round < Math.floor(Math.random() * 3) + 1; round++) {
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+  }
+  return shuffledArray;
+};
 
-    // Shuffle the tip types to randomize their order
-    const shuffledTipTypes = availableTipTypes.sort(() => Math.random() - 0.5);
+const generateTip = () => {
+  const availableTipTypes = Object.keys(tips);
 
-    // Pick the first available type from shuffled list
-    const selectedTipType = shuffledTipTypes[0];
-    setTipType(selectedTipType);
+  if (availableTipTypes.length === 0) return; // No tips available, stop showing
 
-    const selectedTipList = tips[selectedTipType];
+  // Shuffle tip types using multiple rounds of the Fisher-Yates algorithm
+  const shuffledTipTypes = shuffleArray(availableTipTypes);
 
-    // Shuffle the selected tips within the chosen type
-    const shuffledTips = selectedTipList.sort(() => Math.random() - 0.5);
+  // Track recently shown tips to avoid repetition
+  const recentlyShownTips = JSON.parse(localStorage.getItem('recentlyShownTips')) || [];
 
-    // Pick a random tip from the shuffled list
-    const randomTipIndex = Math.floor(Math.random() * shuffledTips.length);
-    setTipContent(shuffledTips[randomTipIndex]);
-  };
+  let selectedTipType;
+  let selectedTipList;
+  let shuffledTips;
+  let selectedTip;
+
+  // Try to fetch a new tip from a type that hasn't been shown recently
+  for (let attempt = 0; attempt < 5; attempt++) {  // Try up to 5 different types if needed
+    selectedTipType = shuffledTipTypes.pop();  // Pop the type to ensure randomness
+
+    selectedTipList = tips[selectedTipType];
+    shuffledTips = shuffleArray(selectedTipList);
+
+    // Find a tip that hasn't been shown recently
+    selectedTip = shuffledTips.find(tip => !recentlyShownTips.includes(tip));
+
+    if (selectedTip) break;  // If a unique tip is found, exit the loop
+  }
+
+  if (!selectedTip) {
+    // If all tips have been shown recently, reset and try again
+    recentlyShownTips.length = 0;
+    selectedTipType = shuffledTipTypes[0];  // Pick the first available type again
+    selectedTipList = tips[selectedTipType];
+    shuffledTips = shuffleArray(selectedTipList);
+    selectedTip = shuffledTips[0];  // Select the first available tip
+  }
+
+  // Show the selected tip
+  setTipType(selectedTipType);
+  setTipContent(selectedTip);
+
+  // Update recently shown tips (localStorage to persist across sessions)
+  recentlyShownTips.unshift(selectedTip);  // Add the new tip to the front
+  if (recentlyShownTips.length > 30) recentlyShownTips.pop();  // Limit to the last 5 tips
+  localStorage.setItem('recentlyShownTips', JSON.stringify(recentlyShownTips));
+};
+
 
   const handleClose = () => {
     setIsVisible(false);
