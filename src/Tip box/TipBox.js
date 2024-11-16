@@ -63,9 +63,27 @@ const TipBox = () => {
   };
 
   useEffect(() => {
-    // Show a tip randomly every time the component is mounted
-    setIsVisible(true);
-    generateTip();
+    const lastShownTime = localStorage.getItem('lastTipShown');
+    const currentTime = new Date().getTime();
+
+    if (!lastShownTime || currentTime - lastShownTime >= 3600000) { // 1 hour = 3600000 ms
+      setIsVisible(true);
+      generateTip();
+      localStorage.setItem('lastTipShown', currentTime);
+    }
+
+    const interval = setInterval(() => {
+      const lastShownTime = localStorage.getItem('lastTipShown');
+      const currentTime = new Date().getTime();
+
+      if (currentTime - lastShownTime >= 3600000) { // 1 hour
+        setIsVisible(true);
+        generateTip();
+        localStorage.setItem('lastTipShown', currentTime);
+      }
+    }, 3600000); // Check every hour
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
   const generateTip = () => {
