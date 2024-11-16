@@ -193,12 +193,22 @@ const MathSolver = ({ handleVoiceCommand }) => {
     }
   };
 
+  
   useEffect(() => {
+    // Clear old chat history key upon login
+    const handleLogin = () => {
+      localStorage.removeItem('chatHistory'); // Remove old key
+    };
+  
+    // Call handleLogin when user logs in (adjust this to your app's login event logic)
+    handleLogin();
+  
     const completed = localStorage.getItem('AIPageTutorialComplete');
     if (completed) {
       setTutorialComplete(true);
     }
-    const storedChatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+  
+    const storedChatHistory = JSON.parse(localStorage.getItem('ai_chat_history')) || [];
     if (storedChatHistory.length > 0) {
       setChatHistory(storedChatHistory);
       setConversationStarted(true);
@@ -209,15 +219,16 @@ const MathSolver = ({ handleVoiceCommand }) => {
       ]);
     }
   }, []);
-
+  
+  // Sync updated chat history with the new key in localStorage
   useEffect(() => {
     if (conversationStarted) {
-      localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+      localStorage.setItem('ai_chat_history', JSON.stringify(chatHistory));
     }
   }, [chatHistory, conversationStarted]);
-
+  
   const handleClearHistory = () => {
-    localStorage.removeItem('chatHistory');
+    localStorage.removeItem('ai_chat_history');
     setChatHistory([
       { role: 'user', parts: [{ text: 'Hello' }] },
       { role: 'model', parts: [{ text: 'Great to meet you. What would you like to know?' }] }
