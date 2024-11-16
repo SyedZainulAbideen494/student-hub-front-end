@@ -321,6 +321,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
 
         {/* Chat input */}
         <div className="chat-input-container">
+<p>our ai is not working as of now please come back later, we are working on a fix</p>
           <div className="input-group">
             <input
               type="text"
