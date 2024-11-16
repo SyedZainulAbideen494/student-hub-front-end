@@ -63,41 +63,32 @@ const TipBox = () => {
   };
 
   useEffect(() => {
-    const lastShownTime = localStorage.getItem('lastTipShown');
-    const currentTime = Date.now();
-
-    // Check if it's been at least 4 days since the last tip update
-    if (!lastShownTime || currentTime - lastShownTime >= 4 * 24 * 60 * 60 * 1000) {
-      localStorage.setItem('lastTipShown', currentTime); // Update last shown time
-      localStorage.removeItem('shownTips'); // Reset shown tips
-    }
-
-    // Show a tip if it has not been shown recently
-    const shownTips = JSON.parse(localStorage.getItem('shownTips')) || [];
-    if (shownTips.length < 4) { // Only show up to 4 unique tips until reset
-      setIsVisible(true);
-      generateTip(shownTips);
-    } else {
-      setIsVisible(false);
-    }
+    // Show a tip randomly every time the component is mounted
+    setIsVisible(true);
+    generateTip();
   }, []);
 
-  const generateTip = (shownTips) => {
+  const generateTip = () => {
     // Randomly pick a tip type to display
-    const availableTipTypes = Object.keys(tips).filter(tipType => !shownTips.includes(tipType));
+    const availableTipTypes = Object.keys(tips);
 
-    if (availableTipTypes.length === 0) return; // All tips have been shown, stop showing tips
+    if (availableTipTypes.length === 0) return; // No tips available, stop showing
 
-    const selectedTipType = availableTipTypes[Math.floor(Math.random() * availableTipTypes.length)];
+    // Shuffle the tip types to randomize their order
+    const shuffledTipTypes = availableTipTypes.sort(() => Math.random() - 0.5);
+
+    // Pick the first available type from shuffled list
+    const selectedTipType = shuffledTipTypes[0];
     setTipType(selectedTipType);
 
     const selectedTipList = tips[selectedTipType];
-    const randomTipIndex = Math.floor(Math.random() * selectedTipList.length);
-    setTipContent(selectedTipList[randomTipIndex]);
 
-    // Store the selected tipType in the shown tips list
-    shownTips.push(selectedTipType);
-    localStorage.setItem('shownTips', JSON.stringify(shownTips));
+    // Shuffle the selected tips within the chosen type
+    const shuffledTips = selectedTipList.sort(() => Math.random() - 0.5);
+
+    // Pick a random tip from the shuffled list
+    const randomTipIndex = Math.floor(Math.random() * shuffledTips.length);
+    setTipContent(shuffledTips[randomTipIndex]);
   };
 
   const handleClose = () => {
@@ -121,7 +112,7 @@ const TipBox = () => {
     } else if (tipType === 'peerComparison') {
       // Navigate to Peer Comparison page
       navigate('/leaderboard');
-    }  else if (tipType === 'featureDiscovery') {
+    } else if (tipType === 'featureDiscovery') {
       console.log('Feature Discovery Tip:', tipContent); // Debugging the tip content
       if (tipContent.toLowerCase().includes("pomodoro")) {
         console.log('Navigating to Pomodoro');
@@ -136,12 +127,11 @@ const TipBox = () => {
         console.log('Navigating to Feature Discovery');
         navigate('/feature-discovery');
       }
-    }else if (tipType === 'additionalFunTips') {
+    } else if (tipType === 'additionalFunTips') {
       // Handle any fun tips here
       navigate('/');
     }
   };
-  
 
   if (!isVisible || !tipContent) return null;
 
@@ -156,13 +146,7 @@ const TipBox = () => {
           Got it
         </button>
         <button className="action-btn__tip__box" onClick={handleButtonClick}>
-          {tipType === 'interactiveTip' ? 'Try AI Assistant' : 
-           tipType === 'quickTask' ? 'Check Planner' : 
-           tipType === 'peerComparison' ? 'View Stats' : 
-           tipContent.includes("Pomodoro") ? 'Explore Pomodoro' : 
-           tipContent.includes("Calendar") ? 'Explore Calendar' : 
-           tipContent.includes("Document Locker") ? 'Explore Document Locker' : 
-           'Explore Feature'}
+          Explore
         </button>
       </div>
     </div>
