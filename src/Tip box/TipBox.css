@@ -87,7 +87,7 @@
   box-sizing: border-box;
 }
 
-.got-it__btn__tip__box:hover, .action-btn__tip__box:hover {
+.action-btn__tip__box  {
   background-color: #000; /* Black background on hover */
   color: #fff; /* White text on hover for contrast */
   transform: translateY(-3px); /* Slight elevation effect */
