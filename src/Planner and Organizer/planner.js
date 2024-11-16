@@ -372,7 +372,7 @@ function Planner() {
                 </button>
             </div>
 
-            <div className="ai-task-generator__planner__page__ai__gen">
+       {/*    <div className="ai-task-generator__planner__page__ai__gen">
   <div className="form-header__planner__page__ai__gen">
     <h2 className="form-heading__planner__page__ai__gen">
       Generate Tasks Using AI 
@@ -453,7 +453,7 @@ function Planner() {
 </button>
 </div>
   </form>
-</div>
+</div>*/} 
 
             <div className="task-list">
                 <h2 className="section-title" style={{textAlign: 'center'}}><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>

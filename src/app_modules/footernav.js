@@ -119,12 +119,12 @@ const FooterNav = () => {
                     <span className="btn-label">Groups</span>
                 </button>
             </Link>
-               <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
+             {/*  <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
                         <span className="btn-label">AI Powered Quiz</span>
                     </button>
-                </Link>
+                </Link>*/}
                    {/* New Document Locker Link */}
                    <Link to='/document-locker' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
