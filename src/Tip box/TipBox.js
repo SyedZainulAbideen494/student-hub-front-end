@@ -20,7 +20,8 @@ const TipBox = () => {
     quickTask: [
       "Got 15 minutes to spare? Quick, revise a topic or organize your notes. It’s either that or scroll through TikTok.",
       "Short break? Use it wisely: review a topic or tackle a small task, or just... stare into the void. Your choice!",
-      "Short on time? Organize your notes in a few clicks. Or take a nap—your call. But organizing *might* help you pass that exam."
+      "Short on time? Organize your notes in a few clicks. Or take a nap—your call. But organizing *might* help you pass that exam.",
+      "As a 17-year-old CEO, my biggest task today is... getting through my own to-do list. What’s yours?"
     ],
     interactiveTip: [
       "Pro Tip: Don’t want to write notes? Let the AI Assistant do the heavy lifting while you sip your coffee. ☕️",
@@ -43,8 +44,10 @@ const TipBox = () => {
       "Joke Time! What did the AI say to the student? ‘I’m here for the homework, but I’m pretty good at pop quizzes too!’ 🤖",
       "AI Assistant Advice: It’s okay to take a break! But don’t take too many, or you might end up binge-watching shows instead of studying.",
       "Did you know? I can even chat with you about your favorite topics. Just give me a prompt, and I’ll go on and on like a pro!",
-      "Tip: Need to clear your head? I can help you organize your thoughts, or we can talk about how cute your pet is. Your call! 🐶"
-    ],    
+      "Tip: Need to clear your head? I can help you organize your thoughts, or we can talk about how cute your pet is. Your call! 🐶",
+   "Tip from a 17-year-old founder: I can’t promise I have all the answers, but I’m definitely Googling them for you. 😉",
+    "I may be 17, but I definitely know how to organize your notes better than your school planner."
+  ],    
     featureDiscovery: [
       "New Feature Alert: Keep your documents safe in our Document Locker. Because sometimes, your notes are more valuable than your phone.",
       "Pomodoro timer: Work for 25 minutes, then break for 5. It's like a mini vacation every half-hour! 🌴",
@@ -57,7 +60,8 @@ const TipBox = () => {
       "Stressed about exams? Try using the AI Assistant to generate notes. It’s like a cheat code, but for real life.",
       "Forgot about that assignment? We got you. Set a reminder with the Edusify Planner. Your future self will thank you—probably with pizza.",
       "Your brain called, and it said it needs a break. Use the Pomodoro timer to work hard, then reward yourself with 5 minutes of doing absolutely nothing.",
-      "New feature alert: Document Locker. Because you’re not the only one who needs security. Keep those notes safe!"
+      "New feature alert: Document Locker. Because you’re not the only one who needs security. Keep those notes safe!",
+      "You know you’re a 17-year-old CEO when your to-do list has both ‘study for exams’ and ‘send business email’ in the same hour."
     ]
   };
 
