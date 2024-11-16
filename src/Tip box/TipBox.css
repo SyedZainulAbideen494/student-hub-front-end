@@ -72,7 +72,7 @@
 }
 
 /* Button styling */
-.got-it__btn__tip__box, .action-btn__tip__box {
+.got-it__btn__tip__box {
   background: none;
   color: #000; /* Black text on transparent background */
   font-size: 16px;
@@ -90,7 +90,16 @@
 .action-btn__tip__box  {
   background-color: #000; /* Black background on hover */
   color: #fff; /* White text on hover for contrast */
-  transform: translateY(-3px); /* Slight elevation effect */
+  font-size: 16px;
+  border: 2px solid #000; /* Thin black border for minimalist buttons */
+  padding: 12px 25px;
+  border-radius: 30px; /* More rounded for modern look */
+  margin-top: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 /* Hover effect for got it button */
@@ -104,18 +113,6 @@
   transform: translateY(-3px);
 }
 
-/* Action button with dynamic text */
-.action-btn__tip__box {
-  background-color: #fff; /* White background */
-  border: 2px solid #000; /* Border for action button */
-  color: #000; /* Black text */
-}
-
-.action-btn__tip__box:hover {
-  background-color: #000; /* Black background on hover */
-  color: #fff; /* White text */
-  transform: translateY(-3px);
-}
 
 
 
