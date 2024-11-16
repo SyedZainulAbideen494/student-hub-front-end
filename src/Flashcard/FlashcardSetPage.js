@@ -497,7 +497,7 @@ if (loading) {
         </div>
     
         <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
-        <button
+    {/*    <button
   className="flashcard__set__page__modal-generate btn__set__page__buttons"
   onClick={generateFlashcards}
   disabled={isGenerating}
@@ -518,7 +518,7 @@ if (loading) {
       {isGenerating ? 'Generating...' : 'Generate using AI'}
     </span>
   </div>
-</button>
+</button>*/}
 
     
           {/* Manual Flashcard Creation Form */}
