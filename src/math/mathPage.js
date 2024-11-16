@@ -192,7 +192,6 @@ const MathSolver = ({ handleVoiceCommand }) => {
       handleSendMessage(); // Trigger the message send when pressing Enter
     }
   };
-
   
   useEffect(() => {
     // Clear old chat history key upon login
@@ -413,8 +412,7 @@ const MathPage = () => {
         Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
       </div>
       </div>
-      <p>Google's Gemini is not working, Come back later when Gemini is fixed! sorry for the inconvience </p>
-      {/*<MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />*/}
+      <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
       <div>
         <div class="button-container__feedback__btn__planner__page">
     <button onClick={toggleFeedbackForm} style={{
