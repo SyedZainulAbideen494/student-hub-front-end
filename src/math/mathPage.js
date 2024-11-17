@@ -156,6 +156,9 @@ const MathSolver = ({ handleVoiceCommand }) => {
     }
   };
 
+  const clickChatHistory = () => {
+    navigate('/ai/chat/history')
+  }
 
 
   const defaultPage = (
@@ -240,6 +243,14 @@ const MathSolver = ({ handleVoiceCommand }) => {
   return (
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
+           <div className="math-page-header">
+        <button className="back-btn" onClick={() => navigate('/')}>
+          <FaArrowLeft />
+        </button>
+        <div className="powered-by-gemini">
+        Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
+      </div>
+      </div>
            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
   <button
     onClick={handleClearHistory}
@@ -399,36 +410,12 @@ const MathPage = () => {
     }
   };
 
-  const clickChatHistory = () => {
-    navigate('/ai/chat/history')
-  }
 
   return (
     <div className="math-page">
-      <div className="math-page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>
-          <FaArrowLeft />
-        </button>
-        <div className="powered-by-gemini">
-        Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
-      </div>
-      </div>
+     
       <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
-      <div>
-        <div class="button-container__feedback__btn__planner__page">
-    <button onClick={toggleFeedbackForm} style={{
-        backgroundColor: 'transparent',
-        color: '#48cae4',
-        border: 'none',
-        cursor: 'pointer',
-        padding: '10px',
-      }} >
-        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
-    </button>
-</div>
 
-            {showFeedbackForm && <FeedbackForm />}
-</div>
     </div>
   );
 };
