@@ -3,7 +3,7 @@ import axios from 'axios';
 import './mathPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import MathLoader from './mathLoader';
-import { FaMicrophone, FaPaperPlane, FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import { FaMicrophone, FaPaperPlane, FaArrowRight, FaArrowLeft, FaCog } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import FeedbackForm from '../help/FeedbackForm';
 import { TypeAnimation } from 'react-type-animation';
@@ -52,6 +52,11 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [feedback, setFeedback] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loadingFeedback, setLoadingFeedback] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+
+  const toggleSettingsModal = () => {
+    setIsSettingsModalOpen(!isSettingsModalOpen);
+  };
 
   useEffect(() => {
       // Check local storage for tutorial completion status
@@ -245,37 +250,29 @@ const MathSolver = ({ handleVoiceCommand }) => {
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
            <div className="math-page-header">
-        <button className="back-btn" onClick={() => navigate('/')}>
-          <FaArrowLeft />
-        </button>
-        <div className="powered-by-gemini">
-        Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
-      </div>
-      </div>
-           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0px' }}>
-  <button
-    onClick={handleClearHistory}
-    style={{
-      backgroundColor: '#ffe6e6',       // even softer pink background
-      color: '#333',                    // dark text color for contrast
-      border: '1px solid #ffd6d6',      // very light pink border for a softer effect
-      padding: '4px 8px',               // smaller padding
-      borderRadius: '8px',              // slightly rounded corners
-      cursor: 'pointer',                // pointer cursor on hover
-      fontSize: '12px',                 // smaller font size
-      outline: 'none',                  // no outline
-      boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)', // softer, lighter shadow
-      transition: 'background-color 0.2s ease'      // smooth transition on hover
-    }}
-    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#fff2f2'} // very light hover color
-    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ffe6e6'} // reset color on mouse leave
-  >
-    Clear Previous Messages
+  <button className="back-btn" onClick={() => navigate('/')}>
+    <FaArrowLeft />
   </button>
+
+  <div className="powered-by-gemini">
+    Powered by <span className="gemini-logo">Gemini</span>
+  </div>
+
+  <button className={`settings-btn ${isSettingsModalOpen ? 'active' : ''}`} onClick={toggleSettingsModal}>
+    <FaCog />
+  </button>
+
+  {isSettingsModalOpen && (
+    <div className="settings-modal">
+      <button className="modal-btn" onClick={handleClearHistory}>
+        Clear Messages
+      </button>
+      <button className="modal-btn" onClick={clickChatHistory}>
+        Chat History
+      </button>
+    </div>
+  )}
 </div>
-
-
-
 
       <div className="chat-ui">
       {showFeedbackModal && (

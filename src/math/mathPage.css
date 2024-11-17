@@ -10,24 +10,103 @@
 
 /* Math Page Header */
 .math-page-header {
-    display: flex;
-    align-items: center;
-    font-size: 12px; /* Increased font size for better visibility */
-    margin-bottom: 5px;
-    width: 100%;
-    justify-content: center; /* Center the heading */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 12px;
+  background-color: #fff;
+  position: relative; /* Ensures the modal aligns properly */
 }
 
 .back-btn {
-    background: transparent;
-    border: none;
-    color: #7161ef; /* Blue color for the back button */
-    font-size: 12px;
-    cursor: pointer;
-    align-items: end;
-    transition: color 0.3s, transform 0.2s;
-    margin-right: 15px; /* Space between button and heading */
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #007aff;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
+
+.back-btn:hover {
+  color: #005bb5;
+}
+
+/* Powered by Gemini */
+.powered-by-gemini {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  flex-grow: 1;
+  justify-content: center; /* Centers the text */
+}
+
+.gemini-logo {
+  font-weight: bold;
+  color: #007aff;
+}
+
+/* Settings Button */
+.settings-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #007aff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 8px;
+}
+
+.settings-btn:hover,
+.settings-btn.active {
+  color: #005bb5;
+}
+
+.settings-btn.active {
+  background-color: #e6f7ff; /* Light background to indicate active state */
+  border-radius: 50%;
+  padding: 8px; /* Added padding for better click area */
+}
+
+/* Settings Modal */
+.settings-modal {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000; /* Ensure modal is on top */
+  min-width: 160px; /* Set a minimum width for consistency */
+}
+
+/* Modal Button */
+.modal-btn {
+  background-color: #ffe6e6;
+  color: #333;
+  border: 1px solid #ffd6d6;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.modal-btn:hover {
+  background-color: #fff2f2;
+}
+
+.modal-btn:active {
+  background-color: #ffcccc;
+}
+
 
 
 /* Math Solver Container */
