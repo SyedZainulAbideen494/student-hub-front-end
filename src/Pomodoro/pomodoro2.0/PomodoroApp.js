@@ -125,16 +125,19 @@ const PomodoroApp = () => {
   
     <div className="top-bar__Pomodoro__new">
   {/* Back Button */}
-  <button className="back-btn__Pomodoro__new" onClick={() => navigate('/')}>
-    <BsFillArrowLeftCircleFill />
-  </button>
+  {!isRunning && (
+          <button className="back-btn__Pomodoro__new" onClick={() => navigate('/')}>
+            <BsFillArrowLeftCircleFill />
+          </button>
+        )}
 
 
   <h3 className="session-type__Pomodoro__new">{isStudyTime ? 'Study Time' : 'Break Time'}</h3>
-  
-  <button className="settings-btn__Pomodoro__new" onClick={() => navigate('/pomodoro/settings')}>
-    <BsFillGearFill />
-  </button>
+  {!isRunning && (
+          <button className="settings-btn__Pomodoro__new" onClick={() => navigate('/pomodoro/settings')}>
+            <BsFillGearFill />
+          </button>
+        )}
 </div>
 
   
