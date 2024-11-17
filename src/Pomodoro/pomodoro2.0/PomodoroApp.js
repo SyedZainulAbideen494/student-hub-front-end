@@ -166,7 +166,7 @@ const PomodoroApp = () => {
     <div className="button__group__Pomodoro__new">
       {!isRunning ? (
         <>
-         <label className="switch__dark__Light__pomodoro">
+         <label className="switch__dark__Light__pomodoro" style={{marginTop: '4px'}}>
       <span className="sun__dark__Light__pomodoro">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g fill="#ffd43b">
