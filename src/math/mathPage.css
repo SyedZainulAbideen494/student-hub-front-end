@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     font-size: 12px; /* Increased font size for better visibility */
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     width: 100%;
     justify-content: center; /* Center the heading */
 }
@@ -117,7 +117,6 @@
     display: flex;
     align-items: center;
     padding: 12px;
-    border-top: 1px solid #e0e0e0; /* Light gray border */
     background: #ffffff;
     position: relative;
 }

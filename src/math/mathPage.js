@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import FeedbackForm from '../help/FeedbackForm';
 import { TypeAnimation } from 'react-type-animation';
 import AIPageTutorial from './AIPageTutorial';
+import Loader from './mathLoader';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -331,10 +332,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
           {loading && (
             <div className="chat-message loader-bubble">
               <div className="chat-bubble">
-                <span className="typing-dot"></span>
-                <span className="typing-dot"></span>
-                <span className="typing-dot"></span>
-                <span className="typing-dot"></span>
+                <Loader/>
               </div>
             </div>
           )}
@@ -349,7 +347,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
               className="chat-input"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Enter Question"
+              placeholder="Ask Gemini"
               onKeyDown={handleKeyDown} // Trigger the handleKeyDown function
               />
           </div>
