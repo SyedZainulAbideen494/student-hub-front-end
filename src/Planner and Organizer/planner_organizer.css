@@ -642,3 +642,67 @@
     cursor: not-allowed;
   }
   
+/* Container for the toggle switch */
+.email-reminder__planner__toggle__Reminder__btn__container {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* Reduced width for a smaller toggle */
+    height: 22px; /* Reduced height */
+    margin-left: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Hide the default checkbox input */
+  .email-reminder__planner__toggle__Reminder__btn {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  
+  /* The slider (the actual switch part) */
+  .email-reminder__planner__toggle__Reminder__btn__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s;
+    border-radius: 50px;
+  }
+  
+  /* Circle inside the slider */
+  .email-reminder__planner__toggle__Reminder__btn__slider::before {
+    content: "";
+    position: absolute;
+    height: 16px; /* Reduced circle size */
+    width: 16px; /* Reduced circle size */
+    border-radius: 50%;
+    left: 3px; /* Adjusted to fit the smaller slider */
+    bottom: 3px; /* Adjusted to fit the smaller slider */
+    background-color: white;
+    transition: 0.3s;
+  }
+  
+  /* Change the background when the checkbox is checked */
+  .email-reminder__planner__toggle__Reminder__btn:checked + .email-reminder__planner__toggle__Reminder__btn__slider {
+    background-color: #429CF7;
+  }
+  
+  /* Move the circle to the right when the checkbox is checked */
+  .email-reminder__planner__toggle__Reminder__btn:checked + .email-reminder__planner__toggle__Reminder__btn__slider::before {
+    transform: translateX(18px); /* Adjusted for smaller toggle */
+  }
+  
+  /* Optional: Add a subtle shadow for a more premium feel */
+  .email-reminder__planner__toggle__Reminder__btn__slider {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optional: Smooth transition for the toggle effect */
+  .email-reminder__planner__toggle__Reminder__btn__slider::before {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  

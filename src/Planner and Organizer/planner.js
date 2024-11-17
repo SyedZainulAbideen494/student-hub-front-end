@@ -37,6 +37,7 @@ function Planner() {
     const [mainTask, setMainTask] = useState('');
     const [days, setDays] = useState(1);
     const [taskStyle, setTaskStyle] = useState('detailed');
+    const [emailReminder, setEmailReminder] = useState(false); // State for email reminder
 
 
     useEffect(() => {
@@ -87,44 +88,40 @@ function Planner() {
 
     const handleSaveTask = async () => {
         const token = localStorage.getItem('token');
-        
         const taskData = {
             title,
             description,
             due_date: dueDate,
             priority,
-            token
+            email_reminder: emailReminder, // Pass the email_reminder value
+            token,
         };
-    
+
         try {
             if (editingTask) {
                 // Update existing task
                 await axios.post(API_ROUTES.editTask, {
                     id: editingTask.id,
-                    ...taskData
+                    ...taskData,
                 });
-    
+
                 setTasks(tasks.map(task => task.id === editingTask.id ? { ...task, ...taskData } : task));
-                setSuccessMessage('Task updated successfully!');
+                showModal('Task updated successfully!');
             } else {
                 // Add new task
                 const response = await axios.post(API_ROUTES.addTask, taskData);
                 setTasks([...tasks, { id: response.data.id, ...taskData }]);
-                showModal('Task Added successfully!');
+                showModal('Task added successfully!');
             }
-            
-            // Reset form and refresh task list
+
             resetForm();
-            setTimeout(() => {
-                setSuccessMessage('task Added!'); // Hide message after 3 seconds
-            }, 3000);
             fetchTasks(); // Refresh the task list
         } catch (error) {
             console.error('There was an error with the task operation!', error);
-        } finally {
-            setLoading(false); // Stop loading
         }
     };
+
+
     // Handle task deletion
     const handleDeleteTask = (id) => {
         const token = localStorage.getItem('token');
@@ -186,6 +183,7 @@ function Planner() {
         setTitle('');
         setDescription('');
         setDueDate('');
+        setEmailReminder(false);
         setPriority('Normal');
         setEditingTask(null);
     };
@@ -367,6 +365,23 @@ function Planner() {
                         <option value="High">High</option>
                     </select>
                 </div>
+                <div className="form-group">
+      <label htmlFor="email-reminder__planner__toggle__Reminder__btn" style={{ fontSize: '16px', color: '#333' }}>
+        Email Reminder:
+      </label>
+
+      {/* Custom Toggle Switch */}
+      <div className="email-reminder__planner__toggle__Reminder__btn__container">
+        <input
+          id="email-reminder__planner__toggle__Reminder__btn"
+          type="checkbox"
+          checked={emailReminder}
+          onChange={(e) => setEmailReminder(e.target.checked)} // Toggle state
+          className="email-reminder__planner__toggle__Reminder__btn"
+        />
+        <span className="email-reminder__planner__toggle__Reminder__btn__slider"></span>
+      </div>
+    </div>
                 <button onClick={handleSaveTask}>
                     {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
                 </button>
