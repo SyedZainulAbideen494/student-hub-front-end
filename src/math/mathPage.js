@@ -316,7 +316,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
           </div>
         </div>
       )}
-        <div className="chat-messages">
+        <div className="chat-messages" style={{marginBottom: '60px'}}>
           {!conversationStarted ? (
             defaultPage
           ) : (
@@ -367,7 +367,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
   </div>
 
   {message.trim() ? (
-    <button className="chat-send-btn__ai__loader__light" onClick={handleSendMessage}>
+    <button className="chat-send-btn__ai__loader__light" onClick={handleSendMessage}  disabled={loading}>
       <svg viewBox="0 0 664 663" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"

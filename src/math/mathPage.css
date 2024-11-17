@@ -243,6 +243,11 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.chat-send-btn__ai__loader__light:disabled {
+  cursor: not-allowed;
+  opacity: 0.6; /* Dim the button for visual feedback */
+}
+
 
 .chat-send-btn__ai__loader__light svg path {
   transition: all 0.3s ease-in-out;
