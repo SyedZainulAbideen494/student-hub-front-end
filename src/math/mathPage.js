@@ -271,7 +271,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
   </button>
 
   <div className="powered-by-gemini">
-    Powered by <span className="gemini-logo">Gemini</span>
+    Powered by,<span className="gemini-logo">Gemini</span>
   </div>
 
   <button className={`settings-btn ${isSettingsModalOpen ? 'active' : ''}`} onClick={toggleSettingsModal}>

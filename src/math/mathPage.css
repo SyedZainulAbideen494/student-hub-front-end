@@ -22,14 +22,11 @@
   background: none;
   border: none;
   font-size: 14px;
-  color: #007aff;
+  color:  linear-gradient(45deg, #9b59b6, #84cdfa, #5ad1cd);
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.back-btn:hover {
-  color: #005bb5;
-}
 
 /* Powered by Gemini */
 .powered-by-gemini {
@@ -42,31 +39,31 @@
 }
 
 .gemini-logo {
+  background-image: linear-gradient(45deg, #9b59b6, #84cdfa, #5ad1cd);
+  background-clip: text;
+  color: transparent;
   font-weight: bold;
-  color: #007aff;
 }
 
 /* Settings Button */
 .settings-btn {
   background: none;
   border: none;
+  color: #84cdfa;
   font-size: 18px;
-  color: #007aff;
+  background: linear-gradient(45deg, #9b59b6, #84cdfa, #5ad1cd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
   padding: 8px;
 }
 
-.settings-btn:hover,
-.settings-btn.active {
-  color: #005bb5;
+.settings-btn:hover {
+  transform: scale(1.1); /* Optional: Adds a subtle zoom effect on hover */
 }
 
-.settings-btn.active {
-  background-color: #e6f7ff; /* Light background to indicate active state */
-  border-radius: 50%;
-  padding: 8px; /* Added padding for better click area */
-}
+
 
 /* Settings Modal */
 .settings-modal {
@@ -87,9 +84,9 @@
 
 /* Modal Button */
 .modal-btn {
-  background-color: #ffe6e6;
-  color: #333;
-  border: 1px solid #ffd6d6;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
   padding: 6px 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -97,14 +94,6 @@
   font-weight: 500;
   outline: none;
   transition: background-color 0.3s ease;
-}
-
-.modal-btn:hover {
-  background-color: #fff2f2;
-}
-
-.modal-btn:active {
-  background-color: #ffcccc;
 }
 
 
@@ -242,7 +231,7 @@
 .chat-send-btn__ai__loader__light {
   width: 50px;
   height: 50px;
-  background-color: #3682f4;
+  background:  linear-gradient(45deg, #9b59b6, #84cdfa, #5ad1cd);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -254,14 +243,6 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.chat-send-btn__ai__loader__light:hover {
-  background-color: #246ac9;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.chat-send-btn__ai__loader__light.active {
-  background-color: #000;
-}
 
 .chat-send-btn__ai__loader__light svg path {
   transition: all 0.3s ease-in-out;
