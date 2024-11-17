@@ -252,7 +252,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
         Powered by <span className="gemini-logo">Gemini </span><span className='chatHistory__btn__ai' onClick={clickChatHistory}>Chat History</span>
       </div>
       </div>
-           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
+           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0px' }}>
   <button
     onClick={handleClearHistory}
     style={{
@@ -340,28 +340,42 @@ const MathSolver = ({ handleVoiceCommand }) => {
         </div>
 
         {/* Chat input */}
-        <div className="chat-input-container">
-          <div className="input-group">
-            <input
-              type="text"
-              className="chat-input"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ask Gemini"
-              onKeyDown={handleKeyDown} // Trigger the handleKeyDown function
-              />
-          </div>
-          {message.trim() ? (
-            <button className="chat-send-btn" onClick={handleSendMessage}>
-              <FaArrowRight />
-            </button>
-          ) : (
-            <button className="chat-send-btn" onClick={listening ? stopListening : startListening}>
-              <FaMicrophone className={listening ? 'listening' : ''} />
-            </button>
-          )}
-          
-        </div>
+        <div className="messageBox__ai__loader__light">
+  <div className="input-group__ai__loader__light">
+    <input
+      id="messageInput__ai__loader__light"
+      type="text"
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+      placeholder="Ask Gemini"
+      onKeyDown={handleKeyDown} // Trigger the handleKeyDown function
+      required
+    />
+  </div>
+
+  {message.trim() ? (
+    <button className="chat-send-btn__ai__loader__light" onClick={handleSendMessage}>
+      <svg viewBox="0 0 664 663" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+          fill="none"
+        ></path>
+        <path
+          d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+          stroke="#333333" // Darker stroke for SVG icon
+          strokeWidth="33.67"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    </button>
+  ) : (
+    <button className="chat-send-btn__ai__loader__light" onClick={listening ? stopListening : startListening}>
+      <FaMicrophone style={{color: 'white'}}/>
+    </button>
+  )}
+</div>
+
       </div>
     
     </div>
