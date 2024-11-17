@@ -170,19 +170,19 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const defaultPage = (
     <div className="container__default__ai__PageWrapper">
       <div className="default-message chat-bubble">
-        <TypeAnimation
+      <TypeAnimation
           sequence={[
-            'Hi there!', // Text to type out
-            1000,        // Pause for 1 second
-            'How can I assist you today?', // Next text to type out
-            1000         // Pause for 1 second at the end
+            'Hi there!',
+            1000, // Pause for 1 second
+            'How can I assist you today?',
+            1000, // Pause for 1 second at the end
           ]}
           wrapper="span"
           cursor={true}
-          repeat={0}   // Set repeat to 0 so it doesn't loop
-          speed={50}   // Adjust typing speed (in ms per character)
+          repeat={0} // Set repeat to 0 so it doesn't loop
+          speed={50} // Adjust typing speed
           deletionSpeed={50} // Adjust deletion speed if needed
-          style={{ display: 'inline-block' }}
+          style={{ display: 'inline-block', fontSize: '17px', color: '#444' }}
         />
       </div>
 

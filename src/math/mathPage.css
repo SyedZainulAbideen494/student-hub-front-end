@@ -295,66 +295,6 @@
 }
 
 
-.container__math__solver__animated {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    height: 96px;
-    width: 96px;
-    animation: rotate_3922 1.2s linear infinite;
-    background-color: #9b59b6;
-    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
-  }
-  
-  .container__math__solver__animated span {
-    position: absolute;
-    border-radius: 50%;
-    height: 100%;
-    width: 100%;
-    background-color: #9b59b6;
-    background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
-  }
-  
-  .container__math__solver__animated span:nth-of-type(1) {
-    filter: blur(5px);
-  }
-  
-  .container__math__solver__animated span:nth-of-type(2) {
-    filter: blur(10px);
-  }
-  
-  .container__math__solver__animated span:nth-of-type(3) {
-    filter: blur(25px);
-  }
-  
-  .container__math__solver__animated span:nth-of-type(4) {
-    filter: blur(50px);
-  }
-  
-  .container__math__solver__animated::after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background-color: #fff;
-    border: solid 5px #ffffff;
-    border-radius: 50%;
-  }
-  
-  @keyframes rotate_3922 {
-    from {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-  
-    to {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
-  
-
   .chat-message {
     opacity: 0;
     animation: fadeIn 0.3s forwards;
@@ -435,10 +375,6 @@
 }
 
 
-
-
-
-
 /* Add this to your mathPage.css file */
 
 /* Typing Loader Container */
@@ -492,26 +428,6 @@
     }
   }
 
-  /* Styling for the Powered by Gemini text */
-.powered-by-gemini {
-    text-align: center;
-    font-size: 14px;
-    color: #888; /* Soft gray color */
-    margin-top: 8px;
-    margin-bottom: 10px;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .gemini-logo {
-    font-weight: bold;
-    color: #7161ef; /* Accent color */
-  }
-  
-  .powered-by-gemini:hover .gemini-logo {
-    color: #a38dff; /* Change color on hover */
-    text-decoration: underline;
-  }
-  
 
   
 
@@ -563,10 +479,12 @@
     color: #fff;
   }
 
-
 /* Wrapper to contain the message and animation */
 .container__default__ai__PageWrapper {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -582,9 +500,9 @@
 /* Existing animation styles */
 .container__default__ai__Page {
   position: relative;
+  height: 110px;
   border-radius: 50%;
-  height: 96px;
-  width: 96px;
+  width: 110px;
   animation: rotate_3922 1.2s linear infinite;
   background-color: #9b59b6;
   background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
@@ -636,8 +554,6 @@
     transform: rotate(360deg);
   }
 }
-
-
 
 
 
