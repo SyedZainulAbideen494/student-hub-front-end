@@ -126,12 +126,16 @@ const SessionStatsPage = () => {
 
   const filteredSessions = sessions.filter((session) => {
     const sessionDate = new Date(session.start_time);
+    const sessionHasEndTime = session.end_time; // Check if end_time exists
     return (
+      sessionHasEndTime && // Only include sessions that have an end_time
       sessionDate.getDate() === selectedDate.getDate() &&
       sessionDate.getMonth() === selectedDate.getMonth() &&
       sessionDate.getFullYear() === selectedDate.getFullYear()
     );
   });
+
+  
 
   return (
     <div className="session-stats__pomodoro__stats__page">
