@@ -90,6 +90,9 @@ import WhatsNew from "./what's New/whatsnew";
 import AdminPage from "./what's New/AdminPage";
 import MonthlyStats from "./weekly stats/MonthlyStats";
 import Streaks from "./Steak/streak";
+import PomodoroApp from "./Pomodoro/pomodoro2.0/PomodoroApp";
+import SessionStatsPage from "./Pomodoro/pomodoro2.0/SessionStatsPage";
+import SettingsPagePomodoro from "./Pomodoro/pomodoro2.0/SettingsPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -107,7 +110,7 @@ const router = createBrowserRouter([
   {path: '/terms-and-conditions', element: <TermsAndConditions/>},
   {path: '/privacy-policy', element: <PrivacyPolicy/>},
   {path: '/more-info', element: <MoreInfo/>},
-  {path: '/pomodoro', element: <Pomodoro/>},
+  // {path: '/pomodoro', element: <Pomodoro/>},
   {path: '/music', element: <SpotifyPlayer/>},
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},
@@ -167,6 +170,9 @@ const router = createBrowserRouter([
   {path: '/whats-new-admin', element: <AdminPage/>},
   {path: '/monthly-stats', element: <MonthlyStats/>},
   {path: '/streaks', element: <Streaks/>},
+  {path: '/pomodoro', element: <PomodoroApp/>},
+  {path:'/pomodoro/stats', element: <SessionStatsPage/>},
+  {path: '/pomodoro/settings', element: <SettingsPagePomodoro/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

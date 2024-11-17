@@ -90,8 +90,6 @@ export const API_ROUTES = {
   updateAvatar: `${API_URL}/api/update-avatar`,
   removeAvatar: `${API_URL}/api/remove-avatar`,
   inviteFriendToEdusify: `${API_URL}/invite/friend`,
-  apiStartPomodoro: `${API_URL}/api/start/pomodoro`,
-  apiStopPomodoro: `${API_URL}/api/stop/pomodoro`,
   leaderboard: `${API_URL}/api/leaderboard`,
   getFlashcards: `${API_URL}/api/flashcard-sets`,
   flashcardSetGetData: `${API_URL}/api/flashcards/set`,
@@ -130,5 +128,8 @@ export const API_ROUTES = {
   addWhatsNew: `${API_URL}/api/updates/add`,
   trackLogins: `${API_URL}/login-track`,
   getMonthlystats: `${API_URL}/api/stats/monthly`,
-  getStreaks: `${API_URL}/api/streak`
+  getStreaks: `${API_URL}/api/streak`,
+  apiStartPomodoro: `${API_URL}/start-session/pomodoro`,
+  apiStopPomodoro: `${API_URL}/end-session/pomodoro`,
+  pomodoroStatsFetch: `${API_URL}/session-stats/pomodoro`
 }
