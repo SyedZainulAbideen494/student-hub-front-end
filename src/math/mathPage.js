@@ -53,7 +53,33 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [successMessage, setSuccessMessage] = useState('');
   const [loadingFeedback, setLoadingFeedback] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [profile, setProfile] = useState(null);
+  const [error, setError] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(true);
 
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setError('No token found');
+          setLoadingUser(false);
+          return;
+        }
+
+        const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
+        setProfile(data);
+      } catch (err) {
+        setError('Error fetching profile data');
+        console.error(err);
+      } finally {
+        setLoadingUser(false);
+      }
+    };
+
+    fetchProfileData();
+  }, []);
+  
   const toggleSettingsModal = () => {
     setIsSettingsModalOpen(!isSettingsModalOpen);
   };
@@ -169,31 +195,21 @@ const MathSolver = ({ handleVoiceCommand }) => {
 
   const defaultPage = (
     <div className="container__default__ai__PageWrapper">
-      <div className="default-message chat-bubble">
-      <TypeAnimation
-          sequence={[
-            'Hi there!',
-            1000, // Pause for 1 second
-            'How can I assist you today?',
-            1000, // Pause for 1 second at the end
-          ]}
-          wrapper="span"
-          cursor={true}
-          repeat={0} // Set repeat to 0 so it doesn't loop
-          speed={50} // Adjust typing speed
-          deletionSpeed={50} // Adjust deletion speed if needed
-          style={{ display: 'inline-block', fontSize: '17px', color: '#444' }}
-        />
-      </div>
-
-      <div className="container__default__ai__Page">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+      {/* Gradient Greeting */}
+      <div className="greeting-message">
+        <h1>
+          <span className="gradient-text">
+            {profile ? `Hello,` : 'Hello,'}
+          </span><br/>
+          <span className='gradient-text'>
+          {profile ? `${profile.unique_id}` : 'User'}
+          </span>
+          <br />
+        </h1>
       </div>
     </div>
   );
+  
   
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) { // Avoid submitting on Shift + Enter for multiline input

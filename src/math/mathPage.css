@@ -479,7 +479,9 @@
     color: #fff;
   }
 
-/* Wrapper to contain the message and animation */
+
+  
+  /* Wrapper to contain the message and animation */
 .container__default__ai__PageWrapper {
   position: absolute;
   top: 50%;
@@ -491,6 +493,19 @@
   justify-content: center;
 }
 
+/* Gradient text style for the greeting message */
+.greeting-message h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.gradient-text {
+  background-image: linear-gradient(45deg, #9b59b6, #84cdfa, #5ad1cd);
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
 /* Default message styling */
 .default-message {
   color: #000000;
@@ -500,7 +515,7 @@
 /* Existing animation styles */
 .container__default__ai__Page {
   position: relative;
-  height: 110px;
+  height: 60vh;
   border-radius: 50%;
   width: 110px;
   animation: rotate_3922 1.2s linear infinite;
@@ -554,6 +569,7 @@
     transform: rotate(360deg);
   }
 }
+
 
 
 
