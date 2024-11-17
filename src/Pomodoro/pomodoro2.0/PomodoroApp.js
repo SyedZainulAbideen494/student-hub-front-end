@@ -125,7 +125,7 @@ const PomodoroApp = () => {
   
     <div className="top-bar__Pomodoro__new">
   {/* Back Button */}
-  <button className="back-btn__Pomodoro__new" onClick={() => navigate(-1)}>
+  <button className="back-btn__Pomodoro__new" onClick={() => navigate('/')}>
     <BsFillArrowLeftCircleFill />
   </button>
 

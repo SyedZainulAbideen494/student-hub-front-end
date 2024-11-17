@@ -198,19 +198,20 @@ const generateTip = () => {
 
   return (
     <div className="tip-box">
-      <div className="tip-content">
-        <button className="close-btn" onClick={handleClose}>X</button>
-        <div className="tip-message">
-          {tipContent}
-        </div>
-        <button className="got-it__btn__tip__box" onClick={handleGotIt}>
-          Got it
-        </button>
-        <button className="action-btn__tip__box" onClick={handleButtonClick}>
-          Explore
-        </button>
+    <div className="tip-content">
+      <button className="close-btn" onClick={handleClose}>X</button>
+      <div className="tip-message">
+        {tipContent}
       </div>
+      <button className="got-it__btn__tip__box" onClick={handleGotIt}>
+        Got it
+      </button>
+      <button className="action-btn__tip__box" onClick={handleButtonClick}>
+        Explore
+      </button>
     </div>
+  </div>
+  
   );
 };
 
