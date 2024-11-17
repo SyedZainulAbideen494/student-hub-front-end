@@ -23,7 +23,7 @@ const PomodoroApp = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
   const [timerLength, setTimerLength] = useState(parseInt(localStorage.getItem('timerLength')) || 1500); // Load saved timer length for study
   const [breakLength, setBreakLength] = useState(parseInt(localStorage.getItem('breakLength')) || 300); // Load saved break length
   const [sound] = useState(new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22')); // Bell sound
