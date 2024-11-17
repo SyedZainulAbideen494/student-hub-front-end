@@ -366,22 +366,28 @@ function Planner() {
                     </select>
                 </div>
                 <div className="form-group">
-      <label htmlFor="email-reminder__planner__toggle__Reminder__btn" style={{ fontSize: '16px', color: '#333' }}>
-        Email Reminder:
-      </label>
+  <label
+    style={{ fontSize: '16px', color: '#333' }}
+  >
+    Email Reminder:
+  </label>
 
-      {/* Custom Toggle Switch */}
-      <div className="email-reminder__planner__toggle__Reminder__btn__container">
-        <input
-          id="email-reminder__planner__toggle__Reminder__btn"
-          type="checkbox"
-          checked={emailReminder}
-          onChange={(e) => setEmailReminder(e.target.checked)} // Toggle state
-          className="email-reminder__planner__toggle__Reminder__btn"
-        />
-        <span className="email-reminder__planner__toggle__Reminder__btn__slider"></span>
-      </div>
-    </div>
+  {/* Custom Toggle Switch */}
+  <div
+    className="email-reminder__planner__toggle__Reminder__btn__container"
+    onClick={() => setEmailReminder(!emailReminder)} // Toggle on container click
+  >
+    <input
+      id="email-reminder__planner__toggle__Reminder__btn"
+      type="checkbox"
+      checked={emailReminder}
+      onChange={(e) => setEmailReminder(e.target.checked)} // Toggle state
+      className="email-reminder__planner__toggle__Reminder__btn"
+    />
+    <span className="email-reminder__planner__toggle__Reminder__btn__slider"></span>
+  </div>
+</div>
+
                 <button onClick={handleSaveTask}>
                     {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
                 </button>
