@@ -96,10 +96,10 @@
 
 /* Action button styling */
 .action-btn__tip__box {
-  background-color: #957fef; /* Green color for action */
+  background-color: #000000; /* Green color for action */
   color: #fff;
   font-size: 16px;
-  border: 2px solid #957fef;
+  border: 2px solid #000000;
   padding: 12px 25px;
   border-radius: 30px;
   margin-top: 12px;
