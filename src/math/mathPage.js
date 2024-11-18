@@ -462,7 +462,7 @@ const MathPage = () => {
   return (
     <div className="math-page">
      
-      {}<MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
+      <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
 
     </div>
   );
