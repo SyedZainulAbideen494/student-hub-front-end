@@ -221,9 +221,20 @@ const MathSolver = ({ handleVoiceCommand }) => {
   useEffect(() => {
     // Clear old chat history key upon login
     const handleLogin = () => {
-      localStorage.removeItem('chatHistory'); // Remove old key
-      localStorage.removeItem('ai_chat_history')
+      // Remove old keys
+      localStorage.removeItem('chatHistory'); 
+      localStorage.removeItem('ai_chat_history');
+    
+      // Check if 'new_ai_chat_history' exists and if it hasn't been cleared already
+      const isCleared = localStorage.getItem('new_ai_chat_history_cleared');
+      
+      if (!isCleared) {
+        // If not cleared, remove 'new_ai_chat_history' and set flag in localStorage
+        localStorage.removeItem('new_ai_chat_history');
+        localStorage.setItem('new_ai_chat_history_cleared', 'true'); // Set flag indicating it's cleared
+      }
     };
+    
   
     // Call handleLogin when user logs in (adjust this to your app's login event logic)
     handleLogin();
@@ -262,26 +273,6 @@ const MathSolver = ({ handleVoiceCommand }) => {
     setConversationStarted(false);
   };
 
-  useEffect(() => {
-    // Retrieve chat history from localStorage
-    const storedChatHistory = JSON.parse(localStorage.getItem('new_ai_chat_history')) || [];
-
-    // Function to validate the structure of each chat entry
-    const isValidChatEntry = (entry) => {
-      // Check if entry has the correct structure (role, parts, and parts[0].text)
-      return entry && entry.role && Array.isArray(entry.parts) && entry.parts.length > 0 && entry.parts[0].text;
-    };
-
-    // Filter out invalid entries
-    const validChatHistory = storedChatHistory.filter(isValidChatEntry);
-
-    // Log the original and filtered chat history for debugging
-    console.log("Original Chat History:", storedChatHistory);
-    console.log("Filtered Chat History:", validChatHistory);
-
-    // If there are invalid entries, they will be removed, and only valid ones are kept.
-    localStorage.setItem('new_ai_chat_history', JSON.stringify(validChatHistory));
-  }, []);  // Empty dependency array ensures this effect runs only once when the component mounts.
 
   
 
