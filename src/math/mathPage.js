@@ -222,40 +222,32 @@ const MathSolver = ({ handleVoiceCommand }) => {
     // Clear old chat history key upon login
     const handleLogin = () => {
       // Remove old keys
-      localStorage.removeItem('chatHistory'); 
+      localStorage.removeItem('chatHistory');
       localStorage.removeItem('ai_chat_history');
     
       // Get the current chat history from localStorage
       const storedChatHistory = JSON.parse(localStorage.getItem('new_ai_chat_history')) || [];
     
-      // Check if the error message exists in the history
-      const errorMessage = `
-        Oops! Something went wrong. Please try again later Reasons - too long text or repetitive message, please try rephrasing your question.
-        <button class="report-problem-btn" onClick="alert('Report Problem Clicked')">
-          Report Problem
-        </button>
-      `;
-    
-      const containsErrorMessage = storedChatHistory.some(item => 
-        item.role === 'model' && item.parts.some(part => part.text.includes(errorMessage))
+      // Check if the history contains the model role with nested objects in 'parts'
+      const containsComplexParts = storedChatHistory.some(item =>
+        item.role === 'model' && item.parts.some(part => typeof part.text === 'object')
       );
     
-      // If the error message is found, clear the history
-      if (containsErrorMessage) {
-        localStorage.removeItem('new_ai_chat_history');  // Clear the history
-        console.log("Error message found. History cleared.");
+      // If complex parts (objects) are found in the 'model' role, clear the history
+      if (containsComplexParts) {
+        localStorage.removeItem('new_ai_chat_history'); // Clear the history
+        console.log("Complex model parts found. History cleared.");
       } else {
-        console.log("No error message. History cleared.");
+        console.log("No complex model parts found. History not cleared.");
       }
     
       // Optional: Check if the flag is set (it shouldn't be)
       console.log("new_ai_chat_history_cleared:", localStorage.getItem('new_ai_chat_history_cleared')); // Should be null or undefined
     };
     
-
-  
-    // Call handleLogin when user logs in (adjust this to your app's login event logic)
+    // Call the function to test
     handleLogin();
+    
   
     const completed = localStorage.getItem('AIPageTutorialComplete');
     if (completed) {
