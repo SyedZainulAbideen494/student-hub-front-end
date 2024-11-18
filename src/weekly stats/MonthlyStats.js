@@ -118,10 +118,10 @@ const MonthlyStats = () => {
                         <span className="monthly__stats-stat-label">Average Quiz Score</span>
                         <span className="monthly__stats-stat-value">{stats.averageQuizScore.toFixed(2)}</span>
                     </div>
-                    <div className="monthly__stats-stat-box">
+                   {/* <div className="monthly__stats-stat-box">
                         <span className="monthly__stats-stat-label">Pomodoro Sessions</span>
                         <span className="monthly__stats-stat-value">{stats.pomodoroSessions}</span>
-                    </div>
+                    </div>*/}
                 </div>
 
                 {/* Engagement Metrics */}
