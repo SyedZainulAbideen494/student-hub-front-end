@@ -22,7 +22,6 @@ import SubmitPage from "./quiz/submitPage";
 import CalendarPage from "./calander/calander";
 import Pomodoro from "./Pomodoro/pomodoro";
 import Website from "./website/website";
-import SpotifyPlayer from "./music/Music";
 import Callback from "./music/SpotifyRedirect";
 import Welcome from "./welcome/welcomePage";
 import NotificationComponent from "./notifications/NotificationComponent";
@@ -93,6 +92,8 @@ import Streaks from "./Steak/streak";
 import PomodoroApp from "./Pomodoro/pomodoro2.0/PomodoroApp";
 import SessionStatsPage from "./Pomodoro/pomodoro2.0/SessionStatsPage";
 import SettingsPagePomodoro from "./Pomodoro/pomodoro2.0/SettingsPage";
+import SpotifyPlayer from "./music/player2.0/SpotifyPlayer";
+import MusicPlayer from "./music/player2.0/SpotifyPlayer";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -111,7 +112,7 @@ const router = createBrowserRouter([
   {path: '/privacy-policy', element: <PrivacyPolicy/>},
   {path: '/more-info', element: <MoreInfo/>},
   // {path: '/pomodoro', element: <Pomodoro/>},
-  {path: '/music', element: <SpotifyPlayer/>},
+  {path: '/music', element: <MusicPlayer/>},
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},
   {path: '/noti', element: <NotiPage/>},

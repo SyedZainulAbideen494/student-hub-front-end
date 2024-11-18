@@ -49,6 +49,7 @@
     "react-scripts": "5.0.1",
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.30.2",
+    "react-spotify-web-playback": "^0.14.5",
     "react-spotify-web-playback-sdk": "^3.0.2",
     "react-spring": "^9.7.4",
     "react-swipeable": "^7.0.1",

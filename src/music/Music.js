@@ -4,7 +4,7 @@ import FooterNav from '../app_modules/footernav';
 import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaTrash, FaRandom, FaPlus } from 'react-icons/fa';
 import './music.css';
 
-const SpotifyPlayer = () => {
+const Music = () => {
   const [accessToken, setAccessToken] = useState(localStorage.getItem('spotifyAccessToken') || '');
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem('spotifyRefreshToken') || '');
   const [deviceId, setDeviceId] = useState(localStorage.getItem('spotifyDeviceId') || '');
@@ -409,4 +409,4 @@ const SpotifyPlayer = () => {
   );
 };
 
-export default SpotifyPlayer;
+export default Music;

@@ -261,6 +261,28 @@ const MathSolver = ({ handleVoiceCommand }) => {
     ]);
     setConversationStarted(false);
   };
+
+  useEffect(() => {
+    // Retrieve chat history from localStorage
+    const storedChatHistory = JSON.parse(localStorage.getItem('new_ai_chat_history')) || [];
+
+    // Function to validate the structure of each chat entry
+    const isValidChatEntry = (entry) => {
+      // Check if entry has the correct structure (role, parts, and parts[0].text)
+      return entry && entry.role && Array.isArray(entry.parts) && entry.parts.length > 0 && entry.parts[0].text;
+    };
+
+    // Filter out invalid entries
+    const validChatHistory = storedChatHistory.filter(isValidChatEntry);
+
+    // Log the original and filtered chat history for debugging
+    console.log("Original Chat History:", storedChatHistory);
+    console.log("Filtered Chat History:", validChatHistory);
+
+    // If there are invalid entries, they will be removed, and only valid ones are kept.
+    localStorage.setItem('new_ai_chat_history', JSON.stringify(validChatHistory));
+  }, []);  // Empty dependency array ensures this effect runs only once when the component mounts.
+
   
 
   return (
@@ -440,7 +462,7 @@ const MathPage = () => {
   return (
     <div className="math-page">
      
-      <MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
+      {}<MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
 
     </div>
   );
