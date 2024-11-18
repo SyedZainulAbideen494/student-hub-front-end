@@ -245,8 +245,6 @@ const MathSolver = ({ handleVoiceCommand }) => {
         localStorage.removeItem('new_ai_chat_history');  // Clear the history
         console.log("Error message found. History cleared.");
       } else {
-        // If error message not found, proceed as usual
-        localStorage.removeItem('new_ai_chat_history'); // Clear history if needed
         console.log("No error message. History cleared.");
       }
     
