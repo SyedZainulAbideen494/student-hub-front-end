@@ -251,6 +251,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       localStorage.setItem('new_ai_chat_history', JSON.stringify(chatHistory));
     }
   }, [chatHistory, conversationStarted]);
+
   
   const handleClearHistory = () => {
     localStorage.removeItem('new_ai_chat_history');
@@ -360,7 +361,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       type="text"
       value={message}
       onChange={(e) => setMessage(e.target.value)}
-      placeholder="Ask Gemini"
+      placeholder="Type here.."
       onKeyDown={handleKeyDown} // Trigger the handleKeyDown function
       required
     />

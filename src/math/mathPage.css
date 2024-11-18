@@ -668,3 +668,101 @@
 .chatHistory__btn__ai:hover {
   background-color: #c0e0ff; /* Even softer shade on hover */
 }
+
+
+/* Modal Overlay */
+.modal-overlay__clear__message__modal__ai__Page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 95%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 0 10px; /* Adds spacing on smaller screens */
+}
+
+/* Modal Content */
+.modal-content__clear__message__modal__ai__Page {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  max-width: 400px;
+  width: 80%; /* Adjust to fit within the screen */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Title */
+.modal-title__clear__message__modal__ai__Page {
+  font-size: 1.5rem;
+  color: #333333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Message */
+.modal-message__clear__message__modal__ai__Page {
+  font-size: 0.95rem;
+  color: #555555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Buttons Container */
+.modal-buttons__clear__message__modal__ai__Page {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Clear Button */
+.clear-btn__clear__message__modal__ai__Page {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.clear-btn__clear__message__modal__ai__Page:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Later Button */
+.later-btn__clear__message__modal__ai__Page {
+  background-color: #f0f0f0;
+  color: #333333;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.later-btn__clear__message__modal__ai__Page:hover {
+  background-color: #e6e6e6;
+  color: #000000;
+  transform: translateY(-1px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
