@@ -225,16 +225,36 @@ const MathSolver = ({ handleVoiceCommand }) => {
       localStorage.removeItem('chatHistory'); 
       localStorage.removeItem('ai_chat_history');
     
-      // Check if 'new_ai_chat_history' exists and if it hasn't been cleared already
-      const isCleared = localStorage.getItem('new_ai_chat_history_cleared');
-      
-      if (!isCleared) {
-        // If not cleared, remove 'new_ai_chat_history' and set flag in localStorage
-        localStorage.removeItem('new_ai_chat_history');
-        localStorage.setItem('new_ai_chat_history_cleared', 'true'); // Set flag indicating it's cleared
+      // Get the current chat history from localStorage
+      const storedChatHistory = JSON.parse(localStorage.getItem('new_ai_chat_history')) || [];
+    
+      // Check if the error message exists in the history
+      const errorMessage = `
+        Oops! Something went wrong. Please try again later Reasons - too long text or repetitive message, please try rephrasing your question.
+        <button class="report-problem-btn" onClick="alert('Report Problem Clicked')">
+          Report Problem
+        </button>
+      `;
+    
+      const containsErrorMessage = storedChatHistory.some(item => 
+        item.role === 'model' && item.parts.some(part => part.text.includes(errorMessage))
+      );
+    
+      // If the error message is found, clear the history
+      if (containsErrorMessage) {
+        localStorage.removeItem('new_ai_chat_history');  // Clear the history
+        console.log("Error message found. History cleared.");
+      } else {
+        // If error message not found, proceed as usual
+        localStorage.removeItem('new_ai_chat_history'); // Clear history if needed
+        console.log("No error message. History cleared.");
       }
+    
+      // Optional: Check if the flag is set (it shouldn't be)
+      console.log("new_ai_chat_history_cleared:", localStorage.getItem('new_ai_chat_history_cleared')); // Should be null or undefined
     };
     
+
   
     // Call handleLogin when user logs in (adjust this to your app's login event logic)
     handleLogin();
