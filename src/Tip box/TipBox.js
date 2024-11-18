@@ -68,27 +68,31 @@ const TipBox = () => {
   useEffect(() => {
     const lastShownTime = localStorage.getItem('lastTipShown');
     const currentTime = new Date().getTime();
-
+  
     if (!lastShownTime || currentTime - lastShownTime >= 3600000) { // 1 hour = 3600000 ms
-      setIsVisible(true);
-      generateTip();
-      localStorage.setItem('lastTipShown', currentTime);
-    }
-
-    const interval = setInterval(() => {
-      const lastShownTime = localStorage.getItem('lastTipShown');
-      const currentTime = new Date().getTime();
-
-      if (currentTime - lastShownTime >= 3600000) { // 1 hour
+      setTimeout(() => {
         setIsVisible(true);
         generateTip();
         localStorage.setItem('lastTipShown', currentTime);
+      }, 2000); // 2-second delay before showing the modal
+    }
+  
+    const interval = setInterval(() => {
+      const lastShownTime = localStorage.getItem('lastTipShown');
+      const currentTime = new Date().getTime();
+  
+      if (currentTime - lastShownTime >= 3600000) { // 1 hour
+        setTimeout(() => {
+          setIsVisible(true);
+          generateTip();
+          localStorage.setItem('lastTipShown', currentTime);
+        }, 2000); // 2-second delay before showing the modal
       }
     }, 3600000); // Check every hour
-
+  
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
-
+  
 // Advanced Fisher-Yates shuffle with multiple rounds for better randomness
 const shuffleArray = (array) => {
   let shuffledArray = [...array];
