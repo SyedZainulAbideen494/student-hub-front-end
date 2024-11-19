@@ -130,7 +130,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
           </button>
         </>
       );
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: ' Oops! Something went wrong. Please try again later.' }] }]);
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'Oops! Something went wrong. Please try again later. The issue isnt with Edusify, it appears to be an error on Google Gemini.'}] }]);
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
