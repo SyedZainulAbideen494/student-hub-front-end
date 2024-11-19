@@ -132,5 +132,5 @@ export const API_ROUTES = {
   apiStartPomodoro: `${API_URL}/start-session/pomodoro`,
   apiStopPomodoro: `${API_URL}/end-session/pomodoro`,
   pomodoroStatsFetch: `${API_URL}/session-stats/pomodoro`,
-  addUserBirthday: `${API_URL}/api/birthday'`
+  addUserBirthday: `${API_URL}/api/birthday`
 }
