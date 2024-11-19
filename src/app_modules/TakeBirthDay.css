@@ -236,3 +236,15 @@
     max-width: 100%;
   }
 }
+
+.custom-datepicker-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.custom-datepicker-button:hover {
+  border-color: #007bff;
+}

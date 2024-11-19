@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
 import './TakeBirthDay.css';
 import { API_ROUTES } from './apiRoutes';
@@ -66,6 +66,12 @@ const BirthdayModal = () => {
     checkModalConditions();
   }, []);
 
+  const CustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="custom-datepicker-button" onClick={onClick} ref={ref}>
+      {value || "Select your birthday"}
+    </button>
+  ));
+
   return (
     isOpen && (
       <div className="modal__birthDay_modal__page">
@@ -90,18 +96,18 @@ const BirthdayModal = () => {
             Enter your birthday to personalize your experience!
           </p>
           <DatePicker
-            selected={birthday}
-            onChange={(date) => setBirthday(date)}
-            dateFormat="yyyy-MM-dd"
-            maxDate={new Date()} // Prevent future dates
-            showYearDropdown
-            showMonthDropdown
-            dropdownMode="select"
-            placeholderText="Select your birthday"
-            className="input__birthday styled__datepicker"
-            calendarClassName="custom-calendar"
-            wrapperClassName="datepicker-wrapper"
-          />
+  selected={birthday}
+  onChange={(date) => setBirthday(date)}
+  dateFormat="yyyy-MM-dd"
+  maxDate={new Date()} // Prevent future dates
+  showYearDropdown
+  showMonthDropdown
+  dropdownMode="select"
+  calendarClassName="custom-calendar"
+  wrapperClassName="datepicker-wrapper"
+  customInput={<CustomInput />} // Use custom button to prevent typing
+/>
+
           <div className="button-group__birthDay_modal__page">
             <button
               onClick={handleBirthdaySubmit}
