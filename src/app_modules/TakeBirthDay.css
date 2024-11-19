@@ -136,3 +136,103 @@
     box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
   }
   
+  /* Wrapper styling */
+.datepicker-wrapper {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Input styling */
+.input__birthday.styled__datepicker {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input__birthday.styled__datepicker:focus {
+  outline: none;
+  border-color: #000;
+  background: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Calendar styling */
+.custom-calendar {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Calendar header styling */
+.custom-calendar .react-datepicker__header {
+  background: #000; /* Black header */
+  color: white; /* White text for contrast */
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Day buttons styling */
+.custom-calendar .react-datepicker__day {
+  font-size: 14px;
+  color: #333; /* Dark text for normal days */
+}
+
+.custom-calendar .react-datepicker__day:hover {
+  background: #000; /* Black hover */
+  color: white; /* White text on hover */
+  border-radius: 50%;
+}
+
+/* Selected day styling */
+.custom-calendar .react-datepicker__day--selected {
+  background: #000; /* Black for selected day */
+  color: white;
+  border-radius: 50%;
+}
+
+/* Today highlight styling */
+.custom-calendar .react-datepicker__day--today {
+  border: 1px solid #000; /* Black border for today */
+  background: transparent;
+  color: #000;
+}
+
+/* Month and year dropdown styling */
+.react-datepicker__month-dropdown,
+.react-datepicker__year-dropdown {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__month-option:hover,
+.react-datepicker__year-option:hover {
+  background: #000; /* Black hover */
+  color: white; /* White text */
+}
+
+/* Custom placeholder styling */
+.input__birthday::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+  .input__birthday.styled__datepicker {
+    font-size: 14px;
+  }
+  .datepicker-wrapper {
+    max-width: 100%;
+  }
+}

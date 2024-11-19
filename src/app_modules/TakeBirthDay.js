@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './TakeBirthDay.css';
 import { API_ROUTES } from './apiRoutes';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns'; // Import format from date-fns
 
 const BirthdayModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [birthday, setBirthday] = useState('');
+  const [birthday, setBirthday] = useState(null); // Store Date object, not string
 
   const checkModalConditions = () => {
     const firstSignInTime = localStorage.getItem('firstSignInTime');
@@ -28,15 +31,17 @@ const BirthdayModal = () => {
       }
     }
   };
-  
 
   const handleBirthdaySubmit = async () => {
     const token = localStorage.getItem('token'); // Replace 'authToken' with the key storing your token
+
     if (birthday) {
+      const formattedBirthday = format(birthday, 'yyyy-MM-dd'); // Format date to 'YYYY-MM-DD'
+      
       try {
         await axios.put(
           API_ROUTES.addUserBirthday,
-          { birthday },
+          { birthday: formattedBirthday }, // Send formatted date
           {
             headers: {
               Authorization: `Bearer ${token}`, // Send token in Authorization header
@@ -84,11 +89,18 @@ const BirthdayModal = () => {
           <p className="subheading__birthDay_modal__page">
             Enter your birthday to personalize your experience!
           </p>
-          <input
-            type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            className="input__birthDay_modal__page"
+          <DatePicker
+            selected={birthday}
+            onChange={(date) => setBirthday(date)}
+            dateFormat="yyyy-MM-dd"
+            maxDate={new Date()} // Prevent future dates
+            showYearDropdown
+            showMonthDropdown
+            dropdownMode="select"
+            placeholderText="Select your birthday"
+            className="input__birthday styled__datepicker"
+            calendarClassName="custom-calendar"
+            wrapperClassName="datepicker-wrapper"
           />
           <div className="button-group__birthDay_modal__page">
             <button
