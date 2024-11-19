@@ -1,184 +1,107 @@
-/* General Styles for Modal */
 .birthday__celeb__page__modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  right: 0;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  padding: 20px;
-  box-sizing: border-box;
-  animation: fadeIn 0.5s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.5s ease-in-out; /* Modal fade-in effect */
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Modal content container */
 .birthday__celeb__page__modal__content {
-  background: white;
+  background-color: white;
+  padding: 30px; /* More padding around the content */
   border-radius: 12px;
-  padding: 20px;
+  max-width: 350px; /* Increased max-width */
   width: 90%;
-  max-width: 400px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-/* Balloons Animation */
-.balloons {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  z-index: 9999;
-}
-
-.balloon {
-  width: 30px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #FF6347;
   position: relative;
-  animation: bounce 2s infinite ease-in-out;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  animation: slideIn 0.5s ease-in-out; /* Slide-in effect for content */
 }
 
-.balloon-1 { animation-delay: 0s; }
-.balloon-2 { animation-delay: 0.5s; }
-.balloon-3 { animation-delay: 1s; }
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
-  }
+.svg-container__birthDay_modal__page {
+  margin-bottom: 20px;
 }
 
-/* Confetti Animation */
-.birthday__celeb__page__modal__confetti {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-}
-
-/* Cake with Candle Animation */
-.cake-container {
-  position: relative;
-  margin-top: 20px;
-}
-
-.birthday-cake {
-  position: relative;
-  display: inline-block;
-  width: 160px;
+.svg__birthDay_modal__page {
+  width: 120px; /* Slightly larger cake */
   height: 120px;
-  background: #f8c3c3;
-  border-radius: 15px;
-  padding: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
-.cake-body {
-  background: #f8b3b3;
-  border-radius: 10px;
-  height: 100%;
-}
-
-.cake-frosting {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.candle {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 40px;
-  background: #ffdd00;
-  border-radius: 5px;
-}
-
-.candle-flame {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 12px;
-  background: #ff6347;
-  border-radius: 50%;
-  animation: flameAnim 1s infinite alternate;
-}
-
-@keyframes flameAnim {
-  0% {
-    transform: translateX(-50%) scaleY(1);
-  }
-  100% {
-    transform: translateX(-50%) scaleY(1.3);
-  }
-}
-
-.candle-flame.blown {
-  animation: flameBlown 0.3s ease-out forwards;
-}
-
-@keyframes flameBlown {
-  0% {
-    transform: translateX(-50%) scaleY(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50%) scaleY(0.3);
-    opacity: 0;
-  }
-}
-
-/* Buttons Styling */
-.birthday__celeb__page__modal__buttons {
+.birthday__celeb__page__modal__message {
   margin-top: 20px;
+}
+
+.celebration__title {
+  font-size: 20px;
+  font-weight: bold; /* Make the title bold */
+  color: #333;
+}
+
+.celebration__text {
+  font-size: 16px;
+  color: #666;
+  margin-top: 8px; /* Space between message and buttons */
+}
+
+.birthday__celeb__page__modal__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 25px;
 }
 
 .thank-you-btn,
 .not-thank-you-btn {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #FF6347;
   border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
+  padding: 10px 12px; /* Slightly larger padding */
+  font-size: 14px; /* Larger font size */
+  font-weight: bold; /* Bold text for buttons */
+  border-radius: 8px;
+  margin: 0 5px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.thank-you-btn {
+  background-color: #32CD32;
+  color: white;
 }
 
 .not-thank-you-btn {
   background-color: #FF6347;
+  color: white;
 }
 
 .thank-you-btn:hover,
 .not-thank-you-btn:hover {
-  background-color: #45a049;
-  background-color: #d04f47;
+  background-color: #FF4500; /* Darker color on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

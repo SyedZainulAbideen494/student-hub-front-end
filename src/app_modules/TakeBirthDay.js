@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './TakeBirthDay.css';
+import { API_ROUTES } from './apiRoutes';
 
 const BirthdayModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,7 @@ const BirthdayModal = () => {
     if (birthday) {
       try {
         await axios.put(
-          'http://localhost:8080/api/birthday',
+          API_ROUTES.addUserBirthday,
           { birthday },
           {
             headers: {

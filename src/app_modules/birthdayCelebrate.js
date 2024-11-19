@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Confetti from 'react-confetti';
-import './birthdayCelebration.css'; // Assuming you have the CSS file for styles
+import './birthdayCelebration.css';
 import { API_ROUTES } from './apiRoutes';
 
 const BirthdayCelebration = () => {
-  const [profile, setProfile] = useState(null);
-  const [error, setError] = useState('');
+  const [showCelebration, setShowCelebration] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [userBirthday, setUserBirthday] = useState('');
+  const [isBirthday, setIsBirthday] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isBirthday, setIsBirthday] = useState(false); // Flag for birthday check
-  const [showCelebration, setShowCelebration] = useState(false); // Flag for celebration modal
-  const [confettiVisible, setConfettiVisible] = useState(false); // Flag for confetti visibility
-  const [balloonsVisible, setBalloonsVisible] = useState(false); // Flag for balloons visibility
-  const [candleBlown, setCandleBlown] = useState(false); // Flag for candle blow out animation
+  const [error, setError] = useState(null);
 
-  // Fetch user profile data
   useEffect(() => {
+    // Fetch user profile data from API
     const fetchProfileData = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -26,104 +23,91 @@ const BirthdayCelebration = () => {
         }
 
         const { data } = await axios.post(API_ROUTES.fetchUserProfile, { token });
-        setProfile(data);
+        setUserName(data.unique_id);
+        setUserBirthday(data.birthday); // Assuming the birthday is in 'YYYY-MM-DD' format
 
-        // Check if today is their birthday
+        // If user hasn't entered their birthday, skip showing modal
+        if (!data.birthday) {
+          setLoading(false);
+          return;
+        }
+
+        // Check if today is the user's birthday
         const today = new Date();
-        const userBirthday = new Date(data.birthday); // Assuming the API returns birthday as 'YYYY-MM-DD'
-        if (userBirthday.getDate() === today.getDate() && userBirthday.getMonth() === today.getMonth()) {
+        const userBirthdayDate = new Date(data.birthday); // Parse the birthday string
+        if (userBirthdayDate.getDate() === today.getDate() && userBirthdayDate.getMonth() === today.getMonth()) {
           setIsBirthday(true); // Set flag to true if today is the user's birthday
         }
+
+        // Check if the modal has already been shown today
+        const birthdayShown = localStorage.getItem('birthdayShown');
+        if (isBirthday && !birthdayShown) {
+          setShowCelebration(true); // Show the celebration modal if it's their birthday
+          localStorage.setItem('birthdayShown', 'true'); // Set the localStorage flag
+        }
+
+        setLoading(false);
       } catch (err) {
         setError('Error fetching profile data');
         console.error(err);
-      } finally {
         setLoading(false);
       }
     };
 
     fetchProfileData();
-  }, []);
+  }, [isBirthday]); // Rerun this useEffect when the birthday flag changes
 
-  useEffect(() => {
-    if (isBirthday) {
-      setShowCelebration(true);
-      setTimeout(() => {
-        setBalloonsVisible(true);
-      }, 500); // Balloons appear half a second after modal shows
-      setTimeout(() => {
-        setConfettiVisible(true);
-      }, 1500); // Confetti starts after balloons
-    }
-  }, [isBirthday]);
-
-  const handleCakeCut = () => {
-    setCandleBlown(true); // Trigger candle blow out animation
-  };
-
+  // Close the celebration modal
   const handleCloseModal = () => {
-    setShowCelebration(false); // Close celebration modal
+    setShowCelebration(false);
+    // Optionally reset the flag after some time
+    localStorage.removeItem('birthdayShown'); // Reset the birthdayShown flag for next year
   };
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
   return (
-    <div className="birthday__celeb__page__modal">
+    <>
       {showCelebration && (
-        <div className="birthday__celeb__page__modal__content">
-          {/* Balloons Animation */}
-          {balloonsVisible && (
-            <div className="balloons">
-              <div className="balloon balloon-1"></div>
-              <div className="balloon balloon-2"></div>
-              <div className="balloon balloon-3"></div>
+        <div className="birthday__celeb__page__modal">
+          <div className="birthday__celeb__page__modal__content">
+            {/* Birthday Cake SVG */}
+            <div className="svg-container__birthDay_modal__page">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="svg__birthDay_modal__page">
+                {/* Cake Body */}
+                <rect x="20" y="50" width="60" height="30" fill="#ffedd5" rx="5" />
+                <rect x="25" y="45" width="50" height="10" fill="#fca5a5" rx="3" />
+                
+                {/* Candles */}
+                <circle cx="35" cy="40" r="3" fill="#fde68a" />
+                <circle cx="50" cy="40" r="3" fill="#fde68a" />
+                <circle cx="65" cy="40" r="3" fill="#fde68a" />
+                
+                {/* Candle Flame */}
+                <rect x="48" y="20" width="4" height="15" fill="#fde047" />
+                <polygon points="50,18 47,20 53,20" fill="#f87171" />
+              </svg>
             </div>
-          )}
 
-          {/* Confetti Animation */}
-          {confettiVisible && <Confetti />}
-
-          {/* Birthday Cake with Candle Animation */}
-          <div className="cake-container">
-            <div className="birthday-cake">
-              <div className={`candle-flame ${candleBlown ? 'blown' : ''}`} />
-              <div className="cake-body"></div>
-              <div className="cake-frosting"></div>
-              <div className="candle"></div>
-              <button onClick={handleCakeCut} className="cut-cake-btn">Cut the Cake 🎂</button>
+            {/* Personalized Birthday Message */}
+            <div className="birthday__celeb__page__modal__message">
+              <h2 className="celebration__title"> Happy Birthday, {userName}! </h2>
+              <p className="celebration__text">Wishing you an amazing day full of happiness!</p>
+              <p className="celebration__text">Don't forget to smile!</p>
             </div>
-          </div>
 
-          {/* Celebration Message */}
-          <div className="birthday__celeb__page__modal__message">
-            <h2 className="celebration__title">🎉 Happy Birthday! 🎉</h2>
-            <p className="celebration__text">Wishing you a fantastic day filled with joy and happiness!</p>
-          </div>
-
-          {/* Personalized birthday wish */}
-          <div className="birthday__celeb__page__modal__celebration">
-            <h2>🎉 Happy Birthday, {profile?.unique_id}! 🎉</h2>
-            <p>Wishing you a day full of joy, celebration, and all your heart's desires!</p>
-          </div>
-
-          {/* Close buttons */}
-          <div className="birthday__celeb__page__modal__buttons">
-            <button onClick={handleCloseModal} className="thank-you-btn">
-              Thank You 🎂
-            </button>
-            <button onClick={handleCloseModal} className="not-thank-you-btn">
-              Nah, Not Thank You 😜
-            </button>
+            {/* Close button */}
+            <div className="birthday__celeb__page__modal__buttons">
+              <button onClick={handleCloseModal} className="thank-you-btn">
+                Thank You!
+              </button>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
