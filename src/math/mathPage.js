@@ -130,7 +130,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
           </button>
         </>
       );
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: ' Oops! Something went wrong. Please try again later Reasons - too long text or repetivie message or google gemini not responding, please try rephrasing your question.' }] }]);
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: ' Oops! Something went wrong. Please try again later.' }] }]);
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
