@@ -124,7 +124,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
     } catch (error) {
       const errorMessage = (
         <>
-          Oops! Something went wrong. Please try again later Reasons - too long text or repetivie message, please try rephrasing your question.
+          Oops! Something went wrong. Please try again later Reasons - google's servers are not responding.
           <button className="report-problem-btn" onClick={() => setShowFeedbackModal(true)}>
             Report Problem
           </button>
