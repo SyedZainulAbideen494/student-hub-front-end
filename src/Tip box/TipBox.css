@@ -1,8 +1,8 @@
 .tip-box {
   position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for perfect centering */
   background-color: #fdfdfd;
   border-radius: 20px;
   padding: 25px;
