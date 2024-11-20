@@ -81,30 +81,31 @@ const TipBox = () => {
   useEffect(() => {
     const lastShownTime = localStorage.getItem('lastTipShown');
     const currentTime = new Date().getTime();
-  
-    if (!lastShownTime || currentTime - lastShownTime >= 3600000) { // 1 hour = 3600000 ms
+    
+    if (!lastShownTime || currentTime - lastShownTime >= 600000) { // 10 minutes = 600000 ms
       setTimeout(() => {
         setIsVisible(true);
         generateTip();
         localStorage.setItem('lastTipShown', currentTime);
-      }, 2000); // 2-second delay before showing the modal
+      }, 500); // 2-second delay before showing the modal
     }
   
     const interval = setInterval(() => {
       const lastShownTime = localStorage.getItem('lastTipShown');
       const currentTime = new Date().getTime();
   
-      if (currentTime - lastShownTime >= 3600000) { // 1 hour
+      if (currentTime - lastShownTime >= 600000) { // 10 minutes
         setTimeout(() => {
           setIsVisible(true);
           generateTip();
           localStorage.setItem('lastTipShown', currentTime);
-        }, 2000); // 2-second delay before showing the modal
+        }, 500); // 2-second delay before showing the modal
       }
-    }, 3600000); // Check every hour
+    }, 600000); // Check every 10 minutes
   
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
+  
   
   const shuffleArray = (array) => {
     let shuffledArray = [...array];
