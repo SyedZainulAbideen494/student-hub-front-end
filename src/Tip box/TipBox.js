@@ -13,57 +13,70 @@ const TipBox = () => {
   // Store the tips for each category
   const tips = {
     peerComparison: [
-      "Did you know? 85% of Edusify users finished their tasks today. The rest are probably binge-watching Netflix. Don’t be them!",
-      "Top performers are ahead by 2 tasks today. Can you catch up, or are you too busy wondering what’s for dinner?",
-      "Get inspired! The best students finish their tasks before lunch. The rest of us finish after the third cup of coffee. Which team are you on?"
+      "85% of Edusify users finished their tasks today... the rest are probably watching Netflix! Be one of the 85%.",
+      "Top performers are ahead by 2 tasks today. Can you catch up, or are you too busy wondering what's for lunch?",
+      "Pro Tip: Best students finish tasks before lunch. The rest of us finish after the third cup of coffee. Which team are you on?",
+      "Almost 90% of Edusify users are on track today... The other 10% are probably watching cat videos. Which side are you on?",
+      "Top students are already crushing it with 3 tasks done before noon. You still figuring out if cereal is breakfast or lunch?",
+      "Pro Tip: Finish your tasks before your friends even realize you’re doing work. Become the stealth ninja of productivity!",
+      "Some people are already 5 tasks ahead. But don’t worry, you’ve got time... and possibly a snack.",
+      "Did you know? Top performers finish their work in record time. The rest of us just finish it... eventually. 😅"
     ],
     quickTask: [
-      "Got 15 minutes to spare? Quick, revise a topic or organize your notes. It’s either that or scroll through TikTok.",
-      "Short break? Use it wisely: review a topic or tackle a small task, or just... stare into the void. Your choice!",
-      "Short on time? Organize your notes in a few clicks. Or take a nap—your call. But organizing *might* help you pass that exam.",
-      "As a 17-year-old CEO, my biggest task today is... getting through my own to-do list. What’s yours?"
+      "Got 15 minutes? Revise a topic or organize your notes—it's either that or scrolling through TikTok!",
+      "Short break? Review a topic or tackle a small task, or just... stare into the void. Your call.",
+      "Short on time? Organize your notes in a few clicks. Or nap... but organizing might help you pass that exam.",
+      "Got 15 minutes? Quick task time! Or scroll through memes... but let’s be real, your task can wait 15 minutes more.",
+      "You know that task you’ve been ignoring? It’ll take 5 minutes. Do it. Or let it haunt you for the next 5 hours.",
+      "Can’t focus? Try organizing your notes! It’s like decluttering your brain without having to clean your room.",
+      "Quick task? Do it now, or your future self will be judging you while you procrastinate with your phone.",
+      "No time to study? Well, you’ve got 10 minutes... that’s enough to start something. Or take a power nap. Your call."
     ],
     interactiveTip: [
-      "Pro Tip: Don’t want to write notes? Let the AI Assistant do the heavy lifting while you sip your coffee. ☕️",
-      "Pro Tip: Stuck in a lecture? Let the AI Assistant create notes for you. It’s like having a personal note-taker, but cooler.",
-      "Feeling lazy? Let the AI Assistant take care of the notes. You focus on your snack break 🍿.",
-      "Quick Tip: AI Assistant + topic details = Instant Notes. It’s basically a superpower you didn’t know you had.",
-      "Pro Tip: If you’re tired of scribbling notes, let the AI Assistant work its magic. You’ll be amazed at the results!",
-      "Tip: Don’t feel like writing? AI Assistant’s got your back. Generate your notes faster than you can say ‘study break’!",
-      "Need a cheat code for notes? Let the AI Assistant generate them for you. It’s faster than your morning routine!",
-      "Tip: AI Assistant is your study sidekick! Let it generate those notes while you chill. No judgment. 😉",
-      "AI Assistant: Because who has time for writing when you can have notes created in an instant?",
-      "AI Assistant here! Need a joke? What do you call a note-taking robot who tells jokes? A 'pun'ctuation expert. 😏",
-      "Feeling overwhelmed? Don’t worry! Let me summarize that for you, and then we’ll talk about something fun, like your favorite meme!",
-      "Tip: I can be a friend, give advice, and even tell you what’s for dinner (just kidding, I don't know that...yet)! 😅",
-      "AI Assistant says: “Why did the student bring a ladder to class? To go to high school! 😆”",
-      "Not only can I help with notes, but I can give you advice too! Having a rough day? Here's some wisdom: ‘Don’t stress, just press.’ 🧘‍♂️",
-      "Pro Tip: Want to procrastinate productively? Let me organize your notes while you figure out what’s for lunch. 🍔",
-      "Need a little motivation? I’m like a caffeine shot for your productivity. Let’s knock out those tasks together! ⚡",
-      "AI Assistant to the rescue! If you ever feel like life’s a quiz and you’re missing the answers, I’ve got your back—just ask!",
-      "Joke Time! What did the AI say to the student? ‘I’m here for the homework, but I’m pretty good at pop quizzes too!’ 🤖",
-      "AI Assistant Advice: It’s okay to take a break! But don’t take too many, or you might end up binge-watching shows instead of studying.",
-      "Did you know? I can even chat with you about your favorite topics. Just give me a prompt, and I’ll go on and on like a pro!",
-      "Tip: Need to clear your head? I can help you organize your thoughts, or we can talk about how cute your pet is. Your call! 🐶",
-   "Tip from a 17-year-old founder: I can’t promise I have all the answers, but I’m definitely Googling them for you. 😉",
-    "I may be 17, but I definitely know how to organize your notes better than your school planner."
-  ],    
+      "Pro Tip: Don’t feel like writing notes? Let the AI Assistant do it while you sip coffee. ☕️",
+      "Feeling lazy? AI Assistant's got your back. Just sit back and let the magic happen.",
+      "AI Assistant + topic details = Instant Notes. It’s like having superpowers. 🦸‍♂️",
+      "AI Assistant: It’s like hiring a personal assistant, but one who doesn’t need coffee breaks.",
+      "You’ve got the AI Assistant now. Writing notes just got 100x easier. So... why not?"
+    ],
     featureDiscovery: [
-      "New Feature Alert: Keep your documents safe in our Document Locker. Because sometimes, your notes are more valuable than your phone.",
-      "Pomodoro timer: Work for 25 minutes, then break for 5. It's like a mini vacation every half-hour! 🌴",
-      "New Calendar feature: Because writing important dates on your hand *really* isn’t working anymore."
+      "New Feature Alert: Keep your documents safe in our Document Locker. Your notes are too valuable to lose!",
+      "Pomodoro timer: 25 minutes of work, followed by a 5-minute break. It's like a mini vacation every half hour! 🌴",
+      "New Calendar feature: Because writing dates on your hand *really* isn’t working anymore.",
+      "Discover the Pomodoro timer—25 minutes of pure focus, then 5 minutes of your favorite distraction. 🌞",
+      "Need to keep your documents safe? Use Document Locker. It's like a vault for your study notes (without the heavy doors)."
     ],
     additionalFunTips: [
-      "Need a study buddy? Get the AI Assistant to help! It’s like having a robot friend who actually knows what they’re doing.",
-      "Feeling overwhelmed? Try the Pomodoro technique! Work hard, then take a break like you're on vacation. 🌞",
-      "Ever wish your study sessions were more like a video game? Try the Pomodoro timer and level up your productivity!",
-      "Stressed about exams? Try using the AI Assistant to generate notes. It’s like a cheat code, but for real life.",
-      "Forgot about that assignment? We got you. Set a reminder with the Edusify Planner. Your future self will thank you—probably with pizza.",
-      "Your brain called, and it said it needs a break. Use the Pomodoro timer to work hard, then reward yourself with 5 minutes of doing absolutely nothing.",
-      "New feature alert: Document Locker. Because you’re not the only one who needs security. Keep those notes safe!",
-      "You know you’re a 17-year-old CEO when your to-do list has both ‘study for exams’ and ‘send business email’ in the same hour."
-    ]
+      "Need a study buddy? Get the AI Assistant to help! It’s like having a robot friend who actually knows what they're doing.",
+      "Feeling overwhelmed? Try Pomodoro! Work hard, then take a break like you’re on vacation. 🌞",
+      "Stressed about exams? Use AI Assistant to generate notes. It’s like a cheat code, but for real life.",
+      "Pomodoro hack: Study for 25 minutes, then take a 5-minute break. Or use that time to pretend you’re on a tropical beach.",
+      "AI Assistant: Your personal robot friend, available 24/7, no awkward conversations required."
+    ],
+    founderTips: [
+      "As a 17-year-old CEO, I’m not saying I know everything... but I can organize your notes better than your school planner! 😂",
+      "I built Edusify in 2 weeks... because who needs sleep when you have a mission? 😅 Follow me on Insta for more behind-the-scenes madness! @_syed_zain_ul",
+      "Your school might have fancy teachers, but Edusify has me... the CEO who still forgets his own homework sometimes! 😜",
+      "Need some motivation? Well, I’m the 17-year-old who built an app in two weeks. If I can do it, you can definitely finish your homework! 💪",
+      "Ever wonder what it's like to run an app at 17? Follow me on Insta and find out, along with some *not-so-serious* behind-the-scenes moments. @_syed_zain_ul",
+      "Being a 17-year-old CEO means I have to balance studying, coding, and... pretending I know what I'm doing! 😂 Want to know how? Follow me on Insta: @_syed_zain_ul",
+      "I built Edusify in 2 weeks, and guess what? I still can’t figure out where I left my homework. But hey, I can definitely help you organize yours! 😅",
+      "Pro tip: You don’t need a superhero to get things done—just an app built by a 17-year-old CEO who sometimes forgets his own lunch. 🍕",
+      "Running Edusify is like being a student and CEO at the same time—except with way more coffee and zero sleep. If I can do it, so can you! ☕️",
+      "Edusify wasn’t built with magic... just a lot of caffeine and me trying to figure out how to code while studying. Let’s do this together! 🚀",
+      "Biggest challenge? Getting users. I showed my app to my computer science professor, and he didn’t care. Now, I have more fame than my entire college! 💪 #NeverGiveUp",
+      "I built Edusify for fun, to be honest, and uploaded stories to impress my crush... now it's valued at $3 million! 😂 #DreamBig",
+      "My college didn’t care about my idea... now my app has more users than students in my college! Talk about irony. 😜",
+      "Studying? Who needs it when you can just get good marks easily and build a multi-million dollar app instead? 🤷‍♂️",
+      "My motivation? Making an impact, not chasing money. But hey, a little success never hurt anyone. 😅",
+      "Being a student and a CEO at the same time is no joke. But if I can do it with no sleep, so can you! ☕️ #StartupLife",
+      "I didn’t have to study much, thanks to my dad’s investment. But hey, Edusify was all me. 🙌",
+      "Pro tip: If your idea is rejected at first, just run ads on Instagram until everyone notices. Works like a charm. 📲",
+      "I’m not money-driven, but let’s be real: $3 million feels pretty good. 😎 #BuildingTheFuture",
+      "Edusify wasn’t built with magic... just a lot of caffeine, late nights, and me pretending I had everything figured out. 🚀 #TrustTheProcess"
+    ]    
   };
+  
 
   useEffect(() => {
     const lastShownTime = localStorage.getItem('lastTipShown');
@@ -93,69 +106,58 @@ const TipBox = () => {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
   
-// Advanced Fisher-Yates shuffle with multiple rounds for better randomness
-const shuffleArray = (array) => {
-  let shuffledArray = [...array];
-
-  // Multiple shuffle rounds for better randomness
-  for (let round = 0; round < Math.floor(Math.random() * 3) + 1; round++) {
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  const shuffleArray = (array) => {
+    let shuffledArray = [...array];
+    for (let round = 0; round < Math.floor(Math.random() * 3) + 1; round++) {
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      }
     }
-  }
-  return shuffledArray;
-};
+    return shuffledArray;
+  };
 
-const generateTip = () => {
-  const availableTipTypes = Object.keys(tips);
-
-  if (availableTipTypes.length === 0) return; // No tips available, stop showing
-
-  // Shuffle tip types using multiple rounds of the Fisher-Yates algorithm
-  const shuffledTipTypes = shuffleArray(availableTipTypes);
-
-  // Track recently shown tips to avoid repetition
-  const recentlyShownTips = JSON.parse(localStorage.getItem('recentlyShownTips')) || [];
-
-  let selectedTipType;
-  let selectedTipList;
-  let shuffledTips;
-  let selectedTip;
-
-  // Try to fetch a new tip from a type that hasn't been shown recently
-  for (let attempt = 0; attempt < 5; attempt++) {  // Try up to 5 different types if needed
-    selectedTipType = shuffledTipTypes.pop();  // Pop the type to ensure randomness
-
-    selectedTipList = tips[selectedTipType];
-    shuffledTips = shuffleArray(selectedTipList);
-
-    // Find a tip that hasn't been shown recently
-    selectedTip = shuffledTips.find(tip => !recentlyShownTips.includes(tip));
-
-    if (selectedTip) break;  // If a unique tip is found, exit the loop
-  }
-
-  if (!selectedTip) {
-    // If all tips have been shown recently, reset and try again
-    recentlyShownTips.length = 0;
-    selectedTipType = shuffledTipTypes[0];  // Pick the first available type again
-    selectedTipList = tips[selectedTipType];
-    shuffledTips = shuffleArray(selectedTipList);
-    selectedTip = shuffledTips[0];  // Select the first available tip
-  }
-
-  // Show the selected tip
-  setTipType(selectedTipType);
-  setTipContent(selectedTip);
-
-  // Update recently shown tips (localStorage to persist across sessions)
-  recentlyShownTips.unshift(selectedTip);  // Add the new tip to the front
-  if (recentlyShownTips.length > 30) recentlyShownTips.pop();  // Limit to the last 5 tips
-  localStorage.setItem('recentlyShownTips', JSON.stringify(recentlyShownTips));
-};
-
-
+  const generateTip = () => {
+    const availableTipTypes = Object.keys(tips);
+  
+    if (availableTipTypes.length === 0) return; // No tips available, stop showing
+  
+    const shuffledTipTypes = shuffleArray(availableTipTypes);
+  
+    const recentlyShownTips = JSON.parse(localStorage.getItem('recentlyShownTips')) || [];
+  
+    let selectedTipType;
+    let selectedTipList;
+    let shuffledTips;
+    let selectedTip;
+  
+    for (let attempt = 0; attempt < 5; attempt++) {
+      selectedTipType = shuffledTipTypes.pop();  // Pop the type to ensure randomness
+  
+      selectedTipList = tips[selectedTipType];
+      shuffledTips = shuffleArray(selectedTipList);
+  
+      selectedTip = shuffledTips.find(tip => !recentlyShownTips.includes(tip));
+  
+      if (selectedTip) break;
+    }
+  
+    if (!selectedTip) {
+      recentlyShownTips.length = 0;
+      selectedTipType = shuffledTipTypes[0];
+      selectedTipList = tips[selectedTipType];
+      shuffledTips = shuffleArray(selectedTipList);
+      selectedTip = shuffledTips[0];
+    }
+  
+    setTipType(selectedTipType);
+    setTipContent(selectedTip);
+  
+    recentlyShownTips.unshift(selectedTip);
+    if (recentlyShownTips.length > 30) recentlyShownTips.pop();
+    localStorage.setItem('recentlyShownTips', JSON.stringify(recentlyShownTips));
+  };
+  
   const handleClose = () => {
     setIsVisible(false);
   };
@@ -167,55 +169,46 @@ const generateTip = () => {
   };
 
   const handleButtonClick = () => {
-    // Check the tip type and navigate based on the message content
-    if (tipType === 'interactiveTip') {
-      // Navigate to AI Assistant page
+    if (tipType === 'founderTips') {
+      window.location.href = "https://www.instagram.com/_syed_zain_ul/";  // Redirect to your Instagram page
+    } else if (tipType === 'interactiveTip') {
       navigate('/ai');
     } else if (tipType === 'quickTask') {
-      // Navigate to Planner page
       navigate('/planner');
     } else if (tipType === 'peerComparison') {
-      // Navigate to Peer Comparison page
       navigate('/leaderboard');
     } else if (tipType === 'featureDiscovery') {
-      console.log('Feature Discovery Tip:', tipContent); // Debugging the tip content
       if (tipContent.toLowerCase().includes("pomodoro")) {
-        console.log('Navigating to Pomodoro');
         navigate('/pomodoro');
       } else if (tipContent.toLowerCase().includes("calendar")) {
-        console.log('Navigating to Calendar');
         navigate('/calendar');
       } else if (tipContent.toLowerCase().includes("document locker")) {
-        console.log('Navigating to Document Locker');
         navigate('/document-locker');
       } else {
-        console.log('Navigating to Feature Discovery');
         navigate('/feature-discovery');
       }
     } else if (tipType === 'additionalFunTips') {
-      // Handle any fun tips here
       navigate('/');
     }
   };
+  
 
   if (!isVisible || !tipContent) return null;
 
   return (
     <div className="tip-box">
-    <div className="tip-content">
-      <button className="close-btn" onClick={handleClose}>X</button>
-      <div className="tip-message">
-        {tipContent}
+      <div className="tip-content">
+        <div className="tip-message">
+          {tipContent}
+        </div>
+        <button className="got-it__btn__tip__box" onClick={handleGotIt}>
+          Got it
+        </button>
+        <button className="action-btn__tip__box" onClick={handleButtonClick}>
+          {tipType === 'founderTips' ? 'Follow me on Instagram' : 'Explore'}
+        </button>
       </div>
-      <button className="got-it__btn__tip__box" onClick={handleGotIt}>
-        Got it
-      </button>
-      <button className="action-btn__tip__box" onClick={handleButtonClick}>
-        Explore
-      </button>
     </div>
-  </div>
-  
   );
 };
 

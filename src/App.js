@@ -94,6 +94,7 @@ import SessionStatsPage from "./Pomodoro/pomodoro2.0/SessionStatsPage";
 import SettingsPagePomodoro from "./Pomodoro/pomodoro2.0/SettingsPage";
 import SpotifyPlayer from "./music/player2.0/SpotifyPlayer";
 import MusicPlayer from "./music/player2.0/SpotifyPlayer";
+import PdfNotesConvertor from "./toolkit/pdfNotesconvertor";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -174,6 +175,7 @@ const router = createBrowserRouter([
   {path: '/pomodoro', element: <PomodoroApp/>},
   {path:'/pomodoro/stats', element: <SessionStatsPage/>},
   {path: '/pomodoro/settings', element: <SettingsPagePomodoro/>},
+  {path: '/toolkit/pdf-notes-to-text-convertor', element: <PdfNotesConvertor/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
