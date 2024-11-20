@@ -120,32 +120,36 @@ const TipBox = () => {
 
   const generateTip = () => {
     const availableTipTypes = Object.keys(tips);
-  
+    
     if (availableTipTypes.length === 0) return; // No tips available, stop showing
-  
-    const shuffledTipTypes = shuffleArray(availableTipTypes);
-  
+    
     const recentlyShownTips = JSON.parse(localStorage.getItem('recentlyShownTips')) || [];
-  
+    
     let selectedTipType;
     let selectedTipList;
     let shuffledTips;
     let selectedTip;
   
-    for (let attempt = 0; attempt < 5; attempt++) {
-      selectedTipType = shuffledTipTypes.pop();  // Pop the type to ensure randomness
-  
-      selectedTipList = tips[selectedTipType];
-      shuffledTips = shuffleArray(selectedTipList);
-  
-      selectedTip = shuffledTips.find(tip => !recentlyShownTips.includes(tip));
-  
-      if (selectedTip) break;
+    // First, give 70% chance for 'founderTips' and 30% for other tip types
+    const tipChance = Math.random();
+    
+    if (tipChance <= 0.7) {
+      // 70% chance: Select 'founderTips'
+      selectedTipType = 'founderTips';
+    } else {
+      // 30% chance: Select a random tip type from the other categories
+      const shuffledTipTypes = shuffleArray(availableTipTypes.filter(type => type !== 'founderTips'));
+      selectedTipType = shuffledTipTypes[Math.floor(Math.random() * shuffledTipTypes.length)];
     }
+  
+    selectedTipList = tips[selectedTipType];
+    shuffledTips = shuffleArray(selectedTipList);
+  
+    selectedTip = shuffledTips.find(tip => !recentlyShownTips.includes(tip));
   
     if (!selectedTip) {
       recentlyShownTips.length = 0;
-      selectedTipType = shuffledTipTypes[0];
+      selectedTipType = 'founderTips';
       selectedTipList = tips[selectedTipType];
       shuffledTips = shuffleArray(selectedTipList);
       selectedTip = shuffledTips[0];
@@ -158,6 +162,7 @@ const TipBox = () => {
     if (recentlyShownTips.length > 30) recentlyShownTips.pop();
     localStorage.setItem('recentlyShownTips', JSON.stringify(recentlyShownTips));
   };
+  
   
   const handleClose = () => {
     setIsVisible(false);
