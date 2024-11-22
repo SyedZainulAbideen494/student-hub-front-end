@@ -82,6 +82,7 @@ const TodayEventsAndTasks = () => {
     }
 
     return (
+        <div class="home-page-container">
         <div className="today-container__home__page__component">
             {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
             <div className="Btn-Container__multiple">
@@ -169,6 +170,7 @@ const TodayEventsAndTasks = () => {
                 )}
                 <button onClick={handleGoToPlanner} className='go-page-home-component-btn'>Go To Planner</button>
             </div>
+        </div>
         </div>
     );
 };

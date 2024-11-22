@@ -276,3 +276,29 @@
 }
 
 
+
+
+/* Adjust styling for larger screens */
+@media (min-width: 769px) {
+  .home-container__home__page__component {
+      display: flex;
+      align-items: center; /* Centers content vertically */
+      justify-content: center; /* Centers content horizontally */
+      max-width: 1200px; /* Optional: Limit maximum width for large screens */
+      margin: 0 auto; /* Center the container itself horizontally */
+  }
+
+  .top-boxes-container__home__page__component {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Two columns for boxes */
+      gap: 20px; /* Adjust gap between boxes */
+      justify-content: center; /* Center-align boxes */
+  }
+}
+
+/* Adjust box sizes for larger screens */
+@media (min-width: 1024px) {
+  .box__home__page__component {
+      min-height: 150px; /* Increase height for larger screens */
+  }
+}

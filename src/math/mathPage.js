@@ -283,11 +283,13 @@ const MathSolver = ({ handleVoiceCommand }) => {
     ]);
     setConversationStarted(false);
   };
-  
+
+
 
   return (
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
+           
            <div className="math-page-header">
   <button className="back-btn" onClick={() => navigate('/')}>
     <FaArrowLeft />
