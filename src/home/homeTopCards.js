@@ -120,19 +120,23 @@ const TopBoxes = () => {
                     src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
                     alt="Profile Avatar"
                 />
-                <p className="welcome-message__home__page__component">
-                    <TypeAnimation
-                        sequence={[
-                            `Hi, ${profile?.unique_id || 'User'}!`,
-                            2000 // Pause for 2 seconds
-                        ]}
-                        speed={50} // Typing speed in milliseconds
-                        repeat={0} // Number of times to repeat; 0 means no repeat
-                        wrapper="span"
-                        cursor={false} // Hide the typing cursor
-                    />
+<p className="welcome-message__home__page__component">
+    <TypeAnimation
+        sequence={[
+            `Hi, ${
+                profile?.unique_id && profile.unique_id.length > 20
+                    ? `${profile.unique_id.slice(0, 19)}...` // Take the first 17 characters and append "..."
+                    : profile?.unique_id || 'User'
+            }!`,
+            2000 // Pause for 2 seconds
+        ]}
+        speed={50} // Typing speed in milliseconds
+        repeat={0} // Number of times to repeat; 0 means no repeat
+        wrapper="span"
+        cursor={false} // Hide the typing cursor
+    />
+</p>
 
-                </p>
                 <div className="icons-container__home__page__component">
   {/* Leaderboard icon */}
   <Link to='/leaderboard' className="leaderboard-icon__home__page__component">
