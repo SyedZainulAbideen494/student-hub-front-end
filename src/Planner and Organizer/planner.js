@@ -415,7 +415,7 @@ function Planner() {
       </label>
       <small className="input-hint__planner__page__ai__gen">
         Be specific. Include the subject, chapters, or details. 
-        (e.g., "Study for Math, chapters 1-3" or "Prepare for exams: subjects & chapters.")
+        (e.g., "Study for Math, chapters Integer, Real number" or "Prepare for exams: subjects & chapters.")
       </small>
     </div>
 
