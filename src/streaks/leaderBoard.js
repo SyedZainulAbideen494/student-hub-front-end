@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './leaderBoard.css';
-import { FaTrophy, FaArrowLeft } from 'react-icons/fa';
+import { FaTrophy, FaArrowLeft,FaQuestionCircle } from 'react-icons/fa';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const Leaderboard = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [userStats, setUserStats] = useState({ position: null, points: 0 }); // State for user's stats
+  const [showInstructions, setShowInstructions] = useState(false); 
   const nav = useNavigate();
 
   useEffect(() => {
@@ -187,6 +188,7 @@ const Leaderboard = () => {
         );
       })}
     </div>
+    
   </div>
 </div>
 

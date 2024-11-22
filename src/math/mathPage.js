@@ -9,6 +9,7 @@ import FeedbackForm from '../help/FeedbackForm';
 import { TypeAnimation } from 'react-type-animation';
 import AIPageTutorial from './AIPageTutorial';
 import Loader from './mathLoader';
+import AiLoaderSpeaking from './AiLoaderSpeaking';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -389,7 +390,17 @@ const MathSolver = ({ handleVoiceCommand }) => {
   </div>
 
   {message.trim() ? (
-    <button className="chat-send-btn__ai__loader__light" onClick={handleSendMessage}  disabled={loading}>
+  <button
+    className="chat-send-btn__ai__loader__light"
+    onClick={handleSendMessage}
+    disabled={loading}
+  >
+    {loading ? (
+      <div style={{ width: "24px", height: "24px" }}>
+        {/* Display the loader */}
+        <AiLoaderSpeaking />
+      </div>
+    ) : (
       <svg viewBox="0 0 664 663" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
@@ -397,18 +408,23 @@ const MathSolver = ({ handleVoiceCommand }) => {
         ></path>
         <path
           d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-          stroke="#333333" // Darker stroke for SVG icon
+          stroke="#333333"
           strokeWidth="33.67"
           strokeLinecap="round"
           strokeLinejoin="round"
         ></path>
       </svg>
-    </button>
-  ) : (
-    <button className="chat-send-btn__ai__loader__light" onClick={listening ? stopListening : startListening}>
-      <FaMicrophone style={{color: 'white'}}/>
-    </button>
-  )}
+    )}
+  </button>
+) : (
+  <button
+    className="chat-send-btn__ai__loader__light"
+    onClick={listening ? stopListening : startListening}
+  >
+    <FaMicrophone style={{ color: "white" }} />
+  </button>
+)}
+
 </div>
 
       </div>

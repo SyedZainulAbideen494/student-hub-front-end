@@ -408,3 +408,8 @@
   font-weight: bold;
 }
 
+.chat-send-btn__ai__loader__light > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
