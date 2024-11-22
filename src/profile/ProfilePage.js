@@ -176,7 +176,7 @@ const ProfilePage = () => {
       </div>
       <div className="profile-media">
         <div className="profile-tabs">
-          {['Flashcards', 'Quizzes', 'EduScribe'].map(tab => (
+          {['Notes', 'Quizzes', 'EduScribe'].map(tab => (
             <button
               key={tab}
               className={`profile-tab ${activeTab === tab ? 'active' : ''}`}
@@ -188,7 +188,7 @@ const ProfilePage = () => {
           <div className="profile-tab-underline" style={{ width: `${100 / 4}%`, left: `${['Flashcards', 'Quizzes', 'EduScribe', 'Posts'].indexOf(activeTab) * (100 / 4)}%` }} />
         </div>
         <div className="profile-content">
-          {activeTab === 'Flashcards' && flashcards.map((card, index) => (
+          {activeTab === 'Notes' && flashcards.map((card, index) => (
             <div key={index} className="card flashcard-item">
               <Link to={`/note/view/${card.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                 <div className="card-content">{card.title}</div>
