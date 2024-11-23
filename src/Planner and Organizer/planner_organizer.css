@@ -708,3 +708,35 @@
     transition: transform 0.3s ease, background-color 0.3s ease;
   }
   
+  .success-message__planner__page__ai__gen {
+    background-color: #fef9f5; /* Soft peach/pink background */
+    color: #6b4e4e; /* Warm taupe text */
+    border: 1px solid #f3dcd4; /* Light pastel pink border */
+    border-radius: 10px; /* Rounded corners for a soft feel */
+    padding: 12px 18px; /* Balanced padding for content */
+    margin: 20px auto; /* Space around the message */
+    width: 80%; /* Adjust width for responsiveness */
+    text-align: center; /* Center align text */
+    font-size: 15px; /* Elegant font size */
+    font-weight: 500; /* Slightly bold for emphasis */
+    font-family: 'Arial', sans-serif; /* Clean and minimal font */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    animation: fadeInOut 4s ease-in-out; /* Smooth fade animation */
+  }
+  
+  /* Animation for fading in and out */
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px); /* Slide in from above */
+    }
+    10%, 90% {
+      opacity: 1;
+      transform: translateY(0); /* Stay visible */
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-10px); /* Slide out */
+    }
+  }
+  
