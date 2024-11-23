@@ -238,7 +238,7 @@
 
 .task-item {
     background: #f9f9f9;
-    border: 1px solid #ddd;
+    border: 1px solid transparent;
     border-radius: 12px;
     padding: 25px;
     margin-bottom: 25px;
@@ -383,7 +383,7 @@
 }
 .task {
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    border: 1px solid transparent;
     border-radius: 25px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
