@@ -472,7 +472,7 @@
     height: 37px;
     border: none;
     padding: 10px;
-    background: linear-gradient(135deg, #6a0f9f, #9b5de5);
+    background: linear-gradient(to right, #429CF7, #796BD5);
     color: white;
     font-weight: bold;
     font-size: 14px;
@@ -493,7 +493,7 @@
 
 .Btn__edit__task__planner:hover {
     color: rgba(255, 255, 255, 0);
-    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+    background: linear-gradient(to right, #429CF7, #796BD5);
 }
 
 .Btn__edit__task__planner:hover .svg__edit__task__planner {
