@@ -248,26 +248,26 @@ function Planner() {
               token: localStorage.getItem('token'),
             }),
           });
-    
+      
           if (!response.ok) {
             throw new Error('Failed to generate tasks');
           }
-    
+      
           const data = await response.json();
           setTasks((prevTasks) => [...prevTasks, ...data.tasks]);
-          setSuccessMessage('Tasks generated successfully!');
-    
+          setSuccessMessage('Tasks generated successfully!'); // Set success message
+          fetchTasks()
           // Hide success message after 2 seconds
           setTimeout(() => {
             setSuccessMessage('');
-            window.location.reload();
-          }, 10);
+          }, 2000);
         } catch (error) {
           console.error('Error occurred:', error);
         } finally {
           setIsGenerating(false);
         }
       };
+      
       
       
     
@@ -427,7 +427,7 @@ function Planner() {
           value={days}
           onChange={(e) => setDays(e.target.value)}
           min="1"
-          max="10" // Added max attribute
+          max="10"
           placeholder="Enter number of days"
           className="input-field__planner__page__ai__gen"
           required
@@ -437,44 +437,57 @@ function Planner() {
         Specify how many days you'll need for this task.
       </small>
     </div>
+
     <div className="input-group__planner__page__ai__gen">
-          <label className="input-label__planner__page__ai__gen">
-            Task Style:
-            <select value={taskStyle} onChange={(e) => setTaskStyle(e.target.value)} className="input-field__planner__page__ai__gen">
-              <option value="detailed">Detailed</option>
-              <option value="minimal">Minimal</option>
-            </select>
-          </label>
-          <small className="input-hint__planner__page__ai__gen">
-            Choose your preferred task style.
-          </small>
+      <label className="input-label__planner__page__ai__gen">
+        Task Style:
+        <select
+          value={taskStyle}
+          onChange={(e) => setTaskStyle(e.target.value)}
+          className="input-field__planner__page__ai__gen"
+        >
+          <option value="detailed">Detailed</option>
+          <option value="minimal">Minimal</option>
+        </select>
+      </label>
+      <small className="input-hint__planner__page__ai__gen">
+        Choose your preferred task style.
+      </small>
+    </div>
+
+    <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
+      <button
+        className="flashcard__set__page__modal-generate btn__set__page__buttons"
+        type="submit"
+        disabled={isGenerating}
+      >
+        <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+          <svg
+            height="24"
+            width="24"
+            fill="#FFFFFF"
+            viewBox="0 0 24 24"
+            data-name="Layer 1"
+            id="Layer_1"
+            className="sparkle__set__page__buttons"
+          >
+            <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+          </svg>
+          <span className="text__set__page__buttons">
+            {isGenerating ? 'Generating...' : 'Generate'}
+          </span>
         </div>
-        <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
-    <button
-  className="flashcard__set__page__modal-generate btn__set__page__buttons"
-  type='submit'
-  disabled={isGenerating}
->
-  <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
-    <svg
-      height="24"
-      width="24"
-      fill="#FFFFFF"
-      viewBox="0 0 24 24"
-      data-name="Layer 1"
-      id="Layer_1"
-      className="sparkle__set__page__buttons"
-    >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-    <span className="text__set__page__buttons">
-      {isGenerating ? 'Generating...' : 'Generate'}
-    </span>
-  </div>
-</button>
-</div>
+      </button>
+    </div>
+
+    {successMessage && (
+      <div className="success-message__planner__page__ai__gen">
+        {successMessage}
+      </div>
+    )}
   </form>
 </div>
+
 
             <div className="task-list">
                 <h2 className="section-title" style={{textAlign: 'center'}}><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>
