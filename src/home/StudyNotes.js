@@ -210,26 +210,27 @@ const StudyNotes = () => {
             {viewNote && (
                 <div className="modal__view__note__Section" onClick={() => setViewNote(null)}>
                     <div 
-                        className="modal-content__view__note__Section" 
-                        style={{ backgroundColor: viewNote.color, color: viewNote.fontColor }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <span 
-                            className="close__view__note__Section" 
-                            onClick={() => setViewNote(null)}
-                        >
-                            &times;
-                        </span>
-                        <h2>{viewNote.title}</h2>
-                        <p>{viewNote.description}</p>
-                        <button 
-                            onClick={() => handleDeleteNote(viewNote.id)} 
-                            className="delete-note-btn"
-                            style={{ color: viewNote.fontColor }} // Set button color to custom font color
-                        >
-                            Delete Note
-                        </button>
-                    </div>
+    className="modal-content__view__note__Section" 
+    style={{ backgroundColor: viewNote.color, color: viewNote.fontColor }}
+    onClick={(e) => e.stopPropagation()}
+>
+    <span 
+        className="close__view__note__Section" 
+        onClick={() => setViewNote(null)}
+    >
+        &times;
+    </span>
+    <h2>{viewNote.title}</h2>
+    <p style={{ whiteSpace: 'pre-wrap' }}>{viewNote.description}</p> {/* Preserve line breaks */}
+    <button 
+        onClick={() => handleDeleteNote(viewNote.id)} 
+        className="delete-note-btn"
+        style={{ color: viewNote.fontColor }}
+    >
+        Delete Note
+    </button>
+</div>
+
                 </div>
             )}
 
