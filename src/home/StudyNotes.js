@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaStickyNote, FaEye, FaThumbtack } from 'react-icons/fa';
+import { FaStickyNote, FaEye, FaThumbtack, FaTrash } from 'react-icons/fa';
 import NoContentCardStickyNote from './nocontentStickyNote';
 import './StudyNotes.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
@@ -227,7 +227,7 @@ const StudyNotes = () => {
         className="delete-note-btn"
         style={{ color: viewNote.fontColor }}
     >
-        Delete Note
+        <FaTrash/>
     </button>
 </div>
 
