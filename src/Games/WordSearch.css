@@ -1,0 +1,108 @@
+.container__word__search__game {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title__word__search__game {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+  }
+  
+  .subject__input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 1.2em;
+    display: block;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+  }
+  
+  .btn__generate__word__search__game,
+  .btn__save__word__search__game {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn__generate__word__search__game:hover,
+  .btn__save__word__search__game:hover {
+    background-color: #0056b3;
+  }
+  
+  .grid__word__search__game {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .row__word__search__game {
+    display: contents;
+  }
+  
+  .cell__word__search__game {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .cell__word__search__game:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .words__word__search__game {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .word__word__search__game {
+    padding: 8px 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .word__word__search__game:hover {
+    background-color: #e9ecef;
+  }
+  
+  .found__word__search__game {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .found__word__search__game:hover {
+    background-color: #218838;
+  }
+
+  .found__word__search__game {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .found__word__search__game:hover {
+    background-color: #218838;
+  }
+  
+  
