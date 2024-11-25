@@ -413,3 +413,50 @@
   justify-content: center;
   align-items: center;
 }
+.warning-banner {
+  position: fixed; /* Makes it appear on top of everything */
+  top: 20%; /* Adjust the position vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the modal */
+  width: 80%; /* Wide appearance */
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text for contrast */
+  padding: 20px; /* Add some spacing inside */
+  text-align: center; /* Center the text */
+  border: 1px solid #ccc; /* Subtle border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  z-index: 1000; /* Ensure it's on top of everything */
+}
+
+.button-container_warning-banner {
+  display: flex; /* Align buttons inline */
+  justify-content: center; /* Center them horizontally */
+  gap: 10px; /* Add space between buttons */
+  margin-top: 15px; /* Space above the buttons */
+}
+
+.clear-history-btn, .later-btn {
+  padding: 9px; /* Consistent padding for buttons */
+  border: none; /* Remove default borders */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.clear-history-btn {
+  background-color: #ff6666; /* Button background */
+  color: white; /* Button text */
+}
+
+.clear-history-btn:hover {
+  background-color: #e55b5b; /* Slightly darker on hover */
+}
+
+.later-btn {
+  background-color: #ddd; /* Neutral background */
+  color: #333; /* Dark text */
+}
+
+.later-btn:hover {
+  background-color: #ccc; /* Slightly darker on hover */
+}

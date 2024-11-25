@@ -57,7 +57,34 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
+  const [showWarning, setShowWarning] = useState(false);
+  const [dismissedWarning, setDismissedWarning] = useState(false);
 
+  useEffect(() => {
+    if (conversationStarted) {
+      const maxMessages = 30;
+      const messageCount = chatHistory.length;
+  
+      console.log(`Message Count: ${messageCount}, Max Messages: ${maxMessages}, Show Warning: ${showWarning}`);
+  
+      localStorage.setItem('new_ai_chat_history', JSON.stringify(chatHistory));
+  
+      if (messageCount > maxMessages && !dismissedWarning) {
+        setShowWarning(true);
+      } else if (messageCount <= maxMessages) {
+        setShowWarning(false);
+        setDismissedWarning(false); // Reset when under the limit
+      }
+    }
+  }, [chatHistory, conversationStarted, dismissedWarning]);
+  
+  const handleLaterClick = () => {
+    setShowWarning(false);
+    setDismissedWarning(true); // Mark as dismissed
+  };
+  
+  
+  
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
@@ -282,6 +309,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       { role: 'model', parts: [{ text: 'Great to meet you. What would you like to know?' }] }
     ]);
     setConversationStarted(false);
+    setShowWarning(false)
   };
 
 
@@ -289,7 +317,8 @@ const MathSolver = ({ handleVoiceCommand }) => {
   return (
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
-           
+
+
            <div className="math-page-header">
   <button className="back-btn" onClick={() => navigate('/')}>
     <FaArrowLeft />
@@ -302,6 +331,25 @@ const MathSolver = ({ handleVoiceCommand }) => {
   <button className={`settings-btn ${isSettingsModalOpen ? 'active' : ''}`} onClick={toggleSettingsModal}>
     <FaCog />
   </button>
+
+  {showWarning && (
+  <div className="warning-banner">
+    <p>
+      Your chat history has exceeded 30 messages. Consider clearing the messages for better performance.
+    </p>
+    <div className="button-container_warning-banner">
+      <button onClick={handleClearHistory} className="clear-history-btn">
+        Clear Messages
+      </button>
+      <button
+        onClick={handleLaterClick}
+      >
+        Later
+      </button>
+    </div>
+  </div>
+)}
+
 
   {isSettingsModalOpen && (
     <div className="settings-modal">
@@ -390,7 +438,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
       required
     />
   </div>
-
+  
   {message.trim() ? (
   <button
     className="chat-send-btn__ai__loader__light"
