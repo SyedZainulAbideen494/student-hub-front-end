@@ -110,15 +110,15 @@
 
 
   .toggle-view-btn__view__type__date {
-    background-color: #f8f9fa; /* Light background */
-    color: #007bff; /* Soft blue text */
-    border: 1px solid #dee2e6; /* Light border */
+    background-color: #ffffff; /* Light background */
+    color: #000000; /* Soft blue text */
+    border: 1px solid #ffffff; /* Light border */
     padding: 8px; /* Padding for comfortable spacing */
     border-radius: 8px; /* Rounded corners for elegance */
     font-size: 12px; /* Small, readable text */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
 }
 
 
