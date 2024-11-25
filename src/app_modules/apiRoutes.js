@@ -132,5 +132,8 @@ export const API_ROUTES = {
   apiStartPomodoro: `${API_URL}/start-session/pomodoro`,
   apiStopPomodoro: `${API_URL}/end-session/pomodoro`,
   pomodoroStatsFetch: `${API_URL}/session-stats/pomodoro`,
-  addUserBirthday: `${API_URL}/api/birthday`
+  addUserBirthday: `${API_URL}/api/birthday`,
+  getPrevReports: `${API_URL}/api/reports`,
+  getPrevReportWithId: `${API_URL}/api/reports`,
+  generatePersonalReport: `${API_URL}/api/reports/generate`
 }

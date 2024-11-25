@@ -1,0 +1,115 @@
+/* Container */
+.pre__list__reports__container {
+    padding: 20px;
+    background-color: #fff; /* White background for clean contrast */
+    color: #333; /* Dark text for readability */
+    border-radius: 16px; /* Rounded corners for container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    max-width: 900px;
+    margin: auto; /* Center content */
+}
+
+/* Header */
+.pre__list__reports__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.pre__list__reports__back-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333; /* Dark button for minimal design */
+    cursor: pointer;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.pre__list__reports__back-button:hover {
+    color: #007aff; /* Subtle blue on hover */
+}
+
+.pre__list__reports__header-text {
+    font-size: 18px; /* Smaller text */
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+
+/* Loading and Error States */
+.pre__list__reports__loading,
+.pre__list__reports__error {
+    text-align: center;
+    font-size: 16px;
+    color: #888; /* Light gray */
+}
+
+/* No Reports Found */
+.pre__list__reports__no-reports {
+    text-align: center;
+    font-size: 16px;
+    color: #aaa; /* Slightly lighter gray */
+}
+
+/* List of Reports */
+.pre__list__reports__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increase space between cards */
+}
+
+/* Report Card */
+.pre__list__reports__card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 15px; /* Rounded corners for each card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pre__list__reports__card:hover {
+    transform: translateY(-5px); /* Card lifts slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+/* Report Date */
+.pre__list__reports__date {
+    font-size: 14px;
+    color: #777; /* Light gray for date text */
+    margin-bottom: 10px; /* Space between date and button */
+}
+
+/* View Button */
+.pre__list__reports__view-button {
+    background-color: #000000; /* iOS-like blue */
+    color: white;
+    border: none;
+    padding: 10px ;
+    font-size: 14px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded button */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pre__list__reports__container {
+        padding: 15px;
+    }
+
+    .pre__list__reports__header-text {
+        font-size: 16px;
+    }
+
+    .pre__list__reports__card {
+        padding: 12px;
+    }
+
+    .pre__list__reports__view-button {
+        width: 100%;
+    }
+}

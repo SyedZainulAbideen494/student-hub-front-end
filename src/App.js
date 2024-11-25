@@ -96,6 +96,9 @@ import SpotifyPlayer from "./music/player2.0/SpotifyPlayer";
 import MusicPlayer from "./music/player2.0/SpotifyPlayer";
 import PdfNotesConvertor from "./toolkit/pdfNotesconvertor";
 import StoryGame from "./Games/story";
+import UserReport from "./user report/user-report";
+import ReportDisplayPage from "./user report/ReportDisplayPage";
+import PreviousReports from "./user report/previousReports";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -178,6 +181,9 @@ const router = createBrowserRouter([
   {path: '/pomodoro/settings', element: <SettingsPagePomodoro/>},
   {path: '/toolkit/pdf-notes-to-text-convertor', element: <PdfNotesConvertor/>},
   {path: '/game/story', element: <StoryGame/>},
+  {path: '/user/report', element: <UserReport/>},
+  {path:'/previous-reports', element: <PreviousReports/>},
+  {path: '/user/report/:id', element: <ReportDisplayPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
