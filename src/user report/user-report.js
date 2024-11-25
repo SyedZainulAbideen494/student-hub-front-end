@@ -82,10 +82,14 @@ const UserReport = () => {
       <div className="user__report-content">
         {showInitialPage && (
           <>
+                      <div className="beta-mode-text">
+    <span>Beta Mode</span>
+  </div>
             <h2 className="user__report-subheading">Ready for your personalized report?</h2>
             <p className="user__report-description">
               Discover your strengths, areas for improvement, and more!
             </p>
+
             <div className="user__report-buttons">
   <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
     <button

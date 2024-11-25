@@ -206,3 +206,18 @@
     color: #AAAAAA;
     font-size: small; /* Changed to small for smaller buttons */
 }
+
+.beta-mode-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(to right, #429CF7, #796BD5);
+    padding: 5px 10px;
+    border-radius: 25px;
+    display: inline-block;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
