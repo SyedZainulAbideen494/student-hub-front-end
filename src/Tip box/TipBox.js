@@ -16,65 +16,58 @@ const TipBox = () => {
       "85% of Edusify users finished their tasks today... the rest are probably watching Netflix! Be one of the 85%.",
       "Top performers are ahead by 2 tasks today. Can you catch up, or are you too busy wondering what's for lunch?",
       "Pro Tip: Best students finish tasks before lunch. The rest of us finish after the third cup of coffee. Which team are you on?",
-      "Almost 90% of Edusify users are on track today... The other 10% are probably watching cat videos. Which side are you on?",
+      "Almost 90% of Edusify users are on track today. Don’t get left behind—catch up one task at a time!",
       "Top students are already crushing it with 3 tasks done before noon. You still figuring out if cereal is breakfast or lunch?",
-      "Pro Tip: Finish your tasks before your friends even realize you’re doing work. Become the stealth ninja of productivity!",
-      "Some people are already 5 tasks ahead. But don’t worry, you’ve got time... and possibly a snack.",
-      "Did you know? Top performers finish their work in record time. The rest of us just finish it... eventually. 😅"
+      "Some people are already 5 tasks ahead, but don’t worry—you’ve got this. Small steps lead to big wins.",
+      "Did you know? Top performers finish their work in record time. Start small, but make it count!",
+      "Pro Tip: Finish your tasks before your friends even realize you’re doing work. Be the stealth ninja of productivity!"
     ],
     quickTask: [
-      "Got 15 minutes? Revise a topic or organize your notes—it's either that or scrolling through TikTok!",
-      "Short break? Review a topic or tackle a small task, or just... stare into the void. Your call.",
-      "Short on time? Organize your notes in a few clicks. Or nap... but organizing might help you pass that exam.",
-      "Got 15 minutes? Quick task time! Or scroll through memes... but let’s be real, your task can wait 15 minutes more.",
-      "You know that task you’ve been ignoring? It’ll take 5 minutes. Do it. Or let it haunt you for the next 5 hours.",
-      "Can’t focus? Try organizing your notes! It’s like decluttering your brain without having to clean your room.",
-      "Quick task? Do it now, or your future self will be judging you while you procrastinate with your phone.",
-      "No time to study? Well, you’ve got 10 minutes... that’s enough to start something. Or take a power nap. Your call."
+      "Got 15 minutes? Revise a topic or organize your notes—it’s a quick win for your study goals.",
+      "Short break? Review a topic or tackle a small task. It’s like a mini confidence boost for the day.",
+      "Short on time? Organize your notes in a few clicks. It’s like tidying your mind without cleaning your room.",
+      "You know that task you’ve been ignoring? It’ll take 5 minutes. Start now, and feel the relief.",
+      "Can’t focus? Try organizing your notes! It’s a simple way to reset your mind and get productive.",
+      "Quick task? Do it now, or let it haunt you later. Future you will thank you for the effort!",
+      "No time to study? Well, you’ve got 10 minutes—that’s enough to review a topic or write a quick flashcard.",
+      "Pro Tip: Use small breaks to handle tiny tasks. They add up to big progress!"
     ],
     interactiveTip: [
-      "Pro Tip: Don’t feel like writing notes? Let the AI Assistant do it while you sip coffee. ☕️",
-      "Feeling lazy? AI Assistant's got your back. Just sit back and let the magic happen.",
-      "AI Assistant + topic details = Instant Notes. It’s like having superpowers. 🦸‍♂️",
-      "AI Assistant: It’s like hiring a personal assistant, but one who doesn’t need coffee breaks.",
-      "You’ve got the AI Assistant now. Writing notes just got 100x easier. So... why not?"
+      "Feeling stuck? Let the AI Assistant handle your notes while you sip coffee. ☕️",
+      "AI Assistant: Your personal study buddy that never takes a day off. Try it out for instant notes!",
+      "Procrastinating? The AI Assistant is here to get you back on track. Just give it a topic, and watch the magic.",
+      "Think of the AI Assistant as your study partner—only faster, smarter, and available 24/7.",
+      "Writing notes just got easier. The AI Assistant does the hard work so you can focus on learning."
     ],
     featureDiscovery: [
       "New Feature Alert: Keep your documents safe in our Document Locker. Your notes are too valuable to lose!",
-      "Pomodoro timer: 25 minutes of work, followed by a 5-minute break. It's like a mini vacation every half hour! 🌴",
-      "New Calendar feature: Because writing dates on your hand *really* isn’t working anymore.",
-      "Discover the Pomodoro timer—25 minutes of pure focus, then 5 minutes of your favorite distraction. 🌞",
-      "Need to keep your documents safe? Use Document Locker. It's like a vault for your study notes (without the heavy doors)."
+      "Pomodoro Timer: 25 minutes of work, followed by a 5-minute break. Focus hard, then relax like a pro. 🌴",
+      "Need to keep track of important dates? Use the Calendar feature. It’s like having a planner that never forgets!",
+      "Discover the Pomodoro Timer—25 minutes of pure focus, followed by a 5-minute guilt-free break.",
+      "Document Locker: Because losing notes is not an option. Store and secure your files hassle-free."
     ],
     additionalFunTips: [
-      "Need a study buddy? Get the AI Assistant to help! It’s like having a robot friend who actually knows what they're doing.",
-      "Feeling overwhelmed? Try Pomodoro! Work hard, then take a break like you’re on vacation. 🌞",
-      "Stressed about exams? Use AI Assistant to generate notes. It’s like a cheat code, but for real life.",
-      "Pomodoro hack: Study for 25 minutes, then take a 5-minute break. Or use that time to pretend you’re on a tropical beach.",
-      "AI Assistant: Your personal robot friend, available 24/7, no awkward conversations required."
+      "Need a study buddy? The AI Assistant is here to help, minus the awkward small talk. 😊",
+      "Stressed about exams? Use the AI Assistant to generate notes—it’s like having a secret weapon for studying.",
+      "Pomodoro hack: Work for 25 minutes, then take a short break. Or imagine you’re on a beach—it’s practically the same.",
+      "Feeling overwhelmed? Break your study time into Pomodoro sessions. It’s like mini-vacations for your brain!",
+      "Pro Tip: Let the AI Assistant handle the hard parts, so you can focus on acing your exams."
     ],
     founderTips: [
-      "Think Edusify is cool? Imagine the guy who built it! Spoiler: It’s me, and yes, you can totally DM me to tell me how awesome it is. It’ll make my day! 😎📩",
-      "Ever wanted to chat with a 17-year-old CEO who still can’t figure out how to make maggi in 2 minutes? Well, my DMs are open! 😂 #TalkToMe",
-      "Feeling inspired by Edusify? Slide into my DMs and tell me how it’s helping you! Bonus points if you include memes. 🙌📥",
-      "Building an app at 17 is hard, but hearing from you makes it all worth it. Shoot me a DM—whether it’s appreciation, feedback, or just a 'Hey, your app rocks!' 🌟✉️",
-      "Need someone to tell you that you're doing great? DM me, and I’ll remind you how amazing you are. And maybe we’ll talk about my app too. 😜📬",
-      "If you think I’m doing a good job as a 17-year-old CEO, let me know in my DMs. If not... just pretend I’m still learning. 😂🤷‍♂️",
-      "Want to know what it’s like to run a $3M app while still in college? DM me, and we’ll chat about the struggles of juggling homework and business calls. 😅📱",
-      "Procrastinating on homework? Same, but I built Edusify instead. DM me, and we can procrastinate together while talking about my app. 😜📩",
-      "Sometimes, I open my DMs just to see if someone wants to talk about how cool my app is. Be that someone! 🙌✨",
-      "Not every CEO invites you to chat, but hey, I’m not every CEO. Slide into my DMs if you’ve got questions, compliments, or just want to say hi! 😊📥",
-      "Fun fact: Every DM I get about Edusify motivates me to keep going. So, what are you waiting for? Let’s talk! 🚀💬",
-      "Some CEOs wait for feedback forms, but I’m more of a 'DM me and let’s vibe' kind of guy. Try it out—you won’t regret it! 😎📨",
-      "Think your life is hectic? Try balancing Edusify and college. Want to chat about it? My DMs are open for appreciation or motivational talks. 😂✨",
-      "Confession: Getting DMs about Edusify makes me happier than good marks on a test. So, drop me one! 🌟📬",
-      "Building Edusify was fun, but hearing from you is better. Hit me up in DMs, and let’s talk about how it’s making your life easier! 😊🚀",
-      "Let’s make a deal: You DM me about how much you love Edusify, and I promise to reply with an epic thank-you. Deal? 🤝✨",
-      "Got a story about how Edusify saved your grade or helped you focus? I’d love to hear it in my DMs. It’ll make my week! 🏆📩",
-      "They say CEOs are too busy for DMs, but I’m here proving them wrong. Hit me up, and let’s chat about anything (bonus if it’s about my app). 😂📱",
-      "Think I’m cooler than your other apps? Let me know in my DMs. I promise I’ll try to stay humble. 😜📬"
-    ]    
+      "Building Edusify was tough, but hearing from users makes it all worth it. DM me if it’s helping you out! 🌟📩",
+      "Want to know what it’s like to run a $3M app while still in college? DM me, and let’s chat about balancing dreams and studies. 😊📱",
+      "Sometimes, I open my DMs just to connect with users. Got feedback or a cool story? Let me know—it’ll make my day! 🚀💬",
+      "Fun fact: I built Edusify in just 2 weeks while teaching myself to code. DM me if you’re curious about the journey! 💻✨",
+    "I built Edusify for fun, to be honest, and uploaded stories to impress my crush... now it's valued at $3 million! 😂 #DreamBig",
+      "They say quiet students can’t do big things—I’d like to disagree. DM me if you’ve got a story of proving people wrong. 🌟📩",
+      "Once upon a time, my professors doubted me. Now Edusify has more users than my college has students. DM me if you believe in chasing dreams despite the odds. 🚀📊",
+      "Balancing life and Edusify wasn’t easy, but it taught me a lot about persistence. DM me if you need a pep talk from someone who’s been there. 💬✨",
+      "Want to connect with someone who turned challenges into success? My DMs are open. Let’s share wins and stories! 🙌📩",
+      "Dream big, even if no one believes in you. That’s how Edusify started. DM me if you’re chasing something incredible. 🚀✨",
+      "Here’s a secret: My Parents believed in me when others didn’t. Family support can be game-changing. DM me if you’ve got your own inspiring story! 💙📩"
+    ]
   };
+  
   
 
   useEffect(() => {

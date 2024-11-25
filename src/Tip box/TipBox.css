@@ -70,22 +70,18 @@
 }
 
 .got-it__btn__tip__box {
-  background-color: #77C0D8; /* Soft Blue */
+  background-color: #ffffff; /* Soft Blue */
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
 }
 
-.got-it__btn__tip__box:hover {
-  background-color: #63A7C6;
-  transform: translateY(-2px);
-}
+
 
 .action-btn__tip__box {
-  background-color: #FF6F61; /* Soft Coral */
+  background-color: #000000; /* Soft Coral */
 }
 
-.action-btn__tip__box:hover {
-  background-color: #FF5C50;
-  transform: translateY(-2px);
-}
+
 
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(20px); }
