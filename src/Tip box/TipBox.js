@@ -86,14 +86,14 @@ const TipBox = () => {
       const lastShownTime = localStorage.getItem('lastTipShown');
       const currentTime = new Date().getTime();
   
-      if (currentTime - lastShownTime >= 600000) { // 10 minutes
+      if (currentTime - lastShownTime >= 1800000) { // 10 minutes
         setTimeout(() => {
           setIsVisible(true);
           generateTip();
           localStorage.setItem('lastTipShown', currentTime);
         }, 500); // 2-second delay before showing the modal
       }
-    }, 600000); // Check every 10 minutes
+    }, 1800000); // Check every 10 minutes
   
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
