@@ -1,0 +1,159 @@
+/* Container */
+.story-game__Story__game {
+    font-family: 'Roboto', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #f6f6f6 50%, #ffffff);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Story container */
+.story-container__Story__game {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    position: relative;
+}
+
+/* Input fields for story type and details */
+.input-field__Story__game {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f7f7f7;
+    transition: all 0.3s ease;
+}
+
+.input-field__Story__game:focus {
+    border-color: #4CAF50;
+    background-color: #fff;
+    outline: none;
+}
+
+/* Start Story button */
+.start-button__Story__game {
+    padding: 14px 24px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.start-button__Story__game:hover {
+    background-color: #45a049;
+}
+
+.start-button__Story__game:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Choices buttons */
+.choices__Story__game button {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    font-size: 18px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.choices__Story__game button:hover {
+    background-color: #1976d2;
+}
+
+.choices__Story__game button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Scrollbar styling for story container */
+.story-container__Story__game::-webkit-scrollbar {
+    width: 10px;
+}
+
+.story-container__Story__game::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 8px;
+}
+
+.story-container__Story__game::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Mobile responsiveness: Make sure layout works on smaller screens */
+@media (max-width: 600px) {
+    .story-game__Story__game {
+        padding: 15px;
+    }
+
+    .input-field__Story__game {
+        font-size: 14px;
+    }
+
+    .start-button__Story__game,
+    .choices__Story__game button {
+        font-size: 16px;
+    }
+}
+
+/* New paragraph marker */
+.new-paragraph-marker__Story__game {
+    font-weight: bold;
+    color: #ff6347;
+    margin-right: 5px;
+}
+
+/* User choice border */
+.user-choice-border__Story__game {
+    padding: 12px;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+    border: 2px solid #2196F3;
+    display: inline-block;
+}
+
+/* Loading spinner */
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #4CAF50;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+    margin: 0 auto;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

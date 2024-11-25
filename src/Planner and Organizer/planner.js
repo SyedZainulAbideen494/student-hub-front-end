@@ -495,7 +495,7 @@ function Planner() {
                     {getTasksForDate(selectedDate).map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
                             <h3 className="task-title">{task.title}</h3>
-                            <p className="task-description">{task.description}</p>
+                            <p className="task-description" style={{ whiteSpace: 'pre-wrap' }}>{task.description}</p>
                             <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
                             <p className="task-priority">Priority: {task.priority}</p>
                             <button className="Btn__edit__task__planner" onClick={() => {
@@ -520,7 +520,7 @@ function Planner() {
                     {getAllTasks().map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
                             <h3 className="task-title">{task.title}</h3>
-                            <p className="task-description">{task.description}</p>
+                            <p className="task-description" style={{ whiteSpace: 'pre-wrap' }}>{task.description}</p>
                             <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
                             <p className="task-priority">Priority: {task.priority}</p>
                             <button className="Btn__edit__task__planner" onClick={() => startEditingTask(task)}>Edit 
