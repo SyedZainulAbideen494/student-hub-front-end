@@ -5,7 +5,7 @@ import './chatHistory.css';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaArrowLeft } from 'react-icons/fa';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-
+import { MathJax, MathJaxContext } from 'better-react-mathjax';
 const ChatHistoryPage = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,13 +13,18 @@ const ChatHistoryPage = () => {
   const navigate = useNavigate();
 
   const formatContent = (content) => {
-    // Same formatting logic as provided
+    // Format code blocks
     content = content.replace(/```(.*?)```/gs, "<pre><code>$1</code></pre>");
+    // Format large headers
     content = content.replace(/## (.*?)(?=\n|\r\n)/g, "<h2 class='large-text'>$1</h2>");
+    // Format bold text
     content = content.replace(/\*\*(.*?)\*\*/g, "<strong class='large-text'>$1</strong>");
+    // Format italic text
     content = content.replace(/\*(.*?)\*/g, "<em>$1</em>");
+    // Format list items
     content = content.replace(/^\* (.*?)(?=\n|\r\n)/gm, "<li>$1</li>");
     content = content.replace(/(<li>.*?<\/li>)/g, "<ul>$1</ul>");
+    // Format tables
     content = content.replace(/((?:\|.*?\|(?:\r?\n|$))+)/g, (match) => {
       const rows = match.split('\n').filter(row => row.trim());
       const tableRows = rows.map((row, index) => {
@@ -33,8 +38,12 @@ const ChatHistoryPage = () => {
       }).join('');
       return `<table>${tableRows}</table>`;
     });
+    // Format LaTeX/math expressions
+    content = content.replace(/\$(.*?)\$/g, (_, math) => `\\(${math}\\)`); // MathJax inline
     return content;
   };
+  
+
 
   const fetchChatHistory = async () => {
     console.log('Fetching chat history...'); // Log the fetching process
@@ -88,10 +97,12 @@ const ChatHistoryPage = () => {
             <div key={index} className={`chat-message ${result.role}`}>
               <div className="chat-bubble">
                 <span className="chat-role">{result.role === 'user' ? 'You' : 'AI'}:</span>
+                <MathJaxContext>
                 <div
                   className="chat-result-content"
                   dangerouslySetInnerHTML={{ __html: result.role === 'model' ? formatContent(result.parts.map(part => part.text).join('')) : result.parts.map(part => part.text).join('') }}
                 />
+                </MathJaxContext>
                 {result.role === 'model' && (
                   <div className="create-flashcard-btn_ai__page__container">
                     <button

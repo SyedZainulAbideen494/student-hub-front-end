@@ -10,6 +10,7 @@ import { TypeAnimation } from 'react-type-animation';
 import AIPageTutorial from './AIPageTutorial';
 import Loader from './mathLoader';
 import AiLoaderSpeaking from './AiLoaderSpeaking';
+import { MathJax, MathJaxContext } from 'better-react-mathjax';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -397,10 +398,12 @@ const MathSolver = ({ handleVoiceCommand }) => {
               <div key={index} className={`chat-message ${result.role}`}>
                 <div className="chat-bubble">
                   <span className="chat-role">{result.role === 'user' ? 'You' : 'AI'}:</span>
+                  <MathJaxContext>
                   <div
                     className="chat-result-content"
                     dangerouslySetInnerHTML={{ __html: result.parts.map((part) => part.text).join('') }}
                   />
+                  </MathJaxContext>
                   {result.role === 'model' && (
                     <div className="create-flashcard-btn_ai__page__container">
                       <button

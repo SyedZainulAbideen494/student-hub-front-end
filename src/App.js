@@ -99,6 +99,8 @@ import StoryGame from "./Games/story";
 import UserReport from "./user report/user-report";
 import ReportDisplayPage from "./user report/ReportDisplayPage";
 import PreviousReports from "./user report/previousReports";
+import YoutubeCaption from "./Youtube video caption/YtCaption";
+import AchievementPage from "./Achivements/AchievementPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -184,6 +186,7 @@ const router = createBrowserRouter([
   {path: '/user/report', element: <UserReport/>},
   {path:'/previous-reports', element: <PreviousReports/>},
   {path: '/user/report/:id', element: <ReportDisplayPage/>},
+  {path: '/achievements', element: <AchievementPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
