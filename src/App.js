@@ -101,6 +101,7 @@ import ReportDisplayPage from "./user report/ReportDisplayPage";
 import PreviousReports from "./user report/previousReports";
 import YoutubeCaption from "./Youtube video caption/YtCaption";
 import AchievementPage from "./Achivements/AchievementPage";
+import ScientificCalculator from "./toolkit/ScientificCalculator";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -187,6 +188,7 @@ const router = createBrowserRouter([
   {path:'/previous-reports', element: <PreviousReports/>},
   {path: '/user/report/:id', element: <ReportDisplayPage/>},
   {path: '/achievements', element: <AchievementPage/>},
+  {path: '/toolkit/scientific-calculator', element: <ScientificCalculator/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -42,6 +42,22 @@ const ToolkitPage = () => {
             </header>
             <div className="app__list__page">
             <div className="app__card__page">
+  <FontAwesomeIcon icon={faCalculator} size="2x" />
+  <h2>Scientific Calculator</h2>
+  <p className="app__description__page">
+    Perform advanced calculations effortlessly.
+  </p>
+  <p className="app__author__page">by Edusify</p>
+  <Link
+    to="/toolkit/scientific-calculator"
+    className="open__app__button__page"
+    style={{ textDecoration: 'none' }}
+  >
+    Open App
+  </Link>
+</div>
+
+            <div className="app__card__page">
     <FontAwesomeIcon icon={faClipboardList} size="2x" />
     <h2>Report Card Maker</h2>
     <p className="app__description__page">
