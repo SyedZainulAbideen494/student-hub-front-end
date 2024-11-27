@@ -73,6 +73,7 @@ const ScientificCalculator = () => {
   };
 
   return (
+    <div className="calculator__toolKit__sci__calci__wrapper">
     <div className="calculator__toolKit__sci__calci">
       <div className="header__toolKit__sci__calci">
         <button
@@ -144,6 +145,7 @@ const ScientificCalculator = () => {
           =
         </button>
       </div>
+    </div>
     </div>
   );
 };

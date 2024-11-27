@@ -1,6 +1,14 @@
-.calculator__toolKit__sci__calci {
+.calculator__toolKit__sci__calci__wrapper {
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    justify-content: center;
+    height: 100vh; /* Take full viewport height */
+    padding: 0 15px; /* Add padding on the sides for spacing */
+  }
+  
+  .calculator__toolKit__sci__calci {
     width: 260px;
-    margin: 20px auto;
     padding: 15px;
     border-radius: 15px;
     background: #fefaf6;
@@ -26,8 +34,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background 0.2s, transform 0.2s;
   }
-  
-
   
   .calculator-screen__toolKit__sci__calci {
     width: 90%;
@@ -60,14 +66,10 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-
-  
   .equals__toolKit__sci__calci {
     background: #ffcc80;
     color: #e65100;
   }
-
-
   
   .toggle__toolKit__sci__calci {
     width: 90%;
@@ -82,6 +84,4 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background 0.2s, transform 0.2s;
   }
-  
-
   
