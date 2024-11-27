@@ -16,13 +16,18 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
 const formatContent = (content) => {
-  // Same formatting logic
+  // Format code blocks
   content = content.replace(/```(.*?)```/gs, "<pre><code>$1</code></pre>");
+  // Format large headers
   content = content.replace(/## (.*?)(?=\n|\r\n)/g, "<h2 class='large-text'>$1</h2>");
+  // Format bold text
   content = content.replace(/\*\*(.*?)\*\*/g, "<strong class='large-text'>$1</strong>");
+  // Format italic text
   content = content.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  // Format list items
   content = content.replace(/^\* (.*?)(?=\n|\r\n)/gm, "<li>$1</li>");
   content = content.replace(/(<li>.*?<\/li>)/g, "<ul>$1</ul>");
+  // Format tables
   content = content.replace(/((?:\|.*?\|(?:\r?\n|$))+)/g, (match) => {
     const rows = match.split('\n').filter(row => row.trim());
     const tableRows = rows.map((row, index) => {
@@ -36,8 +41,11 @@ const formatContent = (content) => {
     }).join('');
     return `<table>${tableRows}</table>`;
   });
+  // Format LaTeX/math expressions
+  content = content.replace(/\$(.*?)\$/g, (_, math) => `\\(${math}\\)`); // MathJax inline
   return content;
 };
+
 
 const MathSolver = ({ handleVoiceCommand }) => {
   const [loading, setLoading] = useState(false);
@@ -403,7 +411,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
                     className="chat-result-content"
                     dangerouslySetInnerHTML={{ __html: result.parts.map((part) => part.text).join('') }}
                   />
-                  </MathJaxContext>
+                   </MathJaxContext>
                   {result.role === 'model' && (
                     <div className="create-flashcard-btn_ai__page__container">
                       <button
@@ -414,7 +422,9 @@ const MathSolver = ({ handleVoiceCommand }) => {
                       </button>
                     </div>
                   )}
+                
                 </div>
+              
               </div>
             ))
           )}
