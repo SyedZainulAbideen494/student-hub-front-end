@@ -27,13 +27,7 @@
     transition: background 0.2s, transform 0.2s;
   }
   
-  .back-btn__toolKit__sci__calci:hover {
-    background: #ffb8b8;
-  }
-  
-  .back-btn__toolKit__sci__calci:active {
-    transform: scale(0.95);
-  }
+
   
   .calculator-screen__toolKit__sci__calci {
     width: 90%;
@@ -66,24 +60,28 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .button__toolKit__sci__calci:hover {
-    background: #b2ebf2;
-  }
-  
-  .button__toolKit__sci__calci:active {
-    transform: scale(0.95);
-  }
+
   
   .equals__toolKit__sci__calci {
     background: #ffcc80;
     color: #e65100;
   }
+
+
   
-  .equals__toolKit__sci__calci:hover {
-    background: #ffb74d;
+  .toggle__toolKit__sci__calci {
+    width: 90%;
+    margin: 10px auto 20px;
+    padding: 8px;
+    border-radius: 10px;
+    background: #ffe5d9;
+    color: #00796b;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s, transform 0.2s;
   }
   
-  .equals__toolKit__sci__calci:active {
-    transform: scale(0.95);
-  }
+
   

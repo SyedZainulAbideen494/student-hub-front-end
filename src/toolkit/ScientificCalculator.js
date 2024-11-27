@@ -4,10 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const ScientificCalculator = () => {
   const [input, setInput] = useState('');
-  const nav = useNavigate()
-  const handlebackclick = () => {
-    nav(-1)
-  }
+  const [isRadians, setIsRadians] = useState(true); // Toggle between radians and degrees
+  const nav = useNavigate();
+
+  const handleBackClick = () => {
+    nav(-1);
+  };
+
   const handleClick = (value) => {
     setInput((prev) => prev + value);
   };
@@ -31,25 +34,53 @@ const ScientificCalculator = () => {
 
   const handleFunction = (func) => {
     try {
-      const result = {
-        sin: Math.sin,
-        cos: Math.cos,
-        tan: Math.tan,
-        log: Math.log10,
-        ln: Math.log,
-        sqrt: Math.sqrt,
-      }[func](parseFloat(input));
+      const value = parseFloat(input);
 
-      setInput(result.toString());
+      const radiansValue = isRadians ? value : (value * Math.PI) / 180;
+      const result = {
+        sin: Math.sin(radiansValue),
+        cos: Math.cos(radiansValue),
+        tan: Math.tan(radiansValue),
+        log: Math.log10(value),
+        ln: Math.log(value),
+        sqrt: Math.sqrt(value),
+        exp: Math.exp(value),
+        '!': factorial(value),
+      }[func];
+
+      setInput(result?.toString() || 'Error');
     } catch (error) {
       setInput('Error');
     }
   };
 
+  const handlePower = () => {
+    setInput((prev) => prev + '**');
+  };
+
+  const handleModulus = () => {
+    setInput((prev) => prev + '%');
+  };
+
+  const toggleRadiansDegrees = () => {
+    setIsRadians((prev) => !prev);
+  };
+
+  const factorial = (n) => {
+    if (n < 0) return NaN;
+    if (n === 0 || n === 1) return 1;
+    return n * factorial(n - 1);
+  };
+
   return (
     <div className="calculator__toolKit__sci__calci">
       <div className="header__toolKit__sci__calci">
-        <button className="back-btn__toolKit__sci__calci" onClick={handlebackclick}>&larr;</button>
+        <button
+          className="back-btn__toolKit__sci__calci"
+          onClick={handleBackClick}
+        >
+          &larr;
+        </button>
       </div>
       <input
         type="text"
@@ -57,6 +88,12 @@ const ScientificCalculator = () => {
         readOnly
         className="calculator-screen__toolKit__sci__calci"
       />
+      <button
+        className="toggle__toolKit__sci__calci"
+        onClick={toggleRadiansDegrees}
+      >
+        {isRadians ? 'Radians' : 'Degrees'}
+      </button>
       <div className="buttons__toolKit__sci__calci">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((num) => (
           <button
@@ -76,7 +113,7 @@ const ScientificCalculator = () => {
             {op}
           </button>
         ))}
-        {['sin', 'cos', 'tan', 'log', 'ln', 'sqrt'].map((func) => (
+        {['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'exp', '!'].map((func) => (
           <button
             key={func}
             className="button__toolKit__sci__calci"
@@ -85,6 +122,12 @@ const ScientificCalculator = () => {
             {func}
           </button>
         ))}
+        <button className="button__toolKit__sci__calci" onClick={handlePower}>
+          x<sup>y</sup>
+        </button>
+        <button className="button__toolKit__sci__calci" onClick={handleModulus}>
+          Mod
+        </button>
         <button
           className="button__toolKit__sci__calci"
           onClick={handleBackspace}
