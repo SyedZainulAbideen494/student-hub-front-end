@@ -95,7 +95,7 @@ const ChatHistoryPage = () => {
         ) : (
           chatHistory.map((result, index) => (
             <div key={index} className={`chat-message ${result.role}`}>
-              <div className="chat-bubble">
+              <div className="chat-bubble"  style={{maxWidth: '300px'}}>
                 <span className="chat-role">{result.role === 'user' ? 'You' : 'AI'}:</span>
                 <MathJaxContext>
                 <div
