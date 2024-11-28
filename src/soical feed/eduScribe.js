@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaRegThumbsUp, FaTrash } from 'react-icons/fa'; // Import FaTrash for delete icon
+import { FaComment, FaRegThumbsUp, FaTrash } from 'react-icons/fa'; // Import FaTrash for delete icon
 import './eduScribe.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
@@ -146,6 +146,15 @@ const EduScribe = ({ activeTab }) => {
                 size={20}
               />
               <span>Like {displayLikesCount(eduscribe)}</span>
+            </button>
+            <button 
+              className={`eduscribe-action-button eduscribe-like-button ${liked[eduscribe.id] ? 'liked' : ''}`} 
+              onClick={() => handleLike(eduscribe.id)}
+            >
+              <FaComment 
+                className={`eduscribe-like-icon`}
+                size={20}
+              />
             </button>
             {currentUserId === eduscribe.user_id && (
                 <button className="delete-button" onClick={() => handleDelete(eduscribe.id)}style={{marginLeft: '40px'}}>

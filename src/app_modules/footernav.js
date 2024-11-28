@@ -144,13 +144,13 @@ const FooterNav = () => {
                         <span className="btn-label">Pomodoro</span>
                     </button>
                 </Link>
-                <Link to='/social-feed' style={{ textDecoration: 'none' }}>
+               {/*  <Link to='/social-feed' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/social-feed' ? 'active' : ''}`}>
                         <FaGlobe className="icon-footer-nav" />
                         <span className="btn-label">Social Feed</span>
                         <span className='new-label-footer-nav'>New</span>
                     </button>
-                </Link>
+                </Link>*/} 
                 
                {/*  <Link to='/social-feed' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/social-feed' ? 'active' : ''}`}>
