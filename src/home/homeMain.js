@@ -16,6 +16,7 @@ import axios from "axios";
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import BirthdayModal from "../app_modules/TakeBirthDay";
 import BirthdayCelebration from "../app_modules/birthdayCelebrate";
+import FoxIcon from "../Edusify fox/FoxIcon";
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
@@ -49,6 +50,7 @@ const HomeMain = () => {
 
 
     return<Fragment>
+
    <TipBox/>
       <BirthdayCelebration/>
       <BirthdayModal/>

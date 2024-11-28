@@ -1,0 +1,73 @@
+/* General Container */
+.fox__edusify__fox__icon-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Fox Face */
+  .fox__edusify__fox__icon-face {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Ears */
+  .fox__edusify__fox__icon-ear-left, .fox__edusify__fox__icon-ear-right {
+    transition: transform 0.3s ease;
+    transform-origin: center;
+  }
+  
+  .fox__edusify__fox__icon-ear-left {
+    transform: rotate(-20deg);
+  }
+  
+  .fox__edusify__fox__icon-ear-right {
+    transform: rotate(20deg);
+  }
+  
+  /* Inner Ears */
+  .fox__edusify__fox__icon-inner-ear-left, .fox__edusify__fox__icon-inner-ear-right {
+    transform: scale(0.7);
+  }
+  
+  /* Eyes */
+  .fox__edusify__fox__icon-eye-left, .fox__edusify__fox__icon-eye-right {
+    transition: transform 0.2s ease;
+  }
+  
+  .fox__edusify__fox__icon-eye-left:hover, .fox__edusify__fox__icon-eye-right:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Pupils */
+  .fox__edusify__fox__icon-pupil-left, .fox__edusify__fox__icon-pupil-right {
+    transition: transform 0.2s ease;
+  }
+  
+  .fox__edusify__fox__icon-pupil-left:hover,
+  .fox__edusify__fox__icon-pupil-right:hover {
+    transform: scale(1.5);
+  }
+  
+  /* Nose */
+  .fox__edusify__fox__icon-nose {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Mouth */
+  .fox__edusify__fox__icon-mouth {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Whiskers */
+  .fox__edusify__fox__icon-whisker-left-1, .fox__edusify__fox__icon-whisker-left-2,
+  .fox__edusify__fox__icon-whisker-right-1, .fox__edusify__fox__icon-whisker-right-2 {
+    transition: transform 0.2s ease;
+  }
+  
+  .fox__edusify__fox__icon-whisker-left-1:hover, .fox__edusify__fox__icon-whisker-left-2:hover,
+  .fox__edusify__fox__icon-whisker-right-1:hover, .fox__edusify__fox__icon-whisker-right-2:hover {
+    transform: translateX(5px);
+  }
+  
