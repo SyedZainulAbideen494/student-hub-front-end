@@ -1,20 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const EmailSender = () => {
     const [emailContent, setEmailContent] = useState('');
     const [subject, setSubject] = useState('');
+    const [users, setUsers] = useState([]);
+    const [selectedUsers, setSelectedUsers] = useState([]);
+
+    // Fetch users from the backend
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('https://srv594954.hstgr.cloud/get-users/all/admin');
+                const data = await response.json();
+                setUsers(data.users);
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+
+    const toggleUserSelection = (uniqueId) => {
+        setSelectedUsers((prevSelected) =>
+            prevSelected.includes(uniqueId)
+                ? prevSelected.filter((id) => id !== uniqueId)
+                : [...prevSelected, uniqueId]
+        );
+    };
 
     const handleSendEmails = async () => {
         try {
-            const response = await fetch('http://localhost:8080/send-emails/all-users/admin', {
+            const response = await fetch('https://srv594954.hstgr.cloud/send-emails/selected-users/admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ content: emailContent, subject }),
+                body: JSON.stringify({
+                    content: emailContent,
+                    subject,
+                    selectedUsers,
+                }),
             });
             const result = await response.json();
             alert(result.message);
@@ -40,6 +68,21 @@ const EmailSender = () => {
                 onChange={setEmailContent}
                 placeholder="Write your email content here..."
             />
+            <h3>Select Users</h3>
+            <ul>
+                {users.map((user) => (
+                    <li key={user.unique_id}>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={selectedUsers.includes(user.unique_id)}
+                                onChange={() => toggleUserSelection(user.unique_id)}
+                            />
+                            {user.unique_id} ({user.email})
+                        </label>
+                    </li>
+                ))}
+            </ul>
             <button onClick={handleSendEmails}>Send Emails</button>
         </div>
     );
