@@ -49,7 +49,7 @@ const HomeMain = () => {
 
 
     return<Fragment>
-   
+   <TipBox/>
       <BirthdayCelebration/>
       <BirthdayModal/>
         <ReviewModal/>

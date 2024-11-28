@@ -229,7 +229,6 @@ const MathSolver = ({ handleVoiceCommand }) => {
     navigate('/ai/chat/history')
   }
 
-
   const defaultPage = (
     <div className="container__default__ai__PageWrapper">
       {/* Gradient Greeting */}
@@ -237,9 +236,14 @@ const MathSolver = ({ handleVoiceCommand }) => {
         <h1>
           <span className="gradient-text">
             {profile ? `Hello,` : 'Hello,'}
-          </span><br/>
-          <span className='gradient-text'>
-          {profile ? `${profile.unique_id}` : 'User'}
+          </span>
+          <br />
+          <span className="gradient-text">
+            {profile
+              ? `${profile.unique_id.length > 16 
+                  ? profile.unique_id.slice(0, 16) + '...' 
+                  : profile.unique_id}`
+              : 'User'}
           </span>
           <br />
         </h1>
