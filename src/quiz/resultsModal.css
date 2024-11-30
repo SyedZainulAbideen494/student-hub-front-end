@@ -8,48 +8,49 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 10000;
     animation: fadeIn 0.3s ease-in-out;
+    padding: 20px; /* Space on sides */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
 }
 
 .results-modal {
     background: #ffffff;
-    border-radius: 12px; /* Curved edges for modern look */
-    padding: 20px;
-    max-width: 600px;
+    border-radius: 8px; /* Slightly smaller radius */
+    padding: 15px; /* Reduced padding */
+    max-width: 500px; /* Slightly narrower width */
     width: 100%;
-    max-height: 80vh;
+    max-height: 75vh; /* Reduced height for breathing room */
     overflow-y: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Softer shadow */
     animation: slideIn 0.3s ease-out;
     position: relative;
 }
 
 .modal-header {
-    position: sticky;
     top: 0;
     background: #ffffff;
-    padding: 10px 0;
+    padding: 8px 0;
     border-bottom: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 12px;
     z-index: 1;
 }
 
 .close-icon {
-    font-size: 24px;
+    font-size: 16px;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .close-icon:hover {
-    color: #ff0000;
+    color: #ff4d4d; /* Softer red */
 }
 
 .results-content {
-    position: relative;
-    padding: 20px 0;
+    padding: 15px 0;
 }
 
 .results-list {
@@ -59,93 +60,87 @@
 }
 
 .result-item {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0; /* Subtle divider */
 }
 
 .result-quiz-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    color: #333;
+    color: #222;
 }
 
 .result-date, .result-score {
-    font-size: 16px;
-    color: #555;
+    font-size: 14px;
+    color: #666;
 }
 
 .card-container {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    gap: 10px; /* Better gap handling */
+    margin-bottom: 15px;
 }
 
 .card {
-    background: #f9f9f9;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: #fcfcfc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     flex: 1;
-    margin-right: 15px;
     position: relative;
 }
 
-.card:last-child {
-    margin-right: 0;
-}
-
 .card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #333;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #222;
 }
 
 .card-icon {
-    font-size: 24px;
+    font-size: 20px;
     color: #007bff;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
 }
 
 .high-score-card {
-    border-left: 4px solid #007bff;
+    border-left: 3px solid #007bff;
 }
 
 .low-score-card {
-    border-left: 4px solid #ff0000;
+    border-left: 3px solid #ff4d4d;
 }
 
 .ai-tip {
     display: flex;
     align-items: center;
-    background: #f0f8ff;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    background: #f8faff;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
 }
 
 .info-icon {
-    font-size: 20px;
-    margin-right: 10px;
+    font-size: 18px;
+    margin-right: 8px;
     color: #007bff;
 }
 
 .ai-tip p {
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
 }
 
 .close-button {
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: 10px 20px;
+    font-size: 14px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -164,7 +159,7 @@
 
 @keyframes slideIn {
     from {
-        transform: translateY(-50px);
+        transform: translateY(-30px);
         opacity: 0;
     }
     to {

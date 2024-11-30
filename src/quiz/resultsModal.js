@@ -40,22 +40,7 @@ const ResultsModal = ({ results, onClose }) => {
                     <FaTimes className="close-icon" onClick={onClose} />
                 </div>
                 <div className="results-content">
-                    <div className="card-container">
-                        <div className="card high-score-card">
-                            <FaStar className="card-icon" />
-                            <h3>Highest Score</h3>
-                            <p>Quiz: {getHighestScore().quizTitle}</p>
-                            <p>Date: {formatDate(getHighestScore().takenAt)}</p>
-                            <p>Score: {getHighestScore().score}</p>
-                        </div>
-                        <div className="card low-score-card">
- 
-                            <h3>Lowest Score</h3>
-                            <p>Quiz: {getLowestScore().quizTitle}</p>
-                            <p>Date: {formatDate(getLowestScore().takenAt)}</p>
-                            <p>Score: {getLowestScore().score}</p>
-                        </div>
-                    </div>
+
                     <ul className="results-list">
                         {results.length > 0 ? (
                             results.map(result => (
