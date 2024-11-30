@@ -54,16 +54,7 @@ const TipBox = () => {
       "Let the AI Assistant handle the hard parts while you focus on the important stuff—like picking the perfect playlist."
     ],
     founderTips: [
-      "They laughed when I said I’d build an app in 2 weeks. Now they’re using it. Believe in your crazy ideas. 🚀",
-      "Fun fact: Edusify started as a ‘let’s see if I can do this’ moment. Now it’s worth $3M. Dream big, then make it happen.",
-      "Balancing Edusify and college is wild, but nothing beats hearing your feedback. Got a story? DM me—I’d love to hear it. 🌟",
-      "Professors doubted me, but now Edusify has more users than my college has students. Keep proving doubters wrong. 💪",
-      "Secret motivation: My dad believed in me when no one else did. Find your people—they’ll keep you going when it’s tough.",
-      "Pro Tip: Quiet kids make loud impacts. Trust me, I was that kid. Go chase your wildest dreams. 🌟",
-      "Edusify was partly built to impress my crush... awkward. But now it’s inspiring thousands. Start wherever you are. ❤️",
-      "Balancing life and Edusify wasn’t easy, but persistence wins. DM me if you’re chasing something huge—I’ve got your back. 🚀",
-      "Once a professor told me to ‘focus on academics.’ Now Edusify is bigger than that advice. Keep going despite the odds. ✨",
-      "Every big thing starts small. For me, it was a laptop, zero skills, and lots of coffee. DM me your story—I’d love to know!"
+     
     ]
   };
   
