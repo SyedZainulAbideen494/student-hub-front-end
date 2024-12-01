@@ -150,4 +150,27 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
+  /* Leave Room Button */
+.room__members__page__leave {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .room__members__page__leave button {
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #ff4d4d; /* Red background for the leave button */
+    color: white;
+    font-weight: normal;
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room__members__page__leave button:hover {
+    background-color: #e60000; /* Darker red on hover */
+  }
   

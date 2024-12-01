@@ -66,6 +66,29 @@ const RoomMainPageJoined = () => {
     }
   };
 
+  const handleLeaveClick = async () => {
+    const token = localStorage.getItem('token'); // Get the token from localStorage
+  
+    try {
+      // Send a request to the backend to remove the user from the room
+      const response = await axios.post(API_ROUTES.leaveRoom, {
+        token,       // Send the token in the request body
+        room_id: roomId,
+      });
+  
+      if (response.data.success) {
+        alert("You have left the room.");
+        // Redirect user to the home page or another appropriate page
+        navigate("/");
+      } else {
+        alert("Failed to leave the room.");
+      }
+    } catch (error) {
+      console.error("Error leaving the room:", error);
+      alert("An error occurred while trying to leave the room. Please try again later.");
+    }
+  };
+  
   if (!roomDetails) {
     return <p>Loading room details...</p>;
   }
@@ -83,8 +106,16 @@ const RoomMainPageJoined = () => {
         <h3 style={{ textAlign: 'center' }}>Members</h3>
 
         {/* Invite Button */}
-        <div className="room__members__page__invite">
+          {/* Invite Button */}
+          <div className="room__members__page__invite">
           <button onClick={handleInviteClick}>Invite Member</button>
+        </div>
+
+        {/* Leave Button */}
+        <div className="room__members__page__leave">
+          <button onClick={handleLeaveClick} style={{ backgroundColor: '#ff4d4d', color: 'white' }}>
+            Leave Room
+          </button>
         </div>
 
         {/* Members List */}
