@@ -8,28 +8,27 @@ const ResourcesPage = ({ onBack }) => {
     const { roomId } = useParams(); // Correctly destructure roomId from useParams
     const [activeTab, setActiveTab] = useState('all');
     const [resources, setResources] = useState([]);
-    const nav = useNavigate()
+    const nav = useNavigate();
 
-  // Fetch resources based on the active tab and roomId
-const fetchResources = async () => {
-    try {
-        const response = await fetch(API_ROUTES.fetchRoomResources, {
-            method: 'POST', // Change to POST request
-            headers: {
-                'Content-Type': 'application/json', // Set content type to JSON
-            },
-            body: JSON.stringify({
-                roomId: roomId, // Send roomId
-                type: activeTab, // Send activeTab as type
-            }),
-        });
-        const data = await response.json();
-        setResources(data);
-    } catch (error) {
-        console.error('Error fetching resources:', error);
-    }
-};
-
+    // Fetch resources based on the active tab and roomId
+    const fetchResources = async () => {
+        try {
+            const response = await fetch(API_ROUTES.fetchRoomResources, {
+                method: 'POST', // Change to POST request
+                headers: {
+                    'Content-Type': 'application/json', // Set content type to JSON
+                },
+                body: JSON.stringify({
+                    roomId: roomId, // Send roomId
+                    type: activeTab, // Send activeTab as type
+                }),
+            });
+            const data = await response.json();
+            setResources(data);
+        } catch (error) {
+            console.error('Error fetching resources:', error);
+        }
+    };
 
     useEffect(() => {
         fetchResources();
@@ -44,9 +43,11 @@ const fetchResources = async () => {
     };
 
     const handleBack = () => {
-        nav(-1)
-    }
+        nav(-1);
+    };
 
+    // Sort resources by created_at in descending order (most recent first)
+    const sortedResources = [...resources].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
     return (
         <div className="resources-page__resources__page__rooms">
@@ -79,37 +80,35 @@ const fetchResources = async () => {
             </div>
 
             <div className="resources-list__resources__page__rooms">
-                {resources.length > 0 ? (
-                    resources.map((resource) => (
-<div className="resource-item__resources__page__rooms">
-    <h3>{resource.title}</h3>
-    <p>Shared by {resource.user_name}</p>
+                {sortedResources.length > 0 ? (
+                    sortedResources.map((resource) => (
+                        <div key={resource.resource_id} className="resource-item__resources__page__rooms">
+                            <h3>{resource.title}</h3>
+                            <p>Shared by {resource.user_name}</p>
 
-    <div className="resource-buttons-container">
-        {resource.type === 'quiz' && (
-            <button
-                className="attend-btn__resources__page__rooms"
-                onClick={() => handleAttendQuiz(resource.resource_id)}
-            >
-                Attend Quiz
-            </button>
-        )}
-        {resource.type === 'note' && (
-            <button
-                className="view-btn__resources__page__rooms"
-                onClick={() => handleViewNote(resource.resource_id)}
-            >
-                View Note
-            </button>
-        )}
-    </div>
+                            <div className="resource-buttons-container">
+                                {resource.type === 'quiz' && (
+                                    <button
+                                        className="attend-btn__resources__page__rooms"
+                                        onClick={() => handleAttendQuiz(resource.resource_id)}
+                                    >
+                                        Attend Quiz
+                                    </button>
+                                )}
+                                {resource.type === 'note' && (
+                                    <button
+                                        className="view-btn__resources__page__rooms"
+                                        onClick={() => handleViewNote(resource.resource_id)}
+                                    >
+                                        View Note
+                                    </button>
+                                )}
+                            </div>
 
-    <p className="created-at__resources__page__rooms">
-        {new Date(resource.created_at).toLocaleString()}
-    </p>
-</div>
-
-
+                            <p className="created-at__resources__page__rooms">
+                                {new Date(resource.created_at).toLocaleString()}
+                            </p>
+                        </div>
                     ))
                 ) : (
                     <p className="no-resources__resources__page__rooms">No resources available.</p>
