@@ -1,0 +1,133 @@
+/* General Page Container */
+.__room__create_page__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    margin: 0;
+    padding: 0 20px; /* Add horizontal padding for better spacing on smaller screens */
+  }
+  
+  /* Heading Styles */
+  .__room__create_page__heading {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Step 1 */
+  .__room__create_page__step1,
+  .__room__create_page__step2,
+  .__room__create_page__step3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 25px;
+    width: 100%;
+    max-width: 420px;
+    margin: 10px;
+  }
+  
+  .__room__create_page__input,
+  .__room__create_page__select {
+    width: 90%;
+    padding: 12px 18px;
+    margin-bottom: 24px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .__room__create_page__input::placeholder,
+  .__room__create_page__select {
+    color: #aaa;
+  }
+  
+  /* Button Styles */
+  .__room__create_page__button,
+  .__room__create_page__later-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px;
+  }
+  
+
+  
+  .__room__create_page__later-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  
+  .__room__create_page__later-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Step 3 Specific */
+  .__room__create_page__text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .__room__create_page__link {
+    margin: 10px 0;
+  }
+  
+  .__room__create_page__invite-link {
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .__room__create_page__invite-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .__room__create_page__container {
+      padding: 0 10px;
+    }
+  
+    .__room__create_page__step1,
+    .__room__create_page__step2,
+    .__room__create_page__step3 {
+      padding: 20px;
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .__room__create_page__heading {
+      font-size: 22px;
+    }
+  
+    .__room__create_page__input,
+    .__room__create_page__select {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  
+    .__room__create_page__button,
+    .__room__create_page__later-btn {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
+  

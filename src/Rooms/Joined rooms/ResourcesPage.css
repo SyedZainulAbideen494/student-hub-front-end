@@ -1,0 +1,146 @@
+/* General Page Styling */
+.resources-page__resources__page__rooms {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Section */
+.header__resources__page__rooms {
+    display: flex;
+    justify-content: center; /* Centers the title */
+    align-items: center;
+    position: relative; /* Allows back button to position absolutely */
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.back-btn__resources__page__rooms {
+    position: absolute;
+    left: 20px; /* Keeps the back button aligned to the left */
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header-title__resources__page__rooms {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Toggle Buttons */
+.toggle-buttons__resources__page__rooms {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.toggle-btn__resources__page__rooms {
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #e6f7ff;
+    border-radius: 25px;
+    color: #007bff;
+    font-weight: 400;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-btn__resources__page__rooms.active {
+    background-color: #007bff;
+    color: white;
+}
+
+
+
+/* Resources List */
+.resources-list__resources__page__rooms {
+    width: 100%;
+    max-width: 800px; /* Centers content and keeps cards slim */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    padding: 0 20px; /* Adds spacing on the sides */
+}
+
+.resource-item__resources__page__rooms {
+    width: 80%;
+    max-width: 750px; /* Optional: Limit the width for a more centered look */
+    margin: 0 15px; /* Adds margin on the sides */
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Centers content inside the card */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-item__resources__page__rooms:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.resource-item__resources__page__rooms h3 {
+    font-size: 16px; /* Smaller font size */
+    font-weight: 500; /* Thinner font weight */
+    color: #333;
+    margin: 0;
+    text-align: center; /* Centers the title */
+}
+
+.resource-item__resources__page__rooms p {
+    font-size: 13px; /* Smaller font size */
+    color: #555;
+    margin: 0;
+    text-align: center; /* Centers text */
+}
+
+.resource-buttons-container {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    gap: 10px; /* Adds spacing between buttons */
+    margin-top: 10px; /* Adds some spacing from the content above */
+}
+
+.attend-btn__resources__page__rooms,
+.view-btn__resources__page__rooms {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 600;
+    width: 150px; /* Fixed width for uniform button size */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.attend-btn__resources__page__rooms:hover,
+.view-btn__resources__page__rooms:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.created-at__resources__page__rooms {
+    font-size: 12px; /* Smaller font size */
+    font-weight: 400; /* Thinner font weight */
+    color: #888;
+    margin-top: 10px;
+    text-align: center; /* Centers the time */
+}

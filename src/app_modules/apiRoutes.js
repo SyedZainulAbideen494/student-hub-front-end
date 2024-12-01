@@ -135,5 +135,14 @@ export const API_ROUTES = {
   addUserBirthday: `${API_URL}/api/birthday`,
   getPrevReports: `${API_URL}/api/reports`,
   getPrevReportWithId: `${API_URL}/api/reports`,
-  generatePersonalReport: `${API_URL}/api/reports/generate`
+  generatePersonalReport: `${API_URL}/api/reports/generate`,
+  fetchRoomMembers: `${API_URL}/room-members-fetch`,
+  fetchRoomActivity: `${API_URL}/api/get-activities`,
+  fetchRoomResources: `${API_URL}/api/roomResources`,
+  createRoom: `${API_URL}/create-room`,
+  joinRoom: `${API_URL}/join-room`,
+  checkUserRoom: `${API_URL}/check-room`,
+  shareNoteToRoom: `${API_URL}/shareNote-note`,
+  fetchUserShareRooms: `${API_URL}/fetchRooms/user`,
+  shareQuizToRooms: `${API_URL}/shareQuiz/room`
 }

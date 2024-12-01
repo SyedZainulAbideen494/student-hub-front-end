@@ -1,0 +1,153 @@
+/* Overall Container */
+.room__members__page__container {
+    padding: 20px;
+    background-color: #fff; /* Clean white background */
+    margin: 0 auto;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tabs for Navigation */
+  .room__members__page__tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    overflow-x: auto;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  .room__members__page__tabs button {
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #e6f7ff; /* Soft light blue */
+    border-radius: 20px;
+    color: #007bff;
+    font-weight: 400;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .room__members__page__tabs button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+
+  /* Invite Button */
+  .room__members__page__invite {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .room__members__page__invite button {
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #79ddff, #87ceeb); /* Light blue gradient */
+    color: white;
+    font-weight: normal; /* Non-bold text */
+    border: none;
+    border-radius: 30px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  
+  /* Members Section */
+  .room__members__page__members {
+    margin-top: 20px;
+  }
+  
+  .room__members__page__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .room__members__page__member__card {
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .room__members__page__member__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room__members__page__member__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .room__members__page__member__name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+/* Centered Tabs */
+.room__members__page__tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    overflow-x: auto;
+    white-space: nowrap; /* Prevent wrapping */
+    justify-content: center; /* Center the tabs */
+  }
+  
+  /* Tab Button Styling */
+  .room__members__page__tabs button {
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #e6f7ff; /* Soft light blue */
+    border-radius: 20px;
+    color: #007bff;
+    font-weight: 400;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .room__members__page__tabs button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  
+  /* General Styles */
+  .room__members__page__container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  

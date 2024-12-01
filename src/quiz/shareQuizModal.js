@@ -1,61 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaCopy, FaShareAlt, FaSearch, FaCheck, FaTimes, FaArrowRight } from 'react-icons/fa';
+import { FaCopy, FaShareAlt, FaSearch, FaTimes, FaArrowRight, FaCheck } from 'react-icons/fa';
 import './shareQuizModal.css'; // Import your CSS file for styling
 import { API_ROUTES } from '../app_modules/apiRoutes';
 
-
 const ShareQuizModal = ({ quiz, onClose }) => {
     const quizId = quiz?.id; // Safeguard against undefined or null
-    const [joinedGroups, setJoinedGroups] = useState([]);
-    const [userGroups, setUserGroups] = useState([]);
+    const [rooms, setRooms] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [copySuccess, setCopySuccess] = useState(false);
 
     useEffect(() => {
-        const fetchGroups = async () => {
+        const fetchRooms = async () => {
             const token = localStorage.getItem('token');
-
+            console.log('Token in frontend:', token);  // Log token for debugging
             try {
-                // Fetch joined groups
-                const joinedResponse = await axios.get(API_ROUTES.fetchJoinedGroups, {
+                const response = await axios.get(API_ROUTES.fetchUserShareRooms, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
-                setJoinedGroups(joinedResponse.data);
-
-                // Fetch user groups
-                const userResponse = await axios.get(API_ROUTES.fetchUserGroups, {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
-                setUserGroups(userResponse.data);
+                console.log('Response data:', response.data);  // Log rooms data from the backend
+                setRooms(response.data);
             } catch (error) {
-                console.error('Error fetching groups:', error);
+                console.error('Error fetching rooms:', error);
             }
         };
-
-        fetchGroups();
+        fetchRooms();
     }, []);
+    
 
     const handleCopyLink = () => {
         const link = `${window.location.origin}/quiz/${quizId}`;
         navigator.clipboard.writeText(link)
             .then(() => {
                 setCopySuccess(true);
-                setTimeout(() => setCopySuccess(false), 2000); // Reset the tick mark after 2 seconds
+                setTimeout(() => setCopySuccess(false), 2000);
             })
             .catch(err => console.error('Error copying link: ', err));
     };
 
-    const handleShareWhatsApp = () => {
-        const link = `${window.location.origin}/quizzes/${quizId}`;
-        const message = `Check out this quiz: ${link}`;
-        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
-    };
-
-    const handleShare = async (groupId) => {
+    const handleShare = async (roomId) => {
         try {
-            await axios.post(API_ROUTES.shareQuiz, { quizId, groupId }, {
-                headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            const token = localStorage.getItem('token');
+            await axios.post(API_ROUTES.shareQuizToRooms, { quizId, roomId }, {
+                headers: { Authorization: `Bearer ${token}` }
             });
             onClose();
         } catch (error) {
@@ -63,39 +50,46 @@ const ShareQuizModal = ({ quiz, onClose }) => {
         }
     };
 
-    const filteredJoinedGroups = joinedGroups.filter(group => group.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    const filteredUserGroups = userGroups.filter(group => group.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredRooms = rooms.filter(room => room.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+    const handleShareWhatsApp = () => {
+        const link = `${window.location.origin}/quizzes/${quizId}`;
+        const message = `Check out this quiz: ${link}`;
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
+    };
 
     return (
         <div className="group-modal-overlay-share-quiz">
             <div className="group-modal-share-quiz">
                 <div className="modal-header-share-quiz">
-                    <button className="close-button-share-quiz" onClick={onClose} style={{backgroundColor: 'white', color: 'black'}}>
+                    <button className="close-button-share-quiz" onClick={onClose} style={{ backgroundColor: 'white', color: 'black' }}>
                         <FaTimes />
                     </button>
                 </div>
                 <div className="search-bar-share-quiz">
                     <input
                         type="text"
-                        placeholder="Search groups..."
+                        placeholder="Search rooms..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <FaSearch className="search-icon-share-quiz" />
                 </div>
                 <ul>
-                    <li><strong>Joined Groups</strong></li>
-                    {filteredJoinedGroups.map(group => (
-                        <li key={group.id} className="group-item-share-quiz" onClick={() => handleShare(group.id)}>
-                            <span>{group.name}</span>
-                            <FaArrowRight className="arrow-icon-share-quiz" />
-                        </li>
-                    ))}
-                   
+                    {filteredRooms.length > 0 ? (
+                        filteredRooms.map(room => (
+                            <li key={room.room_id} className="group-item-share-quiz" onClick={() => handleShare(room.room_id)}>
+                                <span>{room.name}</span>
+                                <FaArrowRight className="arrow-icon-share-quiz" />
+                            </li>
+                        ))
+                    ) : (
+                        <li>No rooms found</li>
+                    )}
                 </ul>
                 <div className="quick-share-share-quiz">
-                    <button 
-                        onClick={handleCopyLink} 
+                    <button
+                        onClick={handleCopyLink}
                         className={`share-button-share-quiz ${copySuccess ? 'copied-share-quiz' : ''}`}
                     >
                         {copySuccess ? <FaCheck /> : <FaCopy />}

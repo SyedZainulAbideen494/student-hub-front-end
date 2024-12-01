@@ -102,6 +102,11 @@ import PreviousReports from "./user report/previousReports";
 import YoutubeCaption from "./Youtube video caption/YtCaption";
 import AchievementPage from "./Achivements/AchievementPage";
 import ScientificCalculator from "./toolkit/ScientificCalculator";
+import MainPageRooms from "./Rooms/MainPage";
+import JoinRoom from "./Rooms/JoinRoom";
+import RoomMainPageJoined from "./Rooms/Joined rooms/RoomMainJoined";
+import ActivityPageRooms from "./Rooms/Joined rooms/activity";
+import ResourcesPage from "./Rooms/Joined rooms/ResourcesPage";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -189,6 +194,11 @@ const router = createBrowserRouter([
   {path: '/user/report/:id', element: <ReportDisplayPage/>},
   {path: '/achievements', element: <AchievementPage/>},
   {path: '/toolkit/scientific-calculator', element: <ScientificCalculator/>},
+  {path: '/room', element: <MainPageRooms/>},
+  {path: '/room/invite/:roomId', element: <JoinRoom/>},
+  {path: '/room/members/:roomId', element: <RoomMainPageJoined/>},
+  {path: '/room/activity/:roomId', element: <ActivityPageRooms/>},
+  {path: '/room/resources/:roomId', element: <ResourcesPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

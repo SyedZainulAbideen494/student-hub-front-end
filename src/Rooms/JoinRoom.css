@@ -1,0 +1,82 @@
+/* General Page Container */
+.__join__room_page__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #8ec5fc, #e0c3fc); /* Soft gradient */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Content Container (for centering content) */
+  .__join__room_page__content {
+    text-align: center;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9); /* Slight transparency for content */
+    width: 80%;
+    max-width: 400px; /* Keep it small and centered */
+  }
+  
+  /* Heading Styles */
+  .__join__room_page__heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Room ID */
+  .__join__room_page__roomId {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  /* Button Styles */
+  .__join__room_page__button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: linear-gradient(to right, #429CF7, #796BD5);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2); /* Subtle shadow for depth */
+  }
+  
+
+  /* Status Message Styles */
+  .__join__room_page__status {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    margin-top: 15px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .__join__room_page__heading {
+      font-size: 20px;
+    }
+  
+    .__join__room_page__button {
+      font-size: 14px;
+      padding: 10px 25px;
+    }
+  
+    .__join__room_page__status {
+      font-size: 12px;
+    }
+  }
+  

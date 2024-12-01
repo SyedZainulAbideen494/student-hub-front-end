@@ -1,0 +1,99 @@
+.rooms__activity__page__container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .rooms__activity__page__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .rooms__activity__page__back-btn {
+    position: absolute;
+    left: 20px;
+    font-size: 17px;
+    background: none;
+    border: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  
+  .rooms__activity__page__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+  }
+  
+  .rooms__activity__page__filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .rooms__activity__page__filter-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #e6f7ff;
+    border-radius: 25px;
+    color: #007bff;
+    font-weight: 400;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .rooms__activity__page__filter-btn:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .rooms__activity__page__filter-btn.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .rooms__activity__page__list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .rooms__activity__page__activity-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .rooms__activity__page__activity-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .rooms__activity__page__activity-description {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .rooms__activity__page__activity-time {
+    font-size: 14px;
+    color: #888;
+    margin-top: 5px;
+  }
+  
+  .rooms__activity__page__activity-card i {
+    font-size: 14px;
+    color: #007bff;
+    margin-right: 5px;
+  }
+  

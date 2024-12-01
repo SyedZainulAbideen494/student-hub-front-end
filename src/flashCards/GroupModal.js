@@ -1,10 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCopy, FaShareAlt, FaSearch, FaTimes } from 'react-icons/fa';
 import './GroupModal.css'; // Import your CSS file for styling
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [copySuccess, setCopySuccess] = useState(false);
+    const [rooms, setRooms] = useState([]);
+
+    // Fetch the user's rooms when the modal opens
+    useEffect(() => {
+        const fetchRooms = async () => {
+            const token = localStorage.getItem('token');  // Assuming token is stored in localStorage
+            const response = await fetch(API_ROUTES.fetchUserShareRooms, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setRooms(data);
+            } else {
+                console.error('Error fetching rooms');
+            }
+        };
+
+        fetchRooms();
+    }, []);
 
     // Function to handle copying link to clipboard
     const handleCopyLink = () => {
@@ -33,28 +57,30 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
     };
 
-    const handleShare = async () => {
-        const siteURL = `https://edusify.vercel.app/note/view/${flashcardId}`; // URL of your flashcard
+    const handleShare = async (roomId) => {
+      
+        // Share the note to the selected room (via API)
+        const token = localStorage.getItem('token');  // Assuming token is stored in localStorage
+        const response = await fetch(API_ROUTES.shareNoteToRoom, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                noteId: flashcardId,
+                roomId: roomId
+            })
+        });
 
-        if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: 'My FlashCard',
-                    text: 'My FlashCard from Edusify',
-                    url: siteURL
-                });
-            } catch (error) {
-                console.error('Error sharing:', error);
-            }
+        if (response.ok) {
+            console.log('Note shared successfully');
         } else {
-            // Fallback for browsers that don't support Web Share API
-            const shareText = 'My FlashCard from Edusify';
-            const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-            window.location.href = shareURL;
+            console.error('Failed to share note');
         }
     };
 
-    const filteredGroups = groups.filter(group => group.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredGroups = rooms.filter(room => room.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <div className="group-modal-overlay-share-flashcard">
@@ -78,7 +104,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
                         filteredGroups.map(group => (
                             <li key={group.id}>
                                 {group.name}
-                                <button className="button__share__btn__flashcard" onClick={() => onShare(group.id)}>
+                                <button className="button__share__btn__flashcard" onClick={() => handleShare(group.room_id)}>
                                     <svg className="svgIcon__share__btn__flashcard" viewBox="0 0 384 512">
                                         <path
                                             d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
@@ -102,7 +128,7 @@ const GroupModal = ({ groups, onClose, onShare, flashcardId }) => {
                             </svg>
                         </span>
                     </button>
-                    <button onClick={handleShare} className="share-button-share-flashcard">
+                    <button onClick={handleShareWhatsApp} className="share-button-share-flashcard">
                         <FaShareAlt />
                     </button>
                 </div>
