@@ -1,176 +1,124 @@
 /* Overall Container */
 .room__members__page__container {
     padding: 20px;
-    background-color: #fff; /* Clean white background */
+    background-color: #fff;
     margin: 0 auto;
     max-width: 1000px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Tabs for Navigation */
-  .room__members__page__tabs {
+}
+
+/* Tabs for Navigation */
+.room__members__page__tabs {
     display: flex;
     gap: 15px;
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 2px solid #f0f0f0;
     overflow-x: auto;
-    white-space: nowrap; /* Prevent wrapping */
-  }
-  
-  .room__members__page__tabs button {
+    white-space: nowrap;
+    justify-content: center;
+}
+
+/* Tab Button Styling */
+.room__members__page__tabs button {
     padding: 8px 14px;
     font-size: 14px;
     cursor: pointer;
     border: none;
-    background-color: #e6f7ff; /* Soft light blue */
+    background-color: #e6f7ff;
     border-radius: 20px;
     color: #007bff;
     font-weight: 400;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .room__members__page__tabs button:hover {
+}
+
+.room__members__page__tabs button:hover {
     background-color: #007bff;
     color: white;
-  }
-  
+}
 
-  /* Invite Button */
-  .room__members__page__invite {
+/* Members Section */
+.room__members__page__members {
+    margin-top: 20px;
+}
+
+/* Actions - Invite & Leave Buttons */
+.room__members__page__actions {
+    display: flex;
+    gap: 10px;
     margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  .room__members__page__invite button {
-    padding: 12px 20px;
-    font-size: 16px;
+    justify-content: center;
+}
+
+.room__members__page__action__btn {
+    padding: 6px 10px;
+    font-size: 12px;
     cursor: pointer;
-    background: linear-gradient(90deg, #79ddff, #87ceeb); /* Light blue gradient */
+    background-color: #79ddff;
     color: white;
-    font-weight: normal; /* Non-bold text */
     border: none;
     border-radius: 30px;
-    width: 100%;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+    transition: background-color 0.3s;
+}
 
-  
-  /* Members Section */
-  .room__members__page__members {
-    margin-top: 20px;
-  }
-  
-  .room__members__page__cards {
+.room__members__page__action__btn:hover {
+    background-color: #4db8ff;
+}
+
+.leave-btn {
+    background-color: #ff4d4d;
+}
+
+.leave-btn:hover {
+    background-color: #e60000;
+}
+
+/* Members List */
+.room__members__page__cards-container {
+    max-height: 250px; /* Set max height */
+    overflow-y: auto; /* Enable scrolling */
+    margin-bottom: 40px; /* Leave 40px margin bottom */
+}
+
+.room__members__page__cards {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .room__members__page__member__card {
+}
+
+/* Member Card Styling */
+.room__members__page__member__card {
     background-color: #ffffff;
-    padding: 10px 15px;
+    padding: 10px 12px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
-    max-width: 320px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .room__members__page__member__card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .room__members__page__member__avatar {
+    max-width: 260px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 12px; /* Adds space below each card */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Member Avatar Styling */
+.room__members__page__member__avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-  }
-  
-  .room__members__page__member__name {
-    font-size: 16px;
-    font-weight: 500;
+}
+
+/* Member Name Styling */
+.room__members__page__member__name {
+    font-size: 14px;
     color: #333;
     margin-left: 10px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-/* Centered Tabs */
-.room__members__page__tabs {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0;
-    overflow-x: auto;
-    white-space: nowrap; /* Prevent wrapping */
-    justify-content: center; /* Center the tabs */
-  }
-  
-  /* Tab Button Styling */
-  .room__members__page__tabs button {
-    padding: 8px 14px;
-    font-size: 14px;
-    cursor: pointer;
-    border: none;
-    background-color: #e6f7ff; /* Soft light blue */
-    border-radius: 20px;
-    color: #007bff;
-    font-weight: 400;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .room__members__page__tabs button:hover {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  
-  /* General Styles */
-  .room__members__page__container {
-    padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Leave Room Button */
-.room__members__page__leave {
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .room__members__page__leave button {
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #ff4d4d; /* Red background for the leave button */
-    color: white;
-    font-weight: normal;
-    border: none;
-    border-radius: 30px;
-    width: 100%;
-    transition: background-color 0.3s, transform 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .room__members__page__leave button:hover {
-    background-color: #e60000; /* Darker red on hover */
-  }
-  
+    flex-grow: 1;
+    display: block;
+}

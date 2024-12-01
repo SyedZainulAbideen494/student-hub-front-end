@@ -9,6 +9,20 @@
     margin: 0;
     padding: 0 20px; /* Add horizontal padding for better spacing on smaller screens */
   }
+  /* Description Section */
+.__room__create_page__description {
+  text-align: center;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.__room__create_page__description span {
+  color: #007bff;
+  font-weight: bold;
+}
+
   
   /* Heading Styles */
   .__room__create_page__heading {

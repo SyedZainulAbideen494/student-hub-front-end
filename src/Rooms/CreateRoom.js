@@ -28,6 +28,9 @@ const CreateRoom = () => {
     <div className="__room__create_page__container">
       <div className="__room__create_page__step1">
         <h2 className="__room__create_page__heading">Create Room</h2>
+        <p className="__room__create_page__description">
+          🌟 Create rooms, invite your friends, share study resources, and track your team's progress! 🚀 Stay connected and make studying more fun and effective.
+        </p>
         <input
           className="__room__create_page__input"
           type="text"
@@ -43,7 +46,7 @@ const CreateRoom = () => {
         </button>
         {inviteLink && (
           <div>
-           
+            {/* Display invite link here */}
           </div>
         )}
       </div>
