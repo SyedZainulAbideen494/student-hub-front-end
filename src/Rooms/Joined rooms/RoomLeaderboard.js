@@ -22,7 +22,10 @@ const RoomLeaderboard = () => {
         // Filter out the user with user_id 147 (the banned user)
         const filteredData = response.data.filter(user => user.user_id !== 147);
 
-        setLeaderboardData(filteredData);
+        // Sort the leaderboard by points in descending order
+        const sortedData = filteredData.sort((a, b) => b.points - a.points);
+
+        setLeaderboardData(sortedData);
       } catch (error) {
         console.error('Error fetching leaderboard data:', error);
       }
