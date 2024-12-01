@@ -113,13 +113,6 @@ const FooterNav = () => {
     </button>
 </Link>
 
-<Link to='/room' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/room' ? 'active' : ''}`}>
-        <FaUsers className="icon-footer-nav" />
-        <span className="btn-label">Rooms</span> {/* Changed label from Groups to Rooms */}
-        <sapn className='new-label-footer-nav'>New - must try!</sapn>
-    </button>
-</Link>
 
           <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
