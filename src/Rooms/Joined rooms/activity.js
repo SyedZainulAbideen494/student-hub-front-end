@@ -69,17 +69,21 @@ const ActivityPageRooms = () => {
       </div>
 
       <div className="rooms__activity__page__list">
-        {activities.map((activity, index) => {
-          const relativeTime = formatDistanceToNow(parseISO(activity.time), { addSuffix: true }); // Format relative time
-          return (
-            <div key={index} className="rooms__activity__page__activity-card">
-              <p className="rooms__activity__page__activity-description">
-                {activity.description}
-              </p>
-              <p className="rooms__activity__page__activity-time">{relativeTime}</p>
-            </div>
-          );
-        })}
+        {activities.length === 0 ? (
+          <p>No activity</p> // Display "No activity" if the list is empty
+        ) : (
+          activities.map((activity, index) => {
+            const relativeTime = formatDistanceToNow(parseISO(activity.time), { addSuffix: true }); // Format relative time
+            return (
+              <div key={index} className="rooms__activity__page__activity-card">
+                <p className="rooms__activity__page__activity-description">
+                  {activity.description}
+                </p>
+                <p className="rooms__activity__page__activity-time">{relativeTime}</p>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

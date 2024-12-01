@@ -40,7 +40,7 @@ const fetchResources = async () => {
     };
 
     const handleViewNote = (noteId) => {
-        window.location.href = `/note/view${noteId}`;
+        window.location.href = `/note/view/${noteId}`;
     };
 
     const handleBack = () => {
