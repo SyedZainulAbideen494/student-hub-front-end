@@ -146,5 +146,6 @@ export const API_ROUTES = {
   fetchUserShareRooms: `${API_URL}/fetchRooms/user`,
   shareQuizToRooms: `${API_URL}/shareQuiz/room`,
   leaveRoom: `${API_URL}/leaveRoom`,
-  checkIfUserAlreadyInRoom: `${API_URL}/check-user-in-room`
+  checkIfUserAlreadyInRoom: `${API_URL}/check-user-in-room`,
+  roomLeaderboard: `${API_URL}/api/roomLeaderboard`
 }

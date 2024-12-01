@@ -107,6 +107,7 @@ import JoinRoom from "./Rooms/JoinRoom";
 import RoomMainPageJoined from "./Rooms/Joined rooms/RoomMainJoined";
 import ActivityPageRooms from "./Rooms/Joined rooms/activity";
 import ResourcesPage from "./Rooms/Joined rooms/ResourcesPage";
+import RoomLeaderboard from "./Rooms/Joined rooms/RoomLeaderboard";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -199,6 +200,7 @@ const router = createBrowserRouter([
   {path: '/room/members/:roomId', element: <RoomMainPageJoined/>},
   {path: '/room/activity/:roomId', element: <ActivityPageRooms/>},
   {path: '/room/resources/:roomId', element: <ResourcesPage/>},
+  {path: '/room/leaderboard/:roomId', element: <RoomLeaderboard/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
