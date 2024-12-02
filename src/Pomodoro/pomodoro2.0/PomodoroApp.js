@@ -27,6 +27,9 @@ const PomodoroApp = () => {
   const [timerLength, setTimerLength] = useState(parseInt(localStorage.getItem('timerLength')) || 1500); // Load saved timer length for study
   const [breakLength, setBreakLength] = useState(parseInt(localStorage.getItem('breakLength')) || 300); // Load saved break length
   const [sound] = useState(new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22')); // Bell sound
+  const [wakeLock, setWakeLock] = useState(null); // Track the wake lock state
+
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,42 +65,72 @@ const PomodoroApp = () => {
 
   const startSession = async () => {
     try {
-      const sessionType = isStudyTime ? 'study' : 'break'; // Determine session type
+      const sessionType = isStudyTime ? 'study' : 'break';
       const response = await axios.post(API_ROUTES.apiStartPomodoro, {
         token,
-        session_type: sessionType, // Send session type
+        session_type: sessionType,
       });
       setSessionId(response.data.session_id);
       setStartTime(response.data.start_time);
       setIsRunning(true);
-      setIsPaused(false); // Reset pause state
-      setTimer(isStudyTime ? timerLength : breakLength); // Start with the current timer length (study or break)
-      sound.play();
+      setIsPaused(false); 
+      setTimer(isStudyTime ? timerLength : breakLength);
+
+      // Request wake lock
+      if ('wakeLock' in navigator) {
+        try {
+          const lock = await navigator.wakeLock.request('screen');
+          setWakeLock(lock);
+        } catch (err) {
+          console.error('Error requesting wake lock:', err);
+        }
+      }
     } catch (error) {
       console.error('Error starting session:', error.response.data.message);
     }
   };
 
   const pauseSession = () => {
-    setIsPaused(true); // Pause the session
+    setIsPaused(true); 
+    // Release wake lock on pause
+    if (wakeLock) {
+      wakeLock.release();
+      setWakeLock(null);
+    }
   };
 
-  const resumeSession = () => {
-    setIsPaused(false); // Resume the session
+  const resumeSession = async () => {
+    setIsPaused(false);
+    // Request wake lock again if resumed
+    if ('wakeLock' in navigator) {
+      try {
+        const lock = await navigator.wakeLock.request('screen');
+        setWakeLock(lock);
+      } catch (err) {
+        console.error('Error requesting wake lock:', err);
+      }
+    }
   };
-
+  
   const endSession = async () => {
     try {
-      const sessionType = isStudyTime ? 'study' : 'break'; // Determine session type
+      const sessionType = isStudyTime ? 'study' : 'break';
       const response = await axios.post(API_ROUTES.apiStopPomodoro, {
         session_id: sessionId,
         token,
-        session_type: sessionType, // Send session type
+        session_type: sessionType,
       });
       setEndTime(response.data.end_time);
       setSessionId(null);
       setIsRunning(false);
-      setIsPaused(false); // Reset pause state
+      setIsPaused(false); 
+
+      // Release wake lock on session end
+      if (wakeLock) {
+        wakeLock.release();
+        setWakeLock(null);
+      }
+      
       sound.play();
     } catch (error) {
       console.error('Error ending session:', error.response.data.message);
