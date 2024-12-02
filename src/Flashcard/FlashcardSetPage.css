@@ -1,17 +1,13 @@
 .flashcard__set__page {
-    padding: 20px;
     font-family: Arial, sans-serif;
   }
 
 /* Flashcard Set Page Header */
 .flashcard__set__page__header {
-  padding: 15px 20px;
-  background-color: #FFFFFF;
+  background-color: #f9f9f9;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
 }
 
 /* Top section with buttons and title */
@@ -29,14 +25,14 @@
   padding: 10px;
   cursor: pointer;
   color: #000000; /* Apple-like blue */
-  font-size: 22px;
+  font-size: 16px;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 
 /* Page title */
 .flashcard__set__page__title {
-  font-size: 1.8rem;
+  font-size: 20px;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   color: #333;
   font-weight: 600;
@@ -58,41 +54,12 @@
 
 .trash-icon {
   color: #111111;
-  font-size: 18px;
+  font-size: 15px;
   transition: color 0.2s, transform 0.2s;
 }
 
 
-/* Flashcard Set Page Details */
-.flashcard__set__page__details {
-  display: flex;
-  flex-direction: column; /* Stack details vertically */
-  padding: 12px 0;
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.6;
-}
 
-/* Detail items */
-.flashcard__set__page__details p {
-  display: flex;
-  align-items: center;
-  margin: 4px 0; /* Reduced margin for tighter spacing */
-  padding: 4px 0;
-  font-weight: 400;
-}
-
-/* Icons */
-.flashcard__set__page__details i {
-  margin-right: 8px; /* Space between icon and text */
-  color: #999; /* Lighter icon color */
-  font-size: 1.1rem;
-}
-
-/* Text inside the details */
-.flashcard__set__page__details span {
-  color: #333; /* Slightly darker text */
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -123,14 +90,74 @@
 
 
 .flashcard__set__page__list {
-    display: flex;
-    flex-direction: column;
-  }
-  
+  display: flex;
+  flex-direction: row; /* Horizontal scrolling */
+  gap: 16px; /* Space between cards */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 16px;
+  scroll-snap-type: x mandatory; /* Smooth snap scrolling */
+}
+
+.flashcard__set__page__flashcard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 300px; /* Uniform card width for consistency */
+  max-width: 300px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  scroll-snap-align: start; /* Snap alignment for smooth scroll */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flashcard__set__page__flashcard:hover {
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.flashcard__set__page__options {
+  position: relative;
+}
+
+.flashcard__set__page__dropdown {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  z-index: 10;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Slightly wider dropdown */
+}
+
+.flashcard__set__page__answer {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  padding: 0;
+}
+
+.flashcard__set__page__answer-toggle__set__page {
+  margin-top: 8px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.flashcard__set__page__status {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #757575;
+}
+
   .flashcard__set__page__card {
     padding: 12px; /* Slightly increased padding */
     margin: 8px 0; /* Slightly larger margin */
-    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 15px;
     text-decoration: none;
@@ -147,10 +174,6 @@
     font-size: 1.2rem; /* Adjust icon size */
   }
   
-  .flashcard__set__page__card:hover {
-    background-color: #f0f0f0; /* Lighten background on hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
-  }
   
   .flashcard__set__page__no-cards {
     text-align: center;
@@ -476,11 +499,8 @@
     font-weight: bold; /* Make active tab bold */
   }
   
-  .underline {
-    height: 2px;
-    background: #007bff; /* Color for underline */
-    transition: transform 0.3s; /* Smooth transition for underline */
-  }
+ 
+
   /* Flashcard Container */
 .flashcard__set__page__flashcard {
   background: #ffffff; /* White background for the card */
@@ -660,7 +680,7 @@
 }
 
 .tab-button.active {
-    color: #0066FF; /* Active tab text color */
+    color: #000000; /* Active tab text color */
 }
 
 /* Animated underline effect */

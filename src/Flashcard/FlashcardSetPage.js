@@ -313,26 +313,7 @@ if (loading) {
             <FaTrash className="trash-icon" />
         </button>
     </div>
-    
-    <div className="flashcard__set__page__details">
-        <p className="flashcard__set__subject">
-            <i className="fas fa-book"></i> <span>Subject: {subject}</span>
-        </p>
-        <p className="flashcard__set__topic">
-            <i className="fas fa-tag"></i> <span>Topic: {topic}</span>
-        </p>
-        <p className="flashcard__set__count">
-            <i className="fas fa-clone"></i> <span>Flashcards: {flashcards.length}</span>
-        </p>
-    </div>
-</div>
-
-
-
-
-
-
-{/* Tab Navigation for Flashcards and Stats */}
+    {/* Tab Navigation for Flashcards and Stats */}
 <div className="tab-navigation">
     <button 
       className={`tab-button ${activeTab === 'flashcards' ? 'active' : ''}`}
@@ -347,6 +328,14 @@ if (loading) {
       Stats
     </button>
 </div>
+</div>
+
+
+
+
+
+
+
 
 
       {activeTab === 'flashcards' ? (
