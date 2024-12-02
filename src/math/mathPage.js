@@ -345,23 +345,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
     <FaCog />
   </button>
 
-  {showWarning && (
-  <div className="warning-banner">
-    <p>
-      Your chat history has exceeded 30 messages. Consider clearing the messages for better performance.
-    </p>
-    <div className="button-container_warning-banner">
-      <button onClick={handleClearHistory} className="clear-history-btn">
-        Clear Messages
-      </button>
-      <button
-        onClick={handleLaterClick}
-      >
-        Later
-      </button>
-    </div>
-  </div>
-)}
+
 
 
   {isSettingsModalOpen && (
