@@ -83,9 +83,23 @@ const FlashcardLibraryPage = () => {
           <span>Library</span>
         </h2>
         <Link to="/create/flashcard" style={{ textDecoration: 'none' }}>
-          <button className="create-set-button__library__page__component__page">
-            Create +
-          </button>
+        <button className="create-set-button__library__page__component__page" style={{
+    display: 'inline-flex',
+  }}>
+    Create +<br />
+    <span style={{
+      fontSize: '12px', 
+      backgroundColor: '#ffffff', 
+      color: '#4dc7d9', 
+      padding: '3px 6px', 
+      borderRadius: '4px', 
+      fontWeight: 'normal', 
+      boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)'
+    }}>
+      New!
+    </span>
+</button>
+
         </Link>
       </div>
 
