@@ -31,20 +31,26 @@ const CreateFlashcardSet = () => {
   };
 
   const generateFlashcards = async () => {
+    // Check if any of the fields (setName, subject, topic) are empty
+    if (!setName || !subject || !topic) {
+      alert('Please fill in the Set Name, Subject, and Topic before generating flashcards.');
+      return;
+    }
+  
     if (!selectedFile) {
       alert('Please select a PDF file.');
       return;
     }
-
+  
     const token = localStorage.getItem('token'); // Get the token from local storage
     const formData = new FormData();
     formData.append('pdf', selectedFile);
     formData.append('name', setName);
     formData.append('subject', subject);
     formData.append('topic', topic);
-
+  
     setIsGenerating(true); // Show loading indicator
-
+  
     try {
       const response = await fetch(API_ROUTES.generateFlashcardsFromPdf, {
         method: 'POST',
@@ -53,7 +59,7 @@ const CreateFlashcardSet = () => {
         },
         body: formData,
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         nav(`/flashcard/set/${data.flashcardSetId}`); // Navigate to the newly created set
@@ -66,6 +72,7 @@ const CreateFlashcardSet = () => {
       setIsGenerating(false); // Hide loading indicator
     }
   };
+  
 
   // Check if all fields are filled
   const isManualButtonDisabled = !setName || !subject || !topic;
