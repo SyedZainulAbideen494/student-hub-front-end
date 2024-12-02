@@ -36,21 +36,27 @@ const CreateFlashcardSet = () => {
       alert('Please fill in the Set Name, Subject, and Topic before generating flashcards.');
       return;
     }
-  
+
     if (!selectedFile) {
       alert('Please select a PDF file.');
       return;
     }
-  
+
+    // Check if the selected file is a PDF
+    if (selectedFile.type !== 'application/pdf') {
+      alert('Please select a valid PDF file.');
+      return;
+    }
+
     const token = localStorage.getItem('token'); // Get the token from local storage
     const formData = new FormData();
     formData.append('pdf', selectedFile);
     formData.append('name', setName);
     formData.append('subject', subject);
     formData.append('topic', topic);
-  
+
     setIsGenerating(true); // Show loading indicator
-  
+
     try {
       const response = await fetch(API_ROUTES.generateFlashcardsFromPdf, {
         method: 'POST',
@@ -59,7 +65,7 @@ const CreateFlashcardSet = () => {
         },
         body: formData,
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         nav(`/flashcard/set/${data.flashcardSetId}`); // Navigate to the newly created set
