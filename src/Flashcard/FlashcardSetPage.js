@@ -376,7 +376,7 @@ if (loading) {
        
         ) : (
           filteredFlashcards.map((flashcard) => (
-            <div key={flashcard.id} className="flashcard__set__page__flashcard" style={{ display: 'flex', flexDirection: 'column', position: 'relative', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '10px', marginBottom: '10px' }}>
+            <div key={flashcard.id} className="flashcard__set__page__flashcard" style={{ display: 'inline-flex', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '10px', marginBottom: '10px' }}>
   
             {/* Question and Options (Three Dots) */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

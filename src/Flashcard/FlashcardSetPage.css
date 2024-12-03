@@ -90,18 +90,11 @@
 
 
 .flashcard__set__page__list {
-  display: flex;
-  flex-direction: row; /* Horizontal scrolling */
   gap: 16px; /* Space between cards */
-  overflow-x: auto; /* Enable horizontal scrolling */
   padding: 16px;
-  scroll-snap-type: x mandatory; /* Smooth snap scrolling */
 }
 
 .flashcard__set__page__flashcard {
-  display: flex;
-  flex-direction: column;
-  position: relative;
   min-width: 300px; /* Uniform card width for consistency */
   max-width: 300px;
   padding: 16px;
