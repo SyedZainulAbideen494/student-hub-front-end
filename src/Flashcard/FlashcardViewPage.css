@@ -114,9 +114,7 @@
     opacity: 0.6;
 }
 
-.flashcard__view__page__choice-button:hover {
-    background-color: #f1f1f1; /* Soft hover effect */
-}
+
 
 .flashcard__view__page__choice-button.active {
     transform: scale(1.05);
