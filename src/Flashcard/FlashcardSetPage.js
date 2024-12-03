@@ -322,13 +322,13 @@ if (loading) {
     {/* Tab Navigation for Flashcards and Stats */}
 <div className="tab-navigation">
     <button 
-      className={`tab-button ${activeTab === 'flashcards' ? 'active' : ''}`}
+      className={`tab-button__set__page__tab ${activeTab === 'flashcards' ? 'active__set__page__tab' : ''}`}
       onClick={() => setActiveTab('flashcards')}
     >
-      Flashcards
+      Cards
     </button>
     <button 
-      className={`tab-button ${activeTab === 'stats' ? 'active' : ''}`}
+      className={`tab-button__set__page__tab ${activeTab === 'stats' ? 'active__set__page__tab' : ''}`}
       onClick={() => setActiveTab('stats')}
     >
       Stats
@@ -411,7 +411,7 @@ if (loading) {
             {/* Question and Options (Three Dots) */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Link to={`/flashcard/card/view/${flashcard.id}/${id}`} style={{ textDecoration: 'none', flexGrow: 1 }}>
-                <h4 className="flashcard__set__page__question" style={{ margin: 0, fontSize: '16px', fontWeight: 'bold' }}>{flashcard.question}</h4>
+                <h4 className="flashcard__set__page__question" style={{ margin: 0, fontSize: '16px' }}>{flashcard.question}</h4>
               </Link>
           
               {/* Top right menu (3 dots) */}

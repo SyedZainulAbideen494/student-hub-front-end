@@ -35,7 +35,7 @@
 
 /* Page title */
 .flashcard__set__page__title {
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   color: #333;
   font-weight: 600;
@@ -64,25 +64,6 @@
 
 
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .flashcard__set__page__title {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .flashcard__set__page__title {
-    font-size: 1.4rem;
-  }
-
-  .flashcard__set__page__header {
-    padding: 10px;
-  }
-}
-
-
-
 
 .flashcard__set__page__card {
     background-color: #ffffff; /* Keep cards clean and white */
@@ -105,7 +86,6 @@
   border-radius: 10px;
   background: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-  scroll-snap-align: start; /* Snap alignment for smooth scroll */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -166,7 +146,7 @@
   
   .flashcard__set__page__icon {
     margin-right: 10px; /* Space between icon and question text */
-    color: #007AFF; /* Icon color */
+    color: #000000; /* Icon color */
     font-size: 1.2rem; /* Adjust icon size */
   }
   
@@ -482,17 +462,19 @@
     margin-bottom: 20px;
   }
   
-  .tab {
+  .tab-button__set__page__tab {
     padding: 10px 20px;
     border: none;
     background: transparent;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+    color: #a1a1a1;
   }
   
-  .tab.active {
-    border-bottom: 2px solid #007bff; /* Underline for active tab */
-    font-weight: bold; /* Make active tab bold */
+  .tab-button__set__page__tab.active__set__page__tab {
+    border-bottom: 1px solid #000000; /* Underline for active tab */
+    color: black;
+    font-size: 14px;
   }
   
  
@@ -519,8 +501,8 @@
 /* Flashcard Question */
 .flashcard__set__page__question {
   font-size: 1.4rem; /* Increased font size for question */
-  font-weight: 600; /* Bold font weight for emphasis */
   color: #333; /* Darker text color for contrast */
+  font-weight: 100;
   margin-bottom: 10px; /* Space below question */
 }
 
@@ -632,7 +614,6 @@
 
 .flashcard__set__page__question {
     font-size: 18px; /* Slightly larger font size */
-    font-weight: bold; /* Bold text for emphasis */
     margin-bottom: 10px; /* Space below the question */
     color: #333; /* Darker text color */
 }
