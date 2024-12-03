@@ -88,12 +88,7 @@ const FooterNav = () => {
             </button>
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
                 {/* Popup Buttons */}
-                <Link to='/search' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/search' ? 'active' : ''}`}>
-                        <FaSearch className="icon-footer-nav" />
-                        <span className="btn-label">Search</span>
-                    </button>
-                </Link>
+               
                 <Link to='/leaderboard' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
                         <FaTrophy className="icon-footer-nav" />
@@ -185,17 +180,9 @@ const FooterNav = () => {
                         <span className="btn-label">Premium</span>
                     </button>
                 </Link>*/} 
-                <Link to='/help' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/help' ? 'active' : ''}`}>
-                        <FaQuestionCircle className="icon-footer-nav" />
-                        <span className="btn-label">Help</span>
-                    </button>
-                </Link>
+            
                
-                <button className="nav-btn-footer-nav" onClick={handleLogout}>
-                    <FaSignOutAlt className="icon-footer-nav" />
-                    <span className="btn-label">Logout</span>
-                </button>
+             
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
         </div>

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './ProfilePage.css';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FooterNav from '../app_modules/footernav';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState(null);
@@ -18,6 +19,14 @@ const ProfilePage = () => {
   const [touchStartX, setTouchStartX] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const navigate = useNavigate()
+
+
+
+  const handleLogout = () => {
+      localStorage.removeItem('token');
+      navigate('/login');
+  };
 
 
   useEffect(() => {
@@ -154,11 +163,16 @@ const ProfilePage = () => {
     <div className="profile-page">
       <header className="profile-header">
         <h3>Profile</h3>
+        <button className="nav-btn-footer-nav" onClick={handleLogout} style={{color: 'black'}}>
+                    <FaSignOutAlt className="icon-footer-nav" />
+                    <span className="btn-label">Logout</span>
+                </button>
         <Link to="/settings">
           <button className="settings-icon-button">
             <i className="fas fa-cog">{hasProfileIssues && <span className="issue-icon">!</span>}</i> {/* Font Awesome cog icon */}
           </button>
         </Link>
+
       </header>
       <div className="profile-info">
         <img
