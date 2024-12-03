@@ -74,6 +74,49 @@ const handleQuizAnswers = (quizId) => {
   navigate(`/quiz/answers/${quizId}`); // Navigate to the quiz answers page with the quiz ID
 };
 
+const generateQuizFromPDF = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
+
+  // Extract the file from the form
+  const file = e.target[0].files[0]; // Assumes the file input is the first element in the form
+
+  // Validation check for missing fields
+  if (!file || !subject || !topic) {
+    alert('Please upload a PDF, and provide both a subject and a topic before generating the quiz.');
+    setLoading(false);
+    return;
+  }
+
+  const token = localStorage.getItem('token');
+  const formData = new FormData();
+  formData.append('pdf', file);
+  formData.append('subject', subject);
+  formData.append('topic', topic);
+  formData.append('token', token);
+
+  try {
+    const response = await fetch(API_ROUTES.generateQuizFromPDF, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to generate quiz from PDF, please try again');
+    }
+
+    const data = await response.json();
+    navigate(`/quiz/${data.quizId}`);
+  } catch (err) {
+    console.error('Error:', err);
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
   return (
     <div>
     <div className="generate-quiz-container__quiz__ai__gen">
@@ -128,7 +171,36 @@ const handleQuizAnswers = (quizId) => {
   </div>
 </button>
 </div>
-      </form>
+    </form>
+
+    <form onSubmit={generateQuizFromPDF} className="generate-quiz-form">
+      <p>Or Generate from PDF</p>
+      <input type="file" accept="application/pdf" required />
+      <div className="centered-button-container">
+        <button
+  className="flashcard__set__page__modal-generate btn__set__page__buttons"
+  disabled={loading}
+  type='submit'
+>
+  <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
+    <svg
+      height="24"
+      width="24"
+      fill="#FFFFFF"
+      viewBox="0 0 24 24"
+      data-name="Layer 1"
+      id="Layer_1"
+      className="sparkle__set__page__buttons"
+    >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
+    <span className="text__set__page__buttons">
+      {loading ? 'Generating...' : '  Generate From PDF'}
+    </span>
+  </div>
+</button>
+</div>
+    </form>
       {error && <p className="error-message__quiz__ai__gen">Error: {error}</p>}
     </div>
           {quizzes.length === 0 ? (

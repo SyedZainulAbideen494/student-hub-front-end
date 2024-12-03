@@ -93,3 +93,47 @@
     font-size: 0.9rem;
     margin-top: 8px;
 }
+
+
+/* Styling for the form container */
+.generate-quiz-form {
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  /* Styling for the file input field */
+  .generate-quiz-form input[type="file"] {
+    width: 100%;
+    max-width: 480px;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    background: #fff;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  .generate-quiz-form input[type="file"]:hover,
+  .generate-quiz-form input[type="file"]:focus {
+    border-color: #007bff;
+  }
+  
+  /* Styling for the button container */
+  .centered-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
