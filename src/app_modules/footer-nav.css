@@ -91,6 +91,7 @@
     background: rgba(24, 24, 24, 0.9); /* Dark theme with slightly transparent dark color */
     display: flex;
     flex-direction: column;
+    max-height: 400px;
     align-items: center;
     padding: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Elevated effect with larger shadow */
