@@ -24,6 +24,7 @@
     "antd": "^5.21.6",
     "axios": "^1.7.7",
     "better-react-mathjax": "^2.0.4-beta1",
+    "canvas-confetti": "^1.9.3",
     "date-fns": "^4.1.0",
     "emailjs-com": "^3.2.0",
     "fabric": "^6.4.3",

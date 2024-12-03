@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './FlashcardViewPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import Confetti from 'react-confetti';
 
 const FlashcardViewPage = () => {
   const { setId } = useParams();
@@ -22,6 +23,7 @@ const FlashcardViewPage = () => {
   // Load correct and incorrect audio files
   const correctAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3');
   const incorrectAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/946/946-preview.mp3');
+  const completionAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2059/2059-preview.mp3'); // Celebration sound
 
   useEffect(() => {
     const fetchFlashcards = async () => {
@@ -100,6 +102,7 @@ const FlashcardViewPage = () => {
         setChoices(generateChoices(flashcards, currentIndex + 1));
         setIsCorrect(null); // Reset answer status for next question
       } else {
+        completionAudio.play();
         setIsQuizComplete(true);
       }
     }, 1500); // Wait for 1.5 seconds
@@ -115,19 +118,30 @@ const FlashcardViewPage = () => {
 
   if (isQuizComplete) {
     return (
-      <div className="flashcard__view__page">
-        <header className="flashcard__view__page__header">
-          <button className="flashcard__view__page__back-button" onClick={handleBack}>
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
-          <h2 className="flashcard__view__page__set-name">{setName || 'Flashcard Set'}</h2>
-        </header>
-        <div className="flashcard__view__page__result">
-          <h3>Quiz Complete!</h3>
-          <p>Your Score: {userScore} / {flashcards.length}</p>
-          <p>{userScore === flashcards.length ? "Excellent! You got everything right!" : "Keep practicing!"}</p>
-        </div>
+      <div className="container__flashcard__Quiz__result__page">
+          <Confetti width={window.innerWidth} height={window.innerHeight} />
+      <div className="confetti__flashcard__Quiz__result__page"></div>
+      <header className="header__flashcard__Quiz__result__page">
+        <button className="back-button__flashcard__Quiz__result__page" onClick={handleBack}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <h2 className="set-name__flashcard__Quiz__result__page">{setName || 'Flashcard Set'}</h2>
+      </header>
+      <div className="result-container__flashcard__Quiz__result__page">
+        <h3>Quiz Complete!</h3>
+        <p className="score__flashcard__Quiz__result__page">
+          Your Score: <strong>{userScore} / {flashcards.length}</strong>
+        </p>
+        <p className="feedback__flashcard__Quiz__result__page">
+          {userScore === flashcards.length
+            ? 'Amazing! You mastered it all!'
+            : 'Great effort! Keep practicing to get better!'}
+        </p>
+       
       </div>
+    </div>
+    
+
     );
   }
 
@@ -164,6 +178,8 @@ const FlashcardViewPage = () => {
         ))}
       </div>
     </div>
+
+    
   );
 };
 

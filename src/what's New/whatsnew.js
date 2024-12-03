@@ -108,6 +108,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
+        whiteSpace: 'pre-wrap'
     },
     updateCard: {
         padding: '25px',
