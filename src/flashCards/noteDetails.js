@@ -14,7 +14,7 @@ const NoteDetailPage = () => {
     const { id } = useParams();
     const [note, setNote] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [loadingQuiz, setLoadingQuiz] = useState(true);
+    const [loadingQuiz, setLoadingQuiz] = useState(false);
     const [error, setError] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState('');
@@ -329,7 +329,7 @@ const quillModules = {
   disabled={loadingQuiz}
   onClick={generateQuizFromNotes}
 >
-  <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
+  <div className={`sparkle__set__page__buttons ${loadingQuiz ? 'animating' : ''}`}>
     <svg
       height="24"
       width="24"
