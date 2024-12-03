@@ -306,8 +306,7 @@ if (loading) {
 
   return (
     <div className="flashcard__set__page">
-      
-<div className="flashcard__set__page__header___">
+<div className="flashcard__set__page__header">
     <div className="flashcard__set__page__header__top">
         <button className="flashcard__set__page__back-button" onClick={handleBack}>
             <i className="fas fa-arrow-left"></i>
@@ -326,7 +325,7 @@ if (loading) {
       className={`tab-button__set__page__tab ${activeTab === 'flashcards' ? 'active__set__page__tab' : ''}`}
       onClick={() => setActiveTab('flashcards')}
     >
-      Cards
+      Flashcards
     </button>
     <button 
       className={`tab-button__set__page__tab ${activeTab === 'stats' ? 'active__set__page__tab' : ''}`}
@@ -364,10 +363,6 @@ if (loading) {
       </button>
     </div>
 
-    {/* Button to show the first flashcard */}
-    <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
-      Start Learning
-    </button>
 
     {/* Display Filtered Count */}
     <div className="flashcard__set__page__filtered-count">
@@ -407,67 +402,32 @@ if (loading) {
        
         ) : (
           filteredFlashcards.map((flashcard) => (
-            <div key={flashcard.id} className="flashcard__set__page__flashcard" style={{ display: 'inline-flex', padding: '16px', border: '1px solid #e0e0e0', borderRadius: '10px', marginBottom: '10px' }}>
-  
+            <div key={flashcard.id} className="flashcard__set__page__flashcard">
             {/* Question and Options (Three Dots) */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Link to={`/flashcard/card/view/${flashcard.id}/${id}`} style={{ textDecoration: 'none', flexGrow: 1 }}>
-                <h4 className="flashcard__set__page__question" style={{ margin: 0, fontSize: '16px' }}>{flashcard.question}</h4>
-              </Link>
+            <div>
+              <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
           
               {/* Top right menu (3 dots) */}
-              <div className="flashcard__set__page__options" style={{ position: 'relative' }}>
-                <button className="flashcard__set__page__menu-button" style={{ background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => toggleMenu(flashcard.id)}>
-                  <i className="fas fa-ellipsis-v" style={{ fontSize: '18px' }}></i>
+              <div className="flashcard__set__page__options">
+                <button
+                  className="flashcard__set__page__menu-button"
+                  onClick={() => toggleMenu(flashcard.id)}
+                >
+                  <i className="fas fa-ellipsis-v"></i>
                 </button>
                 {menuVisible[flashcard.id] && (
-  <div className="flashcard__set__page__dropdown" style={{
-    position: 'absolute', 
-    top: '20px', 
-    right: '-10px', // Move it more to the left
-    background: '#fff', 
-    border: '1px solid #e0e0e0', 
-    borderRadius: '6px', 
-    zIndex: 10, 
-    boxShadow: '0px 4px 8px rgba(0,0,0,0.1)',
-    width: '180px', // Increase the width for more space
-  }}>
-    <button onClick={() => deleteFlashcard(flashcard.id)} style={{ 
-      display: 'block', 
-      padding: '8px', 
-      width: '100%', 
-      textAlign: 'left', 
-      background: 'none', 
-      border: 'none', 
-      cursor: 'pointer' 
-    }}>
-      <i className="fas fa-trash"></i> Delete
-    </button>
-    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Know')} style={{ 
-      display: 'block', 
-      padding: '8px', 
-      width: '100%', 
-      textAlign: 'left', 
-      background: 'none', 
-      border: 'none', 
-      cursor: 'pointer' 
-    }}>
-      <i className="fas fa-check"></i> Mark as I Know
-    </button>
-    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Don\'t Know')} style={{ 
-      display: 'block', 
-      padding: '8px', 
-      width: '100%', 
-      textAlign: 'left', 
-      background: 'none', 
-      border: 'none', 
-      cursor: 'pointer' 
-    }}>
-      <i className="fas fa-times"></i> Mark as I Don't Know
-    </button>
-  </div>
-)}
-
+                  <div className="flashcard__set__page__dropdown">
+                    <button onClick={() => deleteFlashcard(flashcard.id)}>
+                      <i className="fas fa-trash"></i> Delete
+                    </button>
+                    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Know')}>
+                      <i className="fas fa-check"></i> Mark as I Know
+                    </button>
+                    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Don\'t Know')}>
+                      <i className="fas fa-times"></i> Mark as I Don\'t Know
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           
@@ -475,31 +435,16 @@ if (loading) {
             <div
               ref={(el) => (answerRefs.current[flashcard.id] = el)}
               className="flashcard__set__page__answer"
-              style={{
-                maxHeight: answerHeight[flashcard.id] ? `${answerHeight[flashcard.id]}px` : '0',
-                overflow: 'hidden',
-                transition: 'max-height 0.3s ease-in-out',
-                padding: answerHeight[flashcard.id] ? '10px 0' : '0',
-              }}
             >
               {flashcard.answer}
             </div>
           
-            <button
-              className="flashcard__set__page__answer-toggle__set__page"
-              onClick={() => toggleAnswerVisibility(flashcard.id)}
-              style={{ background: 'none', border: 'none', padding: '8px', cursor: 'pointer', textAlign: 'center', marginTop: '8px' }}
-            >
-              <i className={`fas fa-chevron-${answerVisible[flashcard.id] ? 'up' : 'down'}`} style={{ fontSize: '16px' }}></i>
-            </button>
-          
             {/* Status Section */}
-            <div className="flashcard__set__page__status" style={{ marginTop: '10px', fontSize: '14px', color: '#757575' }}>
+            <div className="flashcard__set__page__status">
               <strong>Status:</strong> {flashcard.status || 'No Status Available'}
             </div>
           </div>
           
-
           ))
         )}
       </div>
@@ -509,14 +454,14 @@ if (loading) {
     
       {/* Modal */}
       <div className={`flashcard__set__page__modal ${modalVisible ? 'flashcard__set__page__modal-active' : ''}`}>
-        <div className="flashcard__set__page__modal-header" style={{ textAlign: 'center' }}>
+        <div className="flashcard__set__page__modal-header">
           <h3 className="flashcard__set__page__modal-title">Create Flashcards</h3>
           <button className="flashcard__set__page__modal-close" onClick={toggleModal}>
             <i className="fas fa-times"></i>
           </button>
         </div>
     
-        <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
+        <div className="flashcard__set__page__modal-content" >
         <button
   className="flashcard__set__page__modal-generate btn__set__page__buttons"
   onClick={generateFlashcards}
@@ -568,7 +513,13 @@ if (loading) {
           </div>
         </div>
       </div>
-    
+    {/* Fixed Footer */}
+<footer className="flashcard__set__page__footer">
+  <button className="flashcard__set__page__start-learning-btn" onClick={handleShowFirstFlashcard}>
+    Start Learning
+  </button>
+</footer>
+
       {/* Success Message */}
       {successMessage && (
         <SuccessMessage message={successMessage} onClose={handleCloseSuccessMessage} />

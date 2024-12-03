@@ -9,8 +9,6 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  border-radius: 25px; /* 25px border radius */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
   padding: 15px; /* Optional padding for spacing inside the header */
 }
 
@@ -63,65 +61,6 @@
 }
 
 
-.flashcard__set__page__card {
-    background-color: #ffffff; /* Keep cards clean and white */
-    padding: 16px;
-    border-radius: 8px; /* Rounded corners for consistency */
-    margin: 8px 0;
-}
-
-
-.flashcard__set__page__list {
-  gap: 16px; /* Space between cards */
-  padding: 16px;
-}
-
-.flashcard__set__page__flashcard {
-  min-width: 300px; /* Uniform card width for consistency */
-  max-width: 300px;
-  padding: 16px;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.flashcard__set__page__flashcard:hover {
-  transform: scale(1.05); /* Subtle zoom effect on hover */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.flashcard__set__page__options {
-  position: relative;
-}
-
-.flashcard__set__page__dropdown {
-  position: absolute;
-  top: 20px;
-  right: 0;
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  z-index: 10;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  width: 200px; /* Slightly wider dropdown */
-}
-
-.flashcard__set__page__answer {
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-  padding: 0;
-}
-
-.flashcard__set__page__answer-toggle__set__page {
-  margin-top: 8px;
-  padding: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-}
 
 .flashcard__set__page__status {
   margin-top: 10px;
@@ -129,85 +68,6 @@
   color: #757575;
 }
 
-  .flashcard__set__page__card {
-    padding: 12px; /* Slightly increased padding */
-    margin: 8px 0; /* Slightly larger margin */
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    text-decoration: none;
-    color: #333;
-    display: flex; /* Use flex to align icon and text */
-    align-items: center; /* Center icon and text */
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .flashcard__set__page__icon {
-    margin-right: 10px; /* Space between icon and question text */
-    color: #000000; /* Icon color */
-    font-size: 1.2rem; /* Adjust icon size */
-  }
-  
-  
-  .flashcard__set__page__no-cards {
-    text-align: center;
-    color: #888;
-    font-size: 1.1rem; /* Slightly larger font size for no cards message */
-  }
-  
-  .search__set__page__add-button {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0; /* Reduced spacing around the search bar */
-  }
-
-  
-  .searchBox__set__page__add-button {
-    display: flex;
-    max-width: 300px; /* Decreased max width for a smaller search bar */
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px; /* Reduced gap between input and button */
-    background: #2f3640;
-    border-radius: 50px;
-    position: relative;
-    padding: 5px; /* Reduced padding for a more compact look */
-  }
-  
-  .searchInput__set__page__add-button {
-    border: none;
-    background: none;
-    outline: none;
-    color: white;
-    font-size: 14px; /* Reduced font size for a smaller input */
-    padding: 12px; /* Adjusted padding for the input */
-    width: 100%; /* Make input fill available space */
-  }
-  
-  .searchButton__set__page__add-button {
-    color: white;
-    width: 40px; /* Reduced button size */
-    height: 40px; /* Reduced button size */
-    border-radius: 50%;
-    background: var(--gradient-2, linear-gradient(90deg, #2AF598 0%, #009EFD 100%));
-    border: 0;
-    display: inline-block;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-  }
-  
-  .searchButton__set__page__add-button:hover {
-    color: #fff;
-    background-color: #1A1A1A;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
-    transform: translateY(-2px); /* Slightly adjusted hover effect */
-  }
-  
-  .searchButton__set__page__add-button:active {
-    box-shadow: none;
-    transform: translateY(0);
-  }
-  
-  
 
 /* Fixed + button at bottom right */
 .flashcard__set__page__add-btn {
@@ -284,9 +144,6 @@
     transition: color 0.3s ease;
 }
 
-.flashcard__set__page__modal-close:hover {
-    color: #ff4c4c; /* Slightly brighter on hover */
-}
 
 /* Modal Content Styling */
 .flashcard__set__page__modal-content {
@@ -350,19 +207,6 @@
 }
 
 
-/* Close Button */
-.flashcard__set__page__modal-close {
-    font-size: 18px; /* Smaller close button size */
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #000; /* Color for close icon */
-    transition: color 0.3s ease;
-}
-
-.flashcard__set__page__modal-close:hover {
-    color: #ff3b30; /* Red color on hover for close */
-}
 
 
 .btn__set__page__buttons {
@@ -446,15 +290,6 @@
 }
 
 
-.flashcard__set__page {
-    padding: 20px;
-    background: #f9f9f9; /* Light background */
-  }
-  
-  .flashcard__set__page__header {
-    margin-bottom: 20px;
-  }
-  
   .flashcard__set__page__tabs {
     display: flex;
     margin-bottom: 20px;
@@ -475,201 +310,134 @@
     font-size: 14px;
   }
   
- 
-
-  /* Flashcard Container */
+/* Flashcard Container */
 .flashcard__set__page__flashcard {
-  background: #ffffff; /* White background for the card */
-  border: 1px solid #e0e0e0; /* Lighter border for visibility */
-  border-radius: 12px; /* Slightly more rounded corners */
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
   margin: 10px 0;
-  padding: 15px; /* Increased padding for more space */
+  padding: 15px;
   position: relative;
-  transition: box-shadow 0.3s, transform 0.3s; /* Added transform for hover effect */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack elements vertically */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
-}
-
-.flashcard__set__page__flashcard:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
-  transform: translateY(-2px); /* Lift effect */
+  transition: box-shadow 0.3s, transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center everything inside the card */
+  justify-content: center; /* Center content vertically */
+  max-width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Flashcard Question */
 .flashcard__set__page__question {
-  font-size: 1.4rem; /* Increased font size for question */
-  color: #333; /* Darker text color for contrast */
+  font-size: 1.4rem;
+  color: #333;
   font-weight: 100;
-  margin-bottom: 10px; /* Space below question */
+  margin-bottom: 10px;
+  text-align: center; /* Center the question */
+  position: relative; /* Allow positioning of options inline */
 }
+
+/* Flashcard Options (Three Dots) */
+.flashcard__set__page__options {
+  position: absolute;
+  top: 10px; /* Adjust the position from the top */
+  right: 10px; /* Position the options in the top right corner of the question */
+  display: flex;
+  flex-direction: column; /* Stack the menu vertically */
+  align-items: center; /* Align dots in the center vertically */
+  z-index: 10;
+}
+
+.flashcard__set__page__menu-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s;
+}
+
+
+/* Dropdown Menu */
+.flashcard__set__page__dropdown {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 5px; /* Space between the button and dropdown */
+  position: absolute;
+  top: 30px; /* Position the dropdown below the button */
+  right: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+.flashcard__set__page__dropdown button {
+  background: transparent;
+  border: none;
+  padding: 8px 15px;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  transition: background 0.3s;
+}
+
 
 /* Flashcard Answer */
 .flashcard__set__page__answer {
-  margin-top: 10px; /* Space above the answer */
-  opacity: 0; /* Start hidden for animation */
-  transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
+  margin-top: 10px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 16px;
+  color: #555;
+  text-align: center; /* Center the answer */
 }
 
-/* Show answer when visible */
-.flashcard__set__page__answer.visible {
-  opacity: 1; /* Fully visible when expanded */
+/* Flashcard Status Section */
+.flashcard__set__page__status {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
-/* Answer Toggle Button */
-.flashcard__set__page__answer-toggle__set__page {
-  background: rgba(0, 123, 255, 0.1); /* Transparent background */
+/* Flashcard Set Container */
+.flashcard__set__page__flashcards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Align all cards to the center */
+}
+/* Fixed Footer */
+.flashcard__set__page__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  z-index: 9999;
+}
+
+
+/* Start Learning Button */
+.flashcard__set__page__start-learning-btn {
+  background-color: #000000; /* Green color */
+  color: white;
+  font-size: 1.2rem;
+  padding: 12px 20px;
   border: none;
+  border-radius: 25px;
   cursor: pointer;
-  max-width: 100%; /* Make the button take full width */
-  margin-top: auto; /* Push the button to the bottom */
-  padding: 8px; /* Increased padding for better click area */
-  border-radius: 25px; /* Rounded corners for the button */
-  color: #000000; /* Blue color */
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center content horizontally */
-  transition: background-color 0.2s ease-in-out; /* Smooth transition for background */
+  transition: background-color 0.3s ease;
 }
-
-.flashcard__set__page__answer-toggle__set__page:hover {
-  background-color: rgba(0, 123, 255, 0.1); /* Light blue on hover */
-}
-
-/* Delete Button */
-.flashcard__set__page__delete-button {
-  background: #ef233c; /* Red background */
-  color: #fff; /* White text */
-  border: none;
-  padding: 8px 12px; /* Padding for better click area */
-  border-radius: 25px; /* Rounded corners */
-  cursor: pointer;
-  margin-top: 10px; /* Space above delete button */
-  transition: background-color 0.3s, transform 0.2s; /* Transition effects */
-}
-
-.flashcard__set__page__delete-button:hover {
-  background-color: #d90429; /* Darker red on hover */
-  transform: scale(1.05); /* Slightly larger on hover */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .flashcard__set__page__question {
-      font-size: 1.2rem; /* Smaller font size on smaller screens */
-  }
-
-  .flashcard__set__page__delete-button {
-      font-size: 0.9rem; /* Smaller font size for delete button */
-  }
-}
-
-  
-  .flashcard__set__page__show-first-btn {
-    background: none; /* No background */
-    margin-top: 20px;
-    color: #007aff; /* Blue text color */
-    border: 2px solid transparent; /* Blue border */
-    border-radius: 12px; /* Rounded edges */
-    padding: 5px 10px; /* Smaller padding for a compact button */
-    font-size: 14px; /* Smaller font size */
-    font-weight: 600; /* Bold font weight */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
-    display: inline-block; /* Align with other inline elements */
-  }
-  
-  .flashcard__set__page__show-first-btn:hover {
-    background-color: #007aff; /* Blue background on hover */
-    color: white; /* White text on hover */
-  }
-  
-  .flashcard__set__page__show-first-btn:active {
-    transform: scale(0.95); /* Scale down on active/click */
-  }
-  
-
-  .flashcard__set__page__flashcards {
-    display: flex;
-    flex-direction: column; /* Stack flashcards vertically */
-    gap: 10px; /* Space between flashcards */
-}
-
-.flashcard__set__page__flashcard {
-    border: 1px solid #ddd; /* Light border for visibility */
-    border-radius: 8px; /* Rounded corners */
-    margin: 10px 0;
-    padding: 20px; /* Increased padding for better spacing */
-    position: relative;
-    transition: box-shadow 0.3s, transform 0.3s; /* Smooth shadow and transform */
-    background-color: #fff; /* White background for contrast */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-}
-
-.flashcard__set__page__flashcard:hover {
-    transform: translateY(-2px); /* Lift effect on hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
-}
-
-.flashcard__set__page__question {
-    font-size: 18px; /* Slightly larger font size */
-    margin-bottom: 10px; /* Space below the question */
-    color: #333; /* Darker text color */
-}
-
-.flashcard__set__page__answer {
-    margin-top: 10px; /* Add spacing above the answer */
-    opacity: 1; /* Fully visible when expanded */
-    transition: opacity 0.3s ease-in-out; /* Smooth transition for the answer */
-    font-size: 16px; /* Font size for the answer */
-    color: #555; /* Lighter text color */
-}
-
-
-
-
-
-.tab-navigation {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-    position: relative; /* Positioning context for underline */
-}
-
-.tab-button {
-    background: transparent; /* No background */
-    border: none; /* No border */
-    font-size: 16px; /* Slightly smaller font size */
-    padding: 10px 15px; /* Padding for button */
-    cursor: pointer; /* Change cursor to pointer */
-    color: #666; /* Default text color */
-    position: relative; /* Positioning context for underline */
-}
-
-.tab-button:hover {
-    color: #0066FF; /* Change text color on hover */
-}
-
-.tab-button.active {
-    color: #000000; /* Active tab text color */
-}
-
-/* Animated underline effect */
-.tab-button::after {
-    content: ''; /* Pseudo-element for underline */
-    position: absolute;
-    left: 50%; /* Center the underline */
-    bottom: -5px; /* Position the underline below the text */
-    width: 0; /* Initial width */
-    height: 2px; /* Height of the underline */
-    background-color: #0066FF; /* Underline color */
-    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition */
-}
-
-.tab-button.active::after {
-    width: 100%; /* Full width when active */
-    left: 0; /* Align to the left */
-}
-
 
 
 
@@ -764,29 +532,6 @@
     opacity: 0.8; /* Add a hover effect */
 }
 
-.btn-delete-flashcard-set {
-    background-color: #ff4d4d; /* Light red background */
-    color: #fff; /* White text */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Slightly rounded corners */
-    padding: 10px 15px; /* Padding for better touch target */
-    font-size: 14px; /* Adjust font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
-  }
-  
-  .btn-delete-flashcard-set:hover {
-    background-color: #ff4d4d; /* Darker red on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-  }
-  
-  .btn-delete-flashcard-set:disabled {
-    background-color: #ccc; /* Gray background when disabled */
-    cursor: not-allowed; /* Change cursor to not-allowed */
-  }
-  
 
   .manual-flashcard-creation__manual__flashcard__form {
     background-color: #f9f9f9; /* Light background for the form */
