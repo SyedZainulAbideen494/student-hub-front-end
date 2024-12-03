@@ -365,7 +365,7 @@ if (loading) {
 
     {/* Button to show the first flashcard */}
     <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
-      Swipe Mode
+      Start Learning
     </button>
 
     {/* Display Filtered Count */}

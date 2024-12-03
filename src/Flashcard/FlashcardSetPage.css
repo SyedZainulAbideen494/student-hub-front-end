@@ -4,10 +4,13 @@
 
 /* Flashcard Set Page Header */
 .flashcard__set__page__header {
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+  border-radius: 25px; /* 25px border radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+  padding: 15px; /* Optional padding for spacing inside the header */
 }
 
 /* Top section with buttons and title */
