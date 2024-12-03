@@ -110,7 +110,7 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/flashcard' ? 'active' : ''}`}>
         <FaStickyNote className="icon-footer-nav" />
         <span className="btn-label">Flashcards</span>
-        <sapn className='new-label-footer-nav'>New - Generate using PDF</sapn>
+        <sapn className='new-label-footer-nav'>New - Generate using PDF and Active recall fetaure too</sapn>
     </button>
 </Link>
 
