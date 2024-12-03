@@ -520,14 +520,14 @@
 
 /* Answer Toggle Button */
 .flashcard__set__page__answer-toggle__set__page {
-  background: rgba(0, 123, 255, 0.1); /* Transparent background */
+  background-color: #000;
   border: none;
   cursor: pointer;
   max-width: 100%; /* Make the button take full width */
   margin-top: auto; /* Push the button to the bottom */
   padding: 8px; /* Increased padding for better click area */
   border-radius: 25px; /* Rounded corners for the button */
-  color: #007bff; /* Blue color */
+  color: #000000; /* Blue color */
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center content horizontally */
   transition: background-color 0.2s ease-in-out; /* Smooth transition for background */
