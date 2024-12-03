@@ -57,7 +57,7 @@ const InviteFriends = () => {
         <h2>Invite Friends</h2>
         <p>
             Make studying more fun and productive by inviting your friends to join you on Edusify! 
-            Create study groups, share resources, and even test each other with custom quizzes. 
+            Create study room, share resources, view each other's activity and even test each other with custom quizzes. 
             Click the button below to spread the word and level up your study sessions!
         </p>
         <button className="button___inv__friends__mkrt" onClick={handleInvite}>
