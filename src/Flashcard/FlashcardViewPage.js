@@ -150,7 +150,7 @@ const FlashcardViewPage = () => {
       <div className="flashcard__view__page__card">
         <h3 className="flashcard__view__page__question">{currentCard.question}</h3>
       </div>
-
+    <h3>Select Correct Answer</h3>
       <div className="flashcard__view__page__choices">
         {choices.map((choice, index) => (
           <button
