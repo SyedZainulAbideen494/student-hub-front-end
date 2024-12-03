@@ -1,5 +1,6 @@
 .flashcard__set__page {
     font-family: Arial, sans-serif;
+    background-color: white;
   }
 
 /* Flashcard Set Page Header */
@@ -35,13 +36,13 @@
 
 /* Page title */
 .flashcard__set__page__title {
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   color: #333;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   flex-grow: 1;
-  margin: 0;
+  margin-left: 20px;
   padding: 0;
 }
 
@@ -62,9 +63,6 @@
 }
 
 
-
-
-
 .flashcard__set__page__card {
     background-color: #ffffff; /* Keep cards clean and white */
     padding: 16px;
@@ -82,7 +80,7 @@
   min-width: 300px; /* Uniform card width for consistency */
   max-width: 300px;
   padding: 16px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #ffffff;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
@@ -628,11 +626,6 @@
 
 
 
-/* FlashcardSetPage.css */
-
-.flashcard__set__page {
-    padding: 20px;
-}
 
 
 .tab-navigation {
@@ -906,9 +899,11 @@
     text-align: center;
   }
 
+
+
 /* Flashcard Section Layout */
 .flashcard__set__page__second__header__sec {
-  width: 70%; /* Reduced width to make it more compact */
+  width: 90%; /* Reduced width to make it more compact */
   margin: 30px auto; /* Center the section horizontally */
   padding: 15px; /* Reduced padding for a more minimal feel */
   background-color: white;
