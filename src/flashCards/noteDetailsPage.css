@@ -196,7 +196,14 @@
     margin: 20px 0;
     gap: 10px;
 }
-
+.note-btn-contaioner {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 /* Container for download button and download count */
 .download-container {
     display: flex;
@@ -204,8 +211,6 @@
     align-items: center;
     margin-top: 20px;
     padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Common button styles */
@@ -234,6 +239,8 @@
     transform: translateY(0);
     box-shadow: 0 3px 12px rgba(113, 97, 239, 0.5);
 }
+
+
 
 /* Download count styles */
 .download-count {

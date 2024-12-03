@@ -8,11 +8,13 @@ import './noteDetailsPage.css';
 import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal component
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import BookOpenAnimation from '../app_modules/loaders/bookOpen';
 
 const NoteDetailPage = () => {
     const { id } = useParams();
     const [note, setNote] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [loadingQuiz, setLoadingQuiz] = useState(true);
     const [error, setError] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState('');
@@ -29,6 +31,8 @@ const NoteDetailPage = () => {
     const nav = useNavigate();
     const [subjects, setSubjects] = useState([]);
     const [selectedSubject, setSelectedSubject] = useState(''); // For storing selected subject
+    const navigate = useNavigate();
+
 
     // Fetch the subjects on component mount
     useEffect(() => {
@@ -253,9 +257,59 @@ const quillModules = {
         }
     };
 
+    const generateQuizFromNotes = async (e) => {
+        e.preventDefault();
+        setLoadingQuiz(true);
+        setError(null);
     
+        // Get the note data from the state (assuming note is in setNote)
+        const notesContent = note.headings; // Get the note headings directly from the state
+        const subject = note.title; // Use note.title as the subject
+    
+        // Validation check for missing fields
+        if (!notesContent || !subject) {
+            alert('Please provide notes content and subject before generating the quiz.');
+            setLoadingQuiz(false);
+            return;
+        }
+    
+        // Clean the HTML from the notes (remove all HTML tags)
+        const cleanedNotes = notesContent.replace(/<\/?[^>]+(>|$)/g, "");
+    
+        // Assuming you have a subject and topic defined, adjust as needed
+        const token = localStorage.getItem('token');
+        console.log(token);
+        const formData = new FormData();
+        formData.append('notes', cleanedNotes); // Send cleaned notes
+        formData.append('subject', subject); // Send note.title as subject
+        formData.append('token', token); // Attach user token for authentication
+    
+        try {
+            // Make a POST request to the backend to generate the quiz
+            const response = await fetch(API_ROUTES.generateQuizFromNotes, {
+                method: 'POST',
+                body: formData,
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to generate quiz from notes, please try again.');
+            }
+    
+            const data = await response.json();
+            // Assuming the backend returns a `quizId`
+            navigate(`/quiz/${data.quizId}`);
+        } catch (err) {
+            console.error('Error:', err);
+            setError(err.message);
+        } finally {
+            setLoadingQuiz(false);
+        }
+    };
+    
+    
+      
 
-    if (loading) return <div className="loading">Loading...</div>;
+    if (loading) return <div className="loading"><BookOpenAnimation/></div>;
     if (error) return <div className="error">{error}</div>;
     if (!note) return <div className="no-note">No note found.</div>;
 
@@ -266,6 +320,35 @@ const quillModules = {
                     <span className="arrow-note-detail-page">&#8592;</span> 
                 </button><br/>
                 <h1>{editMode ? 'Edit Note' : note.title}</h1>
+
+<div className='note-btn-contaioner'>
+             
+            <div className="centered-button-container">
+        <button
+  className="flashcard__set__page__modal-generate btn__set__page__buttons"
+  disabled={loadingQuiz}
+  onClick={generateQuizFromNotes}
+>
+  <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
+    <svg
+      height="24"
+      width="24"
+      fill="#FFFFFF"
+      viewBox="0 0 24 24"
+      data-name="Layer 1"
+      id="Layer_1"
+      className="sparkle__set__page__buttons"
+    >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
+    <span className="text__set__page__buttons">
+      {loading ? 'Generating...' : '  Generate Quiz'}
+    </span>
+  </div>
+</button>
+</div>
+            </div>
+
             </div>
             {editMode ? (
                 <form onSubmit={handleUpdateClick} className="edit-note-form">

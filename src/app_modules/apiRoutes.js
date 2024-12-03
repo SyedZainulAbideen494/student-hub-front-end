@@ -149,5 +149,6 @@ export const API_ROUTES = {
   checkIfUserAlreadyInRoom: `${API_URL}/check-user-in-room`,
   roomLeaderboard: `${API_URL}/api/roomLeaderboard`,
   generateFlashcardsFromPdf: `${API_URL}/api/flashcards/upload`,
-  generateQuizFromPDF: `${API_URL}/api/quiz/generate-from-pdf`
+  generateQuizFromPDF: `${API_URL}/api/quiz/generate-from-pdf`,
+  generateQuizFromNotes: `${API_URL}/api/quiz/generate/from-notes`
 }
