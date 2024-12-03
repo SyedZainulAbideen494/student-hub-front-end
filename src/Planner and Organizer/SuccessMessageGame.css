@@ -1,0 +1,62 @@
+/* Modal background */
+.modal__game__msg__planner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Softer background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-out forwards; /* Smoother animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Modal content box */
+.modal-content__game__msg__planner {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 12px; /* Slightly more rounded corners */
+    width: 300px; /* Adjust width for balance */
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    font-family: 'Roboto', sans-serif; /* Clean font */
+    transition: transform 0.3s ease-in-out; /* Smooth scale on focus */
+}
+
+/* Smooth scaling on hover (optional) */
+.modal-content__game__msg__planner:hover {
+    transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Message paragraph styling */
+.modal-content__game__msg__planner p {
+    font-size: 17px; /* Slightly larger text */
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-weight: 400; /* Regular weight */
+}
+
+/* Bold text styling */
+.modal-content__game__msg__planner strong {
+    font-weight: 600;
+    color: #ffbb00; /* Bright, subtle color for points */
+}
+
+/* Optional: Smooth transition for opacity of modal */
+.modal__game__msg__planner {
+    animation: fadeIn 0.4s ease-out forwards;
+}

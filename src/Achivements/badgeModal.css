@@ -1,0 +1,56 @@
+/* Modal overlay */
+.__badge__Modal__page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal content */
+  .__badge__Modal__page-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Badge icon styling */
+  .__badge__Modal__page-badge-icon {
+    margin-bottom: 15px;
+  }
+  
+  /* Heading */
+  .__badge__Modal__page-content h2 {
+    margin: 0;
+    color: #333;
+    font-size: 22px;
+  }
+  
+  /* Badge name styling */
+  .__badge__Modal__page-content h3 {
+    color: #FFD700; /* Gold color for the badge name */
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Close button styling */
+  .__badge__Modal__page-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

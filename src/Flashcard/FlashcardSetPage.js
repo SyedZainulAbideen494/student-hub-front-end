@@ -35,6 +35,7 @@ const FlashcardSetPage = () => {
   const [manualQuestion, setManualQuestion] = useState('');
   const [manualAnswer, setManualAnswer] = useState('');
   const [menuVisible, setMenuVisible] = useState({});
+  const [statusFilter, setStatusFilter] = useState(''); // 'I Know', 'I Don't Know', or ''
 
   const toggleMenu = (id) => {
     setMenuVisible((prev) => ({
@@ -165,9 +166,6 @@ const FlashcardSetPage = () => {
     nav('/flashcard');
   };
 
-  const filteredFlashcards = flashcards.filter(flashcard =>
-    flashcard.question.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -182,6 +180,15 @@ const FlashcardSetPage = () => {
       [id]: !prev[id],
     }));
   };
+
+  const filteredFlashcards = flashcards.filter((flashcard) => {
+    const matchesStatus = statusFilter
+      ? flashcard.status === statusFilter
+      : true; // If no filter, show all cards
+  
+    return flashcard.question.toLowerCase().includes(searchQuery.toLowerCase()) && matchesStatus;
+  });
+  
 
   useEffect(() => {
     // Set heights for each answer based on visibility
@@ -204,6 +211,7 @@ const FlashcardSetPage = () => {
       nav(`/flashcard/card/view/${firstFlashcard.id}/${params.id}`); // Navigate to first flashcard
     }
   };
+
 
 // Example function to delete a flashcard
 const deleteFlashcard = async (flashcardId) => {
@@ -291,12 +299,10 @@ const updateFlashcardStatus = async (flashcardId, status) => {
 
 
 
-
   // Return the loading state unconditionally
 if (loading) {
   return <LoadingSpinner/>;
 }
-
 
   return (
     <div className="flashcard__set__page">
@@ -330,21 +336,45 @@ if (loading) {
 </div>
 </div>
 
-
-
-
-
-
-
-
-
       {activeTab === 'flashcards' ? (
       <>
-
-      {/* Button to show the first flashcard */}
-      <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
-        Swipe Mode 
+ {/* Flashcard Header Section */}
+<div className="flashcard__set__page__second__header__sec">
+  <div className="flashcard__set__page__filter-section">
+    {/* Status Filter */}
+    <div className="flashcard__set__page__status-filter">
+      <button 
+        className={`status-filter-button ${statusFilter === 'I Know' ? 'active' : ''}`}
+        onClick={() => setStatusFilter('I Know')}
+      >
+        I Know
       </button>
+      <button 
+        className={`status-filter-button ${statusFilter === 'I Don\'t Know' ? 'active' : ''}`}
+        onClick={() => setStatusFilter('I Don\'t Know')}
+      >
+        I Don't Know
+      </button>
+      <button 
+        className={`status-filter-button ${statusFilter === '' ? 'active' : ''}`}
+        onClick={() => setStatusFilter('')}
+      >
+        All
+      </button>
+    </div>
+
+    {/* Button to show the first flashcard */}
+    <button className="flashcard__set__page__show-first-btn" onClick={handleShowFirstFlashcard}>
+      Swipe Mode
+    </button>
+
+    {/* Display Filtered Count */}
+    <div className="flashcard__set__page__filtered-count">
+      <p>{filteredFlashcards.length} Flashcards</p>
+    </div>
+  </div>
+</div>
+
     
       <div className="flashcard__set__page__flashcards">
         {filteredFlashcards.length === 0 ? (

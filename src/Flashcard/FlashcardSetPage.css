@@ -921,3 +921,79 @@
     margin-top: 8px;
     text-align: center;
   }
+
+/* Flashcard Section Layout */
+.flashcard__set__page__second__header__sec {
+  width: 70%; /* Reduced width to make it more compact */
+  margin: 30px auto; /* Center the section horizontally */
+  padding: 15px; /* Reduced padding for a more minimal feel */
+  background-color: white;
+  border-radius: 12px; /* Curved edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  gap: 10px; /* Reduced gap for a more compact layout */
+}
+
+/* Filter Section */
+.flashcard__set__page__filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reduced gap for minimal spacing */
+}
+
+/* Status Filter */
+.flashcard__set__page__status-filter {
+  display: flex;
+  gap: 10px; /* Reduced gap for tighter layout */
+  justify-content: center;
+}
+
+.status-filter-button {
+  padding: 8px 15px; /* Reduced padding for a smaller look */
+  border: 1px solid #ddd;
+  background-color: transparent;
+  color: #333;
+  font-size: 12px; /* Smaller font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 8px;
+}
+
+
+.status-filter-button.active {
+  background-color: #ffffff; /* Green for active state */
+  color: rgb(0, 0, 0);
+  border-color: #000000;
+}
+
+/* Swipe Mode Button */
+.flashcard__set__page__show-first-btn {
+  padding: 8px 15px; /* Smaller padding */
+  background-color: #000000;
+  color: white;
+  border: none;
+  font-size: 12px; /* Smaller font size */
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.flashcard__set__page__show-first-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Filtered Count */
+.flashcard__set__page__filtered-count {
+  text-align: center;
+  font-size: 14px; /* Slightly smaller font size */
+  font-weight: bold;
+  color: #333;
+}
+
+/* Remove unnecessary spacing */
+.flashcard__set__page__second__header__sec .flashcard__set__page__filtered-count p {
+  margin: 0;
+  padding: 0;
+}
