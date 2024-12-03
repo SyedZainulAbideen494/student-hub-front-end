@@ -520,7 +520,7 @@
 
 /* Answer Toggle Button */
 .flashcard__set__page__answer-toggle__set__page {
-  background-color: #000;
+  background: rgba(0, 123, 255, 0.1); /* Transparent background */
   border: none;
   cursor: pointer;
   max-width: 100%; /* Make the button take full width */
