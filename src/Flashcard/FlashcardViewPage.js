@@ -74,6 +74,29 @@ const FlashcardViewPage = () => {
       console.error('Error updating flashcard status:', error);
     }
   };
+  const handleQuizCompletion = async () => {
+    try {
+      const token = localStorage.getItem('token'); // Assuming token is stored in localStorage
+      const response = await fetch(`${API_ROUTES.completeFlashcardQuiz}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token, // Include the token in the request body
+          setId, // Optionally include the flashcard set ID if needed
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to log quiz completion');
+      }
+      console.log('Quiz completion logged successfully');
+    } catch (error) {
+      console.error('Error during quiz completion logging:', error);
+    }
+  };
+  
 
   const handleAnswer = (selectedAnswer) => {
     const currentCard = flashcards[currentIndex];
@@ -104,6 +127,7 @@ const FlashcardViewPage = () => {
       } else {
         completionAudio.play();
         setIsQuizComplete(true);
+        handleQuizCompletion(); // Log completion
       }
     }, 1500); // Wait for 1.5 seconds
   };
