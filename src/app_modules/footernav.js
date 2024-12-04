@@ -147,20 +147,7 @@ const FooterNav = () => {
                         <span className="btn-label">Pomodoro</span>
                     </button>
                 </Link>
-               {/*  <Link to='/social-feed' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/social-feed' ? 'active' : ''}`}>
-                        <FaGlobe className="icon-footer-nav" />
-                        <span className="btn-label">Social Feed</span>
-                        <span className='new-label-footer-nav'>New</span>
-                    </button>
-                </Link>*/} 
-                
-               {/*  <Link to='/social-feed' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/social-feed' ? 'active' : ''}`}>
-                        <FaStream className="icon-footer-nav" />
-                        <span className="btn-label">Social Feed</span>
-                    </button>
-                </Link> */} 
+
                 <Link to='/toolkit' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/toolkit' ? 'active' : ''}`}>
                     <FaToolbox className="icon-footer-nav" />
@@ -174,13 +161,7 @@ const FooterNav = () => {
                          {/* Red icon for profile issues */}
                     </button>
                 </Link>
-               {/* <Link to='/subscription' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
-                        <FaGem className="icon-footer-nav" />
-                        <span className="btn-label">Premium</span>
-                    </button>
-                </Link>*/} 
-            
+
                
              
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>

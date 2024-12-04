@@ -27,8 +27,7 @@ const ModalHowTo = () => {
     if (!viewedGuide && hasVisitedTodayEventsAndTasks === "true") {
       // Open the modal if the guide hasn't been viewed and the user visited today's events and tasks
       setIsOpen(true);
-      // Set the viewedGuide flag to true in localStorage so it won't show the modal next time
-      localStorage.setItem("viewedGuide", "true");
+
     }
   }, []);
 
