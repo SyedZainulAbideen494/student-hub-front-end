@@ -40,6 +40,9 @@ const Leaderboard = () => {
           <p className="modal-description__leaderboard__instr">
             6. Complete a Pomodoro session: <strong>10 points</strong>
           </p>
+          <p className="modal-description__leaderboard__instr">
+            7. Creating Notes: <strong>10 points</strong>
+          </p>
           <button className="modal-close-btn__leaderboard__instr" onClick={onClose}>
             Close
           </button>
