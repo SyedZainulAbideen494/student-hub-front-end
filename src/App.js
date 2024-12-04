@@ -108,6 +108,7 @@ import RoomMainPageJoined from "./Rooms/Joined rooms/RoomMainJoined";
 import ActivityPageRooms from "./Rooms/Joined rooms/activity";
 import ResourcesPage from "./Rooms/Joined rooms/ResourcesPage";
 import RoomLeaderboard from "./Rooms/Joined rooms/RoomLeaderboard";
+import GuideToEdusify from "./Pop ups/GuideToEdusify";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -201,6 +202,7 @@ const router = createBrowserRouter([
   {path: '/room/activity/:roomId', element: <ActivityPageRooms/>},
   {path: '/room/resources/:roomId', element: <ResourcesPage/>},
   {path: '/room/leaderboard/:roomId', element: <RoomLeaderboard/>},
+  {path: '/how-to-use-edusify', element: <GuideToEdusify/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

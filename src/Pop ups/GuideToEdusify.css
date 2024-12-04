@@ -1,0 +1,196 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap');
+
+/* Container */
+.container__guide__to__Edusify {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #b2c2f1 0%, #ff99b5 100%); /* Soft gradient from light blue to soft pink */
+    color: #333;
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease-in-out;
+}
+
+/* Back Button */
+.back__button__guide__to__Edusify {
+    background-color: transparent;
+    color: #ff4d7d; /* Bold pink */
+    border: none;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.back__button__guide__to__Edusify:hover {
+    color: #ff6f91; /* Slightly brighter pink */
+}
+
+/* Header */
+.title__guide__to__Edusify {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.8rem;
+    color: #3f4a61; /* Dark grayish blue */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* Subtitle */
+.subtitle__guide__to__Edusify {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: #ff7043; /* Soft coral */
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Sections */
+.section__guide__to__Edusify {
+    margin-bottom: 40px;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section__guide__to__Edusify:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* List Styling */
+.list__guide__to__Edusify li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Feature Section */
+.features__guide__to__Edusify {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.feature__guide__to__Edusify {
+    padding: 20px;
+    border-radius: 12px;
+    width: 120px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #f3f6f9;
+}
+
+.feature__guide__to__Edusify:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Feature 1 - Soft Coral */
+.feature__guide__to__Edusify:nth-child(1) {
+    background: linear-gradient(135deg, #ff9b85 0%, #ff6f61 100%); /* Light coral */
+}
+
+.feature__guide__to__Edusify:nth-child(1):hover {
+    background: linear-gradient(135deg, #ff8265 0%, #f87050 100%); /* Slightly deeper coral */
+}
+
+/* Feature 2 - Soft Teal */
+.feature__guide__to__Edusify:nth-child(2) {
+    background: linear-gradient(135deg, #80e0d7 0%, #a0f2f4 100%); /* Soft teal */
+}
+
+.feature__guide__to__Edusify:nth-child(2):hover {
+    background: linear-gradient(135deg, #6fb8b1 0%, #7df0e2 100%); /* Light teal for hover */
+}
+
+/* Feature 3 - Soft Yellow */
+.feature__guide__to__Edusify:nth-child(3) {
+    background: linear-gradient(135deg, #ffec96 0%, #ffe066 100%); /* Soft yellow */
+}
+
+.feature__guide__to__Edusify:nth-child(3):hover {
+    background: linear-gradient(135deg, #ffdb72 0%, #ffcc44 100%); /* Slightly deeper yellow */
+}
+
+/* Feature 4 - Soft Lavender */
+.feature__guide__to__Edusify:nth-child(4) {
+    background: linear-gradient(135deg, #d1b6e5 0%, #c6a2d3 100%); /* Soft lavender */
+}
+
+.feature__guide__to__Edusify:nth-child(4):hover {
+    background: linear-gradient(135deg, #b28bc2 0%, #a78bb0 100%); /* Lighter lavender for hover */
+}
+
+/* Feature 5 - Soft Pink */
+.feature__guide__to__Edusify:nth-child(5) {
+    background: linear-gradient(135deg, #f8a8c3 0%, #ffb3d9 100%); /* Soft pink */
+}
+
+.feature__guide__to__Edusify:nth-child(5):hover {
+    background: linear-gradient(135deg, #f58db0 0%, #ff96c5 100%); /* Softer pink for hover */
+}
+
+/* Feature 6 - Soft Green */
+.feature__guide__to__Edusify:nth-child(6) {
+    background: linear-gradient(135deg, #a8e8a0 0%, #b7f5b0 100%); /* Soft green */
+}
+
+.feature__guide__to__Edusify:nth-child(6):hover {
+    background: linear-gradient(135deg, #91e085 0%, #95f197 100%); /* Softer green for hover */
+}
+
+/* Feature 7 - Soft Blue */
+.feature__guide__to__Edusify:nth-child(7) {
+    background: linear-gradient(135deg, #a8d9f1 0%, #b7e6fa 100%); /* Soft blue */
+}
+
+.feature__guide__to__Edusify:nth-child(7):hover {
+    background: linear-gradient(135deg, #89c4e4 0%, #98d9f5 100%); /* Lighter blue for hover */
+}
+
+/* Weeks AI Card - New Background */
+.weeks__ai__card__guide__to__Edusify {
+    background: linear-gradient(135deg, #ff99cc 0%, #ff66b2 100%); /* Soft pink to a deeper pink */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weeks__ai__card__guide__to__Edusify:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Styling */
+.icon__guide__to__Edusify {
+    font-size: 2.5rem;
+    color: #ffffff; /* White for icons to stand out */
+    margin-bottom: 15px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .features__guide__to__Edusify {
+        flex-direction: column;
+    }
+
+    .feature__guide__to__Edusify {
+        width: 87%;
+        margin-bottom: 20px;
+    }
+}
+

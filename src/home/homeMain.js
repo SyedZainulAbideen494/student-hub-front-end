@@ -17,6 +17,7 @@ import { API_ROUTES } from "../app_modules/apiRoutes";
 import BirthdayModal from "../app_modules/TakeBirthDay";
 import BirthdayCelebration from "../app_modules/birthdayCelebrate";
 import FoxIcon from "../Edusify fox/FoxIcon";
+import ModalHowTo from "../Pop ups/HowtoUsePopUp";
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
@@ -52,9 +53,9 @@ const HomeMain = () => {
     return<Fragment>
 
    <TipBox/>
-      <BirthdayCelebration/>
-      <BirthdayModal/>
-        <ReviewModal/>
+     <ModalHowTo/>
+       {/*<ReviewModal/> <BirthdayCelebration/>
+      <BirthdayModal/>*/} 
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
 <div style={{ margin: '20px 0' }}>
