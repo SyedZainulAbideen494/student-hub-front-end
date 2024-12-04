@@ -440,7 +440,6 @@ function Planner() {
 
     <div className="input-group__planner__page__ai__gen">
       <label className="input-label__planner__page__ai__gen">
-        Task Style:
         <select
           value={taskStyle}
           onChange={(e) => setTaskStyle(e.target.value)}
@@ -449,9 +448,6 @@ function Planner() {
           <option value="detailed">Detailed</option>
         </select>
       </label>
-      <small className="input-hint__planner__page__ai__gen">
-        Choose your preferred task style.
-      </small>
     </div>
 
     <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
