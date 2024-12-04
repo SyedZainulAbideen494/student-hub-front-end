@@ -25,18 +25,27 @@ const FlashcardViewPage = () => {
   const incorrectAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/946/946-preview.mp3');
   const completionAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/2059/2059-preview.mp3'); // Celebration sound
 
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+    return array;
+  };
+  
   useEffect(() => {
     const fetchFlashcards = async () => {
       const response = await fetch(`${API_ROUTES.flashcardSetGetData}/${setId}`);
       const data = await response.json();
       if (data.flashcards && data.flashcards.length > 0) {
-        setFlashcards(data.flashcards);
-        setChoices(generateChoices(data.flashcards, 0));
+        const shuffledFlashcards = shuffleArray(data.flashcards);
+        setFlashcards(shuffledFlashcards);
+        setChoices(generateChoices(shuffledFlashcards, 0));
       } else {
         console.error('No flashcards found for this set');
       }
     };
-
+  
     const fetchFlashcardSetData = async () => {
       const response = await fetch(`${API_ROUTES.getsetdataFlashcard}/${setId}`);
       const data = await response.json();
@@ -46,7 +55,7 @@ const FlashcardViewPage = () => {
         console.error('No set data found');
       }
     };
-
+  
     fetchFlashcards();
     fetchFlashcardSetData();
   }, [setId]);
