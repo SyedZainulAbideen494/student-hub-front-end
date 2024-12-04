@@ -111,7 +111,7 @@ function Planner() {
                 // Add new task
                 const response = await axios.post(API_ROUTES.addTask, taskData);
                 setTasks([...tasks, { id: response.data.id, ...taskData }]);
-                showModal('Task added successfully!');
+                showModal('Task added successfully! +5 points');
             }
 
             resetForm();
@@ -128,7 +128,7 @@ function Planner() {
         axios.post(API_ROUTES.deleteTask, { id, token })
             .then(response => {
                 setTasks(tasks.filter(task => task.id !== id));
-                showModal('Task completed!');
+                showModal('Task completed! +3 points');
             })
             .catch(error => {
                 console.error('There was an error deleting the task!', error);

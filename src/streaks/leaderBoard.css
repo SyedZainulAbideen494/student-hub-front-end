@@ -200,8 +200,113 @@
 }
 
 
-
+.instructions-btn__leaderboard__page {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 35px; /* Smaller avatar size */
+    height: 35px;
+    border: none;
+    margin: 0 5px; /* Reduced margin */
+}
 
 .leaderboard__page__container {
     animation: fadeIn 0.5s ease; /* Apply fade-in animation */
 }
+
+
+/* Modal Overlay */
+.modal-overlay__leaderboard__instr {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); /* Lighter overlay for a subtler background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Modal Content */
+  .modal-content__leaderboard__instr {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.3s ease-in-out;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Modal Title */
+  .modal-title__leaderboard__instr {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Modal Description */
+  .modal-description__leaderboard__instr {
+    font-size: 0.9rem;
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.4;
+    text-align: left;
+  }
+  
+  /* Strong text */
+  .modal-description__leaderboard__instr strong {
+    color: #007bff;
+  }
+  
+  /* Close Button */
+  .modal-close-btn__leaderboard__instr {
+    padding: 8px 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 100%;
+  }
+  
+  .modal-close-btn__leaderboard__instr:hover {
+    background-color: #0056b3;
+  }
+  
+  .modal-close-btn__leaderboard__instr:focus {
+    outline: none;
+  }
+  
+  /* Animation for modal overlay */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Animation for modal content */
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

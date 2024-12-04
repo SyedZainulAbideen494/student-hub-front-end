@@ -11,8 +11,45 @@ const Leaderboard = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [userStats, setUserStats] = useState({ position: null, points: 0 }); // State for user's stats
-  const [showInstructions, setShowInstructions] = useState(false); 
+  const [showInstructions, setShowInstructions] = useState(false);
+
   const nav = useNavigate();
+
+  const InstructionsModal = ({ isOpen, onClose }) => {
+    if (!isOpen) return null;
+  
+    return (
+      <div className="modal-overlay__leaderboard__instr" onClick={onClose}>
+        <div className="modal-content__leaderboard__instr" onClick={(e) => e.stopPropagation()}>
+          <h2 className="modal-title__leaderboard__instr">How to Gain Points</h2>
+          <p className="modal-description__leaderboard__instr">
+            1. Add tasks manually: <strong>5 points</strong>
+          </p>
+          <p className="modal-description__leaderboard__instr">
+            2. Complete tasks: <strong>3 points</strong>
+          </p>
+          <p className="modal-description__leaderboard__instr">
+            3. Add events to your calendar: <strong>3 points</strong>
+          </p>
+          <p className="modal-description__leaderboard__instr">
+            4. Attend quizzes: <strong>15 points</strong>
+          </p>
+          <p className="modal-description__leaderboard__instr">
+            5. Learn using flashcards: <strong>5 points</strong>
+          </p>
+          <p className="modal-description__leaderboard__instr">
+            6. Complete a Pomodoro session: <strong>10 points</strong>
+          </p>
+          <button className="modal-close-btn__leaderboard__instr" onClick={onClose}>
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  };
+  
+  
+
 
   useEffect(() => {
     const fetchLeaderboardData = async () => {
@@ -121,13 +158,10 @@ const Leaderboard = () => {
       <FaArrowLeft size={16} />
     </button>
     <h1 className="leaderboard-title__leaderboard__page">Leaderboard</h1>
-    {profile && (
-      <img
-        src={`${API_ROUTES.displayImg}/${profile.avatar}` || 'default-avatar-url'}
-        alt="User Avatar"
-        className="user-avatar__leaderboard__page"
-      />
-    )}
+   
+     <button className="instructions-btn__leaderboard__page" onClick={() => setShowInstructions(true)}>
+          <FaQuestionCircle size={20} />
+        </button>
   </div>
   
   <p className="leaderboard-subtitle__leaderboard__page">See how you stack up!</p>
@@ -188,7 +222,7 @@ const Leaderboard = () => {
         );
       })}
     </div>
-    
+    <InstructionsModal isOpen={showInstructions} onClose={() => setShowInstructions(false)} />
   </div>
 </div>
 
