@@ -447,7 +447,6 @@ function Planner() {
           className="input-field__planner__page__ai__gen"
         >
           <option value="detailed">Detailed</option>
-          <option value="minimal">Minimal</option>
         </select>
       </label>
       <small className="input-hint__planner__page__ai__gen">
