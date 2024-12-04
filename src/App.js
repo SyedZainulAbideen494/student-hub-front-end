@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -109,6 +109,16 @@ import ActivityPageRooms from "./Rooms/Joined rooms/activity";
 import ResourcesPage from "./Rooms/Joined rooms/ResourcesPage";
 import RoomLeaderboard from "./Rooms/Joined rooms/RoomLeaderboard";
 import GuideToEdusify from "./Pop ups/GuideToEdusify";
+import SendNotiApp from "./Send noti/notiSend";
+
+
+const urlBase64ToUint8Array = (base64String) => {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+};
+
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -203,11 +213,77 @@ const router = createBrowserRouter([
   {path: '/room/resources/:roomId', element: <ResourcesPage/>},
   {path: '/room/leaderboard/:roomId', element: <RoomLeaderboard/>},
   {path: '/how-to-use-edusify', element: <GuideToEdusify/>},
+  {path: '/send/noti', element: <SendNotiApp/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
 
 function App() {
+
+  
+  useEffect(() => {
+    const registerServiceWorker = async () => {
+      if ('serviceWorker' in navigator && 'PushManager' in window) {
+        try {
+          // Register the service worker
+          const registration = await navigator.serviceWorker.register('/serviceWorker.js');
+          console.log('Service Worker Registered:', registration);
+
+          // Subscribe the user to push notifications
+          await subscribeUser(registration);
+        } catch (error) {
+          console.error('Service Worker Registration Failed:', error);
+        }
+      } else {
+        console.warn('Push Notifications are not supported in this browser.');
+      }
+    };
+
+    registerServiceWorker();
+  }, []);
+
+  const subscribeUser = async (registration) => {
+    const vapidPublicKey =
+      'BLDWVHPzXRA9ZOFhSyCet2trdRuvErMUBKuUPNzDsffj-b3-yvd7z58UEhpQAu-MA3DREuu4LwQhspUKBD1yngs'; // Replace with your VAPID public key
+
+    try {
+      const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
+
+      // Request push subscription
+      const subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: convertedVapidKey,
+      });
+
+      console.log('Push Subscription:', subscription);
+
+      // Send the subscription to the server
+      const response = await fetch('http://localhost:8080/subscribe/noti', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscription),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to send subscription to server: ${response.statusText}`);
+      }
+
+      console.log('Subscription sent to server successfully');
+    } catch (error) {
+      console.error('Failed to subscribe user for push notifications:', error);
+    }
+  };
+
+  const urlBase64ToUint8Array = (base64String) => {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+  };
+
+
   return (
     <div>
       <RouterProvider router={router} />

@@ -151,5 +151,6 @@ export const API_ROUTES = {
   generateFlashcardsFromPdf: `${API_URL}/api/flashcards/upload`,
   generateQuizFromPDF: `${API_URL}/api/quiz/generate-from-pdf`,
   generateQuizFromNotes: `${API_URL}/api/quiz/generate/from-notes`,
-  completeFlashcardQuiz: `${API_URL}/complete-flashcard-quiz`
+  completeFlashcardQuiz: `${API_URL}/complete-flashcard-quiz`,
+  sendNoti: `${API_URL}/send-notification`
 }
