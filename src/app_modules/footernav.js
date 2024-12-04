@@ -161,8 +161,13 @@ const FooterNav = () => {
                          {/* Red icon for profile issues */}
                     </button>
                 </Link>
+                <Link to='/how-to-use-edusify' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/guide-to-use-edusify' ? 'active' : ''}`}>
+        <FaQuestionCircle className="icon-footer-nav" />
+        <span className="btn-label">How To Use Edusify Effectively</span>
+    </button>
+</Link>
 
-               
              
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
