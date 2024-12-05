@@ -15,6 +15,7 @@ const NoteDetailPage = () => {
     const [note, setNote] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loadingQuiz, setLoadingQuiz] = useState(false);
+    const [loadingFlashcards, setLoadingFlashcards] = useState(false);
     const [error, setError] = useState(null);
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState('');
@@ -307,6 +308,48 @@ const quillModules = {
     };
     
     
+    const generateFlashcardsFromNotes = async (e) => {
+        e.preventDefault();
+        setLoadingFlashcards(true);
+        setError(null);
+      
+        const token = localStorage.getItem('token');
+        const { headings, title: subject } = note; // Extract fields
+      
+        if (!headings || !subject) {
+          alert('Please provide note headings and subject before generating flashcards.');
+          setLoadingFlashcards(false);
+          return;
+        }
+      
+        const payload = { headings, subject };
+      
+        try {
+          const response = await fetch(API_ROUTES.generateFlashcardsFromNotes, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(payload),
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to generate flashcards from notes.');
+          }
+      
+          const data = await response.json();
+          console.log('Generated Flashcards:', data.flashcards);
+          nav(`/flashcard/set/${data.flashcardSetId}`); // Navigate to the newly created set
+        } catch (err) {
+          console.error('Error:', err);
+          setError(err.message);
+        } finally {
+          setLoadingFlashcards(false);
+        }
+      };
+      
+      
       
 
     if (loading) return <div className="loading"><BookOpenAnimation/></div>;
@@ -343,6 +386,30 @@ const quillModules = {
     </svg>
     <span className="text__set__page__buttons">
       {loadingQuiz ? 'Generating...' : '  Generate Quiz'}
+    </span>
+  </div>
+</button>
+</div>
+<div className="centered-button-container">
+        <button
+  className="flashcard__set__page__modal-generate btn__set__page__buttons"
+  disabled={loadingFlashcards}
+  onClick={generateFlashcardsFromNotes}
+>
+  <div className={`sparkle__set__page__buttons ${loadingFlashcards ? 'animating' : ''}`}>
+    <svg
+      height="24"
+      width="24"
+      fill="#FFFFFF"
+      viewBox="0 0 24 24"
+      data-name="Layer 1"
+      id="Layer_1"
+      className="sparkle__set__page__buttons"
+    >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
+    <span className="text__set__page__buttons">
+      {loadingFlashcards ? 'Generating...' : '  Generate Flashcards'}
     </span>
   </div>
 </button>
