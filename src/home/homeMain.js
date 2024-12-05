@@ -51,11 +51,10 @@ const HomeMain = () => {
 
 
     return<Fragment>
-
-   <TipBox/>
      <ModalHowTo/>
-       {/*<ReviewModal/> <BirthdayCelebration/>
-      <BirthdayModal/>*/} 
+      <ReviewModal/>
+       <BirthdayCelebration/>
+      <BirthdayModal/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
 <div style={{ margin: '20px 0' }}>
