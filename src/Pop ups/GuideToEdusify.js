@@ -18,7 +18,7 @@ const GuideToEdusify = () => {
         // Set the flag in localStorage after 7 seconds
         localStorage.setItem("viewedGuide", "true");
         console.log("User has viewed the guide for more than 7 seconds.");
-      }, 7000); // 7 seconds
+      }, 4000); // 7 seconds
 
       // Clean up the timer when the component unmounts or when it's no longer needed
       return () => clearTimeout(timer);
