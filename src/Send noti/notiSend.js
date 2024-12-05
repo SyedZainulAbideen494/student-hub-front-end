@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { API_ROUTES } from "../app_modules/apiRoutes";
-
 function SendNotiApp() {
   const [notificationTitle, setNotificationTitle] = useState("");
   const [notificationMessage, setNotificationMessage] = useState("");
-  const [notificationIcon, setNotificationIcon] = useState("https://edusify.vercel.app/static/media/Edusify-removebg-preview.88731903640917039997.png");
+  const [notificationIcon, setNotificationIcon] = useState("/path/to/icon.png");
 
   const sendNotification = async () => {
     const notificationData = {

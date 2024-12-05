@@ -220,7 +220,7 @@ const router = createBrowserRouter([
 
 function App() {
 
-  
+  {/*
   useEffect(() => {
     const registerServiceWorker = async () => {
       if ('serviceWorker' in navigator && 'PushManager' in window) {
@@ -258,7 +258,7 @@ function App() {
       console.log('Push Subscription:', subscription);
 
       // Send the subscription to the server
-      const response = await fetch('http://localhost:8080/subscribe/noti', {
+      const response = await fetch('https://srv594954.hstgr.cloud/subscribe/noti', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -282,7 +282,7 @@ function App() {
     const rawData = window.atob(base64);
     return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
   };
-
+*/}
 
   return (
     <div>
