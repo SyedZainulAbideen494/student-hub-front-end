@@ -13,49 +13,65 @@ const TipBox = () => {
   // Store the tips for each category
   const tips = {
     peerComparison: [
-      "85% of Edusify users crushed their tasks today! The rest? Let’s just say they’re ‘researching’ on Netflix. Don’t be them.",
-      "Top performers are 2 tasks ahead today. Can you catch up, or are you still deciding between coffee or chai?",
-      "Pro Tip: The early bird gets the worm... and finishes tasks before noon. The late bird? It’s still figuring out breakfast.",
-      "Almost 90% of users are slaying their to-do lists today. Don’t worry if you’re not one of them yet. Start now and flex later!",
-      "Top students have knocked out 3 tasks already! Meanwhile, you’re still in bed, debating if cereal counts as a meal.",
-      "Some users are 5 tasks ahead—are they humans or productivity robots? Either way, small steps can still get you there.",
-      "Fun Fact: Productivity ninjas on Edusify finish tasks *before* anyone notices they started. Try it and stay ahead of the game.",
-      "Think you’re busy? Someone out there is juggling tasks *and* a Netflix binge. Get your tasks done, then binge guilt-free!"
+      "85% of Edusify users finished tasks today! The other 15%? Probably in a ‘meeting’ with their pillows.",
+      "The top students today are already 3 tasks ahead. Meanwhile, you’re still deciding if it’s a tea day or a coffee day.",
+      "Fun Fact: Productivity robots disguised as students finish tasks before breakfast. Humans like us? We need two cups of coffee first.",
+      "Almost 90% of users crushed it today. Don’t worry if you’re late to the party. Start now, and end the day with a mic drop!",
+      "Top users already completed 5 tasks. What about you? Still negotiating with your alarm clock?",
+      "Some users are task-destroying machines. But hey, slow and steady can still beat procrastination. Start small!",
+      "Procrastinators are simply perfectionists in disguise. But remember, done is better than perfect. Get cracking!",
+      "Think you’re busy? Someone out there is nailing tasks *and* beating their high score in Candy Crush. No excuses now!"
     ],
     quickTask: [
-      "Got 10 minutes? Knock out a quick revision or tidy your notes. It’s the adult version of leveling up.",
-      "Short break? Tackle that small task you’ve been dodging. Future You will throw a party in your honor.",
-      "Your notes called—they’re begging for some organization. Got 5 minutes? Make them sparkle!",
-      "You know that annoying little task? It’s just 5 minutes of effort. Do it now and feel ridiculously accomplished.",
-      "Feeling scatterbrained? A quick review of your notes = instant mental reset. No vacuuming required!",
-      "Tiny tasks are like cookies—easy to finish, and they add up. Munch on one now!",
-      "Think you don’t have time? Even 10 minutes can turn chaos into calm. Start with one flashcard, end with glory.",
-      "Pro Tip: Use mini-breaks to tackle micro-tasks. It’s like sneaking in veggies with your fries."
+      "Got 5 minutes? Knock out that tiny task lurking in the corner of your to-do list. Future You will thank you!",
+      "Short breaks = small wins. Use this one to organize a note or review one flashcard. Boom, instant productivity!",
+      "That annoying little task? It’s begging to be done. Do it now, and bask in the glory of ticking it off.",
+      "Feeling meh? A 5-minute burst of effort can turn you into a productivity ninja. Chop that task!",
+      "Your notes are like plants—they need regular care. Spend 5 minutes tending them, and watch your knowledge grow.",
+      "Tiny tasks are like snacks: easy to handle and surprisingly satisfying. Tackle one now and reward yourself with a cookie.",
+      "Even superheroes start small. Complete a quick task, and you’re one step closer to saving the (academic) world.",
+      "Think you can’t focus? Start with one flashcard. Just one. Then watch yourself magically tackle three more!"
     ],
     interactiveTip: [
-      "Stuck? Let the AI Assistant do the hard work while you sip coffee and look intellectual. ☕",
-      "The AI Assistant: Your 24/7 study buddy who never takes a coffee break. Try it and feel the magic.",
-      "Procrastinating? Hand over the reins to the AI Assistant. It’s like hiring a genius for free!",
-      "The AI Assistant doesn’t judge your late-night cramming. Just tell it what you need, and voilà!",
-      "Why struggle with notes when the AI Assistant can whip them up faster than you can say ‘pomodoro’?"
+      "The AI Assistant is your personal genius-on-call. While it works, you can sip your coffee and nod wisely.",
+      "Procrastinating? Let the AI Assistant handle the heavy lifting. It’s like having a super-smart study buddy who never complains.",
+      "Stuck? The AI Assistant has your back. Just ask, and it’ll whip up notes, plans, or even genius-level excuses.",
+      "Late-night study sesh? The AI Assistant doesn’t sleep, judge, or steal your snacks. Use it and feel like a pro.",
+      "Why struggle with notes when AI can do it faster than you can scroll through Instagram? Try it—you’ll love it!"
     ],
     featureDiscovery: [
-      "PSA: Our Document Locker is like a Swiss bank for your files—secure, sleek, and no annoying passwords (unless you want one).",
-      "Feeling scattered? The Calendar’s got your back. Add your dates and pretend you’ve always been this organized.",
-      "Discover the Pomodoro Timer: It’s 25 minutes of hardcore focus and 5 minutes of TikTok. Perfect balance.",
-      "New Feature Alert: Secure your docs like they’re national treasures. The Document Locker is here to save the day!",
-      "The Pomodoro Timer is like a productivity cheat code. Use it, then tell everyone you’re a life-hacking genius."
+      "Did you know? The Document Locker is like Fort Knox for your files. Secure, stylish, and zero drama.",
+      "Feeling disorganized? The Calendar’s here to save the day. Add your dates and pretend you’ve always had it together.",
+      "Pomodoro Timer: Work hard for 25 minutes, then break like a champ. It’s productivity with built-in guilt-free breaks.",
+      "New Feature Alert: Our Document Locker is the VIP lounge for your important files. Keep them safe and sound.",
+      "The Pomodoro Timer isn’t just a tool—it’s a lifestyle. Use it, and you’ll look so productive even your cat will be impressed."
     ],
     additionalFunTips: [
-      "Looking for a no-drama study buddy? The AI Assistant is always in a good mood and never steals your fries.",
-      "Exam stress? Don’t panic—use the AI to whip up notes while you stress-eat cookies.",
-      "Pomodoro hack: Work like you’re on fire for 25 minutes, then chill like a beach bum for 5. Repeat until awesome.",
-      "Feeling overwhelmed? Pomodoro breaks = guilt-free brain vacations. Try it and thank us later.",
-      "Let the AI Assistant handle the hard parts while you focus on the important stuff—like picking the perfect playlist."
+      "Looking for a study buddy who doesn’t hog the spotlight? The AI Assistant is here and always in a good mood.",
+      "Exam stress? Let the AI Assistant take the wheel while you stress-eat snacks like a pro.",
+      "Pomodoro hack: Focus like a laser for 25 minutes, then relax like a potato for 5. It’s the perfect balance.",
+      "Overwhelmed? Pomodoro breaks = mini vacations for your brain. Take one. Your neurons will cheer!",
+      "Feel like giving up? Just remember: Even a 10-minute study session can turn chaos into clarity. You got this!",
+      "Fun Fact: The AI Assistant can save hours of your life. Use it wisely, and maybe even take a nap afterward!"
     ],
     founderTips: [
-     
-    ]
+      "Fun Fact: Edusify was born during exam prep season—a time when panic and procrastination become best friends. Turns out, they’re also great for innovation!",
+      "True story: Edusify started as an idea to impress a crush. Now, it’s helping students impress themselves by smashing their goals.",
+      "Every big journey begins with a single step—or in this case, a single line of buggy code. Keep building, no matter how messy it looks at first!",
+      "Success doesn’t need a degree—it needs grit. Edusify was built with zero formal training and a ton of late-night Googling.",
+      "Dream big, but start small. Edusify began as a side project during a boring week and grew into something game-changing.",
+      "Life Tip: The world doesn’t reward perfection, it rewards progress. Just start, even if it’s messy, and refine as you go!",
+      "Hard work doesn’t feel hard when you love what you’re building. If you’re passionate, every struggle feels worth it.",
+      "People might not believe in your idea at first—my own professors didn’t. But guess what? The app is now more popular than my college. Believe in yourself!",
+      "Fun Fact: Edusify started as a way to solve a personal problem. The best ideas often come from fixing something that frustrates you!",
+      "If you wait until you’re ‘ready,’ you’ll wait forever. Edusify wasn’t perfect when it launched, but improvements come with time and feedback.",
+      "Want to create something? Start now, learn as you go, and Google your way through. That’s literally how Edusify came to life!",
+      "True inspiration doesn’t strike when you’re idle—it strikes when you’re in the thick of challenges. Don’t stop, even when it gets tough.",
+      "Edusify is proof that you don’t need fancy tools or a big team to make something impactful. All you need is an idea and relentless effort.",
+      "Build for yourself first. Edusify was created to simplify *my* life, and now it’s simplifying lives for hundreds. Your needs could spark a revolution!",
+      "The road to success is full of doubters, setbacks, and caffeine overdoses. Keep going. Your future self will thank you.",
+      "Here’s the thing: It’s okay to start small, dream big, and fail often. Each step is a lesson. Edusify is living proof of that!"
+    ]    
   };
   
   
