@@ -1,0 +1,221 @@
+/* General Styles */
+.posts__room__page {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Soft light gray background */
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    color: #333; /* Neutral text color */
+}
+
+/* Header */
+.header__post__room__page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Dark background */
+    padding: 10px 30px; /* Added more padding on sides */
+    position: sticky;
+    top: 10px; /* Added margin from the top */
+    left: 20px;
+    right: 20px;
+    z-index: 10;
+    border-radius: 25px; /* Rounded corners */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Floating effect */
+    margin-top: 5px; /* Margin from the top */
+}
+
+/* Back Button */
+.back-btn__post__room__page {
+    background: none;
+    border: none;
+    color: #000000;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Title */
+.header__post__room__page h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 100;
+    color: black;
+}
+
+
+
+/* Posts List */
+.posts-list__post__room__page {
+    padding: 20px;
+}
+
+.post__post__room__page {
+    background: #fff; /* White post background */
+    border: 1px solid #e0e0e0; /* Soft gray border */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+.post-header__post__room__page {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-header__post__room__page h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #555; /* Softer text color */
+}
+
+.post-header__post__room__page span {
+    font-size: 12px;
+    color: #888; /* Light gray for secondary text */
+}
+
+.post-content__post__room__page p {
+    white-space: pre-wrap; /* Preserve line breaks and extra spaces */
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 10px 0;
+    color: #333; /* Main text color */
+}
+
+.post-image__post__room__page {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for images */
+}
+
+.delete-btn__post__room__page {
+    background-color: transparent;
+    border: none;
+    color: #e74c3c; /* Red color for delete */
+    font-size: 13px; /* Small size */
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.delete-btn__post__room__page:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    color: #c0392b; /* Darker red on hover */
+}
+
+.delete-btn__post__room__page i {
+    font-size: 15px; /* Adjust the size of the icon */
+}
+
+
+/* Floating Add Button */
+.add-btn__post__room__page {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #444; /* Dark button */
+    color: #f9f9f9;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* Post Form (Modal) */
+.modal__post__room__page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Post form container */
+.post-form__post__room__page {
+    background: #fff; /* White form background */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    position: relative; /* For positioning the close button */
+    display: flex;
+    flex-direction: column; /* Stack form elements vertically */
+}
+
+/* Close button */
+.close-btn__post__room__page {
+    background: none;
+    border: none;
+    color: #222;
+    font-size: 24px;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    margin-bottom: 10px;
+    right: 10px; /* Position it in the top-right corner */
+    transition: color 0.2s;
+}
+
+.close-btn__post__room__page:hover {
+    color: #888; /* Light gray color on hover */
+}
+
+/* Post form inputs and buttons (general) */
+
+.post-form__post__room__page select,
+.post-form__post__room__page input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Light gray input background */
+}
+
+/* Textarea specific styling */
+.post-form__post__room__page textarea {
+    height: 80px;
+    margin-top: 10px;
+    width: 93%;
+    resize: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px;
+    background-color: #f9f9f9; /* Light gray input background */
+}
+
+/* Post button specific styling */
+.post-form__post__room__page button.post-btn {
+    background-color: #222; /* Dark button */
+    color: #f9f9f9;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    padding: 12px 0; /* Adjust padding to ensure the button looks uniform */
+}
+
+.post-form__post__room__page button.post-btn:hover {
+    background-color: #444; /* Slightly lighter hover effect */
+}
+
+/* Specific styling for post button (ensuring no overlap with close button) */
+.post-form__post__room__page button.post-btn {
+    position: relative;
+    z-index: 1; /* Ensures it's above other form elements */
+}

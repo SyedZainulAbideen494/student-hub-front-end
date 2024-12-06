@@ -154,5 +154,8 @@ export const API_ROUTES = {
   completeFlashcardQuiz: `${API_URL}/complete-flashcard-quiz`,
   sendNoti: `${API_URL}/send-notification`,
   generateFlashcardsFromNotes: `${API_URL}/api/flashcards/generate-from-notes`,
-  getShareStats: `${API_URL}/api/stats`
+  getShareStats: `${API_URL}/api/stats`,
+  fetchRoomPosts: `${API_URL}/room/posts/fetch`,
+  postRoomPosts: `${API_URL}/room/posts/add`,
+  deleteRoomPost: `${API_URL}/room/posts/delete`
 }
