@@ -1,11 +1,15 @@
-/* General Styling */
 .stats__share__page-container_global {
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 auto; /* Automatically set left and right margins */
   width: 90%;
   padding: 0;
   font-family: 'Arial', sans-serif;
+  display: flex; /* Enable Flexbox */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  min-height: 100vh; /* Ensure it takes up at least the full height of the viewport */
 }
+
 
 .stats__share__page-container {
   background: #f9f9f9;
