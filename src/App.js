@@ -113,6 +113,7 @@ import SendNotiApp from "./Send noti/notiSend";
 import InstaStory from "./Share Stats/Share-stats";
 import PostsRooms from "./Rooms/Joined rooms/roomPosts";
 import RoomProgress from "./Rooms/Joined rooms/Progress";
+import RoomTasks from "./Rooms/Joined rooms/RoomTasks";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -217,6 +218,7 @@ const router = createBrowserRouter([
   {path: '/room/leaderboard/:roomId', element: <RoomLeaderboard/>},
   {path: '/room/post/:roomId', element: <PostsRooms/>},
   {path: '/room/progress/:roomId', element: <RoomProgress/>},
+  {path: '/room/tasks/:roomId', element: <RoomTasks/>},
   {path: '/how-to-use-edusify', element: <GuideToEdusify/>},
   {path: '/send/noti', element: <SendNotiApp/>},
   {path: '/insta-story', element: <InstaStory/>},

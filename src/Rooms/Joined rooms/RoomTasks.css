@@ -1,0 +1,207 @@
+/* General Container */
+.room-tasks-container__room__tasks__page {
+    padding: 20px;
+    background-color: #ffffff; /* Soft blue-gray background */
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+  
+  /* Back Button */
+  .back-btn__room__tasks__page {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .back-btn__room__tasks__page:hover {
+    color: #007aff;
+  }
+  
+  /* Page Header */
+  .header__room__tasks__page {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Task List */
+  .task-list__room__tasks__page {
+    margin-top: 20px;
+  }
+  
+  .sub-header__room__tasks__page {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #555;
+  }
+  
+  .task-items__room__tasks__page {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .task-item__room__tasks__page {
+    background: white; /* Floating white background */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .task-item__room__tasks__page:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .task-title__room__tasks__page {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .task-desc__room__tasks__page,
+  .task-date__room__tasks__page {
+    font-size: 14px;
+    color: #555;
+  }
+  
+
+  /* Complete Task Button */
+  .complete-task-btn__room__tasks__page {
+    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 15px; /* Softer button style */
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .complete-task-btn__room__tasks__page:hover {
+    background: linear-gradient(to right, #3a89d0, #684cba); /* Darker gradient on hover */
+  }
+  
+  /* Floating Add Task Button */
+  .add-task-btn__room__tasks__page {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Floating shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .add-task-btn__room__tasks__page:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Modal Overlay */
+  .modal-overlay__room__tasks__page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal */
+  .modal__room__tasks__page {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    animation: slideInUp 0.3s ease-out;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .modal-header__room__tasks__page {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Modal Inputs */
+  .modal-input__room__tasks__page,
+  .modal-textarea__room__tasks__page,
+  .modal-select__room__tasks__page {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  
+  .modal-textarea__room__tasks__page {
+    resize: none;
+    height: 80px;
+  }
+  
+  /* Modal Actions */
+  .modal-actions__room__tasks__page {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn__room__tasks__page {
+    background: #ddd;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .cancel-btn__room__tasks__page:hover {
+    background: #bbb;
+  }
+  
+  .submit-btn__room__tasks__page {
+    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient button */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .submit-btn__room__tasks__page:hover {
+    background: linear-gradient(to right, #3a89d0, #684cba); /* Darker gradient */
+  }
+  

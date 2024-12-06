@@ -48,6 +48,9 @@ const RoomMainPageJoined = () => {
     }else if (tab === "progress") {
       navigate(`/room/progress/${roomId}`);
     }
+    else if (tab === "tasks") {
+      navigate(`/room/tasks/${roomId}`);
+    }
   };
 
 
@@ -102,6 +105,7 @@ const RoomMainPageJoined = () => {
         <button onClick={() => handleTabChange("activity")}>Activity</button>
         <button onClick={() => handleTabChange("Resources")}>Resources</button>
         <button onClick={() => handleTabChange("leaderboard")}>Leaderboard</button>
+        <button onClick={() => handleTabChange("tasks")}>Tasks</button>
         <button onClick={() => handleTabChange("post")}>Posts</button>
         <button onClick={() => handleTabChange("progress")}>Progress</button>
       </div>

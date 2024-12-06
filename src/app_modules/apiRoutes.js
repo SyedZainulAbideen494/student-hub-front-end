@@ -158,5 +158,8 @@ export const API_ROUTES = {
   fetchRoomPosts: `${API_URL}/room/posts/fetch`,
   postRoomPosts: `${API_URL}/room/posts/add`,
   deleteRoomPost: `${API_URL}/room/posts/delete`,
-  roomProgress:  `${API_URL}/room-progress`
+  roomProgress:  `${API_URL}/room-progress`,
+  getRoomTasks: `${API_URL}/api/room_tasks/get`,
+  addRoomTasks: `${API_URL}/api/room_tasks/add`,
+  deleteRoomTasks: `${API_URL}/api/room_tasks/delete`
 }
