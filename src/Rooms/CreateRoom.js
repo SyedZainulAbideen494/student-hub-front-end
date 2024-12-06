@@ -10,6 +10,11 @@ const CreateRoom = () => {
   const [inviteLink, setInviteLink] = useState(""); // Store the invite link (optional)
 
   const createRoom = async () => {
+    if (!roomName.trim()) {
+      alert("Room name cannot be empty!");
+      return; // Prevent the API call if the room name is empty
+    }
+  
     try {
       // Set the invite permission to 'admin' by default
       const response = await axios.post(API_ROUTES.createRoom, {
@@ -23,13 +28,14 @@ const CreateRoom = () => {
       alert("Error creating room.");
     }
   };
+  
 
   return (
     <div className="__room__create_page__container">
       <div className="__room__create_page__step1">
-        <h2 className="__room__create_page__heading">Create Room</h2>
+        <h2 className="__room__create_page__heading">Create Your Study Room</h2>
         <p className="__room__create_page__description">
-          🌟 Create rooms, invite your friends, share study resources, and track your team's progress! 🚀 Stay connected and make studying more fun and effective.
+        Get your study group together and start collaborating now!
         </p>
         <input
           className="__room__create_page__input"
@@ -37,6 +43,7 @@ const CreateRoom = () => {
           placeholder="Enter Room Name"
           value={roomName}
           onChange={(e) => setRoomName(e.target.value)}
+          required
         />
         <button
           className="__room__create_page__button"
