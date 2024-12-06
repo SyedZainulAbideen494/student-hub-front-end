@@ -728,7 +728,7 @@
 }
 
 .toggle-btn.active {
-  background-color: #00b4d8; /* Light blue background for active state */
+  background-color: #a2d2ff; /* Light blue background for active state */
   color: white; /* White text for active state */
   border-color: #93C5FD; /* Match border color to text color */
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); /* Shadow to elevate the active button */

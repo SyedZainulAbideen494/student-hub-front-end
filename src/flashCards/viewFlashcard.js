@@ -343,7 +343,7 @@ const ViewFlashCard = () => {
       }}>
         <svg
           style={{
-            stroke: '#00b4d8', // Modern green tone for icon stroke
+            stroke: '#a2d2ff', // Modern green tone for icon stroke
             width: '32px', // Moderate icon size
             height: '32px',
             marginBottom: '0.5rem', // Slight spacing between icon and text
@@ -353,7 +353,7 @@ const ViewFlashCard = () => {
         >
           <path
             d="M19 0H5C3.3 0 2 1.3 2 3v18c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm1 21c0 .6-.4 1-1 1H5c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v18zm-7-2h-4v-1h4v1zm3-3H9v-1h6v1zm0-3H9v-1h6v1zm0-3H9V8h6v1zm4-6H5v16h14V3z"
-            fill="#00b4d8" // Fresh green icon fill
+            fill="#a2d2ff" // Fresh green icon fill
           />
         </svg>
         <div style={{
