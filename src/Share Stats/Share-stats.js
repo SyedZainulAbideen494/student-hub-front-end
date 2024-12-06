@@ -8,12 +8,12 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 const InstaStory = () => {
   const canvasRef = useRef(null);
   const [data, setData] = useState({
-    hoursStudied: 10,
-    tasksCompleted: 5,
-    flashcardsMastered: 20,
-    pomodoroSessions: 15,
-    percentage: 75,
-    leaderboardPosition: 12,
+    hoursStudied: 0,
+    tasksCompleted: 0,
+    flashcardsMastered: 0,
+    pomodoroSessions: 0,
+    percentage: 0,
+    leaderboardPosition: 0,
     totalPomodoroDuration: 0, // Add this to store the total Pomodoro duration
   });
   
