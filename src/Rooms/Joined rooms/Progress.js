@@ -135,7 +135,6 @@ const RoomProgress = () => {
               <p>Completed Tasks: {user.completedTasks}</p>
               <p>Known Flashcards: {user.totalKnownFlashcards}</p>
               <p>Pomodoro Hours: {user.totalPomodoroHours.toFixed(2)}</p>
-              <p>Total Progress: {(getTotalProgress(user) * 100).toFixed(2)}%</p>
               <p>Contribution to Total: {((getTotalProgress(user) / totalProgressAdjusted) * 100).toFixed(2)}%</p>
             </div>
           </div>
