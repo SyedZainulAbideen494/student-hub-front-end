@@ -361,10 +361,8 @@ const quillModules = {
             <div className="note-header-note-detail-page">
                 <button className="back-button-note-detail-page" onClick={handleBackClick}>
                     <span className="arrow-note-detail-page">&#8592;</span> 
-                </button><br/>
-                <h1>{editMode ? 'Edit Note' : note.title}</h1>
-
-<div className='note-btn-contaioner'>
+                </button>
+                <div className='note-btn-contaioner'>
              
             <div className="centered-button-container">
         <button
@@ -414,7 +412,10 @@ const quillModules = {
   </div>
 </button>
 </div>
-            </div>
+            </div><br/>
+                <h1 style={{textAlign: 'center'}}>{editMode ? 'Edit Note' : note.title}</h1>
+
+
 
             </div>
             {editMode ? (
