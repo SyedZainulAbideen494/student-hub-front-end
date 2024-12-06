@@ -1,7 +1,6 @@
 /* General Styles */
 .note-detail-page {
     font-family: 'Roboto', sans-serif;
-    padding: 20px;
     background-color: #fafafa;
     max-width: 1200px;
     margin: 20px auto;
@@ -54,10 +53,10 @@
 .note-content-note-detail-page {
     background-color: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     padding: 25px;
     overflow-y: auto;
     line-height: 1.6;
+    width: 90%;
 }
 
 /* Note Description */
@@ -202,7 +201,6 @@
     margin-top: 20px;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 /* Container for download button and download count */
 .download-container {
@@ -290,8 +288,8 @@
 
 /* Delete Flashcard Button */
 .button__delete__flashcard {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: rgb(20, 20, 20);
     border: none;
