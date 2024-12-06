@@ -303,6 +303,7 @@ const ViewFlashCard = () => {
     gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))', // Compact grid layout
     gap: '1.25rem', // Added spacing between items
     padding: '1.5rem', // Adequate padding around the grid
+    marginBottom: '30px'
 }}>
   {subjects.map(subject => (
     <div
