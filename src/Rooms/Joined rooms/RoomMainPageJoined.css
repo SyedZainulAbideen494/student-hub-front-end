@@ -15,9 +15,10 @@
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 2px solid #f0f0f0;
-    overflow-x: auto;
-    white-space: nowrap;
-    justify-content: center;
+    overflow-x: auto; /* Ensures horizontal scrolling */
+    white-space: nowrap; /* Prevents line breaks */
+    justify-content: flex-start; /* Aligns the tabs to the left */
+    max-width: 100%; /* Ensures it takes the full width of the container */
 }
 
 /* Tab Button Styling */
@@ -32,6 +33,7 @@
     font-weight: 400;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
+    flex-shrink: 0; /* Prevents the buttons from shrinking */
 }
 
 .room__members__page__tabs button:hover {
