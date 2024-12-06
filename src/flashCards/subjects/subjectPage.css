@@ -1,0 +1,216 @@
+/* General styling for the page */
+.flashcards__subject__Page__ {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    min-height: 100vh;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.loading__subject__Page__ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F9FAFB;
+}
+
+.error__subject__Page__ {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+
+.flashcards__subject__header__subject__Page__ {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid #E5E7EB;
+    position: relative;
+    margin-bottom: 20px;
+    justify-content: space-between; /* Ensures space between back button, title, and delete button */
+}
+
+.back__btn__subject__Page__ {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem; /* Increases the size of the back button */
+    color: #4B5563; /* Adds a gray color */
+}
+
+.subject__title__subject__Page__ {
+    font-size: 1.5rem;
+    color: #111827; /* Darker color for better visibility */
+    text-align: center;
+    flex-grow: 1; /* Ensures title is centered */
+}
+
+.delete__btn__subject__Page__ {
+    position: absolute;
+    right: 1rem; /* Moves the delete button further to the right */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem; /* Increases the size of the delete button */
+    color: #EF4444; /* Red color for delete button */
+}
+
+.flashcards-list__subject__Page__ {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.flashcard__card__subject__Page__ {
+    width: 18rem;
+    background-color: #F9FAFB;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.flashcard__content__subject__Page__ {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.flashcard__icon__subject__Page__ {
+    stroke: #A78BFA;
+}
+
+.flashcard__details__subject__Page__ {
+    flex-grow: 1;
+}
+
+.flashcard__title__subject__Page__ {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #111827;
+}
+
+.flashcard__description__subject__Page__ {
+    font-size: 0.875rem;
+    color: #6B7280;
+}
+
+.flashcard__actions__subject__Page__ {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center; /* Centers the view button horizontally */
+    align-items: center; /* Ensures the button is vertically centered */
+}
+
+
+
+/* From Uiverse.io by Wendell47 */ 
+.button__view__btn__subject__page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border: 0;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10rem;
+    width: 40%;
+    transition: all 0.02s;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgb(37, 37, 37);
+    z-index: 0;
+    box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .button__view__btn__subject__page:hover {
+    background: rgb(193, 228, 248);
+    color: rgb(33, 0, 85);
+  }
+  
+  .button__view__btn__subject__page:active {
+    transform: scale(0.97);
+  }
+  
+  .hoverEffect__view__btn__subject__page {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .hoverEffect__view__btn__subject__page div {
+    background: rgb(222, 0, 75);
+    background: linear-gradient(
+      90deg,
+      rgba(222, 0, 75, 1) 0%,
+      rgba(191, 70, 255, 1) 49%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    border-radius: 40rem;
+    width: 9rem;
+    height: 10rem;
+    transition: 0.4s;
+    filter: blur(20px);
+    animation: effect__view__btn__subject__page infinite 3s linear;
+    opacity: 0.5;
+  }
+  
+  .button__view__btn__subject__page:hover .hoverEffect__view__btn__subject__page div {
+    width: 8rem;
+    height: 8rem;
+  }
+  
+  @keyframes effect__view__btn__subject__page {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+.add-note__btn__subject__Page__ {
+    background-color: #1D4ED8;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.no-notes__subject__Page__ {
+    text-align: center;
+}
+
+.no-notes__subject__Page__ p {
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+.flashcard__card__subject__Page__:hover {
+    transform: translateY(-0.5rem);
+}
+
+.flashcard__actions__subject__Page__ .view__btn__subject__Page__:hover {
+    background-color: #45a049;
+}
