@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -93,6 +93,13 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
                         <FaTrophy className="icon-footer-nav" />
                         <span className="btn-label">leaderboard</span>
+                    </button>
+                </Link>
+                <Link to='/insta-story' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
+                        <FaChartLine className="icon-footer-nav" />
+                        <span className="btn-label">My stats</span>
+                        <sapn className='new-label-footer-nav'>New</sapn>
                     </button>
                 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>

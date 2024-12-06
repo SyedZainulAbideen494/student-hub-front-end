@@ -1,106 +1,261 @@
-/* General Container Styling */
-.insta-story-container {
-  position: relative;
-  background-image: url('./images/Your Edusify Journey.png'); /* Background Image */
-  background-size: contain; /* Ensure the entire image fits within the container */
-  background-position: center center; /* Center the image */
-  background-repeat: no-repeat;
-  color: white;
+
+
+
+.stats__share__page-container {
+  background: #f9f9f9;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.stats__share__page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.stats__share__page-back-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  color: #000000;
+  cursor: pointer;
+}
+
+.stats__share__page-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+}
+
+.stats__share__page-preview {
+  margin-bottom: 20px;
+}
+
+.stats__share__page-preview h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.stats__share__page-preview-image {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.stats__share__page-stats {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  max-width: 1080px; /* Fixed width for Instagram story */
-  width: 90%; /* Space on the sides */
-  height: auto; /* Allow height to adjust based on content */
-  min-height: 400px; /* Minimum height to ensure aspect ratio */
-  margin: 20px auto; /* Add space on top and bottom */
-  overflow: hidden; /* Prevent scrolling */
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-/* Stats Styling */
-.insta-story-stats {
-  margin-top: 30px; /* Reduced space between heading and stats */
-  z-index: 1;
-  font-size: 20px; /* Smaller font size for stats */
-  text-align: left; /* Align stats to the left */
-  max-width: 80%; /* Restrict stats width for better alignment */
-  margin-bottom: 30px; /* Space below the stats */
+.stats__share__page-stat-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: #444;
 }
 
-.insta-story-stats p {
-  margin: 10px 0; /* Reduced space between each stat */
+.stats__share__page-stat-title {
+  font-weight: 600;
 }
 
-/* Button Styling */
-.insta-story-button {
+.stats__share__page-stat-value {
+  font-weight: 600;
+  color: #1db954;
+}
+
+.stats__share__page-share-btn {
   margin-top: 20px;
+}
+
+.stats__share__page-share-button {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  width: 60%;
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add the floating effect */
+}
+
+
+.stats__share__page-canvas {
+  display: none;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 480px) {
+  .stats__share__page-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .stats__share__page-title {
+    font-size: 24px;
+  }
+
+  .stats__share__page-preview h2 {
+    font-size: 18px;
+  }
+
+  .stats__share__page-share-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/* Basic styles for the modal */
+.stats__shareStatsModal {
+  position: fixed;
+  bottom: 20px; /* Position at the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: rgba(0, 0, 0, 0); /* No backdrop */
+  color: white;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.stats__shareStatsModal-content {
+  background-color: #333;
+  border-radius: 10px;
   padding: 10px 20px;
-  background-color: #d52941;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 250px; /* Make the modal small */
+}
+
+.stats__shareStatsModal-option {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.stats__shareStatsModal-icon {
+  font-size: 20px; /* Smaller icon size */
+  margin-right: 10px;
+}
+
+.stats__shareStatsModal-text {
+  font-size: 14px; /* Smaller text */
+}
+
+.stats__shareStatsModal-close {
+  background-color: #333;
   border: none;
   color: white;
+  padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
 }
 
-.insta-story-button:hover {
-  background-color: #e63946;
+
+
+
+/* Modal background */
+.stats__share__Insta__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow: auto; /* Allow scrolling if content overflows */
 }
 
-/* Media Queries for different screen sizes */
 
-/* For screens smaller than 768px (Tablets & Small Screens) */
-@media (max-width: 768px) {
-  .insta-story-container {
-    width: 85%; /* Slightly increased width for tablets */
-    height: auto;
-    min-height: 500px; /* Adjusted minimum height */
-    margin: 15px auto; /* Reduced margin for small screens */
-  }
-
-  .insta-story-container h2 {
-    font-size: 28px;
-    margin-top: 50px;
-  }
-
-  .insta-story-stats {
-    font-size: 18px; /* Reduced font size for smaller screens */
-    margin-top: 300px;
-    width: 60%;
-    text-align: center;
-  }
-
-  .insta-story-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
+/* Modal background */
+.stats__share__Insta__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow: auto;
 }
 
-/* For screens smaller than 480px (Mobile Screens) */
-@media (max-width: 480px) {
-  .insta-story-container {
-    width: 90%; /* Full width but with some margin */
-    height: auto;
-    min-height: 400px; /* Adjusted minimum height for mobile */
-    margin: 10px auto; /* Further reduced margin */
-  }
+/* Modal content */
+.stats__share__Insta__modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* To position the close button */
+}
 
-  .insta-story-container h2 {
-    font-size: 24px;
-    margin-top: 30px;
-  }
+/* Close button (X) */
+.stats__share__Insta__modal-close {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
-  .insta-story-stats {
-    font-size: 16px; /* Smaller font size for mobile */
-    text-align: center; /* Align stats to the left */
-    width: 60%;
-    margin-top: 280px;
-  }
+/* Close button hover effect */
+.stats__share__Insta__modal-close:hover {
+  color: #ff6f61;
+}
 
-  .insta-story-button {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
+/* Text in the modal */
+.stats__share__Insta__modal-text {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Button to open Instagram */
+.stats__share__Insta__modal-button {
+  background-color: #0095f6;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.stats__share__Insta__modal-button:hover {
+  background-color: #007bb5;
 }
