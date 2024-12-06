@@ -1,0 +1,98 @@
+.room__progress__room__page {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 25px; /* Round corners for the whole page */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; /* Positioning for back button */
+  }
+  
+  .room__progress__heading {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .room__progress__chart__container {
+    margin-top: 30px;
+    border-radius: 25px; /* Round corners of the chart container */
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .room__progress__user {
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .room__progress__user__name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .room__progress__user__details {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .room__progress__user__details p {
+    margin: 5px 0;
+  }
+  
+  .room__progress__loading {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #666;
+  }
+  
+  .room__progress__list {
+    margin-top: 30px;
+  }
+  
+  .room__progress__summary {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 25px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+  
+  .room__progress__summary h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .room__progress__back__btn {
+    top: 20px;
+    left: 20px;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .room__progress__back__btn:hover {
+    background-color: #ff4524;
+  }
+  
+  .room__progress__back__btn:focus {
+    outline: none;
+  }
+  

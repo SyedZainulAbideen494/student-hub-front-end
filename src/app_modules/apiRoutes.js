@@ -157,5 +157,6 @@ export const API_ROUTES = {
   getShareStats: `${API_URL}/api/stats`,
   fetchRoomPosts: `${API_URL}/room/posts/fetch`,
   postRoomPosts: `${API_URL}/room/posts/add`,
-  deleteRoomPost: `${API_URL}/room/posts/delete`
+  deleteRoomPost: `${API_URL}/room/posts/delete`,
+  roomProgress:  `${API_URL}/room-progress`
 }
