@@ -125,6 +125,7 @@ const InstaStory = () => {
   
 
   return (
+    <div  className="stats__share__page-container_global">
 <div id="stats__share__page" className="stats__share__page-container">
   <div className="stats__share__page-header">
     <button className="stats__share__page-back-btn" onClick={() => window.history.back()}>
@@ -184,7 +185,7 @@ const InstaStory = () => {
   {/* Canvas for Image Generation (hidden) */}
   <canvas ref={canvasRef} style={{ display: 'none' }} />
 </div>
-
+</div>
 
   );
 };

@@ -1,5 +1,11 @@
-
-
+/* General Styling */
+.stats__share__page-container_global {
+  box-sizing: border-box;
+  margin: 0;
+  width: 90%;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
 
 .stats__share__page-container {
   background: #f9f9f9;
