@@ -497,7 +497,6 @@ const quillModules = {
                 </form>
             ) : (
                 <div className="note-content-note-detail-page">
-                    <h2>{note.description}</h2>
                     <div dangerouslySetInnerHTML={{ __html: note.headings }} />
                     
 {images.length > 0 && (
