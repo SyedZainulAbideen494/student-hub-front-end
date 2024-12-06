@@ -48,7 +48,7 @@ const RoomMainPageJoined = () => {
     }
   };
 
-  
+
 
   const handleInviteClick = () => {
     const inviteUrl = `https://edusify.vercel.app/room/invite/${roomId}`;
@@ -100,7 +100,7 @@ const RoomMainPageJoined = () => {
         <button onClick={() => handleTabChange("activity")}>Activity</button>
         <button onClick={() => handleTabChange("Resources")}>Resources</button>
         <button onClick={() => handleTabChange("leaderboard")}>Leaderboard</button>
-        <button onClick={() => handleTabChange("post")}>post</button>
+        <button onClick={() => handleTabChange("post")}>Posts</button>
       </div>
 
       <div className="room__members__page__members" style={{ marginTop: '30px' }}>
