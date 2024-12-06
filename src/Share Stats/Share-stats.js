@@ -20,6 +20,7 @@ const InstaStory = () => {
   const [imageUrl, setImageUrl] = useState(null); // State for storing image URL for preview
   const [showModal, setShowModal] = useState(false); // State to toggle modal visibility
   const [showSuccessModal, setShowSuccessModal] = useState(false); // State to show success modal
+  const [loading, setLoading] = useState(false); // New state for loader
 
   useEffect(() => {
     // Fetch stats when the component mounts
@@ -46,6 +47,7 @@ const InstaStory = () => {
   
     backgroundImage.onload = () => {
       // Set canvas dimensions for story size (1080x1920)
+      setLoading(true); // Set loading to true when image is loading
       canvas.width = 1080;
       canvas.height = 1920;
   
@@ -100,6 +102,7 @@ const InstaStory = () => {
       // Convert canvas to image URL
       const imgData = canvas.toDataURL('image/png');
       setImageUrl(imgData); // Set the image URL in state
+      setLoading(false); // Set loading to false when image is ready
     };
   }, [data]); // This effect runs whenever `data` is updated
 
@@ -134,12 +137,17 @@ const InstaStory = () => {
     <h1 className="stats__share__page-title"></h1>
   </div>
 
-  {/* Image Preview */}
-  {imageUrl && (
-    <div className="stats__share__page-preview">
-      <img src={imageUrl} alt="Stats Preview" className="stats__share__page-preview-image" />
-    </div>
-  )}
+  
+        {/* Image Preview */}
+        {loading ? (
+          <div className="loader">Loading...</div> // Display loader while image is being generated
+        ) : (
+          imageUrl && (
+            <div className="stats__share__page-preview">
+              <img src={imageUrl} alt="Stats Preview" className="stats__share__page-preview-image" />
+            </div>
+          )
+        )}
 
 
 
