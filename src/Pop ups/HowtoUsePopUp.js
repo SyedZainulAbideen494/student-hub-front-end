@@ -12,7 +12,11 @@ const ModalHowTo = () => {
   const openModal = () => setIsOpen(true);
   
   // Close the modal
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => {
+    setIsOpen(false);
+    localStorage.setItem("viewedGuide", "true"); // Mark the guide as viewed
+  };
+  
 
   // Navigate to a different page when the "Learn More" button is clicked
   const handleLearnMore = () => {
