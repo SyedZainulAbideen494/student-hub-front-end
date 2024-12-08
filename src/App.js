@@ -114,6 +114,7 @@ import InstaStory from "./Share Stats/Share-stats";
 import PostsRooms from "./Rooms/Joined rooms/roomPosts";
 import RoomProgress from "./Rooms/Joined rooms/Progress";
 import RoomTasks from "./Rooms/Joined rooms/RoomTasks";
+import Onboarding from "./OnBoarding/onBoardng";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -222,6 +223,7 @@ const router = createBrowserRouter([
   {path: '/how-to-use-edusify', element: <GuideToEdusify/>},
   {path: '/send/noti', element: <SendNotiApp/>},
   {path: '/insta-story', element: <InstaStory/>},
+  {path: '/onboarding', element: <Onboarding/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

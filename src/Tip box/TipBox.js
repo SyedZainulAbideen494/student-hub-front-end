@@ -55,22 +55,7 @@ const TipBox = () => {
       "Fun Fact: The AI Assistant can save hours of your life. Use it wisely, and maybe even take a nap afterward!"
     ],
     founderTips: [
-      "Fun Fact: Edusify was born during exam prep season—a time when panic and procrastination become best friends. Turns out, they’re also great for innovation!",
-      "True story: Edusify started as an idea to impress a crush. Now, it’s helping students impress themselves by smashing their goals.",
-      "Every big journey begins with a single step—or in this case, a single line of buggy code. Keep building, no matter how messy it looks at first!",
-      "Success doesn’t need a degree—it needs grit. Edusify was built with zero formal training and a ton of late-night Googling.",
-      "Dream big, but start small. Edusify began as a side project during a boring week and grew into something game-changing.",
-      "Life Tip: The world doesn’t reward perfection, it rewards progress. Just start, even if it’s messy, and refine as you go!",
-      "Hard work doesn’t feel hard when you love what you’re building. If you’re passionate, every struggle feels worth it.",
-      "People might not believe in your idea at first—my own professors didn’t. But guess what? The app is now more popular than my college. Believe in yourself!",
-      "Fun Fact: Edusify started as a way to solve a personal problem. The best ideas often come from fixing something that frustrates you!",
-      "If you wait until you’re ‘ready,’ you’ll wait forever. Edusify wasn’t perfect when it launched, but improvements come with time and feedback.",
-      "Want to create something? Start now, learn as you go, and Google your way through. That’s literally how Edusify came to life!",
-      "True inspiration doesn’t strike when you’re idle—it strikes when you’re in the thick of challenges. Don’t stop, even when it gets tough.",
-      "Edusify is proof that you don’t need fancy tools or a big team to make something impactful. All you need is an idea and relentless effort.",
-      "Build for yourself first. Edusify was created to simplify *my* life, and now it’s simplifying lives for hundreds. Your needs could spark a revolution!",
-      "The road to success is full of doubters, setbacks, and caffeine overdoses. Keep going. Your future self will thank you.",
-      "Here’s the thing: It’s okay to start small, dream big, and fail often. Each step is a lesson. Edusify is living proof of that!"
+    
     ]    
   };
   

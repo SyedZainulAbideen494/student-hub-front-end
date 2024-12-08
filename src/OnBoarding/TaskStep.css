@@ -1,0 +1,188 @@
+/* Container for Task Step */
+.container__onboarding__page__component__tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Very light background to contrast card */
+    min-height: 100vh;
+}
+
+/* Task Card Styling */
+.task__card {
+    width: 100%;
+    max-width: 450px;
+    background-color: #ffffff; /* Clean white background */
+    padding: 10px;
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1); /* Larger soft shadow */
+    text-align: center;
+    animation: fadeIn__onboarding__page__component 0.8s ease-in-out;
+}
+
+/* Heading for Task Step */
+.heading__onboarding__page__component__tasks {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Input Fields */
+.input__onboarding__page__component__tasks,
+.textarea__onboarding__page__component__tasks {
+    width: 100%;
+    padding: 14px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #fdfdfd; /* Slightly off-white for inputs */
+    transition: all 0.3s ease;
+}
+
+.input__onboarding__page__component__tasks:focus,
+.textarea__onboarding__page__component__tasks:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Textarea Styling */
+.textarea__onboarding__page__component__tasks {
+    height: 150px;
+    resize: none;
+}
+
+/* Label Styling */
+.label__onboarding__page__component__tasks {
+    text-align: left;
+    width: 100%;
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+/* Select Dropdown for Priority */
+.select__onboarding__page__component__tasks {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: #fdfdfd;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.select__onboarding__page__component__tasks:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Checkbox Styling */
+.checkbox__onboarding__page__component__tasks {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transform: scale(1.2);
+}
+
+/* Buttons Styling */
+.button__onboarding__page__component__tasks {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 6px 12px rgba(0, 123, 255, 0.2);
+    margin-top: 20px;
+    width: 100%;
+}
+
+.button__onboarding__page__component__tasks:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 20px rgba(0, 123, 255, 0.25);
+}
+
+.button__onboarding__page__component__tasks:active {
+    transform: translateY(0);
+}
+
+/* Modal Styling (Success or Error) */
+.modal__onboarding__page__component {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content__onboarding__page__component {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 25px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-heading__onboarding__page__component {
+    color: #28a745;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.modal-text__onboarding__page__component {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn__onboarding__page__component {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Minor Responsive Adjustments */
+@media (max-width: 600px) {
+    .container__onboarding__page__component__tasks {
+        padding: 20px;
+    }
+    .task__card {
+        padding: 20px;
+    }
+    .heading__onboarding__page__component__tasks {
+        font-size: 1.6rem;
+    }
+    .input__onboarding__page__component__tasks,
+    .textarea__onboarding__page__component__tasks,
+    .select__onboarding__page__component__tasks {
+        font-size: 1rem;
+    }
+    .button__onboarding__page__component__tasks {
+        padding: 10px 20px;
+    }
+}

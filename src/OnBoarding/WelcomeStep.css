@@ -1,0 +1,190 @@
+/* General container for centering content */
+.container__onboarding__page__component__welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Centered box/card container */
+.card__container__onboarding__page__component__welcome  {
+    max-width: 400px;
+    width: 100%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 25px; /* Rounded corners */
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn__onboarding__page__component 0.8s ease-in-out;
+}
+
+/* Heading Styles */
+.heading__onboarding__page__component__welcome {
+    color: #333;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.3;
+}
+
+/* Paragraph Styles */
+.paragraph__onboarding__page__component__welcome {
+    color: #6b6b6b;
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Button Styles */
+.button__onboarding__page__component__welcome {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    background: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 6px 12px rgba(0, 123, 255, 0.2);
+}
+
+.button__onboarding__page__component__welcome:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 20px rgba(0, 123, 255, 0.25);
+}
+
+.button__onboarding__page__component__welcome:active {
+    transform: translateY(0);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn__onboarding__page__component {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Minor Responsive Adjustments */
+@media (max-width: 600px) {
+    .card__container__onboarding__page__component__welcome  {
+        padding: 25px;
+    }
+    .heading__onboarding__page__component__welcome {
+        font-size: 1.8rem;
+    }
+    .paragraph__onboarding__page__component__welcome {
+        font-size: 1rem;
+    }
+    .button__onboarding__page__component__welcome {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* Modal container */
+.modal__onboarding__page__component__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Darker background for better contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure modal is on top */
+    padding: 10px;
+  }
+  
+  /* Modal content */
+  .modal-content__onboarding__page__component__modal {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 40px 50px; /* More generous padding */
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for modern look */
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+    transform: translateY(-10px); /* Slightly move it up initially */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Modal heading */
+  .modal-heading__onboarding__page__component__modal {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Modal text */
+  .modal-text__onboarding__page__component__modal {
+    font-size: 18px;
+    color: #34495e;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  
+  /* Button inside the modal */
+  .button__onboarding__page__component__modal.next__onboarding__page__component__modal {
+    background-color: #3498db; /* Blue for energy */
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 10px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 60%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+  
+  .button__onboarding__page__component__modal.next__onboarding__page__component__modal:hover {
+    background-color: #2980b9; /* Slightly darker blue on hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+  }
+  
+  .button__onboarding__page__component__modal.next__onboarding__page__component__modal:focus {
+    outline: none;
+  }
+  
+  /* Add animation for modal appearance */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Optional: animation for button hover effect */
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  

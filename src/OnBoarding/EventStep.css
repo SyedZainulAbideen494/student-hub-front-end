@@ -1,0 +1,152 @@
+/* Container for Event Step */
+.container__onboarding__page__component__events {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f9f9f9; /* Very light background to contrast card */
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px; /* Added padding on the left */
+    padding-right: 20px; /* Added padding on the right */
+}
+
+/* Event Card Styling */
+.event__card {
+    width: 80%;
+    max-width: 450px; /* You can adjust this width as needed */
+    background-color: #ffffff; /* Clean white background */
+    padding: 30px;
+    border-radius: 16px; /* Rounded corners */
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1); /* Larger soft shadow */
+    text-align: center;
+    animation: fadeIn__onboarding__page__component 0.8s ease-in-out;
+    margin-left: auto; /* Center the card */
+    margin-right: auto; /* Center the card */
+}
+
+
+/* Heading for Event Step */
+.heading__onboarding__page__component__events {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Input Fields */
+.input__onboarding__page__component__events {
+    width: 100%;
+    padding: 14px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #fdfdfd; /* Slightly off-white for inputs */
+    transition: all 0.3s ease;
+}
+
+.input__onboarding__page__component__events:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Buttons Styling */
+.button__onboarding__page__component__events {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 6px 12px rgba(0, 123, 255, 0.2);
+    margin-top: 20px;
+    width: 100%;
+}
+
+.button__onboarding__page__component__events:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 20px rgba(0, 123, 255, 0.25);
+}
+
+.button__onboarding__page__component__events:active {
+    transform: translateY(0);
+}
+
+/* Modal Styling (Success or Error) */
+.modal__onboarding__page__component {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content__onboarding__page__component {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 25px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-heading__onboarding__page__component {
+    color: #28a745;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.modal-text__onboarding__page__component {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn__onboarding__page__component {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Minor Responsive Adjustments */
+@media (max-width: 600px) {
+    .container__onboarding__page__component__events {
+        padding: 20px;
+    }
+    .event__card {
+        padding: 20px;
+    }
+    .heading__onboarding__page__component__events {
+        font-size: 1.6rem;
+    }
+    .input__onboarding__page__component__events {
+        font-size: 1rem;
+    }
+    .button__onboarding__page__component__events {
+        padding: 10px 20px;
+    }
+}
