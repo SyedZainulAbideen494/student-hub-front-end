@@ -27,7 +27,7 @@
   /* Heading Styles */
   .__room__create_page__heading {
     text-align: center;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 700;
     color: #333;
     margin-bottom: 20px;
@@ -129,7 +129,7 @@
     }
   
     .__room__create_page__heading {
-      font-size: 22px;
+      font-size: 20px;
     }
   
     .__room__create_page__input,
@@ -145,3 +145,97 @@
     }
   }
   
+/* Modal Styling */
+.__room__Modal__instruc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure modal is on top of other content */
+}
+
+.__room__Modal__instruc__content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto; /* Allows scrolling if content overflows */
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.__room__Modal__instruc__title {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+.__room__Modal__instruc__description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.__room__Modal__instruc__close {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.__room__Modal__instruc__close:hover {
+  background-color: #d32f2f;
+}
+
+/* Close (X) Button on Top Right */
+.__room__Modal__instruc__close__x {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+}
+
+.__room__Modal__instruc__close__x:hover {
+  color: #f44336;
+}
+
+/* List Styling */
+.__room__Modal__instruc__description ul {
+  padding-left: 20px;
+}
+
+.__room__Modal__instruc__description li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+
+.__room__header__create__room__help {
+  background-color: transparent; /* Green background */
+  color: black; /* White text color */
+  border: 1px solid #333; /* Remove border */
+  padding: 3px 8px; /* Button padding */
+  font-size: 18px; /* Font size */
+  border-radius: 50%; /* Make the button circular */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
