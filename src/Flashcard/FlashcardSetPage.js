@@ -36,7 +36,6 @@ const FlashcardSetPage = () => {
   const [manualAnswer, setManualAnswer] = useState('');
   const [menuVisible, setMenuVisible] = useState({});
   const [statusFilter, setStatusFilter] = useState(''); // 'I Know', 'I Don't Know', or ''
-  const [showModal, setShowModal] = useState(false);
 
   const toggleMenu = (id) => {
     setMenuVisible((prev) => ({
@@ -298,17 +297,6 @@ const updateFlashcardStatus = async (flashcardId, status) => {
   }
 };
 
-  const handleShowLearningModal = () => {
-    setShowModal(true); // Show the modal when user clicks "Start Learning"
-  };
-
-  const handleShowFirstFlashcard2 = () => {
-    if (flashcards.length > 0) {
-      const firstFlashcard = flashcards[0];
-      nav(`/swipe/flashcard/card/view/${firstFlashcard.id}/${params.id}`); // Navigate to first flashcard
-    }
-  };
-
 
 
   // Return the loading state unconditionally
@@ -318,24 +306,6 @@ if (loading) {
 
   return (
     <div className="flashcard__set__page">
-      {/* Modal for Active Learning */}
-{showModal && (
-  <div className="Start__learning__modal">
-    <div className="Start__learning__modal__content">
-     
-
-      <div className="Start__learning__modal__mode-buttons">
-        <button onClick={handleShowFirstFlashcard} className="Start__learning__modal__quiz-btn">
-          Active Learning (Quiz)
-        </button>
-        <button onClick={handleShowFirstFlashcard2} className="Start__learning__modal__swipe-btn">
-          Swipe Mode
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
 <div className="flashcard__set__page__header">
     <div className="flashcard__set__page__header__top">
         <button className="flashcard__set__page__back-button" onClick={handleBack}>
@@ -545,7 +515,7 @@ if (loading) {
       </div>
     {/* Fixed Footer */}
 <footer className="flashcard__set__page__footer">
-  <button className="flashcard__set__page__start-learning-btn" onClick={handleShowLearningModal}>
+  <button className="flashcard__set__page__start-learning-btn" onClick={handleShowFirstFlashcard}>
     Start Learning
   </button>
 </footer>
