@@ -115,6 +115,8 @@ import PostsRooms from "./Rooms/Joined rooms/roomPosts";
 import RoomProgress from "./Rooms/Joined rooms/Progress";
 import RoomTasks from "./Rooms/Joined rooms/RoomTasks";
 import Onboarding from "./OnBoarding/onBoardng";
+import WordScrambleGame from "./Games/wordScramble";
+import PlayGame from "./Games/PlayGame";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -224,6 +226,8 @@ const router = createBrowserRouter([
   {path: '/send/noti', element: <SendNotiApp/>},
   {path: '/insta-story', element: <InstaStory/>},
   {path: '/onboarding', element: <Onboarding/>},
+  {path: '/word-scramble', element: <WordScrambleGame/>},
+  {path: '/word-scramble/:gameId', element: <PlayGame/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
