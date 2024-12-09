@@ -117,6 +117,7 @@ import RoomTasks from "./Rooms/Joined rooms/RoomTasks";
 import Onboarding from "./OnBoarding/onBoardng";
 import WordScrambleGame from "./Games/wordScramble";
 import PlayGame from "./Games/PlayGame";
+import SwipeFlashcardViewPage from "./Flashcard/swipeCardView";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -228,6 +229,7 @@ const router = createBrowserRouter([
   {path: '/onboarding', element: <Onboarding/>},
   {path: '/word-scramble', element: <WordScrambleGame/>},
   {path: '/word-scramble/:gameId', element: <PlayGame/>},
+  {path: '/swipe/flashcard/card/view/:id/:setId', element: <SwipeFlashcardViewPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
