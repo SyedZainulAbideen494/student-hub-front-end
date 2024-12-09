@@ -96,7 +96,7 @@ const SwipeFlashcardViewPage = () => {
       } else {
         setQuizComplete(true);  // Set quiz complete flag
       }
-    }, 400);
+    }, 200);
   };
 
   const handleBack = () => {
