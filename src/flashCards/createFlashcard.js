@@ -94,52 +94,54 @@ useEffect(() => {
           setImages((prevImages) => [...prevImages, ...newImages]); // Concatenate with existing images
       };
       
-
-    const handleSubmit = async (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
     
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
         formData.append('isPublic', isPublic);
-        formData.append('token', token);
+        formData.append('token', localStorage.getItem('token')); // Replace with actual user token
         formData.append('headings', editorContent);
-        formData.append('subjectId', selectedSubject); // Send selected subject ID
-
+        formData.append('subjectId', selectedSubject);
+    
         images.forEach((image) => {
-            formData.append('images', image);
+          formData.append('images', image);
         });
     
         try {
-            const response = await axios.post(API_ROUTES.addFlashCard, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
+          const response = await axios.post(API_ROUTES.addFlashCard, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
     
-            if (response.status === 200) {
-                // Log success and update state
-                console.log('Flashcard saved successfully!');
-                setSuccessMessage('Flashcard saved successfully!');
-                setShowSuccessModal(true);
-                // Clear form inputs
-                setTitle('');
-                setDescription('');
-                setImages([]);
-                setIsPublic(true);
-                setEditorContent('');
-                 setSelectedSubject(subjects[0]?.id || '');
-            } else {
-                console.error('Failed to save flashcard.');
-                alert('Failed to save flashcard.');
-            }
-        } catch (error) {
-            console.error('Error saving flashcard:', error);
+          if (response.status === 200) {
+            console.log('Flashcard saved successfully!');
+            const { flashcardId } = response.data; // Get the flashcard ID from the response
+            setSuccessMessage('Flashcard saved successfully!');
+            setShowSuccessModal(true);
+    
+            // Clear form inputs
+            setTitle('');
+            setDescription('');
+            setImages([]);
+            setIsPublic(true);
+            setEditorContent('');
+            setSelectedSubject(subjects[0]?.id || '');
+    
+            // Navigate to the flashcard view page
+            navigate(`/note/view/${flashcardId}`);
+          } else {
+            console.error('Failed to save flashcard.');
             alert('Failed to save flashcard.');
+          }
+        } catch (error) {
+          console.error('Error saving flashcard:', error);
+          alert('Failed to save flashcard.');
         }
-    };
-
-
+      };
+    
 
    const safeParseJSON = (jsonString) => {
         try {
