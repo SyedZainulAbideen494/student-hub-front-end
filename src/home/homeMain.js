@@ -54,7 +54,7 @@ const HomeMain = () => {
      <TipBox/>
       <ReviewModal/>
        <BirthdayCelebration/>
-      <BirthdayModal/>
+
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
 <div style={{ margin: '20px 0' }}>

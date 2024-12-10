@@ -34,35 +34,40 @@ const SignUp = () => {
         localStorage.setItem('signupData', JSON.stringify(formData));
     }, [formData]);
 
-    // Check if the unique ID is available
     useEffect(() => {
         const checkUniqueId = async () => {
-            if (formData.unique_id) {
-                try {
-                    const response = await fetch(API_ROUTES.checkUniqueId, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ unique_id: formData.unique_id }),
-                    });
-
-                    if (response.ok) {
-                        setUniqueIdStatus('available');
-                        setUniqueIdSuggestions([]);
-                    } else {
-                        setUniqueIdStatus('taken');
-                        const alternatives = await response.json();
-                        setUniqueIdSuggestions(alternatives);
-                    }
-                } catch (error) {
-                    console.error('Error checking unique_id:', error);
-                    setUniqueIdStatus('error');
+            if (!formData.unique_id) {
+                // Clear status and suggestions if unique_id is empty
+                setUniqueIdStatus('');
+                setUniqueIdSuggestions([]);
+                return;
+            }
+    
+            try {
+                const response = await fetch(API_ROUTES.checkUniqueId, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ unique_id: formData.unique_id }),
+                });
+    
+                if (response.ok) {
+                    setUniqueIdStatus('available');
                     setUniqueIdSuggestions([]);
+                } else {
+                    setUniqueIdStatus('taken');
+                    const alternatives = await response.json();
+                    setUniqueIdSuggestions(alternatives);
                 }
+            } catch (error) {
+                console.error('Error checking unique_id:', error);
+                setUniqueIdStatus('error');
+                setUniqueIdSuggestions([]);
             }
         };
-
+    
         checkUniqueId();
     }, [formData.unique_id]);
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -278,11 +283,10 @@ const validatePhoneNumber = (phone) => {
                 onChange={handleChange}
                 required
                 className="signup-sign-up-page-input"
-                autoComplete="username"
                 aria-label="Enter your username"
             />
-            {uniqueIdStatus === 'available' && <FaCheckCircle className="signup-sign-up-page-status-icon available" />}
-            {uniqueIdStatus === 'taken' && <FaTimesCircle className="signup-sign-up-page-status-icon taken" />}
+            {uniqueIdStatus === 'available' && <p className="signup-sign-up-page-status-icon available" >available</p>}
+            {uniqueIdStatus === 'taken' && <p className="signup-sign-up-page-status-icon taken" >taken</p>}
         </div>
         {uniqueIdSuggestions.length > 0 && (
             <div className="signup-sign-up-page-suggestions">
