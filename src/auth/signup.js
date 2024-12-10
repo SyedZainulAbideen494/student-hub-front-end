@@ -212,7 +212,7 @@ const validatePhoneNumber = (phone) => {
         {/* Step 2 Heading */}
         {step === 2 && (
             <>
-                <h2 className="signup-sign-up-page-heading-step-2">Choose Your Username</h2>
+                <h2 className="signup-sign-up-page-heading-step-2">Choose Your User name</h2>
             </>
         )}
 
@@ -283,7 +283,7 @@ const validatePhoneNumber = (phone) => {
                 onChange={handleChange}
                 required
                 className="signup-sign-up-page-input"
-                aria-label="Enter your username"
+                aria-label="Enter your user name"
             />
             {uniqueIdStatus === 'available' && <p className="signup-sign-up-page-status-icon available" >available</p>}
             {uniqueIdStatus === 'taken' && <p className="signup-sign-up-page-status-icon taken" >taken</p>}
