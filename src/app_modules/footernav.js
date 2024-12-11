@@ -99,21 +99,18 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
                         <FaChartLine className="icon-footer-nav" />
                         <span className="btn-label">My stats</span>
-                        <sapn className='new-label-footer-nav'>New</sapn>
                     </button>
                 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaBook className="icon-footer-nav" />
                     <span className="btn-label">Notes</span>
-                    <sapn className='new-label-footer-nav'>New - Generate Quiz and Flashcards from Notes</sapn>
                 </button>
             </Link>
             <Link to='/flashcard' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/flashcard' ? 'active' : ''}`}>
         <FaStickyNote className="icon-footer-nav" />
         <span className="btn-label">Flashcards</span>
-        <sapn className='new-label-footer-nav'>New - Generate using PDF and Active recall fetaure</sapn>
     </button>
 </Link>
 
@@ -123,7 +120,6 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/room' ? 'active' : ''}`}>
         <FaUsers className="icon-footer-nav" />
         <span className="btn-label">Rooms</span> {/* Changed label from Groups to Rooms */}
-        <span className='new-label-footer-nav'>New! A must-try with friends!</span>
     </button>
 </Link> 
 
@@ -132,7 +128,6 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
                         <span className="btn-label">AI Powered Quiz</span>
-                        <sapn className='new-label-footer-nav'>New - Generate using PDF</sapn>
                     </button>
                 </Link>
                    {/* New Document Locker Link */}
