@@ -132,6 +132,7 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
                         <span className="btn-label">AI Powered Quiz</span>
+                        <sapn className='new-label-footer-nav'>New - Generate using PDF</sapn>
                     </button>
                 </Link>
                    {/* New Document Locker Link */}
