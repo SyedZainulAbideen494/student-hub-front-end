@@ -28,7 +28,7 @@ const PomodoroApp = () => {
   const [breakLength, setBreakLength] = useState(parseInt(localStorage.getItem('breakLength')) || 300); // Load saved break length
   const [sound] = useState(new Audio('https://audio-previews.elements.envatousercontent.com/files/148785970/preview.mp3?response-content-disposition=attachment%3B+filename%3D%22RZFWLXE-bell-hop-bell.mp3%22')); // Bell sound
   const [wakeLock, setWakeLock] = useState(null); // Track the wake lock state
-  const [pomodoroSessionActive, setPomodoroSessionActive] = useState(false); //
+
  
   const navigate = useNavigate();
 
@@ -66,7 +66,6 @@ const PomodoroApp = () => {
   const startSession = async () => {
     try {
       const sessionType = isStudyTime ? 'study' : 'break';
-      setPomodoroSessionActive(true);
       const response = await axios.post(API_ROUTES.apiStartPomodoro, {
         token,
         session_type: sessionType,
@@ -116,7 +115,6 @@ const PomodoroApp = () => {
   const endSession = async () => {
     try {
       const sessionType = isStudyTime ? 'study' : 'break';
-      setPomodoroSessionActive(false);
       const response = await axios.post(API_ROUTES.apiStopPomodoro, {
         session_id: sessionId,
         token,
@@ -152,21 +150,6 @@ const PomodoroApp = () => {
     localStorage.setItem('timerLength', newTimerLength);
     localStorage.setItem('breakLength', newBreakLength);
   };
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      if (pomodoroSessionActive) {
-        event.preventDefault();
-        event.returnValue = "You have an active Pomodoro session. Do you want to end it?";
-      }
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, [pomodoroSessionActive]);
 
   return (
     <div className={`home__pomodoro__new ${theme}__Pomodoro__new`}>
