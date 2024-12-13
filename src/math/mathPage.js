@@ -66,33 +66,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
-  const [showWarning, setShowWarning] = useState(false);
-  const [dismissedWarning, setDismissedWarning] = useState(false);
 
-  useEffect(() => {
-    if (conversationStarted) {
-      const maxMessages = 30;
-      const messageCount = chatHistory.length;
-  
-      console.log(`Message Count: ${messageCount}, Max Messages: ${maxMessages}, Show Warning: ${showWarning}`);
-  
-      localStorage.setItem('new_ai_chat_history', JSON.stringify(chatHistory));
-  
-      if (messageCount > maxMessages && !dismissedWarning) {
-        setShowWarning(true);
-      } else if (messageCount <= maxMessages) {
-        setShowWarning(false);
-        setDismissedWarning(false); // Reset when under the limit
-      }
-    }
-  }, [chatHistory, conversationStarted, dismissedWarning]);
-  
-  const handleLaterClick = () => {
-    setShowWarning(false);
-    setDismissedWarning(true); // Mark as dismissed
-  };
-  
-  
   
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -322,9 +296,15 @@ const MathSolver = ({ handleVoiceCommand }) => {
       { role: 'model', parts: [{ text: 'Great to meet you. What would you like to know?' }] }
     ]);
     setConversationStarted(false);
-    setShowWarning(false)
   };
 
+// Inside the component
+useEffect(() => {
+  // Trigger MathJax formatting after chat history is updated
+  if (window.MathJax) {
+    window.MathJax.typeset();
+  }
+}, [chatHistory]); // Run whenever the chat history is updated
 
 
   return (
@@ -395,11 +375,11 @@ const MathSolver = ({ handleVoiceCommand }) => {
                 <div className="chat-bubble">
                   <span className="chat-role">{result.role === 'user' ? 'You' : 'AI'}:</span>
                   <MathJaxContext>
-                  <div
-                    className="chat-result-content"
-                    dangerouslySetInnerHTML={{ __html: result.parts.map((part) => part.text).join('') }}
-                  />
-                   </MathJaxContext>
+                    <div
+                      className="chat-result-content"
+                      dangerouslySetInnerHTML={{ __html: result.parts.map((part) => part.text).join('') }}
+                    />
+                  </MathJaxContext>
                   {result.role === 'model' && (
                     <div className="create-flashcard-btn_ai__page__container">
                       <button
@@ -410,9 +390,7 @@ const MathSolver = ({ handleVoiceCommand }) => {
                       </button>
                     </div>
                   )}
-                
                 </div>
-              
               </div>
             ))
           )}
