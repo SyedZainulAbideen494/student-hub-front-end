@@ -11,6 +11,8 @@ import AIPageTutorial from './AIPageTutorial';
 import Loader from './mathLoader';
 import AiLoaderSpeaking from './AiLoaderSpeaking';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
+import Modal from 'react-modal';
+import { FaBook, FaPen, FaQuestionCircle, FaTimes } from 'react-icons/fa';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -66,8 +68,16 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
+  const [isMagicModalOpen, setIsMagicModalOpen] = useState(false);
+  const [isFlashcardModalOpen, setIsFlashcardModalOpen] = useState(false);
+  const [flashcardData, setFlashcardData] = useState({ name: '', subject: '' });
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
+  const [QuizData, setQuizData] = useState({ name: '', subject: '' });
+  const [isGeneratingFlashcards, setIsGeneratingFlashcards] = useState(false);
+const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
+const [magicModalContent, setMagicModalContent] = useState('');
 
-  
+
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
@@ -149,11 +159,110 @@ const MathSolver = ({ handleVoiceCommand }) => {
   };
   
   
-  
-  const handleCreateFlashcard = (content) => {
+  const handleCreateNotes = (content) => {
+    // Only pass serializable content, not the event object
     navigate('/notes/create', { state: { editorContent: content } });
   };
+  
+  const handleMagicButtonClick = (content) => {
+    setMagicModalContent(content); // Store content of the clicked chat message
+    setIsMagicModalOpen(true); // Open the Magic Modal
+  };
+  
 
+// Handle Generate Flashcards
+const handleGenerateFlashcards = (content) => {
+  setIsMagicModalOpen(false);
+  setIsFlashcardModalOpen(true);
+  setFlashcardData({ ...flashcardData, content }); // Pass content to flashcard modal
+};
+
+// Handle Generate Quiz
+const handleGenerateQuiz = (content) => {
+  setIsMagicModalOpen(false);
+  setIsQuizModalOpen(true);
+  setQuizData({ ...QuizData, content }); // Pass content to quiz modal
+};
+
+const handleSubmitFlashcards = async (selectedContent) => {
+  const token = localStorage.getItem('token');
+  const headings = selectedContent; // Use the selected content directly
+  
+  setIsGeneratingFlashcards(true);
+  
+  try {
+    const response = await fetch(API_ROUTES.generateFlashcardsFromNotes, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        headings,
+        subject: flashcardData.subject,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Error generating flashcards:', errorData.error);
+      return;
+    }
+
+    const data = await response.json();
+    console.log('Flashcards generated:', data);
+
+    navigate(`/flashcard/set/${data.flashcardSetId}`);
+    setFlashcardData({ name: '', subject: '' });
+  } catch (error) {
+    console.error('Unexpected error:', error);
+  } finally {
+    setIsGeneratingFlashcards(false);
+  }
+};
+
+ 
+const handleSubmitQuiz = async (selectedContent) => {
+  const token = localStorage.getItem('token');
+  const notes = selectedContent; // Use the selected content directly
+  
+  setIsGeneratingQuiz(true);
+  
+  try {
+    const response = await fetch(API_ROUTES.generateQuizFromNotes, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        notes,
+        subject: QuizData.subject,
+        token,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Error generating quiz:', errorData.error);
+      return;
+    }
+
+    const data = await response.json();
+    console.log('Quiz generated:', data);
+
+    navigate(`/quiz/${data.quizId}`);
+    setQuizData({ subject: '' });
+  } catch (error) {
+    console.error('Unexpected error:', error);
+  } finally {
+    setIsGeneratingQuiz(false);
+  }
+};
+
+  
+
+  
   const startListening = () => {
     if (recognition) {
       recognition.start();
@@ -381,14 +490,43 @@ useEffect(() => {
                     />
                   </MathJaxContext>
                   {result.role === 'model' && (
-                    <div className="create-flashcard-btn_ai__page__container">
-                      <button
-                        className="create-flashcard-btn_ai__page"
-                        onClick={() => handleCreateFlashcard(result.parts[0].text)}
-                      >
-                        Add To Notes
-                      </button>
-                    </div>
+                   <div className="create-flashcard-btn_ai__page__container">
+
+    <button type="button" className="magic__btn__page__ai" onClick={() => handleMagicButtonClick(result.parts.map((part) => part.text).join(''))}>
+      <span className="magic__btn__page__ai__fold"></span>
+
+      <div className="magic__btn__page__ai__points_wrapper">
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+        <i className="magic__btn__page__ai__point"></i>
+      </div>
+
+      <span className="magic__btn__page__ai__inner">
+        <svg
+          className="magic__btn__page__ai__icon"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2.5"
+        >
+          <polyline
+            points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"
+          ></polyline>
+        </svg>
+        Magic
+      </span>
+    </button>
+                 </div>
                   )}
                 </div>
               </div>
@@ -457,7 +595,96 @@ useEffect(() => {
 </div>
 
       </div>
-    
+      <Modal
+  isOpen={isMagicModalOpen}
+  onRequestClose={() => setIsMagicModalOpen(false)}
+  className="magic__ai__magic__modal__ai__page"
+>
+  <button onClick={() => setIsMagicModalOpen(false)} className="close-btn__magic__modal__ai__page">
+    <FaTimes />
+  </button>
+  
+  <h2 className="modal-title__magic__modal__ai__page">What do you want to do?</h2>
+  <div className="modal-actions__magic__modal__ai__page">
+  <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateFlashcards(magicModalContent)}>
+  <span>  <FaPen /> Generate Flashcards</span>
+    </button>
+
+    <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateQuiz(magicModalContent)}>
+  <span><FaQuestionCircle /> Generate Quiz</span>
+    </button>
+    <button className="magic__btn__page__ai__modal" onClick={() => handleCreateNotes(magicModalContent)}>
+  <span><FaBook /> Create Notes</span>
+    </button>
+  </div>
+</Modal>
+
+
+{/* Flashcard Modal */}
+<Modal
+  isOpen={isFlashcardModalOpen}
+  onRequestClose={() => setIsFlashcardModalOpen(false)}
+  className="flashcard__modal__ai__magic__page"
+>
+  <button onClick={() => setIsFlashcardModalOpen(false)} className="close-btn__magic__modal__ai__page">
+    <FaTimes />
+  </button>
+  <h2 className="modal-title__magic__modal__ai__page">Generate Flashcards</h2>
+  <div className="flashcard-modal-content__magic__modal__ai__page">
+    <input
+      type="text"
+      placeholder="Enter Flashcard Set Name"
+      value={flashcardData.name}
+      onChange={(e) => setFlashcardData({ ...flashcardData, name: e.target.value })}
+      className="modal-input__magic__modal__ai__page"
+    />
+    <input
+      type="text"
+      placeholder="Enter Subject"
+      value={flashcardData.subject}
+      onChange={(e) => setFlashcardData({ ...flashcardData, subject: e.target.value })}
+      className="modal-input__magic__modal__ai__page"
+    />
+    {/* Removed the textarea, using selected content instead */}
+    <button
+      onClick={() => handleSubmitFlashcards(magicModalContent)} // Send selected content directly
+      disabled={isGeneratingFlashcards}
+      className="modal-btn__magic__modal__ai__page"
+    >
+      {isGeneratingFlashcards ? 'Generating...' : 'Generate'}
+    </button>
+  </div>
+</Modal>
+
+
+<Modal
+  isOpen={isQuizModalOpen}
+  onRequestClose={() => setIsQuizModalOpen(false)}
+  className="quiz__modal__ai__magic__page"
+>
+  <button onClick={() => setIsQuizModalOpen(false)} className="close-btn__magic__modal__ai__page">
+    <FaTimes />
+  </button>
+  <h2 className="modal-title__magic__modal__ai__page">Generate Quiz</h2>
+  <form onSubmit={(e) => { e.preventDefault(); handleSubmitQuiz(magicModalContent); }} className="quiz-form__magic__modal__ai__page">
+    <label className="modal-label__magic__modal__ai__page">
+      Subject:
+      <input
+        type="text"
+        value={QuizData.subject}
+        onChange={(e) => setQuizData({ ...QuizData, subject: e.target.value })}
+        required
+        className="modal-input__magic__modal__ai__page"
+      />
+    </label>
+    {/* Removed the textarea, using selected content instead */}
+    <button type="submit" disabled={isGeneratingQuiz} className="modal-btn__magic__modal__ai__page">
+      {isGeneratingQuiz ? 'Generating...' : 'Generate Quiz'}
+    </button>
+  </form>
+</Modal>
+
+
     </div>
   );
 };
