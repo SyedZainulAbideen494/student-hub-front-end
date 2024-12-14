@@ -640,7 +640,7 @@ useEffect(() => {
     />
     <input
       type="text"
-      placeholder="Enter Subject"
+      placeholder="Title"
       value={flashcardData.subject}
       onChange={(e) => setFlashcardData({ ...flashcardData, subject: e.target.value })}
       className="modal-input__magic__modal__ai__page"
