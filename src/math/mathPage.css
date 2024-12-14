@@ -797,13 +797,12 @@
   opacity: 1;
 }
 
-
 /* General Modal Styles */
 .magic__ai__magic__modal__ai__page,
 .flashcard__modal__ai__magic__page,
 .quiz__modal__ai__magic__page {
   background-color: #fff; /* Clean white background */
-  border-radius: 12px; /* Rounded corners */
+  border-radius: 15px; /* Slightly more rounded corners */
   padding: 20px;
   max-width: 500px;
   width: 90%;
@@ -812,15 +811,21 @@
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   animation: modalFadeIn 0.3s ease-out;
+  z-index: 1001; /* Ensure modal is above the overlay */
 }
 
-/* Centering modal */
+/* Centering modal on the screen */
 .react-modal__Overlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.3); /* Slight overlay to focus on modal */
+  background-color: rgba(0, 0, 0, 0.4); /* Dark overlay to focus on modal */
   z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Close Button */
@@ -842,9 +847,9 @@
 
 /* Modal Title */
 .modal-title__magic__modal__ai__page {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
-  color: #444; /* Darker gray for better contrast */
+  color: #333; /* Darker text for better contrast */
   margin-bottom: 20px;
   text-align: center;
 }
@@ -852,52 +857,32 @@
 /* Modal Button Container */
 .modal-actions__magic__modal__ai__page {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 15px;
   margin-bottom: 20px;
   flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
 }
+
 /* Modal Buttons */
 .modal-btn__magic__modal__ai__page {
-  background-color: #ffffff; /* Clean white background */
-  color: #333333; /* Darker text for readability */
-  border: 1px solid #e2e8f0; /* Light, soft border */
-  border-radius: 12px; /* More rounded corners for a sleek look */
-  padding: 12px 28px; /* Increased padding for a more balanced button */
-  width: 100%;
-  max-width: 200px; /* Increased max width for a more prominent button */
-  text-align: center;
-  font-size: 17px;
-  font-weight: 600; /* Bold text for emphasis */
+  background-color: #4a90e2; /* Vibrant blue background */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease-out; /* Smooth transition */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  background-image: linear-gradient(145deg, #ffffff, #f0f4f8); /* Subtle gradient */
-  position: relative;
-  overflow: hidden; /* Ensures the inner elements do not spill out */
-}
-
-.modal-btn__magic__modal__ai__page:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background-color: rgba(74, 144, 226, 0.15); /* Blue glow effect */
-  border-radius: 50%;
-  transition: all 0.5s ease;
-  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-out;
+  width: 100%;
+  max-width: 220px; /* More prominent button */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-btn__magic__modal__ai__page:hover {
-  background-color: #f1f5f9; /* Slightly darker background */
-  border-color: #cbd5e0; /* Soft blue-gray border on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
-}
-
-.modal-btn__magic__modal__ai__page:hover:before {
-  transform: translate(-50%, -50%) scale(1); /* Show the glowing effect on hover */
+  background-color: #357ab7; /* Darken button color on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow */
 }
 
 /* Input Fields */
@@ -905,21 +890,20 @@
   width: 86%;
   padding: 14px 20px;
   border: 1px solid #e2e8f0; /* Light gray border */
-  border-radius: 10px; /* Slightly more rounded corners */
+  border-radius: 12px; /* Rounded corners */
   font-size: 16px;
   font-weight: 400;
-  color: #444444;
-  background-color: #ffffff;
-  transition: all 0.3s ease-out; /* Smooth transition */
+  color: #333;
+  background-color: #f7f8fa; /* Soft light background */
+  transition: all 0.3s ease-out;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  position: relative;
 }
 
 .modal-input__magic__modal__ai__page:focus {
   border-color: #4a90e2; /* Blue border on focus */
   outline: none;
-  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.25); /* Soft blue glow on focus */
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.25); /* Blue glow on focus */
 }
 
 .modal-input__magic__modal__ai__page::placeholder {
@@ -931,17 +915,11 @@
   color: #4a90e2; /* Change placeholder color to blue on focus */
 }
 
-/* Input Field Focus Effect */
-.modal-input__magic__modal__ai__page:focus {
-  transform: scale(1.02); /* Slight scaling effect on focus */
-}
-
-/* Smooth Hover Transitions for Input Fields */
+/* Input Field Hover Effect */
 .modal-input__magic__modal__ai__page:hover {
   border-color: #a0aec0; /* Lighter border color on hover */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
-
 
 /* Modal Content Container */
 .flashcard-modal-content__magic__modal__ai__page,
@@ -958,7 +936,6 @@
   color: #777;
   margin-bottom: 5px;
 }
-
 
 /* Modal Animations */
 @keyframes modalFadeIn {
@@ -988,13 +965,13 @@
   }
 
   .modal-btn__magic__modal__ai__page {
-    padding: 10px 15px;
+    padding: 12px 18px;
     font-size: 14px;
     max-width: 100%;
   }
 
   .modal-actions__magic__modal__ai__page {
-    flex-direction: column; /* Stack buttons on top of each other on mobile */
+    flex-direction: column; /* Stack buttons on mobile */
     gap: 10px;
   }
 }
