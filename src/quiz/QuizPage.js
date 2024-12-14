@@ -114,6 +114,9 @@ const QuizPage = () => {
                             ←
                         </button>
                         <h2 className="quiz-title-attend">{quiz.title}</h2>
+                        <p className="quiz-progress">
+                            Question {currentQuestionIndex + 1} of {questions.length}
+                        </p>
                     </div>
 
                     <div className="quiz-container-attend">
