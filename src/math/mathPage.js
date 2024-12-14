@@ -668,7 +668,7 @@ useEffect(() => {
   <h2 className="modal-title__magic__modal__ai__page">Generate Quiz</h2>
   <form onSubmit={(e) => { e.preventDefault(); handleSubmitQuiz(magicModalContent); }} className="quiz-form__magic__modal__ai__page">
     <label className="modal-label__magic__modal__ai__page">
-      Subject:
+      Quiz title:
       <input
         type="text"
         value={QuizData.subject}
