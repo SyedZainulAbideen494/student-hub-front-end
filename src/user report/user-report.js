@@ -82,9 +82,7 @@ const UserReport = () => {
       <div className="user__report-content">
         {showInitialPage && (
           <>
-                      <div className="beta-mode-text">
-    <span>Beta Mode</span>
-  </div>
+
   <h2 className="user__report-subheading">Ready for your personalized report for the past 15 days?</h2>
 <p className="user__report-description">
   Discover your strengths, areas for improvement, and more, based on your performance over the last 15 days!
