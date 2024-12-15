@@ -633,13 +633,6 @@ useEffect(() => {
   <div className="flashcard-modal-content__magic__modal__ai__page">
     <input
       type="text"
-      placeholder="Enter Flashcard Set Name"
-      value={flashcardData.name}
-      onChange={(e) => setFlashcardData({ ...flashcardData, name: e.target.value })}
-      className="modal-input__magic__modal__ai__page"
-    />
-    <input
-      type="text"
       placeholder="Title"
       value={flashcardData.subject}
       onChange={(e) => setFlashcardData({ ...flashcardData, subject: e.target.value })}

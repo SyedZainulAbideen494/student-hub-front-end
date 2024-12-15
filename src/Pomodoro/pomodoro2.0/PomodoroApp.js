@@ -182,7 +182,6 @@ const PomodoroApp = () => {
       setIsStudyTime(isStudyTime);
   
       if (remainingTime === 0 && isRunning) {
-        sound.play();
         setIsRunning(false);
       }
     }
