@@ -47,7 +47,6 @@ const PomodoroApp = () => {
       clearInterval(interval);
     }
 
-
     if (timer === 0 && isRunning && !isPaused) {
       sound.play();
       if (isStudyTime) {
@@ -63,36 +62,6 @@ const PomodoroApp = () => {
 
     return () => clearInterval(interval);
   }, [isRunning, timer, sound, isStudyTime, timerLength, breakLength, isPaused]);
-
-  useEffect(() => {
-    if (isRunning) {
-      localStorage.setItem('pomodoroTimer', JSON.stringify({
-        timer,
-        isRunning,
-        isStudyTime,
-        startTime: startTime || new Date().toISOString(),
-      }));
-    }
-  }, [timer, isRunning, isStudyTime, startTime]);
-
-  
-  useEffect(() => {
-    const savedTimerData = JSON.parse(localStorage.getItem('pomodoroTimer'));
-    if (savedTimerData) {
-      const { timer, isRunning, isStudyTime, startTime } = savedTimerData;
-      const elapsed = Math.floor((new Date() - new Date(startTime)) / 1000);
-      const remainingTime = Math.max(timer - elapsed, 0);
-      setTimer(remainingTime);
-      setIsRunning(isRunning);
-      setIsStudyTime(isStudyTime);
-  
-      if (remainingTime === 0 && isRunning) {
-        sound.play();
-        setIsRunning(false);
-      }
-    }
-  }, []);
-  
 
   const startSession = async () => {
     try {
