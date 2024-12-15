@@ -90,13 +90,18 @@ const PomodoroApp = () => {
     }
   };
 
+ 
+  
   const pauseSession = () => {
-    setIsPaused(true); 
+    setIsPaused(true);
     // Release wake lock on pause
     if (wakeLock) {
       wakeLock.release();
       setWakeLock(null);
     }
+  
+    // Clear session data from localStorage when paused
+    localStorage.removeItem('pomodoroTimer');
   };
 
   const resumeSession = async () => {
@@ -124,13 +129,16 @@ const PomodoroApp = () => {
       setSessionId(null);
       setIsRunning(false);
       setIsPaused(false); 
-
+  
+      // Clear session data from localStorage
+      localStorage.removeItem('pomodoroTimer');
+      
       // Release wake lock on session end
       if (wakeLock) {
         wakeLock.release();
         setWakeLock(null);
       }
-      
+  
       sound.play();
     } catch (error) {
       console.error('Error ending session:', error.response.data.message);
@@ -150,6 +158,36 @@ const PomodoroApp = () => {
     localStorage.setItem('timerLength', newTimerLength);
     localStorage.setItem('breakLength', newBreakLength);
   };
+
+  useEffect(() => {
+    if (isRunning) {
+      localStorage.setItem('pomodoroTimer', JSON.stringify({
+        timer,
+        isRunning,
+        isStudyTime,
+        startTime: startTime || new Date().toISOString(),
+      }));
+    }
+  }, [timer, isRunning, isStudyTime, startTime]);
+
+  
+  useEffect(() => {
+    const savedTimerData = JSON.parse(localStorage.getItem('pomodoroTimer'));
+    if (savedTimerData) {
+      const { timer, isRunning, isStudyTime, startTime } = savedTimerData;
+      const elapsed = Math.floor((new Date() - new Date(startTime)) / 1000);
+      const remainingTime = Math.max(timer - elapsed, 0);
+      setTimer(remainingTime);
+      setIsRunning(isRunning);
+      setIsStudyTime(isStudyTime);
+  
+      if (remainingTime === 0 && isRunning) {
+        sound.play();
+        setIsRunning(false);
+      }
+    }
+  }, []);
+
 
   return (
     <div className={`home__pomodoro__new ${theme}__Pomodoro__new`}>
