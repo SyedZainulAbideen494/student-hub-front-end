@@ -888,13 +888,13 @@
 /* Input Fields */
 .modal-input__magic__modal__ai__page {
   width: 86%;
-  padding: 14px 20px;
-  border: 1px solid #e2e8f0; /* Light gray border */
-  border-radius: 12px; /* Rounded corners */
+  padding: 10px 20px;
+  border: 1px solid #333; /* Light gray border */
+  border-radius: 17px; /* Rounded corners */
   font-size: 16px;
   font-weight: 400;
   color: #333;
-  background-color: #f7f8fa; /* Soft light background */
+  background-color: #ffffff; /* Soft light background */
   transition: all 0.3s ease-out;
   margin-bottom: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
