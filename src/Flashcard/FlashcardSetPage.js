@@ -312,7 +312,7 @@ if (loading) {
 }
 
   return (
-    <div className="flashcard__set__page">
+    <div className="flashcard__set__page" style={{marginBottom: '100px'}}>
 <div className="flashcard__set__page__header">
     <div className="flashcard__set__page__header__top">
         <button className="flashcard__set__page__back-button" onClick={handleBack}>
