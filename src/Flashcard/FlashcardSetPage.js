@@ -212,6 +212,13 @@ const FlashcardSetPage = () => {
     }
   };
 
+  const handleShowFirstFlashcardSwipe = () => {
+    if (flashcards.length > 0) {
+      const firstFlashcard = flashcards[0];
+      nav(`/swipe/flashcard/card/view/${firstFlashcard.id}/${params.id}`); // Navigate to first flashcard
+    }
+  };
+
 
 // Example function to delete a flashcard
 const deleteFlashcard = async (flashcardId) => {
@@ -515,8 +522,11 @@ if (loading) {
       </div>
     {/* Fixed Footer */}
 <footer className="flashcard__set__page__footer">
+  <button className="flashcard__set__page__start-learning-btn" onClick={handleShowFirstFlashcardSwipe}>
+    Swipe
+  </button>
   <button className="flashcard__set__page__start-learning-btn" onClick={handleShowFirstFlashcard}>
-    Start Learning
+    Active recall
   </button>
 </footer>
 
