@@ -202,6 +202,16 @@
   box-sizing: border-box; /* Ensure padding is included in the width calculation */
 }
 
+/* Media query for larger screens */
+@media (min-width: 440px) {
+  .messageBox__ai__loader__light {
+    left: 50%;  /* Center the container */
+    right: auto; /* Remove right margin */
+    transform: translateX(-50%); /* Offset the container to center it */
+    width: 400px; /* Set a fixed width for larger screens */
+  }
+}
+
 /* Floating animation for a smooth hover effect */
 .messageBox__ai__loader__light:hover {
   transform: translateY(-5px);
