@@ -94,7 +94,7 @@
 /* General Modal Styling */
 .flashcard__set__page__modal {
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
     right: 0;
     background-color: #f9f9f9; /* Light background for better contrast */
@@ -104,8 +104,43 @@
     border-top-right-radius: 25px;
     transform: translateY(100%); /* Initially hidden */
     transition: transform 0.3s ease-in-out, background-color 0.3s ease;
-    z-index: 1000; /* Ensure it's always on top */
+    z-index: 10000; /* Ensure it's always on top */
 }
+
+.flashcard__set__page__modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.flashcard__set__page__modal-btn {
+  padding: 10px 10px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.flashcard__set__page__modal-btn:hover {
+  background-color: #ddd;
+}
+
+.flashcard__set__page__modal-btn.active {
+  background-color: #000000;  /* Active state color (blue) */
+  color: #fff;
+  border-color: #007bff;
+}
+
+.flashcard__set__page__modal-btn:focus {
+  outline: none;
+}
+
 
 /* Centering the modal content */
 .flashcard__set__page__modal-content {
@@ -553,7 +588,7 @@
     padding: 10px; /* Padding for input */
     margin-bottom: 15px; /* Space between inputs */
     border: 1px solid #ccc; /* Light gray border */
-    border-radius: 25px; /* Slightly rounded corners */
+    border-radius: 15px; /* Slightly rounded corners */
     font-size: 16px; /* Font size for input text */
     transition: border-color 0.3s; /* Transition for border color on focus */
   }

@@ -36,13 +36,63 @@ const FlashcardSetPage = () => {
   const [manualAnswer, setManualAnswer] = useState('');
   const [menuVisible, setMenuVisible] = useState({});
   const [statusFilter, setStatusFilter] = useState(''); // 'I Know', 'I Don't Know', or ''
-
+  const [aiSubject, setAiSubject] = useState('');  // For subject
+  const [aiTopic, setAiTopic] = useState('');      // For topic
+  const [selectedOption, setSelectedOption] = useState('ai'); // default value can be '' or any initial option
+  const [pdfFile, setPdfFile] = useState(null); // To store the selected PDF file
+ 
   const toggleMenu = (id) => {
     setMenuVisible((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      setPdfFile(file);
+    } else {
+      alert('Please upload a valid PDF file');
+    }
+  };
+
+  const generateFlashcardsFromPDF = async () => {
+    if (!pdfFile) {
+      alert('Please upload a PDF file first');
+      return;
+    }
+  
+    setIsGenerating(true);
+  
+    const formData = new FormData();
+    formData.append('pdf', pdfFile);
+    formData.append('set_id', params.id); // Assuming 'id' is a variable holding the set_id value
+  
+    try {
+      // Send the file to the backend API to generate flashcards
+      const response = await axios.post(API_ROUTES.generateFlashcardsFromPdfFromSet, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming you store token in local storage
+        },
+      });
+  
+      // Handle the response (flashcard set ID and generated flashcards)
+      const { flashcardSetId, flashcards } = response.data;
+      console.log('Flashcards generated:', flashcards);
+      console.log('Flashcard Set ID:', flashcardSetId);
+  
+      // Refresh the page after successful flashcard generation
+      window.location.reload(); // This will reload the current page
+    } catch (error) {
+      console.error('Error generating flashcards:', error);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+  
+
   
   
   useEffect(() => {
@@ -129,12 +179,19 @@ const FlashcardSetPage = () => {
   const generateFlashcards = async () => {
     setIsGenerating(true); // Start generating
     try {
+      // Prepare request body including subject and topic from user input
+      const requestData = {
+        set_id: id,
+        subject: aiSubject,  // User-input subject for AI
+        topic: aiTopic,      // User-input topic for AI
+      };
+  
       const response = await fetch(API_ROUTES.generateFlashcards, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ set_id: id }),
+        body: JSON.stringify(requestData), // Send subject and topic in request
       });
   
       // Check if the response is ok
@@ -408,7 +465,10 @@ if (loading) {
        </div>
        
         ) : (
-          filteredFlashcards.map((flashcard) => (
+          filteredFlashcards
+          .slice() // Create a copy of the array to avoid mutating the original array
+          .reverse() // Reverse the copied array
+          .map((flashcard) => (
             <div key={flashcard.id} className="flashcard__set__page__flashcard">
             {/* Question and Options (Three Dots) */}
             <div>
@@ -459,68 +519,145 @@ if (loading) {
       {/* + Button */}
       <button className="flashcard__set__page__add-btn" onClick={toggleModal}>+</button>
     
-      {/* Modal */}
-      <div className={`flashcard__set__page__modal ${modalVisible ? 'flashcard__set__page__modal-active' : ''}`}>
-        <div className="flashcard__set__page__modal-header">
-          <h3 className="flashcard__set__page__modal-title">Create Flashcards</h3>
-          <button className="flashcard__set__page__modal-close" onClick={toggleModal}>
-            <i className="fas fa-times"></i>
-          </button>
-        </div>
-    
-        <div className="flashcard__set__page__modal-content" >
-        <button
-  className="flashcard__set__page__modal-generate btn__set__page__buttons"
-  onClick={generateFlashcards}
-  disabled={isGenerating}
->
-  <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
-    <svg
-      height="24"
-      width="24"
-      fill="#FFFFFF"
-      viewBox="0 0 24 24"
-      data-name="Layer 1"
-      id="Layer_1"
-      className="sparkle__set__page__buttons"
-    >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-    <span className="text__set__page__buttons">
-      {isGenerating ? 'Generating...' : 'Generate using AI'}
-    </span>
-  </div>
-</button>
 
-    
-          {/* Manual Flashcard Creation Form */}
-          <div className="manual-flashcard-creation__manual__flashcard__form">
-            <h4>Create Manually</h4>
-            <input 
-              type="text" 
-              placeholder="Question" 
-              value={manualQuestion} 
-              onChange={(e) => setManualQuestion(e.target.value)} 
-              className="flashcard-input__manual__flashcard__form" 
-            />
-            <input 
-              type="text" 
-              placeholder="Answer" 
-              value={manualAnswer} 
-              onChange={(e) => setManualAnswer(e.target.value)} 
-              className="flashcard-input__manual__flashcard__form" 
-            />
-            <button 
-              className="flashcard__set__page__manual-create__manual__flashcard__form" 
-              onClick={createManualFlashcard}
-              disabled={!manualQuestion || !manualAnswer}
+     {/* Modal */}
+<div className={`flashcard__set__page__modal ${modalVisible ? 'flashcard__set__page__modal-active' : ''}`}>
+  <div className="flashcard__set__page__modal-header">
+    <h3 className="flashcard__set__page__modal-title">Create Flashcards</h3>
+    <button className="flashcard__set__page__modal-close" onClick={toggleModal}>
+      <i className="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div className="flashcard__set__page__modal-content">
+    {/* Button selection for Manual, AI, and PDF */}
+    <div className="flashcard__set__page__modal-buttons">
+      <button
+        className={`flashcard__set__page__modal-btn ${selectedOption === 'manual' ? 'active' : ''}`}
+        onClick={() => setSelectedOption('manual')}
+      >
+        Manual
+      </button>
+      <button
+        className={`flashcard__set__page__modal-btn ${selectedOption === 'ai' ? 'active' : ''}`}
+        onClick={() => setSelectedOption('ai')}
+      >
+        AI
+      </button>
+      <button
+        className={`flashcard__set__page__modal-btn ${selectedOption === 'pdf' ? 'active' : ''}`}
+        onClick={() => setSelectedOption('pdf')}
+      >
+        PDF
+      </button>
+    </div>
+
+    {/* AI Option */}
+    {selectedOption === 'ai' && (
+      <div>
+        <input
+          type="text"
+          placeholder="Subject"
+          value={aiSubject}
+          onChange={(e) => setAiSubject(e.target.value)}
+          className="flashcard-input__manual__flashcard__form"
+        />
+        <input
+          type="text"
+          placeholder="Topic"
+          value={aiTopic}
+          onChange={(e) => setAiTopic(e.target.value)}
+          className="flashcard-input__manual__flashcard__form"
+        />
+        <button
+          className="flashcard__set__page__modal-generate btn__set__page__buttons"
+          onClick={generateFlashcards}
+          disabled={isGenerating || !aiSubject || !aiTopic}
+        >
+          <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+            <svg
+              height="24"
+              width="24"
+              fill="#FFFFFF"
+              viewBox="0 0 24 24"
+              data-name="Layer 1"
+              id="Layer_1"
+              className="sparkle__set__page__buttons"
             >
-              Create Flashcard
-            </button>
+              <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+            </svg>
+            <span className="text__set__page__buttons">
+              {isGenerating ? 'Generating...' : 'Generate using AI'}
+            </span>
           </div>
-        </div>
+        </button>
       </div>
-    {/* Fixed Footer */}
+    )}
+
+    {/* Manual Flashcard Creation Form */}
+    {selectedOption === 'manual' && (
+      <div className="manual-flashcard-creation__manual__flashcard__form">
+        <h4>Create Manually</h4>
+        <input
+          type="text"
+          placeholder="Question"
+          value={manualQuestion}
+          onChange={(e) => setManualQuestion(e.target.value)}
+          className="flashcard-input__manual__flashcard__form"
+        />
+        <input
+          type="text"
+          placeholder="Answer"
+          value={manualAnswer}
+          onChange={(e) => setManualAnswer(e.target.value)}
+          className="flashcard-input__manual__flashcard__form"
+        />
+        <button
+          className="flashcard__set__page__manual-create__manual__flashcard__form"
+          onClick={createManualFlashcard}
+          disabled={!manualQuestion || !manualAnswer}
+        >
+          Create Flashcard
+        </button>
+      </div>
+    )}
+    {/* PDF Option */}
+{selectedOption === 'pdf' && (
+  <div>
+    <input
+      type="file"
+      accept=".pdf"
+      onChange={handleFileChange}
+      className="flashcard-input__manual__flashcard__form"
+    />
+    <button
+      className="flashcard__set__page__modal-generate btn__set__page__buttons"
+      onClick={generateFlashcardsFromPDF}
+      disabled={isGenerating || !pdfFile}
+    >
+      <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+        <svg
+          height="24"
+          width="24"
+          fill="#FFFFFF"
+          viewBox="0 0 24 24"
+          data-name="Layer 1"
+          id="Layer_1"
+          className="sparkle__set__page__buttons"
+        >
+          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+        </svg>
+        <span className="text__set__page__buttons">
+          {isGenerating ? 'Generating...' : 'Generate from PDF'}
+        </span>
+      </div>
+    </button>
+  </div>
+)}
+  </div>
+</div>
+
+
 <footer className="flashcard__set__page__footer">
   <button className="flashcard__set__page__start-learning-btn" onClick={handleShowFirstFlashcardSwipe}>
     Swipe
