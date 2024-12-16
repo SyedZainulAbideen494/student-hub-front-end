@@ -212,11 +212,7 @@
   }
 }
 
-/* Floating animation for a smooth hover effect */
-.messageBox__ai__loader__light:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.2);
-}
+
 
 /* Adjust input field size to take up space */
 .input-group__ai__loader__light {
