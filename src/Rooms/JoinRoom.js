@@ -80,7 +80,7 @@ const JoinRoom = () => {
 
   const handleDownloadClick = () => {
     // Navigate to the app store or provide installation instructions
-    window.location.href = "https://edusify.vercel.app/android/download"; // Replace with actual link
+    window.location.href = "https://edusify-download.vercel.app/get-app"; // Replace with actual link
   };
 
   return (
