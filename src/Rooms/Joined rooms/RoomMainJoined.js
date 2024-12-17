@@ -37,7 +37,7 @@ const RoomMainPageJoined = () => {
   const handleTabChange = (tab) => {
     if (tab === "activity") {
       navigate(`/room/activity/${roomId}`);
-    } else if (tab === "Resources") {
+    } else if (tab === "resources") {
       navigate(`/room/resources/${roomId}`);
     } else if (tab === "Updates") {
       navigate(`/room/updates/${roomId}`);
