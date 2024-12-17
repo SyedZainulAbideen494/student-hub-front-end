@@ -119,6 +119,7 @@ import WordScrambleGame from "./Games/wordScramble";
 import PlayGame from "./Games/PlayGame";
 import SwipeFlashcardViewPage from "./Flashcard/swipeCardView";
 import ImageToText from "./notifications/txt-img";
+import DownloadPageComplete from "./docs/complete-download-page";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -232,6 +233,7 @@ const router = createBrowserRouter([
   {path: '/word-scramble/:gameId', element: <PlayGame/>},
   {path: '/swipe/flashcard/card/view/:id/:setId', element: <SwipeFlashcardViewPage/>},
   {path: '/image-text', element: <ImageToText/>},
+  {path: '/download-app', element: <DownloadPageComplete/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

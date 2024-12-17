@@ -162,5 +162,6 @@ export const API_ROUTES = {
   getRoomTasks: `${API_URL}/api/room_tasks/get`,
   addRoomTasks: `${API_URL}/api/room_tasks/add`,
   deleteRoomTasks: `${API_URL}/api/room_tasks/delete`,
-  generateFlashcardsFromPdfFromSet: `${API_URL}/api/flashcards/upload/set-created`
+  generateFlashcardsFromPdfFromSet: `${API_URL}/api/flashcards/upload/set-created`,
+  apiLogDownload: `${API_URL}/api/log-download`
 }

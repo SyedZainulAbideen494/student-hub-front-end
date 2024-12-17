@@ -1,0 +1,142 @@
+/* Download Page Styling */
+.download__page__complte__download__page {
+    background-color: #fcfcfc; /* Light background color */
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .download-page-back-btn__complte__download__page {
+    background-color: transparent; /* Green background */
+    color: rgb(0, 0, 0); /* White color for the icon */
+    border: none; /* No border */
+    border-radius: 50%; /* Circular button */
+    padding: 10px 15px; /* Padding for the button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem; /* Font size for the icon */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions for color and scaling */
+  }
+  
+  
+  .download-page-back-btn__complte__download__page svg {
+    margin: 0; /* Remove default margin from the icon */
+  }
+  
+  
+  .download__container__complte__download__page {
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .download__header__complte__download__page {
+    margin-bottom: 30px;
+  }
+  
+  .download__heading__complte__download__page {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2563eb; /* Blue for heading */
+    margin-bottom: 10px;
+  }
+  
+  .download__subheading__complte__download__page {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+  
+  /* Download Options */
+  .download__options__complte__download__page {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Remove underlines from links */
+  .download__link__complte__download__page {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Individual Download Option */
+  .download__option__complte__download__page {
+    width: 260px;
+    margin-bottom: 30px;
+  }
+  
+  /* Download Card */
+  .download__card__complte__download__page {
+    background: linear-gradient(135deg, #3b82f6, #2563eb); /* Gradient Background */
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .download__card__complte__download__page:hover {
+    transform: scale(1.05);
+  }
+  
+  .download__icon__complte__download__page {
+    width: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .download__platform__complte__download__page {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .download__description__complte__download__page {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+  }
+  
+  .download__btn__complte__download__page {
+    background-color: white;
+    color: #2563eb;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .download__btn__complte__download__page:hover {
+    background-color: #2563eb;
+    color: white;
+    box-shadow: 0px 8px 15px rgba(37, 99, 235, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .download__btn__complte__download__page:active {
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .download__options__complte__download__page {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .download__option__complte__download__page {
+      width: 100%;
+    }
+  }
+  
