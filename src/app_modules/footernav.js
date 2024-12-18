@@ -80,7 +80,7 @@ const FooterNav = () => {
 <Link to='/planner' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
                     <HiBookOpen className="icon-footer-nav" />
-                    <span className="btn-label">Planner</span>
+                    <span className="btn-label">to-do list</span>
                 </button>
             </Link>
             <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
