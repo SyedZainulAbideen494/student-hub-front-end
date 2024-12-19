@@ -157,6 +157,7 @@ const [pdfFile, setPdfFile] = useState(null);
       const formattedResponse = formatContent(response.data.response);
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
       setMessage('');
+      setPdfFile(null)
     } catch (error) {
       setChatHistory([
         ...newHistory,
@@ -170,6 +171,7 @@ const [pdfFile, setPdfFile] = useState(null);
         },
       ]);
       console.error('Error sending message:', error);
+      setPdfFile(null)
     } finally {
       setLoading(false);
     }
