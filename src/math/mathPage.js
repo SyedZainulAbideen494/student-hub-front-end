@@ -585,7 +585,7 @@ useEffect(() => {
           style={{ display: "none" }}
           id="pdf-upload"
         />
-        <label htmlFor="pdf-upload" className="pdf-upload-label">
+        <label htmlFor="pdf-upload" className="pdf-upload-label" style={{fontSize: '12px'}}>
           Attach PDF
         </label>
       </div>
