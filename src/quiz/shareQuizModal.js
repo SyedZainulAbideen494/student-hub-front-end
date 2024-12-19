@@ -53,7 +53,7 @@ const ShareQuizModal = ({ quiz, onClose }) => {
     const filteredRooms = rooms.filter(room => room.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     const handleShareWhatsApp = () => {
-        const link = `${window.location.origin}/quizzes/${quizId}`;
+        const link = `${window.location.origin}/quiz/${quizId}`;
         const message = `Check out this quiz: ${link}`;
         window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
     };
