@@ -208,7 +208,7 @@ const FlashcardSetPage = () => {
       setTimeout(() => {
         setSuccessMessage('');
         window.location.reload(); // Refresh the page
-      }, 2000);
+      }, 50);
     } catch (error) {
       console.error('Error occurred:', error); // Log the error for debugging
       // Optionally, show an error message to the user here
