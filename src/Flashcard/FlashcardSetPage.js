@@ -40,7 +40,8 @@ const FlashcardSetPage = () => {
   const [aiTopic, setAiTopic] = useState('');      // For topic
   const [selectedOption, setSelectedOption] = useState('ai'); // default value can be '' or any initial option
   const [pdfFile, setPdfFile] = useState(null); // To store the selected PDF file
- 
+  const [errorMessage, setErrorMessage] = useState(''); // State for error message
+
   const toggleMenu = (id) => {
     setMenuVisible((prev) => ({
       ...prev,
@@ -211,7 +212,7 @@ const FlashcardSetPage = () => {
       }, 50);
     } catch (error) {
       console.error('Error occurred:', error); // Log the error for debugging
-      // Optionally, show an error message to the user here
+      setErrorMessage('Failed to generate flashcards. Please try again.')
     } finally {
       setIsGenerating(false); // End generating
     }
@@ -652,6 +653,11 @@ if (loading) {
         </span>
       </div>
     </button>
+    {errorMessage && (
+      <div className="error-message">
+        <p>{errorMessage}</p>
+      </div>
+    )}
   </div>
 )}
   </div>
