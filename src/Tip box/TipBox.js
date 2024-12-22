@@ -13,51 +13,52 @@ const TipBox = () => {
   // Store the tips for each category
   const tips = {
     peerComparison: [
-      "85% of Edusify users finished tasks today! The other 15%? Probably in a ‘meeting’ with their pillows.",
-      "The top students today are already 3 tasks ahead. Meanwhile, you’re still deciding if it’s a tea day or a coffee day.",
-      "Fun Fact: Productivity robots disguised as students finish tasks before breakfast. Humans like us? We need two cups of coffee first.",
-      "Almost 90% of users crushed it today. Don’t worry if you’re late to the party. Start now, and end the day with a mic drop!",
-      "Top users already completed 5 tasks. What about you? Still negotiating with your alarm clock?",
-      "Some users are task-destroying machines. But hey, slow and steady can still beat procrastination. Start small!",
-      "Procrastinators are simply perfectionists in disguise. But remember, done is better than perfect. Get cracking!",
-      "Think you’re busy? Someone out there is nailing tasks *and* beating their high score in Candy Crush. No excuses now!"
+      "Today, 85% of Edusify users are on top of their game, while the other 15% are probably arguing with their alarm clocks.",
+      "The top students today are already 3 tasks ahead. Meanwhile, you’re deciding whether your brain needs a nap or a coffee.",
+      "Did you know? Some students crush tasks before breakfast. The rest of us? We’re still figuring out how to make it through the morning.",
+      "Almost 90% of users are crushing it today. It’s not too late to start—jump in and end the day feeling unstoppable!",
+      "Top users have already knocked out 5 tasks. What’s your excuse? Still snoozing or scrolling?",
+      "Some users seem to have mastered productivity. But hey, even small steps are progress. Start now, and you’ll catch up!",
+      "Procrastinators are just perfectionists trying to avoid failure. But remember—done is better than perfect. Start small!",
+      "Think you’re too busy? Someone else is getting work done *and* making time for a quick game. No more excuses!"
     ],
     quickTask: [
-      "Got 5 minutes? Knock out that tiny task lurking in the corner of your to-do list. Future You will thank you!",
-      "Short breaks = small wins. Use this one to organize a note or review one flashcard. Boom, instant productivity!",
-      "That annoying little task? It’s begging to be done. Do it now, and bask in the glory of ticking it off.",
-      "Feeling meh? A 5-minute burst of effort can turn you into a productivity ninja. Chop that task!",
-      "Your notes are like plants—they need regular care. Spend 5 minutes tending them, and watch your knowledge grow.",
-      "Tiny tasks are like snacks: easy to handle and surprisingly satisfying. Tackle one now and reward yourself with a cookie.",
-      "Even superheroes start small. Complete a quick task, and you’re one step closer to saving the (academic) world.",
-      "Think you can’t focus? Start with one flashcard. Just one. Then watch yourself magically tackle three more!"
+      "Got 5 minutes to spare? That tiny task on your to-do list won’t tackle itself. Go for it—your future self will thank you!",
+      "Short breaks = small wins. Organize a note or go through a flashcard. It’s like a productivity power-up.",
+      "That tiny task you keep ignoring? It’s time to crush it. You’ll feel great ticking it off!",
+      "Feeling sluggish? A quick 5-minute push can turn you into a productivity powerhouse. Take that task down!",
+      "Your notes need love too. Spend 5 minutes updating them, and you’ll see that knowledge blossom.",
+      "Tiny tasks are like quick wins: easy, satisfying, and rewarding. Tackle one now and enjoy a treat afterward.",
+      "Even superheroes need a starting point. Finish a small task, and you’re on your way to academic greatness.",
+      "Think you’re distracted? Focus on just one flashcard first. Get started, and the rest will follow!"
     ],
     interactiveTip: [
-      "The AI Assistant is your personal genius-on-call. While it works, you can sip your coffee and nod wisely.",
-      "Procrastinating? Let the AI Assistant handle the heavy lifting. It’s like having a super-smart study buddy who never complains.",
-      "Stuck? The AI Assistant has your back. Just ask, and it’ll whip up notes, plans, or even genius-level excuses.",
-      "Late-night study sesh? The AI Assistant doesn’t sleep, judge, or steal your snacks. Use it and feel like a pro.",
-      "Why struggle with notes when AI can do it faster than you can scroll through Instagram? Try it—you’ll love it!"
+      "Need help? The AI Assistant is your personal study genius. It’s like having a tutor on call while you sip your coffee.",
+      "Procrastinating? Let the AI Assistant do the hard work. It's your tireless, super-smart study buddy.",
+      "Stuck on a topic? The AI Assistant has your back. Ask it for notes, plans, or even study tricks.",
+      "Late-night study grind? The AI Assistant is your 24/7 support—no sleep, no judgment, just results.",
+      "Why spend hours making notes when the AI Assistant can do it in seconds? Try it, and get ahead effortlessly!"
     ],
     featureDiscovery: [
-      "Did you know? The Document Locker is like Fort Knox for your files. Secure, stylish, and zero drama.",
-      "Feeling disorganized? The Calendar’s here to save the day. Add your dates and pretend you’ve always had it together.",
-      "Pomodoro Timer: Work hard for 25 minutes, then break like a champ. It’s productivity with built-in guilt-free breaks.",
-      "New Feature Alert: Our Document Locker is the VIP lounge for your important files. Keep them safe and sound.",
-      "The Pomodoro Timer isn’t just a tool—it’s a lifestyle. Use it, and you’ll look so productive even your cat will be impressed."
+      "Did you know? The Document Locker is your personal vault for important files. Secure, easy-to-use, and always there when you need it.",
+      "Feeling disorganized? Let the Calendar come to the rescue. Add dates, stay on track, and feel like a productivity pro.",
+      "The Pomodoro Timer: Work for 25 minutes, then take a break. It’s the perfect system for boosting focus and preventing burnout.",
+      "New Feature Alert: Keep your important files safe with the Document Locker—like a digital safe for your notes.",
+      "The Pomodoro Timer isn’t just a tool; it’s your secret weapon for productivity. Focus, break, repeat, and win!"
     ],
     additionalFunTips: [
-      "Looking for a study buddy who doesn’t hog the spotlight? The AI Assistant is here and always in a good mood.",
-      "Exam stress? Let the AI Assistant take the wheel while you stress-eat snacks like a pro.",
-      "Pomodoro hack: Focus like a laser for 25 minutes, then relax like a potato for 5. It’s the perfect balance.",
-      "Overwhelmed? Pomodoro breaks = mini vacations for your brain. Take one. Your neurons will cheer!",
-      "Feel like giving up? Just remember: Even a 10-minute study session can turn chaos into clarity. You got this!",
-      "Fun Fact: The AI Assistant can save hours of your life. Use it wisely, and maybe even take a nap afterward!"
+      "Need a study buddy who doesn’t steal the spotlight? The AI Assistant is always there to help, no drama.",
+      "Feeling stressed about exams? Let the AI Assistant guide you while you snack your way through the anxiety.",
+      "Pomodoro hack: Focus like a machine for 25 minutes, then relax like a king for 5. Work hard, break harder.",
+      "Feeling overwhelmed? Pomodoro breaks are like mini-vacations for your brain. Take one—you deserve it!",
+      "Not feeling it? Remember: even a 10-minute study burst can make a huge difference. You’ve got this!",
+      "Fun fact: The AI Assistant can save you hours. Use it wisely, and you’ll even have time to nap afterward!"
     ],
     founderTips: [
-    
-    ]    
+      // Add your own tips here based on your experiences or personal insights!
+    ]
   };
+  
   
   
 
