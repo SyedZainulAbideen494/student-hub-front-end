@@ -49,7 +49,7 @@ export const API_ROUTES = {
   handleLikeEduscribes: `${API_URL}/api/eduscribes/like`,
   fetchEducribeComments: `${API_URL}/api/eduscribes/comments`,
   addEduscribeComment: `${API_URL}/api/eduscribes/comment/add`,
-  profileView: `${API_URL}/api/profile/view/guest`,
+  profileView: `${API_URL}/user-profile`,
   profileItems: `${API_URL}/api/user/profile/items`,
   addEduscribe: `${API_URL}/api/add/eduscribes`,
   unfollow: `${API_URL}/api/unfollow`,

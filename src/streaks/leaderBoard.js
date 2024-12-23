@@ -153,6 +153,10 @@ const Leaderboard = () => {
     );
 };
 
+const handleProfileClick = (userId) => {
+  nav(`/profile/${userId}`);
+};
+
   return (
 <div className="leaderboard__page__container">
   {/* Header Section */}
@@ -206,7 +210,7 @@ const Leaderboard = () => {
                         index === 2 ? 'bronze-bg__leaderboard__page' : '';
 
         return (
-          <div key={user.id} className={`user-card__leaderboard__page ${bgClass}`}>
+          <div key={user.id} className={`user-card__leaderboard__page ${bgClass}`} onClick={() => handleProfileClick(user.id)}>
             <span className="position__leaderboard__page">{index + 1}</span>
             <img
               src={`${API_ROUTES.displayImg}/${user.avatar}` || 'default-avatar-url'}
