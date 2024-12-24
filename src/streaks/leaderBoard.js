@@ -229,7 +229,36 @@ const handleProfileClick = (userId) => {
         );
       })}
     </div>
-    <InstructionsModal isOpen={showInstructions} onClose={() => setShowInstructions(false)} />
+    <div className="more-users__suggested__page">
+  <h2 className="suggested-title__page">Suggested for You</h2>
+  <div className="scroll-container__suggested__page">
+    {leaderboardData
+      .slice(10)
+      .filter(user => user.points > 40)
+      .sort(() => Math.random() - 0.5)
+      .map((user) => (
+        <div
+          key={user.id}
+          className="suggested-card__page"
+          onClick={() => handleProfileClick(user.id)}
+        >
+          <img
+            src={`${API_ROUTES.displayImg}/${user.avatar}` || 'default-avatar-url'}
+            alt={user.username}
+            className="avatar__suggested__page"
+          />
+          <div className="user-details__suggested__page">
+            <span className="username__suggested__page">
+              {user.unique_id.length > 15 ? `${user.unique_id.slice(0, 12)}...` : user.unique_id}
+            </span>
+            <span className="points__suggested__page">{user.points} pts</span>
+          </div>
+          <button className="view-btn__suggested__page">View</button>
+        </div>
+      ))}
+  </div>
+</div>
+   <InstructionsModal isOpen={showInstructions} onClose={() => setShowInstructions(false)} />
   </div>
 </div>
 

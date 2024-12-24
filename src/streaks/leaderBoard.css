@@ -310,3 +310,91 @@
     }
   }
   
+
+  .more-users__suggested__page {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .suggested-title__page {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .scroll-container__suggested__page {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px 5px;
+    scrollbar-width: none;
+  }
+  
+  .scroll-container__suggested__page::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .suggested-card__page {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    min-width: 100px;
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  
+  .avatar__suggested__page {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #eaeaea;
+  }
+  
+  .user-details__suggested__page {
+    text-align: center;
+    color: #555;
+  }
+  
+  .username__suggested__page {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .points__suggested__page {
+    font-size: 0.75rem;
+    color: #888;
+  }
+  
+  .view-btn__suggested__page {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  
+  .view-btn__suggested__page:hover {
+    background-color: #0056b3;
+  }
+  
