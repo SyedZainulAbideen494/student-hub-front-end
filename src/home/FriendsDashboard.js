@@ -225,7 +225,9 @@ const FriendWidgetDashboard = () => {
  <button className="friend__widget__dashboard__btn-inline" onClick={() => shareProfile()}>
     Share My Profile
   </button>
+
       </div>
+      <span className="friend__widget__intrct">Share your profile to be added as a friend</span>
     </div>
   );
 };

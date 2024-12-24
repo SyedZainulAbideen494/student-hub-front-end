@@ -150,3 +150,14 @@
 .friend__widget__dashboard__buttons button:hover {
     background-color: #357ABD; /* Darker on hover */
 }
+
+.friend__widget__intrct {
+    font-size: 14px; /* Small text size */
+    color: gray; /* Gray text color */
+    text-align: center; /* Center the text */
+    display: block; /* Make the span behave like a block-level element */
+    margin-top: 10px; /* Add spacing above */
+    margin-bottom: 10px; /* Add spacing below */
+    font-family: Arial, sans-serif; /* Optional: Add a clean font */
+  }
+  
