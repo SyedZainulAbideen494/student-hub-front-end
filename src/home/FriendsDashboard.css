@@ -120,7 +120,7 @@
     border: 2px solid #4a90e2; /* Border to make it look like a floating button */
     padding: 12px 25px; /* Increased padding for a more comfortable button size */
     font-size: 16px; /* Slightly larger text */
-    border-radius: 12px;
+    border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease; /* Added scale transition */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Light shadow for depth */
