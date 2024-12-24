@@ -180,44 +180,54 @@ const FriendWidgetDashboard = () => {
   <div className="friend__widget__dashboard__list">
     <h3>Pending Friend Requests</h3>
     {friendRequests.map((request) => (
-      <div key={request.id} className="friend__widget__dashboard__item"    onClick={() => goToProfile(request.sender_id)}>
+      <div key={request.id} className="friend__widget__dashboard__item" onClick={() => goToProfile(request.sender_id)}>
         <img
           className="friend__widget__dashboard__avatar"
           src={`${API_ROUTES.displayImg}/${request.sender_avatar}` || 'default-avatar-url'}
         />
         <div className="friend__widget__dashboard__info">
-          <span className="friend__widget__dashboard__username">{request.sender_unique_id}</span>
+          <span className="friend__widget__dashboard__username">
+            {request.sender_unique_id.length > 6
+              ? `${request.sender_unique_id.substring(0, 6)}...`
+              : request.sender_unique_id}
+          </span>
         </div>
         <div className="friend__widget__dashboard__buttons">
-      <button onClick={() => handleRequestAction('accept', request)}>Accept</button>
-      <button onClick={() => handleRequestAction('decline', request)}>Decline</button>
-    </div>
+          <button onClick={() => handleRequestAction('accept', request)}>Accept</button>
+          <button onClick={() => handleRequestAction('decline', request)}>Decline</button>
+        </div>
       </div>
     ))}
   </div>
 )}
 
 
-      {activeTab === 'friends' && (
-        <div className="friend__widget__dashboard__list">
-          <h3>Friends</h3>
-          {friends.length > 0 ? (
-            friends.map((friend) => (
-              <div key={friend.id} className="friend__widget__dashboard__item"    onClick={() => goToProfile(friend.id)}>
-                <img
-                  className="friend__widget__dashboard__avatar"
-                  src={`${API_ROUTES.displayImg}/${friend.avatar}` || 'default-avatar-url'}
-                />
-                <div className="friend__widget__dashboard__info">
-                  <span className="friend__widget__dashboard__username">{friend.uniqueId}</span>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div>No friends yet</div>
-          )}
+
+{activeTab === 'friends' && (
+  <div className="friend__widget__dashboard__list">
+    <h3>Friends</h3>
+    {friends.length > 0 ? (
+      friends.map((friend) => (
+        <div key={friend.id} className="friend__widget__dashboard__item" onClick={() => goToProfile(friend.id)}>
+          <img
+            className="friend__widget__dashboard__avatar"
+            src={`${API_ROUTES.displayImg}/${friend.avatar}` || 'default-avatar-url'}
+          />
+          <div className="friend__widget__dashboard__info">
+            <span className="friend__widget__dashboard__username">
+              {friend.uniqueId.length > 17
+                ? `${friend.uniqueId.substring(0, 17)}...`
+                : friend.uniqueId}
+            </span>
+          </div>
         </div>
-      )}
+      ))
+    ) : (
+      <div>No friends yet</div>
+    )}
+  </div>
+)}
+
 
       {/* Footer */}
       <div className="friend__widget__dashboard__footer">
