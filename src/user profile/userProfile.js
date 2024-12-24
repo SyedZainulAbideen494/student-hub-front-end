@@ -140,7 +140,7 @@ const UserProfile = () => {
         ) : requestStatus === 'pending' ? (
           <span>Request Sent</span>
         ) : requestStatus === 'accepted' ? (
-          <span>Friend Added</span>
+          <span>Friend</span>
         ) : null}
       </div>
 
