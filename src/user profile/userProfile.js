@@ -88,7 +88,7 @@ const UserProfile = () => {
   };
 
   const handleBack = () => {
-    nav(-1);
+    nav('/');
   };
 
   const handleAddFriend = async () => {
