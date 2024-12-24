@@ -19,33 +19,26 @@
 
 .friend__widget__dashboard__header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Stack the title and tabs */
+    align-items: flex-start; /* Align to the left */
     margin-bottom: 20px;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 15px;
-}
-
-.friend__widget__dashboard__title {
+  }
+  
+  .friend__widget__dashboard__title {
     font-size: 22px;
     font-weight: 600;
     color: #333;
-    margin: 0;
-}
-
-.friend__widget__dashboard__tabs {
+    margin-bottom: 10px; /* Add spacing between title and tabs */
+  }
+  
+  .friend__widget__dashboard__tabs {
     display: flex;
-    margin-top: 20px;
-}
-
-.friend__widget__dashboard__tab {
-    font-size: 16px;
-    font-weight: 600;
-    margin-right: 20px;
-    padding-bottom: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+    margin-top: 0; /* Remove margin-top for tabs */
+    gap: 20px; /* Space between tabs */
+  }
+  
 
 .friend__widget__dashboard__tab:hover,
 .friend__widget__dashboard__tab.active {
