@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './userProfile.css';
 import { FaShareAlt, FaArrowLeft, FaBook } from 'react-icons/fa';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import axios from 'axios';
 
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
@@ -11,7 +12,42 @@ const UserProfile = () => {
   const nav = useNavigate();
   const params = useParams();
   const userId = params.id;
-
+  const location = useLocation();
+   
+    
+  useEffect(() => {
+      const validateToken = async () => {
+        const token = localStorage.getItem('token');
+        console.log('Token from local storage:', token); // Debugging
+  
+        // If no token, redirect to login
+        if (!token) {
+          console.log('No token found, redirecting to sign-up.');
+          nav('/sign-up');
+          return;
+        }
+  
+        try {
+          const response = await axios.post(API_ROUTES.userSessionAut, { token });
+          console.log('Token validation response:', response.data); // Debugging
+          if (!response.data.valid) {
+            console.log('Invalid token, redirecting to sign-up.');
+            nav('/sign-up');
+          }
+        } catch (error) {
+          console.error('Error during token validation:', error);
+          nav('/sign-up');
+        }
+      };
+  
+      // Delay the validation by 5 seconds
+      const timeoutId = setTimeout(() => {
+        validateToken();
+      }, 500);
+  
+      // Cleanup timeout on component unmount
+      return () => clearTimeout(timeoutId);
+  }, [nav]);
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {

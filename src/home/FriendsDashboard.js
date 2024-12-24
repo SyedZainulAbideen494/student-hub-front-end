@@ -17,24 +17,32 @@ const FriendWidgetDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
-        const response = await fetch(API_ROUTES.getuserFriendsDashboardWidget, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const data = await response.json();
-
-        setFriendRequests(data.friendRequests);
-        setFriends(data.friends);
-        setRequests(data.friendRequests.length);
-      } catch (error) {
-        console.error('Error fetching friends data:', error);
-      }
-    };
+        try {
+          const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
+          const response = await fetch(API_ROUTES.getuserFriendsDashboardWidget, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+      
+          const data = await response.json();
+      
+          // Filter out duplicates based on unique IDs
+          const uniqueRequests = Array.from(new Set(data.friendRequests.map(a => a.id)))
+            .map(id => data.friendRequests.find(a => a.id === id));
+      
+          const uniqueFriends = Array.from(new Set(data.friends.map(a => a.id)))
+            .map(id => data.friends.find(a => a.id === id));
+      
+          setFriendRequests(uniqueRequests);
+          setFriends(uniqueFriends);
+          setRequests(uniqueRequests.length);
+        } catch (error) {
+          console.error('Error fetching friends data:', error);
+        }
+      };
+      
 
     fetchData();
   }, []);
