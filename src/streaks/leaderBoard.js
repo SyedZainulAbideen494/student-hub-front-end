@@ -251,7 +251,6 @@ const handleProfileClick = (userId) => {
             <span className="username__suggested__page">
               {user.unique_id.length > 15 ? `${user.unique_id.slice(0, 12)}...` : user.unique_id}
             </span>
-            <span className="points__suggested__page">{user.points} pts</span>
           </div>
           <button className="view-btn__suggested__page">View</button>
         </div>
