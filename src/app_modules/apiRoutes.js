@@ -163,5 +163,9 @@ export const API_ROUTES = {
   addRoomTasks: `${API_URL}/api/room_tasks/add`,
   deleteRoomTasks: `${API_URL}/api/room_tasks/delete`,
   generateFlashcardsFromPdfFromSet: `${API_URL}/api/flashcards/upload/set-created`,
-  apiLogDownload: `${API_URL}/api/log-download`
+  apiLogDownload: `${API_URL}/api/log-download`,
+  sendFriendRequest: `${API_URL}/api/friend/request`,
+  friendReqStatus: `${API_URL}/api/friend/status`,
+  friendReqResponse: `${API_URL}/api/friend/response`,
+  getuserFriendsDashboardWidget: `${API_URL}/api/friends-dashboard`
 }

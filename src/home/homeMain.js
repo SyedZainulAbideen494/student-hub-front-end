@@ -18,6 +18,7 @@ import BirthdayModal from "../app_modules/TakeBirthDay";
 import BirthdayCelebration from "../app_modules/birthdayCelebrate";
 import FoxIcon from "../Edusify fox/FoxIcon";
 import ModalHowTo from "../Pop ups/HowtoUsePopUp";
+import FriendsDashboard from "./FriendsDashboard";
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
@@ -57,6 +58,7 @@ const HomeMain = () => {
         <BirthdayModal/>
         <HomeTopBoxes/>
         <TodayEventsAndTasks/>
+        <FriendsDashboard/>
 <div style={{ margin: '20px 0' }}>
  <InviteFriends/>
 </div>

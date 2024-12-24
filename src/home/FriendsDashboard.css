@@ -1,0 +1,152 @@
+.friend__widget__dashboard {
+    width: 300px;
+    background: #fff; /* White background for a modern look */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    max-height: 600px;
+    overflow: hidden;
+    margin: 30px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.friend__widget__dashboard:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Slightly bigger shadow on hover */
+}
+
+.friend__widget__dashboard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.friend__widget__dashboard__title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.friend__widget__dashboard__tabs {
+    display: flex;
+    margin-top: 20px;
+}
+
+.friend__widget__dashboard__tab {
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 20px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.friend__widget__dashboard__tab:hover,
+.friend__widget__dashboard__tab.active {
+    border-bottom: 3px solid #6c63ff; /* Highlighted active tab */
+    color: #6c63ff;
+}
+
+.friend__widget__dashboard__list {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 350px;
+    margin-top: 20px;
+    padding-right: 5px;
+}
+
+.friend__widget__dashboard__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    justify-content: space-between;
+}
+
+.friend__widget__dashboard__item:hover {
+    background-color: #f4f4f4; /* Soft hover effect */
+}
+
+.friend__widget__dashboard__avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.friend__widget__dashboard__info {
+    flex: 1;
+}
+
+.friend__widget__dashboard__username {
+    font-weight: 500;
+    color: #4a4a4a;
+}
+
+.friend__widget__dashboard__view-profile-btn {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.friend__widget__dashboard__view-profile-btn:hover {
+    background-color: #5751d1; /* Darker shade on hover */
+}
+
+.friend__widget__dashboard__footer {
+    display: flex;
+    justify-content: center; /* Center align the button */
+    align-items: center;
+    margin-top: 20px; /* Increase margin for better spacing */
+}
+
+.friend__widget__dashboard__btn-inline {
+    background-color: #fff; /* White background for a clean look */
+    color: #4a90e2; /* Soft blue for contrast */
+    border: 2px solid #4a90e2; /* Border to make it look like a floating button */
+    padding: 12px 25px; /* Increased padding for a more comfortable button size */
+    font-size: 16px; /* Slightly larger text */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Added scale transition */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Light shadow for depth */
+}
+
+.friend__widget__dashboard__btn-inline:hover {
+    background-color: #f1f1f1; /* Subtle background change on hover */
+    transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.friend__widget__dashboard__buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.friend__widget__dashboard__buttons button {
+    background-color: #4a90e2; /* Matching the new color scheme */
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.friend__widget__dashboard__buttons button:hover {
+    background-color: #357ABD; /* Darker on hover */
+}

@@ -6,9 +6,12 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const UserProfile = () => {
   const [userData, setUserData] = useState(null);
-  const nav = useNavigate()
-const params = useParams()
-const userId = params.id
+  const [requestStatus, setRequestStatus] = useState('none'); // Default status is 'none'
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const nav = useNavigate();
+  const params = useParams();
+  const userId = params.id;
+
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
@@ -20,8 +23,27 @@ const userId = params.id
       }
     };
 
+    const fetchRequestStatus = async () => {
+      if (token) {  // Only fetch if token is available
+        try {
+          const response = await fetch(`${API_ROUTES.friendReqStatus}/${userId}`, {
+            method: 'GET',
+            headers: { 
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}` // Send token as Bearer token in headers
+            },
+          });
+          const data = await response.json();
+          setRequestStatus(data.status); // Update request status based on the response
+        } catch (error) {
+          console.error('Error fetching friend request status:', error);
+        }
+      }
+    };
+
     fetchUserProfile();
-  }, [userId]);
+    fetchRequestStatus(); // Fetch the request status when the component loads
+  }, [userId, token]);  // Re-run when userId or token changes
 
   const handleShareProfile = () => {
     const link = `${window.location.origin}/profile/${userId}`;
@@ -30,8 +52,27 @@ const userId = params.id
   };
 
   const handleBack = () => {
-   
-    nav(-1)
+    nav(-1);
+  };
+
+  const handleAddFriend = async () => {
+    if (requestStatus === 'none' || requestStatus === 'declined') {
+      try {
+        const response = await fetch(API_ROUTES.sendFriendRequest, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`  // Send token in the header
+          },
+          body: JSON.stringify({ profileUserId: userId }),
+        });
+        const data = await response.json();
+        alert(data.message);
+        setRequestStatus('pending');  // Update status to 'pending' after sending the request
+      } catch (error) {
+        console.error('Error sending friend request:', error);
+      }
+    }
   };
 
   if (!userData) {
@@ -52,10 +93,22 @@ const userId = params.id
       </div>
 
       <div className="profile__header__bottom__guest">
-        <img className="profile__img__guest" src={`${API_ROUTES.displayImg}/${userData.avatar}`}  alt="Profile" />
+        <img className="profile__img__guest" src={`${API_ROUTES.displayImg}/${userData.avatar}`} alt="Profile" />
         <p className="bio__guest">{userData.bio}</p>
       </div>
 
+      {/* Add Friend Button */}
+      <div className="add-friend-button">
+        {requestStatus === 'none' || requestStatus === 'declined' ? (
+          <button onClick={handleAddFriend}>Add Friend +</button>
+        ) : requestStatus === 'pending' ? (
+          <span>Request Sent</span>
+        ) : requestStatus === 'accepted' ? (
+          <span>Friend Added</span>
+        ) : null}
+      </div>
+
+      {/* Profile Info */}
       <div className="profile__info__guest">
         <div className="info__block__guest">
           <h3 className="info__title__guest">Room: </h3>
@@ -72,17 +125,16 @@ const userId = params.id
       </div>
 
       <div className="top__subjects__guest">
-  <h3 className="top__subjects__title__guest">Top Subjects</h3>
-  <div className="subjects__tags__guest">
-    {userData.topSubjects.map((subject, index) => (
-      <div key={index} className="subject__tag__guest">
-        <span className="subject__icon__guest"><FaBook /></span>
-        <span>{subject}</span> {/* Use the string directly here */}
+        <h3 className="top__subjects__title__guest">Top Subjects</h3>
+        <div className="subjects__tags__guest">
+          {userData.topSubjects.map((subject, index) => (
+            <div key={index} className="subject__tag__guest">
+              <span className="subject__icon__guest"><FaBook /></span>
+              <span>{subject}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-
 
       <div className="activity__guest">
         <h3 className="activity__title__guest">Recent Activity</h3>
