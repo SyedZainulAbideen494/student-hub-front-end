@@ -182,7 +182,7 @@ const ProfilePage = () => {
         />
         <h2 className="profile-name">{profile.name}</h2>
         <p className="profile-username">{profile.user_name}</p>
-        <p className="profile-bio">{profile.bio}</p>
+        <p className="profile-bio" style={{whiteSpace: 'pre-wrap'}}>{profile.bio}</p>
         <p className="profile-unique-id">@{profile.unique_id}</p>
         <div className="profile-actions">
           {/* Additional profile actions can be added here */}

@@ -130,7 +130,7 @@ const UserProfile = () => {
 
       <div className="profile__header__bottom__guest">
         <img className="profile__img__guest" src={`${API_ROUTES.displayImg}/${userData.avatar}`} alt="Profile" />
-        <p className="bio__guest">{userData.bio}</p>
+        <p className="bio__guest" style={{whiteSpace: 'pre-wrap'}}>{userData.bio}</p>
       </div>
 
       {/* Add Friend Button */}
