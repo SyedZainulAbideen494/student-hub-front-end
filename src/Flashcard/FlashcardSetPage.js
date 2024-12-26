@@ -307,7 +307,7 @@ const createManualFlashcard = async () => {
     setTimeout(() => {
       setSuccessMessage(''); // Clear the success message
       window.location.reload(); // Refresh the page
-    }, 2000);
+    }, 500);
 
     // Optionally clear the inputs after creating
     setManualQuestion('');
