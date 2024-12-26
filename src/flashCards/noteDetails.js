@@ -352,7 +352,22 @@ const quillModules = {
       
       
 
-    if (loading) return <div className="loading"><BookOpenAnimation/></div>;
+    if (loading) return <div 
+    className="loading" 
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      width: '100%',
+      position: 'absolute',
+      top: '0',
+      left: '0'
+    }}
+  >
+    <BookOpenAnimation />
+  </div>
+  ;
     if (error) return <div className="error">{error}</div>;
     if (!note) return <div className="no-note">No note found.</div>;
 
