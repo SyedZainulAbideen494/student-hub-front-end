@@ -7,6 +7,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
 import { TypeAnimation } from 'react-type-animation';
+import FeedbackFormWeekly from '../help/Survey';
 
 const TopBoxes = () => {
     const [todayTasks, setTodayTasks] = useState([]);

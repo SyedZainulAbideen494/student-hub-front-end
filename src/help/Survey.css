@@ -1,0 +1,66 @@
+.feedback-card__feedback__weekly {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .emoji-container__feedback__weekly {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .emoji__feedback__weekly {
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .emoji__feedback__weekly.selected {
+    transform: scale(1.2);
+  }
+  
+  .feedback-form-container {
+    margin-top: 10px;
+  }
+  
+  .feedback-textarea__feedback__weekly {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .submit-button__feedback__weekly {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button__feedback__weekly:hover {
+    background-color: #45a049;
+  }
+  
+  .thank-you-message__feedback__weekly {
+    margin-top: 10px;
+    font-size: 16px;
+    color: green;
+  }
+  
+  .close-button__feedback__weekly {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  

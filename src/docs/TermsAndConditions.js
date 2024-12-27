@@ -25,19 +25,24 @@ const TermsAndConditions = () => {
                 3. All users are expected to use Edusify responsibly and ethically. Any form of inappropriate behavior, including but not limited to abusive language, harassment, sharing of offensive content, or any other activity that disrupts the experience of other users, will result in account suspension or permanent termination.
             </p>
 
+            <h2 className="subheading__policy__page">Monitoring AI-Generated Questions</h2>
+            <p className="content__policy__page">
+                4. To ensure a safe and positive experience for all users, Edusify monitors AI-generated questions and other content created within the app. This monitoring helps us detect and prevent any harmful, inappropriate, or misleading behavior. We do this for your safety and to maintain the integrity of the app. If we identify any suspicious or unsafe activities, we may take necessary actions, including but not limited to content removal, account suspension, or termination.
+            </p>
+
             <h2 className="subheading__policy__page">Acceptance of Related Policies</h2>
             <p className="content__policy__page">
-                4. By agreeing to these Terms, you also acknowledge and accept our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/more-info">More Information</Link>. These documents provide detailed information on how we handle your data, your rights as a user, and additional guidelines for using Edusify.
+                5. By agreeing to these Terms, you also acknowledge and accept our <Link to="/privacy-policy">Privacy Policy</Link> and <Link to="/more-info">More Information</Link>. These documents provide detailed information on how we handle your data, your rights as a user, and additional guidelines for using Edusify.
             </p>
 
             <h2 className="subheading__policy__page">Data Collection and Usage</h2>
             <p className="content__policy__page">
-                5. Edusify collects and processes data in compliance with applicable laws to enhance user experience and improve app functionality. For detailed information, please refer to our <Link to="/privacy-policy">Privacy Policy</Link>. By using the app, you consent to our data practices as outlined in these policies.
+                6. Edusify collects and processes data in compliance with applicable laws to enhance user experience and improve app functionality. For detailed information, please refer to our <Link to="/privacy-policy">Privacy Policy</Link>. By using the app, you consent to our data practices as outlined in these policies.
             </p>
 
             <h2 className="subheading__policy__page">Prohibited Activities</h2>
             <p className="content__policy__page">
-                6. You agree not to engage in activities that:
+                7. You agree not to engage in activities that:
             </p>
             <ul className="content__policy__page">
                 <li>Violate any laws or regulations.</li>
@@ -48,22 +53,22 @@ const TermsAndConditions = () => {
 
             <h2 className="subheading__policy__page">Account Termination</h2>
             <p className="content__policy__page">
-                7. We reserve the right to suspend or terminate your account at our discretion for violations of these Terms or any other reason deemed necessary to protect the integrity of Edusify and its community.
+                8. We reserve the right to suspend or terminate your account at our discretion for violations of these Terms or any other reason deemed necessary to protect the integrity of Edusify and its community.
             </p>
 
             <h2 className="subheading__policy__page">Limitation of Liability</h2>
             <p className="content__policy__page">
-                8. Edusify is provided on an "as-is" basis. While we strive to ensure the app functions smoothly, we do not guarantee uninterrupted or error-free service. We are not liable for any damages arising from the use or inability to use the app.
+                9. Edusify is provided on an "as-is" basis. While we strive to ensure the app functions smoothly, we do not guarantee uninterrupted or error-free service. We are not liable for any damages arising from the use or inability to use the app.
             </p>
 
             <h2 className="subheading__policy__page">Changes to Terms</h2>
             <p className="content__policy__page">
-                9. Edusify reserves the right to modify these Terms at any time. Any changes will be communicated via updates within the app or notifications sent to your registered email. Continued use of the app after changes have been made constitutes your acceptance of the updated Terms.
+                10. Edusify reserves the right to modify these Terms at any time. Any changes will be communicated via updates within the app or notifications sent to your registered email. Continued use of the app after changes have been made constitutes your acceptance of the updated Terms.
             </p>
 
             <h2 className="subheading__policy__page">Contact Us</h2>
             <p className="content__policy__page">
-                10. If you have any questions or concerns regarding these Terms or any aspect of Edusify, please reach out to us through our support channels.
+                11. If you have any questions or concerns regarding these Terms or any aspect of Edusify, please reach out to us through our support channels.
             </p>
 
             <p className="content__policy__page">
