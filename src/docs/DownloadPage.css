@@ -1,190 +1,105 @@
-/* Container for the download page */
-.download-page__android__download {
-  margin: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #000000;
-  color: #ffffff;
-  max-width: 100%;
-  padding: 20px;
+/* Apple-inspired minimalist design for the download page */
+.download-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f0f0f5; /* Light grey background */
+  color: #333; /* Dark text for contrast */
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.app-details {
+  background-color: white; /* White background for content */
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 700px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100dvh;
-  animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
+  border-bottom: 1px solid #f1f1f1;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-/* Fade-in animation */
+.app-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.app-info h1 {
+  font-size: 28px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.app-rating {
+  font-size: 20px;
+  color: #f39c12; /* Gold for the stars */
+  margin-bottom: 10px;
+}
+
+.app-version,
+.app-updated {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.download-btn {
+  background-color: #007aff; /* Apple blue for button */
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: #005bb5; /* Darker blue on hover */
+}
+
+.app-description h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.app-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #777;
+}
+
+.note-container {
+  margin-top: 30px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.download-note {
+  font-style: italic;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-/* App details styling */
-.app-details-page__android__download {
-  width: 100%;
-  max-width: 800px;
-  background-color: #000000; /* Darker background for better contrast */
-  border-radius: 20px;
-  padding: 20px;
-  transition: transform 0.3s ease;
-}
-
-/* Header section of the app details */
-.app-header-details__android__download {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  margin-left: 15px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.app-icon__android__download {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%; /* Circular icon */
-  margin-bottom: 30px;
-}
-
-.app-info__android__download h1 {
-  font-size: 28px;
-  margin: 0;
-  color: #fff;
-}
-
-.app-rating__android__download {
-  font-size: 16px;
-  color: #bbb;
-}
-
-.app-updated__android__download {
-  font-size: 14px;
-  color: #888;
-  margin-top: 8px;
-}
-
-/* Button Styling */
-.download-btn__android__download {
-  padding: 12px 30px;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 25px;
-  color: #000000;
-  cursor: pointer;
-  font-size: 18px;
-  margin-top: 10px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.download-btn__android__download:hover {
-  background-color: #e0e0e0; /* Light gray on hover */
-  transform: translateY(-2px); /* Slight lift effect */
-}
-
-/* App description */
-.app-description__android__download h2,
-.app-features__android__download h2,
-.app-testimonials__android__download h2 {
-  font-size: 24px;
-  margin-top: 30px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Underline */
-  padding-bottom: 10px;
-}
-
-.app-description__android__download p,
-.app-features__android__download ul,
-.app-testimonials__android__download p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #d3d3d3;
-}
-
-.app-features__android__download ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.app-features__android__download li {
-  margin: 5px 0;
-}
-
-/* Testimonials styling */
-.app-testimonials__android__download {
-  margin-top: 40px;
-}
-
-.testimonials-container__android__download {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px; /* Space between testimonials */
-}
-
-.testimonial-card__android__download {
-  background-color: #1e1e1e; /* Dark background for the card */
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 600px; /* Limit the width for readability */
-  width: 80%; /* Ensure it uses available width */
-  transition: transform 0.2s ease;
-  animation: slideIn 0.5s ease; /* Slide-in animation */
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.testimonial-card__android__download:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-}
-
-.testimonial-feedback__android__download {
-  font-size: 18px;
-  color: #ffffff; /* White text for readability */
-  margin-bottom: 10px;
-}
-
-.testimonial-author__android__download {
-  font-size: 16px;
-  color: #bbb; /* Lighter color for the author name */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .app-header-details__android__download {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .app-icon__android__download {
-    width: 50px;
-    height: 50px;
-  }
-
-  .app-info__android__download h1 {
-    font-size: 24px;
-  }
-
-  .download-btn__android__download {
-    padding: 10px 25px;
-    font-size: 16px;
-  }
-
-  .app-description__android__download h2,
-  .app-features__android__download h2,
-  .app-testimonials__android__download h2 {
-    font-size: 20px;
   }
 }
