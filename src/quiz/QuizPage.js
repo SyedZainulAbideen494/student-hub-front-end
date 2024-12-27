@@ -16,6 +16,10 @@ const QuizPage = () => {
     const token = localStorage.getItem('token');
     const location = useLocation();
 
+        // Load audio file
+        const submitSound = new Audio('/sounds/level-up-191997.mp3'); // Path to your sound file
+
+
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
@@ -71,9 +75,11 @@ const QuizPage = () => {
 
     const handleNext = () => {
         if (currentQuestionIndex < questions.length - 1) {
+            submitSound.play(); // Play sound when the next button is clicked
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         }
     };
+
 
     const handlePrevious = () => {
         if (currentQuestionIndex > 0) {

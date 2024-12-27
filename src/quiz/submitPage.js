@@ -3,8 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Confetti from 'react-confetti';
 import CountUp from 'react-countup';
 import axios from 'axios';
-import './SubmitQuiz.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import { useSpring, animated } from 'react-spring';
+import './SubmitQuiz.css';
 
 const tips = [
   "Great job! Keep practicing to improve even more.",
@@ -20,13 +21,25 @@ const SubmitPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const score = location.state?.score || 0;
-  const quizId = location.state?.quizId; // Retrieve quiz ID
+  const quizId = location.state?.quizId;
   const [countUpFinished, setCountUpFinished] = useState(false);
   const [previousResults, setPreviousResults] = useState([]);
-  
+
   const token = localStorage.getItem('token');
 
+  const [scoreAnimationProps, setScoreAnimationProps] = useSpring(() => ({
+    opacity: 0,
+    transform: 'scale(0.8)',
+  }));
+
   useEffect(() => {
+    // Sound effect on score completion
+    const finishSound = new Audio('/sounds/game-bonus-144751.mp3')
+    finishSound.play();
+
+    // Animation trigger for score and feedback
+    setScoreAnimationProps({ opacity: 1, transform: 'scale(1)' });
+
     axios.post(API_ROUTES.quizResultsPageAllresults, { token })
       .then(response => {
         setPreviousResults(response.data.results);
@@ -34,7 +47,7 @@ const SubmitPage = () => {
       .catch(error => {
         console.error('Error fetching previous results:', error);
       });
-  }, [token]);
+  }, [token, setScoreAnimationProps]);
 
   const handleCountUpEnd = () => {
     setCountUpFinished(true);
@@ -55,10 +68,10 @@ const SubmitPage = () => {
       </header>
       <div className="card-quiz-complete">
         {countUpFinished && score > 70 && <Confetti />}
-        <p className="message-quiz-complete">
-          {getMessage()}
-        </p>
-        <div className="score-container-quiz-complete">
+        <p className="message-quiz-complete">{getMessage()}</p>
+        
+        {/* Animated Score */}
+        <animated.div style={scoreAnimationProps} className="score-container-quiz-complete">
           <CountUp
             start={0}
             end={score}
@@ -67,7 +80,8 @@ const SubmitPage = () => {
             className="score-text-quiz-complete"
           />
           %
-        </div>
+        </animated.div>
+
         <p className="tip-quiz-complete">{getRandomTip()}</p>
         <button
           className="answers-button-quiz-complete"
@@ -76,6 +90,7 @@ const SubmitPage = () => {
           View Answers
         </button>
       </div>
+
       <div className="previous-results-quiz-complete">
         <h2>Previous Results</h2>
         {previousResults.length > 0 ? (
