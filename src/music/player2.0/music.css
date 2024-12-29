@@ -1,264 +1,200 @@
-/* Music Player Container */
-.music-player-container__music__player__Spotify {
-    max-width: 600px; /* Reduced for mobile screen */
-    margin: 0 auto;
-    padding: 15px; /* Smaller padding */
-    background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    border: 1px solid #333;
-    color: #fff;
-    transition: all 0.3s ease-in-out;
+.__edusify__music_player {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
 }
 
-/* Title */
-.page-title__music__player__Spotify {
-    text-align: center;
-    font-size: 24px; /* Smaller title */
-    font-family: 'SF Pro Display', sans-serif;
-    color: #fff;
-    margin-bottom: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
+.__edusify__music_player__header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 24px;
 }
 
-/* Search Bar */
-.search-bar-container__music__player__Spotify {
-    margin-bottom: 15px; /* Reduced margin */
-    display: flex;
-    justify-content: center;
+.__edusify__music_player__back-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #333;
+  cursor: pointer;
 }
 
-.search-input__music__player__Spotify {
-    width: 80%;
-    padding: 12px; /* Reduced padding */
-    font-size: 16px; /* Smaller font */
-    border: none;
-    border-radius: 30px;
-    background-color: #333;
-    color: #fff;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+.__edusify__music_player__now-playing {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.search-input__music__player__Spotify:focus {
-    outline: none;
-    border-color: #1db954;
-    background-color: #444;
-    box-shadow: 0 0 10px rgba(29, 185, 84, 0.8);
+.__edusify__music_player__album-cover img {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
 }
 
-/* Search Results */
-.search-results__music__player__Spotify {
-    margin-top: 15px;
+.__edusify__music_player__track-info {
+  margin-left: 20px;
 }
 
-.loading-spinner__music__player__Spotify {
-    text-align: center;
-    font-size: 24px; /* Smaller loading spinner */
-    color: #1db954;
+.__edusify__music_player__track-info h2 {
+  font-size: 18px;
+  margin: 0;
 }
 
-.search-results-title__music__player__Spotify {
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-size: 16px; /* Smaller font */
+.__edusify__music_player__controls button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  margin: 0 10px;
 }
 
-.search-results-list__music__player__Spotify {
-    list-style: none;
-    padding: 0;
+.__edusify__music_player__progress {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-.track-item__music__player__Spotify {
-    display: flex;
-    align-items: center;
-    margin: 10px 0; /* Reduced margin */
-    padding: 10px; /* Reduced padding */
-    border-radius: 12px;
-    background-color: #444;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.__edusify__music_player__progress input {
+  width: 100%;
 }
 
-.track-item-button__music__player__Spotify {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px; /* Smaller font size */
-    width: 100%;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.__edusify__music_player__duration {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 12px;
 }
 
-.track-item-button__music__player__Spotify:hover {
-    background-color: #555;
-    border-radius: 8px;
-    transform: scale(1.05);
+.__edusify__music_player__track-list {
+  margin-top: 30px;
 }
 
-.album-cover__music__player__Spotify {
-    width: 50px; /* Smaller album cover */
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 10px;
-    object-fit: cover;
+.__edusify__music_player__search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
-.track-name__music__player__Spotify {
-    font-weight: 600;
-    margin-right: 10px;
-    font-size: 14px; /* Smaller font size */
+.__edusify__music_player__search input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
 }
 
-.track-artist__music__player__Spotify {
-    font-style: italic;
-    color: #bbb;
-    font-size: 12px; /* Smaller artist name font */
+.__edusify__music_player__track-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Playlists Section */
-.playlists__music__player__Spotify {
-    margin-top: 15px;
+.__edusify__music_player__track-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-right: 15px;
 }
 
-.playlists-title__music__player__Spotify {
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-size: 16px; /* Smaller playlist title */
+.__edusify__music_player__track-details {
+  flex-grow: 1;
 }
 
-.playlists-list__music__player__Spotify {
-    list-style: none;
-    padding: 0;
+.__edusify__music_player__track-details span {
+  display: block;
+  font-size: 14px;
 }
 
-.playlist-item__music__player__Spotify {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 12px;
-    background-color: #444;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.__edusify__music_player__track-btn {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.playlist-item-button__music__player__Spotify {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px; /* Smaller font */
-    width: 100%;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.__edusify__music_player__track-btn:hover {
+  color: #1db954;
 }
 
-.playlist-item-button__music__player__Spotify:hover {
-    background-color: #555;
-    border-radius: 8px;
-    transform: scale(1.05);
+.__edusify__music_player__active {
+  background-color: #f5f5f5;
+  border-radius: 8px;
 }
 
-.playlist-cover__music__player__Spotify {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 10px;
-    object-fit: cover;
+.__edusify__music_player__file-input {
+  display: none;
 }
 
-/* Spotify Player */
-.spotify-player-container__music__player__Spotify {
-    margin-top: 20px;
+.__edusify__music_player__audio-player {
+  display: none;
 }
 
-.spotify-player-container__music__player__Spotify iframe {
-    width: 100%;
-    height: 300px; /* Reduced iframe height */
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease;
+.__edusify__music_player__track-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-.spotify-player-container__music__player__Spotify iframe:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+.__edusify__music_player__track-list li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Controls */
-.controls__music__player__Spotify {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.__edusify__music_player__track-list li:hover {
+  background-color: #f0f0f0;
 }
 
-.shuffle-button__music__player__Spotify,
-.repeat-button__music__player__Spotify {
-    background-color: #1db954;
-    color: #fff;
-    border: none;
-    padding: 12px 20px; /* Reduced padding */
-    font-size: 16px; /* Smaller font size */
-    border-radius: 30px;
-    cursor: pointer;
-    margin: 0 10px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.__edusify__music_player__track-list li.__edusify__music_player__active {
+  background-color: #e9f5e9;
 }
 
-.shuffle-button__music__player__Spotify:hover,
-.repeat-button__music__player__Spotify:hover {
-    background-color: #1aa34d;
-    transform: scale(1.05);
+.__edusify__music_player__track-item button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
 }
 
-/* Refresh Button */
-.refresh-button-container__music__player__Spotify {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
+.__edusify__music_player__track-item button:hover {
+  color: #1db954;
 }
 
-.refresh-button__music__player__Spotify {
-    background-color: #ff9800;
-    border: none;
-    color: white;
-    padding: 12px 20px; /* Reduced padding */
-    font-size: 16px; /* Smaller font size */
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+/* Additional styling for a sleek light theme */
+body {
+  background-color: #f7f7f7;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
-.refresh-button__music__player__Spotify:hover {
-    background-color: #e68900;
-    transform: scale(1.05);
+button {
+  cursor: pointer;
 }
 
-/* Spotify Footer */
-.spotify-footer__music__player__Spotify {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-    padding: 15px; /* Reduced padding */
-    background-color: #121212;
-    border-radius: 15px;
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+input[type="file"] {
+  display: none;
 }
 
-.spotify-logo__music__player__Spotify img {
-    width: 40px; /* Smaller logo */
-    height: auto;
+/* Custom scrollbar for a smoother experience */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.footer-text__music__player__Spotify {
-    margin-left: 10px;
-    font-size: 12px; /* Smaller footer text */
-    color: #777;
-    font-style: italic;
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
 }

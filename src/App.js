@@ -92,8 +92,6 @@ import Streaks from "./Steak/streak";
 import PomodoroApp from "./Pomodoro/pomodoro2.0/PomodoroApp";
 import SessionStatsPage from "./Pomodoro/pomodoro2.0/SessionStatsPage";
 import SettingsPagePomodoro from "./Pomodoro/pomodoro2.0/SettingsPage";
-import SpotifyPlayer from "./music/player2.0/SpotifyPlayer";
-import MusicPlayer from "./music/player2.0/SpotifyPlayer";
 import PdfNotesConvertor from "./toolkit/pdfNotesconvertor";
 import StoryGame from "./Games/story";
 import UserReport from "./user report/user-report";
@@ -120,6 +118,7 @@ import PlayGame from "./Games/PlayGame";
 import SwipeFlashcardViewPage from "./Flashcard/swipeCardView";
 import ImageToText from "./notifications/txt-img";
 import DownloadPageComplete from "./docs/complete-download-page";
+import MusicPlayer from "./music/player2.0/musicPlayer";
 
 
 const urlBase64ToUint8Array = (base64String) => {

@@ -19,6 +19,7 @@ import BirthdayCelebration from "../app_modules/birthdayCelebrate";
 import FoxIcon from "../Edusify fox/FoxIcon";
 import ModalHowTo from "../Pop ups/HowtoUsePopUp";
 import FriendsDashboard from "./FriendsDashboard";
+import FeedbackFormWeekly from "../help/Survey";
 const HomeMain = () => {
     const [showFeedbackForm, setShowFeedbackForm] = useState(false);
     const navigate = useNavigate()
@@ -52,11 +53,13 @@ const HomeMain = () => {
 
 
     return<Fragment>
+      
      <TipBox/>
       <ReviewModal/>
        <BirthdayCelebration/>
         <BirthdayModal/>
         <HomeTopBoxes/>
+        <FeedbackFormWeekly/>
         <TodayEventsAndTasks/>
         <FriendsDashboard/>
 <div style={{ margin: '20px 0' }}>
