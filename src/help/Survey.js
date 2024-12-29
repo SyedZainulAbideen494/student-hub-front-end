@@ -12,24 +12,36 @@ const FeedbackForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    // Get the current date and month
+    // Get the current date and time
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentDay = currentDate.getDate();
   
-    // Check if the current date is within the range 28, 29, 30, 31, 1, or 2
-    const validDays = [28, 29, 30, 31, 1];
-    if (validDays.includes(currentDay)) {
-      // Check if feedback has already been submitted this month
-      const submittedDates = JSON.parse(localStorage.getItem('submittedDatesWeeklySurvey')) || [];
-      const hasSubmittedThisMonth = submittedDates.some((date) => new Date(date).getMonth() === currentMonth);
+    // Retrieve the first sign-in time from localStorage
+    const firstSignInTime = localStorage.getItem('firstSignInTime');
+    if (firstSignInTime) {
+      const firstSignInDate = new Date(parseInt(firstSignInTime)); // Convert the timestamp to a Date object
+      const timeDiff = currentDate - firstSignInDate; // Difference in milliseconds
+      const hoursPassed = timeDiff / (1000 * 60 * 60); // Convert milliseconds to hours
   
-      // If feedback hasn't been submitted this month, show the feedback form
-      if (!hasSubmittedThisMonth) {
-        setTimeout(() => setIsOpen(true), 2000); // Delay modal opening by 2 seconds
+      // Only show the feedback form if more than 24 hours have passed since the first sign-in
+      if (hoursPassed >= 24) {
+        // Check if the current day is one of the valid days (28, 29, 30, 31, 1)
+        const validDays = [28, 29, 30, 31, 1];
+        if (validDays.includes(currentDay)) {
+          // Check if feedback has already been submitted this month
+          const submittedDates = JSON.parse(localStorage.getItem('submittedDatesWeeklySurvey')) || [];
+          const hasSubmittedThisMonth = submittedDates.some((date) => new Date(date).getMonth() === currentMonth);
+  
+          // If feedback hasn't been submitted this month, show the feedback form
+          if (!hasSubmittedThisMonth) {
+            setTimeout(() => setIsOpen(true), 2000); // Delay modal opening by 2 seconds
+          }
+        }
       }
     }
   }, []);
+  
   
 
   const handleEmojiClick = (emojiRating) => {
