@@ -643,7 +643,7 @@ if (loading) {
           <p>Selected File: {pdfFile.name}</p>
         </div>
       )}
-  
+  <br/><br/>  <br/><br/>
 
     <button
       className="flashcard__set__page__modal-generate btn__set__page__buttons"
