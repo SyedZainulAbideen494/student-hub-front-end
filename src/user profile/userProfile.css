@@ -123,10 +123,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Apply style to the last subject if it doesn't have a pair */
-.subjects__tags__guest > .subject__tag__guest:last-child:nth-child(odd) {
-  grid-column: span 2; /* Make the last subject span across the entire row */
-}
+
 
 .subject__tag__guest:hover {
   background-color: #4e8bf7;
