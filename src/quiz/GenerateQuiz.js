@@ -13,6 +13,8 @@ const GenerateQuiz = () => {
   const navigate = useNavigate();
   const [quizzes, setQuizzes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
+
 
   const generateQuiz = async (e) => {
     e.preventDefault();
@@ -74,47 +76,54 @@ const handleQuizAnswers = (quizId) => {
   navigate(`/quiz/answers/${quizId}`); // Navigate to the quiz answers page with the quiz ID
 };
 
-const generateQuizFromPDF = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  setError(null);
+  // Handle file selection
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file); // Store the selected file
+  };
 
-  // Extract the file from the form
-  const file = e.target[0].files[0]; // Assumes the file input is the first element in the form
+  const generateQuizFromPDF = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-  // Validation check for missing fields
-  if (!file || !subject || !topic) {
-    alert('Please upload a PDF, and provide both a subject and a topic before generating the quiz.');
-    setLoading(false);
-    return;
-  }
+    // Extract the file from the form
+    const file = selectedFile;
 
-  const token = localStorage.getItem('token');
-  const formData = new FormData();
-  formData.append('pdf', file);
-  formData.append('subject', subject);
-  formData.append('topic', topic);
-  formData.append('token', token);
-
-  try {
-    const response = await fetch(API_ROUTES.generateQuizFromPDF, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to generate quiz from PDF, please try again');
+    // Validation check for missing fields
+    if (!file || !subject || !topic) {
+      alert('Please upload a PDF, and provide both a subject and a topic before generating the quiz.');
+      setLoading(false);
+      return;
     }
 
-    const data = await response.json();
-    navigate(`/quiz/${data.quizId}`);
-  } catch (err) {
-    console.error('Error:', err);
-    setError(err.message);
-  } finally {
-    setLoading(false);
-  }
-};
+    const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('pdf', file);
+    formData.append('subject', subject);
+    formData.append('topic', topic);
+    formData.append('token', token);
+
+    try {
+      const response = await fetch(API_ROUTES.generateQuizFromPDF, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate quiz from PDF, please try again');
+      }
+
+      const data = await response.json();
+      navigate(`/quiz/${data.quizId}`);
+    } catch (err) {
+      console.error('Error:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
 
   return (
@@ -175,7 +184,19 @@ const generateQuizFromPDF = async (e) => {
 
     <form onSubmit={generateQuizFromPDF} className="generate-quiz-form">
       <p>Or Generate from PDF</p>
-      <input type="file" accept="application/pdf" required />
+      <label className="file-input-label">
+        <input
+          type="file"
+          accept="application/pdf"
+          required
+          className="file-input"
+          onChange={handleFileChange}
+        />
+        <span>Choose File</span>
+      </label>
+
+      {/* Display selected file name */}
+      {selectedFile && <p>Selected File: {selectedFile.name}</p>}
       <div className="centered-button-container">
         <button
   className="flashcard__set__page__modal-generate btn__set__page__buttons"
