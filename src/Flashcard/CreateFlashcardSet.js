@@ -138,12 +138,52 @@ const CreateFlashcardSet = () => {
 
         <div className="pdf-upload-container__create__flashcard__Set__Page">
           <p>Or generate flashcards using a PDF file:</p>
-          <input
-            type="file"
-            accept="application/pdf"
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-            className="file-input__create__flashcard__Set__Page"
-          />
+          <div style={{ margin: "15px 0", textAlign: "center" }}>
+  <label
+    htmlFor="file-upload"
+    style={{
+      display: "inline-block",
+      backgroundColor: "#007bff",
+      color: "#fff",
+      padding: "10px 20px",
+      borderRadius: "5px",
+      cursor: "pointer",
+      fontSize: "0.9rem",
+      fontWeight: "500",
+      textAlign: "center",
+      transition: "background-color 0.3s ease",
+    }}
+    onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+    onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
+  >
+    Select File
+  </label>
+  <input
+    id="file-upload"
+    type="file"
+    onChange={(e) => setSelectedFile(e.target.files[0])}
+    style={{
+      position: "absolute",
+      opacity: 0,
+      width: 0,
+      height: 0,
+      zIndex: -1,
+    }}
+  />
+  {selectedFile && (
+    <div
+      style={{
+        marginTop: "10px",
+        fontSize: "0.9rem",
+        color: "#333",
+        fontWeight: "500",
+      }}
+    >
+      Selected File: {selectedFile.name}
+    </div>
+  )}
+</div>
+
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <button
   className="flashcard__set__page__modal-generate btn__set__page__buttons"
