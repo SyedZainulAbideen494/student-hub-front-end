@@ -35,7 +35,7 @@ const FeedbackForm = () => {
   
           // If feedback hasn't been submitted this month, show the feedback form
           if (!hasSubmittedThisMonth) {
-            setTimeout(() => setIsOpen(true), 2000); // Delay modal opening by 2 seconds
+            setTimeout(() => setIsOpen(true), 500); // Delay modal opening by 2 seconds
           }
         }
       }
