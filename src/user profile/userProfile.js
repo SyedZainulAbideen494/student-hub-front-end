@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './userProfile.css';
-import { FaShareAlt, FaArrowLeft, FaBook } from 'react-icons/fa';
+import { FaShareAlt, FaArrowLeft, FaBook, FaStickyNote, FaClipboardList } from 'react-icons/fa';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import axios from 'axios';
@@ -9,6 +9,8 @@ const UserProfile = () => {
   const [userData, setUserData] = useState(null);
   const [requestStatus, setRequestStatus] = useState('none'); // Default status is 'none'
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [resources, setResources] = useState({ flashcards: [], quizzes: [] }); // Resources state
+  const [activeTab, setActiveTab] = useState('notes'); // Default toggle is 'notes'
   const nav = useNavigate();
   const params = useParams();
   const userId = params.id;
@@ -77,6 +79,22 @@ const UserProfile = () => {
       }
     };
 
+    const fetchResources = async () => {
+      try {
+        const response = await fetch(`${API_ROUTES.getProfileResources}/${userId}`);
+        const data = await response.json();
+    
+        // Ensure that the data contains flashcards and quizzes arrays
+        setResources({
+          flashcards: data.notes || [],
+          quizzes: data.quizzes || [],
+        });
+      } catch (error) {
+        console.error('Error fetching user resources:', error);
+      }
+    };
+    
+    fetchResources()
     fetchUserProfile();
     fetchRequestStatus(); // Fetch the request status when the component loads
   }, [userId, token]);  // Re-run when userId or token changes
@@ -90,6 +108,15 @@ const UserProfile = () => {
   const handleBack = () => {
     nav('/');
   };
+
+  const handleResourceNavigation = (type, id) => {
+    if (type === 'quiz') {
+      nav(`/quiz/${id}`);
+    } else if (type === 'note') {
+      nav(`/note/view/${id}`);
+    }
+  };
+
 
   const handleAddFriend = async () => {
     if (requestStatus === 'none' || requestStatus === 'declined') {
@@ -171,6 +198,55 @@ const UserProfile = () => {
           ))}
         </div>
       </div>
+
+
+      <div className="resources__section__user__profile">
+  <h3 className="resources__title__user__profile">Resources</h3>
+  <div className="resources__toggles__user__profile">
+    <button
+      className={`toggle__btn__user__profile ${activeTab === 'notes' ? 'active__user__profile' : ''}`}
+      onClick={() => setActiveTab('notes')}
+    >
+      <FaStickyNote className="toggle__icon__user__profile" />
+      Notes
+    </button>
+    <button
+      className={`toggle__btn__user__profile ${activeTab === 'quizzes' ? 'active__user__profile' : ''}`}
+      onClick={() => setActiveTab('quizzes')}
+    >
+      <FaClipboardList className="toggle__icon__user__profile" />
+      Quizzes
+    </button>
+  </div>
+
+  <div className="resources__list__user__profile">
+    {activeTab === 'notes' &&
+      resources.flashcards.map((note) => (
+        <div
+          key={note.id}
+          className="resource__item__user__profile"
+          onClick={() => handleResourceNavigation('note', note.id)}
+        >
+          <FaStickyNote className="resource__icon__user__profile" />
+          <div className="resource__title__user__profile">{note.title}</div>
+        </div>
+      ))}
+
+    {activeTab === 'quizzes' &&
+      resources.quizzes.map((quiz) => (
+        <div
+          key={quiz.id}
+          className="resource__item__user__profile"
+          onClick={() => handleResourceNavigation('quiz', quiz.id)}
+        >
+          <FaClipboardList className="resource__icon__user__profile" />
+          <div className="resource__title__user__profile">{quiz.title}</div>
+        </div>
+      ))}
+  </div>
+</div>
+
+
 
       <div className="activity__guest">
         <h3 className="activity__title__guest">Recent Activity</h3>
