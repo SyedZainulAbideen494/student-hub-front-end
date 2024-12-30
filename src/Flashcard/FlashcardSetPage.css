@@ -618,9 +618,8 @@
     background-color: #ccc; /* Gray background when disabled */
     cursor: not-allowed; /* Change cursor to not-allowed */
   }
-  
-  
 
+  
 
   .flashcard__set__page__no-flashcards-container {
     display: flex;
