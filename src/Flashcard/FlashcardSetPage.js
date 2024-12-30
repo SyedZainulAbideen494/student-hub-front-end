@@ -625,18 +625,25 @@ if (loading) {
     {/* PDF Option */}
 {selectedOption === 'pdf' && (
   <div>
-<label htmlFor="pdf-upload" className="pdf-upload-label">
-  Upload PDF
-</label>
-<input
-  id="pdf-upload"
-  type="file"
-  accept=".pdf"
-  onChange={handleFileChange}
-  className="flashcard-input__manual__flashcard__form"
-  style={{marginBottom: '30px'}}
-/>
-<br/><br/><br/>
+ <label htmlFor="pdf-upload" className="pdf-upload-label">
+        Upload PDF
+      </label>
+      <input
+        id="pdf-upload"
+        type="file"
+        accept=".pdf"
+        onChange={handleFileChange}
+        className="flashcard-input__manual__flashcard__form"
+        style={{ marginBottom: '30px' }}
+      />
+      
+      {/* Display the selected file name */}
+      {pdfFile && (
+        <div className="selected-file">
+          <p>Selected File: {pdfFile.name}</p>
+        </div>
+      )}
+  
 
     <button
       className="flashcard__set__page__modal-generate btn__set__page__buttons"
