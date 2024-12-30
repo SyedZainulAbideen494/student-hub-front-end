@@ -271,8 +271,8 @@ const handleShareClick = (quiz) => {
                     <span> View Answers</span>
                 </div>
             </button>
-            <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-            <FaPlay />
+            <button className="delete-button-home-page-quiz-page" onClick={() => handleDeleteClick(quiz.id)} >
+            <FaTrash />
           </button>
         </div>
     </li>
