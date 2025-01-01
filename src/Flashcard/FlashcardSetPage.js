@@ -240,11 +240,11 @@ const FlashcardSetPage = () => {
   };
 
   const filteredFlashcards = flashcards.filter((flashcard) => {
-    const matchesStatus = statusFilter
-      ? flashcard.status === statusFilter
-      : true; // If no filter, show all cards
-  
-    return flashcard.question.toLowerCase().includes(searchQuery.toLowerCase()) && matchesStatus;
+    const matchesStatus = statusFilter ? flashcard.status === statusFilter : true; // If no filter, show all cards
+    return (
+      flashcard.question.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      matchesStatus
+    );
   });
   
 
@@ -438,6 +438,17 @@ if (loading) {
 
     
       <div className="flashcard__set__page__flashcards">
+      {/* Search Bar */}
+      <div className="flashcard__set__page__search-bar">
+        <input
+          type="text"
+          placeholder="Search flashcards..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="flashcard__set__page__search-input"
+        />
+      </div>
+
         {filteredFlashcards.length === 0 ? (
          <div className="flashcard__set__page__no-flashcards-container">
          <div className="flashcard__set__page__no-flashcards-message">

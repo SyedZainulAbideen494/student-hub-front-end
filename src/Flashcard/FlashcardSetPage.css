@@ -756,3 +756,39 @@
   margin: 0;
   padding: 0;
 }
+
+.flashcard__set__page__search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  padding: 10px 20px;
+  border-radius: 25px; /* Rounded corners */
+}
+
+.flashcard__set__page__search-input {
+  width: 100%;
+  max-width: 600px; /* Limit the width for larger screens */
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 25px; /* Rounded corners */
+  outline: none;
+  transition: all 0.3s ease; /* Smooth hover and focus transitions */
+  background-color: #ffffff; /* White background for contrast */
+  color: #333333; /* Text color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.flashcard__set__page__search-input::placeholder {
+  color: #aaaaaa; /* Placeholder text color */
+  font-style: italic; /* Slightly italicized */
+}
+
+.flashcard__set__page__search-input:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); /* Blue glow */
+}
+
+.flashcard__set__page__search-input:hover {
+  border-color: #cccccc; /* Light border highlight on hover */
+}
