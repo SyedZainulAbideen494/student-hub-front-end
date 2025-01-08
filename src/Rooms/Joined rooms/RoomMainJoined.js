@@ -124,23 +124,29 @@ const RoomMainPageJoined = () => {
         </div>
 
         <div className="room__members__page__cards-container">
-          {members.length > 0 ? (
-            <div className="room__members__page__cards">
-              {members.map((member, index) => (
-                <div key={index} className="room__members__page__member__card">
-                  <img
-                    src={`${API_ROUTES.displayImg}/${member.avatar}`}
-                    alt={member.unique_id}
-                    className="room__members__page__member__avatar"
-                  />
-                  <p className="room__members__page__member__name">{member.unique_id}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>No members in this room.</p>
-          )}
+  {members.length > 0 ? (
+    <div className="room__members__page__cards">
+      {members.map((member, index) => (
+        <div
+          key={index}
+          className="room__members__page__member__card"
+          onClick={() => navigate(`/profile/${member.user_id}`)} // Navigate to the user's profile
+          style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickability
+        >
+          <img
+            src={`${API_ROUTES.displayImg}/${member.avatar}`}
+            alt={member.unique_id}
+            className="room__members__page__member__avatar"
+          />
+          <p className="room__members__page__member__name">{member.unique_id}</p>
         </div>
+      ))}
+    </div>
+  ) : (
+    <p>No members in this room.</p>
+  )}
+</div>
+
       </div>
       <FooterNav />
     </div>
