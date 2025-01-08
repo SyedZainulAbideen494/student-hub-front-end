@@ -149,7 +149,10 @@ const UserProfile = () => {
         <button className="back__btn__guest" onClick={handleBack}>
           <FaArrowLeft />
         </button>
-        <h2 className="header__title__guest">{userData.name}</h2>
+        {userData.name && userData.name !== 'null' && (
+  <h2 className="header__title__guest">{userData.name}</h2>
+)}
+
         <button className="share__btn__guest" onClick={handleShareProfile}>
           <FaShareAlt />
         </button>
@@ -158,7 +161,12 @@ const UserProfile = () => {
       <div className="profile__header__bottom__guest">
         <img className="profile__img__guest" src={`${API_ROUTES.displayImg}/${userData.avatar}`} alt="Profile" />
         <p>{userData.user_id}</p>
-        <p className="bio__guest" style={{whiteSpace: 'pre-wrap'}}>{userData.bio}</p>
+        {userData.bio && userData.bio !== 'null' && (
+  <p className="bio__guest" style={{ whiteSpace: 'pre-wrap' }}>
+    {userData.bio}
+  </p>
+)}
+
       </div>
 
       {/* Add Friend Button */}
