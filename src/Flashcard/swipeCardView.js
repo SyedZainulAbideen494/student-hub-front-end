@@ -18,7 +18,10 @@ const SwipeFlashcardViewPage = () => {
     const fetchFlashcards = async () => {
       const response = await fetch(`${API_ROUTES.flashcardSetGetData}/${setId}`);
       const data = await response.json();
-      setFlashcards(data.flashcards || []);
+      const randomizedFlashcards = data.flashcards
+        ? [...data.flashcards].sort(() => Math.random() - 0.5) // Randomize order
+        : [];
+      setFlashcards(randomizedFlashcards);
     };
 
     fetchFlashcards();
@@ -42,6 +45,13 @@ const SwipeFlashcardViewPage = () => {
       }
       setIsFlipped(false);
     }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+    setIsFlipped(false);
   };
 
   const onSwipeStart = (e) => {
@@ -146,6 +156,9 @@ const SwipeFlashcardViewPage = () => {
 
           {/* I Know and I Don't Know Buttons */}
           <div className="response-buttons">
+          <button className="dont-know-btn" onClick={handlePrevious} disabled={currentIndex === 0}>
+              ← Previous
+            </button>
             <button className="dont-know-btn" onClick={handleIDontKnow}>
               I Don't Know
             </button>
