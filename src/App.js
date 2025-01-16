@@ -119,6 +119,7 @@ import SwipeFlashcardViewPage from "./Flashcard/swipeCardView";
 import ImageToText from "./notifications/txt-img";
 import DownloadPageComplete from "./docs/complete-download-page";
 import MusicPlayer from "./music/player2.0/musicPlayer";
+import JournalPage from "./journals/mainPage";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -233,6 +234,7 @@ const router = createBrowserRouter([
   {path: '/swipe/flashcard/card/view/:id/:setId', element: <SwipeFlashcardViewPage/>},
   {path: '/image-text', element: <ImageToText/>},
   {path: '/download-app', element: <DownloadPageComplete/>},
+  {path: '/journal', element: <JournalPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

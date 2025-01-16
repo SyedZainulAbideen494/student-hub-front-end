@@ -32,7 +32,7 @@ const premiumFeatures = [
 
 const SubscriptionPage = () => {
   const [token, setToken] = useState(localStorage.getItem('token')); // Replace with your method of obtaining the token
-  const [isPremium, setIsPremium] = useState(true);
+  const [isPremium, setIsPremium] = useState(false);
 
   useEffect(() => {
     const checkPremiumStatus = async () => {
@@ -82,7 +82,9 @@ const SubscriptionPage = () => {
             ))}
           </ul>
           {isPremium ? (
-            <span className="active-label">Active</span>
+            <span className="cta-btn" onClick={handleCheckout}>
+            Select Premium Plan
+          </span>
           ) : (
             <span className="cta-btn" onClick={handleCheckout}>
               Select Premium Plan

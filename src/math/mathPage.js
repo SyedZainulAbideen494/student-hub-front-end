@@ -16,19 +16,23 @@ import { FaBook, FaPen, FaQuestionCircle, FaTimes } from 'react-icons/fa';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
-
 const formatContent = (content) => {
   // Format code blocks
   content = content.replace(/```(.*?)```/gs, "<pre><code>$1</code></pre>");
+  
   // Format large headers
   content = content.replace(/## (.*?)(?=\n|\r\n)/g, "<h2 class='large-text'>$1</h2>");
-  // Format bold text
-  content = content.replace(/\*\*(.*?)\*\*/g, "<strong class='large-text'>$1</strong>");
-  // Format italic text
+  
+  // Format bold text (replace "**text**" with "<strong>text</strong>")
+  content = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  
+  // Format italic text (replace "*text*" with "<em>text</em>")
   content = content.replace(/\*(.*?)\*/g, "<em>$1</em>");
+  
   // Format list items
   content = content.replace(/^\* (.*?)(?=\n|\r\n)/gm, "<li>$1</li>");
   content = content.replace(/(<li>.*?<\/li>)/g, "<ul>$1</ul>");
+  
   // Format tables
   content = content.replace(/((?:\|.*?\|(?:\r?\n|$))+)/g, (match) => {
     const rows = match.split('\n').filter(row => row.trim());
@@ -43,10 +47,16 @@ const formatContent = (content) => {
     }).join('');
     return `<table>${tableRows}</table>`;
   });
-  // Format LaTeX/math expressions
-  content = content.replace(/\$(.*?)\$/g, (_, math) => `\\(${math}\\)`); // MathJax inline
+
+  // Format LaTeX/math expressions (inline math syntax: $math$ -> MathJax syntax)
+  content = content.replace(/\$(.*?)\$/g, (_, math) => `\\(${math}\\)`);
+
+  // Ensure all remaining asterisks are removed
+  content = content.replace(/\*/g, "");
+
   return content;
 };
+
 
 
 const MathSolver = ({ handleVoiceCommand }) => {
