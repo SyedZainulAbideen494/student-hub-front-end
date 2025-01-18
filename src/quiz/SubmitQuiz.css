@@ -141,3 +141,89 @@
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
     transform: translateY(-2px); /* Slight lift effect */
 }
+
+
+/* Question Container */
+.render__Quiz__Result__Question__Container {
+    background: #ffffff;
+    margin: 16px auto;
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .render__Quiz__Result__Question__Container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Question Text */
+  .render__Quiz__Result__Question__Text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #1c1c1e;
+  }
+  
+  /* User Answer */
+  .render__Quiz__Result__User__Answer {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+  
+  .render__Quiz__Result__Correct__Answer {
+    color: #34c759;
+    font-weight: 500;
+  }
+  
+  .render__Quiz__Result__Incorrect__Answer {
+    color: #ff3b30;
+    font-weight: 500;
+  }
+  
+  /* Correct Answer (When Shown Separately) */
+  .render__Quiz__Result__Correct__Answer__Container {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  .render__Quiz__Result__Correct__Answer__Highlight {
+    color: #007aff;
+    font-weight: 500;
+  }
+  
+  /* Correct and Incorrect Styling */
+  .render__Quiz__Result__Correct {
+    border-left: 4px solid #34c759;
+    padding-left: 12px;
+  }
+  
+  .render__Quiz__Result__Incorrect {
+    border-left: 4px solid #ff3b30;
+    padding-left: 12px;
+  }
+  
+  /* Minimal Hover */
+  .render__Quiz__Result__Correct:hover,
+  .render__Quiz__Result__Incorrect:hover {
+    background: #fafafa;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .render__Quiz__Result__Question__Container {
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+  
+    .render__Quiz__Result__Question__Text {
+      font-size: 15px;
+    }
+  
+    .render__Quiz__Result__User__Answer,
+    .render__Quiz__Result__Correct__Answer__Container {
+      font-size: 13px;
+    }
+  }

@@ -22,10 +22,10 @@ const SubmitPage = () => {
   const navigate = useNavigate();
   const score = location.state?.score || 0;
   const quizId = location.state?.quizId;
+  const userAnswers = location.state?.userAnswers || {};
+  const correctAnswers = location.state?.correctAnswers || {};
+  const [questions, setQuestions] = useState([]);
   const [countUpFinished, setCountUpFinished] = useState(false);
-  const [previousResults, setPreviousResults] = useState([]);
-
-  const token = localStorage.getItem('token');
 
   const [scoreAnimationProps, setScoreAnimationProps] = useSpring(() => ({
     opacity: 0,
@@ -33,25 +33,68 @@ const SubmitPage = () => {
   }));
 
   useEffect(() => {
-    // Sound effect on score completion
-    const finishSound = new Audio('/sounds/game-bonus-144751.mp3')
-    finishSound.play();
+    axios.get(`${API_ROUTES.getQuiz}/${quizId}`)
+      .then((response) => {
+        setQuestions(response.data.questions);
+      })
+      .catch((error) => {
+        console.error('Error fetching quiz questions:', error);
+      });
 
-    // Animation trigger for score and feedback
+    // Trigger animation for the score display
     setScoreAnimationProps({ opacity: 1, transform: 'scale(1)' });
 
-    axios.post(API_ROUTES.quizResultsPageAllresults, { token })
-      .then(response => {
-        setPreviousResults(response.data.results);
-      })
-      .catch(error => {
-        console.error('Error fetching previous results:', error);
-      });
-  }, [token, setScoreAnimationProps]);
+    if (score > 70) {
+      // Play success sound for high scores
+      const finishSound = new Audio('/sounds/game-bonus-144751.mp3');
+      finishSound.play();
+    }
+  }, [quizId, score, setScoreAnimationProps]);
 
   const handleCountUpEnd = () => {
     setCountUpFinished(true);
   };
+
+  const renderAnswerComparison = () => {
+    return questions.map((question) => {
+      const userAnswerId = userAnswers[question.id];
+      const correctAnswer = correctAnswers[question.id];
+      const isCorrect = userAnswerId === correctAnswer?.id;
+  
+      return (
+        <div
+          key={question.id}
+          className={`render__Quiz__Result__Question__Container ${
+            isCorrect ? 'render__Quiz__Result__Correct' : 'render__Quiz__Result__Incorrect'
+          }`}
+        >
+          <p className="render__Quiz__Result__Question__Text">{question.question_text}</p>
+          <p className="render__Quiz__Result__User__Answer">
+            Your Answer:
+            <span
+              className={`${
+                isCorrect
+                  ? 'render__Quiz__Result__Correct__Answer'
+                  : 'render__Quiz__Result__Incorrect__Answer'
+              }`}
+            >
+              {question.answers.find((ans) => ans.id === userAnswerId)?.answer_text || 'Not Answered'}
+            </span>
+          </p>
+          {!isCorrect && correctAnswer && (
+            <p className="render__Quiz__Result__Correct__Answer__Container">
+              Correct Answer:
+              <span className="render__Quiz__Result__Correct__Answer__Highlight">
+                {correctAnswer.text}
+              </span>
+            </p>
+          )}
+        </div>
+      );
+    });
+  };
+  
+  
 
   const getMessage = () => {
     if (score > 90) return 'Exceptional!';
@@ -66,11 +109,12 @@ const SubmitPage = () => {
         <button className="back-button-quiz-complete" onClick={() => navigate('/quiz/home')}>&larr;</button>
         <h1>Quiz Result</h1>
       </header>
+
       <div className="card-quiz-complete">
         {countUpFinished && score > 70 && <Confetti />}
         <p className="message-quiz-complete">{getMessage()}</p>
-        
-        {/* Animated Score */}
+
+        {/* Animated Score Display */}
         <animated.div style={scoreAnimationProps} className="score-container-quiz-complete">
           <CountUp
             start={0}
@@ -83,31 +127,19 @@ const SubmitPage = () => {
         </animated.div>
 
         <p className="tip-quiz-complete">{getRandomTip()}</p>
+
         <button
           className="answers-button-quiz-complete"
-          onClick={() => navigate(`/quiz/answers/${quizId}`)} // Navigate to answers page with quiz ID
+          onClick={() => navigate(`/quiz/answers/${quizId}`)}
         >
-          View Answers
+          Answers
         </button>
       </div>
 
-      <div className="previous-results-quiz-complete">
-        <h2>Previous Results</h2>
-        {previousResults.length > 0 ? (
-          previousResults.map(result => (
-            <div key={result.quiz_id} className="result-item-quiz-complete">
-              <div className="result-header-quiz-complete">
-                <div className="quiz-name-quiz-complete">{result.quiz_title}</div>
-                <div className="score-quiz-complete">{result.score}%</div>
-              </div>
-              <div className="completed-at-quiz-complete">
-                Completed At: {new Date(result.completed_at).toLocaleString()}
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>No previous results available.</p>
-        )}
+      {/* Answer Comparison Section */}
+      <div className="answer-comparison-container">
+        <h2>Answer Comparison</h2>
+        {questions.length > 0 ? renderAnswerComparison() : <p>Loading answers...</p>}
       </div>
     </div>
   );

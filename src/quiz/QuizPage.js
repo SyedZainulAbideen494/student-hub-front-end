@@ -102,13 +102,17 @@ const QuizPage = () => {
             });
     
             const score = response.data.score;
-            setScore(score);
-            navigate('/quiz/submit', { state: { score, quizId: id } }); // Pass quiz ID here
+            const correctAnswers = response.data.correctAnswers; // Assuming the backend sends correct answers
+            
+            navigate('/quiz/submit', {
+                state: { score, quizId: id, userAnswers: answers, correctAnswers }
+            });
         } catch (error) {
             console.error('Error submitting quiz:', error.response || error.message);
             alert('An error occurred while submitting the quiz. Please try again later.');
         }
     };
+    
     
 
     return (
