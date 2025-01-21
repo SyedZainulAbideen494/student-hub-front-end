@@ -139,59 +139,54 @@ const [imageprev, setImageprev] = useState(null); // Only one image state
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatHistory]);
 
-  const handleSendMessage = async () => {
-    if (!message.trim() && !image) return; // Ensure either message or image is provided
-  
-    if (!conversationStarted) setConversationStarted(true);
-  
-    const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
-    setChatHistory(newHistory);
-    setLoading(true);
-  
-    const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
-  
-    try {
-      if (image) {
-        // If there is an image, send it for processing
-        const formData = new FormData();
-        formData.append("image", image); // Ensure the field name is 'image'
-        formData.append("prompt", message); // Send the prompt as well
-  
-        const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-  
-         // Get the result text from the image processing
-         const resultText = response.data.result;
 
-         // Format the result text before showing it to the user
-         const formattedResultText = formatContent(resultText);
-   
-         setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-         setMessage(''); // Clear the message after processing the image
-         setImage(null); // Clear the image after processing
-      } else {
-        // If it's just a text message, process it as usual
-        const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
-        const formattedResponse = formatContent(response.data.response);
-        setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
-        setMessage(''); // Clear the message after processing text
+    const handleSendMessage = async () => {
+      if (!message.trim() && !image) return; // Ensure either message or image is provided
+    
+      if (!conversationStarted) setConversationStarted(true);
+    
+      const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
+      setChatHistory(newHistory);
+      setLoading(true);
+    
+      const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
+    
+      try {
+        if (image) {
+          // If there is an image, send it for processing
+          const formData = new FormData();
+          formData.append("image", image); // Ensure the field name is 'image'
+          formData.append("prompt", message); // Send the prompt as well
+    
+          const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+    
+          // Get the result text from the image processing
+          const resultText = response.data.result;
+    
+          // Format the result text before showing it to the user
+          const formattedResultText = formatContent(resultText);
+    
+          setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
+          setMessage(''); // Clear the message after processing the image
+          setImage(null); // Clear the image after processing
+        } else {
+          // If it's just a text message, process it as usual
+          const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
+          const formattedResponse = formatContent(response.data.response);
+          setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
+          setMessage(''); // Clear the message after processing text
+        }
+      } catch (error) {
+     
+        setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'error' }] }]);
+        console.error('Error sending message:', error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      const errorMessage = (
-        <>
-          Oops! Something went wrong. Please try again later. Reasons - Google's servers are not responding.
-          <button className="report-problem-btn" onClick={() => setShowFeedbackModal(true)}>
-            Report Problem
-          </button>
-        </>
-      );
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
-      console.error('Error sending message:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+    
   
   
   const handleFileChange = (event) => {
@@ -603,7 +598,22 @@ useEffect(() => {
   </div>
 
   {/* Image input field with label */}
-  
+  <div className="image-upload-container">
+  <label htmlFor="imageUpload" className="image-upload-label">
+  <i className="fas fa-paperclip" style={{marginRight: '10px'}}>{image && (
+  <div className="image-preview-container">
+    <img src={imageprev} alt="Image Preview" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+  </div>
+)}</i> 
+</label>
+    <input
+      id="imageUpload"
+      type="file"
+      accept="image/*"
+      onChange={handleFileChange}
+      className="image-upload-input"
+    />
+  </div>
 
   {message.trim() || image ? (
     <button
