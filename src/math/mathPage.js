@@ -597,7 +597,7 @@ useEffect(() => {
     />
   </div>
 
-  {/* Image input field with label */}
+  {/* Image input field with label 
   <div className="image-upload-container">
   <label htmlFor="imageUpload" className="image-upload-label">
   <i className="fas fa-paperclip" style={{marginRight: '10px'}}>{image && (
@@ -614,7 +614,7 @@ useEffect(() => {
       className="image-upload-input"
     />
   </div>
-
+*/}
   {message.trim() || image ? (
     <button
       className="chat-send-btn__ai__loader__light"
