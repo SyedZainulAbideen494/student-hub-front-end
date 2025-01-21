@@ -189,10 +189,16 @@ const [result, setResult] = useState(null);
   
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setImage(file);
-    } else {
-      setError("Please upload a valid image file.");
+    
+    // Check if a file is selected and if it is an image
+    if (file) {
+      if (file.type.startsWith("image/")) {
+        setImage(URL.createObjectURL(file)); // Set the image preview
+        setError(""); // Clear any previous error
+      } else {
+        setError("Please upload a valid image file."); // Set error if not an image
+        setImage(null); // Clear the image preview
+      }
     }
   };
   
@@ -579,6 +585,8 @@ useEffect(() => {
           )}
           <div ref={messagesEndRef} />
         </div>
+
+
         <div className="messageBox__ai__loader__light">
   <div className="input-group__ai__loader__light">
     <input
@@ -595,7 +603,11 @@ useEffect(() => {
   {/* Image input field with label */}
   <div className="image-upload-container">
   <label htmlFor="imageUpload" className="image-upload-label">
-  <i className="fas fa-paperclip" style={{marginRight: '10px'}}></i> 
+  <i className="fas fa-paperclip" style={{marginRight: '10px'}}>        {image && (
+  <div className="image-preview-container">
+    <img src={image} alt="Image Preview" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+  </div>
+)}    </i> 
 </label>
     <input
       id="imageUpload"
