@@ -602,23 +602,7 @@ useEffect(() => {
     />
   </div>
 
-  {/* Image input field with label */}
-  <div className="image-upload-container">
-  <label htmlFor="imageUpload" className="image-upload-label">
-  <i className="fas fa-paperclip" style={{marginRight: '10px'}}>{image && (
-  <div className="image-preview-container">
-    <img src={imageprev} alt="Image Preview" style={{ maxWidth: '50px', maxHeight: '50px' }} />
-  </div>
-)}</i> 
-</label>
-    <input
-      id="imageUpload"
-      type="file"
-      accept="image/*"
-      onChange={handleFileChange}
-      className="image-upload-input"
-    />
-  </div>
+
 
   {message.trim() || image ? (
     <button
