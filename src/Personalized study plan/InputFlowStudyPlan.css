@@ -1,0 +1,188 @@
+/* Container */
+.container__flow__inp__user__Data {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Progress Bar */
+  .progress-bar__flow__inp__user__Data {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  .progress-step__flow__inp__user__Data {
+    flex: 1;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 10px;
+    background-color: #f9f8fd;
+  }
+  .active__flow__inp__user__Data {
+    background-color: #1d1a23;
+  }
+  
+  /* Headers */
+  .header__flow__inp__user__Data {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .subheader__flow__inp__user__Data {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 15px 0;
+  }
+  
+  /* Buttons */
+  .btn__flow__inp__user__Data {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 25px;
+    border: 2px solid #1d1a23;
+    background-color: #f9f8fd;
+    color: #1d1a23;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block; /* Ensures buttons are stacked vertically */
+    width: 100%; /* Ensures buttons take up full width */
+  }
+  
+  .btn__flow__inp__user__Data.selected__flow__inp__user__Data {
+    background-color: #1d1a23;
+    color: #ffffff;
+  }
+  
+  .btn__flow__inp__user__Data:hover {
+    background-color: #1d1a23;
+    color: #ffffff;
+  }
+  
+  /* Disabled Buttons */
+  .next-btn__flow__inp__user__Data.disabled__flow__inp__user__Data {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+  }
+  
+  /* Back Button */
+  .back-btn__flow__inp__user__Data {
+    margin-top: 10px;
+    background-color: transparent;
+    color: #1d1a23;
+    border: 2px solid #1d1a23;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+  }
+  .back-btn__flow__inp__user__Data:hover {
+    background-color: #1d1a23;
+    color: white;
+  }
+  
+  /* Input and Add Subject */
+  .subject-input__flow__inp__user__Data {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .input__flow__inp__user__Data {
+    width: 70%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  .add-btn__flow__inp__user__Data {
+    padding: 10px 20px;
+    background-color: #1d1a23;
+    color: white;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-btn__flow__inp__user__Data:hover {
+    background-color: #333;
+  }
+  
+  /* Subject Chips */
+  .subjects-list__flow__inp__user__Data {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .subject-chip__flow__inp__user__Data {
+    background-color: #f9f8fd;
+    color: #1d1a23;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .remove-btn__flow__inp__user__Data {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ff4d4d;
+  }
+  
+  .remove-btn__flow__inp__user__Data:hover {
+    color: #ff0000;
+  }
+  
+  /* Adjust the Next/Back button layout */
+  .step__flow__inp__user__Data {
+    margin-bottom: 30px; /* Adds spacing at the bottom */
+  }
+  
+  .buttons-row__flow__inp__user__Data {
+    display: block; /* Ensures the buttons are stacked vertically */
+    width: 100%; /* Makes buttons full-width */
+  }
+  
+
+  /* Next Button Styling */
+.next-btn__flow__inp__user__Data {
+    background-color: #1d1a23;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    max-width: 250px;
+    text-align: center;
+  }
+  
+  .next-btn__flow__inp__user__Data.selected__flow__inp__user__Data {
+    background-color: #1d1a23;
+    color: #ffffff;
+  }
+  
+  .next-btn__flow__inp__user__Data:hover {
+    background-color: #1d1a23;
+    color: #ffffff;
+  }
+  
+  /* Disabled Button State */
+  .next-btn__flow__inp__user__Data.disabled__flow__inp__user__Data {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+  }
+  
+  
+  

@@ -120,6 +120,8 @@ import ImageToText from "./notifications/txt-img";
 import DownloadPageComplete from "./docs/complete-download-page";
 import MusicPlayer from "./music/player2.0/musicPlayer";
 import JournalPage from "./journals/mainPage";
+import InputFlowStudyPlan from "./Personalized study plan/Input-flow";
+import ImageObjectDetector from "./image ai/imgAi";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -235,6 +237,8 @@ const router = createBrowserRouter([
   {path: '/image-text', element: <ImageToText/>},
   {path: '/download-app', element: <DownloadPageComplete/>},
   {path: '/journal', element: <JournalPage/>},
+  {path: '/flow-user-data', element: <InputFlowStudyPlan/>},
+  {path: '/ai/img', element: <ImageObjectDetector/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -86,7 +86,8 @@ const MathSolver = ({ handleVoiceCommand }) => {
   const [isGeneratingFlashcards, setIsGeneratingFlashcards] = useState(false);
 const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
 const [magicModalContent, setMagicModalContent] = useState('');
-
+const [image, setImage] = useState(null); // Only one image state
+const [result, setResult] = useState(null);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -138,33 +139,60 @@ const [magicModalContent, setMagicModalContent] = useState('');
   }, [chatHistory]);
 
   const handleSendMessage = async () => {
-    if (!message.trim()) return;
+    if (!message.trim() && !image) return; // Ensure either message or image is provided
+  
     if (!conversationStarted) setConversationStarted(true);
   
     const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
     setChatHistory(newHistory);
     setLoading(true);
-    
+  
     const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
   
     try {
-      const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
-      const formattedResponse = formatContent(response.data.response);
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
-      setMessage('');
+      if (image) {
+        // If there is an image, send it for processing
+        const formData = new FormData();
+        formData.append("image", image); // Ensure the field name is 'image'
+        formData.append("prompt", message); // Send the prompt as well
+  
+        const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+  
+        setChatHistory([...newHistory, { role: 'model', parts: [{ text: response.data.result }] }]);
+        setMessage(''); // Clear the message after processing the image
+        setImage(null)
+      } else {
+        // If it's just a text message, process it as usual
+        const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
+        const formattedResponse = formatContent(response.data.response);
+        setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
+        setMessage(''); // Clear the message after processing text
+      }
     } catch (error) {
       const errorMessage = (
         <>
-          Oops! Something went wrong. Please try again later Reasons - google's servers are not responding.
+          Oops! Something went wrong. Please try again later. Reasons - Google's servers are not responding.
           <button className="report-problem-btn" onClick={() => setShowFeedbackModal(true)}>
             Report Problem
           </button>
         </>
       );
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'Oops! Something went wrong. Please try again later. The issue isnt with Edusify, it appears to be an error on Google Gemini. Try rephrasing your question'}] }]);
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: errorMessage }] }]);
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
+    }
+  };
+  
+  
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      setImage(file);
+    } else {
+      setError("Please upload a valid image file.");
     }
   };
   
@@ -551,8 +579,6 @@ useEffect(() => {
           )}
           <div ref={messagesEndRef} />
         </div>
-
-        {/* Chat input */}
         <div className="messageBox__ai__loader__light">
   <div className="input-group__ai__loader__light">
     <input
@@ -565,44 +591,59 @@ useEffect(() => {
       required
     />
   </div>
-  
-  {message.trim() ? (
-  <button
-    className="chat-send-btn__ai__loader__light"
-    onClick={handleSendMessage}
-    disabled={loading}
-  >
-    {loading ? (
-      <div style={{ width: "24px", height: "24px" }}>
-        {/* Display the loader */}
-        <AiLoaderSpeaking />
-      </div>
-    ) : (
-      <svg viewBox="0 0 664 663" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-          fill="none"
-        ></path>
-        <path
-          d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-          stroke="#333333"
-          strokeWidth="33.67"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        ></path>
-      </svg>
-    )}
-  </button>
-) : (
-  <button
-    className="chat-send-btn__ai__loader__light"
-    onClick={listening ? stopListening : startListening}
-  >
-    <FaMicrophone style={{ color: "white" }} />
-  </button>
-)}
 
+  {/* Image input field with label */}
+  <div className="image-upload-container">
+  <label htmlFor="imageUpload" className="image-upload-label">
+  <i className="fas fa-paperclip" style={{marginRight: '10px'}}></i> 
+</label>
+    <input
+      id="imageUpload"
+      type="file"
+      accept="image/*"
+      onChange={handleFileChange}
+      className="image-upload-input"
+    />
+  </div>
+
+  {message.trim() || image ? (
+    <button
+      className="chat-send-btn__ai__loader__light"
+      onClick={handleSendMessage}
+      disabled={loading}
+    >
+      {loading ? (
+        <div style={{ width: "24px", height: "24px" }}>
+          {/* Display the loader */}
+          <AiLoaderSpeaking />
+        </div>
+      ) : (
+        <svg viewBox="0 0 664 663" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+            fill="none"
+          ></path>
+          <path
+            d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+            stroke="#333333"
+            strokeWidth="33.67"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+        </svg>
+      )}
+    </button>
+  ) : (
+    <button
+      className="chat-send-btn__ai__loader__light"
+      onClick={listening ? stopListening : startListening}
+    >
+      <FaMicrophone style={{ color: "white" }} />
+    </button>
+  )}
 </div>
+
+
 
       </div>
       <Modal

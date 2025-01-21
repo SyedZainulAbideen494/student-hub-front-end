@@ -168,5 +168,6 @@ export const API_ROUTES = {
   friendReqStatus: `${API_URL}/api/friend/status`,
   friendReqResponse: `${API_URL}/api/friend/response`,
   getuserFriendsDashboardWidget: `${API_URL}/api/friends-dashboard`,
-  getProfileResources: `${API_URL}/user-resources`
+  getProfileResources: `${API_URL}/user-resources`,
+  aiImgProcessing: `${API_URL}/api/process-images`
 }
