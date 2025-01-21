@@ -188,16 +188,23 @@ const [imageprev, setImageprev] = useState(null); // Only one image state
     };
     
   
-  
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setImage(file);
-      setImageprev(URL.createObjectURL(file)); // Set the image preview
-    } else {
-      setError("Please upload a valid image file.");
-    }
-  };
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+    
+      // Check if the message has already been shown
+      if (!localStorage.getItem('betaMessageShown')) {
+        alert('This feature is currently in beta and may not be fully accurate.');
+        localStorage.setItem('betaMessageShown', 'true'); // Store the flag in local storage
+      }
+    
+      if (file && file.type.startsWith("image/")) {
+        setImage(file);
+        setImageprev(URL.createObjectURL(file)); // Set the image preview
+      } else {
+        setError("Please upload a valid image file.");
+      }
+    };
+    
   
   
   const handleCreateNotes = (content) => {
@@ -602,7 +609,7 @@ useEffect(() => {
   <label htmlFor="imageUpload" className="image-upload-label">
   <i className="fas fa-paperclip" style={{marginRight: '10px'}}>{image && (
   <div className="image-preview-container">
-    <img src={imageprev} alt="Image Preview" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+    <img src={imageprev} alt="Image Preview" style={{ maxWidth: '30px', maxHeight: '30px' }} />
   </div>
 )}</i> 
 </label>
