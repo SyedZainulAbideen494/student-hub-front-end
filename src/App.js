@@ -238,7 +238,6 @@ const router = createBrowserRouter([
   {path: '/download-app', element: <DownloadPageComplete/>},
   {path: '/journal', element: <JournalPage/>},
   {path: '/flow-user-data', element: <InputFlowStudyPlan/>},
-  {path: '/ai/img', element: <ImageObjectDetector/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -157,6 +157,7 @@ const [imageprev, setImageprev] = useState(null); // Only one image state
           const formData = new FormData();
           formData.append("image", image); // Ensure the field name is 'image'
           formData.append("prompt", message); // Send the prompt as well
+          formData.append('token', token)
     
           const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
             headers: { "Content-Type": "multipart/form-data" },
