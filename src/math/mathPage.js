@@ -88,6 +88,7 @@ const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
 const [magicModalContent, setMagicModalContent] = useState('');
 const [image, setImage] = useState(null); // Only one image state
 const [result, setResult] = useState(null);
+const [imageprev, setImageprev] = useState(null); // Only one image state
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -160,9 +161,15 @@ const [result, setResult] = useState(null);
           headers: { "Content-Type": "multipart/form-data" },
         });
   
-        setChatHistory([...newHistory, { role: 'model', parts: [{ text: response.data.result }] }]);
-        setMessage(''); // Clear the message after processing the image
-        setImage(null)
+         // Get the result text from the image processing
+         const resultText = response.data.result;
+
+         // Format the result text before showing it to the user
+         const formattedResultText = formatContent(resultText);
+   
+         setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
+         setMessage(''); // Clear the message after processing the image
+         setImage(null); // Clear the image after processing
       } else {
         // If it's just a text message, process it as usual
         const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
@@ -191,6 +198,7 @@ const [result, setResult] = useState(null);
     const file = event.target.files[0];
     if (file && file.type.startsWith("image/")) {
       setImage(file);
+      setImageprev(URL.createObjectURL(file)); // Set the image preview
     } else {
       setError("Please upload a valid image file.");
     }
@@ -597,7 +605,11 @@ useEffect(() => {
   {/* Image input field with label */}
   <div className="image-upload-container">
   <label htmlFor="imageUpload" className="image-upload-label">
-  <i className="fas fa-paperclip" style={{marginRight: '10px'}}></i> 
+  <i className="fas fa-paperclip" style={{marginRight: '10px'}}>{image && (
+  <div className="image-preview-container">
+    <img src={imageprev} alt="Image Preview" style={{ maxWidth: '50px', maxHeight: '50px' }} />
+  </div>
+)}</i> 
 </label>
     <input
       id="imageUpload"
