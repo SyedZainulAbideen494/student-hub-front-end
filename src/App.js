@@ -125,6 +125,7 @@ import ImageObjectDetector from "./image ai/imgAi";
 import PDFnotesCreation from "./flashCards/pdf notes creation/PDFnotesCreation";
 import GenerateNotesAI from "./flashCards/Ai notes/aiNotes";
 import CreateNotesPageChoice from "./flashCards/chooseNoteCreateType";
+import YtVidDownload from "./flashCards/youtube video to notes/sample";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -244,6 +245,7 @@ const router = createBrowserRouter([
   {path: '/notes/create/pdf', element: <PDFnotesCreation/>},
   {path: '/notes/create/ai', element: <GenerateNotesAI/>},
   {path: '/create/notes/page', element: <CreateNotesPageChoice/>},
+  {path: '/yt/vid/download', element: <YtVidDownload/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

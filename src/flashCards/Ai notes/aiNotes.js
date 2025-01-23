@@ -104,12 +104,19 @@ const GenerateNotesAI = () => {
 
       {/* Loading Modal */}
       {loading && (
-        <div className="loading-modal__ai__gen__notes__ai__gen__notes">
-          <PencilSVG/>
-        </div>
+          <LoadingModal/>
       )}
     </div>
   );
-};
 
+
+};
+const LoadingModal = () => (
+    <div className="PDFNotesCreation__loadingModal">
+      <div className="PDFNotesCreation__modalContent">
+        <PencilSVG />
+        <p>Just a moment...!</p>
+      </div>
+    </div>
+  );
 export default GenerateNotesAI;

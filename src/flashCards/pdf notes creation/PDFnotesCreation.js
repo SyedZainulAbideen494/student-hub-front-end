@@ -125,7 +125,7 @@ const LoadingModal = () => (
   <div className="PDFNotesCreation__loadingModal">
     <div className="PDFNotesCreation__modalContent">
       <PencilSVG />
-      <p>Just a moment...</p>
+      <p>Just a moment...!</p>
     </div>
   </div>
 );
