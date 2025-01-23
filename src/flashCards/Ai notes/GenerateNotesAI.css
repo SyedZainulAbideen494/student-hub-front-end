@@ -130,11 +130,11 @@
   
   /* Submit button */
   .submit-btn__ai__gen__notes__ai__gen__notes {
-    background-color: #007aff;
+    background-color: #242128;
     color: white;
-    padding: 15px 20px;
+    padding: 20px 27px;
     border: none;
-    border-radius: 12px;
+    border-radius: 25px;
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -142,10 +142,7 @@
     margin-top: 20px;
   }
   
-  .submit-btn__ai__gen__notes__ai__gen__notes:hover {
-    background-color: #005bb5;
-  }
-  
+
   /* Error message */
   .error-message__ai__gen__notes__ai__gen__notes {
     color: red;

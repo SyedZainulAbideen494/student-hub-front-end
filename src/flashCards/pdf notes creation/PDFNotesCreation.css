@@ -46,7 +46,6 @@
     flex-direction: column;
     gap: 18px;
     padding: 15px;
-    background-color: #f9f9f9;
     border-radius: 8px;
   }
   
@@ -59,16 +58,13 @@
     font-weight: 500;
     cursor: pointer;
     padding: 14px 20px;
-    border-radius: 8px;
+    border-radius: 25px;
     transition: background-color 0.3s ease, color 0.3s ease;
     border: 1px solid #ccc;
     background-color: #f0f0f0;
   }
   
-  .PDFNotesCreation__toggleOption:hover {
-    background-color: #e1f5ff;
-  }
-  
+
   .PDFNotesCreation__toggleOption--selected {
     background-color: #e1f5ff;
     color: #007aff;
@@ -77,7 +73,7 @@
   
   /* Button */
   .PDFNotesCreation__button {
-    background-color: #007aff;
+    background-color: #242128;
     color: #fff;
     padding: 15px 30px;
     font-size: 20px;
