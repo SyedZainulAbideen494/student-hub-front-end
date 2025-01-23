@@ -71,7 +71,7 @@ const GenerateNotesAI = () => {
         </div>
 
         <div className="note-types-container__ai__gen__notes__ai__gen__notes">
-          <label className="note-types-label__ai__gen__notes__ai__gen__notes">Note Types:</label>
+          <label className="note-types-label__ai__gen__notes__ai__gen__notes">Note Types:</label><br/><br/>
           <div className="toggle-container__ai__gen__notes__ai__gen__notes">
             {Object.keys(types).map((type) => (
               <div key={type} className="toggle-card__ai__gen__notes__ai__gen__notes">
