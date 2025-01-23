@@ -122,6 +122,7 @@ import MusicPlayer from "./music/player2.0/musicPlayer";
 import JournalPage from "./journals/mainPage";
 import InputFlowStudyPlan from "./Personalized study plan/Input-flow";
 import ImageObjectDetector from "./image ai/imgAi";
+import PDFnotesCreation from "./flashCards/pdf notes creation/PDFnotesCreation";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -238,6 +239,7 @@ const router = createBrowserRouter([
   {path: '/download-app', element: <DownloadPageComplete/>},
   {path: '/journal', element: <JournalPage/>},
   {path: '/flow-user-data', element: <InputFlowStudyPlan/>},
+  {path: '/notes/create/pdf', element: <PDFnotesCreation/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
