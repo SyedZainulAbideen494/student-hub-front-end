@@ -187,7 +187,7 @@ const ViewFlashCard = () => {
 
 
     const handleCraeteFalshCardsClick = () => {
-        nav('/notes/create')
+        nav('/create/notes/page')
       }
       
       const openSubjectModal = () => setShowSubjectModal(true); // Open modal

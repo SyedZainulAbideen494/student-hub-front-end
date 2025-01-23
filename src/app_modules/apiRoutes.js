@@ -170,5 +170,6 @@ export const API_ROUTES = {
   getuserFriendsDashboardWidget: `${API_URL}/api/friends-dashboard`,
   getProfileResources: `${API_URL}/user-resources`,
   aiImgProcessing: `${API_URL}/api/process-images`,
-  pdfNotesMaker: `${API_URL}/summarize-pdf/notes`
+  pdfNotesMaker: `${API_URL}/summarize-pdf/notes`,
+  aiNotesGen: `${API_URL}/api/notes/generate`
 }

@@ -106,6 +106,7 @@ const FooterNav = () => {
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaBook className="icon-footer-nav" />
                     <span className="btn-label">Notes</span>
+                    <span className='new-label-footer-nav'>New fetaures!</span>
                 </button>
             </Link>
             <Link to='/flashcard' style={{ textDecoration: 'none' }}>

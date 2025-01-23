@@ -1,0 +1,109 @@
+/* General container for the page */
+.create__notes__type__page__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 100vh;
+  border-radius: 20px;
+  width: 70%;
+  max-width: 480px; /* Limit max width to give a more centered feel */
+  margin: auto;
+}
+
+/* Header container for back button and title */
+.create__notes__type__page__header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 40px; /* Added more spacing between header and options */
+}
+
+/* Back button */
+.create__notes__type__page__back-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 15px; /* Reduced the margin slightly */
+}
+
+.create__notes__type__page__back-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Title */
+.create__notes__type__page__header {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* Description text */
+.create__notes__type__page__description {
+  font-size: 17px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 300;
+  line-height: 1.5;
+  max-width: 350px; /* Limiting description width for cleaner look */
+}
+
+/* Options container */
+.create__notes__type__page__options {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 400px; /* Limit width for cleaner presentation */
+}
+
+/* Option buttons */
+.create__notes__type__page__option {
+  background-color: #242128; /* Apple blue color */
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 50px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+
+.create__notes__type__page__option:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(72, 209, 204, 0.8);
+}
+
+/* Minor touch-ups for better centering */
+.create__notes__type__page__container {
+  text-align: center; /* Ensure text is centered */
+  justify-content: center; /* Ensure content is vertically centered */
+}
+
+.create__notes__type__page__header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px; /* Reduce space between header and options */
+}
+
+/* Increase spacing between options */
+.create__notes__type__page__options button {
+  margin-top: 15px;
+}

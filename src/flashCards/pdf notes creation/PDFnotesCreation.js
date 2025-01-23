@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./PDFNotesCreation.css"; // Ensure the CSS file is imported
+import "./PDFNotesCreation.css";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTES } from "../../app_modules/apiRoutes";
+import PencilSVG from "./PencilSVG";
 
 const PDFNotesCreation = () => {
   const [file, setFile] = useState(null);
@@ -21,7 +22,7 @@ const PDFNotesCreation = () => {
 
   const handleFileChange = (selectedFile) => {
     setFile(selectedFile);
-    setError(""); // Clear error if user uploads a file
+    setError("");
   };
 
   const handleOptionToggle = (value) => {
@@ -34,57 +35,52 @@ const PDFNotesCreation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!file) {
       setError("Please upload a file.");
       return;
     }
-  
+
     if (selectedOptions.length === 0) {
       setError("Please select at least one option.");
       return;
     }
-  
+
     setLoading(true);
     setError("");
     setOutput("");
-  
+
     try {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("options", JSON.stringify(selectedOptions));
-      formData.append("token", localStorage.getItem("token")); // Add token to the request body
-  
+      formData.append("token", localStorage.getItem("token"));
+
       const response = await axios.post(API_ROUTES.pdfNotesMaker, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-  
+
       setOutput(response.data.result);
-      alert(response.data.message); // Show success message
-  
-      // Now, the response includes the noteId
+
       const noteId = response.data.noteId;
       if (noteId) {
-        navigate(`/note/view/${noteId}`); // Navigate to the note view page
+        navigate(`/note/view/${noteId}`);
       } else {
         setError("Failed to retrieve note ID.");
       }
     } catch (err) {
-      console.error(err);
       setError("Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
-  
-  
 
   return (
     <div className="PDFNotesCreation__container">
-          <button className="PDFNotesCreation__backButton" onClick={() => navigate(-1)}>
-        ←
+      <button className="PDFNotesCreation__backButton" onClick={() => navigate(-1)}>
+        ← 
       </button>
       <h1 className="PDFNotesCreation__header">PDF Notes Creator</h1>
       <form onSubmit={handleSubmit} className="PDFNotesCreation__form">
@@ -95,11 +91,7 @@ const PDFNotesCreation = () => {
           {options.map((option) => (
             <div
               key={option.value}
-              className={`PDFNotesCreation__toggleOption ${
-                selectedOptions.includes(option.value)
-                  ? "PDFNotesCreation__toggleOption--selected"
-                  : ""
-              }`}
+              className={`PDFNotesCreation__toggleOption ${selectedOptions.includes(option.value) ? "PDFNotesCreation__toggleOption--selected" : ""}`}
               onClick={() => handleOptionToggle(option.value)}
             >
               <span className="PDFNotesCreation__toggleOptionText">
@@ -123,36 +115,38 @@ const PDFNotesCreation = () => {
           <pre className="PDFNotesCreation__outputText">{output}</pre>
         </div>
       )}
+
+      {loading && <LoadingModal />}
     </div>
   );
 };
 
-const FileUploader = ({ onFileChange }) => {
-  return (
-    <div className="PDFNotesCreation__fileUpload__container">
-      <div className="PDFNotesCreation__fileUpload__wrapper">
-        <div className="PDFNotesCreation__fileUpload__box">
-          <label htmlFor="file-upload" className="PDFNotesCreation__fileUpload__content">
-            <img
-              alt="File Icon"
-              className="PDFNotesCreation__fileUpload__icon"
-              src="https://img.icons8.com/dusk/64/000000/file.png"
-            />
-            <span className="PDFNotesCreation__fileUpload__text">Drag &amp; drop your files here</span>
-            <span className="PDFNotesCreation__fileUpload__text">or click to upload</span>
-          </label>
+const LoadingModal = () => (
+  <div className="PDFNotesCreation__loadingModal">
+    <div className="PDFNotesCreation__modalContent">
+      <PencilSVG />
+      <p>Just a moment... Your notes are being generated!</p>
+    </div>
+  </div>
+);
 
-          <input
-            className="PDFNotesCreation__fileUpload__input"
-            id="file-upload"
-            type="file"
-            accept="application/pdf"
-            onChange={(e) => onFileChange(e.target.files[0])}
-          />
+const FileUploader = ({ onFileChange }) => (
+  <div className="PDFNotesCreation__fileUpload__container">
+    <div className="PDFNotesCreation__fileUpload__wrapper">
+      <label className="PDFNotesCreation__fileUpload__box">
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={(e) => onFileChange(e.target.files[0])}
+          className="PDFNotesCreation__fileUpload__input"
+        />
+        <div className="PDFNotesCreation__fileUpload__content">
+          
+          <p className="PDFNotesCreation__fileUpload__text">Upload PDF File</p>
         </div>
-      </div>
+      </label>
     </div>
-  );
-};
+  </div>
+);
 
 export default PDFNotesCreation;

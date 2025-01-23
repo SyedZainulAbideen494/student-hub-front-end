@@ -123,6 +123,8 @@ import JournalPage from "./journals/mainPage";
 import InputFlowStudyPlan from "./Personalized study plan/Input-flow";
 import ImageObjectDetector from "./image ai/imgAi";
 import PDFnotesCreation from "./flashCards/pdf notes creation/PDFnotesCreation";
+import GenerateNotesAI from "./flashCards/Ai notes/aiNotes";
+import CreateNotesPageChoice from "./flashCards/chooseNoteCreateType";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -240,6 +242,8 @@ const router = createBrowserRouter([
   {path: '/journal', element: <JournalPage/>},
   {path: '/flow-user-data', element: <InputFlowStudyPlan/>},
   {path: '/notes/create/pdf', element: <PDFnotesCreation/>},
+  {path: '/notes/create/ai', element: <GenerateNotesAI/>},
+  {path: '/create/notes/page', element: <CreateNotesPageChoice/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
