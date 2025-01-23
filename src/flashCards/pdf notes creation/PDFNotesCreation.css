@@ -32,9 +32,6 @@
     transition: color 0.3s;
   }
   
-  .PDFNotesCreation__backButton:hover {
-    color: #005bb5;
-  }
   
   /* Form */
   .PDFNotesCreation__form {

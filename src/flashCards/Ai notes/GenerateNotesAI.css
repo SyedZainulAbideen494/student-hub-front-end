@@ -75,10 +75,7 @@
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .toggle-card__ai__gen__notes__ai__gen__notes:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-  }
+
   
   .toggle-label__ai__gen__notes__ai__gen__notes {
     font-size: 1rem;
