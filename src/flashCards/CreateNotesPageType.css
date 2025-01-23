@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
-  min-height: 100vh;
   border-radius: 20px;
   width: 70%;
   max-width: 480px; /* Limit max width to give a more centered feel */
