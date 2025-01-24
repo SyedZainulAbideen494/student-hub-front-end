@@ -647,25 +647,34 @@ useEffect(() => {
     />
   </div>
 
-  {/* PDF input field */}
-  <div className="pdf-upload-container">
-    <label htmlFor="pdfUpload" className="pdf-upload-label">
-      <i className="fas fa-file-pdf" style={{ marginRight: '10px' }}>
-        {pdfFile && (
-          <div className="pdf-preview-container">
-            <span style={{fontSize: '7px'}}>uploaded!</span>
-          </div>
-        )}
-      </i>
-    </label>
-    <input
-      id="pdfUpload"
-      type="file"
-      accept="application/pdf"
-      onChange={(e) => setPdfFile(e.target.files[0])}
-      className="pdf-upload-input"
-    />
-  </div>
+{/* PDF input field */}
+<div className="pdf-upload-container">
+  <label htmlFor="pdfUpload" className="pdf-upload-label">
+    <i className="fas fa-file-pdf" style={{ marginRight: '10px' }}>
+      {pdfFile && (
+        <div className="pdf-preview-container">
+          <span style={{ fontSize: '7px' }}>uploaded!</span>
+        </div>
+      )}
+    </i>
+  </label>
+  <input
+    id="pdfUpload"
+    type="file"
+    accept="application/pdf" // Restrict to PDFs
+    onChange={(e) => {
+      const file = e.target.files[0];
+      if (file && file.type !== "application/pdf") {
+        alert("Only PDF files are allowed!"); // Alert if not a PDF
+        e.target.value = null; // Reset the input value
+      } else {
+        setPdfFile(file); // Set the file if it's valid
+      }
+    }}
+    className="pdf-upload-input"
+  />
+</div>
+
 
   {message.trim() || image || pdfFile ? (
     <button
