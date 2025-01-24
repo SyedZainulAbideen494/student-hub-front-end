@@ -171,5 +171,6 @@ export const API_ROUTES = {
   getProfileResources: `${API_URL}/user-resources`,
   aiImgProcessing: `${API_URL}/api/process-images`,
   pdfNotesMaker: `${API_URL}/summarize-pdf/notes`,
-  aiNotesGen: `${API_URL}/api/notes/generate`
+  aiNotesGen: `${API_URL}/api/notes/generate`,
+  aiPdfProcessing: `${API_URL}/ai-chatbox/pdf/ai`
 }

@@ -121,11 +121,11 @@ import DownloadPageComplete from "./docs/complete-download-page";
 import MusicPlayer from "./music/player2.0/musicPlayer";
 import JournalPage from "./journals/mainPage";
 import InputFlowStudyPlan from "./Personalized study plan/Input-flow";
-import ImageObjectDetector from "./image ai/imgAi";
 import PDFnotesCreation from "./flashCards/pdf notes creation/PDFnotesCreation";
 import GenerateNotesAI from "./flashCards/Ai notes/aiNotes";
 import CreateNotesPageChoice from "./flashCards/chooseNoteCreateType";
 import YtVidDownload from "./flashCards/youtube video to notes/sample";
+import AudioToNotes from "./flashCards/youtube video to notes/sample";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -238,14 +238,13 @@ const router = createBrowserRouter([
   {path: '/word-scramble', element: <WordScrambleGame/>},
   {path: '/word-scramble/:gameId', element: <PlayGame/>},
   {path: '/swipe/flashcard/card/view/:id/:setId', element: <SwipeFlashcardViewPage/>},
-  {path: '/image-text', element: <ImageToText/>},
   {path: '/download-app', element: <DownloadPageComplete/>},
   {path: '/journal', element: <JournalPage/>},
   {path: '/flow-user-data', element: <InputFlowStudyPlan/>},
   {path: '/notes/create/pdf', element: <PDFnotesCreation/>},
   {path: '/notes/create/ai', element: <GenerateNotesAI/>},
   {path: '/create/notes/page', element: <CreateNotesPageChoice/>},
-  {path: '/yt/vid/download', element: <YtVidDownload/>},
+  {path: '/yt/vid/download', element: <AudioToNotes/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

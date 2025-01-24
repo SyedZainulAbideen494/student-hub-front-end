@@ -1,0 +1,89 @@
+.audio__to__notes__container {
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .audio__to__notes__title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .audio__to__notes__form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .audio__to__notes__label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .audio__to__notes__input,
+  .audio__to__notes__file-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .audio__to__notes__checkbox-label {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  
+  .audio__to__notes__options {
+    margin-bottom: 20px;
+  }
+  
+  .audio__to__notes__legend {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .audio__to__notes__submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .audio__to__notes__submit-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .audio__to__notes__submit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .audio__to__notes__output {
+    margin-top: 30px;
+  }
+  
+  .audio__to__notes__output-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .audio__to__notes__output-text {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: "Courier New", Courier, monospace;
+  }
+  

@@ -89,6 +89,8 @@ const [magicModalContent, setMagicModalContent] = useState('');
 const [image, setImage] = useState(null); // Only one image state
 const [result, setResult] = useState(null);
 const [imageprev, setImageprev] = useState(null); // Only one image state
+const [pdfFile, setPdfFile] = useState(null);
+
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -140,54 +142,74 @@ const [imageprev, setImageprev] = useState(null); // Only one image state
   }, [chatHistory]);
 
 
-    const handleSendMessage = async () => {
-      if (!message.trim() && !image) return; // Ensure either message or image is provided
-    
-      if (!conversationStarted) setConversationStarted(true);
-    
-      const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
-      setChatHistory(newHistory);
-      setLoading(true);
-    
-      const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
-    
-      try {
-        if (image) {
-          // If there is an image, send it for processing
-          const formData = new FormData();
-          formData.append("image", image); // Ensure the field name is 'image'
-          formData.append("prompt", message); // Send the prompt as well
-          formData.append('token', token)
-    
-          const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
-            headers: { "Content-Type": "multipart/form-data" },
-          });
-    
-          // Get the result text from the image processing
-          const resultText = response.data.result;
-    
-          // Format the result text before showing it to the user
-          const formattedResultText = formatContent(resultText);
-    
-          setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-          setMessage(''); // Clear the message after processing the image
-          setImage(null); // Clear the image after processing
-        } else {
-          // If it's just a text message, process it as usual
-          const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
-          const formattedResponse = formatContent(response.data.response);
-          setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
-          setMessage(''); // Clear the message after processing text
-        }
-      } catch (error) {
-     
-        setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'error' }] }]);
-        console.error('Error sending message:', error);
-      } finally {
-        setLoading(false);
+  const handleSendMessage = async () => {
+    if (!message.trim() && !image && !pdfFile) return; // Ensure message, image, or PDF is provided
+  
+    if (!conversationStarted) setConversationStarted(true);
+  
+    const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
+    setChatHistory(newHistory);
+    setLoading(true);
+  
+    const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
+  
+    try {
+      if (pdfFile) {
+        // If there is a PDF file, send it to the AI PDF processing API
+        const formData = new FormData();
+        formData.append("file", pdfFile); // Ensure the field name is 'file'
+        formData.append("prompt", message); // Include the prompt as context
+        formData.append("token", token); // Include the token
+  
+        const response = await axios.post(API_ROUTES.aiPdfProcessing, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+  
+        // Extract the result from the response
+        const resultText = response.data.result;
+  
+        // Format the result text before showing it to the user
+        const formattedResultText = formatContent(resultText);
+  
+        setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
+        setMessage(''); // Clear the message
+        setPdfFile(null); // Clear the PDF file after processing
+      } else if (image) {
+        // If there is an image, send it for processing
+        const formData = new FormData();
+        formData.append("image", image); // Ensure the field name is 'image'
+        formData.append("prompt", message); // Include the prompt
+        formData.append("token", token);
+  
+        const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+  
+        // Extract the result from the response
+        const resultText = response.data.result;
+  
+        // Format the result text before showing it to the user
+        const formattedResultText = formatContent(resultText);
+  
+        setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
+        setMessage(''); // Clear the message
+        setImage(null); // Clear the image
+      } else {
+        // If it's just a text message, process it as usual
+        const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
+        const formattedResponse = formatContent(response.data.response);
+  
+        setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
+        setMessage(''); // Clear the message
       }
-    };
-    
+    } catch (error) {
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'error' }] }]);
+      console.error('Error sending message:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   
     const handleFileChange = (event) => {
       const file = event.target.files[0];
@@ -607,13 +629,15 @@ useEffect(() => {
 
   {/* Image input field with label */}
   <div className="image-upload-container">
-  <label htmlFor="imageUpload" className="image-upload-label">
-  <i className="fas fa-paperclip" style={{marginRight: '10px'}}>{image && (
-  <div className="image-preview-container">
-    <img src={imageprev} alt="Image Preview" style={{ maxWidth: '30px', maxHeight: '30px' }} />
-  </div>
-)}</i> 
-</label>
+    <label htmlFor="imageUpload" className="image-upload-label">
+      <i className="fas fa-paperclip" style={{ marginRight: '10px' }}>
+        {image && (
+          <div className="image-preview-container">
+            <img src={imageprev} alt="Image Preview" style={{ maxWidth: '30px', maxHeight: '30px' }} />
+          </div>
+        )}
+      </i>
+    </label>
     <input
       id="imageUpload"
       type="file"
@@ -623,7 +647,27 @@ useEffect(() => {
     />
   </div>
 
-  {message.trim() || image ? (
+  {/* PDF input field */}
+  <div className="pdf-upload-container">
+    <label htmlFor="pdfUpload" className="pdf-upload-label">
+      <i className="fas fa-file-pdf" style={{ marginRight: '10px' }}>
+        {pdfFile && (
+          <div className="pdf-preview-container">
+            <span style={{fontSize: '7px'}}>uploaded!</span>
+          </div>
+        )}
+      </i>
+    </label>
+    <input
+      id="pdfUpload"
+      type="file"
+      accept="application/pdf"
+      onChange={(e) => setPdfFile(e.target.files[0])}
+      className="pdf-upload-input"
+    />
+  </div>
+
+  {message.trim() || image || pdfFile ? (
     <button
       className="chat-send-btn__ai__loader__light"
       onClick={handleSendMessage}
@@ -631,7 +675,6 @@ useEffect(() => {
     >
       {loading ? (
         <div style={{ width: "24px", height: "24px" }}>
-          {/* Display the loader */}
           <AiLoaderSpeaking />
         </div>
       ) : (
@@ -659,8 +702,6 @@ useEffect(() => {
     </button>
   )}
 </div>
-
-
 
       </div>
       <Modal
