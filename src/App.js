@@ -128,6 +128,7 @@ import AudioToNotes from "./flashCards/youtube video to notes/sample";
 import UserFlow from "./Personalized study plan/Input-flow";
 import LoadingPage from "./Personalized study plan/LoadingPage";
 import StudyPlanPage from "./Personalized study plan/StudyPlanPage";
+import TodayAiOverview from "./Personalized study plan/TodayOverview";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -249,6 +250,7 @@ const router = createBrowserRouter([
   {path: '/notes/create/ai', element: <GenerateNotesAI/>},
   {path: '/create/notes/page', element: <CreateNotesPageChoice/>},
   {path: '/yt/vid/download', element: <AudioToNotes/>},
+  {path: '/my-ai-plan', element: <TodayAiOverview/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

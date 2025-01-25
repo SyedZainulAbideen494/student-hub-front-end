@@ -1,0 +1,113 @@
+/* Main container */
+.today-progress-dashboard__container {
+    padding: 20px;
+    background-color: #f9f9f9; /* Soft off-white background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly darker shadow */
+    max-width: 600px;
+    margin: 10px auto;
+    width: 90%;
+}
+
+
+.inline__today-progress-dashboard__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left side - Study Time Text */
+.study-time__today-progress-dashboard--left {
+    flex: 1;
+    text-align: left;
+}
+
+/* Time Text Styling */
+.study-time-left__today-progress-dashboard--text {
+    font-size: 26px;
+    font-weight: 600;
+    color: #333333; /* Dark gray for readability */
+}
+
+.study-time-left-label__today-progress-dashboard--text {
+    font-size: 12px;
+    color: #888888; /* Light gray for the label */
+}
+
+/* Pomodoro progress circle container */
+.pomodoro-progress-circle__today-progress-dashboard--container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the progress circle text */
+.react-circular-progressbar-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ff0000; /* Darker shade for text in the circle */
+}
+
+/* Error and loading states */
+.loading__today-progress-dashboard--container,
+.error__today-progress-dashboard--container,
+.no-study-plan__today-progress-dashboard--container {
+    text-align: center;
+    padding: 20px;
+    color: #555555; /* Softer gray */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .today-progress-dashboard__container {
+        padding: 15px;
+    }
+
+    .study-time__today-progress-dashboard--left {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .study-time-left__today-progress-dashboard--text {
+        font-size: 20px; /* Smaller text size on mobile */
+    }
+
+    .study-time-left-label__today-progress-dashboard--text {
+        font-size: 10px; /* Smaller label text */
+    }
+
+    .pomodoro-progress-circle__today-progress-dashboard--container {
+        width: 90px;
+        height: 90px;
+    }
+
+    .react-circular-progressbar-text {
+        font-size: 12px; /* Adjust font size for mobile */
+    }
+}
+
+/* View Today's Plan Button */
+.view-plan-btn__today-progress-dashboard--container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .view-plan-btn__today-progress-dashboard {
+    padding: 9px 20px;
+    background-color: #000000;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-plan-btn__today-progress-dashboard:hover {
+    background-color: #0056b3;
+  }

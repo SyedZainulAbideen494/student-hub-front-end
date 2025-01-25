@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
 import { TypeAnimation } from 'react-type-animation';
 import FeedbackFormWeekly from '../help/Survey';
+import TodayProgress from './today-progress';
 
 const TopBoxes = () => {
     const [todayTasks, setTodayTasks] = useState([]);
@@ -152,7 +153,13 @@ const TopBoxes = () => {
 </div>
 
             <p className="subtext__home__page__component">Here's your overview for today</p>
+<TodayProgress/>
+        </div>
+    );
+};
 
+export default TopBoxes;
+{/*
             <div className="top-boxes-container__home__page__component">
     <div className={`box__home__page__component box-1__home__page__component`}>
         {eventIcon}
@@ -182,9 +189,4 @@ const TopBoxes = () => {
         </p>
         <h3 className="title__home__page__component">Upcoming Events</h3>
     </div>
-</div>
-        </div>
-    );
-};
-
-export default TopBoxes;
+</div> */}

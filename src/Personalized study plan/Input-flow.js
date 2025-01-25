@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./UserFlow.css"; // Import CSS file
 import { useNavigate } from "react-router-dom";
+import { API_ROUTES } from "../app_modules/apiRoutes";
 
 const UserFlow = () => {
   const [step, setStep] = useState(1); // Track current step
@@ -100,7 +101,7 @@ const UserFlow = () => {
 
         navigate("/loading-goal-plan"); // Show loading screen
 
-        const response = await fetch("http://localhost:8080/api/saveGoal", {
+        const response = await fetch(API_ROUTES.generateStudyPlan, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ token, data }),

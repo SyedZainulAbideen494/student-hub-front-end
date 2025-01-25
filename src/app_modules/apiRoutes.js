@@ -172,5 +172,8 @@ export const API_ROUTES = {
   aiImgProcessing: `${API_URL}/api/process-images`,
   pdfNotesMaker: `${API_URL}/summarize-pdf/notes`,
   aiNotesGen: `${API_URL}/api/notes/generate`,
-  aiPdfProcessing: `${API_URL}/ai-chatbox/pdf/ai`
+  aiPdfProcessing: `${API_URL}/ai-chatbox/pdf/ai`,
+  getStudyPlan: `${API_URL}/api/study-plan`,
+  pomodoroStudyPlanData: `${API_URL}/api/today-pomodoro-study-plan`,
+  generateStudyPlan: `${API_URL}/api/saveGoal`
 }

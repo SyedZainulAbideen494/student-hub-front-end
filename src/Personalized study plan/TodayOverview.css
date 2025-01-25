@@ -1,0 +1,106 @@
+/* Main Container */
+.today__ai__pan_overview_container {
+    padding: 30px;
+    background-color: #f7f8fa;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    color: #333;
+    position: relative;
+}
+
+/* Back Button */
+.back__button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.back__button:hover {
+    color: #007bff;
+}
+
+/* Section Heading */
+.today__ai__pan_overview_container h2 {
+    font-size: 20px; /* Made smaller */
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #111;
+}
+
+/* Flex container for card layout */
+.card__today__ai__pan_overview__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+/* Card styling */
+.card__today__ai__pan_overview {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Hover effect for cards */
+.card__today__ai__pan_overview:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+}
+
+/* Bottom Buttons */
+.bottom__buttons__today__ai__pan_overview {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.action__button__today__ai__pan_overview {
+    padding: 12px 20px;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card__today__ai__pan_overview__container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .card__today__ai__pan_overview__container {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 12px;
+    }
+
+    .card__today__ai__pan_overview {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .bottom__buttons__today__ai__pan_overview {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

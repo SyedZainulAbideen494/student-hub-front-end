@@ -1,0 +1,48 @@
+.loader__React__Loader__infinite {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .svg__React__Loader__infinite {
+    display: block;
+  }
+  
+  .outline__React__Loader__infinite {
+    stroke-dasharray: 2.42777px, 242.77666px;
+    stroke-dashoffset: 0;
+    animation: anim__React__Loader__infinite 1.6s linear infinite;
+    stroke: #4e4feb;
+    stroke-width: 4;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
+  
+  @keyframes anim__React__Loader__infinite {
+    12.5% {
+      stroke-dasharray: 33.98873px, 242.77666px;
+      stroke-dashoffset: -26.70543px;
+    }
+    43.75% {
+      stroke-dasharray: 84.97183px, 242.77666px;
+      stroke-dashoffset: -84.97183px;
+    }
+    100% {
+      stroke-dasharray: 2.42777px, 242.77666px;
+      stroke-dashoffset: -240.34889px;
+    }
+  }
+  
+  .outline-bg__React__Loader__infinite {
+    stroke: #4e4feb;
+    stroke-width: 4;
+    fill: none;
+    opacity: 0.05;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+  }
+  

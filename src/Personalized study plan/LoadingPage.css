@@ -1,0 +1,36 @@
+.loading__container__loader__ai__plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fc;
+    font-family: "Arial", sans-serif;
+    color: #333;
+    margin-top: 70px;
+  }
+  
+  .loader__wrapper__loader__ai__plan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loading__message__loader__ai__plan {
+    margin-top: 30px; /* Adjust this value for proper spacing */
+    font-size: 1rem;
+    text-align: center;
+    color: #4e4feb;
+    padding: 20px;
+    animation: fadeIn__loader__ai__plan 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes fadeIn__loader__ai__plan {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  
