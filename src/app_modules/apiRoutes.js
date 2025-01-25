@@ -175,5 +175,6 @@ export const API_ROUTES = {
   aiPdfProcessing: `${API_URL}/ai-chatbox/pdf/ai`,
   getStudyPlan: `${API_URL}/api/study-plan`,
   pomodoroStudyPlanData: `${API_URL}/api/today-pomodoro-study-plan`,
-  generateStudyPlan: `${API_URL}/api/saveGoal`
+  generateStudyPlan: `${API_URL}/api/saveGoal`,
+  getStudyPlanTaskData: `${API_URL}/getTasks/plan/study`
 }
