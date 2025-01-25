@@ -83,6 +83,7 @@ const UserFlow = () => {
   const currentStep = steps.find((s) => s.id === step);
 
   const handleNext = async () => {
+    // Check if a selection is made for the current step
     if (step < steps.length) {
       setStep(step + 1);
     } else {
@@ -95,20 +96,20 @@ const UserFlow = () => {
         pomodoro_preference: selectedPomodoro,
         subjects: JSON.stringify(selectedSubjects),
       };
-
+  
       try {
         const token = localStorage.getItem("token");
-
+  
         navigate("/loading-goal-plan"); // Show loading screen
-
+  
         const response = await fetch(API_ROUTES.generateStudyPlan, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ token, data }),
         });
-
+  
         const result = await response.json();
-
+  
         if (result.success) {
           // Navigate to the Study Plan Page and pass the study plan
           navigate("/study-plan", { state: { studyPlan: result.studyPlan } });
@@ -122,6 +123,19 @@ const UserFlow = () => {
       }
     }
   };
+  
+  // Disable the "Next" button if no option is selected for the current step
+  const isStepSelected = () => {
+    if (currentStep.id === 1) return selectedGrade !== null;
+    if (currentStep.id === 2) return selectedGoal !== null;
+    if (currentStep.id === 3) return selectedStudyTime !== null;
+    if (currentStep.id === 4) return selectedSpeed !== null;
+    if (currentStep.id === 5) return selectedRevisionMethod !== null;
+    if (currentStep.id === 6) return selectedPomodoro !== null;
+    if (currentStep.id === 7) return selectedSubjects.length > 0;
+    return false;
+  };
+  
 
   const handleSubjectInput = () => {
     if (subjectInput && subjectDifficulty) {
@@ -136,93 +150,89 @@ const UserFlow = () => {
 
   return (
     <div className="flow__user__container">
-      {/* Progress Bar */}
-      <div className="flow__user__progress">
-        <div
-          className="flow__user__progress-bar"
-          style={{ width: `${(step / steps.length) * 100}%` }}
-        />
-      </div>
+    {/* Progress Bar */}
+    <div className="flow__user__progress">
+      <div
+        className="flow__user__progress-bar"
+        style={{ width: `${(step / steps.length) * 100}%` }}
+      />
+    </div>
 
-      {/* Main Content */}
-      <div className="flow__user__content">
-        <h1 className="flow__user__question">{currentStep.question}</h1>
-        <p className="flow__user__subtext">{currentStep.subtext}</p>
+    {/* Main Content */}
+    <div className="flow__user__content">
+      <h1 className="flow__user__question">{currentStep.question}</h1>
+      <p className="flow__user__subtext">{currentStep.subtext}</p>
 
-        {/* Manual Subject Input Section */}
-        {currentStep.isManualInput ? (
-          <div className="flow__user__manual-input">
-            <input
-              type="text"
-              value={subjectInput}
-              placeholder="Enter subject"
-              onChange={(e) => setSubjectInput(e.target.value)}
-              className="flow__user__input"
-            />
-            <select
-              value={subjectDifficulty}
-              onChange={(e) => setSubjectDifficulty(e.target.value)}
-              className="flow__user__select"
-            >
-              <option value="">Select Difficulty</option>
-              <option value="Easy">Easy</option>
-              <option value="Moderate">Moderate</option>
-              <option value="Difficult">Difficult</option>
-            </select>
-            <button
-              onClick={handleSubjectInput}
-              className="flow__user__btn"
-              disabled={!subjectInput || !subjectDifficulty}
-            >
-              Add Subject
-            </button>
-            <div className="flow__user__subjects-list">
-              {selectedSubjects.map((item, index) => (
-                <div key={index} className="flow__user__subject-item">
-                  <p>{item.subject} - {item.difficulty}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="flow__user__options">
-            {currentStep.options.map((option, index) => (
-              <button
-                key={index}
-                className={`flow__user__option ${
-                  (currentStep.setSelection === setSelectedGrade && selectedGrade === option) ||
-                  (currentStep.setSelection === setSelectedGoal && selectedGoal === option) ||
-                  (currentStep.setSelection === setSelectedStudyTime && selectedStudyTime === option) ||
-                  (currentStep.setSelection === setSelectedSpeed && selectedSpeed === option) ||
-                  (currentStep.setSelection === setSelectedRevisionMethod && selectedRevisionMethod === option) ||
-                  (currentStep.setSelection === setSelectedPomodoro && selectedPomodoro === option)
-                    ? "flow__user__selected"
-                    : ""
-                }`}
-                onClick={() => currentStep.setSelection(option)}
-              >
-                {option}
-              </button>
+      {/* Manual Subject Input Section */}
+      {currentStep.isManualInput ? (
+        <div className="flow__user__manual-input">
+          <input
+            type="text"
+            value={subjectInput}
+            placeholder="Enter subject"
+            onChange={(e) => setSubjectInput(e.target.value)}
+            className="flow__user__input"
+          />
+          <select
+            value={subjectDifficulty}
+            onChange={(e) => setSubjectDifficulty(e.target.value)}
+            className="flow__user__select"
+          >
+            <option value="">Select Difficulty</option>
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Difficult">Difficult</option>
+          </select>
+          <button
+            onClick={handleSubjectInput}
+            className="flow__user__btn"
+            disabled={!subjectInput || !subjectDifficulty}
+          >
+            Add Subject
+          </button>
+          <div className="flow__user__subjects-list">
+            {selectedSubjects.map((item, index) => (
+              <div key={index} className="flow__user__subject-item">
+                <p>{item.subject} - {item.difficulty}</p>
+              </div>
             ))}
           </div>
-        )}
-      </div>
-
-      {/* Navigation */}
-      <div className="flow__user__navigation">
-        <button
-          className="flow__user__btn"
-          disabled={
-            currentStep.isManualInput
-              ? selectedSubjects.length === 0
-              : !selectedGrade && !selectedGoal && !selectedStudyTime && !selectedSpeed && !selectedRevisionMethod && !selectedPomodoro
-          }
-          onClick={handleNext}
-        >
-          {step === steps.length ? "Finish" : "Next"}
-        </button>
-      </div>
+        </div>
+      ) : (
+        <div className="flow__user__options">
+          {currentStep.options.map((option, index) => (
+            <button
+              key={index}
+              className={`flow__user__option ${
+                (currentStep.setSelection === setSelectedGrade && selectedGrade === option) ||
+                (currentStep.setSelection === setSelectedGoal && selectedGoal === option) ||
+                (currentStep.setSelection === setSelectedStudyTime && selectedStudyTime === option) ||
+                (currentStep.setSelection === setSelectedSpeed && selectedSpeed === option) ||
+                (currentStep.setSelection === setSelectedRevisionMethod && selectedRevisionMethod === option) ||
+                (currentStep.setSelection === setSelectedPomodoro && selectedPomodoro === option)
+                  ? "flow__user__selected"
+                  : ""
+              }`}
+              onClick={() => currentStep.setSelection(option)}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
+
+    {/* Navigation */}
+    <div className="flow__user__navigation">
+      <button
+        className="flow__user__btn"
+        disabled={!isStepSelected()} // Disable if the step is not selected
+        onClick={handleNext}
+      >
+        {step === steps.length ? "Generate Plan" : "Next"}
+      </button>
+    </div>
+  </div>
   );
 };
 

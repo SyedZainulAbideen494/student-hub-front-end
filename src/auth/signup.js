@@ -145,7 +145,7 @@ const validatePhoneNumber = (phone) => {
             });
             setTermsAccepted(false);
             setError(null);
-            nav('/flow-user-data');
+            nav('/welcome');
         } catch (error) {
             console.error('Error signing up:', error);
             setError('Error signing up. Please try again later.');
