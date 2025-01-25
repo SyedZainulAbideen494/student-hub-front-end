@@ -1,275 +1,228 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./InputFlowStudyPlan.css";
+import "./UserFlow.css"; // Import CSS file
+import { useNavigate } from "react-router-dom";
 
-const InputFlowStudyPlan = () => {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    educationLevel: "",
-    dailyStudyTime: "",
-    studyPerformance: "",
-    subjects: [],
-    goals: "",
-  });
-  const [subjectInput, setSubjectInput] = useState("");
+const UserFlow = () => {
+  const [step, setStep] = useState(1); // Track current step
+  const [selectedGrade, setSelectedGrade] = useState(null); // Track grade
+  const [selectedGoal, setSelectedGoal] = useState(null); // Track goal
+  const [selectedStudyTime, setSelectedStudyTime] = useState(null); // Track study time
+  const [selectedSpeed, setSelectedSpeed] = useState(null); // Track speed
+  const [selectedRevisionMethod, setSelectedRevisionMethod] = useState(null); // Track revision method
+  const [selectedPomodoro, setSelectedPomodoro] = useState(null); // Track Pomodoro preference
+  const [selectedSubjects, setSelectedSubjects] = useState([]); // Track selected subjects
+  const [subjectInput, setSubjectInput] = useState(""); // Track user input for subjects
+  const [subjectDifficulty, setSubjectDifficulty] = useState(""); // Track difficulty level for each subject
+  const navigate = useNavigate(); // For page transitions
 
-  const totalSteps = 5;
+  const steps = [
+    {
+      id: 1,
+      question: "What grade are you in?",
+      subtext: "This helps us understand your academic level.",
+      options: ["Primary School", "Middle School", "High School", "College"],
+      setSelection: setSelectedGrade
+    },
+    {
+      id: 2,
+      question: "What's your primary goal?",
+      subtext: "Choose what you want to achieve.",
+      options: [
+        "Improve Grades",
+        "Stay Constant with Studies",
+        "Prepare for an Exam",
+      ],
+      setSelection: setSelectedGoal
+    },
+    {
+      id: 3,
+      question: "How much time can you allocate for studying each day?",
+      subtext: "Select the daily hours you can commit.",
+      options: [
+        "Less than 1 hour",
+        "1 - 2 hours",
+        "2 - 4 hours",
+        "4 - 8 hours",
+        "8+ hours",
+      ],
+      setSelection: setSelectedStudyTime
+    },
+    {
+      id: 4,
+      question: "How fast would you like to accomplish your goal?",
+      subtext: "Choose the pace that suits your style.",
+      options: ["Slow and Steady", "Average Speed", "Fast"],
+      setSelection: setSelectedSpeed
+    },
+    {
+      id: 5,
+      question: "Select your preferred revision method:",
+      subtext: "You can choose one or both.",
+      options: ["Flashcards", "Quizzes", "Both"],
+      setSelection: setSelectedRevisionMethod
+    },
+    {
+      id: 6,
+      question: "Which Pomodoro technique do you prefer?",
+      subtext: "Choose your preferred study/break duration.",
+      options: [
+        "25 minutes of study with 5 minutes break",
+        "50 minutes of study with 10 minutes break"
+      ],
+      setSelection: setSelectedPomodoro
+    },    
+    {
+      id: 7,
+      question: "Enter the subjects you study:",
+      subtext: "Enter the subject and choose its difficulty (Easy, Moderate, or Difficult).",
+      isManualInput: true, // Indicate that this step allows manual input
+    },
+  ];
 
-  const handleNext = () => {
-    if (step < totalSteps) setStep(step + 1);
+  const currentStep = steps.find((s) => s.id === step);
+
+  const handleNext = async () => {
+    if (step < steps.length) {
+      setStep(step + 1);
+    } else {
+      const data = {
+        grade: selectedGrade,
+        goal: selectedGoal,
+        study_time: selectedStudyTime,
+        speed: selectedSpeed,
+        revision_method: selectedRevisionMethod,
+        pomodoro_preference: selectedPomodoro,
+        subjects: JSON.stringify(selectedSubjects),
+      };
+
+      try {
+        const token = localStorage.getItem("token");
+
+        navigate("/loading-goal-plan"); // Show loading screen
+
+        const response = await fetch("http://localhost:8080/api/saveGoal", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token, data }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Navigate to the Study Plan Page and pass the study plan
+          navigate("/study-plan", { state: { studyPlan: result.studyPlan } });
+        } else {
+          alert("Failed to save goal");
+          navigate(-1); // Go back to the user flow
+        }
+      } catch (error) {
+        console.error("Error saving goal:", error);
+        navigate(-1); // Go back to the user flow
+      }
+    }
   };
 
-  const handleBack = () => {
-    if (step > 1) setStep(step - 1);
-  };
-
-  const handleButtonChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/save-study-data",
-        formData
-      );
-      alert(response.data.message);
-    } catch (error) {
-      console.error(error);
-      alert("Error saving data.");
+  const handleSubjectInput = () => {
+    if (subjectInput && subjectDifficulty) {
+      setSelectedSubjects((prev) => [
+        ...prev,
+        { subject: subjectInput, difficulty: subjectDifficulty },
+      ]);
+      setSubjectInput(""); // Clear the input after adding
+      setSubjectDifficulty(""); // Clear the difficulty selection
     }
   };
 
   return (
-    <div className="container__flow__inp__user__Data">
+    <div className="flow__user__container">
       {/* Progress Bar */}
-      <div className="progress-bar__flow__inp__user__Data">
-        {Array.from({ length: totalSteps }).map((_, index) => (
-          <div
-            key={index}
-            className={`progress-step__flow__inp__user__Data ${
-              index < step ? "active__flow__inp__user__Data" : ""
-            }`}
-          ></div>
-        ))}
+      <div className="flow__user__progress">
+        <div
+          className="flow__user__progress-bar"
+          style={{ width: `${(step / steps.length) * 100}%` }}
+        />
       </div>
 
-      <h1 className="header__flow__inp__user__Data">Personalized Study Plan</h1>
+      {/* Main Content */}
+      <div className="flow__user__content">
+        <h1 className="flow__user__question">{currentStep.question}</h1>
+        <p className="flow__user__subtext">{currentStep.subtext}</p>
 
-      {step === 1 && (
-        <div className="step__flow__inp__user__Data">
-          <h2 className="subheader__flow__inp__user__Data">Step 1: Education Details</h2>
-          <p>Select your education level:</p>
-          <div className="buttons-row__flow__inp__user__Data">
-            {["Primary School", "Middle School", "High School", "College", "Degree"].map((level) => (
-              <button
-                key={level}
-                className={`btn__flow__inp__user__Data ${
-                  formData.educationLevel === level ? "selected__flow__inp__user__Data" : ""
-                }`}
-                onClick={() => handleButtonChange("educationLevel", level)}
-              >
-                {level}
-              </button>
-            ))}
-          </div>
-          <button
-            className={`next-btn__flow__inp__user__Data ${
-              formData.educationLevel ? "" : "disabled__flow__inp__user__Data"
-            }`}
-            onClick={handleNext}
-            disabled={!formData.educationLevel}
-          >
-            Next
-          </button>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div className="step__flow__inp__user__Data">
-          <h2 className="subheader__flow__inp__user__Data">Step 2: Study Details</h2>
-          <p>How much time can you study daily?</p>
-          <div className="buttons-row__flow__inp__user__Data">
-            {["<1 hr", "1-2 hrs", "2-4 hrs", "4-8 hrs"].map((time) => (
-              <button
-                key={time}
-                className={`btn__flow__inp__user__Data ${
-                  formData.dailyStudyTime === time ? "selected__flow__inp__user__Data" : ""
-                }`}
-                onClick={() => handleButtonChange("dailyStudyTime", time)}
-              >
-                {time}
-              </button>
-            ))}
-          </div>
-          <div className="buttons-container__flow__inp__user__Data">
-            <button className="back-btn__flow__inp__user__Data" onClick={handleBack}>
-              Back
-            </button>
-            <button
-              className={`next-btn__flow__inp__user__Data ${
-                formData.dailyStudyTime ? "" : "disabled__flow__inp__user__Data"
-              }`}
-              onClick={handleNext}
-              disabled={!formData.dailyStudyTime}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
-
-      {step === 3 && (
-        <div className="step__flow__inp__user__Data">
-          <h2 className="subheader__flow__inp__user__Data">Step 3: Study Performance</h2>
-          <p>How would you describe your current study performance?</p>
-          <div className="buttons-row__flow__inp__user__Data">
-            {[
-              "Struggling, I need to improve.",
-              "Doing okay but can do better.",
-              "Performing well and want to stay consistent.",
-            ].map((performance) => (
-              <button
-                key={performance}
-                className={`btn__flow__inp__user__Data ${
-                  formData.studyPerformance === performance ? "selected__flow__inp__user__Data" : ""
-                }`}
-                onClick={() => handleButtonChange("studyPerformance", performance)}
-              >
-                {performance}
-              </button>
-            ))}
-          </div>
-          <div className="buttons-container__flow__inp__user__Data">
-            <button className="back-btn__flow__inp__user__Data" onClick={handleBack}>
-              Back
-            </button>
-            <button
-              className={`next-btn__flow__inp__user__Data ${
-                formData.studyPerformance ? "" : "disabled__flow__inp__user__Data"
-              }`}
-              onClick={handleNext}
-              disabled={!formData.studyPerformance}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
-
-      {step === 4 && (
-        <div className="step__flow__inp__user__Data">
-          <h2 className="subheader__flow__inp__user__Data">Step 4: Subjects</h2>
-          <p>Add the subjects you want to focus on:</p>
-          <div className="subject-input__flow__inp__user__Data">
+        {/* Manual Subject Input Section */}
+        {currentStep.isManualInput ? (
+          <div className="flow__user__manual-input">
             <input
               type="text"
-              placeholder="Enter a subject"
               value={subjectInput}
+              placeholder="Enter subject"
               onChange={(e) => setSubjectInput(e.target.value)}
-              className="input__flow__inp__user__Data"
+              className="flow__user__input"
             />
-            <button
-              onClick={() => {
-                if (subjectInput.trim() && !formData.subjects.includes(subjectInput)) {
-                  setFormData({
-                    ...formData,
-                    subjects: [...formData.subjects, subjectInput.trim()],
-                  });
-                  setSubjectInput("");
-                }
-              }}
-              className="add-btn__flow__inp__user__Data"
+            <select
+              value={subjectDifficulty}
+              onChange={(e) => setSubjectDifficulty(e.target.value)}
+              className="flow__user__select"
             >
-              Add
+              <option value="">Select Difficulty</option>
+              <option value="Easy">Easy</option>
+              <option value="Moderate">Moderate</option>
+              <option value="Difficult">Difficult</option>
+            </select>
+            <button
+              onClick={handleSubjectInput}
+              className="flow__user__btn"
+              disabled={!subjectInput || !subjectDifficulty}
+            >
+              Add Subject
             </button>
+            <div className="flow__user__subjects-list">
+              {selectedSubjects.map((item, index) => (
+                <div key={index} className="flow__user__subject-item">
+                  <p>{item.subject} - {item.difficulty}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="subjects-list__flow__inp__user__Data">
-            {formData.subjects.map((subject, index) => (
-              <div key={index} className="subject-chip__flow__inp__user__Data">
-                {subject}
-                <span
-                  className="remove-btn__flow__inp__user__Data"
-                  onClick={() =>
-                    setFormData({
-                      ...formData,
-                      subjects: formData.subjects.filter((_, i) => i !== index),
-                    })
-                  }
-                >
-                  &times;
-                </span>
-              </div>
+        ) : (
+          <div className="flow__user__options">
+            {currentStep.options.map((option, index) => (
+              <button
+                key={index}
+                className={`flow__user__option ${
+                  (currentStep.setSelection === setSelectedGrade && selectedGrade === option) ||
+                  (currentStep.setSelection === setSelectedGoal && selectedGoal === option) ||
+                  (currentStep.setSelection === setSelectedStudyTime && selectedStudyTime === option) ||
+                  (currentStep.setSelection === setSelectedSpeed && selectedSpeed === option) ||
+                  (currentStep.setSelection === setSelectedRevisionMethod && selectedRevisionMethod === option) ||
+                  (currentStep.setSelection === setSelectedPomodoro && selectedPomodoro === option)
+                    ? "flow__user__selected"
+                    : ""
+                }`}
+                onClick={() => currentStep.setSelection(option)}
+              >
+                {option}
+              </button>
             ))}
           </div>
-          <div className="buttons-container__flow__inp__user__Data">
-            <button className="back-btn__flow__inp__user__Data" onClick={handleBack}>
-              Back
-            </button>
-            <button
-              className={`next-btn__flow__inp__user__Data ${
-                formData.subjects.length > 0 ? "" : "disabled__flow__inp__user__Data"
-              }`}
-              onClick={handleNext}
-              disabled={formData.subjects.length === 0}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
 
-{step === 5 && (
-  <div className="step__flow__inp__user__Data">
-    <h2 className="subheader__flow__inp__user__Data">Step 5: Goals</h2>
-    <p>Select your goals:</p>
-    <div className="buttons-row__flow__inp__user__Data">
-      {[
-        "Improve grades",
-        "Prepare for exams",
-        "Learn new subjects",
-        "Master time management",
-        "Build a study routine",
-      ].map((goal) => (
+      {/* Navigation */}
+      <div className="flow__user__navigation">
         <button
-          key={goal}
-          className={`btn__flow__inp__user__Data ${
-            formData.goals.includes(goal) ? "selected__flow__inp__user__Data" : ""
-          }`}
-          onClick={() => {
-            if (formData.goals.includes(goal)) {
-              setFormData({
-                ...formData,
-                goals: formData.goals.filter((g) => g !== goal),
-              });
-            } else {
-              setFormData({ ...formData, goals: [...formData.goals, goal] });
-            }
-          }}
+          className="flow__user__btn"
+          disabled={
+            currentStep.isManualInput
+              ? selectedSubjects.length === 0
+              : !selectedGrade && !selectedGoal && !selectedStudyTime && !selectedSpeed && !selectedRevisionMethod && !selectedPomodoro
+          }
+          onClick={handleNext}
         >
-          {goal}
+          {step === steps.length ? "Finish" : "Next"}
         </button>
-      ))}
-    </div>
-    <div className="buttons-container__flow__inp__user__Data">
-      <button className="back-btn__flow__inp__user__Data" onClick={handleBack}>
-        Back
-      </button>
-      <button
-        className={`next-btn__flow__inp__user__Data ${
-          formData.goals.length > 0 ? "" : "disabled__flow__inp__user__Data"
-        }`}
-        onClick={handleSubmit}
-        disabled={formData.goals.length === 0}
-      >
-        Submit
-      </button>
-    </div>
-  </div>
-)}
-
+      </div>
     </div>
   );
 };
 
-export default InputFlowStudyPlan;
+export default UserFlow;

@@ -1,0 +1,150 @@
+/* Container */
+.flow__user__container {
+  font-family: "Arial", sans-serif;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #1d1a23;
+}
+
+/* Progress Bar */
+.flow__user__progress {
+  height: 6px;
+  background-color: #f9f8fd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.flow__user__progress-bar {
+  height: 100%;
+  background-color: #1d1a23;
+  transition: width 0.3s ease;
+}
+
+/* Question & Subtext */
+.flow__user__question {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.flow__user__subtext {
+  font-size: 14px;
+  color: #6b6b6b;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Options */
+.flow__user__options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.flow__user__option {
+  background-color: #f9f8fd;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  color: #1d1a23;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.flow__user__selected {
+  background-color: #1d1a23;
+  color: #ffffff;
+}
+
+/* Navigation */
+.flow__user__navigation {
+  margin-top: 30px;
+  text-align: center;
+}
+.flow__user__btn {
+  background-color: #1d1a23;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.flow__user__btn:disabled {
+  background-color: #c5c5c5;
+  cursor: not-allowed;
+}
+.flow__user__btn:hover:not(:disabled) {
+  background-color: #29242f;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .flow__user__container {
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  .flow__user__question {
+    font-size: 20px;
+  }
+
+  .flow__user__subtext {
+    font-size: 13px;
+  }
+
+  .flow__user__option {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .flow__user__btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .flow__user__progress {
+    height: 4px;
+  }
+}
+
+  /* Subject Input */
+.flow__user__manual-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.flow__user__input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.flow__user__select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.flow__user__subjects-list {
+  margin-top: 15px;
+}
+
+.flow__user__subject-item {
+  background-color: #f9f8fd;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: left;
+}

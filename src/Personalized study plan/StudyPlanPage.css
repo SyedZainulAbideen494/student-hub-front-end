@@ -1,0 +1,170 @@
+.study-plan-container__goal__Plan__Ai_result {
+    padding: 1rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .heading__goal__Plan__Ai_result {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  
+  .cards-container__goal__Plan__Ai_result {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    justify-items: center;
+    margin-top: 1rem;
+  }
+  
+  .day-card__goal__Plan__Ai_result {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 180px;
+    transition: all 0.3s ease;
+  }
+  
+  .day-card__goal__Plan__Ai_result:hover {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+  
+  .total-card__goal__Plan__Ai_result {
+    background-color: #ecf0f1;
+  }
+  
+  .round-graph__goal__Plan__Ai_result {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background: conic-gradient(
+      #3498db var(--progress, 0%),
+      #ecf0f1 var(--progress, 0%)
+    );
+    border-radius: 50%;
+  }
+  
+  .center-value__goal__Plan__Ai_result {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .day-title__goal__Plan__Ai_result {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  
+  .subjects-list__goal__Plan__Ai_result {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .subject-item__goal__Plan__Ai_result {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .hours-allocation__goal__Plan__Ai_result {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .tips__goal__Plan__Ai_result {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    color: #7f8c8d;
+    font-style: italic;
+  }
+  
+  @media (max-width: 768px) {
+    .cards-container__goal__Plan__Ai_result {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+    }
+  
+    .day-card__goal__Plan__Ai_result {
+      width: 180px;
+    }
+  
+    .round-graph__goal__Plan__Ai_result {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .center-value__goal__Plan__Ai_result {
+      font-size: 1rem;
+    }
+  
+    .day-title__goal__Plan__Ai_result {
+      font-size: 1rem;
+    }
+  
+    .subject-item__goal__Plan__Ai_result {
+      font-size: 0.8rem;
+    }
+  
+    .hours-allocation__goal__Plan__Ai_result {
+      font-size: 1rem;
+    }
+  
+    .tips__goal__Plan__Ai_result {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .study-plan-container__goal__Plan__Ai_result {
+      padding: 0.5rem;
+    }
+  
+    .heading__goal__Plan__Ai_result {
+      font-size: 1.5rem;
+    }
+  
+    .day-card__goal__Plan__Ai_result {
+      width: 150px;
+      padding: 1rem;
+    }
+  
+    .round-graph__goal__Plan__Ai_result {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .center-value__goal__Plan__Ai_result {
+      font-size: 0.9rem;
+    }
+  
+    .day-title__goal__Plan__Ai_result {
+      font-size: 0.85rem;
+    }
+  
+    .subject-item__goal__Plan__Ai_result {
+      font-size: 0.7rem;
+    }
+  
+    .hours-allocation__goal__Plan__Ai_result {
+      font-size: 1rem;
+    }
+  
+    .tips__goal__Plan__Ai_result {
+      font-size: 0.7rem;
+    }
+  }
+  
