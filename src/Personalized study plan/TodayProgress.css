@@ -9,17 +9,17 @@
     width: 90%;
 }
 
-
 .inline__today-progress-dashboard__container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between; /* Ensure items are spaced out */
 }
 
 /* Left side - Study Time Text */
 .study-time__today-progress-dashboard--left {
-    flex: 1;
+    flex: 2; /* Increase flex to take more space */
     text-align: left;
+    margin-left: 0; /* Ensure it stays aligned to the left */
 }
 
 /* Time Text Styling */
@@ -27,6 +27,7 @@
     font-size: 26px;
     font-weight: 600;
     color: #333333; /* Dark gray for readability */
+    margin-bottom: 0px; /* Add space between the study time text and label */
 }
 
 .study-time-left-label__today-progress-dashboard--text {
@@ -68,6 +69,7 @@
     .study-time__today-progress-dashboard--left {
         text-align: center;
         margin-bottom: 15px;
+        flex: 1; /* Make the left section smaller on smaller screens */
     }
 
     .study-time-left__today-progress-dashboard--text {
@@ -94,9 +96,9 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-  
-  .view-plan-btn__today-progress-dashboard {
+}
+
+.view-plan-btn__today-progress-dashboard {
     padding: 9px 20px;
     background-color: #000000;
     color: white;
@@ -106,8 +108,8 @@
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .view-plan-btn__today-progress-dashboard:hover {
+}
+
+.view-plan-btn__today-progress-dashboard:hover {
     background-color: #0056b3;
-  }
+}
