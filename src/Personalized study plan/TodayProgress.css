@@ -100,7 +100,7 @@
 
 .view-plan-btn__today-progress-dashboard {
     padding: 9px 20px;
-    background-color: #000000;
+    background-color: #1D1A23;
     color: white;
     font-size: 14px;
     font-weight: bold;
@@ -110,6 +110,3 @@
     transition: background-color 0.3s ease;
 }
 
-.view-plan-btn__today-progress-dashboard:hover {
-    background-color: #0056b3;
-}
