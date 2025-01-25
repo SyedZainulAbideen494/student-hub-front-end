@@ -78,6 +78,9 @@ const TodayProgress = () => {
     }
   };
 
+  // Fallback for missing subjects or session times
+  const todayPlan = todaySchedule || { subjects: [], hours_allocation: [] };
+
   return (
     <div className="today-progress-dashboard__container">
       <div className="inline__today-progress-dashboard__container">
@@ -109,7 +112,25 @@ const TodayProgress = () => {
           />
         </div>
       </div>
+      <div className="card__today__ai__pan_overview__container">
+        {/* Subject Card */}
+        <div className="card__today__ai__pan_overview">
+          <h3>Subjects</h3>
+          <p>{todayPlan.subjects.join(', ') || 'No subjects planned'}</p>
+        </div>
 
+        {/* Session Time Card */}
+        <div className="card__today__ai__pan_overview">
+          <h3>Session Time</h3>
+          {todayPlan.hours_allocation.length > 0 ? (
+            todayPlan.hours_allocation.map((allocation, idx) => (
+              <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours} hours</p>
+            ))
+          ) : (
+            <p>No session times allocated</p>
+          )}
+        </div>
+      </div>
       <div className="view-plan-btn__today-progress-dashboard--container">
         {/* Show "Get Plan" button if there's no study plan */}
         <button className="view-plan-btn__today-progress-dashboard" onClick={handleButtonClick}>
@@ -121,3 +142,4 @@ const TodayProgress = () => {
 };
 
 export default TodayProgress;
+

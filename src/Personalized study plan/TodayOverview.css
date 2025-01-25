@@ -56,11 +56,7 @@
     text-align: center;
 }
 
-/* Hover effect for cards */
-.card__today__ai__pan_overview:hover {
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-    transform: translateY(-8px);
-}
+
 
 /* Bottom Buttons */
 .bottom__buttons__today__ai__pan_overview {
