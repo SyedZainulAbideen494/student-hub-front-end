@@ -167,7 +167,7 @@ const TodayProgress = () => {
 
         {/* Today's Task Completion Card */}
         <div className="card__today__ai__pan_overview">
-          <h3>Today's Task Completion</h3>
+          <h3>Today's Task</h3>
           <CircularProgressbar
             value={taskCompletionTodayPercentage}
             text={`${taskCompletionTodayPercentage.toFixed(0)}%`}
@@ -191,7 +191,7 @@ const TodayProgress = () => {
 
         {/* Overall Task Completion Card */}
         <div className="card__today__ai__pan_overview">
-          <h3>Overall Task Completion</h3>
+          <h3>Overall Tasks</h3>
           <CircularProgressbar
             value={taskCompletionOverallPercentage}
             text={`${taskCompletionOverallPercentage.toFixed(0)}%`}
