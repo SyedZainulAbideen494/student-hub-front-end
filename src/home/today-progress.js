@@ -147,26 +147,8 @@ const TodayProgress = () => {
       </div>
 
       <div className="card__today__ai__pan_overview__container">
-        {/* Subject Card */}
-        <div className="card__today__ai__pan_overview">
-          <h3>Subjects</h3>
-          <p>{todayPlan.subjects.join(', ') || 'No subjects planned'}</p>
-        </div>
-
-        {/* Session Time Card */}
-        <div className="card__today__ai__pan_overview">
-          <h3>Sessions</h3>
-          {todayPlan.hours_allocation.length > 0 ? (
-            todayPlan.hours_allocation.map((allocation, idx) => (
-              <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours} hours</p>
-            ))
-          ) : (
-            <p>No session times allocated</p>
-          )}
-        </div>
-
-        {/* Today's Task Completion Card */}
-        <div className="card__today__ai__pan_overview">
+               {/* Today's Task Completion Card */}
+               <div className="card__today__ai__pan_overview">
           <h3>Today's Task</h3>
           <CircularProgressbar
             value={taskCompletionTodayPercentage}
@@ -212,6 +194,25 @@ const TodayProgress = () => {
             }}
           />
         </div>
+        {/* Subject Card */}
+        <div className="card__today__ai__pan_overview">
+          <h3>Subjects</h3>
+          <p>{todayPlan.subjects.join(', ') || 'No subjects planned'}</p>
+        </div>
+
+        {/* Session Time Card */}
+        <div className="card__today__ai__pan_overview">
+          <h3>Sessions</h3>
+          {todayPlan.hours_allocation.length > 0 ? (
+            todayPlan.hours_allocation.map((allocation, idx) => (
+              <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours} hours</p>
+            ))
+          ) : (
+            <p>No session times allocated</p>
+          )}
+        </div>
+
+ 
       </div>
     </div>
   );
