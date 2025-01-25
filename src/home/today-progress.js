@@ -127,7 +127,7 @@ const TodayProgress = () => {
 
         {/* Session Time Card */}
         <div className="card__today__ai__pan_overview">
-          <h3>Session Time</h3>
+          <h3>Sessions</h3>
           {todayPlan.hours_allocation.length > 0 ? (
             todayPlan.hours_allocation.map((allocation, idx) => (
               <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours} hours</p>
