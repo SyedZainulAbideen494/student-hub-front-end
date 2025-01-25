@@ -49,9 +49,6 @@ const TodayProgress = () => {
     fetchPomodoroData();
   }, []);
 
-  if (loading) {
-    return <div className="loading__today-progress-dashboard--container">Loading...</div>;
-  }
 
   // Fallback if no study plan or Pomodoro data
   const today = moment().format('dddd');  // Get today's day name (e.g., Tuesday)
