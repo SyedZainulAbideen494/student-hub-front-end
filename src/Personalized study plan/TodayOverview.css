@@ -24,9 +24,7 @@
     transition: color 0.3s ease;
 }
 
-.back__button:hover {
-    color: #007bff;
-}
+
 
 /* Section Heading */
 .today__ai__pan_overview_container h2 {
@@ -34,7 +32,7 @@
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
-    color: #111;
+    color: #1D1A23;
 }
 
 /* Flex container for card layout */
@@ -43,6 +41,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin-top: 20px;
+    color: #1D1A23;
 }
 
 /* Card styling */
@@ -67,7 +66,7 @@
 
 .action__button__today__ai__pan_overview {
     padding: 12px 20px;
-    background-color: #111;
+    background-color: #1D1A23;
     color: white;
     border: none;
     border-radius: 25px;
