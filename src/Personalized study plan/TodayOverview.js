@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // For navigation
+import { Link, useNavigate } from 'react-router-dom';
 import './TodayOverview.css';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -7,6 +7,7 @@ import axios from 'axios';
 import moment from 'moment';
 import TodayProgressAiOverView from './today-progress';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import { FaArrowLeft } from 'react-icons/fa';
 
 function TodayAiOverview() {
   const [studyPlan, setStudyPlan] = useState(null);
@@ -41,9 +42,11 @@ function TodayAiOverview() {
   const todayPlan = studyPlan.weekly_timetable.find(day => day.day === today);
 
   if (!todayPlan) return <div>No study plan available for today.</div>;
+  
   const handleNewPlan = () => {
-    navigate('/flow-user-data')
-  }
+    navigate('/flow-user-data');
+  };
+
   return (
     <div className="today__ai__pan_overview_container">
       {/* Back Button */}
@@ -52,8 +55,16 @@ function TodayAiOverview() {
         onClick={() => navigate(-1)}
         aria-label="Go back"
       >
-        ←
+        <FaArrowLeft/>
       </button>
+
+      {/* Question Mark Tooltip */}
+      <div className="pomodoro-tooltip">
+        <span className="question-mark">?</span>
+        <div className="tooltip-content">
+          Complete Pomodoro sessions to get the minutes done
+        </div>
+      </div>
 
       {/* Main Heading */}
       <h2>Today's Study Plan</h2>

@@ -18,7 +18,7 @@
     left: 20px;
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 14px;
     cursor: pointer;
     color: #333;
     transition: color 0.3s ease;
@@ -99,4 +99,42 @@
         flex-direction: column;
         gap: 10px;
     }
+}
+
+/* Positioning and styling for the tooltip and question mark */
+.pomodoro-tooltip {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.question-mark {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.tooltip-content {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    width: 200px;
+}
+
+/* Show the tooltip content when hovering over the question mark */
+.pomodoro-tooltip:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
 }
