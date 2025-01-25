@@ -173,7 +173,7 @@ const TodayProgress = () => {
             text={`${taskCompletionTodayPercentage.toFixed(0)}%`}
             styles={{
               path: {
-                stroke: '#DA6963',
+                stroke: '#a2d2ff',
                 strokeLinecap: 'round',
                 strokeWidth: 8,
               },
@@ -197,7 +197,7 @@ const TodayProgress = () => {
             text={`${taskCompletionOverallPercentage.toFixed(0)}%`}
             styles={{
               path: {
-                stroke: '#6490E6',
+                stroke: '#bdb2ff',
                 strokeLinecap: 'round',
                 strokeWidth: 8,
               },
