@@ -82,6 +82,7 @@ const TodayProgress = () => {
   const todayPlan = todaySchedule || { subjects: [], hours_allocation: [] };
 
   return (
+    <div>
     <div className="today-progress-dashboard__container">
       <div className="inline__today-progress-dashboard__container">
         <div className="study-time__today-progress-dashboard--left">
@@ -112,7 +113,15 @@ const TodayProgress = () => {
           />
         </div>
       </div>
-      <div className="card__today__ai__pan_overview__container">
+
+      <div className="view-plan-btn__today-progress-dashboard--container">
+        {/* Show "Get Plan" button if there's no study plan */}
+        <button className="view-plan-btn__today-progress-dashboard" onClick={handleButtonClick}>
+          {studyPlan ? "View Today's Plan" : "Get Plan"}
+        </button>
+      </div>
+    </div>
+    <div className="card__today__ai__pan_overview__container">
         {/* Subject Card */}
         <div className="card__today__ai__pan_overview">
           <h3>Subjects</h3>
@@ -130,12 +139,6 @@ const TodayProgress = () => {
             <p>No session times allocated</p>
           )}
         </div>
-      </div>
-      <div className="view-plan-btn__today-progress-dashboard--container">
-        {/* Show "Get Plan" button if there's no study plan */}
-        <button className="view-plan-btn__today-progress-dashboard" onClick={handleButtonClick}>
-          {studyPlan ? "View Today's Plan" : "Get Plan"}
-        </button>
       </div>
     </div>
   );
