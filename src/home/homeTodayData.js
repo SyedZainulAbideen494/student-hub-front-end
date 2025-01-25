@@ -90,40 +90,7 @@ const TodayEventsAndTasks = () => {
             
         <div className="today-container__home__page__component">
             {isFirstVisit && <TodayEventsAndTasksTutorial onComplete={handleTutorialComplete} />}
-            <button type="button" className="button__btn___gen__report__top" onClick={handleGoToAireport}>
-      <span className="fold__btn___gen__report__top"></span>
 
-      <div className="points_wrapper__btn___gen__report__top">
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-        <i className="point__btn___gen__report__top"></i>
-      </div>
-
-      <span className="inner__btn___gen__report__top">
-        <svg
-          className="icon__btn___gen__report__top"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2.5"
-        >
-          <polyline
-            points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"
-          ></polyline>
-        </svg>
-        AI Personal Report
-      </span>
-    </button>
             <div className="Btn-Container__multiple">
   <button className="Btn-Container__whstaNeww_btn" onClick={handleGoToWhatsNew}>
     <span className="text__whstaNeww_btn">What's New</span>
