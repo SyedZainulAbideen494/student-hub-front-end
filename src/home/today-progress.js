@@ -194,13 +194,12 @@ const TodayProgress = () => {
             }}
           />
         </div>
-        {/* Subject Card */}
+        {/* Subject Card 
         <div className="card__today__ai__pan_overview">
           <h3>Subjects</h3>
           <p>{todayPlan.subjects.join(', ') || 'No subjects planned'}</p>
         </div>
 
-        {/* Session Time Card */}
         <div className="card__today__ai__pan_overview">
           <h3>Sessions</h3>
           {todayPlan.hours_allocation.length > 0 ? (
@@ -211,7 +210,7 @@ const TodayProgress = () => {
             <p>No session times allocated</p>
           )}
         </div>
-
+        */}
  
       </div>
     </div>
