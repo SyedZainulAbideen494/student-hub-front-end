@@ -87,6 +87,8 @@ const FooterNav = () => {
                 <FaBars className="icon-footer-nav" />
                 <span className="btn-label">More{hasProfileIssues && <span className="issue-icon">!</span>}</span>
             </button>
+
+
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
                 {/* Popup Buttons */}
                
@@ -106,7 +108,7 @@ const FooterNav = () => {
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaBook className="icon-footer-nav" />
                     <span className="btn-label">Notes</span>
-                    <span className='new-label-footer-nav'>New features to create notes!</span>
+
                 </button>
             </Link>
             <Link to='/flashcard' style={{ textDecoration: 'none' }}>
@@ -129,14 +131,14 @@ const FooterNav = () => {
           <Link to='/quiz/home' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/quiz/home' ? 'active' : ''}`}>
                         <FaFlask className="icon-footer-nav" />
-                        <span className="btn-label">AI Powered Quiz</span>
+                        <span className="btn-label">AI Quiz</span>
                     </button>
                 </Link>
                    {/* New Document Locker Link */}
                    <Link to='/document-locker' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
         <FaFolder className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
-        <span className="btn-label">Document Locker</span>
+        <span className="btn-label">Locker</span>
     </button>
 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
@@ -168,7 +170,7 @@ const FooterNav = () => {
                 <Link to='/how-to-use-edusify' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/guide-to-use-edusify' ? 'active' : ''}`}>
         <FaQuestionCircle className="icon-footer-nav" />
-        <span className="btn-label">How To Use Edusify Effectively</span>
+        <span className="btn-label">Help</span>
     </button>
 </Link>
 
