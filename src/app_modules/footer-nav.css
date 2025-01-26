@@ -89,7 +89,7 @@
     width: 100%;
     max-width: 350px;
     background: rgba(24, 24, 24, 0.9);
-    padding: 20px 10px;
+    padding: 10px 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0;
@@ -109,7 +109,7 @@
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
     text-align: center; /* Center text alignment */
-    padding: 10px; /* Add padding for better spacing */
+    padding: 6px; /* Add padding for better spacing */
     box-sizing: border-box; /* Include padding in dimensions */
 }
 
