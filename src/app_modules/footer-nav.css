@@ -88,7 +88,7 @@
     transform: translateX(-50%) translateY(100%);
     width: 100%;
     max-width: 350px;
-    background: rgba(24, 24, 24, 0.9);
+    background: rgba(0, 0, 0, 0.9);
     padding: 10px 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, opacity 0.3s ease;
