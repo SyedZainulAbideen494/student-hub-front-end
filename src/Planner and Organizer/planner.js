@@ -7,7 +7,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import SuccessModal from '../app_modules/SuccessMessage'; // Import the SuccessModal component
 import LoadingSpinner from '../app_modules/LoadingSpinner';
-import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter } from 'react-icons/fa'; // Importing icons
+import { FaEdit, FaCheck, FaPlus, FaTasks, FaCalendarAlt, FaHighlighter, FaClosedCaptioning, FaTimes } from 'react-icons/fa'; // Importing icons
 import SuccessMessage from '../app_modules/SuccessMessage';
 import { useNavigate } from 'react-router-dom';
 import InviteFriends from '../help/InviteFriends';
@@ -38,6 +38,7 @@ function Planner() {
     const [days, setDays] = useState(1);
     const [taskStyle, setTaskStyle] = useState('detailed');
     const [emailReminder, setEmailReminder] = useState(false); // State for email reminder
+    const [modalVisibleAddTasks, setModalVisibleAddTasks] = useState(false);
 
 
     useEffect(() => {
@@ -54,11 +55,6 @@ function Planner() {
     };
 
 
-        // Toggle feedback form visibility
-        const toggleFeedbackForm = () => {
-            setShowFeedbackForm(prev => !prev);
-        };
-    
 
     // Format date as YYYY-MM-DD
     const formatDate = (date) => {
@@ -308,90 +304,117 @@ function Planner() {
 </div>
 
 
+    
+{/* + Button for Adding Tasks */}
+<button
+  className="add-task-btn__modal__Add__tasks"
+  onClick={() => setModalVisibleAddTasks(true)} // Show modal
+>
+  <FaPlus className="add-task-icon__modal__Add__tasks" />
+</button>
 
-            <div className="calendar-container">
-                <Calendar
-                    onChange={onDateChange}
-                    value={selectedDate}
-                    tileClassName={({ date, view }) => {
-                        const tasksForDate = getTasksForDate(date);
-                        return tasksForDate.length > 0 ? 'react-calendar__tile--has-tasks' : null;
-                    }}
-                    tileContent={({ date, view }) => view === 'month' && (
-                        <div></div>
-                    )}
-                />
-            </div>
-
-            <div className="task-form" ref={formRef}>
-                <h2 className="section-title" style={{textAlign: 'center'}}>{editingTask ? <><FaEdit /> Edit Task</> : <><FaPlus /> Add Task</>}</h2>
-                <div className="form-group">
-                    <label htmlFor="task-title">Title:</label>
-                    <input
-                        id="task-title"
-                        type="text"
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-description">Description:</label>
-                    <textarea
-                        id="task-description"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-due-date">Due Date:</label>
-                    <input
-                        id="task-due-date"
-                        type="date"
-                        value={dueDate}
-                        onChange={(e) => setDueDate(e.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="task-priority">Priority:</label>
-                    <select
-                        id="task-priority"
-                        value={priority}
-                        onChange={(e) => setPriority(e.target.value)}
-                    >
-                        <option value="Low">Low</option>
-                        <option value="Normal">Normal</option>
-                        <option value="High">High</option>
-                    </select>
-                </div>
-                <div className="form-group">
-  <label
-    style={{ fontSize: '16px', color: '#333' }}
-  >
-    Email Reminder:
-  </label>
-
-  {/* Custom Toggle Switch */}
-  <div
-    className="email-reminder__planner__toggle__Reminder__btn__container"
-    onClick={() => setEmailReminder(!emailReminder)} // Toggle on container click
-  >
+{/* Task Adding Modal */}
+{modalVisibleAddTasks && (
+  <div className="modal-overlay__modal__Add__tasks">
+    <div className="modal-container__modal__Add__tasks">
+      <div className="modal-header__modal__Add__tasks">
+        <h2 className="modal-title__modal__Add__tasks">
+          <FaPlus /> Add Task
+        </h2>
+        <button
+          className="close-modal-btn__modal__Add__tasks--top"
+          onClick={() => setModalVisibleAddTasks(false)} // Close modal
+        >
+         <FaTimes/>
+        </button>
+      </div>
+      <div className="form-group__modal__Add__tasks">
+        <label htmlFor="modal-task-title">Title:</label>
+        <input
+          id="modal-task-title"
+          type="text"
+          placeholder="Task title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className="form-group__modal__Add__tasks">
+        <label htmlFor="modal-task-description">Description:</label>
+        <textarea
+          id="modal-task-description"
+          placeholder="Task description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      <div className="form-group-inline__modal__Add__tasks">
+  <div>
+    <label htmlFor="modal-task-priority">Priority:</label>
+    <select
+      id="modal-task-priority"
+      value={priority}
+      onChange={(e) => setPriority(e.target.value)}
+    >
+      <option value="Low">Low</option>
+      <option value="Normal">Normal</option>
+      <option value="High">High</option>
+    </select>
+  </div>
+  <div>
+    <label htmlFor="modal-task-due-date">Due Date:</label>
     <input
-      id="email-reminder__planner__toggle__Reminder__btn"
-      type="checkbox"
-      checked={emailReminder}
-      onChange={(e) => setEmailReminder(e.target.checked)} // Toggle state
-      className="email-reminder__planner__toggle__Reminder__btn"
+      id="modal-task-due-date"
+      type="date"
+      value={dueDate}
+      onChange={(e) => setDueDate(e.target.value)}
     />
-    <span className="email-reminder__planner__toggle__Reminder__btn__slider"></span>
   </div>
 </div>
+<div className="modal-footer__modal__Add__tasks__container">
+      <div className="modal-footer__modal__Add__tasks">
+        <button
+          className="save-task-btn__modal__Add__tasks"
+          onClick={() => {
+            handleSaveTask(); // Save task
+            setModalVisibleAddTasks(false); // Close modal
+          }}
+        >
+          Add Task
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
+)}
 
-                <button onClick={handleSaveTask}>
-                    {editingTask ? <><FaEdit /> Update Task</> : <><FaPlus /> Add Task</>}
-                </button>
-            </div>
+
+
+<div className="task-list">
+                <h2 className="section-title" style={{textAlign: 'center'}}><FaTasks /> All Tasks</h2>
+                <div className="task-container">
+                    {getAllTasks().map(task => (
+                        <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
+                            <h3 className="task-title">{task.title}</h3>
+                            <p className="task-description" style={{ whiteSpace: 'pre-wrap' }}>{task.description}</p>
+                            <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
+                            <p className="task-priority">Priority: {task.priority}</p>
+                            <button
+  className="Btn__edit__task__planner"
+  onClick={() => {
+    setModalVisibleAddTasks(true); // Show the modal
+    startEditingTask(task); // Start editing the task
+  }}
+>
+  Edit 
+      <svg className="svg__edit__task__planner" viewBox="0 0 512 512">
+        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
+    </button>
+                            <button onClick={() => handleDeleteTask(task.id)} className='button-edit-dashboard-planner button-dashboard-planner'><FaCheck /> Complete</button>
+                        </div>
+                    ))}
+                </div>
+            </div> 
+
 
             <div className="ai-task-generator__planner__page__ai__gen">
   <div className="form-header__planner__page__ai__gen">
@@ -484,53 +507,9 @@ function Planner() {
 </div>
 
 
-            <div className="task-list">
-                <h2 className="section-title" style={{textAlign: 'center'}}><FaCalendarAlt /> Tasks for {formatDate(selectedDate)}</h2>
-                <div className="task-container">
-                    {getTasksForDate(selectedDate).map(task => (
-                        <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
-                            <h3 className="task-title">{task.title}</h3>
-                            <p className="task-description" style={{ whiteSpace: 'pre-wrap' }}>{task.description}</p>
-                            <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
-                            <p className="task-priority">Priority: {task.priority}</p>
-                            <button className="Btn__edit__task__planner" onClick={() => {
-                                setEditingTask(task);
-                                setTitle(task.title);
-                                setDescription(task.description);
-                                setDueDate(task.due_date);
-                                setPriority(task.priority);
-                                scrollToForm();
-                            }}>Edit 
-      <svg className="svg__edit__task__planner" viewBox="0 0 512 512">
-        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
-    </button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-edit-dashboard-planner button-dashboard-planner'><FaCheck /> Complete</button>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            <div className="task-list">
-                <h2 className="section-title" style={{textAlign: 'center'}}><FaTasks /> All Tasks</h2>
-                <div className="task-container">
-                    {getAllTasks().map(task => (
-                        <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
-                            <h3 className="task-title">{task.title}</h3>
-                            <p className="task-description" style={{ whiteSpace: 'pre-wrap' }}>{task.description}</p>
-                            <p className="task-due-date">Due Date: {formatDate(new Date(task.due_date))}</p>
-                            <p className="task-priority">Priority: {task.priority}</p>
-                            <button className="Btn__edit__task__planner" onClick={() => startEditingTask(task)}>Edit 
-      <svg className="svg__edit__task__planner" viewBox="0 0 512 512">
-        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"></path></svg>
-    </button>
-                            <button onClick={() => handleDeleteTask(task.id)} className='button-edit-dashboard-planner button-dashboard-planner'><FaCheck /> Complete</button>
-                        </div>
-                    ))}
-                </div>
-            </div>
-           
-           
+
             <FooterNav />
-            <InvalidPhoneEmail/>
+
             {modalVisible && <SuccessMessage message={modalMessage} onClose={() => setModalVisible(false)} />}
         </div>
     );
