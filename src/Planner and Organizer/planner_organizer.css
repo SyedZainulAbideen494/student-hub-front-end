@@ -767,6 +767,8 @@
   .add-task-btn__modal__Add__tasks:hover {
     transform: scale(1.1);
   }
+
+  
   .modal-overlay__modal__Add__tasks {
     position: fixed;
     top: 0;
@@ -776,21 +778,29 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align towards the top */
+    align-items: center; /* Center modal vertically */
     z-index: 1000;
     animation: fadeIn 0.3s forwards;
-    padding-top: 50px; /* Add spacing from the top */
+    padding: 0; /* Remove top spacing */
   }
   
   .modal-container__modal__Add__tasks {
     background: white;
     padding: 15px;
     border-radius: 8px;
-    width: 80%; /* Adjusted width */
-    max-width: 350px;
+    width: 90%; /* Adjust width for smaller screens */
+    max-width: 350px; /* Maintain a limit on the modal width */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     animation: slideUp 0.3s forwards;
   }
+  
+  @media (max-width: 768px) {
+    .modal-container__modal__Add__tasks {
+      padding: 20px; /* Add more padding for smaller screens */
+    }
+  }
+  
+
   
   .modal-header__modal__Add__tasks {
     display: flex;
