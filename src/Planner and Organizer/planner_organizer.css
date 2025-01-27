@@ -788,8 +788,9 @@
     background: white;
     padding: 15px;
     border-radius: 8px;
-    width: 90%; /* Adjust width for smaller screens */
+    width: calc(100% - 40px); /* Add margin on the sides */
     max-width: 350px; /* Maintain a limit on the modal width */
+    margin: 0 20px; /* Apply equal margin to left and right */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     animation: slideUp 0.3s forwards;
   }

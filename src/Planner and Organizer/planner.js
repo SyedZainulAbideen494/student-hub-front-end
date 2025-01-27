@@ -362,7 +362,7 @@ function Planner() {
     </select>
   </div>
   <div>
-    <label htmlFor="modal-task-due-date">Due Date:</label>
+    <label htmlFor="modal-task-due-date">Due:</label>
     <input
       id="modal-task-due-date"
       type="date"
