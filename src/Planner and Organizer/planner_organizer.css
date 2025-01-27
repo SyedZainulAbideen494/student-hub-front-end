@@ -768,7 +768,7 @@
     transform: scale(1.1);
   }
 
-  
+
   .modal-overlay__modal__Add__tasks {
     position: fixed;
     top: 0;
@@ -853,7 +853,7 @@
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 14px;
   }
 
