@@ -311,7 +311,7 @@ function Planner() {
   className="add-task-btn__modal__Add__tasks"
   onClick={() => setModalVisibleAddTasks(true)} // Show modal
 >
-  <FaPlus className="add-task-icon__modal__Add__tasks" />
+  <p className="add-task-icon__modal__Add__tasks">+</p>
 </button>
 
 {/* Task Adding Modal */}
