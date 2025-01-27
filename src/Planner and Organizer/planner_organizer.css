@@ -71,7 +71,7 @@
 
 /* Active Tile */
 .react-calendar__tile--active {
-    background: #4A90E2;
+    background: #abc4ff;
     color: #ffffff;
     border-radius: 50%;
     transform: scale(1.05);
@@ -80,7 +80,7 @@
 
 /* Current Tile */
 .react-calendar__tile--now {
-    border: 2px solid #357ABD;
+    border: 2px solid #abc4ff;
     border-radius: 50%;
 }
 
@@ -112,7 +112,7 @@
 
 /* Active Tile */
 .react-calendar__tile--active {
-    background: #4A90E2;
+    background: #abc4ff;
     color: #ffffff;
     border-radius: 50%;
     transform: scale(1.05);
@@ -121,7 +121,7 @@
 
 /* Current Tile */
 .react-calendar__tile--now {
-    border: 2px solid #357ABD;
+    border: 2px solid #abc4ff;
     border-radius: 50%;
 }
 
@@ -185,7 +185,7 @@
 }
 
 .task-form h2 {
-    color: #429CF7; /* Heading color */
+    color: #abc4ff; /* Heading color */
     margin-bottom: 25px;
     font-weight: 600;
 }
@@ -233,7 +233,7 @@
 
 .task-list h2,
 .all-tasks-card h2 {
-    color: #429CF7; /* Heading color */
+    color: #abc4ff; /* Heading color */
     margin-bottom: 25px;
     font-weight: 600;
 }
@@ -358,7 +358,7 @@
     padding: 10px;
     cursor: pointer;
     margin-right: 10px;
-    background-color: #b8bedd; /* Gradient background */
+    background-color: #abc4ff; /* Gradient background */
     color: #ffffff;
     transition: background-color 0.3s, transform 0.3s;
 }
