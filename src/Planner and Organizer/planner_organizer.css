@@ -736,7 +736,7 @@
  
   .add-task-btn__modal__Add__tasks {
     position: fixed;
-    bottom: 90px;
+    bottom: 100px;
     right: 20px;
     background-color: #272727;
     color: white;
