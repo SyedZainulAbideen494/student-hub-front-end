@@ -15,6 +15,7 @@ import InvalidPhoneEmail from '../app_modules/InvalidUserModal';
 import TipBox from '../Tip box/TipBox';
 import FeedbackForm from '../help/FeedbackForm';
 import PlannerPageTutorial from './PlannerPageTutorial';
+import { Checklist } from '@mui/icons-material';
 
 
 function Planner() {
@@ -271,7 +272,7 @@ function Planner() {
     return (
         <div className="App-dashboard-planner">
 {showTutorial && <PlannerPageTutorial onComplete={handleTutorialComplete} />}
-            <h1 className="header-title"><FaCalendarAlt /> Study Planner</h1>
+            <h1 className="header-title"><Checklist /> To-do list</h1>
             <div className="top-boxes-container__home__page__component">
     <div className="box__home__page__component box-1__home__page__component">
         <svg className="icon__home__page__component" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
