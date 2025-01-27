@@ -49,7 +49,6 @@ function TodayAiOverview() {
   
       if (response.data.tasks) {
         setTasks(response.data.tasks);
-        alert('Tasks successfully generated!');
       } else {
         setTaskError('No tasks generated.');
       }
@@ -155,7 +154,6 @@ function TodayAiOverview() {
         <li key={idx} className="task__item__plan__ai__tasks__generated">
           <strong className="task__title__plan__ai__tasks__generated">{task.title}</strong>: 
           <span className="task__description__plan__ai__tasks__generated">{task.description}</span> 
-          <span className="task__priority__plan__ai__tasks__generated">({task.priority})</span>
         </li>
       ))}
     </ul>
