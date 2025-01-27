@@ -358,23 +358,14 @@
     padding: 10px;
     cursor: pointer;
     margin-right: 10px;
-    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
+    background-color: #b8bedd; /* Gradient background */
     color: #ffffff;
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.button-dashboard-planner:hover {
-    background: linear-gradient(to right, #3079d7, #6a5d9f); /* Darker gradient on hover */
-    transform: scale(1.05);
-}
-
-.button-edit-dashboard-planner {
-    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
-    color: #ffffff;
-}
 
 .button-complete {
-    background: linear-gradient(to right, #429CF7, #796BD5); /* Gradient background */
+    background-color: #abc4ff; /* Gradient background */
     color: #ffffff;
 }
 
@@ -474,7 +465,7 @@
     height: 37px;
     border: none;
     padding: 10px;
-    background: linear-gradient(to right, #429CF7, #796BD5);
+    background-color: #abc4ff;
     color: white;
     font-weight: bold;
     font-size: 14px;
@@ -495,7 +486,6 @@
 
 .Btn__edit__task__planner:hover {
     color: rgba(255, 255, 255, 0);
-    background: linear-gradient(to right, #429CF7, #796BD5);
 }
 
 .Btn__edit__task__planner:hover .svg__edit__task__planner {
@@ -748,7 +738,7 @@
     position: fixed;
     bottom: 90px;
     right: 20px;
-    background-color: #211F26;
+    background-color: #272727;
     color: white;
     border: none;
     border-radius: 50%;
@@ -848,7 +838,7 @@
   .save-task-btn__modal__Add__tasks {
     width: 40%;
     padding: 10px;
-    background-color: #211F26;
+    background-color: #abc4ff;
     color: white;
     border: none;
     border-radius: 25px;
