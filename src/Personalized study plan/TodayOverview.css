@@ -137,3 +137,86 @@
     visibility: visible;
     opacity: 1;
 }
+
+
+
+/* Main container for the tasks list */
+.tasks__list__plan__ai__tasks__generated {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9; /* Soft off-white background */
+    border: 1px solid none; /* Lighter border for a subtle effect */
+    border-radius: 16px; /* More rounded edges */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Header for the tasks list */
+  .tasks__list__header__plan__ai__tasks__generated {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #4a4a4a; /* Soft dark gray text */
+    font-family: 'San Francisco', sans-serif; /* Apple-like font */
+  }
+  
+  /* List of tasks */
+  .tasks__list__items__plan__ai__tasks__generated {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Individual task item */
+  .task__item__plan__ai__tasks__generated {
+    margin-bottom: 15px;
+    padding: 18px;
+    border: 1px solid none; /* Light gray border for subtlety */
+    border-radius: 12px; /* Rounded edges */
+    background-color: #ffffff; /* Clean white background */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Task title */
+  .task__title__plan__ai__tasks__generated {
+    font-weight: 700;
+    color: #6c88d1; /* Soft periwinkle blue */
+    margin-right: 15px;
+    font-size: 1.1rem;
+    font-family: 'San Francisco', sans-serif;
+  }
+  
+  /* Task description */
+  .task__description__plan__ai__tasks__generated {
+    flex-grow: 1;
+    color: #666; /* Light charcoal gray text */
+    font-size: 0.95rem;
+    margin-right: 15px;
+    font-family: 'San Francisco', sans-serif;
+  }
+  
+  /* Task priority */
+  .task__priority__plan__ai__tasks__generated {
+    font-size: 0.9rem;
+    color: #a1a1a1; /* Soft muted gray */
+    font-style: italic;
+    font-family: 'San Francisco', sans-serif;
+  }
+  
+
+  /* Adjust overall container responsiveness */
+  @media (max-width: 768px) {
+    .tasks__list__plan__ai__tasks__generated {
+      padding: 15px;
+    }
+    .task__item__plan__ai__tasks__generated {
+      padding: 15px;
+    }
+  }
+  

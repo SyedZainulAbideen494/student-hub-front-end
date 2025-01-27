@@ -176,5 +176,6 @@ export const API_ROUTES = {
   getStudyPlan: `${API_URL}/api/study-plan`,
   pomodoroStudyPlanData: `${API_URL}/api/today-pomodoro-study-plan`,
   generateStudyPlan: `${API_URL}/api/saveGoal`,
-  getStudyPlanTaskData: `${API_URL}/getTasks/plan/study`
+  getStudyPlanTaskData: `${API_URL}/getTasks/plan/study`,
+  generateTasksFromStudyPlan: `${API_URL}/api/generate/ai/today/plan/tasks`
 }

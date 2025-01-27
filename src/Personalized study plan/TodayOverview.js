@@ -13,6 +13,9 @@ function TodayAiOverview() {
   const [studyPlan, setStudyPlan] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [tasks, setTasks] = useState([]);
+  const [taskError, setTaskError] = useState(null);
+  const [generating, setGenerating] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +36,31 @@ function TodayAiOverview() {
     fetchStudyPlan();
   }, []);
 
+  const handleGenerateTasks = async (instructions) => {
+    setGenerating(true);
+    setTaskError(null);
+  
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(API_ROUTES.generateTasksFromStudyPlan, {
+        token,
+        AI_task_generation_instructions: instructions, // Send instructions received from button
+      });
+  
+      if (response.data.tasks) {
+        setTasks(response.data.tasks);
+        alert('Tasks successfully generated!');
+      } else {
+        setTaskError('No tasks generated.');
+      }
+    } catch (err) {
+      setTaskError('Failed to generate tasks.');
+    } finally {
+      setGenerating(false);
+    }
+  };
+  
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
@@ -42,7 +70,7 @@ function TodayAiOverview() {
   const todayPlan = studyPlan.weekly_timetable.find(day => day.day === today);
 
   if (!todayPlan) return <div>No study plan available for today.</div>;
-  
+
   const handleNewPlan = () => {
     navigate('/flow-user-data');
   };
@@ -55,7 +83,7 @@ function TodayAiOverview() {
         onClick={() => navigate(-1)}
         aria-label="Go back"
       >
-        <FaArrowLeft/>
+        <FaArrowLeft />
       </button>
 
       {/* Question Mark Tooltip */}
@@ -104,7 +132,36 @@ function TodayAiOverview() {
 
       {/* Bottom Buttons */}
       <div className="bottom__buttons__today__ai__pan_overview">
-        <button className="action__button__today__ai__pan_overview" onClick={handleNewPlan}>Get New Plan</button>
+        <button
+          className="action__button__today__ai__pan_overview"
+          onClick={handleNewPlan}
+        >
+          Get New Plan
+        </button>
+        <button
+  className="action__button__today__ai__pan_overview"
+  onClick={() => handleGenerateTasks(todayPlan.AI_task_generation_instructions)} // Pass instructions here
+  disabled={generating}
+>
+  {generating ? 'Generating...' : 'Generate Tasks'}
+</button>
+
+        {taskError && <p className="error">{taskError}</p>}
+        {tasks.length > 0 && (
+  <div className="tasks__list__plan__ai__tasks__generated">
+    <h3 className="tasks__list__header__plan__ai__tasks__generated">Tasks</h3>
+    <ul className="tasks__list__items__plan__ai__tasks__generated">
+      {tasks.map((task, idx) => (
+        <li key={idx} className="task__item__plan__ai__tasks__generated">
+          <strong className="task__title__plan__ai__tasks__generated">{task.title}</strong>: 
+          <span className="task__description__plan__ai__tasks__generated">{task.description}</span> 
+          <span className="task__priority__plan__ai__tasks__generated">({task.priority})</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
       </div>
     </div>
   );
