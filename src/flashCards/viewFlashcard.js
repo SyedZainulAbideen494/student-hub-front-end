@@ -383,7 +383,7 @@ const ViewFlashCard = () => {
     )}
 
     <button className='btn__floating__create__note__flashcard__page' onClick={openSubjectModal}>
-        <FaPlus className="icon__floating__create__note__flashcard__page" />
+        +
     </button>
 </div>
 

@@ -423,9 +423,8 @@
 .share__btn__flashcard__card {
     font-family: inherit;
     font-size: 14px; /* Smaller font size */
-    background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
+    background-color: #b8b8ff;
     color: white;
-    padding: 0.6em 1em; /* Smaller padding */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -503,8 +502,8 @@
 
 /* Button styling for flashcard page */
 .btn__main__page__flashcard__page {
-  width: 10em; /* Width of the button */
-  height: 3em; /* Height of the button */
+  width: 9em; /* Width of the button */
+  height: 38px; /* Height of the button */
   border-radius: 30px; /* More rounded corners */
   font-size: 14px; /* Font size */
   font-family: 'Arial', sans-serif; /* Font family */
@@ -516,8 +515,7 @@
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   color: #ffffff; /* Dark text color for contrast */
-  background: linear-gradient(to bottom, #4dc7d9 0%, #66a6ff 100%);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  background-color: #b8b8ff;
 }
 
 /* Button icon styling */
@@ -528,7 +526,7 @@
 /* Active button style */
 .active__main__page__flashcard__page {
   background: transparent;
-  border: 1px solid none;
+  border: 1px solid #b8b8ff;
   color: #000000; /* Text color for active button */
 }
 
