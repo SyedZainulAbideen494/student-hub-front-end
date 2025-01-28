@@ -204,7 +204,8 @@ const TodayProgress = () => {
           <h3>Sessions</h3>
           {todayPlan.hours_allocation.length > 0 ? (
             todayPlan.hours_allocation.map((allocation, idx) => (
-              <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours} hours</p>
+              <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours * 60} minutes</p>
+
             ))
           ) : (
             <p>No session times allocated</p>
