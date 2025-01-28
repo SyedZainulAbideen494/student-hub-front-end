@@ -192,7 +192,8 @@ const UserProfile = () => {
         </div>
         <div className="info__block__guest">
           <h3 className="info__title__guest">Pomodoro minutes: </h3>
-          <p>{userData.pomodoroHours * 60}</p>
+          <p>{Math.floor(userData.pomodoroHours * 60)}</p>
+
         </div>
       </div>
 
