@@ -141,13 +141,7 @@ function TodayAiOverview() {
         >
           Get New Plan
         </button>
-        <button
-  className="action__button__today__ai__pan_overview"
-  onClick={() => handleGenerateTasks(todayPlan.AI_task_generation_instructions)} // Pass instructions here
-  disabled={generating}
->
-  {generating ? 'Generating...' : 'Generate Tasks'}
-</button>
+
 
         {taskError && <p className="error">{taskError}</p>}
         {tasks.length > 0 && (
