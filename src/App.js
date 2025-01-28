@@ -129,6 +129,7 @@ import UserFlow from "./Personalized study plan/Input-flow";
 import LoadingPage from "./Personalized study plan/LoadingPage";
 import StudyPlanPage from "./Personalized study plan/StudyPlanPage";
 import TodayAiOverview from "./Personalized study plan/TodayOverview";
+import Music from "./music/Music";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -156,7 +157,7 @@ const router = createBrowserRouter([
   {path: '/privacy-policy', element: <PrivacyPolicy/>},
   {path: '/more-info', element: <MoreInfo/>},
   // {path: '/pomodoro', element: <Pomodoro/>},
-  {path: '/music', element: <MusicPlayer/>},
+  {path: '/music', element: <Music/>},
   {path: '/callback', element: <Callback/>},
   {path: '/welcome', element: <Welcome/>},
   {path: '/noti', element: <NotiPage/>},

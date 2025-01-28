@@ -130,23 +130,37 @@ const LoadingModal = () => (
   </div>
 );
 
-const FileUploader = ({ onFileChange }) => (
-  <div className="PDFNotesCreation__fileUpload__container">
-    <div className="PDFNotesCreation__fileUpload__wrapper">
-      <label className="PDFNotesCreation__fileUpload__box">
-        <input
-          type="file"
-          accept=".pdf"
-          onChange={(e) => onFileChange(e.target.files[0])}
-          className="PDFNotesCreation__fileUpload__input"
-        />
-        <div className="PDFNotesCreation__fileUpload__content">
-          
-          <p className="PDFNotesCreation__fileUpload__text">Upload PDF File</p>
-        </div>
-      </label>
+const FileUploader = ({ onFileChange }) => {
+  const [uploadedFileName, setUploadedFileName] = useState("");
+
+  const handleFileChange = (file) => {
+    setUploadedFileName(file?.name || ""); // Update with the uploaded file's name
+    onFileChange(file);
+  };
+
+  return (
+    <div className="PDFNotesCreation__fileUpload__container">
+      <div className="PDFNotesCreation__fileUpload__wrapper">
+        <label className="PDFNotesCreation__fileUpload__box">
+          <input
+            type="file"
+            accept=".pdf"
+            onChange={(e) => handleFileChange(e.target.files[0])}
+            className="PDFNotesCreation__fileUpload__input"
+          />
+          <div className="PDFNotesCreation__fileUpload__content">
+            {uploadedFileName ? (
+              <p className="PDFNotesCreation__fileUpload__text">
+                File Uploaded: <strong>{uploadedFileName}</strong>
+              </p>
+            ) : (
+              <p className="PDFNotesCreation__fileUpload__text">Upload PDF File</p>
+            )}
+          </div>
+        </label>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default PDFNotesCreation;
