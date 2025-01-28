@@ -61,14 +61,14 @@ const UserFlow = () => {
     {
       id: 5,
       question: "What are your recent grades or scores?",
-      subtext: "Enter your grades or scores to help us identify areas to improve.",
+      subtext: "Please enter your recent grades or GPA to help us pinpoint areas for improvement. For example, you can enter a percentage like 78% or a GPA like 5.8.",
       isInputField: true,
       setInput: setRecentGrades,
     },
     {
       id: 6,
       question: "Do you have any upcoming exams or deadlines?",
-      subtext: "Enter the dates or details to help us create deadline-oriented plans.",
+      subtext: "Enter the dates or details to help us create deadline-oriented plans. eg(Board exams on feb 28th)",
       isInputField: true,
       setInput: setExamDetails,
     },
