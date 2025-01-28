@@ -133,7 +133,10 @@ const FlashcardLibraryPage = () => {
         </div>
       ) : (
         <div className="set-list__library__page__component__page">
-          {sets.map((set) => (
+  {sets
+    .slice() // Create a shallow copy of the array to avoid mutating the original array
+    .reverse() // Reverse the array
+    .map((set) => (
             <div key={set.id} className="set-card__library__page__component__page fade-in">
               <Link to={`/flashcard/set/${set.id}`} style={{ textDecoration: 'none' }}>
                 <div className="card-content__library__page__component__page">
