@@ -191,8 +191,8 @@ const UserProfile = () => {
           <p>{userData.leaderboardPoints}</p>
         </div>
         <div className="info__block__guest">
-          <h3 className="info__title__guest">Pomodoro Hours: </h3>
-          <p>{userData.pomodoroHours}</p>
+          <h3 className="info__title__guest">Pomodoro minutes: </h3>
+          <p>{userData.pomodoroHours * 60}</p>
         </div>
       </div>
 
