@@ -122,9 +122,9 @@ function TodayAiOverview() {
       <div className="card__today__ai__pan_overview__container">
         {/* Total Study Time Card */}
         <div className="card__today__ai__pan_overview">
-          <h3>Total Study Time</h3>
-          <p>{todayPlan.total_study_time} hours</p>
-        </div>
+  <h3>Total Study Time</h3>
+  <p>{todayPlan.total_study_time * 60} minutes</p>
+</div>
 
         {/* Tips Card */}
         <div className="card__today__ai__pan_overview">
