@@ -8,6 +8,7 @@ import moment from 'moment';
 import TodayProgressAiOverView from './today-progress';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { FaArrowLeft } from 'react-icons/fa';
+import LoadingSpinner from '../app_modules/LoadingSpinner';
 
 function TodayAiOverview() {
   const [studyPlan, setStudyPlan] = useState(null);
@@ -60,7 +61,10 @@ function TodayAiOverview() {
   };
   
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+<LoadingSpinner />
+</div>
+;
   if (error) return <div>{error}</div>;
 
   if (!studyPlan) return <div>No study plan found</div>;
