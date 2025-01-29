@@ -29,7 +29,7 @@ const PaymentComponent = () => {
       });
 
       const options = {
-        key: 'rzp_test_RerVxaTytL17Ax', // Razorpay key_id
+        key: 'rzp_live_jPX6SxetQbApHC', // Razorpay key_id
         amount: data.order.amount,
         currency: 'INR',
         order_id: data.order.id,
