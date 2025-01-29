@@ -104,13 +104,24 @@ const PaymentComponent = () => {
     <p className="__subscription__place__page__price">
       <span className="__subscription__place__page__old-price">₹99</span> ₹49 / month
     </p>
-    <p className="__subscription__place__page__discount">50% OFF<span style={{fontSize: '12px'}}> for 2 days only!</span></p>
+    <p className="__subscription__place__page__discount">50% OFF<span style={{fontSize: '10px'}}> for 2 days only!</span></p>
   </div>
-
-     
-
-    
-
+  <div className="__subscription__place__page__button-container">
+{showPremium && (
+  isPremium ? (
+    <p
+    className="__subscription__place__page__Noaction"
+  >
+    You have Premium
+  </p>
+  
+  ) : (
+    <button className="__subscription__place__page__action" onClick={handlePayment}>
+      Get Premium
+    </button>
+  )
+)}
+</div>
         <ul className="__subscription__place__page__lists">
         <li className="__subscription__place__page__list">
           <span><i className="fa fa-check-circle"></i> Unlimited study plans</span>
@@ -149,22 +160,7 @@ const PaymentComponent = () => {
 
 
 
-<div className="__subscription__place__page__button-container">
-{showPremium && (
-  isPremium ? (
-    <p
-    className="__subscription__place__page__Noaction"
-  >
-    You have Premium
-  </p>
-  
-  ) : (
-    <button className="__subscription__place__page__action" onClick={handlePayment}>
-      Get Premium
-    </button>
-  )
-)}
-</div>
+
 
       <FooterNav />
     </div>
