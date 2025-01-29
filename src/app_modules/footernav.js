@@ -183,7 +183,11 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
         <FaCrown className="icon-footer-nav" style={{color: '#ffb703'}} /> {/* You can use the FaGem icon or another icon */}
         <span className="btn-label">Premium</span>
+        <span className='new-label-footer-nav'>50% OFF – Limited Time!</span>
     </button>
+    <span className='exclusive-offer-footer-nav'>
+</span>
+
 </Link>
                 
 {/* New Monthly Stats Button */}
