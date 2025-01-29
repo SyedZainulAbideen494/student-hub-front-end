@@ -3,6 +3,7 @@ import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import SuccessMessage from '../app_modules/SuccessMessage';
 import './ProfileAvatar.css'; // Include relevant CSS for styling
+import { FaTrash } from 'react-icons/fa';
 
 const ProfileAvatar = () => {
   const [profile, setProfile] = useState({});
@@ -114,11 +115,6 @@ const ProfileAvatar = () => {
           alt="Profile Avatar"
         />
 
-        {profile.avatar !== 'defPic.png' && (
-          <button className="remove-avatar-btn__change__avatar" onClick={handleRemoveAvatar}>
-            Remove Avatar
-          </button>
-        )}
       </div>
 
       {/* Hidden file input */}
@@ -133,9 +129,15 @@ const ProfileAvatar = () => {
 
       {/* Custom button to trigger file input */}
       <label htmlFor="avatar-input" className="custom-file-btn__change__avatar">
-        Upload New Avatar
-      </label>
+        Upload New Avatar {profile.avatar !== 'defPic.png' && (
+          <button className="custom-file-btn__change__avatar__remove" onClick={handleRemoveAvatar}>
+            <FaTrash/>
+          </button>
+        )}
 
+      </label>
+      
+      
       {avatarPreview && (
         <div className="avatar-preview-controls__change__avatar">
           <button className="save-btn__change__avatar" onClick={handleAvatarSubmit}>Save</button>

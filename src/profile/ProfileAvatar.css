@@ -52,6 +52,21 @@
     text-align: center;
   }
 
+    /* Custom button for file input */
+    .custom-file-btn__change__avatar__remove {
+      background-color: transparent;
+      color: #ff4646;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+      margin-top: 15px;
+      text-align: center;
+    }
+  
+    
+
   
   .avatar-preview-controls__change__avatar {
     display: flex;
