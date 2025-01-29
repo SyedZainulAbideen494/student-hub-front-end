@@ -8,12 +8,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 30px auto;
   font-family: 'San Francisco', sans-serif; /* Apple-like font for modern touch */
+margin-bottom: 100px;
   border: 1px solid #f1f1f1; /* Light border for a sleek finish */
 }
 
 /* Title */
 .__subscription__place__page__title {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 700;
   color: #333; /* Darker gray for a sleek feel */
   text-align: center;
@@ -55,7 +56,7 @@
 
 .__subscription__place__page__list i {
   margin-right: 8px;
-  color: #4ad66d;
+  color: #333;
 }
 
 .__subscription__place__page__list span {
@@ -130,7 +131,7 @@
 
 /* Discount Badge Styling */
 .__subscription__place__page__discount {
-  font-size: 14px;
+  font-size: 18px;
   color: #ff4d4d;
   font-weight: 600;
   margin-top: 4px;
