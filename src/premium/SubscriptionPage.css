@@ -4,27 +4,68 @@
   border-radius: 15px;
   padding: 35px 20px;
   width: 280px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow for a subtle effect */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 30px auto;
-  font-family: 'San Francisco', sans-serif; /* Apple-like font for modern touch */
-margin-bottom: 100px;
-  border: 1px solid #f1f1f1; /* Light border for a sleek finish */
+  font-family: 'San Francisco', sans-serif;
+  margin-bottom: 100px;
+  border: 1px solid #f1f1f1;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Title */
+/* Golden Border Effect */
+.__subscription__place__page__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #ffd700, #ffcc00, #ffd700);
+  z-index: -1;
+  animation: golden-border 3s infinite linear;
+}
+
+@keyframes golden-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Title with Crown Icon */
 .__subscription__place__page__title {
   font-size: 28px;
   font-weight: 700;
-  color: #333; /* Darker gray for a sleek feel */
+  color: #333;
   text-align: center;
   margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.crown-icon {
+  color: #ffd700;
+  font-size: 28px;
 }
 
 /* Description */
 .__subscription__place__page__description {
   font-size: 15px;
-  color: #777; /* Softer gray for description text */
+  color: #777;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* Price Container */
+.__subscription__place__page__price-container {
   text-align: center;
   margin-bottom: 18px;
 }
@@ -33,9 +74,69 @@ margin-bottom: 100px;
 .__subscription__place__page__price {
   font-size: 26px;
   font-weight: 600;
-  color: #111; /* Dark gray for price */
+  color: #111;
   text-align: center;
   margin-bottom: 18px;
+}
+
+/* Old Price Styling */
+.__subscription__place__page__old-price {
+  text-decoration: line-through;
+  color: #aaa;
+  margin-right: 8px;
+  font-size: 22px;
+}
+
+/* Discount Badge */
+.__subscription__place__page__discount {
+  font-size: 14px;
+  color: #ff4d4d;
+  font-weight: 600;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Button Styling */
+.__subscription__place__page__action {
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 16px;
+  padding: 12px 18px;
+  border-radius: 30px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.__subscription__place__page__action:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+/* No Action Text (for Premium Users) */
+.__subscription__place__page__Noaction {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.crown-icon-small {
+  color: #ffd700;
+  font-size: 18px;
 }
 
 /* Subscription List Styling */
@@ -49,111 +150,16 @@ margin-bottom: 100px;
   display: flex;
   align-items: center;
   font-size: 15px;
-  color: #888; /* Light gray for list items */
+  color: #888;
   margin-bottom: 15px;
   transition: color 0.3s ease;
 }
 
-.__subscription__place__page__list i {
+.golden-check {
+  color: #ffd700;
   margin-right: 8px;
-  color: #333;
 }
 
 .__subscription__place__page__list span {
   flex-grow: 1;
-}
-
-/* Button Styling */
-.__subscription__place__page__action {
-  background-color: #1a1a1a; /* Sleek dark background */
-  color: white;
-  font-size: 16px;
-  padding: 12px 18px;
-  border-radius: 30px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.__subscription__place__page__action:focus {
-  outline: none;
-}
-
-.__subscription__place__page__action:hover {
-  background-color: #333; /* Slightly lighter gray for hover */
-}
-
-/* Toggle Button Styling */
-.__subscription__place__page__toggle {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.__subscription__place__page__toggle-btn {
-  background-color: #ffffff;
-  border: 1px solid #e1e1e1;
-  padding: 8px 14px;
-  margin: 0 4px;
-  border-radius: 25px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.__subscription__place__page__toggle-btn.active {
-  background-color: #1a1a1a;
-  color: white;
-  border: 1px solid #1a1a1a;
-}
-
-.__subscription__place__page__toggle-btn:hover {
-  transform: translateY(-2px); /* Slight hover effect */
-}
-
-/* Price Container */
-.__subscription__place__page__price-container {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-/* Old Price Styling (strikethrough) */
-.__subscription__place__page__old-price {
-  text-decoration: line-through;
-  color: #aaa;
-  margin-right: 8px;
-  font-size: 22px;
-}
-
-/* Discount Badge Styling */
-.__subscription__place__page__discount {
-  font-size: 14px;
-  color: #ff4d4d;
-  font-weight: 600;
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Small Text */
-.__subscription__place__page__list span {
-  font-size: 13px;
-  color: #999;
-}
-
-/* Spacing and Margin Adjustments */
-.__subscription__place__page__list {
-  margin-bottom: 20px;
-}
-
-/* Centering Button Styling */
-.__subscription__place__page__button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 30px;
 }

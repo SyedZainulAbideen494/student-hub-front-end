@@ -4,6 +4,7 @@ import './SubscriptionPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import { useNavigate } from 'react-router-dom';
+import { FaCrown } from 'react-icons/fa';
 
 const PaymentComponent = () => {
   const [amount, setAmount] = useState(49); // Default amount in INR (₹99)
@@ -95,75 +96,59 @@ const PaymentComponent = () => {
 
   return (
     <div className="__subscription__place__page__card">
-      <h2 className="__subscription__place__page__title">Upgrade to Premium</h2>
-      <p className="__subscription__place__page__description">
-        Get access to exclusive features and elevate your learning experience!
-      </p>
-
-      <div className="__subscription__place__page__price-container">
-    <p className="__subscription__place__page__price">
-      <span className="__subscription__place__page__old-price">₹99</span> ₹49 / month
+    <h2 className="__subscription__place__page__title">
+      Upgrade to Premium <FaCrown className="crown-icon" />
+    </h2>
+    <p className="__subscription__place__page__description">
+      Get access to exclusive features and elevate your learning experience!
     </p>
-    <p className="__subscription__place__page__discount">50% OFF<span style={{fontSize: '10px'}}> for 2 days only!</span></p>
-  </div>
-  <div className="__subscription__place__page__button-container">
-{showPremium && (
-  isPremium ? (
-    <p
-    className="__subscription__place__page__Noaction"
-  >
-    You have Premium
-  </p>
   
-  ) : (
-    <button className="__subscription__place__page__action" onClick={handlePayment}>
-      Get Premium
-    </button>
-  )
-)}
-</div>
-        <ul className="__subscription__place__page__lists">
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited study plans</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited Magic AI generations</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited note creation options</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited PDF to notes</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited AI notes creation</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlock AI tasks plan generator</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Get daily tips on study plan</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited AI quizzes creation</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited AI flashcards creation</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited PDF to flashcards</span>
-        </li>
-        <li className="__subscription__place__page__list">
-          <span><i className="fa fa-check-circle"></i> Unlimited PDF to quizzes</span>
-        </li>
-      </ul>
-
-
-
-
-
-      <FooterNav />
+    <div className="__subscription__place__page__price-container">
+      <p className="__subscription__place__page__price">
+        <span className="__subscription__place__page__old-price">₹99</span> ₹49 / month
+      </p>
+      <p className="__subscription__place__page__discount">
+        50% OFF<span style={{ fontSize: '10px' }}> for 2 days only!</span>
+      </p>
     </div>
+  
+    <div className="__subscription__place__page__button-container">
+      {showPremium &&
+        (isPremium ? (
+          <p className="__subscription__place__page__Noaction">
+            You have Premium <FaCrown className="crown-icon-small" />
+          </p>
+        ) : (
+          <button className="__subscription__place__page__action" onClick={handlePayment}>
+            Get Premium <FaCrown className="crown-icon-small" />
+          </button>
+        ))}
+    </div>
+  
+    <ul className="__subscription__place__page__lists">
+      {[
+        "Unlimited study plans",
+        "Unlimited Magic AI generations",
+        "Unlimited note creation options",
+        "Unlimited PDF to notes",
+        "Unlimited AI notes creation",
+        "Unlock AI tasks plan generator",
+        "Get daily tips on study plan",
+        "Unlimited AI quizzes creation",
+        "Unlimited AI flashcards creation",
+        "Unlimited PDF to flashcards",
+        "Unlimited PDF to quizzes",
+      ].map((feature, index) => (
+        <li className="__subscription__place__page__list" key={index}>
+          <span>
+            <i className="fa fa-check-circle golden-check"></i> {feature}
+          </span>
+        </li>
+      ))}
+    </ul>
+  
+    <FooterNav />
+  </div>
   );
 };
 
