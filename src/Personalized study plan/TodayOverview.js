@@ -122,7 +122,10 @@ function TodayAiOverview() {
         <div className="card__today__ai__pan_overview">
           <h3>Session Time</h3>
           {todayPlan.hours_allocation.map((allocation, idx) => (
-            <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours} hours</p>
+           <p key={idx}>
+           <strong>{allocation.subject}:</strong> {allocation.hours * 60} minutes
+         </p>
+         
           ))}
         </div>
       </div>
