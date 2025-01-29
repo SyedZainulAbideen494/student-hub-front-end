@@ -64,7 +64,22 @@ const ProfilePage = () => {
     }
   }, []);
 
-  if (loading) return <LoadingSpinner />;
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh', // Full viewport height to center vertically
+          width: '100vw', // Full viewport width to center horizontally
+          backgroundColor: '#f8f8f8', // Optional: Add a light background
+        }}
+      >
+        <LoadingSpinner />
+      </div>
+    );
+  }
   if (error) return <p>{error}</p>;
   if (!profile) return <p>No profile data available</p>;
 
