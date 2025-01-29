@@ -144,7 +144,7 @@
 .tasks__list__plan__ai__tasks__generated {
     margin: 20px 0;
     padding: 20px;
-    background-color: #f9f9f9; /* Soft off-white background */
+    background-color: #FEFEFE; /* Soft off-white background */
     border: 1px solid none; /* Lighter border for a subtle effect */
     border-radius: 16px; /* More rounded edges */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
@@ -291,3 +291,159 @@
     }
   }
   
+
+ /* Style for the locked premium button */
+.action__button__today__ai__pan_overview__locked__premium__ {
+  padding: 12px 24px;
+  background-color: #ffb703;  /* Golden color for premium feel */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: not-allowed;        /* Disabled cursor */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;                   /* Space between icon and text */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  opacity: 0.8;                /* Slight opacity to indicate it’s locked */
+}
+
+/* Style for the lock icon */
+.action__button__today__ai__pan_overview__locked__premium__ .lock-icon {
+  font-size: 18px;            /* Icon size */
+}
+
+/* Text inside the button */
+.action__button__today__ai__pan_overview__locked__premium__ span {
+  font-weight: 600;           /* Make the word 'Premium' stand out */
+}
+
+/* Add to your TodayOverview.css */
+
+/* Lock icon and blurred effect for non-premium users */
+.locked__tip__container {
+  position: relative;
+  display: inline-block;
+}
+
+.locked__tip__content {
+  transition: filter 0.3s ease;
+}
+
+.locked__tip__content.locked {
+  filter: blur(5px);
+  pointer-events: none; /* Disable interaction */
+}
+
+.lock-icon__tip {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ffb703; /* Orange color for the lock */
+  z-index: 1;
+}
+
+/* Modal Background */
+.tasks__ai_plan__modal__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark background overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.tasks__ai_plan__modal__content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px; /* Soft rounded corners */
+  width: 90%; /* Ensure modal takes up 90% of the screen width */
+  max-width: 600px; /* Set max width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow-y: auto; /* Enables scrolling */
+  max-height: 80vh; /* Limit height to 80% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px; /* Adds side margins for spacing */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #333; /* Dark grey text for readability */
+}
+
+/* Modal Heading */
+.tasks__ai_plan__modal__content h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600; /* Slightly bolder heading */
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* Modal Task List */
+.tasks__list__plan__ai__tasks__generated__tasks__ai_plan__modal {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Allow the task list to grow and take available space */
+}
+
+.task__item__plan__ai__tasks__generated__tasks__ai_plan__modal {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.task__item__plan__ai__tasks__generated__tasks__ai_plan__modal strong {
+  font-weight: 500;
+  color: #1D1A23; /* Slightly darker for emphasis */
+}
+
+.task__item__plan__ai__tasks__generated__tasks__ai_plan__modal span {
+  font-size: 14px;
+  color: #666;
+  display: block;
+}
+
+/* Got It Button */
+.got-it__button__tasks__ai_plan__modal {
+  position: sticky;
+  bottom: 0;
+  display: block;
+  width: 50%; /* Set width to 50% */
+  padding: 12px;
+  background-color: #1D1A23; /* Soft blue color for the button */
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 25px; /* Rounded button for a modern look */
+  cursor: pointer;
+  margin: 20px auto 20px auto; /* Center horizontally and add margin */
+  z-index: 1; /* Ensures button stays on top */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+
+
+/* Button Disabled Style */
+.got-it__button__tasks__ai_plan__modal:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Close Overlay on Click */
+.tasks__ai_plan__modal__container {
+  cursor: pointer;
+}
+
+.tasks__ai_plan__modal__content {
+  cursor: auto;
+}

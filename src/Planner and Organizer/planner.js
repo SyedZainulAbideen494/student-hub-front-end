@@ -16,6 +16,7 @@ import TipBox from '../Tip box/TipBox';
 import FeedbackForm from '../help/FeedbackForm';
 import PlannerPageTutorial from './PlannerPageTutorial';
 import { Checklist } from '@mui/icons-material';
+import UpgradeModal from '../premium/UpgradeModal';
 
 
 function Planner() {
@@ -40,7 +41,8 @@ function Planner() {
     const [taskStyle, setTaskStyle] = useState('detailed');
     const [emailReminder, setEmailReminder] = useState(false); // State for email reminder
     const [modalVisibleAddTasks, setModalVisibleAddTasks] = useState(false);
-
+  const [isPremium, setIsPremium] = useState(null);
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add state
 
     useEffect(() => {
         // Check local storage for tutorial completion status
@@ -222,13 +224,20 @@ function Planner() {
     };
 
     const handleGenerate = (e) => {
-        e.preventDefault();
-        if (!mainTask || !days) {
-          console.error('Please enter a task and a number of days');
-          return;
-        }
-        generateTasks(mainTask, days, taskStyle);
-      };
+      e.preventDefault(); // Prevent the default form submission
+      
+      if (!mainTask || !days) {
+        console.error('Please enter a task and a number of days');
+        return;
+      }
+    
+      if (isPremium) {
+        generateTasks(mainTask, days, taskStyle); // Proceed with the task generation if premium
+      } else {
+        setIsUpgradeModalOpen(true)
+      }
+    };
+    
     
       const generateTasks = async (mainTask, days, taskStyle) => {
         setIsGenerating(true);
@@ -265,7 +274,16 @@ function Planner() {
         }
       };
       
-      
+      useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+            .then(response => setIsPremium(response.data.premium))
+            .catch(() => setIsPremium(false));
+        } else {
+          setIsPremium(false);
+        }
+      }, []);
       
     
 
@@ -507,7 +525,11 @@ function Planner() {
   </form>
 </div>
 
-
+<UpgradeModal 
+        message="You are not a premium member. Upgrade to Premium to access this feature." 
+        isOpen={isUpgradeModalOpen} 
+        onClose={() => setIsUpgradeModalOpen(false)} 
+      />
 
             <FooterNav />
 

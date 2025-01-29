@@ -151,9 +151,11 @@ export const API_ROUTES = {
   generateFlashcardsFromPdf: `${API_URL}/api/flashcards/upload`,
   generateQuizFromPDF: `${API_URL}/api/quiz/generate-from-pdf`,
   generateQuizFromNotes: `${API_URL}/api/quiz/generate/from-notes`,
+  generateQuizFromMagic: `${API_URL}/api/quiz/generate/from-magic`,
   completeFlashcardQuiz: `${API_URL}/complete-flashcard-quiz`,
   sendNoti: `${API_URL}/send-notification`,
   generateFlashcardsFromNotes: `${API_URL}/api/flashcards/generate-from-notes`,
+  generateFlashcardsFromMagic: `${API_URL}/api/flashcards/generate-from-magic`,
   getShareStats: `${API_URL}/api/stats`,
   fetchRoomPosts: `${API_URL}/room/posts/fetch`,
   postRoomPosts: `${API_URL}/room/posts/add`,
@@ -177,5 +179,12 @@ export const API_ROUTES = {
   pomodoroStudyPlanData: `${API_URL}/api/today-pomodoro-study-plan`,
   generateStudyPlan: `${API_URL}/api/saveGoal`,
   getStudyPlanTaskData: `${API_URL}/getTasks/plan/study`,
-  generateTasksFromStudyPlan: `${API_URL}/api/generate/ai/today/plan/tasks`
+  generateTasksFromStudyPlan: `${API_URL}/api/generate/ai/today/plan/tasks`,
+  getStudyPlanCreatedDate: `${API_URL}/api/study-plan-created-date`,
+  checkSubscription: `${API_URL}/check-premium`,
+  magicUseage: `${API_URL}/api/magic/usage`,
+  flashcardsCountPdfPremium: `${API_URL}/api/flashcards/count/pdf-premium`,
+  QuizCountPdfPremium: `${API_URL}/api/quizzes/count/ai-premium`,
+  getPremium: `${API_URL}/buy-premium`,
+  verifyPayment: `${API_URL}/verify-payment`
 }

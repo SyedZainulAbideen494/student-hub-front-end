@@ -14,7 +14,9 @@ const GenerateQuiz = () => {
   const [quizzes, setQuizzes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [isPremium, setIsPremium] = useState(null);
+  const [flashcardsCount, setFlashcardsCount] = useState(0);
+  const [isExceededLimit, setIsExceededLimit] = useState(false);
 
   const generateQuiz = async (e) => {
     e.preventDefault();
@@ -45,6 +47,36 @@ const GenerateQuiz = () => {
       setLoading(false);
     }
   };
+
+ // Fetch subscription and flashcards count
+ useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+      .then(response => {
+        setIsPremium(response.data.premium);
+        
+        if (!response.data.premium) {
+          // Fetch flashcards count for free users
+          axios.get(API_ROUTES.QuizCountPdfPremium, {
+            headers: { 'Authorization': token }
+          })
+          .then((res) => {
+            setFlashcardsCount(res.data.QuizzesCount);
+            if (res.data.QuizzesCount >= 5) {
+              setIsExceededLimit(true);
+            }
+          })
+          .catch((err) => {
+            console.error("Error fetching flashcards count:", err);
+          });
+        }
+      })
+      .catch(() => setIsPremium(false));
+  } else {
+    setIsPremium(false);
+  }
+}, []);
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -157,71 +189,130 @@ const handleQuizAnswers = (quizId) => {
           />
         </label>
         <div className="centered-button-container">
-        <button
-  className="flashcard__set__page__modal-generate btn__set__page__buttons"
-  onClick={generateQuiz}
-  disabled={loading}
+        {isExceededLimit && !isPremium ? (
+          <div 
+  className="PDFNotesCreation__lockMessage__quizzes" 
+  style={{ 
+    color: '#333', 
+    fontSize: '16px', 
+    fontWeight: '500', 
+    textAlign: 'center', 
+    padding: '12px', 
+    backgroundColor: '#f9f9f9', 
+    borderRadius: '10px', 
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)', 
+    border: '1px solid #e0e0e0', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    gap: '8px'
+  }}
 >
-  <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
-    <svg
-      height="24"
-      width="24"
-      fill="#FFFFFF"
-      viewBox="0 0 24 24"
-      data-name="Layer 1"
-      id="Layer_1"
-      className="sparkle__set__page__buttons"
-    >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-    <span className="text__set__page__buttons">
-      {loading ? 'Generating...' : '  Generate Quiz'}
-    </span>
-  </div>
-</button>
+  <span style={{ fontSize: '18px' }}>🔒</span>
+  <span>Premium Only – You have reached the limit for free users.</span>
+</div>
+
+) : (
+  <button
+    className="flashcard__set__page__modal-generate btn__set__page__buttons"
+    onClick={generateQuiz}
+    disabled={loading}
+  >
+    <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
+      <svg
+        height="24"
+        width="24"
+        fill="#FFFFFF"
+        viewBox="0 0 24 24"
+        data-name="Layer 1"
+        id="Layer_1"
+        className="sparkle__set__page__buttons"
+      >
+        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+      </svg>
+      <span className="text__set__page__buttons">
+        {loading ? 'Generating...' : 'Generate Quiz'}
+      </span>
+    </div>
+  </button>
+)}
+
+
+      
 </div>
     </form>
 
     <form onSubmit={generateQuizFromPDF} className="generate-quiz-form">
-      <p>Or Generate from PDF</p>
-      <label className="file-input-label">
-        <input
-          type="file"
-          accept="application/pdf"
-          required
-          className="file-input"
-          onChange={handleFileChange}
-        />
-        <span>Choose File</span>
-      </label>
+  <p>Or Generate from PDF</p>
+  
+  {isPremium ? (
+    <label className="file-input-label">
+      <input
+        type="file"
+        accept="application/pdf"
+        required
+        className="file-input"
+        onChange={handleFileChange}
+      />
+      <span>Choose File</span>
+    </label>
+  ) : (
+    <p
+    style={{
+      color: '#222', // Deep grey for a premium look
+      fontSize: '16px',
+      fontWeight: '500',
+      marginTop: '12px',
+      padding: '12px 18px',
+      backgroundColor: '#f9f9f9', // Light grey Apple-like theme
+      borderRadius: '10px',
+      textAlign: 'center',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)', // Soft shadow for depth
+      border: '1px solid #e0e0e0', // Subtle premium border
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '8px',
+      maxWidth: '300px', // Keeps it compact and elegant
+      margin: 'auto', // Centers it
+      fontFamily: "'SF Pro Display', sans-serif", // Apple-style font
+    }}
+  >
+    <span style={{ fontSize: '18px' }}>👑</span>
+    <span>Upgrade to Premium for PDF Quizzes</span>
+  </p>
+  
+  )}
 
-      {/* Display selected file name */}
-      {selectedFile && <p>Selected File: {selectedFile.name}</p>}
-      <div className="centered-button-container">
-        <button
-  className="flashcard__set__page__modal-generate btn__set__page__buttons"
-  disabled={loading}
-  type='submit'
->
-  <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
-    <svg
-      height="24"
-      width="24"
-      fill="#FFFFFF"
-      viewBox="0 0 24 24"
-      data-name="Layer 1"
-      id="Layer_1"
-      className="sparkle__set__page__buttons"
+  {/* Display selected file name */}
+  {selectedFile && <p>Selected File: {selectedFile.name}</p>}
+  
+  <div className="centered-button-container">
+    <button
+      className="flashcard__set__page__modal-generate btn__set__page__buttons"
+      disabled={loading}
+      type="submit"
     >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-    <span className="text__set__page__buttons">
-      {loading ? 'Generating...' : '  Generate From PDF'}
-    </span>
+      <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
+        <svg
+          height="24"
+          width="24"
+          fill="#FFFFFF"
+          viewBox="0 0 24 24"
+          data-name="Layer 1"
+          id="Layer_1"
+          className="sparkle__set__page__buttons"
+        >
+          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+        </svg>
+        <span className="text__set__page__buttons">
+          {loading ? 'Generating...' : 'Generate From PDF'}
+        </span>
+      </div>
+    </button>
   </div>
-</button>
-</div>
-    </form>
+</form>
+
       {error && <p className="error-message__quiz__ai__gen">Error: {error}</p>}
     </div>
           {quizzes.length === 0 ? (

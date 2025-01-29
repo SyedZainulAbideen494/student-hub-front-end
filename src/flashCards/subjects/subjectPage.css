@@ -113,69 +113,28 @@
     align-items: center; /* Ensures the button is vertically centered */
 }
 
-
-
-/* From Uiverse.io by Wendell47 */ 
 .button__view__btn__subject__page {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    border: 0;
+    background-color: #111827; /* Soft Apple-style gradient */
+    color: #ffffff; /* Deep black-grey text */
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #d1d1d6; /* Subtle macOS-style border */
+    padding: 8px 24px;
+    border-radius: 10px; /* Smooth edges */
+    cursor: pointer;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    border-radius: 10rem;
-    width: 40%;
-    transition: all 0.02s;
-    font-weight: bold;
-    cursor: pointer;
-    color: rgb(37, 37, 37);
-    z-index: 0;
-    box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
-  }
-  
-  .button__view__btn__subject__page:hover {
-    background: rgb(193, 228, 248);
-    color: rgb(33, 0, 85);
-  }
-  
-  .button__view__btn__subject__page:active {
-    transform: scale(0.97);
-  }
-  
-  .hoverEffect__view__btn__subject__page {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
+    font-family: 'SF Pro Display', sans-serif; /* Apple-style font */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+    gap: 6px; /* Spacing between text and effect */
   }
   
-  .hoverEffect__view__btn__subject__page div {
-    background: rgb(222, 0, 75);
-    background: linear-gradient(
-      90deg,
-      rgba(222, 0, 75, 1) 0%,
-      rgba(191, 70, 255, 1) 49%,
-      rgba(0, 212, 255, 1) 100%
-    );
-    border-radius: 40rem;
-    width: 9rem;
-    height: 10rem;
-    transition: 0.4s;
-    filter: blur(20px);
-    animation: effect__view__btn__subject__page infinite 3s linear;
-    opacity: 0.5;
-  }
+ 
   
-  .button__view__btn__subject__page:hover .hoverEffect__view__btn__subject__page div {
-    width: 8rem;
-    height: 8rem;
-  }
   
   @keyframes effect__view__btn__subject__page {
     0% {

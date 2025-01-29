@@ -13,6 +13,7 @@ import AiLoaderSpeaking from './AiLoaderSpeaking';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import Modal from 'react-modal';
 import { FaBook, FaPen, FaQuestionCircle, FaTimes } from 'react-icons/fa';
+import UpgradeModal from '../premium/UpgradeModal';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -90,6 +91,8 @@ const [image, setImage] = useState(null); // Only one image state
 const [result, setResult] = useState(null);
 const [imageprev, setImageprev] = useState(null); // Only one image state
 const [pdfFile, setPdfFile] = useState(null);
+const [isPremium, setIsPremium] = useState(null);
+const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add state
 
 
   useEffect(() => {
@@ -171,8 +174,11 @@ const [pdfFile, setPdfFile] = useState(null);
         // Format the result text before showing it to the user
         const formattedResultText = formatContent(resultText);
   
+        // Make sure there's a valid message to send after the PDF processing
+        const followUpMessage = message || "Please review the content generated from the PDF.";
+  
         setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-        setMessage(''); // Clear the message
+        setMessage(followUpMessage); // Clear the message but set it for follow-up
         setPdfFile(null); // Clear the PDF file after processing
       } else if (image) {
         // If there is an image, send it for processing
@@ -191,8 +197,11 @@ const [pdfFile, setPdfFile] = useState(null);
         // Format the result text before showing it to the user
         const formattedResultText = formatContent(resultText);
   
+        // Make sure there's a valid message to send after the image processing
+        const followUpMessage = message || "Please review the content generated from the image.";
+  
         setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-        setMessage(''); // Clear the message
+        setMessage(followUpMessage); // Clear the message but set it for follow-up
         setImage(null); // Clear the image
       } else {
         // If it's just a text message, process it as usual
@@ -203,7 +212,7 @@ const [pdfFile, setPdfFile] = useState(null);
         setMessage(''); // Clear the message
       }
     } catch (error) {
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'error' }] }]);
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: ' Something went wrong while processing your request. Please try again. If the problem persists, please contact support.' }] }]);
       console.error('Error sending message:', error);
     } finally {
       setLoading(false);
@@ -228,16 +237,55 @@ const [pdfFile, setPdfFile] = useState(null);
       }
     };
     
-  
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+          .then(response => setIsPremium(response.data.premium))
+          .catch(() => setIsPremium(false));
+      } else {
+        setIsPremium(false);
+      }
+    }, []);
   
   const handleCreateNotes = (content) => {
     // Only pass serializable content, not the event object
     navigate('/notes/create', { state: { editorContent: content } });
   };
   
-  const handleMagicButtonClick = (content) => {
+
+  
+  const handleMagicButtonClick = async (content) => {
     setMagicModalContent(content); // Store content of the clicked chat message
-    setIsMagicModalOpen(true); // Open the Magic Modal
+ 
+    if (isPremium) {
+
+      setIsMagicModalOpen(true); // Open the Magic Modal
+    } else {
+      // For free users, check magic usage with the API
+      try {
+        const response = await fetch(API_ROUTES.magicUseage, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token: localStorage.getItem('token') }), // Send token in request body
+        });
+  
+        const data = await response.json();
+  
+        if (data.canUseMagic) {
+          // If the user can use magic, continue with the action
+          setIsMagicModalOpen(true); // Open the Magic Modal
+  
+        } else {
+          setIsUpgradeModalOpen(true); // Show upgrade modal
+        }
+      } catch (error) {
+        console.error('Error checking magic usage:', error);
+        alert('Error checking magic usage');
+      }
+    }
   };
   
 
@@ -255,6 +303,8 @@ const handleGenerateQuiz = (content) => {
   setQuizData({ ...QuizData, content }); // Pass content to quiz modal
 };
 
+
+
 const handleSubmitFlashcards = async (selectedContent) => {
   const token = localStorage.getItem('token');
   const headings = selectedContent; // Use the selected content directly
@@ -262,7 +312,7 @@ const handleSubmitFlashcards = async (selectedContent) => {
   setIsGeneratingFlashcards(true);
   
   try {
-    const response = await fetch(API_ROUTES.generateFlashcardsFromNotes, {
+    const response = await fetch(API_ROUTES.generateFlashcardsFromMagic, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -300,7 +350,7 @@ const handleSubmitQuiz = async (selectedContent) => {
   setIsGeneratingQuiz(true);
   
   try {
-    const response = await fetch(API_ROUTES.generateQuizFromNotes, {
+    const response = await fetch(API_ROUTES.generateQuizFromMagic, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -330,8 +380,6 @@ const handleSubmitQuiz = async (selectedContent) => {
     setIsGeneratingQuiz(false);
   }
 };
-
-  
 
   
   const startListening = () => {
@@ -833,7 +881,11 @@ useEffect(() => {
 </div>
   </form>
 </Modal>
-
+<UpgradeModal 
+        message="You have reached your daily limit for Magic usage. Upgrade to Premium for unlimited access and additional features!" 
+        isOpen={isUpgradeModalOpen} 
+        onClose={() => setIsUpgradeModalOpen(false)} 
+      />
 
     </div>
   );

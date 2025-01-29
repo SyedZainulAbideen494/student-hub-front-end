@@ -12,7 +12,7 @@ const SuccessPage = () => {
   }
 
   useEffect(() => {
-    setTimeout(() => setShowCheckmark(true), 500);
+    setTimeout(() => setShowCheckmark(true), 300);
     setTimeout(() => setShowText(true), 1000);
   }, []);
 
@@ -33,7 +33,7 @@ const SuccessPage = () => {
               cy="12"
               r="10"
               stroke="url(#grad1)"
-              strokeWidth="2"
+              strokeWidth="1"
               fill="none"
               className="speedometer-circle"
             />

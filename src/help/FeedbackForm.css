@@ -1,57 +1,57 @@
 .feedback-container__feedback__main__edusify {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Gradient background */
-    border-radius: 15px; /* Rounded corners */
-    padding: 2rem; /* Padding for the container */
-    max-width: 400px; /* Maximum width */
-    margin: auto; /* Centering the form */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    color: white; /* Text color */
-  }
-  
-  .feedback-title__feedback__main__edusify {
-    text-align: center; /* Center the title */
-    font-size: 1.5rem; /* Larger font size */
-    margin-bottom: 1.5rem; /* Space below title */
-  }
-  
-  .feedback-form__feedback__main__edusify {
-    display: flex;
-    flex-direction: column; /* Column layout for the form */
-  }
-  
-  .feedback-textarea__feedback__main__edusify {
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-    color: white; /* Text color */
-    height: 150px; /* Height for the textarea */
-    border: none; /* No border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 1rem; /* Padding inside the textarea */
-    resize: none; /* Disable resizing */
-    margin-bottom: 1rem; /* Space below textarea */
-    transition: all 0.3s; /* Smooth transition */
-  }
-  
-  .feedback-textarea__feedback__main__edusify::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Placeholder color */
-  }
-  
-  .feedback-textarea__feedback__main__edusify:focus {
-    outline: none; /* Remove outline */
-    background-color: rgba(255, 255, 255, 0.3); /* Change background on focus */
-  }
-  
-  .submit-button__feedback__main__edusify {
-    background-color: #4a90e2; /* Primary button color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 0.75rem; /* Padding for button */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s; /* Smooth background color transition */
-    font-size: 1rem; /* Font size */
-  }
-  
-  .submit-button__feedback__main__edusify:hover {
-    background-color: #357ab8; /* Darker shade on hover */
-  }
-  
+  background-color: #1D1A23; /* Gradient background */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow for depth */
+  color: white;
+  margin-top: 30px;
+}
+
+.feedback-title__feedback__main__edusify {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.feedback-form__feedback__main__edusify {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-textarea__feedback__main__edusify {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  height: 140px;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  resize: none;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.feedback-textarea__feedback__main__edusify::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.feedback-textarea__feedback__main__edusify:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.submit-button__feedback__main__edusify {
+  background-color: #f0f0f0;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1rem;
+}
+
+.submit-button__feedback__main__edusify:hover {
+  background-color: #357ab8;
+}

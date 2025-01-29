@@ -1,146 +1,164 @@
-/* General Page Styles */
-.subscription-page {
-    background: #f9f9f9; /* Light background for the page */
-    color: #333; /* Dark text for contrast */
-    font-family: 'Arial', sans-serif;
-    padding: 2rem;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  
-  /* Heading Styles */
-  .page-title-subscription-page {
-    font-size: 2.5rem;
-    color: #000; /* Black color for the heading */
-    margin-bottom: 2rem;
-  }
-  
-  /* Plan Styles */
-  .plan-subscription-page {
-    background: #ffffff; /* White background for the plan cards */
-    border-radius: 12px; /* Curved edges */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
-    padding: 2rem;
-    margin: 1rem;
-    width: 100%;
-    max-width: 600px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  /* Plan Card Hover Effect */
-  .plan-subscription-page:hover {
-    transform: translateY(-10px); /* More pronounced lift effect on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Enhanced shadow for better depth */
-  }
-  
-  /* Plan Heading Styles */
-  .plan-title-subscription-page {
-    font-size: 2rem;
-    color: #000; /* Black color for the plan titles */
-    margin-bottom: 1rem;
-  }
-  
-  /* List Styles */
-  .feature-list-subscription-page {
-    list-style-type: none;
-    padding: 0;
-    margin: 1rem 0;
-  }
-  
-  .feature-list-subscription-page li {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: #333; /* Dark text for list items */
-  }
-  
-  /* Price and Button Styles */
-  .plan-price-subscription-page {
-    font-size: 1.2rem;
-    color: #000; /* Black color for the price */
-    margin: 1rem 0;
-  }
-  
-  .subscribe-button-subscription-page {
-    background: #000; /* Black button background */
-    color: #fff; /* White text */
-    border: none;
-    border-radius: 8px; /* Curved edges for button */
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  /* Button Hover Effect */
-  .subscribe-button-subscription-page:hover {
-    background: #333; /* Darker black for hover */
-    transform: scale(1.05); /* Slight zoom effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
-  }
-  
-  /* Button Focus Style */
-  .subscribe-button-subscription-page:focus {
-    outline: none;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .page-title-subscription-page {
-      font-size: 2rem; /* Slightly smaller font size */
-    }
-  
-    .plan-subscription-page {
-      padding: 1.5rem; /* Reduced padding */
-      margin: 0.5rem; /* Reduced margin */
-    }
-  
-    .plan-title-subscription-page {
-      font-size: 1.5rem; /* Slightly smaller font size */
-    }
-  
-    .feature-list-subscription-page li {
-      font-size: 1rem; /* Slightly smaller font size */
-    }
-  
-    .plan-price-subscription-page {
-      font-size: 1rem; /* Slightly smaller font size */
-    }
-  
-    .subscribe-button-subscription-page {
-      padding: 0.5rem 1rem; /* Adjusted padding for smaller screens */
-      font-size: 0.9rem; /* Slightly smaller font size */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .page-title-subscription-page {
-      font-size: 1.5rem; /* Further reduced font size for very small screens */
-    }
-  
-    .plan-subscription-page {
-      padding: 1rem; /* Further reduced padding */
-      margin: 0.5rem; /* Further reduced margin */
-    }
-  
-    .plan-title-subscription-page {
-      font-size: 1.25rem; /* Further reduced font size */
-    }
-  
-    .feature-list-subscription-page li {
-      font-size: 0.9rem; /* Further reduced font size */
-    }
-  
-    .plan-price-subscription-page {
-      font-size: 0.9rem; /* Further reduced font size */
-    }
-  
-    .subscribe-button-subscription-page {
-      padding: 0.5rem 0.75rem; /* Further adjusted padding */
-      font-size: 0.8rem; /* Further reduced font size */
-    }
-  }
-  
+/* Subscription Card Styling */
+.__subscription__place__page__card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 300px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin: 20px auto;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 100px;
+  border: 1px solid #ddd; /* Subtle border for premium look */
+}
+
+/* Title */
+.__subscription__place__page__title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #111; /* Darker gray for a sleek feel */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.__subscription__place__page__description {
+  font-size: 16px;
+  color: #555; /* Softer gray for description text */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Price */
+.__subscription__place__page__price {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333; /* Dark gray for price */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Subscription List Styling */
+.__subscription__place__page__lists {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.__subscription__place__page__list {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #777; /* Light gray for list items */
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.__subscription__place__page__list i {
+  margin-right: 10px;
+  color: #333; /* Darker icons for better contrast */
+}
+
+.__subscription__place__page__list span {
+  flex-grow: 1;
+}
+
+/* Button Styling */
+.__subscription__place__page__action {
+  background-color: #030303; /* Dark background for a premium look */
+  color: white;
+  font-size: 18px;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.__subscription__place__page__Noaction {
+  background-color: #030303; /* Dark background for a premium look */
+  color: white;
+  font-size: 18px;
+  padding: 15px 10px;
+  border-radius: 30px;
+  border: none;
+  width: 80%;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.__subscription__place__page__action:focus {
+  outline: none;
+}
+
+.__subscription__place__page__action:active {
+  transform: translateY(2px);
+}
+
+.__subscription__place__page__action:hover {
+  background-color: #030303; /* Lighter gray for hover effect */
+}
+
+/* Small Text */
+.__subscription__place__page__list span {
+  font-size: 14px;
+  color: #999; /* Even lighter gray for small text */
+}
+
+/* Spacing and Margin Adjustments */
+.__subscription__place__page__list {
+  margin-bottom: 25px; /* Increased margin for spacing */
+}
+
+
+
+/* Toggle Button Styling */
+.__subscription__place__page__toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.__subscription__place__page__toggle-btn {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 10px 16px;
+  margin: 0 5px;
+  border-radius: 25px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.__subscription__place__page__toggle-btn.active {
+  background-color: #030303;
+  color: white;
+  border: 1px solid #030303;
+}
+
+
+.__subscription__place__page__toggle-btn.active:hover {
+  background-color: #030303;
+}
+
+/* List Styling */
+.__subscription__place__page__lists {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+/* Centering Button Styling */
+.__subscription__place__page__button-container {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  align-items: center; /* Centers the buttons vertically if needed */
+  margin-bottom: 30px; /* Space below the buttons */
+}

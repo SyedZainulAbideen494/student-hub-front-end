@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { MdBusiness, MdNote } from 'react-icons/md';
 import './footer-nav.css';
 import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
+import { BsFileBarGraph, BsFillCalendarMonthFill } from 'react-icons/bs';
 
 const FooterNav = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -108,7 +109,6 @@ const FooterNav = () => {
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaBook className="icon-footer-nav" />
                     <span className="btn-label">Notes</span>
-                    <span className="new-label-footer-nav">New fetaures</span>
                 </button>
             </Link>
             <Link to='/flashcard' style={{ textDecoration: 'none' }}>
@@ -173,8 +173,26 @@ const FooterNav = () => {
         <span className="btn-label">Help</span>
     </button>
 </Link>
-
-             
+<Link to='/user/report' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/user/report' ? 'active' : ''}`}>
+        <FaFileAlt className="icon-footer-nav" /> {/* Updated icon */}
+        <span className="btn-label">AI Report</span>
+    </button>
+</Link>
+<Link to='/subscription' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
+        <FaCrown className="icon-footer-nav" style={{color: '#ffb703'}} /> {/* You can use the FaGem icon or another icon */}
+        <span className="btn-label">Premium</span>
+    </button>
+</Link>
+                
+{/* New Monthly Stats Button */}
+<Link to='/monthly-stats' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/monthly-stats' ? 'active' : ''}`}>
+        <BsFileBarGraph className="icon-footer-nav" /> {/* Icon of your choice */}
+        <span className="btn-label">Monthly Stats</span>
+    </button>
+</Link>
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
         </div>

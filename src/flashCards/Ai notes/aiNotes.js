@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './GenerateNotesAI.css'; // Import the CSS file for styling
@@ -18,6 +18,9 @@ const GenerateNotesAI = () => {
   const [generatedNotes, setGeneratedNotes] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
+  const [isPremium, setIsPremium] = useState(null);
+  const [flashcardsCount, setFlashcardsCount] = useState(0);
+  const [isExceededLimit, setIsExceededLimit] = useState(false);
   const navigate = useNavigate(); // Hook to navigate to a different page
 
   const handleSubmit = async (e) => {
@@ -44,6 +47,38 @@ const GenerateNotesAI = () => {
       setLoading(false); // Hide loading modal
     }
   };
+
+  
+  // Fetch subscription and flashcards count
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+        .then(response => {
+          setIsPremium(response.data.premium);
+          
+          if (!response.data.premium) {
+            // Fetch flashcards count for free users
+            axios.get(API_ROUTES.flashcardsCountPdfPremium, {
+              headers: { 'Authorization': token }
+            })
+            .then((res) => {
+              setFlashcardsCount(res.data.flashcardsCount);
+              if (res.data.flashcardsCount >= 5) {
+                setIsExceededLimit(true);
+              }
+            })
+            .catch((err) => {
+              console.error("Error fetching flashcards count:", err);
+            });
+          }
+        })
+        .catch(() => setIsPremium(false));
+    } else {
+      setIsPremium(false);
+    }
+  }, []);
+
 
   const handleToggleChange = (type) => {
     setTypes((prevTypes) => ({
@@ -89,8 +124,20 @@ const GenerateNotesAI = () => {
             ))}
           </div>
         </div>
+        <button 
+          type="submit" 
+          disabled={loading || isExceededLimit && !isPremium} 
+          className="PDFNotesCreation__button"
+        >
+          {loading ? "Processing..." : isExceededLimit && !isPremium ? "Upgrade to Premium" : "Generate Notes"}
+        </button>
 
-        <button type="submit" className="submit-btn__ai__gen__notes__ai__gen__notes">Generate Notes</button>
+        {isExceededLimit && !isPremium && (
+          <div className="PDFNotesCreation__lockMessage" style={{marginTop: '20px'}}>
+            <span>🔒 Premium Only</span> - You have reached the limit for free users.
+          </div>
+        )}
+  
       </form>
 
       {error && <p className="error-message__ai__gen__notes__ai__gen__notes">{error}</p>}

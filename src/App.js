@@ -44,13 +44,6 @@ import ResetPassword from "./auth/ResetPassword";
 import SubscriptionPage from "./premium/SubscriptionPage";
 import SuccessPage from "./premium/SuccessPage";
 import HelpMain from "./help/helpMain";
-import TaskManagerGuidePage from "./help/TaskmanagerHelp";
-import GroupsGuidePage from "./help/groupshelp";
-import NotesFlashcardsGuidePage from "./help/NotesFlashcardsGuidePage";
-import PomodoroTimerGuidePage from "./help/PomodoroTimerGuidePage";
-import CalendarGuidePage from "./help/CalendarGuidePage";
-import SocialFeedGuidePage from "./help/SocialFeedGuidePage";
-import SubjectHelpersGuidePage from "./help/SubjectHelpersGuidePage";
 import AboutAppPage from "./help/AboutAppPage";
 import HomeMain from "./home/homeMain";
 import ViewFlashCard from "./flashCards/viewFlashcard";
@@ -130,6 +123,7 @@ import LoadingPage from "./Personalized study plan/LoadingPage";
 import StudyPlanPage from "./Personalized study plan/StudyPlanPage";
 import TodayAiOverview from "./Personalized study plan/TodayOverview";
 import Music from "./music/Music";
+import PaymentComponent from "./premium/SubscriptionPage";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -173,16 +167,9 @@ const router = createBrowserRouter([
   {path: '/commerce/helper', element: <CommerceHelper/>},
   {path: '/forgot-password', element: <ForgotPassword/>},
   {path: '/reset-password/:token', element: <ResetPassword/>},
-  {path: '/subscription', element: <SubscriptionPage/>},
+  {path: '/subscription', element: <PaymentComponent/>},
   {path: '/payment-success', element: <SuccessPage/>},
   {path: '/help', element: <HelpMain/>},
-  {path: '/task-management-guide/guide', element: <TaskManagerGuidePage/>},
-  {path: '/collaborative-study-groups-guide/guide', element: <GroupsGuidePage/>},
-  {path: '/aesthetic-notes-flashcards-guide/guide', element: <NotesFlashcardsGuidePage/>},
-  {path: '/pomodoro-timer-guide/guide', element: <PomodoroTimerGuidePage/>},
-  {path: '/calendar-reminders-guide/guide', element: <CalendarGuidePage/>},
-  {path: '/social-feed-guide/guide', element: <SocialFeedGuidePage/>},
-  {path: '/subject-helpers-guide/guide', element: <SubjectHelpersGuidePage/>},
   {path: '/about-app', element: <AboutAppPage/>},
   {path: '/', element: <HomeMain/>},
   {path: '/notes/view', element: <ViewFlashCard/>},

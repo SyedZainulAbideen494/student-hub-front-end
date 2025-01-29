@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./PDFNotesCreation.css";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,9 @@ const PDFNotesCreation = () => {
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isPremium, setIsPremium] = useState(null);
+  const [flashcardsCount, setFlashcardsCount] = useState(0);
+  const [isExceededLimit, setIsExceededLimit] = useState(false);
   const navigate = useNavigate();
 
   const options = [
@@ -26,12 +29,46 @@ const PDFNotesCreation = () => {
   };
 
   const handleOptionToggle = (value) => {
+    if (!isPremium && selectedOptions.length >= 4 && !selectedOptions.includes(value)) {
+      alert("As a free user, you can only select 2 options.");
+      return;
+    }
     setSelectedOptions((prev) =>
       prev.includes(value)
         ? prev.filter((opt) => opt !== value)
         : [...prev, value]
     );
   };
+
+  // Fetch subscription and flashcards count
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+        .then(response => {
+          setIsPremium(response.data.premium);
+          
+          if (!response.data.premium) {
+            // Fetch flashcards count for free users
+            axios.get(API_ROUTES.flashcardsCountPdfPremium, {
+              headers: { 'Authorization': token }
+            })
+            .then((res) => {
+              setFlashcardsCount(res.data.flashcardsCount);
+              if (res.data.flashcardsCount >= 5) {
+                setIsExceededLimit(true);
+              }
+            })
+            .catch((err) => {
+              console.error("Error fetching flashcards count:", err);
+            });
+          }
+        })
+        .catch(() => setIsPremium(false));
+    } else {
+      setIsPremium(false);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +83,11 @@ const PDFNotesCreation = () => {
       return;
     }
 
+    if (isExceededLimit && !isPremium) {
+      setError("You have reached the limit for generating flashcards. Upgrade to Premium.");
+      return;
+    }
+
     setLoading(true);
     setError("");
     setOutput("");
@@ -55,6 +97,7 @@ const PDFNotesCreation = () => {
       formData.append("file", file);
       formData.append("options", JSON.stringify(selectedOptions));
       formData.append("token", localStorage.getItem("token"));
+      formData.append("isPremium", isPremium); // Send the user's premium status
 
       const response = await axios.post(API_ROUTES.pdfNotesMaker, formData, {
         headers: {
@@ -62,13 +105,17 @@ const PDFNotesCreation = () => {
         },
       });
 
-      setOutput(response.data.result);
-
-      const noteId = response.data.noteId;
-      if (noteId) {
-        navigate(`/note/view/${noteId}`);
+      if (response.data.error) {
+        setError(response.data.error); // Display error message returned from the backend
       } else {
-        setError("Failed to retrieve note ID.");
+        setOutput(response.data.result);
+
+        const noteId = response.data.noteId;
+        if (noteId) {
+          navigate(`/note/view/${noteId}`);
+        } else {
+          setError("Failed to retrieve note ID.");
+        }
       }
     } catch (err) {
       setError("Something went wrong!");
@@ -102,9 +149,19 @@ const PDFNotesCreation = () => {
           ))}
         </div>
 
-        <button type="submit" disabled={loading} className="PDFNotesCreation__button">
-          {loading ? "Processing..." : "Generate Notes"}
+        <button 
+          type="submit" 
+          disabled={loading || isExceededLimit && !isPremium} 
+          className="PDFNotesCreation__button"
+        >
+          {loading ? "Processing..." : isExceededLimit && !isPremium ? "Upgrade to Premium" : "Generate Notes"}
         </button>
+
+        {isExceededLimit && !isPremium && (
+          <div className="PDFNotesCreation__lockMessage">
+            <span>🔒 Premium Only</span> - You have reached the limit for free users.
+          </div>
+        )}
       </form>
 
       {error && <p className="PDFNotesCreation__error">{error}</p>}

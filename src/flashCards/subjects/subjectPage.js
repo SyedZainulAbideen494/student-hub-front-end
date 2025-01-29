@@ -110,12 +110,13 @@ const Subjects = () => {
 
 <div className='flashcard__actions__subject__Page__'>
 
-                            <button onClick={() => handleViewClick(flashcard.id)}  className="button__view__btn__subject__page">
-      View
-      <div className="hoverEffect__view__btn__subject__page">
-        <div></div>
-      </div>
-    </button>
+<button
+  onClick={() => handleViewClick(flashcard.id)}
+  className="button__view__btn__subject__page"
+>
+  View
+</button>
+
                         </div>
                         </div>
                     ))

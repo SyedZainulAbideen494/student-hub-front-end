@@ -3,6 +3,7 @@ import './UserReport.css';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import FooterNav from '../app_modules/footernav';
 
 const UserReport = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -64,7 +65,7 @@ const UserReport = () => {
   };
 
   const handleBackClick = () => {
-    nav('/');
+    nav(-1); // Navigate back to the previous page
   };
 
   const handleViewPreviousReports = () => {
@@ -73,64 +74,61 @@ const UserReport = () => {
 
   return (
     <div className="user__report-container">
-      <header className="user__report-header">
-        <button className="back-btn__report-gen" onClick={handleBackClick}>
-          <FaArrowLeft />
-        </button>
-      </header>
+    
 
       <div className="user__report-content">
         {showInitialPage && (
           <>
-
-  <h2 className="user__report-subheading">Ready for your personalized report for the past 15 days?</h2>
-<p className="user__report-description">
-  Discover your strengths, areas for improvement, and more, based on your performance over the last 15 days!
-</p>
-
+            <h2 className="user__report-subheading">Ready for your personalized report for the past 15 days?</h2>
+            <p className="user__report-description">
+              Discover your strengths, areas for improvement, and more, based on your performance over the last 15 days!
+            </p>
 
             <div className="user__report-buttons">
-  <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
-    <button
-      className="flashcard__set__page__modal-generate btn__set__page__buttons equal-width-button"
-      type="submit"
-      disabled={isGenerating}
-      onClick={handleGenerateReport}
-    >
-      <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
-        <svg
-          height="24"
-          width="24"
-          fill="#FFFFFF"
-          viewBox="0 0 24 24"
-          data-name="Layer 1"
-          id="Layer_1"
-          className="sparkle__set__page__buttons"
-        >
-          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-        </svg>
-        <span className="text__set__page__buttons">
-          {isGenerating ? 'Generating...' : 'Generate Report'}
-        </span>
-      </div>
-    </button>
-    <button
-      className="view-previous-reports-button btn__set__page__buttons equal-width-button"
-      type="button"
-      onClick={handleViewPreviousReports}
-    >
-      View Previous Reports
-    </button>
-  </div>
-</div>
-
+              <div className="flashcard__set__page__modal-content" style={{ textAlign: 'center' }}>
+                <button
+                  className="flashcard__set__page__modal-generate btn__set__page__buttons equal-width-button"
+                  type="submit"
+                  disabled={isGenerating}
+                  onClick={handleGenerateReport}
+                >
+                  <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+                    <svg
+                      height="24"
+                      width="24"
+                      fill="#FFFFFF"
+                      viewBox="0 0 24 24"
+                      data-name="Layer 1"
+                      id="Layer_1"
+                      className="sparkle__set__page__buttons"
+                    >
+                      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                    </svg>
+                    <span className="text__set__page__buttons">
+                      {isGenerating ? 'Generating...' : 'Generate Report'}
+                    </span>
+                  </div>
+                </button>
+                <button
+                  className="view-previous-reports-button btn__set__page__buttons equal-width-button"
+                  type="button"
+                  onClick={handleViewPreviousReports}
+                >
+                  View Previous Reports
+                </button>
+              </div>
+            </div>
           </>
         )}
 
         {errorMessage && <div className="user__report-message user__report-error">{errorMessage}</div>}
 
         {report && !showInitialPage && (
+           
           <div className="user__report-card">
+             <button className="back-btn_-report__ai" onClick={handleBackClick}>
+            <FaArrowLeft /> Back
+          </button>
             <div className="user__report-section">
               <h4 className="user__report-section-title">User Type:</h4>
               <div className="user__report-card-item">{report.userType}</div>
@@ -165,10 +163,6 @@ const UserReport = () => {
           </div>
         )}
       </div>
-
-      <footer className="user__report-footer">
-        <p>&copy; 2024 Edusify. All rights reserved.</p>
-      </footer>
     </div>
   );
 };

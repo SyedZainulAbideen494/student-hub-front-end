@@ -1,252 +1,276 @@
 /* Container for the entire help page */
 .help-main-container-help-page {
-    padding: 20px;
-    font-family: 'Poppins', sans-serif; /* Updated font */
-    color: #333;
-    background-color: #f8f9fa;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Back button style */
-  .back-button-help-page {
-    background-color: #7161ef;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 20px;
-    border-radius: 25px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .back-button-help-page:hover {
-    background-color: #4b39d6;
-    transform: translateY(-3px);
-  }
-  
-  /* Welcome message style */
-  .welcome-message-help-page {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-  }
-  
-  /* App description paragraph style */
-  .app-description-help-page {
-    margin-bottom: 30px;
-    line-height: 1.8;
-    font-size: 18px;
-    color: #666;
-    text-align: center;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Container for feature details */
-  .features-container-help-page {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
-    justify-content: center;
-  }
-  
-  /* Style for each feature card */
-  .feature-card-help-page,
-  .about-app-card-help-page {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 25px;
-    text-align: left;
-    flex: 1 1 calc(33.333% - 40px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  .feature-card-help-page:hover,
-  .about-app-card-help-page:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Heading styles for feature cards */
-  .feature-card-help-page h3,
-  .about-app-card-help-page h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
-    color: #333;
-  }
-  
-  /* Paragraph styles for feature cards */
-  .feature-card-help-page p,
-  .about-app-card-help-page p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    color: #555;
-  }
-  
-  /* Link styles within feature cards */
-  .feature-link-help-page,
-  .about-app-link-help-page {
-    display: inline-block;
-    margin-top: 10px;
-    color: #7161ef;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .feature-link-help-page:hover,
-  .about-app-link-help-page:hover {
-    color: #4b39d6;
-    transform: scale(1.05);
-  }
-  
-  /* Footer styles */
-  .footer-help-page {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-    border-top: 1px solid #e0e0e0;
-    padding-top: 20px;
-  }
-  
-  /* Footer link styles */
-  .footer-link-help-page {
-    color: #7161ef;
-    text-decoration: none;
-    margin-left: 10px;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-link-help-page:hover {
-    color: #4b39d6;
-  }
-  
-  /* Responsive design for smaller screens */
-  @media (max-width: 768px) {
-    .feature-card-help-page,
-    .about-app-card-help-page {
-      flex: 1 1 calc(100% - 40px);
-    }
-    
-    .welcome-message-help-page,
-    .app-description-help-page {
-      font-size: 24px;
-    }
-  }
+  padding: 40px;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #333;
+  background-color: #fff; /* White background */
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow for elegance */
+  border-radius: 16px; /* Rounded corners for sleekness */
+  transition: all 0.3s ease;
+}
 
+.help-main-container-help-page:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow on hover */
+}
 
+/* Back button style */
+.back-button-help-page {
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #ddd; /* Subtle border */
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
 
+.back-button-help-page:hover {
+  background-color: #f2f2f2;
+  color: #000;
+  transform: translateY(-2px); /* Smooth hover effect */
+}
 
+/* Welcome message style */
+.welcome-message-help-page {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
 
+/* App description paragraph style */
+.app-description-help-page {
+  margin-bottom: 50px;
+  line-height: 1.7;
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
 
+/* Footer styles */
+.footer-help-page {
+  margin-top: 60px;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 30px;
+  opacity: 0.8;
+}
 
+.footer-help-page a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
+.footer-help-page a:hover {
+  color: #333;
+}
 
+/* Footer link styles */
+.footer-link-help-page {
+  color: #666;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
 
+.footer-link-help-page:hover {
+  color: #000;
+}
 
-
-
-  /* helpMain.css */
-
-.blog-container-help-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-  }
-  
-  .back-button-help-page {
-    background-color: transparent;
-    color: #7161ef;
-    border: none;
-    padding: 10px 20px;
-    font-size: 26px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    display: inline-block;
-  }
-  
-  .blog-article-help-page {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-  }
-  
-  .blog-header-help-page {
-    margin-bottom: 20px;
-  }
-  
-  .blog-title-help-page {
-    font-size: 32px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .blog-introduction-help-page {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-  
-  .blog-content-help-page {
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 20px;
-  }
-  
-  .blog-tips-help-page {
-    background-color: #eef5ff;
-    border-left: 4px solid #7161ef;
-    padding: 15px;
-    margin-top: 20px;
-  }
-  
-  .blog-tips-help-page h3 {
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #333;
-  }
-  
-  .blog-tips-help-page ul {
-    padding-left: 20px;
-  }
-  
-  .blog-tips-help-page li {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #555;
-  }
-
-  /* Container for social icons */
+/* Container for social icons */
 .footer-social-links-help-page {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 30px;
 }
 
 .footer-social-icon-help-page {
-  margin: 0 10px;
-  color: #333; /* Change color */
+  color: #333;
+  transition: color 0.3s ease;
+  font-size: 24px;
 }
 
 .footer-social-icon-help-page:hover {
-  color: #7161ef; /* Change hover color */
+  color: #000;
+}
+
+/* Help section styling */
+.help-section {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #f8f8f8;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft shadow */
+}
+
+.help-section h2 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.help-section h3 {
+  font-size: 24px;
+  margin-top: 30px;
+  color: #333;
+  font-weight: 600;
+}
+
+.help-section ul {
+  list-style-type: disc;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.help-section li {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.help-section p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* Feature Usage Section */
+.feature-usage-section {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #f2f2f2;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.feature-usage-section h2 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 600;
+  text-align: center;
+}
+
+.feature-usage-section h3 {
+  font-size: 24px;
+  color: #333;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.feature-usage-section p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.7;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Premium Benefits Section */
+.premium-benefits-section {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.premium-benefits-section h2 {
+  font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.premium-benefits-section ul {
+  list-style-type: disc;
+  margin-left: 30px;
+}
+
+.premium-benefits-section li {
+  font-size: 16px;
+  color: #f2f2f2;
+  margin-bottom: 12px;
+}
+
+.premium-benefits-section p {
+  color: #ccc;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Thank You Section */
+.thank-you-section {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.thank-you-section h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.thank-you-section p {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .help-main-container-help-page {
+    padding: 20px;
+  }
+
+  .help-section h2,
+  .feature-usage-section h2,
+  .premium-benefits-section h2,
+  .thank-you-section h2 {
+    font-size: 22px;
+  }
+
+  .help-section h3,
+  .feature-usage-section h3,
+  .premium-benefits-section h3,
+  .thank-you-section h3 {
+    font-size: 20px;
+  }
+
+  .footer-social-links-help-page {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-social-icon-help-page {
+    font-size: 20px;
+  }
 }
