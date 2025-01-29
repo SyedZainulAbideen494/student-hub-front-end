@@ -56,12 +56,13 @@
     .custom-file-btn__change__avatar__remove {
       background-color: transparent;
       color: #ff4646;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 5px;
+      border-radius: 25px;
       cursor: pointer;
-      border: none;
+      border: 1px solid #333;
       transition: background-color 0.3s ease;
       margin-top: 15px;
+      margin-left: 15px;
       text-align: center;
     }
   

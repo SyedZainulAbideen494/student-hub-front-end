@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import SuccessMessage from '../app_modules/SuccessMessage';
 import './ProfileAvatar.css'; // Include relevant CSS for styling
-import { FaTrash } from 'react-icons/fa';
+import { FaCamera, FaTrash } from 'react-icons/fa';
 
 const ProfileAvatar = () => {
   const [profile, setProfile] = useState({});
@@ -129,7 +129,7 @@ const ProfileAvatar = () => {
 
       {/* Custom button to trigger file input */}
       <label htmlFor="avatar-input" className="custom-file-btn__change__avatar">
-        Upload New Avatar {profile.avatar !== 'defPic.png' && (
+       <FaCamera/> {profile.avatar !== 'defPic.png' && (
           <button className="custom-file-btn__change__avatar__remove" onClick={handleRemoveAvatar}>
             <FaTrash/>
           </button>
