@@ -99,12 +99,14 @@ const PaymentComponent = () => {
       <p className="__subscription__place__page__description">
         Get access to exclusive features and elevate your learning experience!
       </p>
+      {showPremium && (
       <div className="__subscription__place__page__price-container">
     <p className="__subscription__place__page__price">
       <span className="__subscription__place__page__old-price">₹99</span> ₹49 / month
     </p>
     <p className="__subscription__place__page__discount">50% OFF<span style={{fontSize: '12px'}}> for 2 days only!</span></p>
   </div>
+      )}
       {/* Toggle Buttons */}
       <div className="__subscription__place__page__toggle">
         <button
