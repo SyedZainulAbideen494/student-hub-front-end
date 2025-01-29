@@ -99,63 +99,18 @@ const PaymentComponent = () => {
       <p className="__subscription__place__page__description">
         Get access to exclusive features and elevate your learning experience!
       </p>
-      {showPremium && (
+
       <div className="__subscription__place__page__price-container">
     <p className="__subscription__place__page__price">
       <span className="__subscription__place__page__old-price">₹99</span> ₹49 / month
     </p>
     <p className="__subscription__place__page__discount">50% OFF<span style={{fontSize: '12px'}}> for 2 days only!</span></p>
   </div>
-      )}
-      {/* Toggle Buttons */}
-      <div className="__subscription__place__page__toggle">
-        <button
-          className={`__subscription__place__page__toggle-btn ${!showPremium ? 'active' : ''}`}
-          onClick={() => setShowPremium(false)}
-        >
-          Free Features
-        </button>
-        <button
-          className={`__subscription__place__page__toggle-btn ${showPremium ? 'active' : ''}`}
-          onClick={() => setShowPremium(true)}
-        >
-          Premium Features
-        </button>
-      </div>
 
-      {/* Free Features List */}
-      {!showPremium && (
-  <ul className="__subscription__place__page__lists">
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> Unlimited manual tasks</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> Unlimited manual quizzes creation</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> Unlimited notes creation</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> 5 Magic uses per day</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> 5 AI quizzes per day</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> 5 PDF notes per day</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> 5 AI notes per day</span>
-    </li>
-    <li className="__subscription__place__page__list">
-      <span><i className="fa fa-check-circle"></i> 1 AI study plan per month</span>
-    </li>
-  </ul>
+     
 
-      )}
+    
 
-      {/* Premium Features List */}
-      {showPremium && (
         <ul className="__subscription__place__page__lists">
         <li className="__subscription__place__page__list">
           <span><i className="fa fa-check-circle"></i> Unlimited study plans</span>
@@ -191,7 +146,7 @@ const PaymentComponent = () => {
           <span><i className="fa fa-check-circle"></i> Unlimited PDF to quizzes</span>
         </li>
       </ul>
-      )}
+
 
 
 <div className="__subscription__place__page__button-container">
