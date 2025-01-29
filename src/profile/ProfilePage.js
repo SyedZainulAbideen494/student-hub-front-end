@@ -105,9 +105,13 @@ const ProfilePage = () => {
           />
           {isPremium && <FaCrown className="crown-icon" />}
         </div>
-        <h2 className="profile-name">{profile.name}</h2>
-        <p className="profile-username">{profile.user_name}</p>
-        <p className="profile-bio" style={{ whiteSpace: 'pre-wrap' }}>{profile.bio}</p>
+        <p className="profile-username">
+  {profile.user_name && profile.user_name.toLowerCase() !== 'null' ? profile.user_name : 'Username not provided'}
+</p>
+<p className="profile-bio" style={{ whiteSpace: 'pre-wrap' }}>
+  {profile.bio && profile.bio.toLowerCase() !== 'null' ? profile.bio : 'No bio available'}
+</p>
+
         <p className="profile-unique-id">@{profile.unique_id}</p>
         <div className="profile-actions">
           {/* Additional profile actions can be added here */}

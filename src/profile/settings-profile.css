@@ -76,7 +76,7 @@
   border: 1px solid #ddd;
   border-radius: 12px;
   margin-bottom: 20px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -88,7 +88,7 @@
 
 .settings-form button {
   padding: 12px;
-  background: #7161ef;
+  background: #181818;
   border: none;
   color: white;
   font-size: 16px;
@@ -99,10 +99,6 @@
   width: 100%;
 }
 
-.settings-form button:hover {
-  background: #5a4dbb;
-  transform: scale(1.05);
-}
 
 /* Switch Section */
 .settings-switches {
