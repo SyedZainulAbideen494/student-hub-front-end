@@ -6,10 +6,11 @@ import FooterNav from '../app_modules/footernav';
 import { useNavigate } from 'react-router-dom';
 
 const PaymentComponent = () => {
-  const [amount, setAmount] = useState(99); // Default amount in INR (₹99)
+  const [amount, setAmount] = useState(49); // Default amount in INR (₹99)
   const [subscriptionPlan, setSubscriptionPlan] = useState('premium'); // Updated to premium plan
   const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
   const [isPremium, setIsPremium] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
   const nav = useNavigate()
   const handlePayment = async () => {
     try {
@@ -28,7 +29,7 @@ const PaymentComponent = () => {
       });
 
       const options = {
-        key: 'rzp_live_jPX6SxetQbApHC', // Razorpay key_id
+        key: 'rzp_test_RerVxaTytL17Ax', // Razorpay key_id
         amount: data.order.amount,
         currency: 'INR',
         order_id: data.order.id,
@@ -71,6 +72,26 @@ const PaymentComponent = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Countdown timer logic
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [timeLeft]);
+
+  const formatTime = (timeInSeconds) => {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = timeInSeconds % 60;
+    return `${hours}h ${minutes}m ${seconds}s`;
+  };
+
 
   return (
     <div className="__subscription__place__page__card">
@@ -78,8 +99,12 @@ const PaymentComponent = () => {
       <p className="__subscription__place__page__description">
         Get access to exclusive features and elevate your learning experience!
       </p>
-      <p className="__subscription__place__page__price">₹99 / month</p>
-
+      <div className="__subscription__place__page__price-container">
+    <p className="__subscription__place__page__price">
+      <span className="__subscription__place__page__old-price">₹99</span> ₹49 / month
+    </p>
+    <p className="__subscription__place__page__discount">50% OFF<span style={{fontSize: '12px'}}> for 2 days only!</span></p>
+  </div>
       {/* Toggle Buttons */}
       <div className="__subscription__place__page__toggle">
         <button

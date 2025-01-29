@@ -3,14 +3,14 @@
   background-color: white;
   border-radius: 20px;
   padding: 40px 30px;
-  width: 300px;
+  width: 280px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  margin: 20px auto;
+  margin: 20px 20px 100px 20px; /* Add margin on all sides, with 20px on the left and right */
   font-family: 'Arial', sans-serif;
-  margin-bottom: 100px;
-  border: 1px solid #ddd; /* Subtle border for premium look */
+  border: 1px solid white; /* Subtle border for premium look */
 }
+
 
 /* Title */
 .__subscription__place__page__title {
@@ -162,3 +162,50 @@
   align-items: center; /* Centers the buttons vertically if needed */
   margin-bottom: 30px; /* Space below the buttons */
 }
+
+/* Price Container */
+.__subscription__place__page__price-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Price Styling */
+.__subscription__place__page__price {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+/* Old Price Styling (strikethrough) */
+.__subscription__place__page__old-price {
+  text-decoration: line-through;
+  color: #777; /* Light gray for the old price */
+  margin-right: 10px;
+  font-size: 22px; /* Slightly smaller size for the old price */
+}
+
+/* Discount Badge Styling */
+.__subscription__place__page__discount {
+  font-size: 18px;
+  color: #ff4d4d; /* Red color for discount */
+  font-weight: 600;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Remaining Styles (unchanged) */
+.__subscription__place__page__card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 300px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 100px;
+  border: 1px solid #ddd;
+}
+
+/* Other styles remain unchanged */
