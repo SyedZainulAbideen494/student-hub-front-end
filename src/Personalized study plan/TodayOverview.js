@@ -108,7 +108,7 @@ function TodayAiOverview() {
       {/* Main Heading */}
       <h2>Today's Study Plan</h2>
 
-      <TodayProgressAiOverView />
+      <TodayProgressAiOverView selectedDay={selectedDay} />
 
       {/* Card Container */}
       <div className="card__today__ai__pan_overview__container">
