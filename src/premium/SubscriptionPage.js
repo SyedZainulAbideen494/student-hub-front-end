@@ -100,7 +100,7 @@ const PaymentComponent = () => {
       Upgrade to Premium <FaCrown className="crown-icon" />
     </h2>
     <p className="__subscription__place__page__description">
-      Get access to exclusive features and elevate your learning experience!
+      Unlock exclusive features and elevate your learning experience.
     </p>
   
     <div className="__subscription__place__page__price-container">
