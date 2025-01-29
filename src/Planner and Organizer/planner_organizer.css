@@ -873,3 +873,63 @@
     font-size: 14px;
   }
   
+  /* Container for the button */
+.__add__tasks__btn__planner__page__bottom__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Space above the button */
+  margin-bottom: 30px; /* Space below the button */
+}
+
+/* Main button styling */
+.__add__tasks__btn__planner__page__bottom {
+  background-color: #4987d8; /* Fresh green background for a task-oriented button */
+  color: white;
+  font-size: 18px;
+  padding: 10px 15px;
+  border-radius: 50px; /* Rounded button */
+  border: none;
+  width: 70%; /* Make it a little wider */
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for a modern touch */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center text and icon */
+  margin-top: 10px;
+  gap: 10px; /* Space between the icon and text */
+  letter-spacing: 1px; /* Slight spacing between characters for a refined look */
+}
+
+/* Icon inside the button */
+.__add__tasks__btn__planner__page__bottom i {
+  font-size: 22px; /* Slightly larger icon */
+  transition: transform 0.3s ease;
+}
+
+/* Button hover effects */
+.__add__tasks__btn__planner__page__bottom:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+  transform: translateY(-3px); /* Subtle lifting effect */
+}
+
+/* Button focus effect (optional for better UX) */
+.__add__tasks__btn__planner__page__bottom:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px #4CAF50; /* Glow effect */
+}
+
+/* Button active effect (pressed state) */
+.__add__tasks__btn__planner__page__bottom:active {
+  transform: translateY(2px); /* Button "pressing" effect */
+}
+
+/* Optional styling for disabled state */
+.__add__tasks__btn__planner__page__bottom:disabled {
+  background-color: #dcdcdc;
+  cursor: not-allowed;
+  box-shadow: none;
+}

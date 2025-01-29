@@ -110,7 +110,7 @@ function Planner() {
                 // Add new task
                 const response = await axios.post(API_ROUTES.addTask, taskData);
                 setTasks([...tasks, { id: response.data.id, ...taskData }]);
-                showModal('Task added successfully! +5 points');
+                showModal('Task added successfully!');
             }
 
             resetForm();
@@ -432,6 +432,14 @@ function Planner() {
                         </div>
                     ))}
                 </div>
+                <div className="__add__tasks__btn__planner__page__bottom__container">
+  <button className="__add__tasks__btn__planner__page__bottom"
+  onClick={() => setModalVisibleAddTasks(true)} // Show modal
+          >
+    <i className="fa fa-plus-circle"></i> Add Task
+  </button>
+</div>
+
             </div> 
 
 
