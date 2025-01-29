@@ -220,3 +220,74 @@
     }
   }
   
+
+  .day__Plan__toggle__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
+    padding: 5px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #1D1A23 transparent; /* Black scrollbar */
+  }
+  
+  /* Scrollbar Styling */
+  .day__Plan__toggle__container::-webkit-scrollbar {
+    height: 4px; /* Small scrollbar */
+  }
+  
+  .day__Plan__toggle__container::-webkit-scrollbar-thumb {
+    background-color: #1D1A23; /* Black scrollbar handle */
+    border-radius: 10px;
+  }
+  
+  .day__Plan__toggle__container::-webkit-scrollbar-track {
+    background: transparent; /* Minimal track */
+  }
+  
+  /* Toggle Button Styles */
+  .day__Plan__toggle__btn {
+    background-color: white;
+    border: 1.5px solid #1D1A23;
+    border-radius: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+  }
+  
+  /* Hover effect */
+  .day__Plan__toggle__btn:hover {
+    background-color: #1D1A23;
+    color: white;
+  }
+  
+  /* Active button */
+  .day__Plan__toggle__btn.active {
+    background-color: #1D1A23;
+    color: white;
+    border-color: #1D1A23;
+  }
+  
+  /* Responsive: Scroll left-right on small screens */
+  @media (max-width: 600px) {
+    .day__Plan__toggle__container {
+      display: flex;
+      justify-content: flex-start;
+      padding: 10px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .day__Plan__toggle__btn {
+      padding: 5px 10px;
+      font-size: 10px;
+    }
+  }
+  

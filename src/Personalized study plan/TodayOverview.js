@@ -17,6 +17,7 @@ function TodayAiOverview() {
   const [tasks, setTasks] = useState([]);
   const [taskError, setTaskError] = useState(null);
   const [generating, setGenerating] = useState(false);
+  const [selectedDay, setSelectedDay] = useState(moment().format('dddd')); // Default to current day
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,20 +60,21 @@ function TodayAiOverview() {
       setGenerating(false);
     }
   };
-  
 
-  if (loading) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-<LoadingSpinner />
-</div>
-;
+  const handleDayToggle = (day) => {
+    setSelectedDay(day);
+  };
+
+  if (loading) return <LoadingSpinner />;
+
   if (error) return <div>{error}</div>;
 
   if (!studyPlan) return <div>No study plan found</div>;
 
   const today = moment().format('dddd');
-  const todayPlan = studyPlan.weekly_timetable.find(day => day.day === today);
+  const todayPlan = studyPlan.weekly_timetable.find(day => day.day === selectedDay);
 
-  if (!todayPlan) return <div>No study plan available for today.</div>;
+  if (!todayPlan) return <div>No study plan available for {selectedDay}.</div>;
 
   const handleNewPlan = () => {
     navigate('/flow-user-data');
@@ -89,13 +91,19 @@ function TodayAiOverview() {
         <FaArrowLeft />
       </button>
 
-      {/* Question Mark Tooltip */}
-      <div className="pomodoro-tooltip">
-        <span className="question-mark">?</span>
-        <div className="tooltip-content">
-          Complete Pomodoro sessions to get the minutes done
-        </div>
-      </div>
+      {/* Toggle Buttons for Days */}
+      <div className="day__Plan__toggle__container">
+  {studyPlan.weekly_timetable.map(day => (
+    <button
+      key={day.day}
+      className={`day__Plan__toggle__btn ${selectedDay === day.day ? 'active' : ''}`}
+      onClick={() => setSelectedDay(day.day)}
+    >
+      {day.day}
+    </button>
+  ))}
+</div>
+
 
       {/* Main Heading */}
       <h2>Today's Study Plan</h2>
@@ -122,9 +130,9 @@ function TodayAiOverview() {
       <div className="card__today__ai__pan_overview__container">
         {/* Total Study Time Card */}
         <div className="card__today__ai__pan_overview">
-  <h3>Total Study Time</h3>
-  <p>{todayPlan.total_study_time * 60} minutes</p>
-</div>
+          <h3>Total Study Time</h3>
+          <p>{todayPlan.total_study_time * 60} minutes</p>
+        </div>
 
         {/* Tips Card */}
         <div className="card__today__ai__pan_overview">
@@ -141,30 +149,29 @@ function TodayAiOverview() {
         >
           Get New Plan
         </button>
-         {/* Tips Card
-        <button
-  className="action__button__today__ai__pan_overview"
-  onClick={() => handleGenerateTasks(todayPlan.AI_task_generation_instructions)} // Pass instructions here
-  disabled={generating}
->
-  {generating ? 'Generating...' : 'Generate Tasks'}
-</button> */}
+        {/* Uncomment to enable task generation button */}
+        {/* <button
+          className="action__button__today__ai__pan_overview"
+          onClick={() => handleGenerateTasks(todayPlan.AI_task_generation_instructions)}
+          disabled={generating}
+        >
+          {generating ? 'Generating...' : 'Generate Tasks'}
+        </button> */}
 
         {taskError && <p className="error">{taskError}</p>}
         {tasks.length > 0 && (
-  <div className="tasks__list__plan__ai__tasks__generated">
-    <h3 className="tasks__list__header__plan__ai__tasks__generated">Tasks</h3>
-    <ul className="tasks__list__items__plan__ai__tasks__generated">
-      {tasks.map((task, idx) => (
-        <li key={idx} className="task__item__plan__ai__tasks__generated">
-          <strong className="task__title__plan__ai__tasks__generated">{task.title}</strong>: 
-          <span className="task__description__plan__ai__tasks__generated">{task.description}</span> 
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
-
+          <div className="tasks__list__plan__ai__tasks__generated">
+            <h3 className="tasks__list__header__plan__ai__tasks__generated">Tasks</h3>
+            <ul className="tasks__list__items__plan__ai__tasks__generated">
+              {tasks.map((task, idx) => (
+                <li key={idx} className="task__item__plan__ai__tasks__generated">
+                  <strong className="task__title__plan__ai__tasks__generated">{task.title}</strong>: 
+                  <span className="task__description__plan__ai__tasks__generated">{task.description}</span> 
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
