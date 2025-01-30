@@ -1,0 +1,75 @@
+/* AI Downtime Card - Apple-Inspired Monochrome Design */
+.container__downTime__Card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f5f5f7; /* Apple-like light gray background */
+    border: 1px solid #d1d1d6; /* Subtle border */
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.content__downTime__Card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 700px; /* Limits width on large screens */
+}
+
+/* Icon Styling */
+.content__downTime__Card svg {
+    width: 24px;
+    height: 24px;
+    fill: #1d1d1f; /* Apple-like deep black */
+}
+
+/* Text Styling */
+.text__downTime__Card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1d1d1f; /* Dark gray text */
+    margin: 0;
+}
+
+.text__downTime__Card p {
+    font-size: 14px;
+    color: #6e6e73; /* Light gray Apple-like text */
+    margin: 4px 0 0;
+}
+
+/* Button Styling */
+.button__downTime__Card {
+    margin-left: auto;
+    background-color: #1d1d1f; /* Apple's deep black */
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button__downTime__Card:hover {
+    background-color: #333336; /* Slightly lighter black on hover */
+}
+
+/* Fully Responsive Adjustments */
+@media (max-width: 768px) {
+    .content__downTime__Card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .button__downTime__Card {
+        width: 100%;
+        text-align: center;
+    }
+}

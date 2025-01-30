@@ -21,10 +21,12 @@ import ModalHowTo from "../Pop ups/HowtoUsePopUp";
 import FriendsDashboard from "./FriendsDashboard";
 import FeedbackFormWeekly from "../help/Survey";
 import DowntimePage from "../help/DowntimePage";
+import AIDowntimeCard from "../help/AIDowntimeCard";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
   const [showDowntimePage, setShowDowntimePage] = useState(true); // State to control downtime page visibility
+ const [isAIDown, setIsAIDown] = useState(true)
   const navigate = useNavigate();
 
   // Close downtime page
@@ -66,6 +68,8 @@ const HomeMain = () => {
       {/* Rest of the components */}
       {!showDowntimePage && (
         <>
+        {isAIDown && <AIDowntimeCard onDismiss={() => setIsAIDown(false)} />}
+
           <ReviewModal />
           <BirthdayCelebration />
           <BirthdayModal />
