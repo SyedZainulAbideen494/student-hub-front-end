@@ -137,7 +137,8 @@ const PaymentComponent = () => {
       "Unlimited PDF to flashcards",
       "Unlimited PDF to quizzes",
       "Notes to Quizzes",
-      "Notes to Flashcards"
+      "Notes to Flashcards",
+      "AI explantion on flashcards"
     ].map((feature, index) => (
       <li className="subscription-feature" key={index}>
         <span>
