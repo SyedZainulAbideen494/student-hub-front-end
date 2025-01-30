@@ -58,7 +58,7 @@ const HomeMain = () => {
     <Fragment>
 
         <>
-        {isAIDown && <AIDowntimeCard onDismiss={() => setIsAIDown(false)} />}
+    
 
           <ReviewModal />
           <BirthdayCelebration />
