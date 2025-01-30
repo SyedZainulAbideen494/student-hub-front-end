@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaLock } from 'react-icons/fa';
+import { FaArrowLeft, FaCrown, FaLock } from 'react-icons/fa';
 import './PomodoroSettings.css';
 import { API_ROUTES } from '../../app_modules/apiRoutes';
 import axios from 'axios';
@@ -153,7 +153,7 @@ const PomodoroSettings = ({ theme }) => {
       onClick={fetchAIRecommendations}
       disabled
     >
-           <FaLock className="lock-icon" /> AI Recommendation
+           <FaCrown className="lock-icon" /> AI Recommendation
     </button>
     )}
       </div>
