@@ -186,5 +186,6 @@ export const API_ROUTES = {
   flashcardsCountPdfPremium: `${API_URL}/api/flashcards/count/pdf-premium`,
   QuizCountPdfPremium: `${API_URL}/api/quizzes/count/ai-premium`,
   getPremium: `${API_URL}/buy-premium`,
-  verifyPayment: `${API_URL}/verify-payment`
+  verifyPayment: `${API_URL}/verify-payment`,
+  aiPomdoroRecomendation: `${API_URL}/api/pomodoro/ai-recommendation`
 }
