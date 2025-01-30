@@ -56,16 +56,16 @@
 
 /* Button Styling */
 .subscription-action {
-  background-color: #007aff;
+  background-color: #1c1c1e;
   color: white;
   font-size: 16px;
   padding: 12px 24px;
-  border-radius: 12px;
+  border-radius: 25px;
   border: none;
   width: 100%;
   cursor: pointer;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
@@ -111,7 +111,7 @@
 }
 
 .check-icon {
-  color: #34c759;
+  color: #ffcc00;
   margin-right: 8px;
 }
 
