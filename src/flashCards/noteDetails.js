@@ -9,6 +9,7 @@ import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessMod
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import BookOpenAnimation from '../app_modules/loaders/bookOpen';
+import { FaLock } from 'react-icons/fa';
 
 const NoteDetailPage = () => {
     const { id } = useParams();
@@ -31,6 +32,7 @@ const NoteDetailPage = () => {
     const quillRef = useRef(null);
     const nav = useNavigate();
     const [subjects, setSubjects] = useState([]);
+    const [isPremium, setIsPremium] = useState(null);
     const [selectedSubject, setSelectedSubject] = useState(''); // For storing selected subject
     const navigate = useNavigate();
 
@@ -55,6 +57,18 @@ const NoteDetailPage = () => {
         }
     };
 
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+            .then(response => setIsPremium(response.data.premium))
+            .catch(() => setIsPremium(false));
+        } else {
+          setIsPremium(false);
+        }
+      }, []);
+
+    
     useEffect(() => {
         const fetchNote = async () => {
             try {
@@ -373,61 +387,86 @@ const quillModules = {
 
     return (
         <div className="note-detail-page">
+             
+
             <div className="note-header-note-detail-page">
                 <button className="back-button-note-detail-page" onClick={handleBackClick}>
                     <span className="arrow-note-detail-page">&#8592;</span> 
                 </button>
-                <div className='note-btn-contaioner'>
+                {isPremium ? (
+                    <div className='note-btn-contaioner'>
              
-            <div className="centered-button-container">
-        <button
-  className="flashcard__set__page__modal-generate btn__set__page__buttons"
-  disabled={loadingQuiz}
-  onClick={generateQuizFromNotes}
->
-  <div className={`sparkle__set__page__buttons ${loadingQuiz ? 'animating' : ''}`}>
-    <svg
-      height="24"
-      width="24"
-      fill="#FFFFFF"
-      viewBox="0 0 24 24"
-      data-name="Layer 1"
-      id="Layer_1"
-      className="sparkle__set__page__buttons"
-    >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-    <span className="text__set__page__buttons">
-      {loadingQuiz ? 'Generating...' : '  Generate Quiz'}
-    </span>
-  </div>
-</button>
+                    <div className="centered-button-container">
+                <button
+          className="flashcard__set__page__modal-generate btn__set__page__buttons"
+          disabled={loadingQuiz}
+          onClick={generateQuizFromNotes}
+        >
+          <div className={`sparkle__set__page__buttons ${loadingQuiz ? 'animating' : ''}`}>
+            <svg
+              height="24"
+              width="24"
+              fill="#FFFFFF"
+              viewBox="0 0 24 24"
+              data-name="Layer 1"
+              id="Layer_1"
+              className="sparkle__set__page__buttons"
+            >
+              <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+            </svg>
+            <span className="text__set__page__buttons">
+              {loadingQuiz ? 'Generating...' : '  Generate Quiz'}
+            </span>
+          </div>
+        </button>
+        </div>
+        <div className="centered-button-container">
+                <button
+          className="flashcard__set__page__modal-generate btn__set__page__buttons"
+          disabled={loadingFlashcards}
+          onClick={generateFlashcardsFromNotes}
+        >
+          <div className={`sparkle__set__page__buttons ${loadingFlashcards ? 'animating' : ''}`}>
+            <svg
+              height="24"
+              width="24"
+              fill="#FFFFFF"
+              viewBox="0 0 24 24"
+              data-name="Layer 1"
+              id="Layer_1"
+              className="sparkle__set__page__buttons"
+            >
+              <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+            </svg>
+            <span className="text__set__page__buttons">
+              {loadingFlashcards ? 'Generating...' : '  Generate Flashcards'}
+            </span>
+          </div>
+        </button>
+        </div>
+                    </div>
+    ) : (
+
+<div className="centered-button-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+  <button 
+    className="action__button__today__ai__pan_overview__locked__premium__"
+    disabled
+   // Makes the button block level and sets size
+  >
+    <FaLock className="lock-icon" style={{ marginRight: '10px' }} /> Generate Flashcards <span>Premium</span>
+  </button>
+  
+  <button 
+    className="action__button__today__ai__pan_overview__locked__premium__"
+    disabled
+ // Makes the button block level and sets size
+  >
+    <FaLock className="lock-icon" style={{ marginRight: '10px' }} /> Generate Quiz <span>Premium</span>
+  </button>
 </div>
-<div className="centered-button-container">
-        <button
-  className="flashcard__set__page__modal-generate btn__set__page__buttons"
-  disabled={loadingFlashcards}
-  onClick={generateFlashcardsFromNotes}
->
-  <div className={`sparkle__set__page__buttons ${loadingFlashcards ? 'animating' : ''}`}>
-    <svg
-      height="24"
-      width="24"
-      fill="#FFFFFF"
-      viewBox="0 0 24 24"
-      data-name="Layer 1"
-      id="Layer_1"
-      className="sparkle__set__page__buttons"
-    >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-    <span className="text__set__page__buttons">
-      {loadingFlashcards ? 'Generating...' : '  Generate Flashcards'}
-    </span>
-  </div>
-</button>
-</div>
-            </div><br/>
+
+    )}
+<br/>
                 <h1 style={{textAlign: 'center'}}>{editMode ? 'Edit Note' : note.title}</h1>
 
 
