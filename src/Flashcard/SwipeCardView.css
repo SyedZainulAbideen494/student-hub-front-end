@@ -183,7 +183,7 @@
   padding: 20px;
   border-radius: 8px;
   max-width: 300px;
-  max-height: 80vh;
+  max-height: 60vh;
   overflow-y: auto;
   text-align: center;
   width: 100%; /* Ensure it uses the full width available up to max-width */
