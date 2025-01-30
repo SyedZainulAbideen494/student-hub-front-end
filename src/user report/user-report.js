@@ -113,6 +113,7 @@ const UserReport = () => {
                   className="view-previous-reports-button btn__set__page__buttons equal-width-button"
                   type="button"
                   onClick={handleViewPreviousReports}
+                  style={{color: 'white'}}
                 >
                   View Previous Reports
                 </button>
