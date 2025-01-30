@@ -138,12 +138,14 @@ const TodayProgress = () => {
           </div>
         </div>
 
-        <div className="view-plan-btn__today-progress-dashboard--container">
-          {/* Show "Get Plan" button if there's no study plan */}
-          <button className="view-plan-btn__today-progress-dashboard" onClick={handleButtonClick}>
-            {studyPlan ? "View Today's Plan" : "Get Plan"}
-          </button>
-        </div>
+        {!loading && (
+  <div className="view-plan-btn__today-progress-dashboard--container">
+    <button className="view-plan-btn__today-progress-dashboard" onClick={handleButtonClick}>
+      {studyPlan ? "View Today's Plan" : "Get Plan"}
+    </button>
+  </div>
+)}
+
       </div>
 
       <div className="card__today__ai__pan_overview__container">
