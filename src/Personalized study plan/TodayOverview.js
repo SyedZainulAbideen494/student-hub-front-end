@@ -162,7 +162,7 @@ function TodayAiOverview() {
 
     <div className="card__today__ai__pan_overview__container">
   <StudyPlanCard title="Total Study Time" content={`${todayPlan.total_study_time * 60} minutes`} />
-
+{/* 
   <div className="locked__tip__container">
     <StudyPlanCard 
       title="Tips" 
@@ -174,7 +174,21 @@ function TodayAiOverview() {
         </div>
       }
     />
-    {!isPremium && <FaLock className="lock-icon__tip" />} {/* Show lock for non-premium */}
+    {!isPremium && <FaLock className="lock-icon__tip" />} 
+  </div>
+  */}
+   <div className="locked__tip__container">
+    <StudyPlanCard 
+      title="Tips" 
+      content={
+        <div 
+          className={`locked__tip__content`}
+        >
+          {todayPlan.tips}
+        </div>
+      }
+    />
+    {!isPremium && <FaLock className="lock-icon__tip" />} 
   </div>
 </div>
 
@@ -187,9 +201,13 @@ function TodayAiOverview() {
             Get New Plan
           </button>
         ) : (
-<button className="action__button__today__ai__pan_overview__locked__premium__" disabled>
-  <FaLock className="lock-icon" /> Get New Plan <span>Premium</span>
-</button>
+<button 
+        className="action__button__today__ai__pan_overview"
+        onClick={() => handleGenerateTasks(todayPlan.AI_task_generation_instructions)}
+        disabled={generating}
+      >
+        {generating ? 'Generating Tasks...' : 'Generate Tasks'}
+      </button>
 
         )}
 
@@ -205,11 +223,12 @@ function TodayAiOverview() {
       </button>
     ) : (
       <button 
-        className="action__button__today__ai__pan_overview__locked__premium__"
-        disabled
-      >
-        <FaLock className="lock-icon" /> Generate Tasks <span>Premium</span>
-      </button>
+      className="action__button__today__ai__pan_overview"
+      onClick={() => handleGenerateTasks(todayPlan.AI_task_generation_instructions)}
+      disabled={generating}
+    >
+      {generating ? 'Generating Tasks...' : 'Generate Tasks'}
+    </button>
     )}
 
 
