@@ -117,6 +117,7 @@ const UserReport = () => {
                   View Previous Reports
                 </button>
               </div>
+            <FooterNav/>
             </div>
           </>
         )}
@@ -125,42 +126,43 @@ const UserReport = () => {
 
         {report && !showInitialPage && (
            
-          <div className="user__report-card">
-             <button className="back-btn_-report__ai" onClick={handleBackClick}>
-            <FaArrowLeft /> Back
-          </button>
-            <div className="user__report-section">
-              <h4 className="user__report-section-title">User Type:</h4>
-              <div className="user__report-card-item">{report.userType}</div>
-            </div>
-
-            <div className="user__report-section">
-              <h4 className="user__report-section-title">Strengths:</h4>
-              <div className="user__report-card-list">
-                {report.strengths.map((strength, index) => (
-                  <div key={index} className="user__report-card-item">
-                    {strength}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="user__report-section">
-              <h4 className="user__report-section-title">Improvement Areas:</h4>
-              <div className="user__report-card-list">
-                {report.improvementAreas.map((area, index) => (
-                  <div key={index} className="user__report-card-item">
-                    {area}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="user__report-section">
-              <h4 className="user__report-section-title">Summary:</h4>
-              <div className="user__report-card-item">{report.summary}</div>
-            </div>
-          </div>
+           <div className="report-card">
+           <button className="report-back-button" onClick={handleBackClick}>
+             <FaArrowLeft />
+           </button>
+         
+           <div className="report-section">
+             <h4 className="report-section-title">User Type:</h4>
+             <div className="report-item">{report.userType}</div>
+           </div>
+         
+           <div className="report-section">
+             <h4 className="report-section-title">Strengths:</h4>
+             <div className="report-list">
+               {report.strengths.map((strength, index) => (
+                 <div key={index} className="report-item">
+                   {strength}
+                 </div>
+               ))}
+             </div>
+           </div>
+         
+           <div className="report-section">
+             <h4 className="report-section-title">Improvement Areas:</h4>
+             <div className="report-list">
+               {report.improvementAreas.map((area, index) => (
+                 <div key={index} className="report-item">
+                   {area}
+                 </div>
+               ))}
+             </div>
+           </div>
+         
+           <div className="report-section">
+             <h4 className="report-section-title">Summary:</h4>
+             <div className="report-item">{report.summary}</div>
+           </div>
+         </div>
         )}
       </div>
     </div>

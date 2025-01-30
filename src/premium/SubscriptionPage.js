@@ -95,58 +95,57 @@ const PaymentComponent = () => {
 
 
   return (
-    <div className="__subscription__place__page__card">
-    <h2 className="__subscription__place__page__title">
-      Upgrade to Premium <FaCrown className="crown-icon" />
-    </h2>
-    <p className="__subscription__place__page__description">
-      Unlock exclusive features and elevate your learning experience.
+<div className="subscription-card">
+  <h2 className="subscription-title">
+    Upgrade to Premium <FaCrown className="crown-icon" />
+  </h2>
+  <p className="subscription-description">
+    Unlock exclusive features and elevate your learning experience.
+  </p>
+
+  <div className="subscription-price-container">
+    <p className="subscription-price">
+      ₹99 / month
     </p>
-  
-    <div className="__subscription__place__page__price-container">
-      <p className="__subscription__place__page__price">
-₹99 / month
-      </p>
-   
-    </div>
-  
-    <div className="__subscription__place__page__button-container">
-      {showPremium &&
-        (isPremium ? (
-          <p className="__subscription__place__page__Noaction">
-            You have Premium <FaCrown className="crown-icon-small" />
-          </p>
-        ) : (
-          <button className="__subscription__place__page__action" onClick={handlePayment}>
-            Get Premium <FaCrown className="crown-icon-small" />
-          </button>
-        ))}
-    </div>
-  
-    <ul className="__subscription__place__page__lists">
-      {[
-        "Unlimited study plans",
-        "Unlimited Magic AI generations",
-        "Unlimited note creation options",
-        "Unlimited PDF to notes",
-        "Unlimited AI notes creation",
-        "Unlock AI tasks plan generator",
-        "Get daily tips on study plan",
-        "Unlimited AI quizzes creation",
-        "Unlimited AI flashcards creation",
-        "Unlimited PDF to flashcards",
-        "Unlimited PDF to quizzes",
-      ].map((feature, index) => (
-        <li className="__subscription__place__page__list" key={index}>
-          <span>
-            <i className="fa fa-check-circle golden-check"></i> {feature}
-          </span>
-        </li>
-      ))}
-    </ul>
-  
-    <FooterNav />
   </div>
+
+  <div className="subscription-button-container">
+    {showPremium &&
+      (isPremium ? (
+        <p className="subscription-no-action">
+          You have Premium <FaCrown className="crown-icon-small" />
+        </p>
+      ) : (
+        <button className="subscription-action" onClick={handlePayment}>
+          Get Premium <FaCrown className="crown-icon-small" />
+        </button>
+      ))}
+  </div>
+
+  <ul className="subscription-features">
+    {[
+      "Unlimited study plans",
+      "Unlimited Magic AI generations",
+      "Unlimited note creation options",
+      "Unlimited PDF to notes",
+      "Unlimited AI notes creation",
+      "Unlock AI tasks plan generator",
+      "Get daily tips on study plan",
+      "Unlimited AI quizzes creation",
+      "Unlimited AI flashcards creation",
+      "Unlimited PDF to flashcards",
+      "Unlimited PDF to quizzes",
+    ].map((feature, index) => (
+      <li className="subscription-feature" key={index}>
+        <span>
+          <i className="fa fa-check-circle check-icon"></i> {feature}
+        </span>
+      </li>
+    ))}
+  </ul>
+
+  <FooterNav />
+</div>
   );
 };
 
