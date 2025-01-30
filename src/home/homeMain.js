@@ -1,5 +1,5 @@
-import React,{Fragment, useEffect, useState} from "react";
-import './homeMain.css'
+import React, { Fragment, useEffect, useState } from "react";
+import './homeMain.css';
 import HomeTopBoxes from "./homeTopCards";
 import TodayEventsAndTasks from "./homeTodayData";
 import FooterNav from "../app_modules/footernav";
@@ -20,67 +20,84 @@ import FoxIcon from "../Edusify fox/FoxIcon";
 import ModalHowTo from "../Pop ups/HowtoUsePopUp";
 import FriendsDashboard from "./FriendsDashboard";
 import FeedbackFormWeekly from "../help/Survey";
+import DowntimePage from "../help/DowntimePage";
+
 const HomeMain = () => {
-    const [showFeedbackForm, setShowFeedbackForm] = useState(false);
-    const navigate = useNavigate()
+  const [showFeedbackForm, setShowFeedbackForm] = useState(false);
+  const [showDowntimePage, setShowDowntimePage] = useState(true); // State to control downtime page visibility
+  const navigate = useNavigate();
 
-   
-        // Toggle feedback form visibility
-        const toggleFeedbackForm = () => {
-            setShowFeedbackForm(prev => !prev);
-        };
+  // Close downtime page
+  const handleProceed = () => {
+    setShowDowntimePage(false);
+  };
 
-        const token = localStorage.getItem('token'); // Replace with your auth token retrieval method
+  // Toggle feedback form visibility
+  const toggleFeedbackForm = () => {
+    setShowFeedbackForm(prev => !prev);
+  };
 
-        // Function to log daily login
-        const logDailyLogin = async () => {
-          try {
-            const response = await axios.post(
-              API_ROUTES.trackLogins,
-              {},
-              { headers: { Authorization: token } }
-            );
-          } catch (error) {
-            console.error('Error logging daily login:', error);
-          }
-        };
-      
-      
-        // Log login on component mount
-        useEffect(() => {
-          logDailyLogin();
-        }, []);
+  const token = localStorage.getItem('token'); // Replace with your auth token retrieval method
 
+  // Function to log daily login
+  const logDailyLogin = async () => {
+    try {
+      const response = await axios.post(
+        API_ROUTES.trackLogins,
+        {},
+        { headers: { Authorization: token } }
+      );
+    } catch (error) {
+      console.error('Error logging daily login:', error);
+    }
+  };
 
-    return<Fragment>
-      <ReviewModal/>
-       <BirthdayCelebration/>
-        <BirthdayModal/>
-        <HomeTopBoxes/>
-        <FeedbackFormWeekly/>
-        <TodayEventsAndTasks/>
-        <FriendsDashboard/>
-<div style={{ margin: '20px 0' }}>
- <InviteFriends/>
-</div>
-<div style={{ marginBottom: '90px' }}>
-        <div class="button-container__feedback__btn__planner__page">
-    <button onClick={toggleFeedbackForm} style={{
-        backgroundColor: 'transparent',
-        color: '#48cae4',
-        border: 'none',
-        cursor: 'pointer',
-        padding: '10px',
-      }} >
-        {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
-    </button>
-</div>
+  // Log login on component mount
+  useEffect(() => {
+    logDailyLogin();
+    setShowDowntimePage(true); // Reset downtime page visibility every time the component mounts
+  }, []);
 
+  return (
+    <Fragment>
+      {/* Show DowntimePage by default */}
+      {showDowntimePage && <DowntimePage onProceed={handleProceed} />}
+
+      {/* Rest of the components */}
+      {!showDowntimePage && (
+        <>
+          <ReviewModal />
+          <BirthdayCelebration />
+          <BirthdayModal />
+          <HomeTopBoxes />
+          <FeedbackFormWeekly />
+          <TodayEventsAndTasks />
+          <FriendsDashboard />
+          <div style={{ margin: '20px 0' }}>
+            <InviteFriends />
+          </div>
+          <div style={{ marginBottom: '90px' }}>
+            <div className="button-container__feedback__btn__planner__page">
+              <button
+                onClick={toggleFeedbackForm}
+                style={{
+                  backgroundColor: 'transparent',
+                  color: '#48cae4',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '10px',
+                }}
+              >
+                {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
+              </button>
+            </div>
             {showFeedbackForm && <FeedbackForm />}
-</div>
-
-        <FooterNav/>
+          </div>
+          <FooterNav />
+        </>
+      )}
     </Fragment>
-}
+  );
+};
 
-export default HomeMain
+export default HomeMain;
