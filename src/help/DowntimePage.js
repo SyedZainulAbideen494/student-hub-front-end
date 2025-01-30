@@ -11,9 +11,12 @@ const DowntimePage = ({ onProceed }) => {
         </svg>
         <h1 className="heading__downtime__page">Our AI Services Are Temporarily Unavailable</h1>
         <p className="message__downtime__page">
-          Only AI-related features are currently down. The rest of the app is working fine.
+          Only AI-related features are currently down due to an issue with Google's AI services.  
+          The rest of the app is working fine.
         </p>
-        <button className="button__downtime__page" onClick={onProceed}>Proceed Anyway</button>
+        <button className="button__downtime__page" onClick={onProceed}>
+          Try Anyway (AI Might Not Work)
+        </button>
       </div>
     </div>
   );
