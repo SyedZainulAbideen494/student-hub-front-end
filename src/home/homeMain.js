@@ -52,7 +52,6 @@ const HomeMain = () => {
   // Log login on component mount
   useEffect(() => {
     logDailyLogin();
-    setShowDowntimePage(true); // Reset downtime page visibility every time the component mounts
   }, []);
 
   return (
