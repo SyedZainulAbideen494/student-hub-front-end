@@ -25,14 +25,9 @@ import AIDowntimeCard from "../help/AIDowntimeCard";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
-  const [showDowntimePage, setShowDowntimePage] = useState(true); // State to control downtime page visibility
  const [isAIDown, setIsAIDown] = useState(true)
   const navigate = useNavigate();
 
-  // Close downtime page
-  const handleProceed = () => {
-    setShowDowntimePage(false);
-  };
 
   // Toggle feedback form visibility
   const toggleFeedbackForm = () => {
@@ -62,11 +57,7 @@ const HomeMain = () => {
 
   return (
     <Fragment>
-      {/* Show DowntimePage by default */}
-      {showDowntimePage && <DowntimePage onProceed={handleProceed} />}
 
-      {/* Rest of the components */}
-      {!showDowntimePage && (
         <>
         {isAIDown && <AIDowntimeCard onDismiss={() => setIsAIDown(false)} />}
 
@@ -99,7 +90,6 @@ const HomeMain = () => {
           </div>
           <FooterNav />
         </>
-      )}
     </Fragment>
   );
 };
