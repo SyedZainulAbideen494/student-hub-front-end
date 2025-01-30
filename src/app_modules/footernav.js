@@ -178,17 +178,17 @@ const FooterNav = () => {
         <FaFileAlt className="icon-footer-nav" /> {/* Updated icon */}
         <span className="btn-label">AI Report</span>
     </button>
-</Link> {/* 
+</Link> 
 <Link to='/subscription' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
-        <FaCrown className="icon-footer-nav" style={{color: '#ffb703'}} />You can use the FaGem icon or another icon 
+        <FaCrown className="icon-footer-nav" style={{color: '#ffb703'}} />
         <span className="btn-label">Premium</span>
         
     </button>
     <span className='exclusive-offer-footer-nav'>
 </span>
 
-</Link>*/}
+</Link>
                 
 {/* New Monthly Stats Button */}
 <Link to='/monthly-stats' style={{ textDecoration: 'none' }}>
