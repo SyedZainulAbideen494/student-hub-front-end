@@ -17,6 +17,9 @@ import UpgradeModal from '../premium/UpgradeModal';
 // Voice recognition setup (Web Speech API)
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+
+
+
 const formatContent = (content) => {
   // Format code blocks
   content = content.replace(/```(.*?)```/gs, "<pre><code>$1</code></pre>");

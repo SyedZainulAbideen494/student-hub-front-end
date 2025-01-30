@@ -97,44 +97,57 @@
     transform: scale(1.05);
   }
 
-  .response-buttons {
-    position: absolute;
-    bottom: 10px;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 16px;
-    color: #000;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
+ /* Response Buttons Container */
+.response-buttons {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  border-radius: 25px;
+  justify-content: space-between; /* Space out the buttons evenly */
+  width: 90%; /* Make sure the buttons span the full width */
+  padding: 5px 20px; /* Add horizontal padding */
+  box-sizing: border-box; /* Include padding in the total width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
 
-  .i-know-btn {
-    background-color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 16px;
-    color: #000;
-    font-size: 14px;
-    cursor: pointer;
-    margin-left: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
-  
-  .dont-know-btn {
-    background-color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 16px;
-    margin-right: 5px;
-    color: #000;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-  }
+/* Individual Button Styles */
+.dont-know-btn,
+.i-know-btn,
+.dont-know-btn__,
+.ai-explain-flashcard-icon {
+  background-color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 16px;
+  color: #000;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.dont-know-btn__ {
+  padding: 3px 16px;
+  font-size: 12px;
+}
+
+.ai-explain-flashcard-icon {
+  font-size: 24px; /* Adjust the size of the AI icon */
+  color: #9b4d96; /* Purple-pink color */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-left: 10px; /* Adjust space from the other buttons */
+}
+
+/* Button Hover Effect */
+.dont-know-btn:hover,
+.i-know-btn:hover,
+.dont-know-btn__:hover,
+.ai-explain-flashcard-icon:hover {
+  transform: scale(1.05);
+}
+
+
 
   /* Results */
   .results {
@@ -150,4 +163,61 @@
     border-radius: 16px;
     cursor: pointer;
   }
-  
+
+
+  .modal__flashcard__Explain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; /* Remove padding to ensure modal is truly centered */
+}
+
+.explanation-content__flashcard__Explain {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  width: 100%; /* Ensure it uses the full width available up to max-width */
+  margin: 0 auto; /* Center it within the available space */
+}
+
+.modal-header__flashcard__Explain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header__flashcard__Explain h3 {
+  margin: 0;
+  text-align: center; /* Center the heading */
+  flex-grow: 1; /* Allow heading to grow and take available space */
+}
+
+.close-btn__flashcard__Explain {
+  background: transparent;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn__flashcard__Explain:hover {
+  color: #9b4d96;
+}
+
+.loader__flashcard__Explain {
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+}
