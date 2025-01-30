@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaCrown } from 'react-icons/fa';
 
 const PaymentComponent = () => {
-  const [amount, setAmount] = useState(99); // Default amount in INR (₹99)
+  const [amount, setAmount] = useState(69); // Default amount in INR (₹99)
   const [subscriptionPlan, setSubscriptionPlan] = useState('premium'); // Updated to premium plan
   const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
   const [isPremium, setIsPremium] = useState(null);
@@ -104,10 +104,11 @@ const PaymentComponent = () => {
   </p>
 
   <div className="subscription-price-container">
-    <p className="subscription-price">
-      ₹99 / month
-    </p>
-  </div>
+  <p className="subscription-price">
+    <span style={{ textDecoration: "line-through", color: "gray" }}>₹99</span> ₹69 / month
+  </p>
+</div>
+
 
   <div className="subscription-button-container">
     {showPremium &&
