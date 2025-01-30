@@ -1,13 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import './CreateNotesPageType.css'; // Import the CSS file for styling
-import { FaArrowAltCircleLeft, FaArrowLeft, FaLock } from 'react-icons/fa';
-import { API_ROUTES } from '../app_modules/apiRoutes';
-
+import { FaArrowAltCircleLeft, FaArrowLeft } from 'react-icons/fa';
 
 const CreateNotesPage = () => {
-  const [isPremium, setIsPremium] = useState(null);
   const navigate = useNavigate(); // Hook to navigate to a different page
 
   const handleOptionClick = (option) => {
@@ -23,18 +19,6 @@ const CreateNotesPage = () => {
   const handleBackClick = () => {
     navigate(-1); // Go back to the previous page
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-        .then(response => setIsPremium(response.data.premium))
-        .catch(() => setIsPremium(false));
-    } else {
-      setIsPremium(false);
-    }
-  }, []);
-
 
   return (
     <div className="create__notes__type__page__container">
@@ -56,23 +40,12 @@ const CreateNotesPage = () => {
         >
           AI Generated Notes
         </button>
-        {isPremium ? (
-       <button
-       className="create__notes__type__page__option"
-       onClick={() => handleOptionClick('pdf')}
-     >
-       PDF to Notes
-     </button>
-    ) : (
-      <button 
-        className="action__button__today__ai__pan_overview__locked__premium__"
-        disabled
-      >
-        <FaLock className="lock-icon" /> PDF to Notes <span>Premium</span>
-      </button>
-    )}
-
-      
+        <button
+          className="create__notes__type__page__option"
+          onClick={() => handleOptionClick('pdf')}
+        >
+          PDF to Notes
+        </button>
         <button
           className="create__notes__type__page__option"
           onClick={() => handleOptionClick('manual')}

@@ -55,7 +55,7 @@ const PDFNotesCreation = () => {
             })
             .then((res) => {
               setFlashcardsCount(res.data.flashcardsCount);
-              if (res.data.flashcardsCount >= 5) {
+              if (res.data.flashcardsCount >= 1) {
                 setIsExceededLimit(true);
               }
             })
