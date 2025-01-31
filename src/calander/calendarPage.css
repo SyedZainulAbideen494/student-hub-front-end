@@ -1,203 +1,271 @@
 /* General Styles */
-.calendar__Page {
-    padding: 20px;
-    background: #f1f3f6;
-    min-height: 100vh;
-    font-family: 'Inter', sans-serif;
-    color: #333;
-    margin-bottom: 90px;
-}
-
-/* Header */
-.header__title__calendar__Page {
-    text-align: center;
-    color: #2c3e50;
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-}
-
-.calendar__container__calendar__Page {
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    margin-bottom: 20px;
-    overflow: hidden; /* Keeps elements within rounded edges */
-}
-
-
-/* Toolbar */
-.calendar__toolbar__calendar__Page {
+.calendar-page {
+    padding: 10px;
+    background-color: #f5f5f5;
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    margin-bottom: 60px;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-.calendar__toolbar__calendar__Page button {
-    background: #6c5ce7;
-    color: white;
-    border: none;
-    padding: 12px 24px;
+.header-title-calendar-page {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.2em;
+    width: 100%; /* Set to 100% to prevent exceeding parent */
+    color: #121212;
+    font-weight: bold;
+}
+
+/* Content Area */
+.content-calendar-page {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px; /* Increased max-width for more spacious layout */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Event Form */
+.event-form-calendar-page {
+    padding: 20px;
+    background-color: #ffffff;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
+    width: 100%; /* Ensure it does not exceed parent width */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.toggle-form-button-calendar-page-container {
+    text-align: center;
+}
+
+.toggle-form-button-calendar-page {
+    padding: 17px 40px;
     border-radius: 50px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    border: 0;
+    background-color: #fdfffc;
+    box-shadow: rgb(0 0 0 / 10%) 0 0 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: all 0.5s ease;
 }
 
-.calendar__toolbar__calendar__Page button:hover {
-    background: #5a4ac7;
-    transform: translateY(-2px);
+.toggle-form-button-calendar-page:active {
+    letter-spacing: 3px;
+    background-color: hsl(24, 191, 220);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(24, 191, 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
 }
 
-.calendar__toolbar__calendar__Page button.active {
-    background: #4e44b3;
+/* Form Container */
+.form-container-calendar-page {
+    margin-top: 10px;
+}
+
+.section-title-calendar-page {
+    font-size: 1em; /* Increased font size */
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.input-field-calendar-page {
+    width: calc(100% - 20px); /* This should be fine if the container has padding */
+    padding: 14px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em; /* Slightly larger font size */
+}
+
+/* Improved Add Event Form */
+.input-field-calendar-page:focus {
+    border-color: #7161ef;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(113, 97, 239, 0.5);
+}
+
+.submit-button-calendar-page-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.submit-button-calendar-page {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 200px;
+    height: 45px;
+    transition: 0.3s;
+}
+
+.submit-button-calendar-page:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 0 0 5px #3b83f65f;
+    color: #fff;
 }
 
 /* Event Lists */
-.event__lists__calendar__Page {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+.event-lists-calendar-page {
+    width: 100%;
 }
 
-.today__events__calendar__Page {
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+/* Event List */
+.event-list-calendar-page {
+    margin-bottom: 40px;
     padding: 20px;
+    margin-top: 40px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Event Card */
-.event__card__calendar__Page {
-    background: #f9f9f9;
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/* Event Item Card */
+.event-item-calendar-page {
+    margin: 10px 0;
+    padding: 50px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
-.event__title__calendar__Page {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #34495e;
+
+
+/* Event Title */
+.event-title-calendar-page {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.3em; /* Slightly larger font size */
 }
 
-.event__date__calendar__Page {
-    font-size: 1rem;
-    color: #95a5a6;
-    margin-top: 6px;
+/* Event Date */
+.event-date-calendar-page {
+    color: #666;
+    font-size: 1.1em; /* Slightly larger font size */
 }
 
-.event__actions__calendar__Page {
+/* Buttons Inline in Event Item */
+.button-container-calendar-page {
     display: flex;
     gap: 10px;
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
-.event__actions__calendar__Page button {
-    background: #1abc9c;
-    color: white;
+.delete-button-calendar-page,
+.edit-button-calendar-page {
     border: none;
-    padding: 6px 14px;
-    border-radius: 10px;
+    padding: 12px; /* Consistent padding */
+    border-radius: 25px; /* Rounded buttons */
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    font-size: 1.1em; /* Consistent font size */
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.event__actions__calendar__Page button:hover {
-    background: #16a085;
-    transform: translateY(-2px);
+/* Delete Button */
+.delete-button-calendar-page {
+    background-color: #ff4d4d;
+    color: #ffffff;
 }
 
-/* No Events Message */
-.no__events__message__calendar__Page {
-    text-align: center;
-    color: #95a5a6;
-    font-size: 1rem;
+.delete-button-calendar-page:hover {
+    background-color: #ff2d2d;
+    transform: scale(1.05);
 }
 
-/* Event Form Modal */
-.event__form__modal__calendar__Page {
-    position: fixed;
-    top: 20%;
-    left: 5%;
-    transform: translate(-50%, -50%);
-    background: #ffffff;
-    padding: 24px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 86%;
-    max-width: 420px;
-    z-index: 1000;
+/* Edit Button */
+.edit-button-calendar-page {
+    background-color: #4d79ff;
+    color: #ffffff;
 }
 
-.event__form__modal__calendar__Page input {
-    width: 90%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #333;
+.edit-button-calendar-page:hover {
+    background-color: #2d6ff7;
+    transform: scale(1.05);
 }
 
-.event__form__modal__calendar__Page button {
-    background: #6c5ce7;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 12px;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+.react-calendar__tile--has-events {
+    background-color: #d0e7ff !important;
+    border-radius: 15px;
 }
 
-.event__form__modal__calendar__Page button:hover {
-    background: #5a4ac7;
-    transform: translateY(-2px);
-}
-
-/* Floating Action Button */
-.fab__calendar__Page {
-    position: fixed;
-    bottom: 100px;
-    right: 20px;
-    background: #1D1A23;
-    color: white;
-    border: none;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    font-size: 1.8rem;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s, transform 0.2s;
-}
-
-.fab__calendar__Page:hover {
-    background: #5a4ac7;
-    transform: translateY(-2px);
-}
-
-/* Mobile Optimization */
-@media (max-width: 768px) {
-    .calendar__toolbar__calendar__Page {
-        flex-direction: column;
+/* Media Queries for Mobile Optimization */
+@media (max-width: 600px) {
+    .header-title-calendar-page {
+        font-size: 1.8em;
     }
 
-    .calendar__container__calendar__Page {
+    .toggle-form-button-calendar-page,
+    .submit-button-calendar-page {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+
+    .input-field-calendar-page {
+        width: calc(100% - 20px); /* This should be fine */
+    }
+
+    .event-item-calendar-page {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .delete-button-calendar-page,
+    .edit-button-calendar-page {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-calendar-page {
+        gap: 20px;
+    }
+
+    .calendar-container-calendar-page,
+    .event-form-calendar-page {
         padding: 15px;
     }
+}
 
-    .event__form__modal__calendar__Page {
-        width: 77%;
-        border-radius: 25px;
-        bottom: 0;
-    }
+/* Button for adding events */
+.btn-add-event {
+    background-color: transparent; /* Green background */
+    color: #74c69d; /* White text */
+    border: none; /* Remove borders */
+    text-align: center; /* Center-aligned text */
+    text-decoration: none; /* Remove underline */
+    display: inline-flex; /* Align items in a row */
+    align-items: center; /* Center the icon and text vertically */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1.1em; /* Slightly larger font size */
+    padding: 10px 15px; /* Padding around the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: background-color 0.2s, transform 0.2s; /* Smooth transition for background color and scaling */
+}
 
-    .fab__calendar__Page {
-        width: 55px;
-        height: 55px;
-        font-size: 1.5rem;
-    }
+.btn-add-event:hover {
+    background-color: #74c69d; /* Change background on hover */
+    color: #ffffff; /* Change text color on hover */
+    transform: scale(1.05); 
 }

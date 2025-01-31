@@ -1,90 +1,114 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEdit, faTrash, faCalendarAlt, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { faPlus, faEdit, faTrash, faCalendarAlt, faExclamationCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import './calendarPage.css';
-import SuccessModal from '../app_modules/SuccessModal';
-
-const localizer = momentLocalizer(moment);
+import SuccessModal from '../app_modules/SuccessModal'; // Import the SuccessModal
+import CountUp from 'react-countup';
+import CalendarPageTutorial from './CalendarPageTutorial';
 
 const CalendarPage = () => {
     const [events, setEvents] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [eventTitle, setEventTitle] = useState('');
+    const [userActivities, setUserActivities] = useState([]);
     const [eventDate, setEventDate] = useState(new Date());
-    const [eventTime, setEventTime] = useState('12:00'); // Default time
     const [isFormVisible, setIsFormVisible] = useState(false);
     const [editingEventId, setEditingEventId] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
-    const [view, setView] = useState('month');
+    const [showTutorial, setShowTutorial] = useState(true);
+
+    const handleTutorialComplete = () => {
+        setShowTutorial(false);
+        localStorage.setItem('calendarPageTutorialCompleted', 'true'); // Store in local storage
+    };
+
+    useEffect(() => {
+        const isTutorialCompleted = localStorage.getItem('calendarPageTutorialCompleted');
+        if (isTutorialCompleted) {
+            setShowTutorial(false);
+        }
+    }, []);
+
+
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = (`0${date.getMonth() + 1}`).slice(-2);
+        const day = (`0${date.getDate()}`).slice(-2);
+        return `${year}-${month}-${day}`;
+    };
 
     const fetchEvents = () => {
         const token = localStorage.getItem('token');
         axios.post(API_ROUTES.fetchEvents, { token })
-            .then(response => setEvents(response.data.map(event => ({
-                ...event,
-                start: new Date(event.datetime), // Use datetime instead of date
-                end: new Date(event.datetime),
-                title: event.title,
-            }))))
+            .then(response => setEvents(response.data))
             .catch(error => console.error('Error fetching events:', error));
+    };
+
+    const fetchUserActivities = () => {
+        const token = localStorage.getItem('token');
+        axios.post(API_ROUTES.fetchUserActivity, { token })
+            .then(response => setUserActivities(response.data))
+            .catch(error => console.error('Error fetching activities:', error));
     };
 
     useEffect(() => {
         fetchEvents();
+        fetchUserActivities();
     }, []);
+
+    const onDateChange = (date) => setSelectedDate(date);
+    const onEventDateChange = (date) => setEventDate(date);
 
     const handleAddEvent = () => {
         const token = localStorage.getItem('token');
-        const datetime = `${moment(eventDate).format('YYYY-MM-DD')}T${eventTime}`; // Combine date and time
         const newEvent = {
             title: eventTitle,
-            datetime, // Send datetime to the backend
+            date: formatDate(eventDate),
             token,
         };
         axios.post(API_ROUTES.addEvent, newEvent)
             .then(response => {
-                setEvents([...events, { id: response.data.id, ...newEvent, start: new Date(datetime), end: new Date(datetime) }]);
+                setEvents([...events, { id: response.data.id, ...newEvent }]);
                 setEventTitle('');
                 setEventDate(new Date());
-                setEventTime('12:00');
                 setIsFormVisible(false);
                 setModalMessage('🎉 Event added successfully!');
                 setModalVisible(true);
-                setTimeout(() => setModalVisible(false), 3000);
+                setTimeout(() => {
+                    setModalVisible(false);
+                }, 3000);
             })
             .catch(error => console.error('Error adding event:', error));
     };
 
     const handleEditEvent = () => {
         const token = localStorage.getItem('token');
-        const datetime = `${moment(eventDate).format('YYYY-MM-DD')}T${eventTime}`; // Combine date and time
         const updatedEvent = {
             id: editingEventId,
             title: eventTitle,
-            datetime, // Send datetime to the backend
+            date: formatDate(eventDate),
             token,
         };
         axios.post(API_ROUTES.updateEvent, updatedEvent)
             .then(response => {
                 setEvents(events.map(event =>
-                    event.id === editingEventId ? { ...updatedEvent, start: new Date(datetime), end: new Date(datetime) } : event
+                    event.id === editingEventId ? updatedEvent : event
                 ));
                 setEventTitle('');
                 setEventDate(new Date());
-                setEventTime('12:00');
                 setEditingEventId(null);
                 setIsFormVisible(false);
                 setModalMessage('✏️ Event updated successfully!');
                 setModalVisible(true);
-                setTimeout(() => setModalVisible(false), 3000);
+                setTimeout(() => {
+                    setModalVisible(false);
+                }, 3000);
             })
             .catch(error => console.error('Error updating event:', error));
     };
@@ -96,7 +120,9 @@ const CalendarPage = () => {
                 setEvents(events.filter(event => event.id !== id));
                 setModalMessage('🗑️ Event deleted successfully!');
                 setModalVisible(true);
-                setTimeout(() => setModalVisible(false), 3000);
+                setTimeout(() => {
+                    setModalVisible(false);
+                }, 3000);
             })
             .catch(error => console.error('Error deleting event:', error));
     };
@@ -105,108 +131,176 @@ const CalendarPage = () => {
         if (event) {
             setEditingEventId(event.id);
             setEventTitle(event.title);
-            setEventDate(new Date(event.datetime));
-            setEventTime(moment(event.datetime).format('HH:mm')); // Set time from existing event
+            setEventDate(new Date(event.date));
         }
         setIsFormVisible(!isFormVisible);
+        if (!isFormVisible) {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
     };
 
-    const getTodayEvents = () => {
-        return events.filter(event => moment(event.start).isSame(moment(), 'day'));
+    const getEventsForDate = (date) => {
+        const formattedDate = formatDate(date);
+        return events.filter(event => formatDate(new Date(event.date)) === formattedDate);
     };
+
+      // Calculate the number of events
+      const totalEvents = events.length;
+      const todayEvents = events.filter(event => formatDate(new Date(event.date)) === formatDate(new Date())).length;
+      const upcomingEvents = events.filter(event => new Date(event.date) > new Date()).length;
+      const dueEvents = events.filter(event => new Date(event.date) < new Date()).length;
+  
+      const renderStatisticsBoxes = () => {
+          return (
+            <div className="top-boxes-container__home__page__component" style={{marginTop:'40px', marginBottom: '40px'}}>
+            {showTutorial && <CalendarPageTutorial onComplete={handleTutorialComplete} />}
+            <div className={`box__home__page__component box-1__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={totalEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Total Events</h3>
+            </div>
+            <div className={`box__home__page__component box-2__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={todayEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Today's Events</h3>
+            </div>
+            <div className={`box__home__page__component box-3__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={upcomingEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Upcoming Events</h3>
+            </div>
+            <div className={`box__home__page__component box-4__home__page__component`}>
+                <p className="count__home__page__component">
+                    <CountUp end={dueEvents} duration={2} />
+                </p>
+                <h3 className="title__home__page__component">Due Events</h3>
+            </div>
+        </div>
+
+
+          );
+      };
 
     return (
-        <div className="calendar__Page">
-            <h2 className="header__title__calendar__Page">
+        <div className="calendar-page">
+            <h2 className='header-title-calendar-page'>
                 <FontAwesomeIcon icon={faCalendarAlt} /> Calendar
             </h2>
-            <div className="calendar__container__calendar__Page">
-    <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        view={view}
-        onView={setView}
-        onSelectEvent={(event) => toggleFormVisibility(event)}
-        style={{
-            height: 500,
-            margin: '20px 0',
-            borderRadius: '20px',
-            boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)',
-            overflow: 'hidden',
-        }}
-    />
-</div>
-            <div className="event__lists__calendar__Page">
-                <div className="today__events__calendar__Page">
-                    <h3>Today's Events</h3>
-                    {getTodayEvents().length === 0 ? (
-                        <div className="no__events__message__calendar__Page">
-                            <FontAwesomeIcon icon={faExclamationCircle} /> No events for today.
-                        </div>
-                    ) : (
-                        getTodayEvents().map(event => (
-                            <motion.div
-                                key={event.id}
-                                className="event__card__calendar__Page"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
+            {renderStatisticsBoxes()}
+            <div className="content-calendar-page">
+                <div className="calendar-container-calendar-page">
+                    <Calendar
+                        onChange={onDateChange}
+                        value={selectedDate}
+                        tileClassName={({ date }) => getEventsForDate(date).length > 0 ? 'react-calendar__tile--has-events' : null}
+                    />
+                </div>
+                <div className="event-form-calendar-page">
+                    <div className="toggle-form-button-calendar-page-container">
+                    <button
+                        className="toggle-form-button-calendar-page"
+                        onClick={() => toggleFormVisibility(null)}
+                    >
+                        <FontAwesomeIcon icon={isFormVisible ? faEdit : faPlus} /> {isFormVisible ? 'Cancel' : 'Add Event'}
+                    </button>
+                    </div>
+                    {isFormVisible && (
+                        <div className="form-container-calendar-page">
+                            <div className="section-title-calendar-page" style={{fontSize: '15px'}}>
+                                {editingEventId ? 'Edit Event' : 'Add New Event'}
+                            </div>
+                            <input
+                                type="text"
+                                placeholder="Enter Event Title"
+                                value={eventTitle}
+                                onChange={(e) => setEventTitle(e.target.value)}
+                                className="input-field-calendar-page"
+                            />
+                            <div className="event-date-picker-calendar-page">
+                                <div className="section-title-calendar-page" style={{fontSize: '15px'}}>Select Event Date</div>
+                                <Calendar
+                                    onChange={onEventDateChange}
+                                    value={eventDate}
+                                />
+                            </div>
+                            <div className="submit-button-calendar-page-container">
+                            <button
+                                className="submit-button-calendar-page"
+                                onClick={editingEventId ? handleEditEvent : handleAddEvent}
                             >
-                                <div className="event__title__calendar__Page">{event.title}</div>
-                                <div className="event__date__calendar__Page">
-                                    {moment(event.start).format('MMMM Do, YYYY h:mm A')} {/* Display date and time */}
-                                </div>
-                                <div className="event__actions__calendar__Page">
-                                    <button onClick={() => toggleFormVisibility(event)}>
-                                        <FontAwesomeIcon icon={faEdit} />
-                                    </button>
-                                    <button onClick={() => handleDeleteEvent(event.id)}>
-                                        <FontAwesomeIcon icon={faTrash} />
-                                    </button>
-                                </div>
-                            </motion.div>
-                        ))
+                                {editingEventId ? 'Update Event' : 'Add to Calendar'}
+                            </button>
+                            </div>
+                        </div>
                     )}
                 </div>
+                <div className="event-lists-calendar-page">
+                    <div className="event-list-calendar-page">
+                        <div className="section-title-calendar-page">Events on {selectedDate.toDateString()}</div>
+                        {getEventsForDate(selectedDate).length === 0 ? (
+                            <div className="no-events-message" style={{textAlign: 'center'}}>
+                                <FontAwesomeIcon icon={faExclamationCircle} /> No events for this date. 
+                               
+                            </div>
+                        ) : (
+                            getEventsForDate(selectedDate).map(event => (
+                                <div key={event.id} className="event-item-calendar-page">
+                                    <div className="event-title-calendar-page">{event.title}</div>
+                                    <div className="event-date-calendar-page">{formatDate(new Date(event.date))}</div>
+                                    <div className="button-container-calendar-page">
+                                        <button
+                                            className="edit-button-calendar-page"
+                                            onClick={() => toggleFormVisibility(event)}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} /> 
+                                        </button>
+                                        <button
+                                            className="delete-button-calendar-page"
+                                            onClick={() => handleDeleteEvent(event.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash} /> 
+                                        </button>
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                    <div className="event-list-calendar-page">
+                        <div className="section-title-calendar-page">All Upcoming Events</div>
+                        {events.length === 0 ? (
+                            <div className="no-events-message" style={{textAlign: 'center'}}>
+                                <FontAwesomeIcon icon={faExclamationCircle} /> No events available. 
+                                
+                            </div>
+                        ) : (
+                            events.map(event => (
+                                <div key={event.id} className="event-item-calendar-page">
+                                    <div className="event-title-calendar-page">{event.title}</div>
+                                    <div className="event-date-calendar-page">{formatDate(new Date(event.date))}</div>
+                                    <div className="button-container-calendar-page">
+                                        <button
+                                            className="edit-button-calendar-page"
+                                            onClick={() => toggleFormVisibility(event)}
+                                        >
+                                            <FontAwesomeIcon icon={faEdit} /> 
+                                        </button>
+                                        <button
+                                            className="delete-button-calendar-page"
+                                            onClick={() => handleDeleteEvent(event.id)}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash} /> 
+                                        </button>
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
             </div>
-            <AnimatePresence>
-                {isFormVisible && (
-                    <motion.div
-                        className="event__form__modal__calendar__Page"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 50 }}
-                    >
-                        <h3>{editingEventId ? 'Edit Event' : 'Add Event'}</h3>
-                        <input
-                            type="text"
-                            placeholder="Event Title"
-                            value={eventTitle}
-                            onChange={(e) => setEventTitle(e.target.value)}
-                        />
-                        <input
-                            type="date"
-                            value={moment(eventDate).format('YYYY-MM-DD')}
-                            onChange={(e) => setEventDate(new Date(e.target.value))}
-                        />
-                        <input
-                            type="time"
-                            value={eventTime}
-                            onChange={(e) => setEventTime(e.target.value)}
-                        />
-                        <button onClick={editingEventId ? handleEditEvent : handleAddEvent}>
-                            {editingEventId ? 'Update Event' : 'Add Event'}
-                        </button>
-                        <button onClick={() => setIsFormVisible(false)}>Cancel</button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-            <button className="fab__calendar__Page" onClick={() => toggleFormVisibility()}>
-                <FontAwesomeIcon icon={faPlus} />
-            </button>
-           <FooterNav/>
+            <FooterNav />
             {modalVisible && <SuccessModal message={modalMessage} />}
         </div>
     );
