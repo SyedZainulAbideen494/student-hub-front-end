@@ -188,5 +188,6 @@ export const API_ROUTES = {
   getPremium: `${API_URL}/buy-premium`,
   verifyPayment: `${API_URL}/verify-payment`,
   aiPomdoroRecomendation: `${API_URL}/api/pomodoro/ai-recommendation`,
-  aiExplanFlashcard: `${API_URL}/api/flashcard/ai-explanation`
+  aiExplanFlashcard: `${API_URL}/api/flashcard/ai-explanation`,
+  updateStudyPlan: `${API_URL}/api/update-study-plan`
 }
