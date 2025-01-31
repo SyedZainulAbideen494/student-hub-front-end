@@ -146,101 +146,86 @@ const nav = useNavigate()
     </h1>
   
     <div className="cards-container__Ai__result__plan">
-      {weeklyTimetable.map((dayPlan, dayIndex) => {
-        const totalHours = calculateTotalHours(dayPlan?.hours_allocation || []);
-        return (
-          <div key={dayIndex} className="day-card__Ai__result__plan">
-            {/* Day and Hours */}
-            <div className="day-and-hours__Ai__result__plan">
-              <div className="day-title__Ai__result__plan">
-                {dayPlan?.day || "Unknown Day"}
-              </div>
-              <div className="hours-circle__Ai__result__plan">
-                <div
-                  className="progress__Ai__result__plan"
-                  style={{
-                    "--progress": `${(totalHours / 12) * 100}%`,
-                  }}
-                ></div>
-                <div className="center-value__Ai__result__plan">
-                  {totalHours.toFixed(1)}h
-                </div>
-              </div>
-            </div>
-  
-            {/* Subjects */}
-            <div className="subjects__Ai__result__plan">
-              <ul className="subjects-list__Ai__result__plan">
-                {(dayPlan?.hours_allocation || []).map((allocation, subjectIndex) => (
-                  <li key={subjectIndex} className="subject-item__Ai__result__plan">
-                    {isEditing ? (
-                      <>
-                        <input
-                          type="text"
-                          value={allocation?.subject || ""}
-                          onChange={(e) =>
-                            handleUpdate(dayIndex, subjectIndex, e.target.value, "subject")
-                          }
-                          style={{
-                            padding: "10px",
-                            borderRadius: "20px",
-                            border: "1px solid #ccc",
-                            width: "100%",
-                            marginBottom: "8px",
-                            fontSize: "14px",
-                            boxSizing: "border-box",
-                          }}
-                        />
-                        <input
-                          type="number"
-                          value={allocation?.hours || ""}
-                          onChange={(e) =>
-                            handleUpdate(dayIndex, subjectIndex, e.target.value, "hours")
-                          }
-                          style={{
-                            padding: "10px",
-                            borderRadius: "20px",
-                            border: "1px solid #ccc",
-                            width: "100%",
-                            fontSize: "14px",
-                            boxSizing: "border-box",
-                          }}
-                        />
-                      </>
-                    ) : (
-                      <>
-                        <span>{allocation?.subject || "N/A"}</span>
-                        <span>{allocation?.hours || "0"}h</span>
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-  
-            {/* Tips */}
-            <div className="tips__Ai__result__plan">
-              {isEditing ? (
-                <input
-                  type="text"
-                  value={dayPlan?.tips || ""}
-                  onChange={(e) => handleUpdate(dayIndex, null, e.target.value, "tips")}
-                  style={{
-                    padding: "10px",
-                    borderRadius: "20px",
-                    border: "1px solid #ccc",
-                    width: "100%",
-                    fontSize: "14px",
-                    boxSizing: "border-box",
-                  }}
-                />
-              ) : (
-                <span>{dayPlan?.tips || "No Tips"}</span>
-              )}
-            </div>
+    {weeklyTimetable.map((dayPlan, dayIndex) => {
+  const totalHours = calculateTotalHours(dayPlan?.hours_allocation || []);
+  return (
+    <div key={dayIndex} className="day-card__Ai__result__plan">
+      {/* Day and Hours */}
+      <div className="day-and-hours__Ai__result__plan">
+        <div className="day-title__Ai__result__plan">
+          {dayPlan?.day || "Unknown Day"}
+        </div>
+        <div className="hours-circle__Ai__result__plan">
+          <div
+            className="progress__Ai__result__plan"
+            style={{
+              "--progress": `${(totalHours / 12) * 100}%`,
+            }}
+          ></div>
+          <div className="center-value__Ai__result__plan">
+            {totalHours.toFixed(1)}h
           </div>
-        );
-      })}
+        </div>
+      </div>
+
+      {/* Subjects */}
+      <div className="subjects__Ai__result__plan">
+        <ul className="subjects-list__Ai__result__plan">
+          {(dayPlan?.hours_allocation || []).map((allocation, subjectIndex) => (
+            <li key={subjectIndex} className="subject-item__Ai__result__plan">
+              {isEditing ? (
+                <>
+                  <input
+                    type="text"
+                    value={allocation?.subject || ""}
+                    onChange={(e) =>
+                      handleUpdate(dayIndex, subjectIndex, e.target.value, "subject")
+                    }
+                    style={{
+                      padding: "10px",
+                      borderRadius: "20px",
+                      border: "1px solid #ccc",
+                      width: "100%",
+                      marginBottom: "8px",
+                      fontSize: "14px",
+                      boxSizing: "border-box",
+                    }}
+                  />
+                  <input
+                    type="number"
+                    value={allocation?.hours || ""}
+                    onChange={(e) =>
+                      handleUpdate(dayIndex, subjectIndex, e.target.value, "hours")
+                    }
+                    style={{
+                      padding: "10px",
+                      borderRadius: "20px",
+                      border: "1px solid #ccc",
+                      width: "100%",
+                      fontSize: "14px",
+                      boxSizing: "border-box",
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  <span>{allocation?.subject || "N/A"}</span>
+                  <span>{allocation?.hours || "0"}h</span>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Tips (No edit option) */}
+      <div className="tips__Ai__result__plan">
+        <span>{dayPlan?.tips || "No Tips"}</span>
+      </div>
+    </div>
+  );
+})}
+
     </div>
   
     {/* Toggle Edit Mode Button */}
