@@ -7,60 +7,69 @@ import { useNavigate } from 'react-router-dom';
 import { FaCrown } from 'react-icons/fa';
 
 const PaymentComponent = () => {
-  const [amount, setAmount] = useState(99); // Default amount in INR (₹99)
-  const [subscriptionPlan, setSubscriptionPlan] = useState('premium'); // Updated to premium plan
+  const [amount, setAmount] = useState(99); // Default to ₹99 (monthly)
+  const [subscriptionPlan, setSubscriptionPlan] = useState('premium');
+  const [duration, setDuration] = useState('monthly'); // Default plan  
   const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
   const [isPremium, setIsPremium] = useState(null);
   const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
   const nav = useNavigate()
+  
+  
   const handlePayment = async () => {
     try {
-      const token = localStorage.getItem('token'); // Get token from localStorage
+      const token = localStorage.getItem('token');
       if (!token) {
         alert('Please log in to subscribe.');
         return;
       }
-
-      // Step 1: Create an order on the backend
+  
+      let planAmount = 99;
+      if (duration === 'weekly') planAmount = 39;
+      else if (duration === 'monthly') planAmount = 99;
+      else if (duration === '6months') planAmount = 499;
+  
       const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount,
+        amount: planAmount,
         currency: 'INR',
         subscription_plan: subscriptionPlan,
-        token, // Send only the token
+        token,
+        duration, // Send the selected duration
       });
-
+  
       const options = {
-        key: 'rzp_live_jPX6SxetQbApHC', // Razorpay key_id
+        key: 'rzp_live_jPX6SxetQbApHC',
         amount: data.order.amount,
         currency: 'INR',
         order_id: data.order.id,
         name: 'Edusify',
-        description: 'Subscription Payment',
+        description: `Subscription Payment (${duration})`,
         handler: async (response) => {
-          // Step 2: Verify payment on the backend
           const { data } = await axios.post(API_ROUTES.verifyPayment, {
             payment_id: response.razorpay_payment_id,
             order_id: response.razorpay_order_id,
             signature: response.razorpay_signature,
-            token, // Send only the token
+            token,
             subscription_plan: subscriptionPlan,
+            duration, // Send the selected duration
           });
-
+  
           if (data.success) {
-            nav('/payment-success')
+            nav('/payment-success');
           } else {
             alert('Payment verification failed!');
           }
         },
         theme: { color: '#030303' },
       };
-
+  
       const razorpayInstance = new window.Razorpay(options);
       razorpayInstance.open();
     } catch (error) {
       console.error('Error initiating payment', error);
     }
   };
+  
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -103,10 +112,35 @@ const PaymentComponent = () => {
     Unlock exclusive features and elevate your learning experience.
   </p>
 
-  <div className="subscription-price-container">
-  <p className="subscription-price">
-    <span>₹99</span>/ month
-  </p>
+ {/* Plan Selection */}
+<div className="subscription-plan__subs_plan__selector">
+  <button
+    className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
+    onClick={() => {
+      setDuration('weekly');
+      setAmount(39);
+    }}
+  >
+    ₹39 / Week
+  </button>
+  <button
+    className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
+    onClick={() => {
+      setDuration('monthly');
+      setAmount(99);
+    }}
+  >
+    ₹99 / Month
+  </button>
+  <button
+    className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
+    onClick={() => {
+      setDuration('6months');
+      setAmount(499);
+    }}
+  >
+    ₹499 /<br /> 6 Months
+  </button>
 </div>
 
 
@@ -138,7 +172,7 @@ const PaymentComponent = () => {
       "Unlimited PDF to quizzes",
       "Notes to Quizzes",
       "Notes to Flashcards",
-      "AI explantion on flashcards"
+      "AI explanation on flashcards",
     ].map((feature, index) => (
       <li className="subscription-feature" key={index}>
         <span>
@@ -150,6 +184,7 @@ const PaymentComponent = () => {
 
   <FooterNav />
 </div>
+
   );
 };
 
