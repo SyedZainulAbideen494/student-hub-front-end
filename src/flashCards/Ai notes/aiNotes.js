@@ -64,7 +64,7 @@ const GenerateNotesAI = () => {
             })
             .then((res) => {
               setFlashcardsCount(res.data.flashcardsCount);
-              if (res.data.flashcardsCount >= 5) {
+              if (res.data.flashcardsCount >= 2) {
                 setIsExceededLimit(true);
               }
             })
