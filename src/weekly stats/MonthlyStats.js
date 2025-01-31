@@ -5,6 +5,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { FaTasks, FaClipboardList, FaTrophy, FaStopwatch, FaRegStar, FaRobot, FaSignInAlt, FaAngleLeft, FaQuestionCircle } from 'react-icons/fa'; // Import icons from FontAwesome
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { useSpring, animated } from 'react-spring';
+import FooterNav from '../app_modules/footernav';
 
 const MonthlyStats = () => {
     const [stats, setStats] = useState({
@@ -77,11 +78,8 @@ const MonthlyStats = () => {
     if (error) return <p>{error}</p>;
 
     return (
-        <div className="monthly__stats-container">
+        <div className="monthly__stats-container" style={{marginBottom: '50px'}}>
             <div className="monthly__stats-header">
-                <button onClick={() => window.history.back()} className="monthly__stats-back-button">
-                    <FaAngleLeft />
-                </button>
                 <h2 className="monthly__stats-page-title">My Monthly Summary</h2>
                 <span className="question-icon__stats-stat" onClick={handleQuestionClick}>
                             <FaQuestionCircle />
@@ -139,7 +137,7 @@ const MonthlyStats = () => {
                     </div>
                 </div>
             </animated.div>
-
+<FooterNav/>
             {/* Modal */}
             {modalVisible && (
                 <div className="stats-modal__stats-stat">

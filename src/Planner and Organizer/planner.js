@@ -423,6 +423,7 @@ function Planner() {
     setModalVisibleAddTasks(true); // Show the modal
     startEditingTask(task); // Start editing the task
   }}
+  
 >
   Edit 
       <svg className="svg__edit__task__planner" viewBox="0 0 512 512">
