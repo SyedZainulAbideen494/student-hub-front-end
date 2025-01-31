@@ -22,6 +22,7 @@ import FriendsDashboard from "./FriendsDashboard";
 import FeedbackFormWeekly from "../help/Survey";
 import DowntimePage from "../help/DowntimePage";
 import AIDowntimeCard from "../help/AIDowntimeCard";
+import PaymentComponentModal from "../premium/modal/SubscriptionPage";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -59,7 +60,7 @@ const HomeMain = () => {
 
         <>
     
-
+      <PaymentComponentModal/>
           <ReviewModal />
           <BirthdayCelebration />
           <BirthdayModal />

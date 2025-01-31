@@ -1,0 +1,113 @@
+/* Overlay */
+.overlay__modal__subs__offer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Slightly darker overlay for focus */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Subscription Card */
+.subscription-card__modal__subs__offer {
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    max-width: 360px;
+    width: 80%;
+    text-align: center;
+    border: 1px solid #e5e5ea; /* Subtle border */
+}
+
+/* Title */
+.subscription-title__modal__subs__offer {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000; /* Pure black for clarity */
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.crown-icon__modal__subs__offer {
+    color: #ffcc00; /* Softer gold for the crown */
+    font-size: 24px;
+}
+
+/* Description */
+.subscription-description__modal__subs__offer {
+    font-size: 14px;
+    color: #8e8e93; /* Apple-like gray for description */
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.subscription-description__modal__subs__offer strong {
+    color: #000; /* Pure black for emphasis */
+    font-weight: 600;
+}
+
+/* Subscription Plan Button */
+.plan-button__modal__subs__offer {
+    background: #f5f5f7; /* Light gray background */
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s ease;
+}
+
+.plan-button__modal__subs__offer:hover {
+    background: #e5e5ea; /* Slightly darker on hover */
+}
+
+/* Action Buttons */
+.subscription-button-container__modal__subs__offer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subscription-action__modal__subs__offer {
+    background: #1D1A23; /* Apple-like blue */
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s ease;
+}
+
+
+
+.dismiss-button__modal__subs__offer {
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8e8e93; /* Apple-like gray */
+    cursor: pointer;
+    width: 100%;
+    transition: color 0.2s ease;
+}
+
+.dismiss-button__modal__subs__offer:hover {
+    color: #000; /* Darker text on hover */
+}
