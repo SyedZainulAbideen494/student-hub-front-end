@@ -1,4 +1,4 @@
-.success-modal {
+.success-modal__payment__premium__success__page {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,7 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.success-content {
+.success-content__payment__premium__success__page {
   background: white;
   padding: 30px;
   border-radius: 8px;
@@ -15,30 +15,30 @@
   width: 300px;
 }
 
-.success-icon {
+.success-icon__payment__premium__success__page {
   margin-bottom: 20px;
 }
 
-.checkmark-svg {
+.checkmark-svg__payment__premium__success__page {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
 
-.checkmark-svg.show {
+.checkmark-svg__payment__premium__success__page.show {
   opacity: 1;
 }
 
-.speedometer-circle {
+.speedometer-circle__payment__premium__success__page {
   stroke-dasharray: 62.8; /* 2 * PI * r (where r=10) */
   stroke-dashoffset: 62.8;
   transition: stroke-dashoffset 1s ease-in-out;
 }
 
-.show .speedometer-circle {
+.show__payment__premium__success__page .speedometer-circle__payment__premium__success__page {
   stroke-dashoffset: 0;
 }
 
-.animate-checkmark {
+.animate-checkmark__payment__premium__success__page {
   stroke-dasharray: 15;
   stroke-dashoffset: 15;
   animation: dash 0.5s ease-in-out forwards;
@@ -51,19 +51,19 @@
   }
 }
 
-.success-headline {
+.success-headline__payment__premium__success__page {
   font-size: 24px;
   margin-bottom: 10px;
   color: #333;
 }
 
-.success-message {
+.success-message__payment__premium__success__page {
   font-size: 14px;
   color: #555;
   margin-bottom: 20px;
 }
 
-.success-button {
+.success-button__payment__premium__success__page {
   background-color: transparent;
   color: black;
   border: 1.5px solid #34c16e;
@@ -73,8 +73,4 @@
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s ease-in-out;
-}
-
-.success-button:hover {
-  background-color: #34c16e;
 }

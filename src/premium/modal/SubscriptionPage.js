@@ -12,13 +12,17 @@ const PaymentComponentModal = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const firstSignInTime = localStorage.getItem("firstSignInTime");
+    const dismissedOffer = localStorage.getItem("dismissedOffer");
+
+    if (dismissedOffer === "true") {
+      return; // Don't show the modal if the user has dismissed the offer
+    }
 
     if (!firstSignInTime) {
-      // If firstSignInTime is not set, save the current time
       localStorage.setItem("firstSignInTime", Date.now());
     } else {
       const elapsedTime = Date.now() - parseInt(firstSignInTime, 10);
-      const fiveMinutes = 1 * 60 * 1000;
+      const fiveMinutes = 1 * 60 * 1000; // Change back to 5 * 60 * 1000 for 5 minutes
 
       if (elapsedTime < fiveMinutes) {
         return; // Don't show the modal yet
@@ -50,7 +54,7 @@ const PaymentComponentModal = () => {
       }
 
       const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount: 69, // Offer price
+        amount: 69,
         currency: "INR",
         subscription_plan: "premium",
         token,
@@ -90,7 +94,12 @@ const PaymentComponentModal = () => {
     }
   };
 
-  if (!showModal) return null; // Don't render if the user is already premium or 5 mins haven't passed
+  const handleDismiss = () => {
+    localStorage.setItem("dismissedOffer", "true");
+    setShowModal(false);
+  };
+
+  if (!showModal) return null; 
 
   return (
     <div className="overlay__modal__subs__offer">
@@ -113,7 +122,7 @@ const PaymentComponentModal = () => {
           <button className="subscription-action__modal__subs__offer" onClick={handlePayment}>
             Claim Now
           </button>
-          <button className="dismiss-button__modal__subs__offer" onClick={() => setShowModal(false)}>
+          <button className="dismiss-button__modal__subs__offer" onClick={handleDismiss}>
             No thanks, I'll pay ₹99 later 😔
           </button>
         </div>
