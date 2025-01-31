@@ -124,6 +124,7 @@ import StudyPlanPage from "./Personalized study plan/StudyPlanPage";
 import TodayAiOverview from "./Personalized study plan/TodayOverview";
 import Music from "./music/Music";
 import PaymentComponent from "./premium/SubscriptionPage";
+import Leaderboard2 from "./streaks/leaderboard2.0";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -175,7 +176,7 @@ const router = createBrowserRouter([
   {path: '/notes/view', element: <ViewFlashCard/>},
   {path: '/notes/create', element: <CreateFlashcard/>},
   {path: '/quiz/guide', element: <QuizGuidePage/>},
-  {path: '/leaderboard', element: <Leaderboard/>},
+  {path: '/leaderboard', element: <Leaderboard2/>},
   {path: '/flashcard', element: <FlashcardLibraryPage/>},
   {path: '/flashcard/set/:id', element: <FlashcardSetPage/>},
   {path: '/create/flashcard', element: <CreateFlashcardSet/>},
