@@ -102,8 +102,9 @@ const PaymentComponentModal = () => {
   if (!showModal) return null; 
 
   return (
-    <div className="overlay__modal__subs__offer">
+    <div className="overlay__modal__subs__offer">\
       <div className="subscription-card__modal__subs__offer">
+      <button className="modal__offer__subs__close__btn">x</button>
         <h2 className="subscription-title__modal__subs__offer">
           One-Time Exclusive Offer!
         </h2>

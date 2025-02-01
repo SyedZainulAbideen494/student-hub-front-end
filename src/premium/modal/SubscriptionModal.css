@@ -111,3 +111,19 @@
 .dismiss-button__modal__subs__offer:hover {
     color: #000; /* Darker text on hover */
 }
+
+.modal__offer__subs__close__btn {
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .modal__offer__subs__close__btn:hover {
+    color: #000;
+  }
+  
