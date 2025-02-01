@@ -22,7 +22,7 @@ const PaymentComponentModal = () => {
       localStorage.setItem("firstSignInTime", Date.now());
     } else {
       const elapsedTime = Date.now() - parseInt(firstSignInTime, 10);
-      const fiveMinutes = 1 * 60 * 1000; // Change back to 5 * 60 * 1000 for 5 minutes
+      const fiveMinutes = 30 * 60 * 1000; // Change back to 5 * 60 * 1000 for 5 minutes
 
       if (elapsedTime < fiveMinutes) {
         return; // Don't show the modal yet
