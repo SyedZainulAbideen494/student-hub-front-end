@@ -125,7 +125,10 @@ import TodayAiOverview from "./Personalized study plan/TodayOverview";
 import Music from "./music/Music";
 import PaymentComponent from "./premium/SubscriptionPage";
 import Leaderboard2 from "./streaks/leaderboard2.0";
-
+import GenerateQuestion from "./question paper/main-question";
+import ViewQuestionPaper from "./question paper/ViewQuestionPaper";
+import AllQuestionPapers from "./question paper/all-paper";
+import TypewriterLoader from "./question paper/TypewriterLoader";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -240,6 +243,10 @@ const router = createBrowserRouter([
   {path: '/create/notes/page', element: <CreateNotesPageChoice/>},
   {path: '/yt/vid/download', element: <AudioToNotes/>},
   {path: '/my-ai-plan', element: <TodayAiOverview/>},
+  {path: '/question-paper-generator', element: <GenerateQuestion/>},
+  {path: '/view-paper/:id', element: <ViewQuestionPaper/>},
+  {path: '/all-papers', element: <AllQuestionPapers/>},
+  {path: '/type-writter-loader', element: <TypewriterLoader/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

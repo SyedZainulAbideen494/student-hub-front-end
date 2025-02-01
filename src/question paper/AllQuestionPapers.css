@@ -1,0 +1,89 @@
+/* AllQuestionPapers.css */
+
+.all__question__paper__generated__Ai {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #ffffff;  /* Clean white background for minimal design */
+    color: #333;
+    padding: 30px;
+    border-radius: 20px;  /* Soft rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light, soft shadow */
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 100px;
+  }
+  
+  .title__all__question__paper__generated__Ai {
+    font-size: 36px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .no__papers__all__question__paper__generated__Ai {
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 30px;
+  }
+  
+  .paper__card__all__question__paper__generated__Ai {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;  /* Light border for minimalism */
+    border-radius: 15px;  /* Rounded edges for a softer feel */
+    padding: 18px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05); /* Soft floating effect */
+  }
+  
+  .paper__card__all__question__paper__generated__Ai:hover {
+    transform: translateY(-4px);  /* Slight lift on hover */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Deepen shadow on hover */
+  }
+  
+  .paper__card__all__question__paper__generated__Ai:active {
+    transform: translateY(-2px);  /* Slight press effect on click */
+  }
+  
+  .subject__all__question__paper__generated__Ai {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  
+  .board__all__question__paper__generated__Ai {
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  
+  @media (max-width: 768px) {
+    .all__question__paper__generated__Ai {
+      padding: 20px;
+    }
+  
+    .title__all__question__paper__generated__Ai {
+      font-size: 23px;
+      margin-bottom: 20px;
+    }
+  
+    .paper__card__all__question__paper__generated__Ai {
+      padding: 16px;
+    }
+  
+    .subject__all__question__paper__generated__Ai {
+      font-size: 20px;
+    }
+  
+    .board__all__question__paper__generated__Ai {
+      font-size: 12px;
+    }
+  }
+  

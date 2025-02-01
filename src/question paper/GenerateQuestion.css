@@ -1,0 +1,194 @@
+/* General Page Styling */
+.generate__Ai__Question__paper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-bottom: 100px;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Floating Card Container */
+.card__generate__Ai__Question__paper {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 80vh;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Title */
+.title__generate__Ai__Question__paper {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Input Fields */
+.input__generate__Ai__Question__paper {
+    width: 90%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-size: 16px;
+    background: #ffffff;
+    outline: none;
+    transition: border 0.3s ease, background 0.3s ease;
+}
+
+.input__generate__Ai__Question__paper:focus {
+    border: 1px solid #007aff;
+    background: white;
+}
+
+/* Generate Button */
+.button__generate__Ai__Question__paper {
+    width: 100%;
+    padding: 14px;
+    background: #00a8e8;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.button__generate__Ai__Question__paper:disabled {
+    background: #c5d1ff;
+    cursor: not-allowed;
+}
+
+.button__generate__Ai__Question__paper:hover {
+    background: #005ecb;
+}
+
+.button__generate__Ai__Question__paper:active {
+    transform: scale(0.98);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.button__generate__Ai__Question__paper.loading {
+    background: #005ecb;
+    pointer-events: none;
+}
+
+.button__generate__Ai__Question__paper.loading::after {
+    content: '...';
+    animation: dots__generate__Ai__Question__paper 1s infinite steps(3);
+}
+
+@keyframes dots__generate__Ai__Question__paper {
+    0% { content: ''; }
+    33% { content: '.'; }
+    66% { content: '..'; }
+    100% { content: '...'; }
+}
+
+/* Chapters Input and Button */
+.chapters__generate__Ai__Question__paper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.add-chapter__generate__Ai__Question__paper {
+    background: #007aff;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    transition: background 0.3s ease;
+}
+
+.add-chapter__generate__Ai__Question__paper:disabled {
+    background: #c5d1ff;
+    cursor: not-allowed;
+}
+
+.add-chapter__generate__Ai__Question__paper:hover {
+    background: #005ecb;
+}
+
+/* Chapters List */
+.chapters-list__generate__Ai__Question__paper {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.chapter-item__generate__Ai__Question__paper {
+    display: flex;
+    justify-content: space-between;
+    background: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.chapter-item__generate__Ai__Question__paper:hover {
+    background: #eef1ff;
+}
+
+.remove-chapter__generate__Ai__Question__paper {
+    cursor: pointer;
+    color: #ff3b30;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.remove-chapter__generate__Ai__Question__paper:hover {
+    text-decoration: underline;
+}
+
+
+/* Tooltip Style */
+.question-icon__generate__Ai__Question__paper {
+    position: relative;
+    font-size: 24px;
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  .tooltip__generate__Ai__Question__paper {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #fff;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #333;
+    border-radius: 25px;
+  }
+  
+  .tooltip__generate__Ai__Question__paper p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  /* Additional Styling (optional) */
+  .question-icon__generate__Ai__Question__paper:hover {
+    color: #0056b3;
+  }
+  

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -99,12 +99,12 @@ const FooterNav = () => {
                         <span className="btn-label">leaderboard</span>
                     </button>
                 </Link>
-                <Link to='/insta-story' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
-                        <FaChartLine className="icon-footer-nav" />
-                        <span className="btn-label">My stats</span>
-                    </button>
-                </Link>
+                <Link to='/question-paper-generator' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/question-paper-generator' ? 'active' : ''}`}>
+        <FaRegClipboard className="icon-footer-nav" /> {/* Icon for generating a practice question paper */}
+        <span className="btn-label">Generate Practice Paper</span> {/* Button label */}
+    </button>
+</Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaBook className="icon-footer-nav" />

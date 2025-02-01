@@ -1,0 +1,74 @@
+/* ViewQuestionPaper.css */
+
+/* General Styles */
+.paper__question__paper__generated__ai__view {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+  }
+  
+  .title__question__paper__generated__ai__view {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .board__question__paper__generated__ai__view {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .questions__question__paper__generated__ai__view {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  /* Loading and Error Messages */
+  .loading__question__paper__generated__ai__view,
+  .error__question__paper__generated__ai__view {
+    font-size: 1.2rem;
+    color: #f44336;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsiveness for smaller devices */
+  @media (max-width: 768px) {
+    .paper__question__paper__generated__ai__view {
+      padding: 15px;
+      margin: 10px;
+    }
+  
+    .title__question__paper__generated__ai__view {
+      font-size: 1.8rem;
+    }
+  
+    .board__question__paper__generated__ai__view {
+      font-size: 1rem;
+    }
+  
+    .questions__question__paper__generated__ai__view {
+      font-size: 0.95rem;
+    }
+  }
+  
+  .back__btn__question__paper__generated__ai__view {
+    background-color: #fff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+  }
