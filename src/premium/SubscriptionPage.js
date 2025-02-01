@@ -13,8 +13,7 @@ const PaymentComponent = () => {
   const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
   const [isPremium, setIsPremium] = useState(null);
   const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
-  const nav = useNavigate()
-  
+  const nav = useNavigate();
   
   const handlePayment = async () => {
     try {
@@ -60,7 +59,7 @@ const PaymentComponent = () => {
             alert('Payment verification failed!');
           }
         },
-        theme: { color: '#030303' },
+        theme: { color: '#000000' },
       };
   
       const razorpayInstance = new window.Razorpay(options);
@@ -69,7 +68,6 @@ const PaymentComponent = () => {
       console.error('Error initiating payment', error);
     }
   };
-  
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -102,100 +100,93 @@ const PaymentComponent = () => {
     return `${hours}h ${minutes}m ${seconds}s`;
   };
 
-  const handlePlanChange = (selectedDuration, selectedAmount) => {
-    setDuration(selectedDuration);
-    setAmount(selectedAmount);
+  const getButtonLabel = () => {
+    if (duration === 'weekly') return 'Get Premium for 1 Week';
+    if (duration === 'monthly') return 'Get Premium for 1 Month';
+    if (duration === '6months') return 'Get Premium for 6 Months';
+    return 'Get Premium';
   };
-  
-  // Use useEffect to trigger payment once duration updates
-  useEffect(() => {
-    if (duration) {
-      handlePayment();
-    }
-  }, [duration]); // Runs when `duration` changes
-  
 
   return (
-<div className="subscription-card">
-  <h2 className="subscription-title">
-    Upgrade to Premium <FaCrown className="crown-icon" />
-  </h2>
-  <p className="subscription-description">
-    Unlock exclusive features and elevate your learning experience.
-  </p>
+    <div className="subscription-card">
+      <h2 className="subscription-title">
+        Upgrade to Premium <FaCrown className="crown-icon" />
+      </h2>
+      <p className="subscription-description">
+        Unlock exclusive features and elevate your learning experience.
+      </p>
 
-
-{showPremium &&
-      (isPremium ? (
-        <p className="subscription-no-action">
-        
-        </p>
-      ) : (
-        <div className="subscription-plan__subs_plan__selector">
+      {/* Plan Selection */}
+      <div className="subscription-plan__subs_plan__selector">
         <button
-  className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
-  onClick={() => handlePlanChange('weekly', 39)}
->
-  ₹39 / Week
-</button>
-<button
-  className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
-  onClick={() => handlePlanChange('monthly', 99)}
->
-  ₹99 / Month
-</button>
-<button
-  className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
-  onClick={() => handlePlanChange('6months', 499)}
->
-  ₹499 /<br /> 6 Months
-</button>
-
-        </div>
-      ))}
-
-
-  <div className="subscription-button-container">
-    {showPremium &&
-      (isPremium ? (
-        <p className="subscription-no-action">
-          You have Premium <FaCrown className="crown-icon-small" />
-        </p>
-      ) : (
-        <button className="subscription-action" onClick={handlePayment}>
-          Get Premium <FaCrown className="crown-icon-small" />
+          className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
+          onClick={() => {
+            setDuration('weekly');
+            setAmount(39);
+          }}
+        >
+          ₹39 / Week
         </button>
-      ))}
-  </div>
+        <button
+          className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
+          onClick={() => {
+            setDuration('monthly');
+            setAmount(99);
+          }}
+        >
+          ₹99 / Month
+        </button>
+        <button
+          className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
+          onClick={() => {
+            setDuration('6months');
+            setAmount(499);
+          }}
+        >
+          ₹499 /<br /> 6 Months
+        </button>
+      </div>
 
-  <ul className="subscription-features">
-    {[
-      "Unlimited study plans",
-      "Unlimited Magic AI generations",
-      "Unlimited note creation options",
-      "Unlimited PDF to notes",
-      "Unlimited AI notes creation",
-      "Unlock AI tasks plan generator",
-      "Get daily tips on study plan",
-      "Unlimited AI quizzes creation",
-      "Unlimited AI flashcards creation",
-      "Unlimited PDF to flashcards",
-      "Unlimited PDF to quizzes",
-      "Notes to Quizzes",
-      "Notes to Flashcards",
-      "AI explanation on flashcards",
-    ].map((feature, index) => (
-      <li className="subscription-feature" key={index}>
-        <span>
-          <i className="fa fa-check-circle check-icon"></i> {feature}
-        </span>
-      </li>
-    ))}
-  </ul>
+      <div className="subscription-button-container">
+        {showPremium &&
+          (isPremium ? (
+            <p className="subscription-no-action">
+              You have Premium <FaCrown className="crown-icon-small" />
+            </p>
+          ) : (
+            <button className="subscription-action" onClick={handlePayment}>
+              {getButtonLabel()} <FaCrown className="crown-icon-small" />
+            </button>
+          ))}
+      </div>
 
-  <FooterNav />
-</div>
+      <ul className="subscription-features">
+        {[
+          "Unlimited study plans",
+          "Unlimited Magic AI generations",
+          "Unlimited note creation options",
+          "Unlimited PDF to notes",
+          "Unlimited AI notes creation",
+          "Unlock AI tasks plan generator",
+          "Get daily tips on study plan",
+          "Unlimited AI quizzes creation",
+          "Unlimited AI flashcards creation",
+          "Unlimited PDF to flashcards",
+          "Unlimited PDF to quizzes",
+          "Notes to Quizzes",
+          "Notes to Flashcards",
+          "AI explanation on flashcards",
+        ].map((feature, index) => (
+          <li className="subscription-feature" key={index}>
+            <span>
+              <i className="fa fa-check-circle check-icon"></i> {feature}
+            </span>
+          </li>
+        ))}
+      </ul>
 
+      <FooterNav />
+    </div>
   );
 };
 
