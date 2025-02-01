@@ -155,7 +155,7 @@ const GenerateQuestion = () => {
         {/* Grade */}
         <input
           className="input__generate__Ai__Question__paper"
-          placeholder="Grade"
+          placeholder="Grade eg(10th grade)"
           value={grade}
           onChange={e => setGrade(e.target.value)}
         />
