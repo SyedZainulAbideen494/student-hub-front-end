@@ -175,6 +175,7 @@ const PaymentComponent = () => {
           "Unlimited PDF to quizzes",
           "Notes to Quizzes",
           "Notes to Flashcards",
+          "Generate AI practice question papers",
           "AI explanation on flashcards",
         ].map((feature, index) => (
           <li className="subscription-feature" key={index}>
