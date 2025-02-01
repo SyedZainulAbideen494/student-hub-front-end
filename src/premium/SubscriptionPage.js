@@ -102,6 +102,18 @@ const PaymentComponent = () => {
     return `${hours}h ${minutes}m ${seconds}s`;
   };
 
+  const handlePlanChange = (selectedDuration, selectedAmount) => {
+    setDuration(selectedDuration);
+    setAmount(selectedAmount);
+  };
+  
+  // Use useEffect to trigger payment once duration updates
+  useEffect(() => {
+    if (duration) {
+      handlePayment();
+    }
+  }, [duration]); // Runs when `duration` changes
+  
 
   return (
 <div className="subscription-card">
@@ -112,36 +124,35 @@ const PaymentComponent = () => {
     Unlock exclusive features and elevate your learning experience.
   </p>
 
- {/* Plan Selection */}
-<div className="subscription-plan__subs_plan__selector">
-  <button
-    className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
-    onClick={() => {
-      setDuration('weekly');
-      setAmount(39);
-    }}
-  >
-    ₹39 / Week
-  </button>
-  <button
-    className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
-    onClick={() => {
-      setDuration('monthly');
-      setAmount(99);
-    }}
-  >
-    ₹99 / Month
-  </button>
-  <button
-    className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
-    onClick={() => {
-      setDuration('6months');
-      setAmount(499);
-    }}
-  >
-    ₹499 /<br /> 6 Months
-  </button>
-</div>
+
+{showPremium &&
+      (isPremium ? (
+        <p className="subscription-no-action">
+        
+        </p>
+      ) : (
+        <div className="subscription-plan__subs_plan__selector">
+        <button
+  className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
+  onClick={() => handlePlanChange('weekly', 39)}
+>
+  ₹39 / Week
+</button>
+<button
+  className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
+  onClick={() => handlePlanChange('monthly', 99)}
+>
+  ₹99 / Month
+</button>
+<button
+  className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
+  onClick={() => handlePlanChange('6months', 499)}
+>
+  ₹499 /<br /> 6 Months
+</button>
+
+        </div>
+      ))}
 
 
   <div className="subscription-button-container">
