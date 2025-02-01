@@ -7,6 +7,8 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import axios from 'axios';
 import LoadingSpinner from '../app_modules/LoadingSpinner';
 import { FaTrash } from 'react-icons/fa';
+import AIExplanationModal from './AiExplainModal';
+import UpgradeModal from '../premium/UpgradeModal';
 
 const FlashcardSetPage = () => {
   const { id } = useParams();
@@ -41,6 +43,38 @@ const FlashcardSetPage = () => {
   const [selectedOption, setSelectedOption] = useState('ai'); // default value can be '' or any initial option
   const [pdfFile, setPdfFile] = useState(null); // To store the selected PDF file
   const [errorMessage, setErrorMessage] = useState(''); // State for error message
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loadingAnswer, setLoadingAnser] = useState(false);
+  const [explanation, setExplanation] = useState("");
+  const [isPremium, setIsPremium] = useState(null);
+  const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add state
+
+
+  const handleSparkleClick = async (flashcard) => {
+    setIsModalOpen(true); // Open the modal
+    setLoadingAnser(true);
+
+    try {
+      const response = await fetch(API_ROUTES.aiExplanFlashcard, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          question: flashcard.question,
+          answer: flashcard.answer,
+        }),
+      });
+
+      const data = await response.json();
+
+      setExplanation(data.explanation);
+    } catch (error) {
+      console.error("Error fetching AI explanation:", error);
+    } finally {
+      setLoadingAnser(false);
+    }
+  };
 
   const toggleMenu = (id) => {
     setMenuVisible((prev) => ({
@@ -332,6 +366,10 @@ const deleteFlashcardSet = async () => {
   }
 };
 
+const handleOpenUpgrade = () => {
+  setIsUpgradeModalOpen(true)
+}
+
 const updateFlashcardStatus = async (flashcardId, status) => {
   try {
     const response = await fetch(`${API_ROUTES.updateFlashcardStatus}/${flashcardId}`, {
@@ -362,6 +400,22 @@ const updateFlashcardStatus = async (flashcardId, status) => {
   }
 };
 
+const SparkleIcon = () => (
+  <svg height="24" width="24" fill="#9b4d96" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" className="sparkle">
+    <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+  </svg>
+);
+
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+      .then(response => setIsPremium(response.data.premium))
+      .catch(() => setIsPremium(false));
+  } else {
+    setIsPremium(false);
+  }
+}, []);
 
 
   // Return the loading state unconditionally
@@ -485,13 +539,10 @@ if (loading) {
             {/* Question and Options (Three Dots) */}
             <div>
               <h4 className="flashcard__set__page__question">{flashcard.question}</h4>
-          
+
               {/* Top right menu (3 dots) */}
               <div className="flashcard__set__page__options">
-                <button
-                  className="flashcard__set__page__menu-button"
-                  onClick={() => toggleMenu(flashcard.id)}
-                >
+                <button className="flashcard__set__page__menu-button" onClick={() => toggleMenu(flashcard.id)}>
                   <i className="fas fa-ellipsis-v"></i>
                 </button>
                 {menuVisible[flashcard.id] && (
@@ -499,33 +550,53 @@ if (loading) {
                     <button onClick={() => deleteFlashcard(flashcard.id)}>
                       <i className="fas fa-trash"></i> Delete
                     </button>
-                    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Know')}>
+                    <button onClick={() => updateFlashcardStatus(flashcard.id, "I Know")}>
                       <i className="fas fa-check"></i> Mark as I Know
                     </button>
-                    <button onClick={() => updateFlashcardStatus(flashcard.id, 'I Don\'t Know')}>
-                      <i className="fas fa-times"></i> Mark as I Don\'t Know
+                    <button onClick={() => updateFlashcardStatus(flashcard.id, "I Don't Know")}>
+                      <i className="fas fa-times"></i> Mark as I Don't Know
                     </button>
                   </div>
                 )}
               </div>
+              
             </div>
-          
+
             {/* Flashcard Answer */}
-            <div
-              ref={(el) => (answerRefs.current[flashcard.id] = el)}
-              className="flashcard__set__page__answer"
-            >
+            <div ref={(el) => (answerRefs.current[flashcard.id] = el)} className="flashcard__set__page__answer">
               {flashcard.answer}
             </div>
-          
+            {isPremium ? (
+       <button className="flashcard__set__page__ai-explain-btn" onClick={() => handleSparkleClick(flashcard)}>
+       <SparkleIcon className="ai-explain-flashcard-icon" /> AI Explain
+       </button>
+    ) : (
+      <button className="flashcard__set__page__ai-explain-btn" onClick={handleOpenUpgrade}>
+      <SparkleIcon className="ai-explain-flashcard-icon" /> AI Explain
+    </button>
+
+    )}
+           
+
             {/* Status Section */}
             <div className="flashcard__set__page__status">
-              <strong>Status:</strong> {flashcard.status || 'No Status Available'}
+              <strong>Status:</strong> {flashcard.status || "No Status Available"}
             </div>
           </div>
           
           ))
         )}
+     <AIExplanationModal 
+  isOpen={isModalOpen} 
+  onClose={() => {
+    setIsModalOpen(false);
+    setExplanation(""); // Clear previous explanation on close
+  }} 
+  explanation={explanation} 
+  loading={loadingAnswer} 
+  setExplanation={setExplanation} 
+/>
+
       </div>
     
       {/* + Button */}
@@ -723,6 +794,11 @@ if (loading) {
     </div>
 </div>
       )}
+        <UpgradeModal 
+        message="You are not a premium member. Upgrade to Premium to access this feature." 
+        isOpen={isUpgradeModalOpen} 
+        onClose={() => setIsUpgradeModalOpen(false)} 
+      />
     </div>
   );
 };

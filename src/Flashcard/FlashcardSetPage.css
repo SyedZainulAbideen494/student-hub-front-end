@@ -792,3 +792,32 @@
 .flashcard__set__page__search-input:hover {
   border-color: #cccccc; /* Light border highlight on hover */
 }
+
+/* AI Explain Button */
+.flashcard__set__page__ai-explain-btn {
+  margin-top: 10px;
+  background: #ffffff;  /* Green color */
+  color: black;
+  border: 1.5px solid #007bff;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;  /* Spacing between icon and text */
+  transition: background 0.3s ease;
+}
+
+
+/* Button Click (Active) Effect */
+.flashcard__set__page__ai-explain-btn:active {
+  background: #3e8e41;
+}
+
+/* Button Focus (for accessibility) */
+.flashcard__set__page__ai-explain-btn:focus {
+  outline: 2px solid #2e7d32;
+}
