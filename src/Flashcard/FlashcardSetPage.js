@@ -652,10 +652,11 @@ if (loading) {
           onChange={(e) => setAiTopic(e.target.value)}
           className="flashcard-input__manual__flashcard__form"
         />
+         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '20px' }}>
         <button
           className="flashcard__set__page__modal-generate btn__set__page__buttons"
           onClick={generateFlashcards}
-          disabled={isGenerating || !aiSubject || !aiTopic}
+          disabled={isGenerating}
         >
           <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
             <svg
@@ -674,6 +675,7 @@ if (loading) {
             </span>
           </div>
         </button>
+        </div>
       </div>
     )}
 
@@ -707,48 +709,82 @@ if (loading) {
     {/* PDF Option */}
 {selectedOption === 'pdf' && (
   <div>
- <label htmlFor="pdf-upload" className="pdf-upload-label">
-        Upload PDF
-      </label>
-      <input
-        id="pdf-upload"
-        type="file"
-        accept=".pdf"
-        onChange={handleFileChange}
-        className="flashcard-input__manual__flashcard__form"
-        style={{ marginBottom: '30px' }}
-      />
-      
-      {/* Display the selected file name */}
-      {pdfFile && (
-        <div className="selected-file">
-          <p>Selected File: {pdfFile.name}</p>
-        </div>
-      )}
+    {isPremium ? (
+         <div className="pdf-upload-container">
+         <label htmlFor="pdf-upload" className="pdf-upload-label">
+           <span>📄 Upload PDF</span>
+         </label>
+         <input
+           id="pdf-upload"
+           type="file"
+           accept=".pdf"
+           onChange={handleFileChange}
+           className="flashcard-input__manual__flashcard__form"
+         />
+         
+         {/* Display the selected file name */}
+         {pdfFile && (
+           <div className="selected-file">
+             <p>📂 Selected File: <strong>{pdfFile.name}</strong></p>
+           </div>
+         )}
+       </div>
+       
+  ) : (
+    <p
+    style={{
+      color: '#222', // Deep grey for a premium look
+      fontSize: '16px',
+      fontWeight: '500',
+      marginTop: '12px',
+      padding: '12px 18px',
+      backgroundColor: '#f9f9f9', // Light grey Apple-like theme
+      borderRadius: '10px',
+      textAlign: 'center',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)', // Soft shadow for depth
+      border: '1px solid #e0e0e0', // Subtle premium border
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '8px',
+      maxWidth: '300px', // Keeps it compact and elegant
+      margin: 'auto', // Centers it
+      fontFamily: "'SF Pro Display', sans-serif", // Apple-style font
+    }}
+  >
+    <span style={{ fontSize: '18px' }}>👑</span>
+    <span>Upgrade to Premium for PDF Flashcards</span>
+  </p>
+  
+  )}
+ 
   <br/><br/>  <br/><br/>
 
-    <button
-      className="flashcard__set__page__modal-generate btn__set__page__buttons"
-      onClick={generateFlashcardsFromPDF}
-      disabled={isGenerating || !pdfFile}
-    >
-      <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
-        <svg
-          height="24"
-          width="24"
-          fill="#FFFFFF"
-          viewBox="0 0 24 24"
-          data-name="Layer 1"
-          id="Layer_1"
-          className="sparkle__set__page__buttons"
-        >
-          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-        </svg>
-        <span className="text__set__page__buttons">
-          {isGenerating ? 'Generating...' : 'Generate from PDF'}
-        </span>
-      </div>
-    </button>
+  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '20px' }}>
+  <button
+    className="flashcard__set__page__modal-generate btn__set__page__buttons"
+    onClick={generateFlashcardsFromPDF}
+    disabled={isGenerating}
+  >
+    <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+      <svg
+        height="24"
+        width="24"
+        fill="#FFFFFF"
+        viewBox="0 0 24 24"
+        data-name="Layer 1"
+        id="Layer_1"
+        className="sparkle__set__page__buttons"
+      >
+        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+      </svg>
+      <span className="text__set__page__buttons">
+        {isGenerating ? 'Generating...' : 'Generate from PDF'}
+      </span>
+    </div>
+  </button>
+</div>
+
     {errorMessage && (
       <div className="error-message">
         <p>{errorMessage}</p>

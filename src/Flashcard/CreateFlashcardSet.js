@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CreateFlashcardSet.css'; // Importing the CSS styles
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import axios from 'axios';
 
 const CreateFlashcardSet = () => {
   const [setName, setSetName] = useState('');
@@ -9,7 +10,9 @@ const CreateFlashcardSet = () => {
   const [topic, setTopic] = useState('');
   const [selectedFile, setSelectedFile] = useState(null); // State for selected PDF file
   const [isGenerating, setIsGenerating] = useState(false); // State for handling loading while generating
+    const [isPremium, setIsPremium] = useState(null);
   const nav = useNavigate();
+
 
   const createSet = async () => {
     const token = localStorage.getItem('token'); // Get the token from local storage
@@ -78,7 +81,17 @@ const CreateFlashcardSet = () => {
       setIsGenerating(false); // Hide loading indicator
     }
   };
-  
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+        .then(response => setIsPremium(response.data.premium))
+        .catch(() => setIsPremium(false));
+    } else {
+      setIsPremium(false);
+    }
+  }, []);
 
   // Check if all fields are filled
   const isManualButtonDisabled = !setName || !subject || !topic;
@@ -139,37 +152,69 @@ const CreateFlashcardSet = () => {
         <div className="pdf-upload-container__create__flashcard__Set__Page">
           <p>Or generate flashcards using a PDF file:</p>
           <div style={{ margin: "15px 0", textAlign: "center" }}>
-  <label
-    htmlFor="file-upload"
+          {isPremium ? (
+            <div>
+     <label
+     htmlFor="file-upload"
+     style={{
+       display: "inline-block",
+       backgroundColor: "#007bff",
+       color: "#fff",
+       padding: "10px 20px",
+       borderRadius: "5px",
+       cursor: "pointer",
+       fontSize: "0.9rem",
+       fontWeight: "500",
+       textAlign: "center",
+       transition: "background-color 0.3s ease",
+     }}
+     onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
+     onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
+   >
+     Select File
+   </label>
+   <input
+     id="file-upload"
+     type="file"
+     onChange={(e) => setSelectedFile(e.target.files[0])}
+     style={{
+       position: "absolute",
+       opacity: 0,
+       width: 0,
+       height: 0,
+       zIndex: -1,
+     }}
+   />
+   </div>
+  ) : (
+    <p
     style={{
-      display: "inline-block",
-      backgroundColor: "#007bff",
-      color: "#fff",
-      padding: "10px 20px",
-      borderRadius: "5px",
-      cursor: "pointer",
-      fontSize: "0.9rem",
-      fontWeight: "500",
-      textAlign: "center",
-      transition: "background-color 0.3s ease",
+      color: '#222', // Deep grey for a premium look
+      fontSize: '16px',
+      fontWeight: '500',
+      marginTop: '12px',
+      padding: '12px 18px',
+      backgroundColor: '#f9f9f9', // Light grey Apple-like theme
+      borderRadius: '10px',
+      textAlign: 'center',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)', // Soft shadow for depth
+      border: '1px solid #e0e0e0', // Subtle premium border
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '8px',
+      maxWidth: '300px', // Keeps it compact and elegant
+      margin: 'auto', // Centers it
+      fontFamily: "'SF Pro Display', sans-serif", // Apple-style font
     }}
-    onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-    onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
   >
-    Select File
-  </label>
-  <input
-    id="file-upload"
-    type="file"
-    onChange={(e) => setSelectedFile(e.target.files[0])}
-    style={{
-      position: "absolute",
-      opacity: 0,
-      width: 0,
-      height: 0,
-      zIndex: -1,
-    }}
-  />
+    <span style={{ fontSize: '18px' }}>👑</span>
+    <span>Upgrade to Premium for PDF Flashcards</span>
+  </p>
+  
+  )}
+
+
   {selectedFile && (
     <div
       style={{
