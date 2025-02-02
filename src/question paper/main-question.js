@@ -201,13 +201,9 @@ const GenerateQuestion = () => {
     {loading ? 'Generating...' : 'Generate'}
   </button>
 ) : (
-  <button
-    className={`button__generate__Ai__Question__paper ${loading ? 'loading' : ''}`}
-    onClick={generateQuestionPaper}
-    disabled={loading || chapters.length === 0}
-  >
-    {loading ? 'Generating...' : 'Generate'}
-  </button>
+<button className="button__generate__Ai__Question__paper" disabled>
+  <FaLock className="lock-icon" /><span>Premium</span>
+</button>
 )}
 
         {/* Button to View Previously Generated Papers */}
