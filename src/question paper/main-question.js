@@ -211,7 +211,7 @@ const GenerateQuestion = () => {
           className="button__generate__Ai__Question__paper"
           onClick={() => navigate('/all-papers')}
         >
-          View Previous Papers
+          View Generated Papers
         </button>
         <button
           className="button__generate__Ai__Question__paper"
