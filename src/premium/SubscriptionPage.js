@@ -185,6 +185,9 @@ const PaymentComponent = () => {
           </li>
         ))}
       </ul>
+      <div className="why-premium">
+  <p>Say goodbye to multiple subscriptions. Get everything you need for studying with a single, all-in-one Edusify Premium subscription — saving you both time and money.</p>
+</div>
 
       <FooterNav />
     </div>

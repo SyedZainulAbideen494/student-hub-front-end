@@ -165,3 +165,33 @@
     padding: 6px 10px;
   }
 }
+
+.why-premium {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 25px;
+  border: 1px solid #333;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.why-premium h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c1c1e;
+  margin-bottom: 8px;
+}
+
+.why-premium p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .why-premium p {
+    font-size: 12px;
+  }
+}
