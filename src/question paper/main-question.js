@@ -215,7 +215,7 @@ const GenerateQuestion = () => {
         </button>
         <button
           className="button__generate__Ai__Question__paper"
-          onClick={() => navigate('/view-paper/4')}
+          onClick={() => navigate('/view-paper-example/4')}
         >
           View Example Paper
         </button>

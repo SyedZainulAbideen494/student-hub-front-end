@@ -130,6 +130,7 @@ import ViewQuestionPaper from "./question paper/ViewQuestionPaper";
 import AllQuestionPapers from "./question paper/all-paper";
 import TypewriterLoader from "./question paper/TypewriterLoader";
 import VoiceAssistant from "./voice assistant/voice assistant";
+import ViewQuestionPaperExample from "./question paper/ViewQuestionPaper copy";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -246,6 +247,7 @@ const router = createBrowserRouter([
   {path: '/my-ai-plan', element: <TodayAiOverview/>},
   {path: '/question-paper-generator', element: <GenerateQuestion/>},
   {path: '/view-paper/:id', element: <ViewQuestionPaper/>},
+  {path: '/view-paper-example/:id', element: <ViewQuestionPaperExample/>},
   {path: '/all-papers', element: <AllQuestionPapers/>},
   {path: '/type-writter-loader', element: <TypewriterLoader/>},
   {path: '/voice-assistant', element: <VoiceAssistant/>},
