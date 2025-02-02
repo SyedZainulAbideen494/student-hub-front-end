@@ -217,14 +217,24 @@ const GenerateQuestion = () => {
     {loading ? 'Generating...' : 'Generate'}
   </button>
 ) : (
-<button
-  className={`button__generate__Ai__Question__paper ${paperCount > 1 ? 'disabled' : ''}`}
-  onClick={paperCount <= 1 ? generateQuestionPaper : undefined}
-  disabled={loading || chapters.length === 0 || paperCount > 1}
->
-  {loading ? 'Generating...' : paperCount > 1 ? 'Get Premium' : 'Generate'}
-</button>
+  paperCount > 1 ? (
+    <button
+      className="button__generate__Ai__Question__paper"
+      onClick={() => navigate('/subscription')}
+    >
+      Get Premium
+    </button>
+  ) : (
+    <button
+      className={`button__generate__Ai__Question__paper ${loading ? 'loading' : ''}`}
+      onClick={generateQuestionPaper}
+      disabled={loading || chapters.length === 0}
+    >
+      {loading ? 'Generating...' : 'Generate'}
+    </button>
+  )
 )}
+
 
 
         {/* Button to View Previously Generated Papers */}
