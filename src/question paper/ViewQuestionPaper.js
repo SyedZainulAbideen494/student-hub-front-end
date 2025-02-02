@@ -9,6 +9,7 @@ const ViewQuestionPaper = () => {
   const { id } = useParams();
   const [paper, setPaper] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showAnswers, setShowAnswers] = useState(false); // State for toggling answers
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const ViewQuestionPaper = () => {
   if (!paper) return <p className="error__question__paper__generated__ai__view">Question paper not found.</p>;
 
   const handleBack = () => navigate('/all-papers');
+  const toggleAnswers = () => setShowAnswers(prevState => !prevState);
 
   return (
     <div className="paper__question__paper__generated__ai__view">
@@ -42,9 +44,21 @@ const ViewQuestionPaper = () => {
       </button>
       <h1 className="title__question__paper__generated__ai__view">{paper.subject} (Grade {paper.grade})</h1>
       <p className="board__question__paper__generated__ai__view"><b>Board:</b> {paper.board}</p>
-      <div className="questions__question__paper__generated__ai__view" dangerouslySetInnerHTML={{ __html: paper.questions }} />
-    <h2>Answers</h2>
-      <div className="questions__question__paper__generated__ai__view" dangerouslySetInnerHTML={{ __html: paper.answers }} /></div>
+
+      {/* Toggle Button */}
+      <button className="toggle-btn" onClick={toggleAnswers}>
+        {showAnswers ? 'Show Questions' : 'Show Answers'}
+      </button>
+
+      {/* Conditionally render questions or answers */}
+      <div className="questions__question__paper__generated__ai__view">
+        {showAnswers ? (
+          <div dangerouslySetInnerHTML={{ __html: paper.answers }} />
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: paper.questions }} />
+        )}
+      </div>
+    </div>
   );
 };
 
