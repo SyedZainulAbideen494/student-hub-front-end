@@ -153,39 +153,47 @@ const CreateFlashcardSet = () => {
           <p>Or generate flashcards using a PDF file:</p>
           <div style={{ margin: "15px 0", textAlign: "center" }}>
           {isPremium ? (
-            <div>
-     <label
-     htmlFor="file-upload"
-     style={{
-       display: "inline-block",
-       backgroundColor: "#007bff",
-       color: "#fff",
-       padding: "10px 20px",
-       borderRadius: "5px",
-       cursor: "pointer",
-       fontSize: "0.9rem",
-       fontWeight: "500",
-       textAlign: "center",
-       transition: "background-color 0.3s ease",
-     }}
-     onMouseOver={(e) => (e.target.style.backgroundColor = "#0056b3")}
-     onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
-   >
-     Select File
-   </label>
-   <input
-     id="file-upload"
-     type="file"
-     onChange={(e) => setSelectedFile(e.target.files[0])}
-     style={{
-       position: "absolute",
-       opacity: 0,
-       width: 0,
-       height: 0,
-       zIndex: -1,
-     }}
-   />
-   </div>
+          <div>
+          <label
+            htmlFor="file-upload"
+            style={{
+              display: "inline-block",
+              backgroundColor: "#1c1c1e",
+              color: "#fff",
+              padding: "12px 24px",
+              borderRadius: "30px",
+              cursor: "pointer",
+              fontSize: "1rem",
+              fontWeight: "600",
+              textAlign: "center",
+              transition: "background-color 0.3s ease, transform 0.2s ease",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
+            onMouseOver={(e) => {
+              e.target.style.backgroundColor = "#333";
+              e.target.style.transform = "scale(1.05)";
+            }}
+            onMouseOut={(e) => {
+              e.target.style.backgroundColor = "#1c1c1e";
+              e.target.style.transform = "scale(1)";
+            }}
+          >
+            Select File
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            onChange={(e) => setSelectedFile(e.target.files[0])}
+            style={{
+              position: "absolute",
+              opacity: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: -1,
+            }}
+          />
+        </div>
+        
   ) : (
     <p
     style={{
