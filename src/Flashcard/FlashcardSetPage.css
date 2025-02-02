@@ -114,11 +114,11 @@
 }
 
 .flashcard__set__page__modal-btn {
-  padding: 10px 10px;
+  padding: 10px 16px;
   font-size: 16px;
-  border: 2px solid transparent;
-  border-radius: 15px;
-  background-color: #f0f0f0;
+  border: 1px solid #333;
+  border-radius: 12px;
+  background-color: #ffffff;
   color: #333;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -127,14 +127,12 @@
   margin: 0 10px;
 }
 
-.flashcard__set__page__modal-btn:hover {
-  background-color: #ddd;
-}
+
 
 .flashcard__set__page__modal-btn.active {
   background-color: #000000;  /* Active state color (blue) */
   color: #fff;
-  border-color: #007bff;
+  border-color: #000000;
 }
 
 .flashcard__set__page__modal-btn:focus {
@@ -175,7 +173,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #ff6b6b; /* Nice red for close icon */
+    color: #000000; /* Nice red for close icon */
     transition: color 0.3s ease;
 }
 
@@ -240,8 +238,6 @@
 .flashcard__set__page__modal-title {
     margin: 0; /* Remove default margin */
 }
-
-
 
 
 .btn__set__page__buttons {
@@ -570,8 +566,8 @@
 
 
   .manual-flashcard-creation__manual__flashcard__form {
-    background-color: #f9f9f9; /* Light background for the form */
-    border-radius: 10px; /* Rounded corners */
+    background-color: #ffffff; /* Light background for the form */
+    border-radius: 25px; /* Rounded corners */
     padding: 20px; /* Padding inside the form */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     margin: 20px 0; /* Margin to separate from other elements */
@@ -602,7 +598,7 @@
     background-color: #007bff; /* Button background color */
     color: #fff; /* White text */
     border: none; /* Remove default border */
-    border-radius: 5px; /* Slightly rounded corners */
+    border-radius: 25px; /* Slightly rounded corners */
     padding: 10px 15px; /* Padding for the button */
     font-size: 16px; /* Font size for button text */
     cursor: pointer; /* Pointer cursor on hover */
