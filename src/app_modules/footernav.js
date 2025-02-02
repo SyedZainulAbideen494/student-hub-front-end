@@ -103,6 +103,7 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/question-paper-generator' ? 'active' : ''}`}>
         <FaRegClipboard className="icon-footer-nav" /> {/* Icon for generating a practice question paper */}
         <span className="btn-label">AI Practice Question Paper</span> {/* Button label */}
+        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>

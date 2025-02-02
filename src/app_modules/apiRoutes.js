@@ -191,5 +191,6 @@ export const API_ROUTES = {
   aiExplanFlashcard: `${API_URL}/api/flashcard/ai-explanation`,
   updateStudyPlan: `${API_URL}/api/update-study-plan`,
   getuserQuestionPaper: `${API_URL}/api/question-paper/user`,
-  generateAIQuestionPaper: `${API_URL}/api/question-paper/generate`
+  generateAIQuestionPaper: `${API_URL}/api/question-paper/generate`,
+  getUserPaperCount: `${API_URL}/api/get-user-paper-count` // New endpoint
 }

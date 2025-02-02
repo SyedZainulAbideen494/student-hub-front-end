@@ -17,7 +17,23 @@ const GenerateQuestion = () => {
   const [showTooltip, setShowTooltip] = useState(false); // For tooltip visibility
   const [isPremium, setIsPremium] = useState(null);
   const navigate = useNavigate();
+  const [paperCount, setPaperCount] = useState(null);
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+  
+    // Use POST to send the token in the body
+    axios.post(`${API_ROUTES.getUserPaperCount}`, { token })
+      .then(response => {
+        setPaperCount(response.data.paperCount);
+      })
+      .catch(error => {
+        console.error('Error fetching paper count:', error);
+      });
+  }, []);
+  
+
+  
   const handleAddChapter = () => {
     if (newChapter.trim() && !chapters.includes(newChapter.trim())) {
       setChapters([...chapters, newChapter.trim()]);
@@ -201,10 +217,15 @@ const GenerateQuestion = () => {
     {loading ? 'Generating...' : 'Generate'}
   </button>
 ) : (
-<button className="button__generate__Ai__Question__paper" disabled>
-  <FaLock className="lock-icon" /><span>Premium</span>
+<button
+  className={`button__generate__Ai__Question__paper ${paperCount > 1 ? 'disabled' : ''}`}
+  onClick={paperCount <= 1 ? generateQuestionPaper : undefined}
+  disabled={loading || chapters.length === 0 || paperCount > 1}
+>
+  {loading ? 'Generating...' : paperCount > 1 ? 'Get Premium' : 'Generate'}
 </button>
 )}
+
 
         {/* Button to View Previously Generated Papers */}
         <button
@@ -219,6 +240,10 @@ const GenerateQuestion = () => {
         >
           View Example Paper
         </button>
+        <div className="paper-count__generate__Ai__Question__paper">
+
+</div>
+
       </div>
       <FooterNav/>
     </div>

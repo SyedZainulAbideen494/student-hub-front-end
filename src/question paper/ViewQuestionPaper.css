@@ -73,15 +73,14 @@
 
 /* Back Button Styling */
 .back__btn__question__paper__generated__ai__view {
-  background-color: #007bff;
-  color: white;
+  background-color: transparent;
+  color: black;
   border: none;
   padding: 12px 22px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 10px rgba(255, 100, 100, 0.2);
   display: flex;
   align-items: center;
   gap: 8px;

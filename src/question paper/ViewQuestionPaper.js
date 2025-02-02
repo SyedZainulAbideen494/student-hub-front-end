@@ -53,7 +53,7 @@ const ViewQuestionPaper = () => {
 </div>
 
       {/* Toggle Button */}
-      <button className="toggle-btn" onClick={toggleAnswers}>
+      <button className="toggle-btn" onClick={toggleAnswers} style={{marginBottom: '30px'}}>
         {showAnswers ? 'Show Questions' : 'Show Answers'}
       </button>
 
