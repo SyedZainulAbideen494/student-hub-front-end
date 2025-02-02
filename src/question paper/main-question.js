@@ -19,19 +19,23 @@ const GenerateQuestion = () => {
   const navigate = useNavigate();
   const [paperCount, setPaperCount] = useState(null);
 
+  // Fetch the paper count for the user
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage
   
-    // Use POST to send the token in the body
-    axios.post(`${API_ROUTES.getUserPaperCount}`, { token })
-      .then(response => {
-        setPaperCount(response.data.paperCount);
+    if (userId) {
+      axios.get(`${API_ROUTES.getUserPaperCount}?userId=${userId}`, {
+        headers: { 'Authorization': token }
       })
-      .catch(error => {
-        console.error('Error fetching paper count:', error);
-      });
+        .then(response => {
+          setPaperCount(response.data.paperCount);
+        })
+        .catch(error => {
+          console.error('Error fetching paper count:', error);
+        });
+    }
   }, []);
-  
 
   
   const handleAddChapter = () => {
@@ -217,25 +221,10 @@ const GenerateQuestion = () => {
     {loading ? 'Generating...' : 'Generate'}
   </button>
 ) : (
-  paperCount > 1 ? (
-    <button
-      className="button__generate__Ai__Question__paper"
-      onClick={() => navigate('/subscription')}
-    >
-      Get Premium
-    </button>
-  ) : (
-    <button
-      className={`button__generate__Ai__Question__paper ${loading ? 'loading' : ''}`}
-      onClick={generateQuestionPaper}
-      disabled={loading || chapters.length === 0}
-    >
-      {loading ? 'Generating...' : 'Generate'}
-    </button>
-  )
+<button className="button__generate__Ai__Question__paper" disabled>
+  <FaLock className="lock-icon" /><span>Premium</span>
+</button>
 )}
-
-
 
         {/* Button to View Previously Generated Papers */}
         <button
@@ -250,10 +239,6 @@ const GenerateQuestion = () => {
         >
           View Example Paper
         </button>
-        <div className="paper-count__generate__Ai__Question__paper">
-
-</div>
-
       </div>
       <FooterNav/>
     </div>
