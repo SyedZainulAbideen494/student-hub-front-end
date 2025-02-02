@@ -73,7 +73,7 @@
 
 /* Back Button Styling */
 .back__btn__question__paper__generated__ai__view {
-  background: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 12px 22px;
@@ -88,11 +88,7 @@
   font-weight: bold;
 }
 
-.back__btn__question__paper__generated__ai__view:hover {
-  background: linear-gradient(135deg, #ff5277 0%, #ff4d6d 100%);
-  box-shadow: 0 6px 12px rgba(255, 77, 109, 0.3);
-  transform: scale(1.05);
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

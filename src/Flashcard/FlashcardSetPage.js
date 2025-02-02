@@ -710,8 +710,8 @@ if (loading) {
 {selectedOption === 'pdf' && (
   <div>
     {isPremium ? (
-         <div className="pdf-upload-container">
-         <label htmlFor="pdf-upload" className="pdf-upload-label">
+         <div className="pdf-upload-container__upload__flashcard">
+         <label htmlFor="pdf-upload" className="pdf-upload-label__upload__flashcard">
            <span>📄 Upload PDF</span>
          </label>
          <input

@@ -192,3 +192,9 @@
     color: #0056b3;
   }
   
+  /* Scrollable Dropdown */
+.scrollable-dropdown__qp__ai {
+    max-height: 60px; /* Limit the height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  

@@ -38,12 +38,13 @@ const ViewQuestionPaper = () => {
   return (
     <div className="paper__question__paper__generated__ai__view">
       <button className="back__btn__question__paper__generated__ai__view" onClick={handleBack}>
-        <FaArrowLeft /> Back
+        <FaArrowLeft /> 
       </button>
       <h1 className="title__question__paper__generated__ai__view">{paper.subject} (Grade {paper.grade})</h1>
       <p className="board__question__paper__generated__ai__view"><b>Board:</b> {paper.board}</p>
       <div className="questions__question__paper__generated__ai__view" dangerouslySetInnerHTML={{ __html: paper.questions }} />
-    </div>
+    <h2>Answers</h2>
+      <div className="questions__question__paper__generated__ai__view" dangerouslySetInnerHTML={{ __html: paper.answers }} /></div>
   );
 };
 

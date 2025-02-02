@@ -144,22 +144,49 @@ const GenerateQuestion = () => {
           ))}
         </ul>
 
-        {/* Board */}
-        <input
-          className="input__generate__Ai__Question__paper"
-          placeholder="Board (ICSE/CBSE/State)"
-          value={board}
-          onChange={e => setBoard(e.target.value)}
-        />
+       {/* Board */}
+<select
+  className="input__generate__Ai__Question__paper scrollable-dropdown__qp__ai"
+  value={board}
+  onChange={e => setBoard(e.target.value)}
+>
+  <option value="">Select Board/Exam</option>
+  <option value="CBSE">CBSE</option>
+  <option value="ICSE">ICSE</option>
+  <option value="State">State Board</option>
+  <option value="JEE Mains">JEE Mains</option>
+  <option value="JEE Advanced">JEE Advanced</option>
+  <option value="NEET">NEET</option>
+  <option value="CUET">CUET</option>
+  <option value="GATE">GATE</option>
+  <option value="UPSC">UPSC</option>
+  <option value="CAT">CAT</option>
+  <option value="SAT">SAT</option>
+  <option value="GRE">GRE</option>
+  <option value="GMAT">GMAT</option>
+</select>
 
-        {/* Grade */}
-        <input
-          className="input__generate__Ai__Question__paper"
-          placeholder="Grade eg (10th)"
-          value={grade}
-          type='number'
-          onChange={e => setGrade(e.target.value)}
-        />
+{/* Grade */}
+<select
+  className="input__generate__Ai__Question__paper scrollable-dropdown__qp__ai"
+  value={grade}
+  onChange={e => setGrade(e.target.value)}
+>
+  <option value="">Select Grade</option>
+  <option value="1">1st</option>
+  <option value="2">2nd</option>
+  <option value="3">3rd</option>
+  <option value="4">4th</option>
+  <option value="5">5th</option>
+  <option value="6">6th</option>
+  <option value="7">7th</option>
+  <option value="8">8th</option>
+  <option value="9">9th</option>
+  <option value="10">10th</option>
+  <option value="11">11th</option>
+  <option value="12">12th</option>
+  <option value="0">Other</option>
+</select>
 
         {/* Error Message */}
         {error && <div className="error-message__generate__Ai__Question__paper">{error}</div>}
@@ -174,11 +201,12 @@ const GenerateQuestion = () => {
     {loading ? 'Generating...' : 'Generate'}
   </button>
 ) : (
-  <button 
-    className="button__generate__Ai__Question__paper"
-    disabled
+  <button
+    className={`button__generate__Ai__Question__paper ${loading ? 'loading' : ''}`}
+    onClick={generateQuestionPaper}
+    disabled={loading || chapters.length === 0}
   >
-    <FaLock className="lock-icon" /><span>Premium</span>
+    {loading ? 'Generating...' : 'Generate'}
   </button>
 )}
 
