@@ -46,7 +46,9 @@ const ViewQuestionPaperExample = () => {
       <p className="chapters__question__paper__generated__ai__view"><b>Chapters:</b> Units and Measurements, Kinematics, Laws of Motion, Work</p>
       <p className="subject__question__paper__generated__ai__view">{paper.subject} (Grade {paper.grade})</p>
       <p className="board__question__paper__generated__ai__view"><b>Board:</b> {paper.board}</p>
-
+      <div className="disclaimer__message">
+  <p><i>Sample practice paper for practice purposes. Not an accurate real exam representation. Multiple papers can be generated for different chapters/subjects.</i></p>
+</div>
       {/* Toggle Button */}
       <button className="toggle-btn" onClick={toggleAnswers}>
         {showAnswers ? 'Show Questions' : 'Show Answers'}
