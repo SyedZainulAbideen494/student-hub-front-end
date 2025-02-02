@@ -42,8 +42,15 @@ const ViewQuestionPaper = () => {
       <button className="back__btn__question__paper__generated__ai__view" onClick={handleBack}>
         <FaArrowLeft /> 
       </button>
+      
+      {/* Disclaimer message */}
+   
+
       <h1 className="title__question__paper__generated__ai__view">{paper.subject} (Grade {paper.grade})</h1>
       <p className="board__question__paper__generated__ai__view"><b>Board:</b> {paper.board}</p>
+      <div className="disclaimer__message">
+  <p><i>Sample practice paper for practice purposes. Not an accurate real exam representation. Multiple papers can be generated for different chapters/subjects.</i></p>
+</div>
 
       {/* Toggle Button */}
       <button className="toggle-btn" onClick={toggleAnswers}>
