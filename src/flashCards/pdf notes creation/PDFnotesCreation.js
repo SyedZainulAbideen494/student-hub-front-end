@@ -24,9 +24,15 @@ const PDFNotesCreation = () => {
   ];
 
   const handleFileChange = (selectedFile) => {
+    if (selectedFile && selectedFile.type !== "application/pdf") {
+      alert("Please upload a PDF file.");
+      setFile(null);  // Clear the file state if invalid type
+      return;
+    }
     setFile(selectedFile);
-    setError("");
+    setError(""); // Clear any existing errors
   };
+  
 
   const handleOptionToggle = (value) => {
     if (!isPremium && selectedOptions.length >= 4 && !selectedOptions.includes(value)) {
