@@ -237,12 +237,7 @@ const GenerateQuestion = () => {
         >
           View Generated Papers
         </button>
-        <button
-          className="button__generate__Ai__Question__paper"
-          onClick={() => navigate('/view-paper-example/4')}
-        >
-          View Example Paper
-        </button>
+ 
       </div>
       <FooterNav/>
     </div>
