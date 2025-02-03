@@ -1,4 +1,4 @@
-.overlay {
+.overlay__offer__modal__2 {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,20 +9,20 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
-  }
-  
-  .offer-container {
+}
+
+.offer-container__offer__modal__2 {
     position: relative;
     background: #fff;
     border-radius: 15px;
     padding: 20px;
-    width: 90%;
+    width: 80%;
     max-width: 400px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .close-btn {
+}
+
+.close-btn__offer__modal__2 {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -30,75 +30,75 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
-  }
-  
-  .offer-title {
-    font-size: 24px;
+}
+
+.offer-title__offer__modal__2 {
+    font-size: 28px;
     font-weight: bold;
     color: #000;
-  }
-  
-  .offer-subtitle {
-    font-size: 14px;
+}
+
+.offer-subtitle__offer__modal__2 {
+    font-size: 17px;
     color: #444;
     margin-bottom: 20px;
-  }
-  
-  .offer-card {
-    background: linear-gradient(135deg, #f9f9f9, #eaeaea);
+}
+
+.offer-card__offer__modal__2 {
+    background: linear-gradient(135deg, #f3f3f3 0%, #F9F9F9 30%, #EAEAEA 60%, #DADADA 100%);
+
     border-radius: 10px;
     padding: 20px;
     position: relative;
     overflow: hidden;
-  }
-  
-  .gift-icon {
+}
+
+.gift-icon__offer__modal__2 {
     font-size: 40px;
     margin-bottom: 10px;
-  }
-  
-  .discount-text {
+}
+
+.discount-text__offer__modal__2 {
     font-size: 16px;
     color: #333;
     font-weight: 500;
-  }
-  
-  .discount-badge {
+}
+
+.discount-badge__offer__modal__2 {
     background: #000;
     color: #fff;
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 14px;
     font-weight: bold;
-  }
-  
-  .price-box {
+}
+
+.price-box__offer__modal__2 {
     background: #fff;
     border-radius: 10px;
     padding: 10px;
     margin: 10px 0;
     font-size: 18px;
     font-weight: bold;
-  }
-  
-  .lowest-price {
+}
+
+.lowest-price__offer__modal__2 {
     font-size: 12px;
     color: #777;
-  }
-  
-  .claim-btn {
+}
+
+.claim-btn__offer__modal__2 {
     background: #000;
     color: #fff;
     border: none;
-    padding: 12px 15px;
+    padding: 15px 15px;
     font-size: 16px;
-    border-radius: 8px;
+    border-radius: 25px;
     margin-top: 15px;
     cursor: pointer;
-    width: 100%;
-  }
-  
-  .claim-btn:hover {
+    width: 90%;
+}
+
+.claim-btn__offer__modal__2:hover {
     background: #333;
-  }
-  
+}
