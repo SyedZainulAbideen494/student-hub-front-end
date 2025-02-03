@@ -28,9 +28,17 @@
     right: 10px;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 15px;
+    width: 30px;  /* Ensures button is square */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EAEAEA;
+    border-radius: 50%;
     cursor: pointer;
 }
+
 
 .offer-title__offer__modal__2 {
     font-size: 28px;
@@ -46,8 +54,7 @@
 
 .offer-card__offer__modal__2 {
     background: linear-gradient(135deg, #f3f3f3 0%, #F9F9F9 30%, #EAEAEA 60%, #DADADA 100%);
-
-    border-radius: 10px;
+    border-radius: 25px;
     padding: 20px;
     position: relative;
     overflow: hidden;
@@ -76,7 +83,7 @@
 .price-box__offer__modal__2 {
     background: #fff;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     margin: 10px 0;
     font-size: 18px;
     font-weight: bold;

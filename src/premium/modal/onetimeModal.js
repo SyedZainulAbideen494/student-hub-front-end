@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./OneTimeOffer.css";
 import axios from "axios";
 import { API_ROUTES } from "../../app_modules/apiRoutes";
-import { FaTimes } from "react-icons/fa";
+import { FaGift, FaTimes } from "react-icons/fa";
 
 const OneTimeOffer = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,7 +23,7 @@ const OneTimeOffer = () => {
   }, []);
 
   useEffect(() => {
-    if (isPremium === null) return; // Wait until isPremium is determined
+    if (!isPremium === null) return; // Wait until isPremium is determined
 
     const lastClosed = localStorage.getItem("offerLastClosed");
 
@@ -95,14 +95,14 @@ const OneTimeOffer = () => {
         <h2 className="offer-title__offer__modal__2"> One Time Offer </h2>
         <p className="offer-subtitle__offer__modal__2">You will never see this again!</p>
         <div className="offer-card__offer__modal__2">
-            <div className="gift-icon__offer__modal__2">🎁</div>
+            <div className="gift-icon__offer__modal__2"><FaGift size={30} color="#DCB99D" /></div>
             <p className="discount-text__offer__modal__2">
                 Get an <span className="discount-badge__offer__modal__2">50% OFF</span> discount! 🙌
             </p>
             <div className="price-box__offer__modal__2">
                 <span className="price">Only <strong>₹59</strong> / month</span>
             </div>
-            <p className="lowest-price__offer__modal__2">Lowest price ever. Don't miss out!</p>
+            <p className="lowest-price__offer__modal__2">Lowest price ever</p>
         </div>
         <button className="claim-btn__offer__modal__2" onClick={handlePayment}>Claim Your Limited Offer Now!</button>
     </div>
