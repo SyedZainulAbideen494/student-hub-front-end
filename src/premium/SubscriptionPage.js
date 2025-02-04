@@ -107,90 +107,46 @@ const PaymentComponent = () => {
     return 'Get Premium';
   };
 
+
+
   return (
+    <div>
     <div className="subscription-card">
-      <h2 className="subscription-title">
-        Upgrade to Premium <FaCrown className="crown-icon" />
-      </h2>
-      <p className="subscription-description">
-        Unlock exclusive features and elevate your learning experience.
-      </p>
-
-      {/* Plan Selection */}
-      <div className="subscription-plan__subs_plan__selector">
-        <button
-          className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
-          onClick={() => {
-            setDuration('weekly');
-            setAmount(49);
-          }}
-        >
-          ₹49 / Week
-        </button>
-        <button
-          className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
-          onClick={() => {
-            setDuration('monthly');
-            setAmount(129);
-          }}
-        >
-          ₹129 / Month
-        </button>
-        <button
-          className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
-          onClick={() => {
-            setDuration('6months');
-            setAmount(599);
-          }}
-        >
-          ₹599 /<br /> 6 Months
-        </button>
-      </div>
-
-      <div className="subscription-button-container">
-        {showPremium &&
-          (isPremium ? (
-            <p className="subscription-no-action">
-              You have Premium <FaCrown className="crown-icon-small" />
-            </p>
-          ) : (
-            <button className="subscription-action" onClick={handlePayment}>
-              {getButtonLabel()} <FaCrown className="crown-icon-small" />
-            </button>
-          ))}
-      </div>
-
-      <ul className="subscription-features">
-        {[
-          "Unlimited study plans",
-          "Unlimited Magic AI generations",
-          "Unlimited note creation options",
-          "Unlimited PDF to notes",
-          "Unlimited AI notes creation",
-          "Unlock AI tasks plan generator",
-          "Get daily tips on study plan",
-          "Unlimited AI quizzes creation",
-          "Unlimited AI flashcards creation",
-          "Unlimited PDF to flashcards",
-          "Unlimited PDF to quizzes",
-          "Notes to Quizzes",
-          "Notes to Flashcards",
-          "Generate AI practice question papers",
-          "AI explanation on flashcards",
-        ].map((feature, index) => (
-          <li className="subscription-feature" key={index}>
-            <span>
-              <i className="fa fa-check-circle check-icon"></i> {feature}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <div className="why-premium">
-  <p>Say goodbye to multiple subscriptions. Get everything you need for studying with a single, all-in-one Edusify Premium subscription — saving you both time and money.</p>
-</div>
-
-      <FooterNav />
+    <h2 className="subscription-title">
+      Join the Elite Study Club <FaCrown className="crown-icon" />
+    </h2>
+    <p className="subscription-description">
+      Unlock all premium study tools and elevate your learning.
+    </p>
+  
+    <div className="subscription-plan__subs_plan__selector">
+      <button className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`} onClick={() => { setDuration('weekly'); setAmount(49); }}>
+        ₹49 / Week
+      </button>
+      <button className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`} onClick={() => { setDuration('monthly'); setAmount(129); }}>
+        ₹129 / Month
+      </button>
+      <button className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`} onClick={() => { setDuration('6months'); setAmount(599); }}>
+        ₹599 /<br /> 6 Months
+      </button>
     </div>
+    {showPremium &&
+    (isPremium ? (
+              <button className="subscription-action">
+              You have Premium <FaCrown className="crown-icon-small" />
+    </button>
+    ) : (
+      <button className="subscription-action" onClick={handlePayment}>
+      Join Now <FaCrown className="crown-icon-small" />
+    </button>
+    ))}
+    <div className="why-premium">
+      <p>Say goodbye to multiple subscriptions. Get everything you need with Edusify Premium — in one luxurious package.</p>
+    </div>
+
+  </div>
+      <FooterNav/>
+      </div>
   );
 };
 
