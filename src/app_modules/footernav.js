@@ -182,7 +182,7 @@ const FooterNav = () => {
 </Link> 
 <Link to='/subscription' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
-        <FaCrown className="icon-footer-nav" style={{color: '#ffb703'}} />
+        <FaCrown className="icon-footer-nav"/>
         <span className="btn-label">Premium</span>
         
     </button>
