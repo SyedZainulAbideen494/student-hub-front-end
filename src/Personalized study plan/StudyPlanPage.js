@@ -77,7 +77,7 @@ const nav = useNavigate()
   }
 
   const handlegetNewPlan = () => {
-    nav('/study-plan')
+    nav('/flow-user-data')
   }
 
   const handleSave = () => {
