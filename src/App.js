@@ -132,6 +132,7 @@ import TypewriterLoader from "./question paper/TypewriterLoader";
 import VoiceAssistant from "./voice assistant/voice assistant";
 import ViewQuestionPaperExample from "./question paper/ViewQuestionPaper copy";
 import TestModeApp from "./test mode/MainTestPage";
+import MindMapsApp from "./Mind maps/mp";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -253,6 +254,7 @@ const router = createBrowserRouter([
   {path: '/type-writter-loader', element: <TypewriterLoader/>},
   {path: '/voice-assistant', element: <VoiceAssistant/>},
   {path: '/test-mode', element: <TestModeApp/>},
+  {path: '/mind-maps', element: <MindMapsApp/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -76,6 +76,10 @@ const nav = useNavigate()
     nav('/')
   }
 
+  const handlegetNewPlan = () => {
+    nav('/study-plan')
+  }
+
   const handleSave = () => {
     const token = localStorage.getItem("token");
 
@@ -231,10 +235,10 @@ const nav = useNavigate()
     {/* Toggle Edit Mode Button */}
     <div className="sticky-button__Ai__result__plan">
       <button
-        onClick={() => setIsEditing((prev) => !prev)}
+        onClick={handlegetNewPlan}
         className="get-started-button__Ai__result__plan"
       >
-        {isEditing ? "Cancel Edit" : "Edit Study Plan"}
+      Regenerate Plan
       </button>
   
       {/* Conditionally render the Get Started button */}
