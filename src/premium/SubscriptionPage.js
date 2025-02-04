@@ -110,8 +110,21 @@ const PaymentComponent = () => {
 
 
   return (
-    <div>
-    <div className="subscription-card">
+<div 
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    minHeight: '100vh', // Makes sure it takes full height of the screen
+    width: '100%', // Ensures it spans full width
+  }}
+>
+<div 
+  className="subscription-card"
+
+>
     <h2 className="subscription-title">
       Join the Elite Study Club <FaCrown className="crown-icon" />
     </h2>
