@@ -97,7 +97,7 @@ const OneTimeOffer = () => {
         <div className="offer-card__offer__modal__2">
             <div className="gift-icon__offer__modal__2"><FaGift size={30} color="#DCB99D" /></div>
             <p className="discount-text__offer__modal__2">
-                Get an <span className="discount-badge__offer__modal__2">50% OFF</span> discount! 🙌
+                Get an <span className="discount-badge__offer__modal__2">70% OFF</span> discount! 🙌
             </p>
             <div className="price-box__offer__modal__2">
                 <span className="price">Only <strong>₹59</strong> / month</span>
