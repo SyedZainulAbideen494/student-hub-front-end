@@ -23,10 +23,10 @@ const PaymentComponent = () => {
         return;
       }
   
-      let planAmount = 99;
-      if (duration === 'weekly') planAmount = 39;
-      else if (duration === 'monthly') planAmount = 99;
-      else if (duration === '6months') planAmount = 499;
+      let planAmount = 129; // Default to monthly price
+      if (duration === 'weekly') planAmount = 49;
+      else if (duration === 'monthly') planAmount = 129;
+      else if (duration === '6months') planAmount = 599;      
   
       const { data } = await axios.post(API_ROUTES.getPremium, {
         amount: planAmount,
@@ -122,28 +122,28 @@ const PaymentComponent = () => {
           className={`plan-button__subs_plan__selector ${duration === 'weekly' ? 'active__actve__subs' : ''}`}
           onClick={() => {
             setDuration('weekly');
-            setAmount(39);
+            setAmount(49);
           }}
         >
-          ₹39 / Week
+          ₹49 / Week
         </button>
         <button
           className={`plan-button__subs_plan__selector ${duration === 'monthly' ? 'active__actve__subs' : ''}`}
           onClick={() => {
             setDuration('monthly');
-            setAmount(99);
+            setAmount(129);
           }}
         >
-          ₹99 / Month
+          ₹129 / Month
         </button>
         <button
           className={`plan-button__subs_plan__selector ${duration === '6months' ? 'active__actve__subs' : ''}`}
           onClick={() => {
             setDuration('6months');
-            setAmount(499);
+            setAmount(599);
           }}
         >
-          ₹499 /<br /> 6 Months
+          ₹599 /<br /> 6 Months
         </button>
       </div>
 
