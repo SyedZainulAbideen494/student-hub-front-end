@@ -126,7 +126,7 @@ const PaymentComponent = () => {
 
 >
     <h2 className="subscription-title">
-      Join the Elite Study Club <FaCrown className="crown-icon" />
+    Edusify Premium <FaCrown className="crown-icon" />
     </h2>
     <p className="subscription-description">
       Unlock all premium study tools and elevate your learning.
@@ -153,9 +153,9 @@ const PaymentComponent = () => {
       Join Now <FaCrown className="crown-icon-small" />
     </button>
     ))}
-    <div className="why-premium">
-      <p>Say goodbye to multiple subscriptions. Get everything you need with Edusify Premium — in one luxurious package.</p>
-    </div>
+<div className="why-premium">
+  <p>Why settle for less? Unlock all-in-one study excellence with Edusify — smarter, seamless, and effortlessly premium.</p>
+</div>
 
   </div>
       <FooterNav/>
