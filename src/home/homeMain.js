@@ -60,8 +60,7 @@ const HomeMain = () => {
     <Fragment>
 
         <>
-    
-      <OneTimeOffer/>
+
           <ReviewModal />
           <BirthdayCelebration />
           <BirthdayModal />
