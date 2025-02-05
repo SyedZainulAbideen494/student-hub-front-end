@@ -73,9 +73,9 @@
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background: linear-gradient(135deg, #1c1c1e, #1c1c1e);
-  color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #1c1c1e;
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
