@@ -1,0 +1,42 @@
+.__premium__get__btn {
+    width: fit-content;
+    display: flex;
+    padding: 10px 8px;
+    gap: 0.4rem;
+    border: none;
+    font-weight: bold;
+    border-radius: 30px;
+    font-size: 12px;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    background: linear-gradient(
+        15deg,
+        #880088,
+        #aa2068,
+        #cc3f47,
+        #de6f3d,
+        #f09f33,
+        #de6f3d,
+        #cc3f47,
+        #aa2068,
+        #880088
+      )
+      no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: background 0.3s ease;
+    color: #fff;
+  }
+  
+
+  
+  .__premium__get__btn:hover svg {
+    fill: #fff;
+  }
+  
+  .__premium__get__btn svg {
+    width: 15px;
+    fill: #f09f33;
+    transition: 0.3s ease;
+  }
+  

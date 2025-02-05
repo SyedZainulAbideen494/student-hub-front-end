@@ -192,5 +192,6 @@ export const API_ROUTES = {
   updateStudyPlan: `${API_URL}/api/update-study-plan`,
   getuserQuestionPaper: `${API_URL}/api/question-paper/user`,
   generateAIQuestionPaper: `${API_URL}/api/question-paper/generate`,
-  getUserPaperCount: `${API_URL}/api/get-user-paper-count` // New endpoint
+  getUserPaperCount: `${API_URL}/api/get-user-paper-count`, 
+  aiQuizAnalysis: `${API_URL}/api/quiz/ai-analysis`
 }

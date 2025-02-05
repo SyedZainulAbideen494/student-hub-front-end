@@ -143,81 +143,172 @@
 }
 
 
+
 /* Question Container */
 .render__Quiz__Result__Question__Container {
-    background: #ffffff;
-    margin: 16px 16px; /* Margin on all sides, including left and right */
-    padding: 14px 18px; /* Slightly increased padding for better spacing */
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
-    max-width: 600px; /* Adjusted width for a balanced appearance */
-  }
-  
-  /* Question Text */
-  .render__Quiz__Result__Question__Text {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: #333333; /* Softer black for a more polished look */
-  }
-  
-  /* User Answer */
-  .render__Quiz__Result__User__Answer {
-    font-size: 15px;
-    margin: 8px 0;
-    color: #555555; /* Neutral gray for non-highlighted text */
-  }
-  
-  .render__Quiz__Result__Correct__Answer {
-    color: #28a745; /* A richer, softer green */
-    font-weight: 600;
-  }
-  
-  .render__Quiz__Result__Incorrect__Answer {
-    color: #dc3545; /* A modern, muted red */
-    font-weight: 600;
-  }
-  
-  /* Correct Answer (When Shown Separately) */
-  .render__Quiz__Result__Correct__Answer__Container {
-    font-size: 15px;
-    margin-top: 8px;
-    color: #555555;
-  }
-  
-  .render__Quiz__Result__Correct__Answer__Highlight {
-    color: #007bff; /* A slightly toned-down blue */
-    font-weight: 600;
-  }
-  
-  /* Correct and Incorrect Styling */
-  .render__Quiz__Result__Correct {
-    border-left: 4px solid #28a745; /* Matches the correct answer green */
-    padding-left: 14px;
-  }
-  
-  .render__Quiz__Result__Incorrect {
-    border-left: 4px solid #dc3545; /* Matches the incorrect answer red */
-    padding-left: 14px;
-  }
-  
-  /* Minimal Hover - Removed Effects */
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .render__Quiz__Result__Question__Container {
+  background: #f9f9f9; /* Soft light gray for a more refined background */
+  margin: 16px 16px; /* Margin on all sides, including left and right */
+  padding: 14px 18px; /* Slightly increased padding for better spacing */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.08);
+  max-width: 600px; /* Adjusted width for a balanced appearance */
+}
+
+/* Question Text */
+.render__Quiz__Result__Question__Text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #444444; /* Darker, more neutral gray for a subtle, sophisticated look */
+}
+
+/* User Answer */
+.render__Quiz__Result__User__Answer {
+  font-size: 15px;
+  margin: 8px 0;
+  color: #666666; /* Lighter gray for a balanced contrast */
+}
+
+/* Correct Answer */
+.render__Quiz__Result__Correct__Answer {
+  color: #2ecc71; /* Softer, elegant green */
+  font-weight: 600;
+}
+
+/* Incorrect Answer */
+.render__Quiz__Result__Incorrect__Answer {
+  color: #e74c3c; /* A modern, muted red */
+  font-weight: 600;
+}
+
+/* Correct Answer (When Shown Separately) */
+.render__Quiz__Result__Correct__Answer__Container {
+  font-size: 15px;
+  margin-top: 8px;
+  color: #888888; /* Light gray for subtle text */
+}
+
+.render__Quiz__Result__Correct__Answer__Highlight {
+  color: #3498db; /* Elegant blue, slightly muted */
+  font-weight: 600;
+}
+
+/* Correct and Incorrect Styling */
+.render__Quiz__Result__Correct {
+  padding-left: 14px;
+}
+
+.render__Quiz__Result__Incorrect {
+  padding-left: 14px;
+}
+
+/* Minimal Hover - Removed Effects */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .render__Quiz__Result__Question__Container {
       margin: 12px 12px; /* Adjusted margins for smaller screens */
       padding: 12px 16px;
       border-radius: 10px;
-    }
-  
-    .render__Quiz__Result__Question__Text {
-      font-size: 15px;
-    }
-  
-    .render__Quiz__Result__User__Answer,
-    .render__Quiz__Result__Correct__Answer__Container {
-      font-size: 14px;
-    }
   }
-  
+
+  .render__Quiz__Result__Question__Text {
+      font-size: 15px;
+  }
+
+  .render__Quiz__Result__User__Answer,
+  .render__Quiz__Result__Correct__Answer__Container {
+      font-size: 14px;
+  }
+}
+
+/* SubmitQuiz.css */
+
+/* Modal background */
+.modal__ai__quiz__analysis {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Subtle darkened background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px); /* Soft background blur for a modern look */
+  transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth fade-in */
+}
+
+/* Modal content */
+.modal-content__ai__quiz__analysis {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Softer, more elegant shadow */
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out; /* Smooth sliding effect */
+}
+
+/* Modal content appearance */
+.modal__ai__quiz__analysis.open .modal-content__ai__quiz__analysis {
+  transform: translateY(0); /* Smooth slide-in */
+}
+
+/* Close button */
+.close-modal__ai__quiz__analysis {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-modal__ai__quiz__analysis:hover {
+  color: #f44336; /* Red highlight on hover */
+}
+
+/* Modal title */
+.modal-title__ai__quiz__analysis {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* Content area for AI Analysis */
+.ai-quiz-analysis-content__ai__quiz__analysis {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #444;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 20px;
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: 'Helvetica Neue', sans-serif; /* Clean, modern font */
+  text-align: justify; /* Improved readability with justified text */
+}
+
+/* Smooth scrollbar */
+.modal__ai__quiz__analysis::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal__ai__quiz__analysis::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.modal__ai__quiz__analysis::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
