@@ -318,3 +318,9 @@
   .modal-close-btn__leaderboard__instr__leader__board__2:hover {
     background-color: #005bb5;
   }
+
+  .premium-crown__leaderboard {
+    font-size: 1.2em;
+    color: gold;
+  }
+  

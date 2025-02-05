@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './leaderboard2.0.css';
-import { FaTrophy, FaArrowLeft,FaQuestionCircle } from 'react-icons/fa';
+import { FaTrophy, FaArrowLeft,FaQuestionCircle, FaCrown } from 'react-icons/fa';
 import axios from 'axios';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import { useNavigate } from 'react-router-dom';
@@ -158,8 +158,7 @@ const handleProfileClick = (userId) => {
 };
 
 return (
-    <div className="leaderboard__page__container__leader__board__2">
-      {/* Header Section */}
+  <div className="leaderboard__page__container__leader__board__2">
       <div className="header__leaderboard__page__leader__board__2">
         <button className="back-btn__leaderboard__page__leader__board__2" onClick={handleBack}>
           <FaArrowLeft size={16} />
@@ -169,11 +168,9 @@ return (
           <FaQuestionCircle size={20} />
         </button>
       </div>
-  
-      {/* Subtitle */}
+
       <p className="leaderboard-subtitle__leaderboard__page__leader__board__2">See how you stack up!</p>
-  
-      {/* User Stats Section */}
+
       <div className="user-stats__leaderboard__page__leader__board__2">
         {userStats.position !== null && (
           <div className="user-card__leaderboard__page__leader__board__2">
@@ -190,11 +187,9 @@ return (
           </div>
         )}
       </div>
-  
-      {/* Progress Bar */}
+
       <ProgressBar currentPoints={userStats.points} maxPoints={maxPoints} topUserPoints={maxPoints} />
-  
-      {/* Leaderboard Overview */}
+
       <div className="leaderboard-overview__leaderboard__page__leader__board__2">
         <h2 className="overview-title__leaderboard__page__leader__board__2">Top Performers</h2>
         <div className="table-label__leaderboard__page__leader__board__2">
@@ -202,13 +197,15 @@ return (
           <span className="label__leaderboard__page__leader__board__2 profile__leaderboard__page__leader__board__2">Users</span>
           <span className="label__leaderboard__page__leader__board__2 points__leaderboard__page__leader__board__2">Points</span>
         </div>
-  
+
         <div className="user-list__leaderboard__page__leader__board__2">
           {leaderboardData.slice(0, 10).map((user, index) => {
             const bgClass = index === 0 ? 'gold-bg__leaderboard__page__leader__board__2' :
                             index === 1 ? 'silver-bg__leaderboard__page__leader__board__2' :
                             index === 2 ? 'bronze-bg__leaderboard__page__leader__board__2' : '';
-  
+
+            const crownClass = user.isPremium ? 'premium-crown__leaderboard' : ''; // Add crown class for premium users
+
             return (
               <div key={user.id} className={`user-card__leaderboard__page__leader__board__2 ${bgClass}`} onClick={() => handleProfileClick(user.id)}>
                 <div className="left-section__leaderboard__page__leader__board__2">
@@ -218,22 +215,22 @@ return (
                     alt={user.username}
                     className="avatar__leaderboard__page__leader__board__2"
                   />
-                  <span className="username__leaderboard__page__leader__board__2">{user.unique_id}</span>
+                  <span className="username__leaderboard__page__leader__board__2">{user.unique_id}  {user.isPremium && <FaCrown className="premium-crown__leaderboard" />}</span>
                 </div>
                 <span className="points__leaderboard__page__leader__board__2">{user.points} pts</span>
                 {bgClass && (
                   <span className="medal__leaderboard__page__leader__board__2">
-                    {bgClass === 'gold-bg__leaderboard__page__leader__board__2' ? '🥇' : 
+                    {bgClass === 'gold-bg__leaderboard__page__leader__board__2' ? '🥇' :
                      bgClass === 'silver-bg__leaderboard__page__leader__board__2' ? '🥈' : '🥉'}
                   </span>
                 )}
+               {/* Display crown for premium users */}
               </div>
             );
           })}
         </div>
       </div>
-  
-      {/* Suggested Users Section */}
+
       <div className="more-users__suggested__page__leader__board__2">
         <h2 className="suggested-title__page__leader__board__2">Suggested for You</h2>
         <div className="scroll-container__suggested__page__leader__board__2">
@@ -252,6 +249,7 @@ return (
                   alt={user.username}
                   className="avatar__suggested__page__leader__board__2"
                 />
+                {user.isPremium && <FaCrown className="premium-crown__leaderboard" />}
                 <div className="user-details__suggested__page__leader__board__2">
                   <span className="username__suggested__page__leader__board__2">
                     {user.unique_id.length > 15 ? `${user.unique_id.slice(0, 12)}...` : user.unique_id}
@@ -262,8 +260,7 @@ return (
             ))}
         </div>
       </div>
-  
-      {/* Instructions Modal */}
+
       <InstructionsModal isOpen={showInstructions} onClose={() => setShowInstructions(false)} />
     </div>
   );
