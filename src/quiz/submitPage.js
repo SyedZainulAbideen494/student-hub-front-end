@@ -178,7 +178,7 @@ const SubmitPage = () => {
       userAnswers: userAnswers,
       correctAnswers: correctAnswers,
       questions: questions,
-      topic: 'Physics',  // Update topic as needed
+      topic: '',  // Update topic as needed
     };
 
     setLoading(true); // Start loading before fetching data
