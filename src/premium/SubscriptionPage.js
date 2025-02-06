@@ -108,8 +108,10 @@ const PaymentComponent = () => {
     minHeight: '100vh',
     width: '100%',
     background: 'linear-gradient(135deg, #f9f9f9, #eceff4)',
+    paddingBottom: '50px',
   }}
 >
+  {/* Premium Card */}
   <div className="card__subscription__new">
     <h3 className="title__subscription__new">Premium</h3>
     <p className="description__subscription__new">
@@ -129,9 +131,33 @@ const PaymentComponent = () => {
       )}
     </div>
   </div>
-  <FooterNav />
+
+  {/* Plan Includes Card */}
+  <div className="card__plan__includes">
+  <h3 className="title__plan__includes">Plan Includes</h3>
+  <ul className="features__list">
+    <li><span className="checkmark__features__list"></span> Unlimited Magic Usage</li>
+    <li><span className="checkmark__features__list"></span> Unlimited AI Quiz Generation</li>
+    <li><span className="checkmark__features__list"></span> Unlimited AI Plan Generations</li>
+    <li><span className="checkmark__features__list"></span> Unlimited AI Notes Generation</li>
+    <li><span className="checkmark__features__list"></span> Unlimited PDF to Notes</li>
+    <li><span className="checkmark__features__list"></span> Unlock AI Recommendations on Pomodoro</li>
+    <li><span className="checkmark__features__list"></span> Unlock AI Tasks Generation</li>
+    <li><span className="checkmark__features__list"></span> Unlock AI Plan Tasks Generation</li>
+    <li><span className="checkmark__features__list"></span> Unlock AI Quiz Results Analysis</li>
+    <li><span className="checkmark__features__list"></span> Unlock AI Flashcards Explain</li>
+    <li><span className="checkmark__features__list"></span> Unlock Full AI Practice Papers</li>
+    <li><span className="checkmark__features__list"></span> Unlock AI Practice Paper Answers</li>
+    <li><span className="checkmark__features__list"></span> Unlock PDF Quiz</li>
+    <li><span className="checkmark__features__list"></span> Unlock PDF to Flashcards</li>
+    <li><span className="checkmark__features__list"></span> Unlock Notes to Quiz</li>
+    <li><span className="checkmark__features__list"></span> Unlock Notes to Flashcards</li>
+  </ul>
 </div>
 
+
+  <FooterNav />
+</div>
   );
 };
 

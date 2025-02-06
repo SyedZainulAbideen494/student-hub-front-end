@@ -8,6 +8,7 @@
   max-width: 320px;
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -45,8 +46,101 @@
 
 .premium__status {
   font-size: 14px;
-  color: #008f39;
+  color: #000000;
   font-weight: bold;
+}
+
+.button__subscription__new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 70px;
+  background: linear-gradient(135deg, #000, #222);
+  color: white;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button__subscription__new:hover {
+  background: linear-gradient(135deg, #222, #000);
+  transform: scale(1.03);
+}
+
+.card__subscription__new,
+.card__plan__includes {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 320px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card__subscription__new:hover,
+.card__plan__includes:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.title__subscription__new,
+.title__plan__includes {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c2c2c;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+}
+.features__list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.features__list li {
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Custom Checkmark */
+.checkmark__features__list {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  background: transparent;
+  border-radius: 50%;
+  position: relative;
+
+}
+
+.checkmark__features__list::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid black; /* Makes the checkmark black */
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .button__subscription__new {
