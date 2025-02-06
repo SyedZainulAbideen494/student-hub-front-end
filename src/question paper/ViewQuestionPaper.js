@@ -114,9 +114,7 @@ const ViewQuestionPaper = () => {
       </div>
 
       {isPremium ? (
-        <button className="action__button__today__ai__pan_overview">
-          Get New Plan
-        </button>
+<p></p>
       ) : (
 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: '10px' }}>
   <Link to='/subscription' style={{textDecoration: 'none'}}>
