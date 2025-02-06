@@ -98,36 +98,40 @@ const PaymentComponent = () => {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        minHeight: '100vh',
-        width: '100%',
-      }}
-    >
-      <div className="card__subscription__new">
-        <h3 className="title__subscription__new">Premium</h3>
-        <p className="description__subscription__new">Unlock advanced tools for success.</p>
-        <p className="price__subscription__new">
-          <span className="currency__subscription__new">₹</span>129
-          <span className="per__subscription__new"> /Month</span>
-        </p>
-        <div>
-           {isPremium ? (
-                          <p>You have premium!</p>
-              ) : (
-                <button className="button__subscription__new" onClick={handlePayment}>
-                Get started 
-              </button>
-              )}
-        </div>
-      </div>
-      <FooterNav/>
+<div
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    minHeight: '100vh',
+    width: '100%',
+    background: 'linear-gradient(135deg, #f9f9f9, #eceff4)',
+  }}
+>
+  <div className="card__subscription__new">
+    <h3 className="title__subscription__new">Premium</h3>
+    <p className="description__subscription__new">
+      Elevate your learning with AI-powered tools.
+    </p>
+    <p className="price__subscription__new">
+      <span className="currency__subscription__new">₹</span>129
+      <span className="per__subscription__new"> / Month</span>
+    </p>
+    <div>
+      {isPremium ? (
+        <p className="premium__status">You have premium!</p>
+      ) : (
+        <button className="button__subscription__new" onClick={handlePayment}>
+          Unlock Premium
+        </button>
+      )}
     </div>
+  </div>
+  <FooterNav />
+</div>
+
   );
 };
 

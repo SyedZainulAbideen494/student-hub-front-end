@@ -1,226 +1,40 @@
-/* Subscription Card */
-.subscription-card {
-  background: rgba(255, 255, 255, 0.55); /* Soft frosted glass */
-  backdrop-filter: blur(12px);
-  border-radius: 22px;
-  padding: 28px;
-  width: 340px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  margin: 40px auto;
-  font-family: 'Poppins', sans-serif;
-  border: 1px solid rgba(255, 204, 153, 0.4); /* Soft gold border */
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-
-
-/* Title */
-.subscription-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1c1c1e;
-  text-align: center;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: 'Playfair Display', serif;
-}
-
-/* Crown Icon */
-.crown-icon {
-  color: #ffcc00;
-  font-size: 26px;
-  text-shadow: 0px 3px 5px rgba(255, 204, 0, 0.4);
-}
-
-/* Description */
-.subscription-description {
-  font-size: 15px;
-  color: #555;
-  text-align: center;
-  margin-bottom: 22px;
-  font-style: italic;
-  letter-spacing: 0.3px;
-}
-
-/* Price */
-.subscription-price {
-  font-size: 26px;
-  font-weight: 700;
-  color: #1c1c1e;
-  text-align: center;
-  margin-bottom: 15px;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Plan Selection */
-.subscription-plan__subs_plan__selector {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-/* Plan Buttons */
-.plan-button__subs_plan__selector {
-  flex: 1;
-  padding: 12px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  background-color: transparent;
-  color: #000000;
-  border: 1px solid #1c1c1e;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.plan-button__subs_plan__selector.active__actve__subs {
-  background: linear-gradient(135deg, #1c1c1e, #1c1c1e);
-  color: #fff;
-  border-color: #1c1c1e;
-}
-
-
-/* Premium Button */
-.subscription-action {
-  background-color: #1c1c1e;
-  color: white;
-  font-size: 17px;
-  padding: 15px 30px;
-  border-radius: 35px;
-  border: none;
-  width: 100%;
-  cursor: pointer;
-  text-align: center;
-  font-weight: 700;
-  transition: background 0.3s ease, transform 0.2s ease-in-out;
-  box-shadow: 0 5px 12px rgba(255, 140, 0, 0.35);
-}
-
-.subscription-action:hover {
-  background: linear-gradient(135deg, #ffa366, #ff7f50);
-  transform: scale(1.06);
-  box-shadow: 0 6px 15px rgba(255, 140, 0, 0.4);
-}
-
-/* Features List */
-.subscription-features {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 22px;
-}
-
-.subscription-feature {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  color: #5a3e2b;
-  margin-bottom: 12px;
-}
-
-.check-icon {
-  color: #ffcc66;
-  margin-right: 10px;
-}
-
-/* Why Premium */
-.why-premium {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 18px;
-  border-radius: 22px;
-  border: 1px solid #ffcc99;
-  margin-top: 22px;
-  text-align: center;
-}
-
-.why-premium h3 {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1c1c1e;
-  margin-bottom: 8px;
-}
-
-.why-premium p {
-  font-size: 15px;
-  color: #5a3e2b;
-  margin-bottom: 6px;
-  font-weight: 500;
-  font-style: italic;
-}
-
-/* Mobile Optimization */
-@media (max-width: 480px) {
-  .subscription-card {
-    width: 300px;
-    padding: 22px;
-  }
-
-  .subscription-title {
-    font-size: 20px;
-  }
-
-  .subscription-description {
-    font-size: 13px;
-  }
-
-  .subscription-action {
-    font-size: 15px;
-    padding: 12px 24px;
-  }
-}
-
-
-
-
-
-
-
-
 .card__subscription__new {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: rgba(255, 255, 255, 0.6); /* Glassmorphism effect */
+  backdrop-filter: blur(20px);
   border-radius: 24px;
-  width: 100%;
-  max-width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 75%;
+  max-width: 320px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
-.content__subscription__new {
-  padding: 32px 24px;
-  text-align: left;
-}
-
-.header__subscription__new {
-  text-align: left;
+.card__subscription__new:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .title__subscription__new {
-  font-size: 20px;
-  font-weight: 600;
-  color: #4b5563;
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c2c2c;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
 }
 
 .description__subscription__new {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #6b7280;
-}
-
-.price__container__subscription__new {
-  margin-top: 24px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #555;
+  font-family: 'Inter', sans-serif;
 }
 
 .price__subscription__new {
-  font-size: 40px;
-  font-weight: 300;
-  color: black;
+  font-size: 42px;
+  font-weight: 400;
+  color: #1a1a1a;
 }
 
 .per__subscription__new {
@@ -229,100 +43,31 @@
   color: #6b7280;
 }
 
-.button__container__subscription__new {
-  padding: 24px 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Ensures vertical centering */
-  width: 100%; /* Full width for the container */
+.premium__status {
+  font-size: 14px;
+  color: #008f39;
+  font-weight: bold;
 }
 
 .button__subscription__new {
-  display: inline-flex; /* Prevent stretching across the full width */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  max-width: 250px; /* Restrict max width for the button */
-  padding: 15px 70px;
-  background: black;
+  padding: 16px 70px;
+  background: linear-gradient(135deg, #000, #222);
   color: white;
   border-radius: 50px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  border: 2px solid black;
-  transition: all 0.3s ease;
-  text-align: center;
-  width: auto; /* Prevent button from expanding to fill the container */
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .button__subscription__new:hover {
-  background: transparent;
-  color: black;
-}
-
-
-.modal-overlay {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  transition: all 0.3s ease;
-}
-
-.modal-content {
-  background-color: white;
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-  transform: translateY(100%);
-  animation: slideUp 0.3s forwards;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.modal-content h3 {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.modal-content button {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  font-size: 16px;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.modal-content button:hover {
-  background-color: #e0e0e0;
-}
-
-.close-btn {
-  background-color: #ff5c5c;
-  color: white;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.close-btn:hover {
-  background-color: #ff2e2e;
+  background: linear-gradient(135deg, #222, #000);
+  transform: scale(1.03);
 }
