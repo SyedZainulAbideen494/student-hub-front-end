@@ -146,8 +146,6 @@ const PaymentComponent = () => {
     <li><span className="checkmark__features__list"></span> Unlock AI Plan Tasks Generation</li>
     <li><span className="checkmark__features__list"></span> Unlock AI Quiz Results Analysis</li>
     <li><span className="checkmark__features__list"></span> Unlock AI Flashcards Explain</li>
-    <li><span className="checkmark__features__list"></span> Unlock Full AI Practice Papers</li>
-    <li><span className="checkmark__features__list"></span> Unlock AI Practice Paper Answers</li>
     <li><span className="checkmark__features__list"></span> Unlock PDF Quiz</li>
     <li><span className="checkmark__features__list"></span> Unlock PDF to Flashcards</li>
     <li><span className="checkmark__features__list"></span> Unlock Notes to Quiz</li>
