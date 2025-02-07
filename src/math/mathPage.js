@@ -148,79 +148,72 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
   }, [chatHistory]);
 
 
-const handleSendMessage = async () => {
-  if (!message.trim() && !image && !pdfFile) return; // Ensure message, image, or PDF is provided
-
-  if (!conversationStarted) setConversationStarted(true);
-
-  const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message }] }];
-  setChatHistory(newHistory);
-  setLoading(true);
-
-  const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
-
-  try {
-    if (pdfFile) {
-      // If there is a PDF file, send it to the AI PDF processing API
-      const formData = new FormData();
-      formData.append("file", pdfFile); // Ensure the field name is 'file'
-      formData.append("prompt", message); // Include the prompt as context
-      formData.append("token", token); // Include the token
-
-      const response = await axios.post(API_ROUTES.aiPdfProcessing, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      // Extract the result from the response
-      const resultText = response.data.result;
-
-      // Format the result text before showing it to the user
-      const formattedResultText = formatContent(resultText);
-
-      // Make sure there's a valid message to send after the PDF processing
-      const followUpMessage = message || "Please review the content generated from the PDF.";
-
+  const handleSendMessage = async () => {
+    if (!message.trim() && !image && !pdfFile) return; // Ensure message, image, or PDF is provided
+  
+    if (!conversationStarted) setConversationStarted(true);
+  
+    const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message || " " }] }];
+    setChatHistory(newHistory);
+    setLoading(true);
+  
+    const token = localStorage.getItem('token'); // Retrieve token from localStorage
+  
+    try {
+      let formattedResultText = "";
+      let followUpMessage = message;
+  
+      if (pdfFile) {
+        // Process PDF file
+        const formData = new FormData();
+        formData.append("file", pdfFile);
+        formData.append("prompt", message || "Analyze this PDF and provide insights."); // Ensure a message is always sent
+        formData.append("token", token);
+  
+        const response = await axios.post(API_ROUTES.aiPdfProcessing, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+  
+        formattedResultText = formatContent(response.data.result);
+        followUpMessage = message || "Here's the extracted information from your PDF.";
+        setPdfFile(null); // Clear the file after processing
+      } 
+      else if (image) {
+        // Process Image file
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("prompt", message || "Analyze this image and provide details.");
+        formData.append("token", token);
+  
+        const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+  
+        formattedResultText = formatContent(response.data.result);
+        followUpMessage = message || "Here's what I found in the image.";
+        setImage(null); // Clear the image
+      } 
+      else {
+        // Process Text-only message
+        if (!message.trim()) throw new Error("Message cannot be empty."); // Prevent sending empty message
+  
+        const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
+        formattedResultText = formatContent(response.data.response);
+        followUpMessage = "";
+      }
+  
       setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-      setMessage(followUpMessage); // Clear the message but set it for follow-up
-      setPdfFile(null); // Clear the PDF file after processing
-    } else if (image) {
-      // If there is an image, send it for processing
-      const formData = new FormData();
-      formData.append("image", image); // Ensure the field name is 'image'
-      formData.append("prompt", message); // Include the prompt
-      formData.append("token", token);
-
-      const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-
-      // Extract the result from the response
-      const resultText = response.data.result;
-
-      // Format the result text before showing it to the user
-      const formattedResultText = formatContent(resultText);
-
-      // Make sure there's a valid message to send after the image processing
-      const followUpMessage = message || "Please review the content generated from the image.";
-
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-      setMessage(followUpMessage); // Clear the message but set it for follow-up
-      setImage(null); // Clear the image
-    } else {
-      // If it's just a text message, process it as usual
-      const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
-      const formattedResponse = formatContent(response.data.response);
-
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResponse }] }]);
-      setMessage(''); // Clear the message
+      setMessage(followUpMessage); // Clear or update message field
+    } 
+    catch (error) {
+      console.error('Error sending message:', error);
+      setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'Something went wrong. Please try again later.' }] }]);
+    } 
+    finally {
+      setLoading(false);
     }
-  } catch (error) {
-    setChatHistory([...newHistory, { role: 'model', parts: [{ text: ' Something went wrong while processing your request. Please try again. If the problem persists, please contact support.' }] }]);
-    console.error('Error sending message:', error);
-  } finally {
-    setLoading(false);
-  }
-};
+  };
+  
 
   
     const handleFileChange = (event) => {
