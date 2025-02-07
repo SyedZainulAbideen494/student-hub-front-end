@@ -197,13 +197,6 @@ function TodayAiOverview() {
 
         )}
 
-<button 
-        className="action__button__today__ai__pan_overview"
-        onClick={handleEdit}
-        disabled={generating}
-      >
-        Edit
-      </button>
   {/* Task Generation Button */}
     {isPremium ? (
       <button 
