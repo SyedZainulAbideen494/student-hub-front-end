@@ -42,6 +42,7 @@ const TodayProgress = () => {
           headers: { 'Content-Type': 'application/json' }
         });
         setPomodoroDuration(response.data.durationInSeconds);
+        console.log(response.data.durationInSeconds)
       } catch (err) {
         setLoading(false); // No error handling needed here, fallback will be used
       }
@@ -69,7 +70,7 @@ const TodayProgress = () => {
   }, []);
 
   // Fallback if no study plan or Pomodoro data
-  const today = moment().format('dddd');  // Get today's day name (e.g., Tuesday)
+  const today = moment.utc().local().format('dddd'); // Converts from UTC to Local
   const todaySchedule = studyPlan?.weekly_timetable?.find((day) => day.day.toLowerCase() === today.toLowerCase());
 
   const pomodoroHours = pomodoroDuration ? pomodoroDuration / 3600 : 0;
@@ -78,7 +79,6 @@ const TodayProgress = () => {
   const studyTimeLeftInMinutes = todaySchedule && todaySchedule.total_study_time
     ? Math.max((todaySchedule.total_study_time - pomodoroHours) * 60, 0)
     : 0;
-  
   // Ensure studyTimePercentage falls back to 0 if todaySchedule or total_study_time is not available
   const studyTimePercentage = todaySchedule && todaySchedule.total_study_time
     ? Math.max((pomodoroHours / todaySchedule.total_study_time) * 100, 0)
@@ -101,7 +101,9 @@ const TodayProgress = () => {
       navigate('/flow-user-data'); // Get Plan
     }
   };
-
+  console.log('Study Plan:', studyPlan);
+  console.log('Today’s Schedule:', todaySchedule);
+  
   // Fallback for missing subjects or session times
   const todayPlan = todaySchedule || { subjects: [], hours_allocation: [] };
 
