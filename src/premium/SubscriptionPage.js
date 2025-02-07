@@ -11,38 +11,24 @@ const PaymentComponent = () => {
   const [discountActive, setDiscountActive] = useState(true);
   const nav = useNavigate();
 
-  useEffect(() => {
-    // Check if the discount time has expired
-    const storedTime = localStorage.getItem('discountStartTime');
-    if (!storedTime) {
-      localStorage.setItem('discountStartTime', Date.now());
-    } else {
-      const elapsedTime = Math.floor((Date.now() - parseInt(storedTime)) / 1000);
-      const remainingTime = 24 * 60 * 60 - elapsedTime;
-      if (remainingTime <= 0) {
-        setDiscountActive(false);
-        setTimeLeft(0);
-      } else {
-        setTimeLeft(remainingTime);
-      }
-    }
-  }, []);
+  // Set fixed expiry timestamp for March 7, 2025, at 1:00 PM IST
+  const offerExpiryTimestamp = new Date('2025-02-08T07:30:00Z').getTime(); // Convert IST to UTC
 
   useEffect(() => {
-    // Countdown timer
-    if (timeLeft > 0) {
-      const interval = setInterval(() => {
-        setTimeLeft((prevTime) => {
-          if (prevTime <= 1) {
-            setDiscountActive(false);
-            return 0;
-          }
-          return prevTime - 1;
-        });
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [timeLeft]);
+    const updateRemainingTime = () => {
+      const currentTime = Date.now();
+      const remainingTime = Math.max(0, Math.floor((offerExpiryTimestamp - currentTime) / 1000));
+
+      setTimeLeft(remainingTime);
+      setDiscountActive(remainingTime > 0);
+    };
+
+    updateRemainingTime();
+    const interval = setInterval(updateRemainingTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
