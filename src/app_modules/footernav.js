@@ -179,16 +179,14 @@ const FooterNav = () => {
         <span className="btn-label">AI Report</span>
     </button>
 </Link> 
-<Link to='/subscription' style={{ textDecoration: 'none' }}>
+<Link to='/subscription' style={{ textDecoration: 'none', position: 'relative' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
         <FaCrown className="icon-footer-nav"/>
         <span className="btn-label">Premium</span>
-        
     </button>
-    <span className='exclusive-offer-footer-nav'>
-</span>
-
+    <span className='exclusive-offer-footer-nav'>₹79 Only! <br/> 38% Off – 1 Day Left!</span>
 </Link>
+
                 
 {/* New Monthly Stats Button */}
 <Link to='/monthly-stats' style={{ textDecoration: 'none' }}>

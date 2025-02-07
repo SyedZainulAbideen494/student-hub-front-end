@@ -157,3 +157,57 @@
   background: linear-gradient(135deg, #222, #000);
   transform: scale(1.03);
 }
+
+
+/* FOMO Banner */
+.fomo-banner {
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fomo-icon {
+  font-size: 1.4rem;
+  margin-right: 5px;
+}
+
+.fomo-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fomo-timer {
+  font-size: 1rem;
+  font-weight: 500;
+  background: #fff;
+  color: #ff6363;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+/* Expired Offer Banner */
+.expired-banner {
+  background: #f8f8f8;
+  color: #ff4d4d;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+  border: 1px solid #ff4d4d;
+}
+
+.expired-icon {
+  font-size: 1.4rem;
+  margin-right: 5px;
+}
+
