@@ -80,7 +80,10 @@ const GenerateEliteNotesAI = () => {
       <h2 className="header__ai__gen__notes__ai__gen__notes">Generate Notes</h2>
       <form onSubmit={handleSubmit} className="form-container__ai__gen__notes__ai__gen__notes">
         <div className="input-container__ai__gen__notes__ai__gen__notes">
-          <label className="input-label__ai__gen__notes__ai__gen__notes">Topic:</label>
+        <label className="input-label__ai__gen__notes__ai__gen__notes">
+  Enter Topic & Additional Instructions (Optional):
+</label><br/>
+
           <input
             type="text"
             value={topic}
