@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './GenerateNotesAI.css'; // Import the CSS file for styling
+import './eliteNotes.css'; // Import the CSS file for styling
 import PencilSVG from '../pdf notes creation/PencilSVG';
 import { API_ROUTES } from '../../app_modules/apiRoutes';
 
-const GenerateNotesAI = () => {
+const GenerateEliteNotesAI = () => {
   const [topic, setTopic] = useState('');
-  const [types, setTypes] = useState({
-    summary: false,
-    detailed: false,
-    'question-and-answer': false,
-    'key points': false,
-    subtopics: false,
-    'important questions': false,
-  });
   const [generatedNotes, setGeneratedNotes] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
@@ -29,9 +21,8 @@ const GenerateNotesAI = () => {
 
     try {
       const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
-      const response = await axios.post(API_ROUTES.aiNotesGen, {
+      const response = await axios.post(API_ROUTES.aiNotesGenElite, {
         topic,
-        types,
         token
       });
 
@@ -64,7 +55,7 @@ const GenerateNotesAI = () => {
             })
             .then((res) => {
               setFlashcardsCount(res.data.flashcardsCount);
-              if (res.data.flashcardsCount >= 1) {
+              if (res.data.flashcardsCount >= 0) {
                 setIsExceededLimit(true);
               }
             })
@@ -80,12 +71,6 @@ const GenerateNotesAI = () => {
   }, []);
 
 
-  const handleToggleChange = (type) => {
-    setTypes((prevTypes) => ({
-      ...prevTypes,
-      [type]: !prevTypes[type], // Toggle the state correctly
-    }));
-  };
 
   return (
     <div className="generate-notes__ai__gen__notes-container__ai__gen__notes">
@@ -105,25 +90,6 @@ const GenerateNotesAI = () => {
           />
         </div>
 
-        <div className="note-types-container__ai__gen__notes__ai__gen__notes">
-          <label className="note-types-label__ai__gen__notes__ai__gen__notes">Note Types:</label><br/><br/>
-          <div className="toggle-container__ai__gen__notes__ai__gen__notes">
-            {Object.keys(types).map((type) => (
-              <div key={type} className="toggle-card__ai__gen__notes__ai__gen__notes">
-                <span className="toggle-label__ai__gen__notes__ai__gen__notes">{type}</span>
-                <label className="switch__ai__gen__notes">
-                  <input
-                    type="checkbox"
-                    checked={types[type]}
-                    onChange={() => handleToggleChange(type)}
-                    className="toggle-input"
-                  />
-                  <span className="slider__ai__gen__notes__ai__gen__notes"></span>
-                </label>
-              </div>
-            ))}
-          </div>
-        </div>
         <button 
           type="submit" 
           disabled={loading || isExceededLimit && !isPremium} 
@@ -166,4 +132,4 @@ const LoadingModal = () => (
       </div>
     </div>
   );
-export default GenerateNotesAI;
+export default GenerateEliteNotesAI;

@@ -133,6 +133,7 @@ import VoiceAssistant from "./voice assistant/voice assistant";
 import ViewQuestionPaperExample from "./question paper/ViewQuestionPaper copy";
 import TestModeApp from "./test mode/MainTestPage";
 import MindMapsApp from "./Mind maps/mp";
+import GenerateEliteNotesAI from "./flashCards/elite Notes/EliteNotes";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -244,6 +245,7 @@ const router = createBrowserRouter([
   {path: '/study-plan', element: <StudyPlanPage/>},
   {path: '/notes/create/pdf', element: <PDFnotesCreation/>},
   {path: '/notes/create/ai', element: <GenerateNotesAI/>},
+  {path: '/notes/create/elite', element: <GenerateEliteNotesAI/>},
   {path: '/create/notes/page', element: <CreateNotesPageChoice/>},
   {path: '/yt/vid/download', element: <AudioToNotes/>},
   {path: '/my-ai-plan', element: <TodayAiOverview/>},
