@@ -42,7 +42,7 @@ const TodayProgress = () => {
           headers: { 'Content-Type': 'application/json' }
         });
         setPomodoroDuration(response.data.durationInSeconds);
-        console.log(response.data.durationInSeconds)
+   
       } catch (err) {
         setLoading(false); // No error handling needed here, fallback will be used
       }
@@ -101,9 +101,7 @@ const TodayProgress = () => {
       navigate('/flow-user-data'); // Get Plan
     }
   };
-  console.log('Study Plan:', studyPlan);
-  console.log('Today’s Schedule:', todaySchedule);
-  
+
   // Fallback for missing subjects or session times
   const todayPlan = todaySchedule || { subjects: [], hours_allocation: [] };
 
