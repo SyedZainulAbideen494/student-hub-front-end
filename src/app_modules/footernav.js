@@ -184,7 +184,6 @@ const FooterNav = () => {
         <FaCrown className="icon-footer-nav"/>
         <span className="btn-label">Premium</span>
     </button>
-    <span className='exclusive-offer-footer-nav'>₹79 Only! <br/> 38% Off – 1 Day Left!</span>
 </Link>
 
                 
