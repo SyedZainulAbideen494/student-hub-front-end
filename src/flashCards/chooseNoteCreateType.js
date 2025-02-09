@@ -88,7 +88,21 @@ const CreateNotesPage = () => {
               </button>
             )}
         
-       
+        {isPremium ? (
+         <button
+         className="create__notes__type__page__option"
+         onClick={() => handleOptionClick('pdf')}
+       >
+         PDF to Notes
+       </button>
+            ) : (
+              <button 
+                className="create__notes__type__page__option"
+                disabled
+              >
+                <FaLock className="lock-icon" /> PDF to Notes<span> Premium</span>
+              </button>
+            )}
         <button
           className="create__notes__type__page__option"
           onClick={() => handleOptionClick('pdf')}
