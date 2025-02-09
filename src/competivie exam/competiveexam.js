@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FaLock, FaPlus } from 'react-icons/fa';
+import { FaInfoCircle, FaLock, FaPlus } from 'react-icons/fa';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './QuizGeneratorExam.css';
@@ -15,7 +15,7 @@ const QuizGeneratorExam = () => {
   const [loading, setLoading] = useState(false);
   const [quizId, setQuizId] = useState(null);
   const [isPremium, setIsPremium] = useState(null);
-
+  const [showTooltip, setShowTooltip] = useState(false); // Tooltip state
 
   const navigate = useNavigate();
 
@@ -79,8 +79,25 @@ const QuizGeneratorExam = () => {
   return (
     <div className="quiz-wrapper__Quiz__com__gen">
     <div className="quiz-container__Quiz__com__gen">
+    <FaInfoCircle
+            className="quiz-info-icon__Quiz__com__gen"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          />
+       
+        {/* Tooltip Details */}
+        {showTooltip && (
+         <div className="quiz-tooltip__Quiz__com__gen">
+         <p>📌 <strong>Mock Exam Format:</strong> Just like the real exam.</p>
+         <p>🔢 <strong>Number of Questions:</strong> 50 (MCQs, Numerical Reasoning, etc.)</p>
+         <p>⏳ <strong>Time Limit:</strong> 40 minutes</p>
+         <p>⚠️ <strong>Marking Scheme:</strong> Negative marking as per real exam rules.</p>
+         <p>✅ <strong>Instant Score, Leaderboard & Detailed Solutions</strong></p>
+       </div>
+       
+        )}
       <h2 className="quiz-title__Quiz__com__gen">Competitive Exam Quiz</h2>
-
+     
       {/* Exam Type Dropdown */}
       <label className="quiz-label__Quiz__com__gen">Select Exam Type</label>
       <select className="quiz-dropdown__Quiz__com__gen" value={examType} onChange={(e) => setExamType(e.target.value)}>

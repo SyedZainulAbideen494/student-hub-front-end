@@ -165,3 +165,39 @@
         padding: 20px;
     }
 }
+
+.quiz-info-icon__Quiz__com__gen {
+    margin-left: 8px;
+    font-size: 18px;
+    color: var(--btn-bg);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .quiz-info-icon__Quiz__com__gen:hover {
+    color: var(--btn-hover-bg);
+  }
+  
+  .quiz-tooltip__Quiz__com__gen {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    background: var(--secondary-bg);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    font-size: 14px;
+    color: var(--primary-text);
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    opacity: 1;
+    z-index: 10;
+  }
+  
+  .quiz-tooltip__Quiz__com__gen p {
+    margin: 4px 0;
+    font-size: 13px;
+  }
+  
