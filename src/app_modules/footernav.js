@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard, FaNewspaper } from 'react-icons/fa';
 import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -103,16 +103,18 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/competive-exam' ? 'active' : ''}`}>
     <i className="fas fa-file-alt icon-footer-nav"></i> {/* Exam Paper Icon */}
         <span className="btn-label">Competive Exam Mock Quiz </span>
+        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/resource-finder' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/resource-finder' ? 'active' : ''}`}>
     <i className="fas fa-search icon-footer-nav"></i> {/* Search Icon */}
         <span className="btn-label">Resources Finder </span>
+        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
 <Link to='/insta-story' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/resource-finder' ? 'active' : ''}`}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
     <FaChartLine className="icon-footer-nav" />
         <span className="btn-label">My Stats </span>
     </button>
@@ -151,6 +153,12 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
         <FaFolder className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
         <span className="btn-label">Locker</span>
+    </button>
+</Link>
+<Link to='/whats-new' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/whats-new' ? 'active' : ''}`}>
+        <FaNewspaper className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
+        <span className="btn-label">What's New</span>
     </button>
 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
