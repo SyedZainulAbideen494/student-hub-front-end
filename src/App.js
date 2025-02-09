@@ -137,6 +137,8 @@ import GenerateEliteNotesAI from "./flashCards/elite Notes/EliteNotes";
 import QuizGeneratorExam from "./competivie exam/competiveexam";
 import LoaderComponentExamMock from "./competivie exam/comp-exam-loader";
 import LoaderMockExamApp from "./competivie exam/page-loader-mock-exam";
+import ResourceFinder from "./resoruces finder/components/ResourcesPage";
+import AdminResourceReview from "./resoruces finder/components/AdminResourceReview";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -262,6 +264,8 @@ const router = createBrowserRouter([
   {path: '/mind-maps', element: <MindMapsApp/>},
   {path: '/competive-exam', element: <QuizGeneratorExam/>},
   {path: '/loading/mock-exam', element:<LoaderMockExamApp />},
+  {path: '/resource-finder', element: <ResourceFinder/>},
+  {path: '/admin-resources-review-page-not-allowed', element: <AdminResourceReview/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

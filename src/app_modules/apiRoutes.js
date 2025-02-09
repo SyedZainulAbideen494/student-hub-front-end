@@ -196,5 +196,10 @@ export const API_ROUTES = {
   getUserPaperCount: `${API_URL}/api/get-user-paper-count`, 
   aiQuizAnalysis: `${API_URL}/api/quiz/ai-analysis`,
   submitCompetitiveQuiz: `${API_URL}/submitCompetitiveQuiz`,
-  generateCompetiveExam: `${API_URL}/api/quiz/generate/exam`
+  generateCompetiveExam: `${API_URL}/api/quiz/generate/exam`,
+  getResourceFinder: `${API_URL}/api/resources`,
+  searchResources: `${API_URL}/api/resources/search`,
+  addResources: `${API_URL}/api/resources/add`,
+  adminResourceReview: `${API_URL}/api/resources/review`,
+  pendingResourceReview: `${API_URL}/api/resources/pending`
 }

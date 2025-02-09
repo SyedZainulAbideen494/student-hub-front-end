@@ -1,0 +1,89 @@
+.admin__container__resource__review {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin__title__resource__review {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.admin__resource__list__resource__review {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.admin__resource__card__resource__review {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin__resource__card__resource__review h2 {
+    font-size: 18px;
+    color: #222;
+}
+
+.admin__resource__card__resource__review p {
+    font-size: 14px;
+    color: #555;
+}
+
+.admin__resource__card__resource__review a {
+    font-size: 14px;
+    color: #007aff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin__buttons__resource__review {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.approve__btn__resource__review {
+    background: #4caf50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.approve__btn__resource__review:hover {
+    background: #43a047;
+}
+
+.delete__btn__resource__review {
+    background: #e74c3c;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete__btn__resource__review:hover {
+    background: #c0392b;
+}
+
+.admin__no__resources__resource__review {
+    text-align: center;
+    font-size: 16px;
+    color: #777;
+}

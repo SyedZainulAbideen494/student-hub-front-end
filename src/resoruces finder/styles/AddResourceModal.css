@@ -1,0 +1,170 @@
+/* Modal Overlay */
+.modal__overlay__resources__finder__page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Modal Content */
+.modal__content__resources__finder__page {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Close Icon */
+.close__icon__resources__finder__page {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close__icon__resources__finder__page:hover {
+    color: #212529;
+}
+
+/* Modal Title */
+.modal__content__resources__finder__page h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: #212529;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Message */
+.message__resources__finder__page {
+    font-size: 0.95rem;
+    color: #6c757d;
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+}
+
+/* Form */
+.modal__content__resources__finder__page form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.modal__content__resources__finder__page input,
+.modal__content__resources__finder__page textarea {
+    width: 88%;
+    padding: 0.70rem 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    color: #212529;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal__content__resources__finder__page input::placeholder,
+.modal__content__resources__finder__page textarea::placeholder {
+    color: #adb5bd;
+}
+
+.modal__content__resources__finder__page input:focus,
+.modal__content__resources__finder__page textarea:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+.modal__content__resources__finder__page textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Submit Button */
+.modal__content__resources__finder__page button {
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 25px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.modal__content__resources__finder__page button:hover {
+    background-color: #0a58ca;
+    transform: translateY(-2px);
+}
+
+.modal__content__resources__finder__page button:active {
+    transform: translateY(0);
+}
+
+/* Style the dropdown container */
+.select__add_resources__type {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #d1d5db;  /* Soft gray border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    background-color: #fff; /* White background */
+    color: #333; /* Dark text */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* On hover */
+.select__add_resources__type:hover {
+    border-color: #a1a1a1; /* Slightly darker gray */
+}
+
+/* On focus (click) */
+.select__add_resources__type:focus {
+    border-color: #4f46e5; /* Blue highlight */
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.4);
+}
+
+/* Style the dropdown arrow */
+.select__add_resources__type::-ms-expand {
+    display: none; /* Hide default arrow in IE */
+}
+
+/* Style options */
+.option__add_resources__type {
+    background: #fff; /* Background */
+    color: #333; /* Text color */
+    padding: 10px;
+}
+
+/* Disabled default option */
+.option__add_resources__type[value=""] {
+    color: #999;
+    font-style: italic;
+}
