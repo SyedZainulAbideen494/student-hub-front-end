@@ -134,6 +134,9 @@ import ViewQuestionPaperExample from "./question paper/ViewQuestionPaper copy";
 import TestModeApp from "./test mode/MainTestPage";
 import MindMapsApp from "./Mind maps/mp";
 import GenerateEliteNotesAI from "./flashCards/elite Notes/EliteNotes";
+import QuizGeneratorExam from "./competivie exam/competiveexam";
+import LoaderComponentExamMock from "./competivie exam/comp-exam-loader";
+import LoaderMockExamApp from "./competivie exam/page-loader-mock-exam";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -257,6 +260,8 @@ const router = createBrowserRouter([
   {path: '/voice-assistant', element: <VoiceAssistant/>},
   {path: '/test-mode', element: <TestModeApp/>},
   {path: '/mind-maps', element: <MindMapsApp/>},
+  {path: '/competive-exam', element: <QuizGeneratorExam/>},
+  {path: '/loading/mock-exam', element:<LoaderMockExamApp />},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

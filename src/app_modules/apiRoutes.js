@@ -194,5 +194,7 @@ export const API_ROUTES = {
   getuserQuestionPaper: `${API_URL}/api/question-paper/user`,
   generateAIQuestionPaper: `${API_URL}/api/question-paper/generate`,
   getUserPaperCount: `${API_URL}/api/get-user-paper-count`, 
-  aiQuizAnalysis: `${API_URL}/api/quiz/ai-analysis`
+  aiQuizAnalysis: `${API_URL}/api/quiz/ai-analysis`,
+  submitCompetitiveQuiz: `${API_URL}/submitCompetitiveQuiz`,
+  generateCompetiveExam: `${API_URL}/api/quiz/generate/exam`
 }

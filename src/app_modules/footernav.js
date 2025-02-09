@@ -99,10 +99,10 @@ const FooterNav = () => {
                         <span className="btn-label">leaderboard</span>
                     </button>
                 </Link>
-                <Link to='/insta-story' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
-        <FaChartLine className="icon-footer-nav" /> {/* Icon for generating a practice question paper */}
-        <span className="btn-label">My Stats</span> {/* Button label */}
+                <Link to='/competive-exam' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/competive-exam' ? 'active' : ''}`}>
+    <i className="fas fa-file-alt icon-footer-nav"></i> {/* Exam Paper Icon */}
+        <span className="btn-label">Competive Exam Mock Quiz </span>
     </button>
 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>

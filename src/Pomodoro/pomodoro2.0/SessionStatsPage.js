@@ -91,7 +91,7 @@ const SessionStatsPage = () => {
         </div>
       </div>
 
-      <h3 style={{ marginTop: '60px' }}><i className="fas fa-calendar-alt"></i> All Sessions</h3>
+      <h3 style={{ marginTop: '60px', textAlign: 'center' }}><i className="fas fa-calendar-alt"></i> All Sessions</h3>
       <div className="session-details__pomodoro__stats__page">
         {sessions.length > 0 ? (
           <ul>
