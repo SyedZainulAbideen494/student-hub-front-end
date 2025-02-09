@@ -11,19 +11,32 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+/* Wrapper to center content */
+.quiz-wrapper__Quiz__com__gen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures full-screen vertical centering */
+    width: 90%;
+    padding: 20px; /* Prevents content from touching edges on smaller screens */
+}
 
+/* Quiz Container */
 .quiz-container__Quiz__com__gen {
     max-width: 480px;
-    margin: 40px auto;
+    width: 100%;
     padding: 24px;
     background: var(--secondary-bg);
     border-radius: 16px;
-    margin: 30px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-
+/* Title */
 .quiz-title__Quiz__com__gen {
     font-size: 24px;
     font-weight: 700;
@@ -32,6 +45,7 @@
     color: var(--primary-text);
 }
 
+/* Labels */
 .quiz-label__Quiz__com__gen {
     font-size: 14px;
     font-weight: 500;
@@ -40,6 +54,7 @@
     color: var(--secondary-text);
 }
 
+/* Input Fields & Dropdown */
 .quiz-dropdown__Quiz__com__gen,
 .quiz-input__Quiz__com__gen {
     width: 100%;
@@ -58,6 +73,7 @@
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
+/* Input Groups */
 .quiz-input-group__Quiz__com__gen {
     display: flex;
     align-items: center;
@@ -65,6 +81,7 @@
     margin-bottom: 16px;
 }
 
+/* Add Button */
 .quiz-add-button__Quiz__com__gen {
     background: var(--btn-bg);
     color: var(--btn-text);
@@ -83,6 +100,7 @@
     transform: scale(1.1);
 }
 
+/* Tags */
 .quiz-tag-container__Quiz__com__gen {
     display: flex;
     flex-wrap: wrap;
@@ -105,6 +123,7 @@
     color: var(--btn-text);
 }
 
+/* Generate Quiz Button */
 .quiz-generate-button__Quiz__com__gen {
     width: 100%;
     padding: 14px;
@@ -130,10 +149,19 @@
     transform: none;
 }
 
+/* Message */
 .quiz-message__Quiz__com__gen {
     text-align: center;
     font-size: 14px;
     color: var(--accent-color);
     margin-top: 16px;
     font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 600px) {
+    .quiz-container__Quiz__com__gen {
+        width: 95%;
+        padding: 20px;
+    }
 }

@@ -77,6 +77,7 @@ const QuizGeneratorExam = () => {
   };
 
   return (
+    <div className="quiz-wrapper__Quiz__com__gen">
     <div className="quiz-container__Quiz__com__gen">
       <h2 className="quiz-title__Quiz__com__gen">Competitive Exam Quiz</h2>
 
@@ -138,6 +139,7 @@ const QuizGeneratorExam = () => {
       </button>
 )}
 <FooterNav/>
+    </div>
     </div>
   );
 };
