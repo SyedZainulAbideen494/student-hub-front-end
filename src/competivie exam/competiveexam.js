@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './QuizGeneratorExam.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import FooterNav from '../app_modules/footernav';
 
 const QuizGeneratorExam = () => {
   const [examType, setExamType] = useState('');
@@ -136,7 +137,7 @@ const QuizGeneratorExam = () => {
        Generate Quiz Premium <FaLock/>
       </button>
 )}
-
+<FooterNav/>
     </div>
   );
 };
