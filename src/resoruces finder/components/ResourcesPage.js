@@ -4,6 +4,7 @@ import { API_ROUTES } from "../../app_modules/apiRoutes";
 import { FiPlus, FiSearch } from "react-icons/fi";
 import AddResourceModal from "./AddResourceModal";
 import "../styles/ResourceFinder.css";
+import FooterNav from "../../app_modules/footernav";
 
 // Function to shuffle the array
 const shuffleArray = (array) => {
@@ -95,7 +96,7 @@ const ResourceFinder = () => {
             >
                 <FiPlus size={24} />
             </button>
-
+<FooterNav/>
             {/* Add Resource Modal */}
             {isModalOpen && <AddResourceModal closeModal={() => setIsModalOpen(false)} />}
         </div>

@@ -2,6 +2,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    margin-bottom: 70px;
 }
 
 /* Header */
@@ -117,7 +118,7 @@
 /* Floating Add Button */
 .add__button__resources__finder__page {
     position: fixed;
-    bottom: 2rem;
+    bottom: 6rem;
     right: 2rem;
     background-color: #0d6efd;
     border: none;

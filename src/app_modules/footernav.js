@@ -105,6 +105,18 @@ const FooterNav = () => {
         <span className="btn-label">Competive Exam Mock Quiz </span>
     </button>
 </Link>
+                <Link to='/resource-finder' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/resource-finder' ? 'active' : ''}`}>
+    <i className="fas fa-search icon-footer-nav"></i> {/* Search Icon */}
+        <span className="btn-label">Resources Finder </span>
+    </button>
+</Link>
+<Link to='/insta-story' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/resource-finder' ? 'active' : ''}`}>
+    <FaChartLine className="icon-footer-nav" />
+        <span className="btn-label">My Stats </span>
+    </button>
+</Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
                     <FaBook className="icon-footer-nav" />
