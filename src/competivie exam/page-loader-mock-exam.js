@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import ReactLoaderInfinite from '../Personalized study plan/loader/ReactLoaderInfinite';
+import LoaderComponentExamMock from './comp-exam-loader';
 
 const LoaderMockExamApp = () => {
     const messages = [
@@ -23,13 +24,8 @@ const LoaderMockExamApp = () => {
       }, [messages]);
     
       return (
-        <div className="loading__container__loader__ai__plan">
-          <div className="loader__wrapper__loader__ai__plan">
-            <ReactLoaderInfinite />
-          </div>
-          <p className="loading__message__loader__ai__plan">{currentMessage}</p>
-        </div>
-      );
+<LoaderComponentExamMock/>
+      )
     };
 
 export default LoaderMockExamApp;
