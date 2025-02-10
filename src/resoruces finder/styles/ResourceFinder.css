@@ -206,9 +206,9 @@
 
 .category__button {
     padding: 6px 12px;
-    font-size: 13px;
-    border: none;
-    background: rgba(240, 240, 240, 0.8);
+    font-size: 15px;
+    border: 1px solid rgba(240, 240, 240, 0.8);
+    background: #f9f9fb;
     border-radius: 14px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -221,7 +221,7 @@
 
 
 .category__button.active {
-    background: linear-gradient(135deg, #6A5AE0, #8B78FF);
+    background-color: #8dc3f7;
     color: white;
     font-weight: 600;
 }
