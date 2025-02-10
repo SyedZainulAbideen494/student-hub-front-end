@@ -21,9 +21,7 @@ const AddResourceModal = ({ closeModal }) => {
         "NCERT Books & Solutions",
         "Handwritten Notes (Toppers' Notes)",
         "Formula Sheets & Shortcuts",
-        "Mind Maps & Flashcards",
-        "Interactive Simulations (Virtual Labs)",
-        "Study Planners & Time Management Tools",
+        "Mind Maps"
     ];
 
     const handleSubmit = async (e) => {

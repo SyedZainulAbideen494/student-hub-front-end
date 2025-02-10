@@ -138,3 +138,66 @@
     background-color: #0a58ca;
     transform: scale(1.1);
 }
+
+.categories__bar {
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.categories__bar::-webkit-scrollbar {
+    display: none;
+}
+
+.category__button {
+    padding: 6px 12px;
+    font-size: 13px;
+    border: none;
+    background: rgba(240, 240, 240, 0.8);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    color: #555;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevents buttons from shrinking */
+}
+
+.category__button:hover {
+    background: rgba(220, 220, 220, 1);
+}
+
+.category__button.active {
+    background: linear-gradient(135deg, #6A5AE0, #8B78FF);
+    color: white;
+    font-weight: 600;
+}
+
+
+.save__button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.save__button:hover {
+    transform: scale(1.1);
+}
+
+.save__button svg {
+    stroke: #555;
+    transition: stroke 0.3s ease-in-out;
+}
+
+.save__button.saved svg {
+    stroke: red;  /* Change heart color to red when saved */
+    fill: red;
+}

@@ -201,5 +201,7 @@ export const API_ROUTES = {
   searchResources: `${API_URL}/api/resources/search`,
   addResources: `${API_URL}/api/resources/add`,
   adminResourceReview: `${API_URL}/api/resources/review`,
-  pendingResourceReview: `${API_URL}/api/resources/pending`
+  pendingResourceReview: `${API_URL}/api/resources/pending`,
+  toggleSaveResource: `${API_URL}/api/resources/toggle-save`,
+  getSavedResources: `${API_URL}/api/resources/saved`
 }
