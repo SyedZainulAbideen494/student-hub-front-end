@@ -45,12 +45,23 @@ const ResourceFinder = () => {
     const fetchResources = async () => {
         try {
             const response = await axios.get(API_ROUTES.getResourceFinder);
-            setResources(response.data);
+            const shuffledResources = shuffleArray(response.data); // Shuffle before setting state
+            setResources(shuffledResources);
         } catch (error) {
             console.error("Error fetching resources", error);
         }
     };
-
+    
+    // Function to shuffle an array (Fisher-Yates Shuffle Algorithm)
+    const shuffleArray = (array) => {
+        let shuffled = [...array]; // Create a copy to avoid mutating the original
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    };
+    
     const fetchSavedResources = async () => {
         try {
             const token = localStorage.getItem("token");
