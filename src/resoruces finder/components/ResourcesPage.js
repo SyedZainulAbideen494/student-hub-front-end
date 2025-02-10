@@ -91,6 +91,16 @@ const ResourceFinder = () => {
         }
     };
 
+    const handleResourceClick = async (resourceId, link) => {
+        try {
+            await axios.post(API_ROUTES.resourceClick, { resourceId });
+        } catch (error) {
+            console.error("Error tracking click", error);
+        }
+        window.open(link, "_blank");
+    };
+    
+
     const filterResources = () => {
         let filtered = resources;
 
@@ -156,9 +166,18 @@ const ResourceFinder = () => {
                     
                         <h2 className="resource__title" style={{padding: '10px', marginRight: '5px'}}>{res.title}</h2>
                         <p className="resource__description">{res.description}</p>
-                        <a href={res.link} target="_blank" rel="noopener noreferrer" className="resource__link">
-                            Visit Resource
-                        </a>
+                        <a
+    href={res.link}
+    onClick={(e) => {
+        handleResourceClick(res.id, res.link);
+    }}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="resource__link"
+>
+    Visit Resource
+</a>
+
                     </div>
                     
                     ))

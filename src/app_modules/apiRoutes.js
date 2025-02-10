@@ -203,5 +203,6 @@ export const API_ROUTES = {
   adminResourceReview: `${API_URL}/api/resources/review`,
   pendingResourceReview: `${API_URL}/api/resources/pending`,
   toggleSaveResource: `${API_URL}/api/resources/toggle-save`,
-  getSavedResources: `${API_URL}/api/resources/saved`
+  getSavedResources: `${API_URL}/api/resources/saved`,
+  resourceClick: `${API_URL}/api/resources/click`
 }
