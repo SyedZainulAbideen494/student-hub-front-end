@@ -76,10 +76,6 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.resource__card__resources__finder__page:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
 
 .resource__title {
     font-size: 1.25rem;
@@ -169,9 +165,7 @@
     flex-shrink: 0; /* Prevents buttons from shrinking */
 }
 
-.category__button:hover {
-    background: rgba(220, 220, 220, 1);
-}
+
 
 .category__button.active {
     background: linear-gradient(135deg, #6A5AE0, #8B78FF);
@@ -180,24 +174,37 @@
 }
 
 
+.resource__card__resources__finder__page {
+    display: flex;
+    flex-direction: column;
+    background: #f9f9fb; /* Soft, minimal background */
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+    position: relative; /* Allows absolute positioning inside */
+    transition: all 0.3s ease-in-out;
+}
+
+
 .save__button {
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
     padding: 5px;
     transition: transform 0.2s ease-in-out;
+    position: absolute;
+    top: 12px;
+    right: 12px; /* Aligns to the right-most */
 }
 
-.save__button:hover {
-    transform: scale(1.1);
-}
+
 
 .save__button svg {
-    stroke: #555;
-    transition: stroke 0.3s ease-in-out;
+    stroke: #a1a1a6; /* Soft muted color */
+    transition: stroke 0.3s ease-in-out, fill 0.3s ease-in-out;
 }
 
 .save__button.saved svg {
-    stroke: red;  /* Change heart color to red when saved */
-    fill: red;
+    stroke: #ff6b6b; /* Aesthetic soft red */
+    fill: #ff6b6b;
 }

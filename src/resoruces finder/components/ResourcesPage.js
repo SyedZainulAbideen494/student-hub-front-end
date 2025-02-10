@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_ROUTES } from "../../app_modules/apiRoutes";
-import { FiPlus, FiSearch, FiHeart } from "react-icons/fi";
+import { FiPlus, FiSearch, FiHeart, FiSave } from "react-icons/fi";
 import AddResourceModal from "./AddResourceModal";
 import "../styles/ResourceFinder.css";
 import FooterNav from "../../app_modules/footernav";
+import { BsFillTicketDetailedFill } from "react-icons/bs";
 
 const categories = [
     "All",
@@ -145,18 +146,21 @@ const ResourceFinder = () => {
                 {filteredResources.length > 0 ? (
                     filteredResources.map((res) => (
                         <div key={res.id} className="resource__card__resources__finder__page">
-                            <h2 className="resource__title">{res.title}</h2>
-                            <p className="resource__description">{res.description}</p>
-                            <a href={res.link} target="_blank" rel="noopener noreferrer" className="resource__link">
-                                Visit Resource
-                            </a>
-                            <button
-                                className={`save__button ${savedResources.has(res.id) ? "saved" : ""}`}
-                                onClick={() => toggleSaveResource(res.id)}
-                            >
-                                <FiHeart size={18} />
-                            </button>
-                        </div>
+                        {/* Save Button positioned at the top-right */}
+                        <button
+                            className={`save__button ${savedResources.has(res.id) ? "saved" : ""}`}
+                            onClick={() => toggleSaveResource(res.id)}
+                        >
+                            <FiHeart size={18} />
+                        </button>
+                    
+                        <h2 className="resource__title" style={{padding: '10px', marginRight: '5px'}}>{res.title}</h2>
+                        <p className="resource__description">{res.description}</p>
+                        <a href={res.link} target="_blank" rel="noopener noreferrer" className="resource__link">
+                            Visit Resource
+                        </a>
+                    </div>
+                    
                     ))
                 ) : (
                     <p className="no__resources__resources__finder__page">No resources found.</p>
