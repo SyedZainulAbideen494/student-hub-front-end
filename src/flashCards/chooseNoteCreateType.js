@@ -51,12 +51,8 @@ const CreateNotesPage = () => {
       </p>
 
       <div className="create__notes__type__page__options">
-        <button
-          className="create__notes__type__page__option"
-          onClick={() => handleOptionClick('ai')}
-        >
-          AI Generated Notes
-        </button>
+      
+      
         {isPremium ? (
           <button
           className="create__notes__type__page__option"
