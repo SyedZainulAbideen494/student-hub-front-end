@@ -168,8 +168,18 @@ const ResourceFinder = () => {
             <div className="header__resources__finder__page">
                 <h1 className="title__resources__finder__page">Edusify Resource Finder</h1>
             </div>
+            <div className="categories__bar">
+                {categories.map((category) => (
+                    <button
+                        key={category}
+                        className={`category__button ${selectedCategory === category ? "active" : ""}`}
+                        onClick={() => setSelectedCategory(category)}
+                    >
+                        {category}
+                    </button>
+                ))}
+            </div>
 
-{/* Manual Search Bar */}
 {/* Manual Search Bar */}
 <div className="search__bar__resources__finder__page">
     <FiSearch className="search__icon__resources__finder__page" />
