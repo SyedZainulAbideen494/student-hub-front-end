@@ -5,6 +5,8 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import { useNavigate } from 'react-router-dom';
 import { FaCrown } from 'react-icons/fa';
+import styled from 'styled-components';
+
 
 const PaymentComponent = () => {
   const [amount, setAmount] = useState(129); // Default to ₹129 (monthly)
@@ -14,7 +16,72 @@ const PaymentComponent = () => {
   const [isPremium, setIsPremium] = useState(null);
   const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
   const nav = useNavigate();
-  
+
+  const StyledWrapper = styled.div`
+  .card__subs__page__premium__edusify {
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    background-color: rgba(0, 0, 0, 1);
+    padding: 1.5rem;
+  }
+
+  .price__subs__page__premium__edusify {
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .lists__subs__page__premium__edusify {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 0.75rem;
+    row-gap: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .list__subs__page__premium__edusify {
+    display: flex;
+    align-items: center;
+  }
+
+  .list__subs__page__premium__edusify svg {
+    height: 1rem;
+    width: 1rem;
+  }
+
+  .list__subs__page__premium__edusify span {
+    margin-left: 1rem;
+  }
+
+  .action__subs__page__premium__edusify {
+    margin-top: 2rem;
+    width: 80%;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0.625rem 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 1);
+    outline: none;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .action__subs__page__premium__edusify:hover {
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+  }
+`;
+
+
   const handlePayment = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -100,97 +167,50 @@ const PaymentComponent = () => {
   return (
 <div className="container__pricing__subs__page">
 
-
-  {/* Premium Card */}
-  <div className="card__pricing__subs__page">
-    <h3 className="title__pricing__subs__page">Edusify Premium</h3>
-    <p className="description__pricing__subs__page">
-      Unlock powerful AI tools to elevate your studies.
-    </p>
-    <p className="price__pricing__subs__page">
-      <span className="currency">₹</span>129<span className="per"> / Month</span>
-    </p>
-
-    {isPremium ? (
-           <button className="button__pricing__subs__page">
-           You have Premium!
-         </button>
+<StyledWrapper>
+  <div className="card__subs__page__premium__edusify">
+    <p className="price__subs__page__premium__edusify">₹129 month</p>
+    <ul className="lists__subs__page__premium__edusify">
+  {[
+    "Unlimited Magic Usage",
+    "Unlimited AI Quiz Generation",
+    "Unlimited AI Study Plan Generations",
+    "Unlimited AI Notes Generation",
+    "Unlimited PDF to Notes",
+    "AI Pomodoro Recommendations",
+    "AI Task Generation",
+    "AI Plan Tasks Generation",
+    "AI Quiz Results Analysis",
+    "AI Flashcards Explain",
+    "AI PDF to Quiz",
+    "AI PDF to Flashcards",
+    "Notes to Quiz",
+    "Notes to Flashcards"
+  ].map((feature, index) => (
+    <li key={index} className="list__subs__page__premium__edusify">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <g strokeWidth={0} id="SVGRepo_bgCarrier" />
+        <g strokeLinejoin="round" strokeLinecap="round" id="SVGRepo_tracerCarrier" />
+        <g id="SVGRepo_iconCarrier">
+          <path
+            fill="#ffffff"
+            d="M21.5821 5.54289C21.9726 5.93342 21.9726 6.56658 21.5821 6.95711L10.2526 18.2867C9.86452 18.6747 9.23627 18.6775 8.84475 18.293L2.29929 11.8644C1.90527 11.4774 1.89956 10.8443 2.28655 10.4503C2.67354 10.0562 3.30668 10.0505 3.70071 10.4375L9.53911 16.1717L20.1679 5.54289C20.5584 5.15237 21.1916 5.15237 21.5821 5.54289Z"
+            clipRule="evenodd"
+            fillRule="evenodd"
+          />
+        </g>
+      </svg>
+      <span>{feature}</span>
+    </li>
+  ))}
+</ul>
+{isPremium ? (
+     <a  className="action__subs__page__premium__edusify">You have premium!</a>
     ) : (
-      <button className="button__pricing__subs__page" onClick={handlePayment}>
-        Upgrade to Premium
-      </button>
+      <a  className="action__subs__page__premium__edusify" onClick={handlePayment}>Get started</a>
     )}
-
-    <p className="users-count">Join 10,000+ students using Edusify Premium</p>
   </div>
-
-
-{/* Plan Includes */}
-<div className="card__features__pricing__subs__page">
-  <h3 className="title__features__pricing__subs__page">Everything You Unlock</h3>
-  <p className="subtitle__features__pricing__subs__page" style={{marginTop: '30px', marginBottom: "30px"}}>
-  Get it all for just ₹129 – Invest in your future for the cost of a snack! 🍫
-  </p>
-
-  {/* AI-Powered Study Features */}
-  <div className="feature-category__pricing__subs__page">
-    <h4 className="category-title__pricing__subs__page">AI Study Tools – Study Smarter, Not Harder</h4>
-    <ul className="features-list__pricing__subs__page">
-      {[
-        { icon: "⚡", text: "Unlimited Magic Usage", desc: "Transform AI answers into notes, quizzes & flashcards instantly." },
-        { icon: "📖", text: "Unlimited AI Quiz Generation", desc: "Generate chapter-wise quizzes in seconds—never run out of practice questions!" },
-        { icon: "📝", text: "Unlimited AI Study Plan Generations", desc: "Get customized study plans based on your schedule & goals." },
-        { icon: "📄", text: "Unlimited AI Notes Generation", desc: "Create structured, exam-ready notes from any topic instantly." },
-        { icon: "📑", text: "Unlimited PDF to Notes", desc: "Extract & summarize PDFs into well-organized study notes effortlessly." },
-      ].map((feature, index) => (
-        <li key={index} className="feature-item__pricing__subs__page">
-          <span className="checkmark__pricing__subs__page"></span> 
-          <strong className="feature-title">{feature.text}</strong>
-          <p className="feature-description">{feature.desc}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
-
-  {/* AI-Powered Smart Assistance */}
-  <div className="feature-category__pricing__subs__page">
-    <h4 className="category-title__pricing__subs__page">Smart Assistance – Let AI Do the Hard Work</h4>
-    <ul className="features-list__pricing__subs__page">
-      {[
-        { icon: "⏳", text: "AI Pomodoro Recommendations", desc: "Get AI-suggested session durations based on your fatigue & progress." },
-        { icon: "✅", text: "AI Task Generation", desc: "Let AI break down complex topics into easy-to-follow tasks." },
-        { icon: "📌", text: "AI Plan Tasks Generation", desc: "Your study plan just got smarter—AI auto-generates tasks for you." },
-        { icon: "📊", text: "AI Quiz Results Analysis", desc: "See where you went wrong & get insights to improve instantly." },
-        { icon: "📚", text: "AI Flashcards Explain", desc: "Confused? AI explains each flashcard in detail so you truly understand it." },
-      ].map((feature, index) => (
-        <li key={index} className="feature-item__pricing__subs__page">
-          <span className="checkmark__pricing__subs__page"></span> 
-          <strong className="feature-title">{feature.text}</strong>
-          <p className="feature-description">{feature.desc}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
-
-  {/* Advanced Study Tools */}
-  <div className="feature-category__pricing__subs__page">
-    <h4 className="category-title__pricing__subs__page">Advanced Study Tools – Take Learning to the Next Level</h4>
-    <ul className="features-list__pricing__subs__page">
-      {[
-        { icon: "📜", text: "AI PDF to Quiz", desc: "Upload any PDF & AI generates quizzes from it automatically!" },
-        { icon: "🔄", text: "AI PDF to Flashcards", desc: "Convert PDFs into AI-generated flashcards for quick revision." },
-        { icon: "🎓", text: "Notes to Quiz", desc: "Turn your notes into quizzes to test yourself efficiently." },
-        { icon: "🃏", text: "Notes to Flashcards", desc: "Instantly convert long notes into bite-sized flashcards for quick recall." },
-      ].map((feature, index) => (
-        <li key={index} className="feature-item__pricing__subs__page">
-          <span className="checkmark__pricing__subs__page"></span> 
-          <strong className="feature-title">{feature.text}</strong>
-          <p className="feature-description">{feature.desc}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
-</div>
+</StyledWrapper>
 <FooterNav/>
 </div>
 
