@@ -170,6 +170,11 @@ const PaymentComponent = () => {
 <StyledWrapper>
   <div className="card__subs__page__premium__edusify">
     <p className="price__subs__page__premium__edusify">₹129 month</p>
+    {isPremium ? (
+     <a  className="action__subs__page__premium__edusify">You have premium!</a>
+    ) : (
+      <a  className="action__subs__page__premium__edusify" onClick={handlePayment}>Get started</a>
+    )}
     <ul className="lists__subs__page__premium__edusify">
   {[
     "Unlimited Magic Usage",
@@ -204,11 +209,7 @@ const PaymentComponent = () => {
     </li>
   ))}
 </ul>
-{isPremium ? (
-     <a  className="action__subs__page__premium__edusify">You have premium!</a>
-    ) : (
-      <a  className="action__subs__page__premium__edusify" onClick={handlePayment}>Get started</a>
-    )}
+
   </div>
 </StyledWrapper>
 <FooterNav/>

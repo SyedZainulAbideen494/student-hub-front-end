@@ -14,7 +14,7 @@ const InstaStory = () => {
     pomodoroSessions: 0,
     percentage: 0,
     leaderboardPosition: 0,
-    totalPomodoroDuration: 0, // Add this to store the total Pomodoro duration
+    totalPomodoroDuration: 0, // Add this to store the total Pomodoro duration in minutes
   });
   
   const [imageUrl, setImageUrl] = useState(null); // State for storing image URL for preview
@@ -28,7 +28,10 @@ const InstaStory = () => {
       try {
         const token = localStorage.getItem('token'); // Assume you store the token in localStorage
         const response = await axios.get(API_ROUTES.getShareStats, { params: { token } });
-        setData(response.data);
+        
+        // Convert hours to minutes
+        const totalPomodoroDurationMinutes = response.data.totalPomodoroDuration * 60;
+        setData({ ...response.data, totalPomodoroDuration: totalPomodoroDurationMinutes });
       } catch (error) {
         console.error("Error fetching stats:", error);
       }
@@ -60,11 +63,11 @@ const InstaStory = () => {
   
       // Stats array with titles, values, and Font Awesome icons (Unicode)
       const stats = [
-        { title: 'Hours Studied', value: data.totalPomodoroDuration.toFixed(2) || 0, icon: '\uf017' }, // faClock
+        { title: 'Minutes Studied', value: data.totalPomodoroDuration.toFixed(2) || 0, icon: '\uf017' }, // faClock
         { title: 'Tasks Completed', value: data.tasksCompleted || 0, icon: '\uf00c' }, // faCheckCircle
         { title: 'Flashcards Mastered', value: data.flashcardsMastered || 0, icon: '\uf02d' }, // faBook
         { title: 'Pomodoro Sessions', value: data.pomodoroSessions || 0, icon: '\uf0e0' }, // faStopwatch
-        { title: 'Pomodoro Duration (hours)', value: data.totalPomodoroDuration.toFixed(2) || 0, icon: '\uf017' }, // Total Pomodoro Duration
+        { title: 'Pomodoro Duration (minutes)', value: data.totalPomodoroDuration.toFixed(2) || 0, icon: '\uf017' }, // Total Pomodoro Duration
       ];
   
       let yOffset = 1250; // Starting Y position for stats
@@ -114,8 +117,7 @@ const InstaStory = () => {
     link.href = imageUrl; // Use the generated image URL
     link.download = fileName; // Use the new file name with the current time
     link.click();
-    setShowModal(false)
-
+    setShowModal(false);
   };
 
   // Simulate Instagram opening and download on Story button click
@@ -123,21 +125,19 @@ const InstaStory = () => {
     // Download the image
     downloadPNG();
     setShowSuccessModal(true); // Show the success modal after download
-    setShowModal(false)
+    setShowModal(false);
   };
-  
 
   return (
-    <div  className="stats__share__page-container_global">
-<div id="stats__share__page" className="stats__share__page-container">
-  <div className="stats__share__page-header">
-    <button className="stats__share__page-back-btn" onClick={() => window.history.back()}>
-      <i className="fas fa-arrow-left"></i>
-    </button>
-    <h1 className="stats__share__page-title"></h1>
-  </div>
+    <div className="stats__share__page-container_global">
+      <div id="stats__share__page" className="stats__share__page-container">
+        <div className="stats__share__page-header">
+          <button className="stats__share__page-back-btn" onClick={() => window.history.back()}>
+            <i className="fas fa-arrow-left"></i>
+          </button>
+          <h1 className="stats__share__page-title"></h1>
+        </div>
 
-  
         {/* Image Preview */}
         {loading ? (
           <div className="loader">Loading...</div> // Display loader while image is being generated
@@ -149,53 +149,49 @@ const InstaStory = () => {
           )
         )}
 
-
-
-  {/* Share Button */}
-  <div className="stats__share__page-share-btn">
-        <button className="stats__share__page-share-button" onClick={() => setShowModal(true)}>
-          Share
-        </button>
-      </div>
-      {showModal && (
-        <div className="stats__shareStatsModal">
-           <button className="stats__shareStatsModal-close" onClick={() => setShowModal(false)}>x</button>
-          <div className="stats__shareStatsModal-content">
-            <div className="stats__shareStatsModal-option" onClick={handleStoryClick}>
-              <i className="fab fa-instagram stats__shareStatsModal-icon"></i>
-              <p className="stats__shareStatsModal-text">Story</p>
+        {/* Share Button */}
+        <div className="stats__share__page-share-btn">
+          <button className="stats__share__page-share-button" onClick={() => setShowModal(true)}>
+            Share
+          </button>
+        </div>
+        {showModal && (
+          <div className="stats__shareStatsModal">
+             <button className="stats__shareStatsModal-close" onClick={() => setShowModal(false)}>x</button>
+            <div className="stats__shareStatsModal-content">
+              <div className="stats__shareStatsModal-option" onClick={handleStoryClick}>
+                <i className="fab fa-instagram stats__shareStatsModal-icon"></i>
+                <p className="stats__shareStatsModal-text">Story</p>
+              </div>
+              <div className="stats__shareStatsModal-option" onClick={downloadPNG}>
+                <i className="fas fa-download stats__shareStatsModal-icon"></i>
+                <p className="stats__shareStatsModal-text">Download</p>
+              </div>
             </div>
-            <div className="stats__shareStatsModal-option" onClick={downloadPNG}>
-              <i className="fas fa-download stats__shareStatsModal-icon"></i>
-              <p className="stats__shareStatsModal-text">Download</p>
+           
+          </div>
+        )}
+
+        {showSuccessModal && (
+          <div className="stats__share__Insta__modal">
+            <div className="stats__share__Insta__modal-content">
+              <button className="stats__share__Insta__modal-close" onClick={() => setShowSuccessModal(false)}>
+                &times; {/* This is the close symbol */}
+              </button>
+              <p className="stats__share__Insta__modal-text">Your image has been downloaded!</p>
+              <p className="stats__share__Insta__modal-text">Please open Instagram to upload your story.</p>
+              <button className="stats__share__Insta__modal-button" onClick={() => window.open('https://www.instagram.com')}>
+                Open Instagram
+              </button>
             </div>
           </div>
-         
-        </div>
-      )}
+        )}
 
-{showSuccessModal && (
-  <div className="stats__share__Insta__modal">
-  <div className="stats__share__Insta__modal-content">
-    <button className="stats__share__Insta__modal-close" onClick={() => setShowSuccessModal(false)}>
-      &times; {/* This is the close symbol */}
-    </button>
-    <p className="stats__share__Insta__modal-text">Your image has been downloaded!</p>
-    <p className="stats__share__Insta__modal-text">Please open Instagram to upload your story.</p>
-    <button className="stats__share__Insta__modal-button" onClick={() => window.open('https://www.instagram.com')}>
-      Open Instagram
-    </button>
-  </div>
-</div>
-
-)}
-
-  {/* Canvas for Image Generation (hidden) */}
-  <canvas ref={canvasRef} style={{ display: 'none' }} />
-</div>
-</div>
-
+        {/* Canvas for Image Generation (hidden) */}
+        <canvas ref={canvasRef} style={{ display: 'none' }} />
+      </div>
+    </div>
   );
 };
 
-export default InstaStory;
+export default InstaStory
