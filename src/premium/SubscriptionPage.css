@@ -1,213 +1,186 @@
-.card__subscription__new {
+/* General Layout */
+.container__pricing__subs__page {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.6); /* Glassmorphism effect */
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  width: 75%;
-  max-width: 320px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  margin-top: 50px;
-  transition: all 0.3s ease-in-out;
-}
-
-
-
-.title__subscription__new {
-  font-size: 22px;
-  font-weight: 700;
-  color: #2c2c2c;
-  font-family: 'Playfair Display', serif;
-  text-transform: uppercase;
-}
-
-.description__subscription__new {
-  margin-top: 10px;
-  font-size: 15px;
-  color: #555;
-  font-family: 'Inter', sans-serif;
-}
-
-.price__subscription__new {
-  font-size: 42px;
-  font-weight: 400;
-  color: #1a1a1a;
-}
-
-.per__subscription__new {
-  font-size: 16px;
-  font-weight: 500;
-  color: #6b7280;
-}
-
-.premium__status {
-  font-size: 14px;
-  color: #000000;
-  font-weight: bold;
-}
-
-.button__subscription__new {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 16px 70px;
-  background: linear-gradient(135deg, #000, #222);
-  color: white;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.button__subscription__new:hover {
-  background: linear-gradient(135deg, #222, #000);
-  transform: scale(1.03);
-}
-
-.card__subscription__new,
-.card__plan__includes {
-  display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  width: 70%;
-  max-width: 320px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-
-.title__subscription__new,
-.title__plan__includes {
-  font-size: 22px;
-  font-weight: 700;
-  color: #2c2c2c;
-  font-family: 'Playfair Display', serif;
-  text-transform: uppercase;
-}
-.features__list {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-  text-align: left;
-}
-
-.features__list li {
-  font-size: 15px;
-  font-family: 'Inter', sans-serif;
-  color: #000000;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-}
-
-/* Custom Checkmark */
-.checkmark__features__list {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-  background: transparent;
-  border-radius: 50%;
-  position: relative;
-
-}
-
-.checkmark__features__list::after {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 2px;
-  width: 6px;
-  height: 10px;
-  border: solid black; /* Makes the checkmark black */
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.button__subscription__new {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 70px;
-  background: linear-gradient(135deg, #000, #222);
-  color: white;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.button__subscription__new:hover {
-  background: linear-gradient(135deg, #222, #000);
-  transform: scale(1.03);
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #f5f7fa, #e4e9f0);
+  padding: 15px;
+  box-sizing: border-box;
+  margin-bottom: 80px;
 }
 
 
 /* FOMO Banner */
-.fomo-banner {
-  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 12px 20px;
-  border-radius: 10px;
-  margin-top: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.fomo-icon {
-  font-size: 1.4rem;
-  margin-right: 5px;
-}
-
-.fomo-price {
-  font-size: 1.2rem;
+.fomo__pricing__subs__page {
+  background: linear-gradient(90deg, #0a0a0a, #1c1c1e);
+  color: #ffffff;
+  font-size: 0.9rem;
   font-weight: 600;
-}
-
-.fomo-timer {
-  font-size: 1rem;
-  font-weight: 500;
-  background: #fff;
-  color: #ff6363;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-top: 5px;
-  display: inline-block;
-}
-
-/* Expired Offer Banner */
-.expired-banner {
-  background: #f8f8f8;
-  color: #ff4d4d;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 12px 20px;
+  padding: 10px 16px;
   border-radius: 10px;
-  margin-top: 15px;
-  border: 1px solid #ff4d4d;
+  margin-bottom: 12px;
+  max-width: 85%;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-.expired-icon {
-  font-size: 1.4rem;
-  margin-right: 5px;
+/* Pricing Card */
+.card__pricing__subs__page {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+  transition: all 0.25s ease-in-out;
+  box-sizing: border-box;
 }
 
+/* Title */
+.title__pricing__subs__page {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1a1a1c;
+  font-family: 'SF Pro Display', sans-serif;
+}
+
+/* Description */
+.description__pricing__subs__page {
+  font-size: 14px;
+  color: #5c5c5e;
+  font-family: 'SF Pro Text', sans-serif;
+}
+
+/* Price */
+.price__pricing__subs__page {
+  font-size: 25px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* CTA Button */
+.button__pricing__subs__page {
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #0a0a0a, #1c1c1e);
+  color: white;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  width: 100%;
+  max-width: 240px;
+  margin-top: 12px;
+  font-family: 'SF Pro Text', sans-serif;
+}
+
+.button__pricing__subs__page:hover {
+  background: linear-gradient(135deg, #1c1c1e, #000);
+  transform: scale(1.03);
+}
+
+/* Features Card */
+.card__features__pricing__subs__page {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Title */
+.title__features__pricing__subs__page {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a1c;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Subtitle (Pricing Value) */
+.subtitle__features__pricing__subs__page {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+  color: #5c5c5e;
+  margin-bottom: 12px;
+}
+
+.original__price__pricing__subs__page {
+  text-decoration: line-through;
+  color: #000;
+  font-weight: 700;
+}
+
+/* Feature Categories */
+.category-title__pricing__subs__page {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 10px;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 5px;
+}
+
+/* Feature List */
+.features-list__pricing__subs__page {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual Feature */
+.feature-item__pricing__subs__page {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  transition: 0.2s ease;
+}
+
+.feature-item__pricing__subs__page:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Feature Title */
+.feature-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Feature Description */
+.feature-description {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container__pricing__subs__page {
+    padding: 12px;
+  }
+
+  .card__pricing__subs__page,
+  .card__features__pricing__subs__page {
+    max-width: 330px;
+    padding: 18px;
+  }
+
+  .button__pricing__subs__page {
+    padding: 14px 30px;
+    font-size: 13px;
+  }
+}

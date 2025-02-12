@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SubscriptionPage.css';
@@ -100,64 +98,102 @@ const PaymentComponent = () => {
   };
 
   return (
-<div
-  style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    textAlign: 'center',
-    minHeight: '100vh',
-    width: '100%',
-    background: 'linear-gradient(135deg, #f9f9f9, #eceff4)',
-    paddingBottom: '50px',
-  }}
->
+<div className="container__pricing__subs__page">
+
+
   {/* Premium Card */}
-  <div className="card__subscription__new">
-    <h3 className="title__subscription__new">Premium</h3>
-    <p className="description__subscription__new">
-      Elevate your learning with AI-powered tools.
+  <div className="card__pricing__subs__page">
+    <h3 className="title__pricing__subs__page">Edusify Premium</h3>
+    <p className="description__pricing__subs__page">
+      Unlock powerful AI tools to elevate your studies.
     </p>
-    <p className="price__subscription__new">
-      <span className="currency__subscription__new">₹</span>129
-      <span className="per__subscription__new"> / Month</span>
+    <p className="price__pricing__subs__page">
+      <span className="currency">₹</span>129<span className="per"> / Month</span>
     </p>
-    <div>
-      {isPremium ? (
-        <p className="premium__status">You have premium!</p>
-      ) : (
-        <button className="button__subscription__new" onClick={handlePayment}>
-          Unlock Premium
-        </button>
-      )}
-    </div>
+
+    {isPremium ? (
+           <button className="button__pricing__subs__page">
+           You have Premium!
+         </button>
+    ) : (
+      <button className="button__pricing__subs__page" onClick={handlePayment}>
+        Upgrade to Premium
+      </button>
+    )}
+
+    <p className="users-count">Join 10,000+ students using Edusify Premium</p>
   </div>
 
-  {/* Plan Includes Card */}
-  <div className="card__plan__includes">
-  <h3 className="title__plan__includes">Plan Includes</h3>
-  <ul className="features__list">
-    <li><span className="checkmark__features__list"></span> Unlimited Magic Usage</li>
-    <li><span className="checkmark__features__list"></span> Unlimited AI Quiz Generation</li>
-    <li><span className="checkmark__features__list"></span> Unlimited AI Plan Generations</li>
-    <li><span className="checkmark__features__list"></span> Unlimited AI Notes Generation</li>
-    <li><span className="checkmark__features__list"></span> Unlimited PDF to Notes</li>
-    <li><span className="checkmark__features__list"></span> Unlock AI Recommendations on Pomodoro</li>
-    <li><span className="checkmark__features__list"></span> Unlock AI Tasks Generation</li>
-    <li><span className="checkmark__features__list"></span> Unlock AI Plan Tasks Generation</li>
-    <li><span className="checkmark__features__list"></span> Unlock AI Quiz Results Analysis</li>
-    <li><span className="checkmark__features__list"></span> Unlock AI Flashcards Explain</li>
-    <li><span className="checkmark__features__list"></span> Unlock PDF Quiz</li>
-    <li><span className="checkmark__features__list"></span> Unlock PDF to Flashcards</li>
-    <li><span className="checkmark__features__list"></span> Unlock Notes to Quiz</li>
-    <li><span className="checkmark__features__list"></span> Unlock Notes to Flashcards</li>
-  </ul>
+
+{/* Plan Includes */}
+<div className="card__features__pricing__subs__page">
+  <h3 className="title__features__pricing__subs__page">Everything You Unlock</h3>
+  <p className="subtitle__features__pricing__subs__page" style={{marginTop: '30px', marginBottom: "30px"}}>
+  Get it all for just ₹129 – Invest in your future for the cost of a snack! 🍫
+  </p>
+
+  {/* AI-Powered Study Features */}
+  <div className="feature-category__pricing__subs__page">
+    <h4 className="category-title__pricing__subs__page">AI Study Tools – Study Smarter, Not Harder</h4>
+    <ul className="features-list__pricing__subs__page">
+      {[
+        { icon: "⚡", text: "Unlimited Magic Usage", desc: "Transform AI answers into notes, quizzes & flashcards instantly." },
+        { icon: "📖", text: "Unlimited AI Quiz Generation", desc: "Generate chapter-wise quizzes in seconds—never run out of practice questions!" },
+        { icon: "📝", text: "Unlimited AI Study Plan Generations", desc: "Get customized study plans based on your schedule & goals." },
+        { icon: "📄", text: "Unlimited AI Notes Generation", desc: "Create structured, exam-ready notes from any topic instantly." },
+        { icon: "📑", text: "Unlimited PDF to Notes", desc: "Extract & summarize PDFs into well-organized study notes effortlessly." },
+      ].map((feature, index) => (
+        <li key={index} className="feature-item__pricing__subs__page">
+          <span className="checkmark__pricing__subs__page"></span> 
+          <strong className="feature-title">{feature.text}</strong>
+          <p className="feature-description">{feature.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* AI-Powered Smart Assistance */}
+  <div className="feature-category__pricing__subs__page">
+    <h4 className="category-title__pricing__subs__page">Smart Assistance – Let AI Do the Hard Work</h4>
+    <ul className="features-list__pricing__subs__page">
+      {[
+        { icon: "⏳", text: "AI Pomodoro Recommendations", desc: "Get AI-suggested session durations based on your fatigue & progress." },
+        { icon: "✅", text: "AI Task Generation", desc: "Let AI break down complex topics into easy-to-follow tasks." },
+        { icon: "📌", text: "AI Plan Tasks Generation", desc: "Your study plan just got smarter—AI auto-generates tasks for you." },
+        { icon: "📊", text: "AI Quiz Results Analysis", desc: "See where you went wrong & get insights to improve instantly." },
+        { icon: "📚", text: "AI Flashcards Explain", desc: "Confused? AI explains each flashcard in detail so you truly understand it." },
+      ].map((feature, index) => (
+        <li key={index} className="feature-item__pricing__subs__page">
+          <span className="checkmark__pricing__subs__page"></span> 
+          <strong className="feature-title">{feature.text}</strong>
+          <p className="feature-description">{feature.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  {/* Advanced Study Tools */}
+  <div className="feature-category__pricing__subs__page">
+    <h4 className="category-title__pricing__subs__page">Advanced Study Tools – Take Learning to the Next Level</h4>
+    <ul className="features-list__pricing__subs__page">
+      {[
+        { icon: "📜", text: "AI PDF to Quiz", desc: "Upload any PDF & AI generates quizzes from it automatically!" },
+        { icon: "🔄", text: "AI PDF to Flashcards", desc: "Convert PDFs into AI-generated flashcards for quick revision." },
+        { icon: "🎓", text: "Notes to Quiz", desc: "Turn your notes into quizzes to test yourself efficiently." },
+        { icon: "🃏", text: "Notes to Flashcards", desc: "Instantly convert long notes into bite-sized flashcards for quick recall." },
+      ].map((feature, index) => (
+        <li key={index} className="feature-item__pricing__subs__page">
+          <span className="checkmark__pricing__subs__page"></span> 
+          <strong className="feature-title">{feature.text}</strong>
+          <p className="feature-description">{feature.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+<FooterNav/>
 </div>
 
-
-  <FooterNav />
-</div>
   );
 };
 
