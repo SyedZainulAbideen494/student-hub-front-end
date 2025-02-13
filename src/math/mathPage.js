@@ -248,57 +248,64 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
     // Only pass serializable content, not the event object
     navigate('/notes/create', { state: { editorContent: content } });
   };
-  
 
-  
-  const handleMagicButtonClick = async (content) => {
-    setMagicModalContent(content); // Store content of the clicked chat message
- 
-    if (isPremium) {
 
-      setIsMagicModalOpen(true); // Open the Magic Modal
-    } else {
-      // For free users, check magic usage with the API
-      try {
-        const response = await fetch(API_ROUTES.magicUseage, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token: localStorage.getItem('token') }), // Send token in request body
-        });
+  const checkMagicUsage = async () => {
+    try {
+      const response = await fetch(API_ROUTES.magicUseage, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: localStorage.getItem('token') }), // Send token in request body
+      });
   
-        const data = await response.json();
-  
-        if (data.canUseMagic) {
-          // If the user can use magic, continue with the action
-          setIsMagicModalOpen(true); // Open the Magic Modal
-  
-        } else {
-          setIsUpgradeModalOpen(true); // Show upgrade modal
-        }
-      } catch (error) {
-        console.error('Error checking magic usage:', error);
-        alert('Error checking magic usage');
-      }
+      const data = await response.json();
+      return data.canUseMagic; // Returns true if the user can use Magic, otherwise false
+    } catch (error) {
+      console.error('Error checking magic usage:', error);
+      return false; // Assume the user cannot use Magic if an error occurs
     }
   };
   
 
-// Handle Generate Flashcards
-const handleGenerateFlashcards = (content) => {
-  setIsMagicModalOpen(false);
-  setIsFlashcardModalOpen(true);
-  setFlashcardData({ ...flashcardData, content }); // Pass content to flashcard modal
-};
-
-// Handle Generate Quiz
-const handleGenerateQuiz = (content) => {
-  setIsMagicModalOpen(false);
-  setIsQuizModalOpen(true);
-  setQuizData({ ...QuizData, content }); // Pass content to quiz modal
-};
-
+  const handleMagicButtonClick = async (content) => {
+    setMagicModalContent(content); // Store content of the clicked chat message
+  
+    // Always open the Magic Modal
+    setIsMagicModalOpen(true);
+  };
+  
+  const handleGenerateFlashcards = async (content) => {
+    setIsMagicModalOpen(false);
+  
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+        setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+        return;
+      }
+    }
+  
+    setIsFlashcardModalOpen(true);
+    setFlashcardData({ ...flashcardData, content }); // Pass content to flashcard modal
+  };
+  
+  const handleGenerateQuiz = async (content) => {
+    setIsMagicModalOpen(false);
+  
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+        setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+        return;
+      }
+    }
+  
+    setIsQuizModalOpen(true);
+    setQuizData({ ...QuizData, content }); // Pass content to quiz modal
+  };
+  
 
 
 const handleSubmitFlashcards = async (selectedContent) => {
