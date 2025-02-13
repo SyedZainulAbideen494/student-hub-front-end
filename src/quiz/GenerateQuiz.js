@@ -63,7 +63,7 @@ const GenerateQuiz = () => {
           })
           .then((res) => {
             setFlashcardsCount(res.data.QuizzesCount);
-            if (res.data.QuizzesCount >= 2) {
+            if (res.data.QuizzesCount >= 1) {
               setIsExceededLimit(true);
             }
           })
