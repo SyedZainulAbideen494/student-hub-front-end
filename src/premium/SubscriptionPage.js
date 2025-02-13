@@ -28,7 +28,7 @@ const PaymentComponent = () => {
   }
 
   .price__subs__page__premium__edusify {
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 1;
     font-weight: 600;
     color: rgba(255, 255, 255, 1);
@@ -90,7 +90,7 @@ const PaymentComponent = () => {
         return;
       }
   
-      let planAmount = 129; // Always ₹129 for monthly plan
+      let planAmount = 99; // Always ₹99 for monthly plan
   
       const { data } = await axios.post(API_ROUTES.getPremium, {
         amount: planAmount,
@@ -169,7 +169,7 @@ const PaymentComponent = () => {
 
 <StyledWrapper>
   <div className="card__subs__page__premium__edusify">
-    <p className="price__subs__page__premium__edusify">₹129 month</p>
+    <p className="price__subs__page__premium__edusify">₹99/month</p>
     {isPremium ? (
      <a  className="action__subs__page__premium__edusify">You have premium!</a>
     ) : (
