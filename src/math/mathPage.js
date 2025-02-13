@@ -885,7 +885,7 @@ useEffect(() => {
   </form>
 </Modal>
 <UpgradeModal 
-  message="You have reached your weekly limit of 3 Magic usages. Upgrade to Premium for unlimited access and additional features!" 
+  message="You have reached your weekly limit of 2 Magic usages. Upgrade to Premium for unlimited access and additional features!" 
   isOpen={isUpgradeModalOpen} 
   onClose={() => setIsUpgradeModalOpen(false)} 
 />
