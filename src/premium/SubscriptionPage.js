@@ -19,67 +19,68 @@ const PaymentComponent = () => {
 
   const StyledWrapper = styled.div`
   .card__subs__page__premium__edusify {
-    max-width: 320px;
+    max-width: 340px;
     display: flex;
     flex-direction: column;
-    border-radius: 1.5rem;
-    background-color: rgba(0, 0, 0, 1);
-    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background-color: rgba(10, 10, 10, 0.95); /* Soft black */
+    padding: 1.75rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Elegant soft border */
   }
 
   .price__subs__page__premium__edusify {
-    font-size: 1.6rem;
-    line-height: 1;
+    font-size: 1.8rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 1);
+    color: rgba(240, 240, 240, 0.95); /* Softer white */
+    letter-spacing: -0.02rem;
   }
 
   .lists__subs__page__premium__edusify {
-    margin-top: 2rem;
+    margin-top: 1.75rem;
     display: flex;
     flex-direction: column;
-    grid-row-gap: 0.75rem;
-    row-gap: 0.75rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    color: rgba(255, 255, 255, 1);
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    color: rgba(230, 230, 230, 0.85); /* Softer white */
   }
 
   .list__subs__page__premium__edusify {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
+    padding: 0.4rem 0;
   }
 
   .list__subs__page__premium__edusify svg {
-    height: 1rem;
-    width: 1rem;
-  }
-
-  .list__subs__page__premium__edusify span {
-    margin-left: 1rem;
+    height: 1.1rem;
+    width: 1.1rem;
+    opacity: 0.9; /* Softer icon appearance */
   }
 
   .action__subs__page__premium__edusify {
-    margin-top: 2rem;
-    width: 80%;
-    border: 2px solid rgba(255, 255, 255, 1);
-    border-radius: 9999px;
-    background-color: rgba(255, 255, 255, 1);
-    padding: 0.625rem 1.5rem;
+    margin-top: 1.75rem;
+    width: 85%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    padding: 0.7rem 1.5rem;
     font-weight: 600;
     text-align: center;
-    font-size: 0.875rem;
-    color: rgba(0, 0, 0, 1);
-    outline: none;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease-in-out;
+    backdrop-filter: blur(8px); /* Premium glass effect */
   }
 
   .action__subs__page__premium__edusify:hover {
+    background: rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 1);
-    background-color: transparent;
   }
 `;
+
 
 
   const handlePayment = async () => {
@@ -179,7 +180,7 @@ const PaymentComponent = () => {
   {[
     "Unlimited Magic Usage",
     "Unlimited AI Quiz Generation",
-    "Unlimited AI Study Plan Generations",
+    "Unlimited AI Study Plan",
     "Unlimited AI Notes Generation",
     "Unlimited PDF to Notes",
     "AI Pomodoro Recommendations",
