@@ -12,9 +12,10 @@ const ValentineModal = () => {
     const now = new Date().getTime();
 
     // Show modal only if it's been at least 1 hour (3600000ms) since last shown
- //   if (!lastShown || now - lastShown > 3600000) {
+    if (!lastShown || now - lastShown > 1500000) {
       setIsOpen(true);
-  //  }
+  }
+  
   }, []);
 
   const closeModal = () => {
