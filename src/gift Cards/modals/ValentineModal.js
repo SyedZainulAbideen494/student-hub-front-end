@@ -7,18 +7,29 @@ const ValentineModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    setIsOpen(true);
+    const lastShown = localStorage.getItem("valentineModalLastShown");
+    const now = new Date().getTime();
+
+    // Show modal only if it's been at least 1 hour (3600000ms) since last shown
+    if (!lastShown || now - lastShown > 3600000) {
+      setIsOpen(true);
+    }
   }, []);
+
+  const closeModal = () => {
+    setIsOpen(false);
+    localStorage.setItem("valentineModalLastShown", new Date().getTime()); // Store the current time
+  };
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => setIsOpen(false)}
+      onRequestClose={closeModal}
       className="modal__gift__val__modal"
       overlayClassName="overlay__gift__val__modal"
       ariaHideApp={false}
     >
-      <button className="close__gift__val__modal" onClick={() => setIsOpen(false)}>×</button>
+      <button className="close__gift__val__modal" onClick={closeModal}>×</button>
 
       <h2 className="header__gift__val__modal">  
         The Gift That Never Fades. 🎁  
