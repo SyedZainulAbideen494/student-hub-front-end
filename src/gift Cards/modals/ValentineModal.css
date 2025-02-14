@@ -1,102 +1,147 @@
 /* Overlay */
 .overlay__gift__val__modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2); /* Softer blur */
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    z-index: 1000;
-    justify-content: center;
-    backdrop-filter: blur(12px); /* Softer background */
-  }
-  
-/* Modal */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  z-index: 1000;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+}
+
+/* Default Valentine Theme */
 .modal__gift__val__modal {
-    background: rgba(255, 245, 250, 0.95); /* Soft pinkish-white */
-    padding: 28px;
-    width: 90%;
-    max-width: 420px;
-    border-radius: 14px;
-    text-align: center;
-    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
+  background: rgba(255, 245, 250, 0.95);
+  padding: 28px;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Single Mode - Dark & Motivational */
+.single__mode {
+  background: #1e1e1e;
+  color: white;
+}
+
+.single__mode .header__gift__val__modal {
+  color: #f8c291;
+}
+
+.single__mode .message__gift__val__modal {
+  color: #dcdde1;
+}
+
+.single__mode .cta__gift__val__modal {
+  background: linear-gradient(135deg, #ff9f43, #e84118);
+  box-shadow: 0px 5px 12px rgba(255, 159, 67, 0.3);
+}
+
 /* Close Button */
 .close__gift__val__modal {
-    position: absolute;
-    top: 14px;
-    right: 18px;
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: #888;
-    transition: 0.3s;
-  }
-  
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #888;
+  transition: 0.3s;
+}
+
 .close__gift__val__modal:hover {
-    color: #555;
-  }
-  
+  color: #555;
+}
+
 /* Header */
 .header__gift__val__modal {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #b56576; /* Soft muted rose */
-    font-family: 'Playfair Display', serif;
-  }
-  
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #b56576;
+  font-family: 'Playfair Display', serif;
+}
+
 /* Message */
 .message__gift__val__modal {
-    font-size: 15px;
-    color: #6d6875; /* Soft muted grayish purple */
-    line-height: 1.6;
-    margin-bottom: 18px;
-    font-family: 'Poppins', sans-serif;
-  }
-  
+  font-size: 15px;
+  color: #6d6875;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  font-family: 'Poppins', sans-serif;
+}
+
 /* FOMO Message */
 .fomo__gift__val__modal {
-    font-size: 14px;
-    font-weight: bold;
-    color: #b56576;
-    margin-bottom: 18px;
-  }
-  
-/* CTA Button */
+  font-size: 14px;
+  font-weight: bold;
+  color: #b56576;
+  margin-bottom: 18px;
+}
+
+/* CTA Buttons */
 .cta__gift__val__modal {
-    background: linear-gradient(135deg, #f2a2b9, #b56576); /* Soft pink gradient */
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 15px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0px 5px 12px rgba(181, 101, 118, 0.2);
-  }
-  
+  background: linear-gradient(135deg, #f2a2b9, #b56576);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 5px 12px rgba(181, 101, 118, 0.2);
+}
+
 .cta__gift__val__modal:hover {
-    background: linear-gradient(135deg, #e48fa5, #a84d60);
-  }
+  background: linear-gradient(135deg, #e48fa5, #a84d60);
+}
+
+/* "I'm Single" Button */
+.single__btn {
+  background: transparent;
+  border: 2px solid #b56576;
+  color: #b56576;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 8px;
+}
+
+.single__btn:hover {
+  background: #b56576;
+  color: white;
+}
+
+/* Buttons Group */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
 
 /* Soft Fade-In Animation */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
