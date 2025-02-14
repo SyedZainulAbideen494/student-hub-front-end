@@ -239,33 +239,34 @@ const GiftCardPage = () => {
       </button>
 
       {isModalOpen && (
-        <div className="gift-card-modal">
-          <div className="gift-card-modal-content">
-            <h3>My Gift Cards</h3>
-            <button onClick={() => setIsModalOpen(false)} className="gift-card-close"><FiX /></button>
+  <div className="gift-card-modal">
+    <div className="gift-card-modal-content">
+      <h3>My Gift Cards</h3>
+      <button onClick={() => setIsModalOpen(false)} className="gift-card-close"><FiX /></button>
 
-            <ul className="gift-card-list">
-            {giftCards.length > 0 ? (
-  giftCards.map((card, index) => {
-    const isExpired = card.status === 'used'; // Check status instead of expiry date
+      <ul className="gift-card-list">
+        {giftCards.length > 0 ? (
+          giftCards
+            .filter(card => card.status !== 'unused') // Hide unused gift cards
+            .map((card, index) => {
+              const isExpired = card.status === 'used'; // Check status
 
-    return (
-      <li key={index} className={`gift-card-item ${isExpired ? 'used' : 'valid'}`}>
-        <span><strong>Code:</strong> {card.code}</span>
-        <span className="gift-card-status">
-          {isExpired ? <FiXCircle className="expired-icon" /> : <FiCheckCircle className="valid-icon" />}
-        </span>
-      </li>
-    );
-  })
-) : (
-  <p>No gift cards found.</p>
+              return (
+                <li key={index} className={`gift-card-item ${isExpired ? 'used' : 'valid'}`}>
+                  <span><strong>Code:</strong> {card.code}</span>
+                  <span className="gift-card-status">
+                    {isExpired ? <FiXCircle className="expired-icon" /> : <FiCheckCircle className="valid-icon" />}
+                  </span>
+                </li>
+              );
+            })
+        ) : (
+          <p>No gift cards found.</p>
+        )}
+      </ul>
+    </div>
+  </div>
 )}
-
-            </ul>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
