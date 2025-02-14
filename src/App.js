@@ -139,6 +139,7 @@ import LoaderComponentExamMock from "./competivie exam/comp-exam-loader";
 import LoaderMockExamApp from "./competivie exam/page-loader-mock-exam";
 import ResourceFinder from "./resoruces finder/components/ResourcesPage";
 import AdminResourceReview from "./resoruces finder/components/AdminResourceReview";
+import GiftCardPage from "./gift Cards/GiftCardPage";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -266,6 +267,7 @@ const router = createBrowserRouter([
   {path: '/loading/mock-exam', element:<LoaderMockExamApp />},
   {path: '/resource-finder', element: <ResourceFinder/>},
   {path: '/admin-resources-review-page-not-allowed', element: <AdminResourceReview/>},
+  {path: '/gift-card', element: <GiftCardPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -9,6 +9,7 @@ import './footer-nav.css';
 import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
 import { BsFileBarGraph, BsFillCalendarMonthFill } from 'react-icons/bs';
+import { FiGift } from 'react-icons/fi';
 
 const FooterNav = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -103,14 +104,12 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/competive-exam' ? 'active' : ''}`}>
     <i className="fas fa-file-alt icon-footer-nav"></i> {/* Exam Paper Icon */}
         <span className="btn-label">Competive Exam Mock Quiz </span>
-        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/resource-finder' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/resource-finder' ? 'active' : ''}`}>
     <i className="fas fa-search icon-footer-nav"></i> {/* Search Icon */}
         <span className="btn-label">Resources Finder </span>
-        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
 <Link to='/insta-story' style={{ textDecoration: 'none' }}>
@@ -155,10 +154,10 @@ const FooterNav = () => {
         <span className="btn-label">Locker</span>
     </button>
 </Link>
-<Link to='/whats-new' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/whats-new' ? 'active' : ''}`}>
-        <FaNewspaper className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
-        <span className="btn-label">What's New</span>
+<Link to='/gift-card' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/gift-card' ? 'active' : ''}`}>
+        <FiGift className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
+        <span className="btn-label">Gift Cards</span>
     </button>
 </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>

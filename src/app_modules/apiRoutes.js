@@ -205,5 +205,11 @@ export const API_ROUTES = {
   toggleSaveResource: `${API_URL}/api/resources/toggle-save`,
   getSavedResources: `${API_URL}/api/resources/saved`,
   resourceClick: `${API_URL}/api/resources/click`,
-  aiResourceFinder: `${API_URL}/api/resources/ai-finder`
+  aiResourceFinder: `${API_URL}/api/resources/ai-finder`,
+  getGiftCards: `${API_URL}/get-gift-cards`,
+  buyGiftCard: `${API_URL}/buy-gift-card`,
+  verifyGiftCardPayment: `${API_URL}/verify-gift-card-payment`,
+  redeemGiftCard: `${API_URL}/redeem-gift-card`,
+  fetchGiftFriendsModal: `${API_URL}/get-friends-gift`,
+  giftPremiumTofriend: `${API_URL}/gift-gift-card`
 }
