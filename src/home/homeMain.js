@@ -25,6 +25,7 @@ import AIDowntimeCard from "../help/AIDowntimeCard";
 import PaymentComponentModal from "../premium/modal/SubscriptionPage";
 import OneTimeOffer from "../premium/modal/onetimeModal";
 import ValentineModal from "../gift Cards/modals/ValentineModal";
+import ExamTimeOffer from "../premium/modal/exam-time-modal";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -59,9 +60,8 @@ const HomeMain = () => {
 
   return (
     <Fragment>
-
         <>
-        <ValentineModal/>
+      
           <ReviewModal />
           <BirthdayCelebration />
           <BirthdayModal />

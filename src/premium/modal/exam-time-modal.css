@@ -1,0 +1,102 @@
+.overlay__exam__modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.exam-container__exam__modal {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px;
+    width: 85%;
+    max-width: 360px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.close-btn__exam__modal {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #eee;
+    border: none;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.exam-title__exam__modal {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.exam-subtitle__exam__modal {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 16px;
+}
+
+.exam-card__exam__modal {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f3f3f3 50%, #e6e6e6 100%);
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.exam-benefits__exam__modal {
+    font-size: 15px;
+    color: #222;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.exam-price-box__exam__modal {
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 8px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.lowest-price__exam__modal {
+    font-size: 11px;
+    color: #777;
+}
+
+.claim-btn__exam__modal {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 20px;
+    margin-top: 12px;
+    cursor: pointer;
+    width: 85%;
+    transition: 0.3s;
+}
+
+.claim-btn__exam__modal:hover {
+    background: #222;
+}
+
+.not-now-btn__exam__modal {
+    background: none;
+    color: #666;
+    border: none;
+    font-size: 13px;
+    margin-top: 8px;
+    cursor: pointer;
+}
