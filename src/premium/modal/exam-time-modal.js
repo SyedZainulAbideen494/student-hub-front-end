@@ -27,9 +27,10 @@ const ExamTimeOffer = () => {
 
     const lastClosed = localStorage.getItem("offerLastClosed");
 
-   if (!isPremium && (!lastClosed || Date.now() - lastClosed > 12 * 60 * 60 * 1000)) {
+    if (!isPremium && (!lastClosed || Date.now() - lastClosed > 40 * 60 * 1000)) {
       setIsVisible(true);
     }
+    
  }, [isPremium]);
 
   const closeOffer = () => {
