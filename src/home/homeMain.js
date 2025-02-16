@@ -36,6 +36,11 @@ const HomeMain = () => {
 
   useEffect(() => {
     const getLocation = () => {
+      if (!localStorage.getItem("token")) {
+        console.log("🚫 No token found. Waiting for authentication...");
+        return; // Exit if no token is available
+      }
+  
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -76,7 +81,7 @@ const HomeMain = () => {
       const token = localStorage.getItem("token"); // Get token from local storage
   
       if (!token) {
-        console.error("User is not authenticated");
+        console.error("🚫 User is not authenticated. Skipping location update.");
         return;
       }
   
@@ -90,13 +95,20 @@ const HomeMain = () => {
       })
         .then((response) => response.json())
         .then((data) => console.log("✅ Location updated:", data))
-        .catch((err) => console.error("❌ Error:", err));
+        .catch((err) => console.error("❌ Error updating location:", err));
     };
   
-    getLocation(); // Call function when component mounts
+    // Check for token every 5 seconds until it's available
+    const interval = setInterval(() => {
+      if (localStorage.getItem("token")) {
+        clearInterval(interval); // Stop checking once token is found
+        getLocation();
+      }
+    }, 5000);
+  
+    return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
   
-
 
   // Toggle feedback form visibility
   const toggleFeedbackForm = () => {
