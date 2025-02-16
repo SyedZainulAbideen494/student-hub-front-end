@@ -61,7 +61,7 @@ const HomeMain = () => {
   return (
     <Fragment>
         <>
-      
+        <ExamTimeOffer/>
           <ReviewModal />
           <BirthdayCelebration />
           <BirthdayModal />
