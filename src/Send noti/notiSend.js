@@ -1,71 +1,35 @@
 import React, { useState } from "react";
 import { API_ROUTES } from "../app_modules/apiRoutes";
-function SendNotiApp() {
-  const [notificationTitle, setNotificationTitle] = useState("");
-  const [notificationMessage, setNotificationMessage] = useState("");
-  const [notificationIcon, setNotificationIcon] = useState("/path/to/icon.png");
+
+const SendNotificationPage = () => {
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [image, setImage] = useState("");
 
   const sendNotification = async () => {
-    const notificationData = {
-      title: notificationTitle,
-      message: notificationMessage,
-      icon: notificationIcon,
-    };
-
     try {
-      const response = await fetch(API_ROUTES.sendNoti, {
+      const response = await fetch(API_ROUTES.sendNotification, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(notificationData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, body, image }),
       });
 
-      if (response.ok) {
-        console.log("Notifications sent successfully");
-      } else {
-        console.log("Failed to send notifications");
-      }
+      const data = await response.json();
+      console.log("✅ Notification Sent:", data);
     } catch (error) {
-      console.error("Error sending notification:", error);
+      console.error("❌ Error sending notification:", error);
     }
   };
 
   return (
     <div>
       <h1>Send Push Notification</h1>
-      <div>
-        <label>
-          Title:
-          <input
-            type="text"
-            value={notificationTitle}
-            onChange={(e) => setNotificationTitle(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Message:
-          <textarea
-            value={notificationMessage}
-            onChange={(e) => setNotificationMessage(e.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label>
-          Icon URL:
-          <input
-            type="text"
-            value={notificationIcon}
-            onChange={(e) => setNotificationIcon(e.target.value)}
-          />
-        </label>
-      </div>
+      <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" placeholder="Body" value={body} onChange={(e) => setBody(e.target.value)} />
+      <input type="text" placeholder="Image URL (optional)" value={image} onChange={(e) => setImage(e.target.value)} />
       <button onClick={sendNotification}>Send Notification</button>
     </div>
   );
-}
+};
 
-export default SendNotiApp;
+export default SendNotificationPage;

@@ -212,5 +212,7 @@ export const API_ROUTES = {
   redeemGiftCard: `${API_URL}/redeem-gift-card`,
   fetchGiftFriendsModal: `${API_URL}/get-friends-gift`,
   giftPremiumTofriend: `${API_URL}/gift-gift-card`,
-  updateUserLocation: `${API_URL}/update-location`
+  updateUserLocation: `${API_URL}/update-location`,
+  subscribeNoti: `${API_URL}/subscribe/notification`,
+  sendNotification: `${API_URL}/send-notification`
 }

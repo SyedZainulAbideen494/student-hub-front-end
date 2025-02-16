@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -140,6 +140,8 @@ import LoaderMockExamApp from "./competivie exam/page-loader-mock-exam";
 import ResourceFinder from "./resoruces finder/components/ResourcesPage";
 import AdminResourceReview from "./resoruces finder/components/AdminResourceReview";
 import GiftCardPage from "./gift Cards/GiftCardPage";
+import SendNotificationPage from "./Send noti/notiSend";
+import { API_ROUTES } from "./app_modules/apiRoutes";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -148,6 +150,7 @@ const urlBase64ToUint8Array = (base64String) => {
   return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
 };
 
+const PUBLIC_VAPID_KEY = "BLDWVHPzXRA9ZOFhSyCet2trdRuvErMUBKuUPNzDsffj-b3-yvd7z58UEhpQAu-MA3DREuu4LwQhspUKBD1yngs";
 
 const router = createBrowserRouter([
   {path: '/login', element: <Login/>},
@@ -238,7 +241,7 @@ const router = createBrowserRouter([
   {path: '/room/progress/:roomId', element: <RoomProgress/>},
   {path: '/room/tasks/:roomId', element: <RoomTasks/>},
   {path: '/how-to-use-edusify', element: <GuideToEdusify/>},
-  {path: '/send/noti', element: <SendNotiApp/>},
+  {path: '/send/noti', element: <SendNotificationPage/>},
   {path: '/insta-story', element: <InstaStory/>},
   {path: '/onboarding', element: <Onboarding/>},
   {path: '/word-scramble', element: <WordScrambleGame/>},
@@ -273,70 +276,52 @@ const router = createBrowserRouter([
 
 
 function App() {
+  const [subscription, setSubscription] = useState(null);
 
-  {/*
   useEffect(() => {
-    const registerServiceWorker = async () => {
-      if ('serviceWorker' in navigator && 'PushManager' in window) {
+    async function registerServiceWorker() {
+      if ("serviceWorker" in navigator) {
         try {
-          // Register the service worker
-          const registration = await navigator.serviceWorker.register('/serviceWorker.js');
-          console.log('Service Worker Registered:', registration);
+          const reg = await navigator.serviceWorker.register("/sw.js");
+          console.log("Service Worker Registered:", reg);
 
-          // Subscribe the user to push notifications
-          await subscribeUser(registration);
+          const permission = await Notification.requestPermission();
+          if (permission !== "granted") {
+            console.warn("Push notifications denied by user");
+            return;
+          }
+
+          const subscription = await reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY),
+          });
+
+          console.log("User Subscribed:", subscription);
+
+          // Send subscription to backend
+          await fetch(API_ROUTES.subscribeNoti, {
+            method: "POST",
+            body: JSON.stringify(subscription),
+            headers: { "Content-Type": "application/json" },
+          });
+
+          setSubscription(subscription);
         } catch (error) {
-          console.error('Service Worker Registration Failed:', error);
+          console.error("Service Worker Error:", error);
         }
-      } else {
-        console.warn('Push Notifications are not supported in this browser.');
       }
-    };
+    }
 
     registerServiceWorker();
   }, []);
 
-  const subscribeUser = async (registration) => {
-    const vapidPublicKey =
-      'BLDWVHPzXRA9ZOFhSyCet2trdRuvErMUBKuUPNzDsffj-b3-yvd7z58UEhpQAu-MA3DREuu4LwQhspUKBD1yngs'; // Replace with your VAPID public key
-
-    try {
-      const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
-
-      // Request push subscription
-      const subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: convertedVapidKey,
-      });
-
-      console.log('Push Subscription:', subscription);
-
-      // Send the subscription to the server
-      const response = await fetch('https://srv594954.hstgr.cloud/subscribe/noti', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(subscription),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Failed to send subscription to server: ${response.statusText}`);
-      }
-
-      console.log('Subscription sent to server successfully');
-    } catch (error) {
-      console.error('Failed to subscribe user for push notifications:', error);
-    }
-  };
-
+  // Convert VAPID key to Uint8Array
   const urlBase64ToUint8Array = (base64String) => {
-    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/\-/g, "+").replace(/_/g, "/");
     const rawData = window.atob(base64);
-    return Uint8Array.from([...rawData].map((char) => char.charCodeAt(0)));
+    return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
   };
-*/}
 
   return (
     <div>
