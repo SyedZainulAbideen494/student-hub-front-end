@@ -20,7 +20,6 @@ const PomodoroSettings = ({ theme }) => {
     localStorage.setItem('breakLength', breakLength);
   }, [timerLength, breakLength]);
 
-  // Fetch AI recommendations on button click
   const fetchAIRecommendations = async () => {
     setLoading(true);
     try {
@@ -31,20 +30,20 @@ const PomodoroSettings = ({ theme }) => {
           'Content-Type': 'application/json',
         },
       });
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
+  
       const data = await response.json();
-
+      
+      // Apply AI recommendations and navigate back
       if (data?.studyTime && data?.breakTime) {
-        setAIRecommendation({
-          studyTime: data.studyTime,
-          breakTime: data.breakTime,
-        });
-      } else {
-        console.warn('AI recommendation returned invalid data:', data);
+        setTimerLength(data.studyTime * 60);
+        setBreakLength(data.breakTime * 60);
+        localStorage.setItem('timerLength', data.studyTime * 60);
+        localStorage.setItem('breakLength', data.breakTime * 60);
+        navigate('/pomodoro'); // Auto-return after applying
       }
     } catch (error) {
       console.error('Error fetching AI recommendation:', error);
@@ -52,20 +51,24 @@ const PomodoroSettings = ({ theme }) => {
       setLoading(false);
     }
   };
+  
+  
 
-  // Apply AI recommendation
   const applyAIRecommendation = () => {
     if (aiRecommendation) {
       const studyTimeInSeconds = aiRecommendation.studyTime * 60;
       const breakTimeInSeconds = aiRecommendation.breakTime * 60;
-
+  
       setTimerLength(studyTimeInSeconds);
       setBreakLength(breakTimeInSeconds);
-
+  
       localStorage.setItem('timerLength', studyTimeInSeconds);
       localStorage.setItem('breakLength', breakTimeInSeconds);
+  
+      navigate('/pomodoro'); // Navigate back after applying
     }
   };
+  
 
   // Handlers for manual input changes
   const handleTimerLengthChange = (e) => setTimerLength(e.target.value * 60);
