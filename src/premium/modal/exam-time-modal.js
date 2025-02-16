@@ -111,7 +111,7 @@ const ExamTimeOffer = () => {
             <p className="lowest-price__exam__modal">This is your edge—don’t miss out.</p>
         </div>
         
-        <button className="claim-btn__exam__modal" onClick={handlePayment}>Get Exam Ready with Premium</button>
+        <button className="claim-btn__exam__modal" onClick={handlePayment}><strong>Get Exam Ready with Premium</strong></button>
         <button className="not-now-btn__exam__modal" onClick={closeOffer}>Not Now</button>
     </div>
 </div>
