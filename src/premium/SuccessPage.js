@@ -1,69 +1,111 @@
-import React, { useEffect, useState } from 'react';
-import './SuccessPage.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Confetti from "react-confetti";
+import styled from "styled-components";
 
 const SuccessPage = () => {
-  const [showCheckmark, setShowCheckmark] = useState(false);
-  const [showText, setShowText] = useState(false);
-  const nav = useNavigate()
-
-  const handleGoBack = () => {
-    nav('/')
-  }
+  const [showBadge, setShowBadge] = useState(false);
+  const nav = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => setShowCheckmark(true), 300);
-    setTimeout(() => setShowText(true), 1000);
+    setTimeout(() => setShowBadge(true), 500);
   }, []);
 
+  const handleGoBack = () => {
+    nav("/");
+  };
+
   return (
-    <div className="success-modal__payment__premium__success__page">
-      <div className="success-content__payment__premium__success__page">
-        <div className="success-icon__payment__premium__success__page">
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={`checkmark-svg__payment__premium__success__page ${showCheckmark ? 'show' : ''}`}
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="url(#grad1)"
-              strokeWidth="1"
-              fill="none"
-              className="speedometer-circle__payment__premium__success__page"
-            />
-            <path
-              d="M9 12.5l2.5 2.5 5-5"
-              stroke="url(#grad1)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              className={`checkmark-path ${showCheckmark ? 'animate-checkmark__payment__premium__success__page' : ''}`}
-            />
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style={{ stopColor: '#38ef7d', stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: '#11998e', stopOpacity: 1 }} />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        {showText && (
-          <>
-            <h1 className="success-headline__payment__premium__success__page">Awesome</h1>
-            <p className="success-message__payment__premium__success__page">You have Edusify premium!</p>
-            <button className="success-button__payment__premium__success__page" onClick={handleGoBack}>Go Back</button>
-          </>
-        )}
-      </div>
-    </div>
+    <SuccessWrapper>
+      <Confetti numberOfPieces={100} />
+      <CloseButton onClick={handleGoBack}>✕</CloseButton>
+      <Card>
+        <BadgeContainer className={showBadge ? "show" : ""}>
+          🏆
+        </BadgeContainer>
+        <Title>Congratulations!</Title>
+<Subtitle>You’ve unlocked Edusify Premium. Get ready to level up your learning!</Subtitle>
+      </Card>
+    </SuccessWrapper>
   );
 };
 
 export default SuccessPage;
+
+// Styled Components
+
+const SuccessWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #0e0e10;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+`;
+
+const Card = styled.div`
+  background: #141417;
+  width: 65%;
+  max-width: 350px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+`;
+
+const CloseButton = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+`;
+
+const BadgeContainer = styled.div`
+  font-size: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 15px;
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 1.5rem;
+  color: white;
+  margin-top: 1rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1rem;
+  color: #bbb;
+  margin-top: 0.5rem;
+`;
+
+const Button = styled.button`
+  background: #8a2be2;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: #7a1fd8;
+  }
+`;

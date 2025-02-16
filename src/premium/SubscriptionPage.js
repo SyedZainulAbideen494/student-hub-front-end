@@ -6,82 +6,154 @@ import FooterNav from '../app_modules/footernav';
 import { useNavigate } from 'react-router-dom';
 import { FaCrown } from 'react-icons/fa';
 import styled from 'styled-components';
-
+import Confetti from 'react-confetti';
+import { FiArrowLeft } from 'react-icons/fi';
 
 const PaymentComponent = () => {
-  const [amount, setAmount] = useState(129); // Default to ₹129 (monthly)
+  const [amount, setAmount] = useState(99); // Default to ₹129 (monthly)
   const [subscriptionPlan, setSubscriptionPlan] = useState('premium');
-  const [duration, setDuration] = useState('monthly'); // Always set to 'monthly' now
+  const [duration, setDuration] = useState(''); // Always set to 'monthly' now
   const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
   const [isPremium, setIsPremium] = useState(null);
   const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
+  const [showConfetti, setShowConfetti] = useState(false);
   const nav = useNavigate();
 
-  const StyledWrapper = styled.div`
-  .card__subs__page__premium__edusify {
-    max-width: 340px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.25rem;
-    background-color: rgba(10, 10, 10, 0.95); /* Soft black */
-    padding: 1.75rem;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Elegant soft border */
-  }
+  const SubscriptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #F8F5FF, #FDFDFD); /* Soft pastel gradient */
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+`;
 
-  .price__subs__page__premium__edusify {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: rgba(240, 240, 240, 0.95); /* Softer white */
-    letter-spacing: -0.02rem;
-  }
+const Card = styled.div`
+  width: 85%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+`;
 
-  .lists__subs__page__premium__edusify {
-    margin-top: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    font-size: 0.9rem;
-    line-height: 1.4rem;
-    color: rgba(230, 230, 230, 0.85); /* Softer white */
-  }
+const Header = styled.div`
+  height: 80px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  position: relative;
+  margin: -2rem -2rem 1rem -2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #5A3EAB; /* Deep luxe purple */
+  background: linear-gradient(to right, #E6DAFF,rgb(222, 207, 255));
+  box-shadow: inset 0px -2px 6px rgba(0, 0, 0, 0.05);
+`;
 
-  .list__subs__page__premium__edusify {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.4rem 0;
-  }
+const Title = styled.p`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2E1A47; /* Rich, elegant text color */
+  margin-bottom: 1rem;
+`;
 
-  .list__subs__page__premium__edusify svg {
-    height: 1.1rem;
-    width: 1.1rem;
-    opacity: 0.9; /* Softer icon appearance */
-  }
+const Plan = styled.div`
+  padding: 1rem;
+  border-radius: 14px;
+  margin-top: 1rem;
+  color: #3A2D62;
+  font-size: 1.1rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.4);
+  border: ${({ active }) => (active ? '2px solid #D1A3FF' : '1px solid rgba(0, 0, 0, 0.05)')};
+  box-shadow: ${({ active }) => (active ? '0px 4px 12px rgba(209, 163, 255, 0.4)' : 'none')};
 
-  .action__subs__page__premium__edusify {
-    margin-top: 1.75rem;
-    width: 85%;
-    border: 2px solid rgba(255, 255, 255, 0.85);
-    border-radius: 50px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-    padding: 0.7rem 1.5rem;
-    font-weight: 600;
-    text-align: center;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: all 0.25s ease-in-out;
-    backdrop-filter: blur(8px); /* Premium glass effect */
-  }
-
-  .action__subs__page__premium__edusify:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 1);
+  &:hover {
+    background: rgba(255, 255, 255, 0.6);
   }
 `;
 
+const BestValue = styled.span`
+  background: #D1A3FF;
+  color: white;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+`;
 
+const Button = styled.div`
+  background: linear-gradient(135deg, #B68BFF, #D1A3FF);
+  color: white;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 14px;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 6px 16px rgba(182, 139, 255, 0.4);
+
+  &:hover {
+    background: linear-gradient(135deg, #D1A3FF, #B68BFF);
+    transform: scale(1.02);
+  }
+`;
+
+const Countdown = styled.div`
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  color: #FF6B6B; /* Soft warning color */
+  font-weight: 500;
+  font-style: italic;
+`;
+
+const BackButton = styled.div`
+  color: #222; /* Premium dark gray */
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 1000;
+  backdrop-filter: blur(10px); /* Subtle blur for premium glass effect */
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1); /* Slightly darker on hover */
+  }
+`;
+
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+      .then(response => setIsPremium(response.data.premium))
+      .catch(() => setIsPremium(false));
+  } else {
+    setIsPremium(false);
+  }
+}, []);
 
   const handlePayment = async () => {
     try {
@@ -94,7 +166,7 @@ const PaymentComponent = () => {
       let planAmount = 99; // Always ₹99 for monthly plan
   
       const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount: planAmount,
+        amount: amount,
         currency: 'INR',
         subscription_plan: subscriptionPlan,
         token,
@@ -166,55 +238,60 @@ const PaymentComponent = () => {
   };
 
   return (
-<div className="container__pricing__subs__page">
+    <SubscriptionWrapper>
+    {showConfetti && <Confetti numberOfPieces={200} />}
 
-<StyledWrapper>
-  <div className="card__subs__page__premium__edusify">
-    <p className="price__subs__page__premium__edusify">₹99/month</p>
-    {isPremium ? (
-     <a  className="action__subs__page__premium__edusify">You have premium!</a>
+    <Card>
+    <BackButton onClick={() => nav('/')}>
+      <FiArrowLeft/>
+    </BackButton>
+
+      <Header />
+      <Title>Pricing Plan</Title>
+
+
+<Plan
+  active={duration === 'weekly'}
+  onClick={() => {
+    setDuration('weekly');
+    setAmount(39);
+  }}
+>
+  <span>Weekly Plan</span>
+  <span>₹39/week</span>
+</Plan>
+
+<Plan
+  active={duration === 'monthly'}
+  onClick={() => {
+    setDuration('monthly');
+    setAmount(99);
+  }}
+>
+  <span>Monthly Plan</span>
+  <span>₹99/mo</span>
+</Plan>
+
+<Plan
+  active={duration === '6months'}
+  onClick={() => {
+    setDuration('6months');
+    setAmount(499);
+  }}
+>
+  <span>6 Months Plan</span>
+  <span>
+    ₹499 <BestValue>Best Value</BestValue>
+  </span>
+</Plan>
+
+  {isPremium ? (
+   <Button>You have premium!</Button>
     ) : (
-      <a  className="action__subs__page__premium__edusify" onClick={handlePayment}>Get started</a>
+      <Button onClick={handlePayment}>Continue</Button>
     )}
-    <ul className="lists__subs__page__premium__edusify">
-  {[
-    "Unlimited Magic Usage",
-    "Unlimited AI Quiz Generation",
-    "Unlimited AI Study Plan",
-    "Unlimited AI Notes Generation",
-    "Unlimited PDF to Notes",
-    "AI Pomodoro Recommendations",
-    "AI Task Generation",
-    "AI Plan Tasks Generation",
-    "AI Quiz Results Analysis",
-    "AI Flashcards Explain",
-    "AI PDF to Quiz",
-    "AI PDF to Flashcards",
-    "Notes to Quiz",
-    "Notes to Flashcards"
-  ].map((feature, index) => (
-    <li key={index} className="list__subs__page__premium__edusify">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <g strokeWidth={0} id="SVGRepo_bgCarrier" />
-        <g strokeLinejoin="round" strokeLinecap="round" id="SVGRepo_tracerCarrier" />
-        <g id="SVGRepo_iconCarrier">
-          <path
-            fill="#ffffff"
-            d="M21.5821 5.54289C21.9726 5.93342 21.9726 6.56658 21.5821 6.95711L10.2526 18.2867C9.86452 18.6747 9.23627 18.6775 8.84475 18.293L2.29929 11.8644C1.90527 11.4774 1.89956 10.8443 2.28655 10.4503C2.67354 10.0562 3.30668 10.0505 3.70071 10.4375L9.53911 16.1717L20.1679 5.54289C20.5584 5.15237 21.1916 5.15237 21.5821 5.54289Z"
-            clipRule="evenodd"
-            fillRule="evenodd"
-          />
-        </g>
-      </svg>
-      <span>{feature}</span>
-    </li>
-  ))}
-</ul>
-
-  </div>
-</StyledWrapper>
-<FooterNav/>
-</div>
+    </Card>
+  </SubscriptionWrapper>
 
   );
 };
