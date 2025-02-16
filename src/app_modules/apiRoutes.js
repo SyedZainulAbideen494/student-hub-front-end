@@ -211,5 +211,6 @@ export const API_ROUTES = {
   verifyGiftCardPayment: `${API_URL}/verify-gift-card-payment`,
   redeemGiftCard: `${API_URL}/redeem-gift-card`,
   fetchGiftFriendsModal: `${API_URL}/get-friends-gift`,
-  giftPremiumTofriend: `${API_URL}/gift-gift-card`
+  giftPremiumTofriend: `${API_URL}/gift-gift-card`,
+  updateUserLocation: `${API_URL}/update-location`
 }

@@ -30,7 +30,72 @@ import ExamTimeOffer from "../premium/modal/exam-time-modal";
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
  const [isAIDown, setIsAIDown] = useState(true)
+ const [location, setLocation] = useState(null);
+ const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getLocation = () => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+  
+            // Set location state
+            setLocation({ latitude, longitude });
+  
+            // Check last update before sending to backend
+            const lastUpdate = localStorage.getItem("lastLocationUpdate");
+            const oneWeek = 7 * 24 * 60 * 60 * 1000; // One week in milliseconds
+            const now = Date.now();
+  
+            if (!lastUpdate || now - parseInt(lastUpdate) > oneWeek) {
+              sendLocationToBackend(latitude, longitude);
+              localStorage.setItem("lastLocationUpdate", now.toString()); // Update timestamp
+            }
+  
+            setError(null);
+          },
+          (error) => {
+            setError(error.message);
+            setLocation(null);
+          },
+          {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0,
+          }
+        );
+      } else {
+        setError("Geolocation is not supported by this browser.");
+      }
+    };
+  
+    const sendLocationToBackend = (latitude, longitude) => {
+      const token = localStorage.getItem("token"); // Get token from local storage
+  
+      if (!token) {
+        console.error("User is not authenticated");
+        return;
+      }
+  
+      fetch(API_ROUTES.updateUserLocation, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Send token in Authorization header
+        },
+        body: JSON.stringify({ latitude, longitude }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log("✅ Location updated:", data))
+        .catch((err) => console.error("❌ Error:", err));
+    };
+  
+    getLocation(); // Call function when component mounts
+  }, []);
+  
 
 
   // Toggle feedback form visibility
@@ -61,6 +126,7 @@ const HomeMain = () => {
   return (
     <Fragment>
         <>
+      
         <ExamTimeOffer/>
           <ReviewModal />
           <BirthdayCelebration />
