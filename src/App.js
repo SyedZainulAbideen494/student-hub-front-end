@@ -278,7 +278,7 @@ const router = createBrowserRouter([
 function App() {
   const [subscription, setSubscription] = useState(null);
 
-  {/* useEffect(() => {
+   useEffect(() => {
     async function registerServiceWorker() {
       if ("serviceWorker" in navigator) {
         try {
@@ -313,7 +313,7 @@ function App() {
     }
 
     registerServiceWorker();
-  }, []);*/}
+  }, []);
 
   // Convert VAPID key to Uint8Array
   const urlBase64ToUint8Array = (base64String) => {
