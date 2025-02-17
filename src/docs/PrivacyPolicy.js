@@ -8,6 +8,7 @@ const PrivacyPolicy = () => {
             <p className="content__policy__page">
                 Your privacy is important to us. This Privacy Policy outlines the types of data we collect, how we use it, and the measures we take to protect your information. By using Edusify, you consent to the data practices described in this policy.
             </p>
+            <p className="content__policy__page"><strong>Last Updated:</strong> February 17, 2025</p>
 
             <h2 className="subheading__policy__page">What Data We Collect</h2>
             <p className="content__policy__page">
@@ -19,6 +20,7 @@ const PrivacyPolicy = () => {
                 <li><strong>Activities:</strong> Including tasks, events, AI queries, notes, and other actions within the app.</li>
                 <li><strong>Device Information:</strong> Such as your operating system, app version, and device type for troubleshooting and improvements.</li>
                 <li><strong>Usage Data:</strong> Insights into how you interact with features to optimize app performance and enhance your experience.</li>
+                <li><strong>Location Data:</strong> If you allow location access, we collect your geographic location to provide location-based features like study group suggestions and exam event reminders. We only collect location data when explicitly permitted, and you can choose to disable this feature at any time. The location is used solely for enhancing your experience within the app and is not shared with third parties without your consent.</li>
             </ul>
 
             <h2 className="subheading__policy__page">How We Use Your Data</h2>
@@ -30,6 +32,7 @@ const PrivacyPolicy = () => {
                 <li>Enhance your overall experience by improving app features and functionality.</li>
                 <li>Generate insights and analytics for better user support and app development.</li>
                 <li>Ensure a safe and secure environment by monitoring for inappropriate or harmful activity.</li>
+                <li>Provide location-based features, if enabled.</li>
             </ul>
 
             <h2 className="subheading__policy__page">Monitoring User Inputs</h2>
@@ -47,7 +50,7 @@ const PrivacyPolicy = () => {
 
             <h2 className="subheading__policy__page">Data Protection and Security</h2>
             <p className="content__policy__page">
-                We prioritize the security of your data through industry-standard encryption and security measures. Access to your data is limited to authorized personnel who are bound by confidentiality obligations. Regular security audits and updates ensure that your information remains protected.
+                We prioritize the security of your data through industry-standard encryption and security measures. Access to your data is limited to authorized personnel who are bound by confidentiality obligations. Regular security audits and updates ensure that your information remains protected. Edusify does not store or retain sensitive data beyond what is necessary for the app’s functionality.
             </p>
 
             <h2 className="subheading__policy__page">Sharing Your Data</h2>
