@@ -203,8 +203,49 @@ function Planner() {
         }
     };
 
+// Inline styles for the switch
+// Inline styles for the switch
+const switchStyle = {
+  position: 'relative',
+  display: 'inline-block',
+  width: '34px',
+  height: '20px',
+};
 
+const inputStyle = {
+  opacity: 0,
+  width: 0,
+  height: 0,
+};
 
+const sliderStyle = {
+  position: 'absolute',
+  cursor: 'pointer',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: '#ccc',
+  transition: '0.4s',
+  borderRadius: '34px',
+};
+
+const sliderBeforeStyle = {
+  position: 'absolute',
+  content: '',
+  height: '12px',
+  width: '12px',
+  borderRadius: '50%',
+  left: '4px',
+  bottom: '4px',
+  backgroundColor: 'white',
+  transition: '0.4s',
+};
+
+// Update this function to toggle the slider color
+const handleSliderChange = () => {
+  setEmailReminder((prev) => !prev);
+};
 
     // Compute statistics
     const today = formatDate(new Date());
@@ -284,8 +325,8 @@ function Planner() {
           setIsPremium(false);
         }
       }, []);
-      
-    
+
+     
 
     return (
         <div className="App-dashboard-planner">
@@ -389,6 +430,31 @@ function Planner() {
     />
   </div>
 </div>
+
+<div className="form-group__modal__Add__tasks" style={{ display: 'flex', alignItems: 'center' }}>
+  <label htmlFor="modal-task-email-reminder" style={{ marginRight: '10px' }}>Reminder:</label>
+  <label className="switch" style={switchStyle}>
+    <input
+      type="checkbox"
+      id="modal-task-email-reminder"
+      checked={emailReminder}
+      onChange={handleSliderChange} // Handle toggle
+      style={inputStyle}
+    />
+    <span className="slider" style={{ ...sliderStyle, backgroundColor: emailReminder ? '#bde0fe' : '#ccc' }}>
+      <span
+        className="slider-before"
+        style={{
+          ...sliderBeforeStyle,
+          transform: emailReminder ? 'translateX(14px)' : 'translateX(0)',
+        }}
+      ></span>
+    </span>
+  </label>
+</div>
+
+
+
 <div className="modal-footer__modal__Add__tasks__container">
       <div className="modal-footer__modal__Add__tasks">
         <button

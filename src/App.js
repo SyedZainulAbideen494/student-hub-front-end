@@ -278,42 +278,49 @@ const router = createBrowserRouter([
 function App() {
   const [subscription, setSubscription] = useState(null);
 
-   useEffect(() => {
+  useEffect(() => {
     async function registerServiceWorker() {
       if ("serviceWorker" in navigator) {
         try {
           const reg = await navigator.serviceWorker.register("/sw.js");
           console.log("Service Worker Registered:", reg);
-
+  
           const permission = await Notification.requestPermission();
           if (permission !== "granted") {
             console.warn("Push notifications denied by user");
             return;
           }
-
+  
           const subscription = await reg.pushManager.subscribe({
             userVisibleOnly: true,
             applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY),
           });
-
+  
           console.log("User Subscribed:", subscription);
-
-          // Send subscription to backend
+  
+          // Get the user token (or user_id from localStorage, context, etc.)
+          const userToken = localStorage.getItem('token'); // Example
+  
+          // Send subscription to backend along with user_id or token
           await fetch(API_ROUTES.subscribeNoti, {
             method: "POST",
-            body: JSON.stringify(subscription),
+            body: JSON.stringify({
+              subscription,
+              userToken
+            }),
             headers: { "Content-Type": "application/json" },
           });
-
+  
           setSubscription(subscription);
         } catch (error) {
           console.error("Service Worker Error:", error);
         }
       }
     }
-
+  
     registerServiceWorker();
   }, []);
+  
 
   // Convert VAPID key to Uint8Array
   const urlBase64ToUint8Array = (base64String) => {
