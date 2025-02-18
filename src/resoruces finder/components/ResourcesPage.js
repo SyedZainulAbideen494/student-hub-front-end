@@ -192,7 +192,7 @@ const ResourceFinder = () => {
             </div>
 
 {/* Manual Search Bar */}
-<div className="search__bar__resources__finder__page">
+<div className="search__bar__resources__finder__page" style={{marginBottom: ' 30px'}}>
     <FiSearch className="search__icon__resources__finder__page" />
     <input
         type="text"
@@ -203,7 +203,7 @@ const ResourceFinder = () => {
     />
 </div>
 
-{/* AI Search Bar (Enhanced UI) */}
+{/* AI Search Bar (Enhanced UI)
 <div className="ai__search__bar">
 <SparkleIcon className="ai-explain-flashcard-icon" />
     <input
@@ -223,7 +223,7 @@ const ResourceFinder = () => {
     </button>
     )}
 
-</div>
+</div> */}
 
 
             {/* Resources List */}
