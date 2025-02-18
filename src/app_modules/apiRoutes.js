@@ -185,7 +185,7 @@ export const API_ROUTES = {
   checkSubscription: `${API_URL}/check-premium`,
   magicUseage: `${API_URL}/api/magic/usage`,
   flashcardsCountPdfPremium: `${API_URL}/api/flashcards/count/pdf-premium`,
-  QuizCountPdfPremium: `${API_URL}/api/quizzes/count/ai-premium`,
+  QuizCountAiFree: `${API_URL}/api/quizzes/count/ai-free`,
   getPremium: `${API_URL}/buy-premium`,
   verifyPayment: `${API_URL}/verify-payment`,
   aiPomdoroRecomendation: `${API_URL}/api/pomodoro/ai-recommendation`,
@@ -214,5 +214,5 @@ export const API_ROUTES = {
   giftPremiumTofriend: `${API_URL}/gift-gift-card`,
   updateUserLocation: `${API_URL}/update-location`,
   subscribeNoti: `${API_URL}/subscribe/notification`,
-  sendNotification: `${API_URL}/send-notification`
-}
+  sendNotification: `${API_URL}/send-notification`,
+  checkAiFlashcardUsage: `${API_URL}/api/flashcards/check-ai-usa

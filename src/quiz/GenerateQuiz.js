@@ -48,35 +48,36 @@ const GenerateQuiz = () => {
     }
   };
 
- // Fetch subscription and flashcards count
- useEffect(() => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-      .then(response => {
-        setIsPremium(response.data.premium);
-        
-        if (!response.data.premium) {
-          // Fetch flashcards count for free users
-          axios.get(API_ROUTES.QuizCountPdfPremium, {
-            headers: { 'Authorization': token }
-          })
-          .then((res) => {
-            setFlashcardsCount(res.data.QuizzesCount);
-            if (res.data.QuizzesCount >= 1) {
-              setIsExceededLimit(true);
-            }
-          })
-          .catch((err) => {
-            console.error("Error fetching flashcards count:", err);
-          });
-        }
-      })
-      .catch(() => setIsPremium(false));
-  } else {
-    setIsPremium(false);
-  }
-}, []);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+        .then(response => {
+          setIsPremium(response.data.premium);
+          
+          if (!response.data.premium) {
+            // Fetch AI-generated flashcards count for free users
+            axios.get(API_ROUTES.QuizCountAiFree, {
+              headers: { 'Authorization': token }
+            })
+            .then((res) => {
+              setFlashcardsCount(res.data.QuizzesCount);
+              if (res.data.QuizzesCount >= 2) { // Adjusted to 2 per week limit
+                setIsExceededLimit(true);
+              }
+            })
+            .catch((err) => {
+              console.error("Error fetching AI flashcards count:", err);
+            });
+          }
+        })
+        .catch(() => setIsPremium(false));
+    } else {
+      setIsPremium(false);
+    }
+  }, []);
+
+
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -193,24 +194,55 @@ const handleQuizAnswers = (quizId) => {
           <div 
   className="PDFNotesCreation__lockMessage__quizzes" 
   style={{ 
-    color: '#333', 
+    color: '#444', 
     fontSize: '16px', 
     fontWeight: '500', 
     textAlign: 'center', 
-    padding: '12px', 
-    backgroundColor: '#f9f9f9', 
-    borderRadius: '10px', 
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.05)', 
-    border: '1px solid #e0e0e0', 
+    padding: '14px 16px', 
+    backgroundColor: '#fff7e6',  
+    borderRadius: '12px', 
+    boxShadow: '0 6px 12px rgba(0, 0, 0, 0.08)', 
+    border: '1px solid #ffcc80', 
     display: 'flex', 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    gap: '8px'
+    flexDirection: 'column',  // Column direction for mobile
+    alignItems: 'center',     // Center everything horizontally
+    justifyContent: 'center', // Center everything vertically
+    gap: '12px',              // Increased gap for a cleaner layout
+    maxWidth: '400px',
+    margin: '0 auto',         // Center the container horizontally
+    width: '100%'             // Allow the container to take full width
   }}
 >
-  <span style={{ fontSize: '18px' }}>🔒</span>
-  <span>Premium Only – You have reached the limit for free users.</span>
+  <span style={{ fontSize: '24px' }}>🔒</span> {/* Larger lock icon for better mobile visibility */}
+  <span style={{
+    fontSize: '16px',
+    fontWeight: '500',
+    marginBottom: '10px'
+  }}>
+    <strong style={{ color: '#ff9800' }}>Uh-oh!</strong> You've hit the free limit.  
+    You can only generate <strong>2 AI quizzes per week</strong> with the free plan.  
+    Unlock <strong>unlimited AI quizzes</strong> & more with <strong>Edusify Premium</strong>! 🚀  
+  </span>
+  <button 
+    style={{
+      backgroundColor: '#ff9800', 
+      color: '#fff', 
+      border: 'none', 
+      padding: '10px 16px', 
+      borderRadius: '8px', 
+      fontWeight: '600', 
+      cursor: 'pointer',
+      transition: '0.3s',
+      fontSize: '16px',
+      minWidth: '160px',
+      textAlign: 'center',
+    }}
+    onClick={() => navigate('/subscription')} // Add your navigation function here
+  >
+    Upgrade Now →
+  </button>
 </div>
+
 
 ) : (
   <button

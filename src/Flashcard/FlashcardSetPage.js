@@ -47,7 +47,9 @@ const FlashcardSetPage = () => {
   const [loadingAnswer, setLoadingAnser] = useState(false);
   const [explanation, setExplanation] = useState("");
   const [isPremium, setIsPremium] = useState(null);
+  const [isUpgradeModalOpenAi, setIsUpgradeModalOpenAi] = useState(false); // Add state
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add state
+  const [canGenerateAI, setCanGenerateAI] = useState(true); // Initially allowing AI generation
 
 
   const handleSparkleClick = async (flashcard) => {
@@ -214,11 +216,13 @@ const FlashcardSetPage = () => {
   const generateFlashcards = async () => {
     setIsGenerating(true); // Start generating
     try {
+      const token = localStorage.getItem("token"); // or wherever your token is stored
       // Prepare request body including subject and topic from user input
       const requestData = {
         set_id: id,
         subject: aiSubject,  // User-input subject for AI
         topic: aiTopic,      // User-input topic for AI
+        token: token,        // Send the token with the request
       };
   
       const response = await fetch(API_ROUTES.generateFlashcards, {
@@ -406,6 +410,12 @@ const SparkleIcon = () => (
   </svg>
 );
 
+const upgradeModalOpen = () => {
+  setIsUpgradeModalOpenAi(true); // This will trigger the modal to open
+ toggleModal()
+};
+
+// First useEffect for checking subscription status (premium check)
 useEffect(() => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -416,6 +426,25 @@ useEffect(() => {
     setIsPremium(false);
   }
 }, []);
+
+// Second useEffect for checking AI usage if the user is not premium
+useEffect(() => {
+  if (isPremium === false) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.post(API_ROUTES.checkAiFlashcardUsage, { token })
+        .then(aiResponse => {
+          if (aiResponse.data.usageCount >= 2) {
+            setCanGenerateAI(false); // Restrict AI generation for free users who have exceeded the limit
+          } else {
+            setCanGenerateAI(true); // Allow AI generation for free users within the limit
+          }
+        })
+        .catch(() => setCanGenerateAI(false)); // Error handling
+    }
+  }
+}, [isPremium]); // Dependency on isPremium, runs after the first useEffect
+
 
 
   // Return the loading state unconditionally
@@ -635,49 +664,49 @@ if (loading) {
       </button>
     </div>
 
-    {/* AI Option */}
     {selectedOption === 'ai' && (
-      <div>
-        <input
-          type="text"
-          placeholder="Subject"
-          value={aiSubject}
-          onChange={(e) => setAiSubject(e.target.value)}
-          className="flashcard-input__manual__flashcard__form"
-        />
-        <input
-          type="text"
-          placeholder="Topic"
-          value={aiTopic}
-          onChange={(e) => setAiTopic(e.target.value)}
-          className="flashcard-input__manual__flashcard__form"
-        />
-         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '20px' }}>
-        <button
-          className="flashcard__set__page__modal-generate btn__set__page__buttons"
-          onClick={generateFlashcards}
-          disabled={isGenerating}
-        >
-          <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
-            <svg
-              height="24"
-              width="24"
-              fill="#FFFFFF"
-              viewBox="0 0 24 24"
-              data-name="Layer 1"
-              id="Layer_1"
-              className="sparkle__set__page__buttons"
-            >
-              <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-            </svg>
-            <span className="text__set__page__buttons">
-              {isGenerating ? 'Generating...' : 'Generate using AI'}
-            </span>
-          </div>
-        </button>
+  <div>
+    <input
+      type="text"
+      placeholder="Subject"
+      value={aiSubject}
+      onChange={(e) => setAiSubject(e.target.value)}
+      className="flashcard-input__manual__flashcard__form"
+    />
+    <input
+      type="text"
+      placeholder="Topic"
+      value={aiTopic}
+      onChange={(e) => setAiTopic(e.target.value)}
+      className="flashcard-input__manual__flashcard__form"
+    />
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '20px' }}>
+      <button
+        className="flashcard__set__page__modal-generate btn__set__page__buttons"
+        onClick={canGenerateAI ? generateFlashcards : upgradeModalOpen} // Conditionally call the correct handler
+        disabled={isGenerating}
+      >
+        <div className={`sparkle__set__page__buttons ${isGenerating ? 'animating' : ''}`}>
+          <svg
+            height="24"
+            width="24"
+            fill="#FFFFFF"
+            viewBox="0 0 24 24"
+            data-name="Layer 1"
+            id="Layer_1"
+            className="sparkle__set__page__buttons"
+          >
+            <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+          </svg>
+          <span className="text__set__page__buttons">
+            {isGenerating ? 'Generating...' : 'Generate using AI'} {/* Keep the text the same */}
+          </span>
         </div>
-      </div>
-    )}
+      </button>
+    </div>
+  </div>
+)}
+
 
     {/* Manual Flashcard Creation Form */}
     {selectedOption === 'manual' && (
@@ -835,6 +864,11 @@ if (loading) {
         isOpen={isUpgradeModalOpen} 
         onClose={() => setIsUpgradeModalOpen(false)} 
       />
+<UpgradeModal 
+  message="Unlock exclusive access to AI-powered flashcards! You can only generate 2 per week without Premium. Upgrade now to get unlimited access!" 
+  isOpen={isUpgradeModalOpenAi} 
+  onClose={() => setIsUpgradeModalOpenAi(false)} 
+/>
     </div>
   );
 };
