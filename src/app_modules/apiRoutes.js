@@ -214,5 +214,5 @@ export const API_ROUTES = {
   giftPremiumTofriend: `${API_URL}/gift-gift-card`,
   updateUserLocation: `${API_URL}/update-location`,
   subscribeNoti: `${API_URL}/subscribe/notification`,
-  sendNotification: `${API_URL}/send-notification`,
-  checkAiFlashcardUsage: `${API_URL}/api/flashcards/check-ai-usa
+  checkAiFlashcardUsage: `${API_URL}/api/flashcards/check-ai-usage`,
+}
