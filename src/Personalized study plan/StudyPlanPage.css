@@ -198,7 +198,8 @@
     background-color: #1D1A23;
     color: #fff;
     border: none;
-    padding: 0.8rem 2rem;
+    margin: 0 4px;
+    padding: 0.8rem 1rem;
     border-radius: 25px;
     font-size: 13px;
     cursor: pointer;
