@@ -232,32 +232,42 @@ const nav = useNavigate()
 
     </div>
   
-    {/* Toggle Edit Mode Button */}
     <div className="sticky-button__Ai__result__plan">
-      <button
-        onClick={handlegetNewPlan}
-        className="get-started-button__Ai__result__plan"
-      >
-      Regenerate Plan
-      </button>
-  
-      {/* Conditionally render the Get Started button */}
-      {!isEditing && (
-        <button
-          onClick={handlegetStarted}
-          className="get-started-button__Ai__result__plan"
-        >
-          Get Started
-        </button>
-      )}
-  
-      {/* Save Study Plan button only visible when editing */}
-      {isEditing && (
-        <button onClick={handleSave} className="get-started-button__Ai__result__plan">
-          Save Study Plan
-        </button>
-      )}
-    </div>
+  <button
+    onClick={handlegetNewPlan}
+    className="get-started-button__Ai__result__plan"
+  >
+    Regenerate Plan
+  </button>
+
+  {/* Show Edit button when not editing */}
+  {!isEditing && (
+    <button
+      onClick={() => setIsEditing(true)}
+      className="get-started-button__Ai__result__plan"
+    >
+      Edit Plan
+    </button>
+  )}
+
+  {/* Show Save button when editing */}
+  {isEditing && (
+    <button onClick={handleSave} className="get-started-button__Ai__result__plan">
+      Save Study Plan
+    </button>
+  )}
+
+  {/* Get Started button remains visible if not in edit mode */}
+  {!isEditing && (
+    <button
+      onClick={handlegetStarted}
+      className="get-started-button__Ai__result__plan"
+    >
+      Get Started
+    </button>
+  )}
+</div>
+
   </div>
   
   );
