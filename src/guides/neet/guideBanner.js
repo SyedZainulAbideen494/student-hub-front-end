@@ -19,7 +19,7 @@ const GuideBanner = () => {
           discover high-yield topics, and boost your score  
           with AI-powered strategies.
         </p>
-        <p className="cta-text">Find me in the <span>Find Resources</span> section!</p>
+        <p className="cta-text">Find me in the <span>Resources Finder</span> section!</p>
       </TextContent>
 
       <ViewGuideButton onClick={() => navigate("/guide/neet")}>
