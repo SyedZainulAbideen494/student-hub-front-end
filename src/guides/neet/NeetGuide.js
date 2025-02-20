@@ -1119,7 +1119,7 @@ const DownloadButton = styled.a`
       <strong>Start NOW.</strong> Your medical college seat is waiting for you!
     </p>
     
-    <DownloadSection>
+  {/*  <DownloadSection>
       <h2>📂 Get All NEET Past Year Papers</h2>
       <p>Download the complete set of NEET Previous Year Question Papers (2015-2024) in one click.</p>
 
@@ -1129,7 +1129,7 @@ const DownloadButton = styled.a`
   </DownloadButton>
 </a>
 
-    </DownloadSection>
+    </DownloadSection>*/} 
   </Content>
 </Page>
 
