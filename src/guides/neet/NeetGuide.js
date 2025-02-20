@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { FaArrowLeft, FaAtom, FaBolt, FaBookOpen, FaBrain, FaCalculator, FaChalkboardTeacher, FaChartLine, FaCheckCircle, FaClipboardCheck, FaClipboardList, FaClock, FaDna, FaExclamationTriangle, FaFlask, FaGraduationCap, FaMicroscope, FaProjectDiagram, FaRegCalendarAlt, FaSearch, FaSyncAlt } from "react-icons/fa";
+import { FaArrowLeft, FaAtom, FaBolt, FaBookOpen, FaBrain, FaCalculator, FaChalkboardTeacher, FaChartLine, FaCheckCircle, FaClipboardCheck, FaClipboardList, FaClock, FaDna, FaDownload, FaExclamationTriangle, FaFlask, FaGraduationCap, FaMicroscope, FaProjectDiagram, FaRegCalendarAlt, FaSearch, FaSyncAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { API_ROUTES } from "../../app_modules/apiRoutes";
 import axios from "axios";
@@ -179,8 +179,40 @@ const NeetGuide = () => {
       background: linear-gradient(135deg, #111 10%, #222 90%);
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
+      
   `;
   
+  const DownloadSection = styled.div`
+  margin-top: 20px;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 10px;
+  text-align: center;
+`;
+
+const DownloadButton = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00dbde;
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s;
+  margin-top: 12px;
+  font-size: 16px;
+  
+  svg {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background: #00b3b7;
+  }
+`;
+
     const nav = useNavigate()
     const [loadingQuiz, setLoadingQuiz] = useState(false);
     const [error, setError] = useState(null);
@@ -1073,14 +1105,34 @@ const NeetGuide = () => {
   transition={{ duration: 0.6 }}
 >
   <Title>FINAL WORDS – YOUR NEET RANK IS WAITING FOR YOU!</Title>
+  
   <Content>
-    This <strong>NEET PREMIUM GUIDE</strong> is your ultimate resource to excel in NEET 2025. <br /><br />
+    <p>
+      This <strong>NEET PREMIUM GUIDE</strong> is your ultimate resource to excel in NEET 2025.
+    </p>
+    
+    <p>
+      <strong><FaGraduationCap /> Success Formula:</strong> Smart Study + Practice + Revision = Top NEET Rank.
+    </p>
 
-    <strong><FaGraduationCap /> Success Formula:</strong> Smart Study + Practice + Revision = Top NEET Rank. <br /><br />
+    <p>
+      <strong>Start NOW.</strong> Your medical college seat is waiting for you!
+    </p>
+    
+    <DownloadSection>
+      <h2>📂 Get All NEET Past Year Papers</h2>
+      <p>Download the complete set of NEET Previous Year Question Papers (2015-2024) in one click.</p>
 
-    <strong>Start NOW.</strong> Your medical college seat is waiting for you!  
+      <a href={API_ROUTES.downloadPdfNeet} download>
+  <DownloadButton>
+    <FaDownload /> Download Now
+  </DownloadButton>
+</a>
+
+    </DownloadSection>
   </Content>
 </Page>
+
     </>
     ) : (
         <div className="premium-upgrade">
