@@ -216,4 +216,5 @@ export const API_ROUTES = {
   subscribeNoti: `${API_URL}/subscribe/notification`,
   sendNotification: `${API_URL}/send-notification`,
   checkAiFlashcardUsage: `${API_URL}/api/flashcards/check-ai-usage`,
+  generateQuizfromneetGuide: `${API_URL}/api/quiz/generate/from-neet-guide`
 }

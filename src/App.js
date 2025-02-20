@@ -143,6 +143,7 @@ import GiftCardPage from "./gift Cards/GiftCardPage";
 import SendNotificationPage from "./Send noti/notiSend";
 import { API_ROUTES } from "./app_modules/apiRoutes";
 import SearchSchool from "./schools/search-schools";
+import NeetSwipeGuide from "./guides/neet/NeetGuide";
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -273,6 +274,7 @@ const router = createBrowserRouter([
   {path: '/admin-resources-review-page-not-allowed', element: <AdminResourceReview/>},
   {path: '/gift-card', element: <GiftCardPage/>},
   {path: '/serach-school', element: <SearchSchool/>},
+  {path: '/guide/neet', element: <NeetSwipeGuide/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

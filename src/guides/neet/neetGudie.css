@@ -1,0 +1,51 @@
+.premium-upgrade {
+    text-align: center;
+    background: linear-gradient(135deg, #2b2b2b, #000);
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  .premium-text {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  
+  .premium-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 18px;
+    background: linear-gradient(-45deg, #ff416c, #ff4b2b);
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(255, 75, 43, 0.3);
+  }
+  
+  .premium-btn i {
+    font-size: 18px;
+  }
+  
+  .premium-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 75, 43, 0.5);
+  }
+  
+  .limited-offer {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ff7575;
+  }
+  

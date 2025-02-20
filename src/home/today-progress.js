@@ -6,6 +6,7 @@ import moment from 'moment';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './TodayProgress.css'; // Import the custom CSS file
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import GuideBanner from '../guides/neet/guideBanner';
 
 const TodayProgress = () => {
   const [studyPlan, setStudyPlan] = useState(null);
@@ -213,9 +214,8 @@ const TodayProgress = () => {
             <p>No session times allocated</p>
           )}
         </div>
-      
- 
       </div>
+      <GuideBanner/>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import "../styles/ResourceFinder.css";
 import FooterNav from "../../app_modules/footernav";
 import { FaRobot, FaSearch } from "react-icons/fa";
 import UpgradeModal from "../../premium/UpgradeModal";
+import GuideBanner from "../../guides/neet/guideBanner";
 
 const categories = [
     "All",
@@ -235,7 +236,7 @@ const ResourceFinder = () => {
     </div>
 )}
 
-
+<GuideBanner/>
                 {filteredResources.length > 0 ? (
                     filteredResources.map((res) => (
                         <div key={res.id} className="resource__card__resources__finder__page">
