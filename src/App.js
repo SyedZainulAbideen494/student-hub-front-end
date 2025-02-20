@@ -132,7 +132,6 @@ import TypewriterLoader from "./question paper/TypewriterLoader";
 import VoiceAssistant from "./voice assistant/voice assistant";
 import ViewQuestionPaperExample from "./question paper/ViewQuestionPaper copy";
 import TestModeApp from "./test mode/MainTestPage";
-import MindMapsApp from "./Mind maps/mp";
 import GenerateEliteNotesAI from "./flashCards/elite Notes/EliteNotes";
 import QuizGeneratorExam from "./competivie exam/competiveexam";
 import LoaderComponentExamMock from "./competivie exam/comp-exam-loader";
@@ -144,6 +143,9 @@ import SendNotificationPage from "./Send noti/notiSend";
 import { API_ROUTES } from "./app_modules/apiRoutes";
 import SearchSchool from "./schools/search-schools";
 import NeetSwipeGuide from "./guides/neet/NeetGuide";
+import GenerateMindMap from "./mind maps/GenerateMindMap";
+import MindMapPage from "./mind maps/MindMapPage";
+
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -267,7 +269,6 @@ const router = createBrowserRouter([
   {path: '/type-writter-loader', element: <TypewriterLoader/>},
   {path: '/voice-assistant', element: <VoiceAssistant/>},
   {path: '/test-mode', element: <TestModeApp/>},
-  {path: '/mind-maps', element: <MindMapsApp/>},
   {path: '/competive-exam', element: <QuizGeneratorExam/>},
   {path: '/loading/mock-exam', element:<LoaderMockExamApp />},
   {path: '/resource-finder', element: <ResourceFinder/>},
@@ -275,6 +276,8 @@ const router = createBrowserRouter([
   {path: '/gift-card', element: <GiftCardPage/>},
   {path: '/serach-school', element: <SearchSchool/>},
   {path: '/guide/neet', element: <NeetSwipeGuide/>},
+  {path: '/mind-map/create', element: <GenerateMindMap/>},
+  {path: '/mindmap/:mindMapId', element: <MindMapPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
