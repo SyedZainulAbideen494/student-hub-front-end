@@ -22,9 +22,16 @@ const GenerateQuiz = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
+  
+    // Check if subject or topic is missing
+    if (!subject || !topic) {
+      alert('Please provide both subject and topic.');
+      setLoading(false);
+      return; // Prevent further execution
+    }
+  
     const token = localStorage.getItem('token');
-
+  
     try {
       const response = await fetch(API_ROUTES.generateAiQuiz, {
         method: 'POST',
@@ -33,11 +40,11 @@ const GenerateQuiz = () => {
         },
         body: JSON.stringify({ subject, topic, token }),
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to generate quiz, please try again');
       }
-
+  
       const data = await response.json();
       navigate(`/quiz/${data.quizId}`);
     } catch (err) {
@@ -47,7 +54,7 @@ const GenerateQuiz = () => {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
