@@ -95,6 +95,9 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
     }
   }, []);
   
+const handleMyMindMaps = () => {
+    navigate('mindmaps/user')
+}
 
   return (
     <div className="container__mind__map__make__page">
@@ -130,6 +133,13 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
             className="button__mind__map__make__page"
           >
             {loading ? "Generating..." : "Generate Mind Map"}
+          </button>
+          <button
+          style={{marginTop:'20px'}}
+            onClick={handleMyMindMaps}
+            className="button__mind__map__make__page"
+          >
+           My MindMaps
           </button>
         </div>
       </div>
