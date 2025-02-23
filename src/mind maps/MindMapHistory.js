@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { API_ROUTES } from "../app_modules/apiRoutes";
-import "./MindMapHistory.css"; // Add CSS for styling
+import "./MindMapHistory.css"; // Updated CSS
 
 const MindMapHistory = () => {
   const [mindMaps, setMindMaps] = useState([]);
@@ -30,24 +30,24 @@ const MindMapHistory = () => {
   }, []);
 
   return (
-    <div className="mindmap-history-container">
-      <h1>My Mind Maps</h1>
+    <div className="mindmap-history__main__maps__view">
+      <h1 className="mindmap-title__main__maps__view">My Mind Maps</h1>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading__main__maps__view">Loading...</p>
       ) : mindMaps.length === 0 ? (
-        <p>No mind maps created yet.</p>
+        <p className="empty__main__maps__view">No mind maps created yet.</p>
       ) : (
-        <ul className="mindmap-list">
+        <ul className="mindmap-list__main__maps__view">
           {mindMaps.map((mindmap) => (
             <li 
               key={mindmap.id} 
-              className="mindmap-item" 
+              className="mindmap-item__main__maps__view" 
               onClick={() => navigate(`/mindmap/${mindmap.id}`)}
             >
-              <h2>{mindmap.name}</h2>
-              <p><strong>Subject:</strong> {mindmap.subject}</p>
-              <p><strong>Created on:</strong> {new Date(mindmap.created_at).toLocaleDateString()}</p>
+              <h2 className="mindmap-name__main__maps__view">{mindmap.name}</h2>
+              <p className="mindmap-subject__main__maps__view"><strong>Subject:</strong> {mindmap.subject}</p>
+              <p className="mindmap-date__main__maps__view"><strong>Created on:</strong> {new Date(mindmap.created_at).toLocaleDateString()}</p>
             </li>
           ))}
         </ul>

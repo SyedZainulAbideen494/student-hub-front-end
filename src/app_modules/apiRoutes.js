@@ -219,7 +219,7 @@ export const API_ROUTES = {
   generateQuizfromneetGuide: `${API_URL}/api/quiz/generate/from-neet-guide`,
   downloadPdfNeet: `${API_URL}/download-neet-pyqs`,
   aiYtSummary: `${API_URL}/api/chat/ai/yt`,
-  getMindMaps: `${API_URL}/api/mindmaps/all`,
+  getMindMaps: `${API_URL}/api/mindmaps/all/user`,
   generateMindMaps: `${API_URL}/api/mindmaps/generate`,
   coutMindMaps: `${API_URL}/api/mindmaps/count/for-premium`,
   getMindMapById: `${API_URL}/api/mindmaps`
