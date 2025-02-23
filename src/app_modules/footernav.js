@@ -9,7 +9,7 @@ import './footer-nav.css';
 import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
 import { BsFileBarGraph, BsFillCalendarMonthFill } from 'react-icons/bs';
-import { FiGift } from 'react-icons/fi';
+import { FiGift, FiMap } from 'react-icons/fi';
 
 const FooterNav = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -112,10 +112,11 @@ const FooterNav = () => {
         <span className="btn-label">Resources Finder </span>
     </button>
 </Link>
-<Link to='/insta-story' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
-    <FaChartLine className="icon-footer-nav" />
-        <span className="btn-label">My Stats </span>
+<Link to='/mindmap/create' style={{ textDecoration: 'none' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/mindmap/create' ? 'active' : ''}`}>
+    <FiMap className="icon-footer-nav" />
+        <span className="btn-label">Mind Maps </span>
+        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>

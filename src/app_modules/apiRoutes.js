@@ -218,5 +218,9 @@ export const API_ROUTES = {
   checkAiFlashcardUsage: `${API_URL}/api/flashcards/check-ai-usage`,
   generateQuizfromneetGuide: `${API_URL}/api/quiz/generate/from-neet-guide`,
   downloadPdfNeet: `${API_URL}/download-neet-pyqs`,
-  aiYtSummary: `${API_URL}/api/chat/ai/yt`
+  aiYtSummary: `${API_URL}/api/chat/ai/yt`,
+  getMindMaps: `${API_URL}/api/mindmaps/all`,
+  generateMindMaps: `${API_URL}/api/mindmaps/generate`,
+  coutMindMaps: `${API_URL}/api/mindmaps/count/for-premium`,
+  getMindMapById: `${API_URL}/api/mindmaps`
 }

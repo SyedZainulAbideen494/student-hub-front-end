@@ -1,0 +1,113 @@
+/* Global Container */
+.container__mind__map__make__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #e3e8ff, #f3f6ff);
+    font-family: "Poppins", sans-serif;
+    color: #333;
+}
+
+/* Glassmorphism Card */
+.glass-card__mind__map__make__page {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Title */
+.title__mind__map__make__page {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-transform: capitalize;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Container */
+.input-container__mind__map__make__page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Input Fields */
+.input__mind__map__make__page,
+.textarea__mind__map__make__page {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease-in-out;
+    color: #2c3e50;
+}
+
+.input__mind__map__make__page::placeholder,
+.textarea__mind__map__make__page::placeholder {
+    color: rgba(44, 62, 80, 0.6);
+}
+
+.input__mind__map__make__page:focus,
+.textarea__mind__map__make__page:focus {
+    box-shadow: 0 0 10px rgba(106, 90, 205, 0.3);
+}
+
+/* Button */
+.button__mind__map__make__page {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #6A5ACD, #483D8B);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button__mind__map__make__page:hover {
+    background: linear-gradient(135deg, #5842c3, #39298a);
+}
+
+/* Mindmap Container */
+.mindmap-container__mind__map__make__page {
+    width: 90vw;
+    height: 70vh;
+    margin-top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Minimap */
+.minimap__mind__map__make__page {
+    border-radius: 10px !important;
+    border: 2px solid #6A5ACD !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .glass-card__mind__map__make__page {
+        width: 70%;
+    }
+    
+    .mindmap-container__mind__map__make__page {
+        width: 95vw;
+    }
+}

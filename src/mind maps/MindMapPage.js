@@ -1,87 +1,121 @@
-import React, { useState, useEffect, useCallback } from "react";
-import ReactFlow, {
-  addEdge,
-  Background,
-  Controls,
-  MiniMap,
-  applyNodeChanges,
-  applyEdgeChanges,
-} from "reactflow";
+import React, { useEffect, useState } from "react";
+import ReactFlow, { MiniMap, Controls } from "reactflow";
 import "reactflow/dist/style.css";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import { API_ROUTES } from "../app_modules/apiRoutes";
 
-const initialNodes = [
-  { id: "1", position: { x: 250, y: 5 }, data: { label: "Start Node" } },
-];
-
-const MindMapPage = () => {
-  const [nodes, setNodes] = useState(initialNodes);
+const MindMap = () => {
+  const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
-  const [title, setTitle] = useState("New Mind Map");
+  const [loading, setLoading] = useState(true);
+  const params = useParams();
+  const navigate = useNavigate();
+  const mindmapId = params.mindMapId;
 
-  // Load the mind map data from backend
   useEffect(() => {
-    axios.get("http://localhost:8080/mindmaps").then((res) => {
-      if (res.data.length > 0) {
-        const map = res.data[0]; // Load first mind map
-        setTitle(map.title);
-        setNodes(JSON.parse(map.nodes));
+    const fetchMindMap = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await axios.get(
+          `${API_ROUTES.getMindMapById}/${mindmapId}`,
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+
+        // Format nodes
+        const formattedNodes = response.data.nodes.map((node) => ({
+          id: node.id.toString(),
+          position: { x: node.x, y: node.y },
+          data: { label: node.label },
+          style: {
+            background: "#1e1e1e", // Dark theme
+            color: "#fff",
+            borderRadius: "12px",
+            padding: "8px 12px",
+            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+            fontSize: "14px",
+            fontWeight: "bold",
+            textAlign: "center",
+            cursor: "pointer",
+          },
+        }));
+
+        // Format edges
+        const formattedEdges = response.data.edges.map((edge) => ({
+          id: `edge-${edge.from}-${edge.to}`,
+          source: edge.from.toString(),
+          target: edge.to.toString(),
+          animated: true,
+          style: { stroke: "#00bfff", strokeWidth: 2 },
+        }));
+
+        setNodes(formattedNodes);
+        setEdges(formattedEdges);
+      } catch (error) {
+        console.error("Error fetching mind map:", error);
       }
-    });
-  }, []);
-
-  // Handle adding nodes
-  const addNode = () => {
-    const newNode = {
-      id: (nodes.length + 1).toString(),
-      position: { x: Math.random() * 400, y: Math.random() * 400 },
-      data: { label: `Node ${nodes.length + 1}` },
+      setLoading(false);
     };
-    setNodes((prev) => [...prev, newNode]);
-  };
 
-  // Handle node position change
-  const onNodesChange = useCallback((changes) => {
-    setNodes((nds) => applyNodeChanges(changes, nds));
-  }, []);
+    fetchMindMap();
+  }, [mindmapId]);
 
-  // Handle edge creation
-  const onConnect = useCallback((connection) => {
-    setEdges((eds) => addEdge(connection, eds));
-  }, []);
-
-  // Save Mind Map to Backend
-  const saveMindMap = () => {
-    axios
-      .post("http://localhost:8080/mindmap", {
-        title,
-        nodes,
-      })
-      .then((res) => alert(res.data.message))
-      .catch((err) => alert("Error saving: " + err));
-  };
+  const handleBack = () => {
+    navigate('/mindmap/create')
+  }
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <button onClick={addNode}>Add Node</button>
-      <button onClick={saveMindMap}>Save Mind Map</button>
+    <div style={{ width: "100vw", height: "100vh", background: "#121212", overflow: "hidden", position: "relative" }}>
+      {loading ? (
+        <p style={{ color: "#fff", textAlign: "center", marginTop: "20px" }}>Loading mind map...</p>
+      ) : (
+        <>
+          {/* Exit Button */}
+       {/* Exit Button */}
+<button
+  onClick={handleBack}
+  style={{
+    position: "absolute",
+    top: "20px",
+    left: "20px", // Move it to the left to avoid edge overlays
+    background: "rgba(255, 255, 255, 0.15)", // Slightly more visible
+    color: "#fff",
+    border: "none",
+    padding: "10px 18px",
+    borderRadius: "8px",
+    fontSize: "14px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    transition: "0.3s",
+    backdropFilter: "blur(5px)", // Aesthetic blur effect
+    zIndex: 9999, // Ensures it's above the ReactFlow canvas
+  }}
+  onMouseOver={(e) => (e.target.style.background = "rgba(255, 255, 255, 0.3)")}
+  onMouseOut={(e) => (e.target.style.background = "rgba(255, 255, 255, 0.15)")}
+>
+  Exit
+</button>
 
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onConnect={onConnect}
-        fitView
-      >
-        <MiniMap />
-        <Background />
-        <Controls />
-      </ReactFlow>
+
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            fitView
+            zoomOnScroll
+            panOnScroll
+            panOnDrag
+            elementsSelectable
+            minZoom={0.2}
+            maxZoom={2}
+            defaultViewport={{ x: 0, y: 0, zoom: 1 }}
+            style={{ width: "100%", height: "100%" }}
+          >
+            <Controls />
+          </ReactFlow>
+        </>
+      )}
     </div>
   );
 };
 
-export default MindMapPage;
-
-
+export default MindMap;
