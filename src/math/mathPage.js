@@ -468,7 +468,7 @@ const handleSubmitQuiz = async (selectedContent) => {
   
   
   useEffect(() => {
-    // Clear old chat history key upon login
+
     const handleLogin = () => {
       // Remove old keys
       localStorage.removeItem('chatHistory');
