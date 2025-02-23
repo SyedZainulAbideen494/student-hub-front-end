@@ -3,7 +3,7 @@ import axios from 'axios';
 import './mathPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import MathLoader from './mathLoader';
-import { FaMicrophone, FaPaperPlane, FaArrowRight, FaArrowLeft, FaCog } from 'react-icons/fa';
+import { FaMicrophone, FaPaperPlane, FaArrowRight, FaArrowLeft, FaCog, FaMap } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import FeedbackForm from '../help/FeedbackForm';
 import { TypeAnimation } from 'react-type-animation';
@@ -96,7 +96,9 @@ const [imageprev, setImageprev] = useState(null); // Only one image state
 const [pdfFile, setPdfFile] = useState(null);
 const [isPremium, setIsPremium] = useState(null);
 const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add state
-
+const [isGeneratingMindMap, setIsGeneratingMindMap] = useState(false);
+const [isMindMapModalOpen, setIsMindMapModalOpen] = useState(false);
+const [mindmapData, setMindMapData] = useState({ name: "", subject: ""});
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -290,6 +292,23 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
     setIsFlashcardModalOpen(true);
     setFlashcardData({ ...flashcardData, content }); // Pass content to flashcard modal
   };
+
+
+  const handleGenerateMindMap = async (content) => {
+    setIsMagicModalOpen(false);
+
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+        setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+        return;
+      }
+    }
+
+    setIsMindMapModalOpen(true);
+    setMindMapData({ ...mindmapData, content }); // Pass content to mind map modal
+  };
+
   
   const handleGenerateQuiz = async (content) => {
     setIsMagicModalOpen(false);
@@ -307,6 +326,45 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
   };
   
 
+
+  const handleSubmitMindMap = async (selectedContent) => {
+    const token = localStorage.getItem("token");
+    const headings = selectedContent; // Use selected content directly
+
+    setIsGeneratingMindMap(true);
+
+    try {
+      const response = await fetch(API_ROUTES.generateMindMapFromMagic, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          headings,
+          subject: mindmapData.subject,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error generating mind map:", errorData.error);
+        return;
+      }
+
+      const data = await response.json();
+      console.log("Mind Map generated:", data);
+
+      navigate(`/mindmap/${data.mindmapId}`);
+      setMindMapData({ name: "", subject: "" });
+    } catch (error) {
+      console.error("Unexpected error:", error);
+    } finally {
+      setIsGeneratingMindMap(false);
+    }
+  };
+
+  
 
 const handleSubmitFlashcards = async (selectedContent) => {
   const token = localStorage.getItem('token');
@@ -781,7 +839,9 @@ useEffect(() => {
   <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateFlashcards(magicModalContent)}>
   <span>  <FaPen /> Generate Flashcards</span>
     </button>
-
+    <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateMindMap(magicModalContent)}>
+  <span>  <FaMap /> Generate mind-map</span>
+    </button>
     <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateQuiz(magicModalContent)}>
   <span><FaQuestionCircle /> Generate Quiz</span>
     </button>
@@ -837,6 +897,54 @@ useEffect(() => {
 </div>
   </div>
 </Modal>
+
+
+{/* Flashcard Modal */}
+<Modal
+  isOpen={isMindMapModalOpen}
+  onRequestClose={() => setIsMindMapModalOpen(false)}
+  className="flashcard__modal__ai__magic__page"
+>
+  <button onClick={() => setIsMindMapModalOpen(false)} className="close-btn__magic__modal__ai__page">
+    <FaTimes />
+  </button>
+  <h2 className="modal-title__magic__modal__ai__page">Generate Mind Map</h2>
+  <div className="flashcard-modal-content__magic__modal__ai__page">
+    <input
+      type="text"
+      placeholder="Title"
+      value={mindmapData.subject}
+      onChange={(e) => setMindMapData({ ...flashcardData, subject: e.target.value })}
+      className="modal-input__magic__modal__ai__page"
+    />
+    {/* Removed the textarea, using selected content instead */}
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+    <button
+  className="flashcard__set__page__modal-generate btn__set__page__buttons"
+  onClick={() => handleSubmitMindMap(magicModalContent)} 
+  disabled={isGeneratingMindMap}
+>
+  <div className={`sparkle__set__page__buttons ${isGeneratingMindMap ? 'animating' : ''}`}>
+    <svg
+      height="24"
+      width="24"
+      fill="#FFFFFF"
+      viewBox="0 0 24 24"
+      data-name="Layer 1"
+      id="Layer_1"
+      className="sparkle__set__page__buttons"
+    >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
+    <span className="text__set__page__buttons">
+      {isGeneratingMindMap ? 'Generating...' : 'Generate'}
+    </span>
+  </div>
+</button>
+</div>
+  </div>
+</Modal>
+
 
 
 <Modal

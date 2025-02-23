@@ -222,5 +222,6 @@ export const API_ROUTES = {
   getMindMaps: `${API_URL}/api/mindmaps/all/user`,
   generateMindMaps: `${API_URL}/api/mindmaps/generate`,
   coutMindMaps: `${API_URL}/api/mindmaps/count/for-premium`,
-  getMindMapById: `${API_URL}/api/mindmaps`
+  getMindMapById: `${API_URL}/api/mindmaps`,
+  generateMindMapFromMagic: `${API_URL}/api/mindmaps/generate/from-magic`
 }
