@@ -145,6 +145,7 @@ import SearchSchool from "./schools/search-schools";
 import NeetSwipeGuide from "./guides/neet/NeetGuide";
 import GenerateMindMap from "./mind maps/GenerateMindMap";
 import MindMapPage from "./mind maps/MindMapPage";
+import GetYtApp from "./math/yt/ytTranscript";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -278,6 +279,7 @@ const router = createBrowserRouter([
   {path: '/guide/neet', element: <NeetSwipeGuide/>},
   {path: '/mind-map/create', element: <GenerateMindMap/>},
   {path: '/mindmap/:mindMapId', element: <MindMapPage/>},
+  {path: '/testing-yt', element: <GetYtApp/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -217,5 +217,6 @@ export const API_ROUTES = {
   sendNotification: `${API_URL}/send-notification`,
   checkAiFlashcardUsage: `${API_URL}/api/flashcards/check-ai-usage`,
   generateQuizfromneetGuide: `${API_URL}/api/quiz/generate/from-neet-guide`,
-  downloadPdfNeet: `${API_URL}/download-neet-pyqs`
+  downloadPdfNeet: `${API_URL}/download-neet-pyqs`,
+  aiYtSummary: `${API_URL}/api/chat/ai/yt`
 }

@@ -458,11 +458,14 @@ const handleSubmitQuiz = async (selectedContent) => {
   
   
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) { // Avoid submitting on Shift + Enter for multiline input
-      e.preventDefault(); // Prevent form submission (default behavior)
-      handleSendMessage(); // Trigger the message send when pressing Enter
+    if (loading) return; // Prevent action if loading is true
+  
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
     }
   };
+  
   
   useEffect(() => {
     // Clear old chat history key upon login
