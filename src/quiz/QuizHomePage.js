@@ -271,9 +271,7 @@ const handleShareClick = (quiz) => {
                     <span> View Answers</span>
                 </div>
             </button>
-            <button className="delete-button-home-page-quiz-page" onClick={() => handleDeleteClick(quiz.id)} >
-            <FaTrash />
-          </button>
+   
         </div>
     </li>
 ))}
