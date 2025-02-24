@@ -611,7 +611,7 @@ useEffect(() => {
 
   <div style={{ fontSize: "10px", color: "#666", textAlign: "center", padding: "4px 0" }}>
     <span style={{ background: "#f0f0f0", padding: "3px 6px", borderRadius: "4px", fontWeight: "500" }}>
-        ⚠️ Note:   AI directly can't Add or Edit notes, to-dos, or study plans.
+        ⚠️ Note: AI can't edit notes, to-dos, or study plans.
     </span>
 </div>
 
