@@ -99,6 +99,7 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
 const [isGeneratingMindMap, setIsGeneratingMindMap] = useState(false);
 const [isMindMapModalOpen, setIsMindMapModalOpen] = useState(false);
 const [mindmapData, setMindMapData] = useState({ name: "", subject: ""});
+const [activeToggle, setActiveToggle] = useState("");
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -799,6 +800,11 @@ const SparkleIcon = () => (
       <FaMicrophone style={{ color: "white" }} />
     </button>
   )}
+  {/* Toggle Buttons Container */}
+<div className="toggle-buttons-container__ai">
+
+</div>
+
 </div>
 
       </div>
