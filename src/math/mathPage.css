@@ -853,7 +853,7 @@
 
 /* Modal Title */
 .modal-title__magic__modal__ai__page {
-  font-size: 24px;
+  font-size: 17px;
   font-weight: 600;
   color: #333; /* Darker text for better contrast */
   margin-bottom: 20px;
@@ -967,7 +967,7 @@
   }
 
   .modal-title__magic__modal__ai__page {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .modal-btn__magic__modal__ai__page {
@@ -992,7 +992,7 @@
   }
 
   .modal-title__magic__modal__ai__page {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .modal-btn__magic__modal__ai__page {

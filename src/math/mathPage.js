@@ -599,6 +599,12 @@ useEffect(() => {
 }, [chatHistory]); // Run whenever the chat history is updated
 
 
+const SparkleIcon = () => (
+  <svg height="24" width="24" fill="#9b4d96" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" className="sparkle">
+    <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+  </svg>
+);
+
   return (
     <div className="mathsolver-container">
            {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
@@ -676,42 +682,10 @@ useEffect(() => {
                     />
                   </MathJaxContext>
                   {result.role === 'model' && (
-                   <div className="create-flashcard-btn_ai__page__container">
-
-    <button type="button" className="magic__btn__page__ai" onClick={() => handleMagicButtonClick(result.parts.map((part) => part.text).join(''))}>
-      <span className="magic__btn__page__ai__fold"></span>
-
-      <div className="magic__btn__page__ai__points_wrapper">
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-        <i className="magic__btn__page__ai__point"></i>
-      </div>
-
-      <span className="magic__btn__page__ai__inner">
-        <svg
-          className="magic__btn__page__ai__icon"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2.5"
-        >
-          <polyline
-            points="13.18 1.37 13.18 9.64 21.45 9.64 10.82 22.63 10.82 14.36 2.55 14.36 13.18 1.37"
-          ></polyline>
-        </svg>
-        Magic
-      </span>
-    </button>
+                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <button className="flashcard__set__page__ai-explain-btn" onClick={() => handleMagicButtonClick(result.parts.map((part) => part.text).join(''))}>
+       <SparkleIcon className="ai-explain-flashcard-icon" /> Click Here
+       </button>
                  </div>
                   )}
                 </div>
@@ -837,21 +811,45 @@ useEffect(() => {
     <FaTimes />
   </button>
   
-  <h2 className="modal-title__magic__modal__ai__page">What do you want to do?</h2>
+  <h2 className="modal-title__magic__modal__ai__page">What do you want to do with this AI response?</h2>
   <div className="modal-actions__magic__modal__ai__page">
-  <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateFlashcards(magicModalContent)}>
-  <span>  <FaPen /> Generate Flashcards</span>
+  <div style={{ display: "flex", flexDirection: "column", gap: "10px", alignItems: "center" }}>
+    
+    <button 
+      className="flashcard__set__page__ai-explain-btn" 
+      onClick={() => handleGenerateFlashcards(magicModalContent)}
+      style={{ width: "200px" }}
+    >
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Flashcards
     </button>
-    <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateMindMap(magicModalContent)}>
-  <span>  <FaMap /> Generate mind-map</span>
+
+    <button 
+      className="flashcard__set__page__ai-explain-btn" 
+      onClick={() => handleGenerateMindMap(magicModalContent)}
+      style={{ width: "200px" }}
+    >
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Mind-Map
     </button>
-    <button className="magic__btn__page__ai__modal" onClick={() => handleGenerateQuiz(magicModalContent)}>
-  <span><FaQuestionCircle /> Generate Quiz</span>
+
+    <button 
+      className="flashcard__set__page__ai-explain-btn" 
+      onClick={() => handleGenerateQuiz(magicModalContent)}
+      style={{ width: "200px" }}
+    >
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Quiz
     </button>
-    <button className="magic__btn__page__ai__modal" onClick={() => handleCreateNotes(magicModalContent)}>
-  <span><FaBook /> Create Notes</span>
+
+    <button 
+      className="flashcard__set__page__ai-explain-btn" 
+      onClick={() => handleCreateNotes(magicModalContent)}
+      style={{ width: "200px" }}
+    >
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Create Notes
     </button>
+
   </div>
+</div>
+
 </Modal>
 
 
