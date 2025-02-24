@@ -609,9 +609,12 @@ useEffect(() => {
     <FaArrowLeft />
   </button>
 
-  <div className="powered-by-gemini">
-    Powered by,<span className="gemini-logo">Gemini</span>
-  </div>
+ <div style={{ fontSize: "12px", color: "#666", textAlign: "center", padding: "6px 0" }}>
+    <span style={{ background: "#f0f0f0", padding: "4px 8px", borderRadius: "6px" }}>
+        AI can't edit notes, to-dos, or study plans.
+    </span>
+</div>
+
 
   <button className={`settings-btn ${isSettingsModalOpen ? 'active' : ''}`} onClick={toggleSettingsModal}>
     <FaCog />
