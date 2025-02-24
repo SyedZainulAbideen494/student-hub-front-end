@@ -26,7 +26,7 @@ const TopBoxes = () => {
     useEffect(() => {
         const validateToken = async () => {
           const token = localStorage.getItem('token');
-          console.log('Token from local storage:', token); // Debugging
+
     
           // If no token, redirect to login
           if (!token) {
@@ -37,7 +37,7 @@ const TopBoxes = () => {
     
           try {
             const response = await axios.post(API_ROUTES.userSessionAut, { token });
-            console.log('Token validation response:', response.data); // Debugging
+  
             if (!response.data.valid) {
               console.log('Invalid token, redirecting to sign-up.');
               nav('/sign-up');

@@ -148,6 +148,7 @@ import MindMapPage from "./mind maps/MindMapPage";
 import GetYtApp from "./math/yt/ytTranscript";
 import MindMap from "./mind maps/GenerateMindMap";
 import MindMapHistory from "./mind maps/MindMapHistory";
+import FeynmanTechnique from "./Feynman Technique/FeynmanTechnique";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -283,6 +284,7 @@ const router = createBrowserRouter([
   {path: '/mindmap/:mindMapId', element: <MindMapPage/>},
   {path: '/mindmap/user', element: <MindMapHistory/>},
   {path: '/testing-yt', element: <GetYtApp/>},
+  {path: '/feynman-technique', element: <FeynmanTechnique/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
@@ -295,11 +297,11 @@ function App() {
       if ("serviceWorker" in navigator) {
         try {
           const reg = await navigator.serviceWorker.register("/sw.js");
-          console.log("Service Worker Registered:", reg);
+
   
           const permission = await Notification.requestPermission();
           if (permission !== "granted") {
-            console.warn("Push notifications denied by user");
+    
             return;
           }
   
@@ -308,7 +310,7 @@ function App() {
             applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY),
           });
   
-          console.log("User Subscribed:", subscription);
+
   
           // Get the user token (or user_id from localStorage, context, etc.)
           const userToken = localStorage.getItem('token'); // Example
