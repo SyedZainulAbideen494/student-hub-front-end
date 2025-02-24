@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import ReactFlow from "reactflow";
+import React, { useEffect, useState, useCallback } from "react";
+import ReactFlow, { applyNodeChanges } from "reactflow";
 import "reactflow/dist/style.css";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -30,32 +30,31 @@ const MindMap = () => {
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
-        // Format nodes with aesthetic styles
         const formattedNodes = response.data.nodes.map((node, index) => ({
           id: node.id.toString(),
           position: { x: node.x, y: node.y },
           data: { label: node.label },
+          draggable: true, // Ensure the node is draggable
           style: {
-            background: nodeColors[index % nodeColors.length], // Assign gradient color
+            background: nodeColors[index % nodeColors.length],
             color: "black",
             borderRadius: "15px",
             padding: "10px 15px",
-            boxShadow: "0 4px 10px rgba(255, 255, 255, 0.2)", // Soft glow effect
+            boxShadow: "0 4px 10px rgba(255, 255, 255, 0.2)",
             fontSize: "14px",
             fontWeight: "bold",
             textAlign: "center",
-            cursor: "pointer",
+            cursor: "grab", // Visual indication
             transition: "0.3s",
           },
         }));
 
-        // Format edges
         const formattedEdges = response.data.edges.map((edge) => ({
           id: `edge-${edge.from}-${edge.to}`,
           source: edge.from.toString(),
           target: edge.to.toString(),
           animated: false,
-          style: { stroke: "#333", strokeWidth: 4 }, // Gold stroke for a premium feel
+          style: { stroke: "#333", strokeWidth: 4 },
         }));
 
         setNodes(formattedNodes);
@@ -69,14 +68,30 @@ const MindMap = () => {
     fetchMindMap();
   }, [mindmapId]);
 
+  // Handle node position updates
+  const onNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    []
+  );
+
   const handleBack = () => {
-    navigate('/mindmap/create');
+    navigate("/mindmap/create");
   };
 
   return (
-    <div style={{ width: "100vw", height: "100vh", background: "#121212", overflow: "hidden", position: "relative" }}>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        background: "#121212",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
       {loading ? (
-        <p style={{ color: "#fff", textAlign: "center", marginTop: "20px" }}>Loading mind map...</p>
+        <p style={{ color: "#fff", textAlign: "center", marginTop: "20px" }}>
+          Loading mind map...
+        </p>
       ) : (
         <>
           {/* Exit Button */}
@@ -98,8 +113,12 @@ const MindMap = () => {
               backdropFilter: "blur(5px)",
               zIndex: 9999,
             }}
-            onMouseOver={(e) => (e.target.style.background = "rgba(255, 255, 255, 0.3)")}
-            onMouseOut={(e) => (e.target.style.background = "rgba(255, 255, 255, 0.15)")}
+            onMouseOver={(e) =>
+              (e.target.style.background = "rgba(255, 255, 255, 0.3)")
+            }
+            onMouseOut={(e) =>
+              (e.target.style.background = "rgba(255, 255, 255, 0.15)")
+            }
           >
             Exit
           </button>
@@ -108,11 +127,13 @@ const MindMap = () => {
           <ReactFlow
             nodes={nodes}
             edges={edges}
+            onNodesChange={onNodesChange} // Handle node movement
             fitView
             zoomOnScroll
             panOnScroll
             panOnDrag
             elementsSelectable
+            nodesDraggable
             minZoom={0.2}
             maxZoom={2}
             defaultViewport={{ x: 0, y: 0, zoom: 1 }}
