@@ -1,39 +1,89 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { FaStar } from 'react-icons/fa';
 import './welcome.css';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const Welcome = () => {
     const [transition, setTransition] = useState('');
+    const [offerPrice, setOfferPrice] = useState(59); // Discounted price
 
     useEffect(() => {
-        // Trigger the transition className when the component mounts
         setTransition('show');
     }, []);
 
+    const handlePayment = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in to subscribe.');
+                return;
+            }
+
+            const planAmount = offerPrice === 59 ? 59 : 99; // Check if user skips
+
+            const { data } = await axios.post(API_ROUTES.getPremium, {
+                amount: planAmount,
+                currency: 'INR',
+                subscription_plan: 'monthly',
+                token,
+                duration: '1 month',
+            });
+
+            const options = {
+                key: 'rzp_live_jPX6SxetQbApHC',
+                amount: data.order.amount,
+                currency: 'INR',
+                order_id: data.order.id,
+                name: 'Edusify',
+                description: 'Exclusive Study Experience',
+                handler: async (response) => {
+                    const { data } = await axios.post('YOUR_VERIFY_ENDPOINT', {
+                        payment_id: response.razorpay_payment_id,
+                        order_id: response.razorpay_order_id,
+                        signature: response.razorpay_signature,
+                        token,
+                        subscription_plan: 'monthly',
+                        duration: '1 month',
+                    });
+
+                    if (data.success) {
+                        alert('Subscription Activated!');
+                    } else {
+                        alert('Payment verification failed!');
+                    }
+                },
+                theme: { color: '#ff79c6' },
+            };
+
+            const razorpayInstance = new window.Razorpay(options);
+            razorpayInstance.open();
+        } catch (error) {
+            console.error('Error initiating payment', error);
+        }
+    };
+
     return (
-        <div className="card__container__welcome__user__msg__edusify">
-        <div className="card__welcome__user__msg__edusify">
-        <div className="header__welcome__user__msg__edusify">
-          <span className="icon__welcome__user__msg__edusify">
-            <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path clip-rule="evenodd" d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z" fill-rule="evenodd"></path>
-            </svg>
-          </span>
-          <p className="alert__welcome__user__msg__edusify">Welcome to Edusify!</p>
+        <div className={`welcome__container__Welcome__page__new ${transition}`}>
+            <h1 className="welcome__title__Welcome__page__new">Welcome to Edusify </h1>
+            <p className="welcome__subtitle__Welcome__page__new">The study app that just <strong>gets</strong> you.</p>
+
+            <div className="welcome__premium__section__Welcome__page__new">
+                <h3 className="premium__title__Welcome__page__new">🎀 Special Offer: ₹59/month</h3>
+                <p className="premium__description__Welcome__page__new">Get everything. No limits. Just perfect.</p>
+
+                <button onClick={handlePayment} className="premium__button__Welcome__page__new">
+                    <FaStar className="premium__icon__Welcome__page__new" /> Claim Now
+                </button>
+
+                <button
+                    className="notnow__button__Welcome__page__new"
+                    onClick={() => setOfferPrice(99)}
+                >
+                    Not Now <span className="fomo__text__Welcome__page__new">(Next time: ₹99/month)</span>
+                </button>
+            </div>
         </div>
-      
-        <p className="message__welcome__user__msg__edusify">
-        Your all-in-one study and organization app.
-        </p>
-      
-        <div className="actions__welcome__user__msg__edusify">
-            <Link to='/'>
-                        <button className="read__welcome__user__msg__edusify">Continue</button>
-                    </Link>
-    
-        </div>
-      </div>
-      </div>
     );
 };
 
