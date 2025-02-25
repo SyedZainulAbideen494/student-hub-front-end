@@ -349,209 +349,264 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
 
   const handleSubmitMindMap = async (selectedContent) => {
     const token = localStorage.getItem("token");
+
+    // Check if the user is not premium and has exhausted their free usage
+    if (!isPremium) {
+        const canUseMagic = await checkMagicUsage();
+        if (!canUseMagic) {
+            setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+            setIsMagicModalOpen(false)
+            return;
+        }
+    }
+
     const headings = selectedContent; // Use selected content directly
-  
+
     setIsGeneratingMindMap(true);
     navigate("/loading-magic"); // Redirect to loading page
-  
+
     try {
-      const response = await fetch(API_ROUTES.generateMindMapFromMagic, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          headings,
-          subject: 'Ai Magic',
-        }),
-      });
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error generating mind map:", errorData.error);
-        navigate("/ai"); // Redirect to /ai if an error occurs
-        return;
-      }
-  
-      const data = await response.json();
-      console.log("Mind Map generated:", data);
-  
-      navigate(`/mindmap/${data.mindmapId}`); // Redirect to the generated mind map
-      setMindMapData({ name: "", subject: "" });
+        const response = await fetch(API_ROUTES.generateMindMapFromMagic, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                headings,
+                subject: "Ai Magic",
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error("Error generating mind map:", errorData.error);
+            navigate("/ai"); // Redirect to /ai if an error occurs
+            return;
+        }
+
+        const data = await response.json();
+        console.log("Mind Map generated:", data);
+
+        navigate(`/mindmap/${data.mindmapId}`); // Redirect to the generated mind map
+        setMindMapData({ name: "", subject: "" });
     } catch (error) {
-      console.error("Unexpected error:", error);
-      navigate("/ai"); // Redirect to /ai if an unexpected error occurs
+        console.error("Unexpected error:", error);
+        navigate("/ai"); // Redirect to /ai if an unexpected error occurs
     } finally {
-      setIsGeneratingMindMap(false);
+        setIsGeneratingMindMap(false);
     }
-  };
+};
+
   
-  
-  const handleSubmitNotes = async (selectedContent) => {
-    const token = localStorage.getItem("token");
-    const headings = selectedContent; // Use selected content directly
-  
-    setIsGeneratingNotes(true);
-    navigate("/loading-magic"); // Redirect to loading page
-  
-    try {
+const handleSubmitNotes = async (selectedContent) => {
+  const token = localStorage.getItem("token");
+
+  // Check if the user is not premium and has exhausted their free usage
+  if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          setIsMagicModalOpen(false)
+          return;
+      }
+  }
+
+  const headings = selectedContent; // Use selected content directly
+
+  setIsGeneratingNotes(true);
+  navigate("/loading-magic"); // Redirect to loading page
+
+  try {
       const response = await fetch(API_ROUTES.generateNotesFromMagic, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          headings,
-          subject: 'Ai Magic',
-        }),
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+              headings,
+              subject: "Ai Magic",
+          }),
       });
-  
+
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error generating mind map:", errorData.error);
-        navigate("/ai"); // Redirect to /ai if an error occurs
-        return;
+          const errorData = await response.json();
+          console.error("Error generating notes:", errorData.error);
+          navigate("/ai"); // Redirect to /ai if an error occurs
+          return;
       }
-  
+
       const data = await response.json();
-      console.log("Mind Map generated:", data);
-  
-      navigate(`/note/view/${data.noteId}`); // Redirect to the generated mind map
+      console.log("Notes generated:", data);
+
+      navigate(`/note/view/${data.noteId}`); // Redirect to the generated notes
       setNotesData({ name: "", subject: "" });
-    } catch (error) {
+  } catch (error) {
       console.error("Unexpected error:", error);
       navigate("/ai"); // Redirect to /ai if an unexpected error occurs
-    } finally {
+  } finally {
       setIsGeneratingNotes(false);
-    }
-  };
-  
+  }
+};
+
 
   const handleSubmitTasks = async (selectedContent) => {
     const token = localStorage.getItem('token');
+
+    if (!isPremium) {
+        const canUseMagic = await checkMagicUsage();
+        if (!canUseMagic) {
+            setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+            setIsMagicModalOpen(false)
+            return;
+        }
+    }
+
     const headings = selectedContent; // Use the selected content directly
-  
+
     setIsGeneratingTasks(true);
     navigate(`/loading-magic`); // Navigate to a loading page
-  
-    try {
-      const response = await fetch(API_ROUTES.generateTasksFromMagic, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          headings,
-          subject: 'helo',
-        }),
-      });
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Error generating tasks:', errorData.error);
-        navigate(`/ai`); // Redirect to an error page
-        return;
-      }
-  
-      const data = await response.json();
-      console.log('Tasks generated:', data);
-  
-      navigate(`/planner`); // Navigate to planner once tasks are ready
-      setTasksData({ name: '', subject: '' });
-    } catch (error) {
-      console.error('Unexpected error:', error);
-      navigate(`/ai`); // Handle unexpected errors
-    } finally {
-      setIsGeneratingTasks(false);
-    }
-  };
-  
-  
 
-  const handleSubmitFlashcards = async (selectedContent) => {
-    const token = localStorage.getItem("token");
-    const headings = selectedContent; // Use the selected content directly
-  
-    setIsGeneratingFlashcards(true);
-    navigate("/loading-magic"); // Redirect to loading page
-  
     try {
-      const response = await fetch(API_ROUTES.generateFlashcardsFromMagic, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          headings,
-          subject: 'Ai Magic',
-        }),
-      });
+        const response = await fetch(API_ROUTES.generateTasksFromMagic, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                headings,
+                subject: 'helo',
+            }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error generating tasks:', errorData.error);
+            navigate(`/ai`); // Redirect to an error page
+            return;
+        }
+
+        const data = await response.json();
+        console.log('Tasks generated:', data);
+
+        navigate(`/planner`); // Navigate to planner once tasks are ready
+        setTasksData({ name: '', subject: '' });
+    } catch (error) {
+        console.error('Unexpected error:', error);
+        navigate(`/ai`); // Handle unexpected errors
+    } finally {
+        setIsGeneratingTasks(false);
+    }
+};
+
   
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error generating flashcards:", errorData.error);
-        navigate("/ai"); // Redirect to /ai if an error occurs
-        return;
+const handleSubmitFlashcards = async (selectedContent) => {
+  const token = localStorage.getItem("token");
+
+  // Check if the user is not premium and has exhausted their free usage
+  if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          setIsMagicModalOpen(false)
+          return;
       }
-  
+  }
+
+  const headings = selectedContent; // Use the selected content directly
+
+  setIsGeneratingFlashcards(true);
+  navigate("/loading-magic"); // Redirect to loading page
+
+  try {
+      const response = await fetch(API_ROUTES.generateFlashcardsFromMagic, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+              headings,
+              subject: "Ai Magic",
+          }),
+      });
+
+      if (!response.ok) {
+          const errorData = await response.json();
+          console.error("Error generating flashcards:", errorData.error);
+          navigate("/ai"); // Redirect to /ai if an error occurs
+          return;
+      }
+
       const data = await response.json();
       console.log("Flashcards generated:", data);
-  
+
       navigate(`/flashcard/set/${data.flashcardSetId}`); // Redirect to the generated flashcard set
       setFlashcardData({ name: "", subject: "" });
-    } catch (error) {
+  } catch (error) {
       console.error("Unexpected error:", error);
       navigate("/ai"); // Redirect to /ai if an unexpected error occurs
-    } finally {
+  } finally {
       setIsGeneratingFlashcards(false);
-    }
-  };
+  }
+};
+
   
 
-  const handleSubmitQuiz = async (selectedContent) => {
-    const token = localStorage.getItem("token");
-    const notes = selectedContent; // Use the selected content directly
-  
-    setIsGeneratingQuiz(true);
-    navigate("/loading-magic"); // Redirect to loading page
-  
-    try {
-      const response = await fetch(API_ROUTES.generateQuizFromMagic, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          notes,
-          subject: 'Ai Magic',
-          token,
-        }),
-      });
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Error generating quiz:", errorData.error);
-        navigate("/ai"); // Redirect to /ai if an error occurs
-        return;
+const handleSubmitQuiz = async (selectedContent) => {
+  const token = localStorage.getItem("token");
+
+  // Check if the user is not premium and has exhausted their free usage
+  if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          setIsMagicModalOpen(false)
+          return;
       }
-  
+  }
+
+  const notes = selectedContent; // Use the selected content directly
+
+  setIsGeneratingQuiz(true);
+  navigate("/loading-magic"); // Redirect to loading page
+
+  try {
+      const response = await fetch(API_ROUTES.generateQuizFromMagic, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+              notes,
+              subject: "Ai Magic",
+              token,
+          }),
+      });
+
+      if (!response.ok) {
+          const errorData = await response.json();
+          console.error("Error generating quiz:", errorData.error);
+          navigate("/ai"); // Redirect to /ai if an error occurs
+          return;
+      }
+
       const data = await response.json();
       console.log("Quiz generated:", data);
-  
+
       navigate(`/quiz/${data.quizId}`); // Redirect to the generated quiz
       setQuizData({ subject: "" });
-    } catch (error) {
+  } catch (error) {
       console.error("Unexpected error:", error);
       navigate("/ai"); // Redirect to /ai if an unexpected error occurs
-    } finally {
+  } finally {
       setIsGeneratingQuiz(false);
-    }
-  };
+  }
+};
+
 
   
   const startListening = () => {
