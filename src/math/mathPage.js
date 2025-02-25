@@ -989,7 +989,7 @@ const SparkleIcon = () => (
     <button 
       className="flashcard__set__page__ai-explain-btn" 
       onClick={() => handleSubmitFlashcards(magicModalContent)}
-      style={{ width: "200px" }}
+      style={{ width: "220px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Flashcards
     </button>
@@ -997,7 +997,7 @@ const SparkleIcon = () => (
     <button 
       className="flashcard__set__page__ai-explain-btn" 
       onClick={() => handleSubmitMindMap(magicModalContent)}
-      style={{ width: "200px" }}
+      style={{ width: "220px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Mind-Map
     </button>
@@ -1005,21 +1005,21 @@ const SparkleIcon = () => (
     <button 
       className="flashcard__set__page__ai-explain-btn" 
       onClick={() => handleSubmitQuiz(magicModalContent)}
-      style={{ width: "200px" }}
+      style={{ width: "220px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Quiz
     </button>
     <button 
       className="flashcard__set__page__ai-explain-btn" 
       onClick={() => handleSubmitTasks(magicModalContent)}
-      style={{ width: "200px" }}
+      style={{ width: "220px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Tasks
     </button>
     <button 
       className="flashcard__set__page__ai-explain-btn" 
       onClick={() => handleSubmitNotes(magicModalContent)}
-      style={{ width: "200px" }}
+      style={{ width: "220px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Notes
     </button>
