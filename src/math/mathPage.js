@@ -99,7 +99,13 @@ const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add stat
 const [isGeneratingMindMap, setIsGeneratingMindMap] = useState(false);
 const [isMindMapModalOpen, setIsMindMapModalOpen] = useState(false);
 const [mindmapData, setMindMapData] = useState({ name: "", subject: ""});
+const [isGeneratingTasks, setIsGeneratingTasks] = useState(false);
+const [isTasksModalOpen, setIsTasksModalOpen] = useState(false);
+const [TasksData, setTasksData] = useState({ name: "", subject: ""});
 const [activeToggle, setActiveToggle] = useState("");
+const [isGeneratingNotes, setIsGeneratingNotes] = useState(false);
+const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
+const [NotesData, setNotesData] = useState({ name: "", subject: ""});
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -326,14 +332,28 @@ const [activeToggle, setActiveToggle] = useState("");
     setQuizData({ ...QuizData, content }); // Pass content to quiz modal
   };
   
-
+  const handleGenerateTasks = async (content) => {
+    setIsMagicModalOpen(false);
+  
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+        setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+        return;
+      }
+    }
+  
+    setIsTasksModalOpen(true);
+    setTasksData({ ...TasksData, content }); // Pass content to quiz modal
+  };
 
   const handleSubmitMindMap = async (selectedContent) => {
     const token = localStorage.getItem("token");
     const headings = selectedContent; // Use selected content directly
-
+  
     setIsGeneratingMindMap(true);
-
+    navigate("/loading-magic"); // Redirect to loading page
+  
     try {
       const response = await fetch(API_ROUTES.generateMindMapFromMagic, {
         method: "POST",
@@ -343,105 +363,195 @@ const [activeToggle, setActiveToggle] = useState("");
         },
         body: JSON.stringify({
           headings,
-          subject: mindmapData.subject,
+          subject: 'Ai Magic',
         }),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Error generating mind map:", errorData.error);
+        navigate("/ai"); // Redirect to /ai if an error occurs
         return;
       }
-
+  
       const data = await response.json();
       console.log("Mind Map generated:", data);
-
-      navigate(`/mindmap/${data.mindmapId}`);
+  
+      navigate(`/mindmap/${data.mindmapId}`); // Redirect to the generated mind map
       setMindMapData({ name: "", subject: "" });
     } catch (error) {
       console.error("Unexpected error:", error);
+      navigate("/ai"); // Redirect to /ai if an unexpected error occurs
     } finally {
       setIsGeneratingMindMap(false);
     }
   };
-
   
-
-const handleSubmitFlashcards = async (selectedContent) => {
-  const token = localStorage.getItem('token');
-  const headings = selectedContent; // Use the selected content directly
   
-  setIsGeneratingFlashcards(true);
+  const handleSubmitNotes = async (selectedContent) => {
+    const token = localStorage.getItem("token");
+    const headings = selectedContent; // Use selected content directly
   
-  try {
-    const response = await fetch(API_ROUTES.generateFlashcardsFromMagic, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        headings,
-        subject: flashcardData.subject,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Error generating flashcards:', errorData.error);
-      return;
+    setIsGeneratingNotes(true);
+    navigate("/loading-magic"); // Redirect to loading page
+  
+    try {
+      const response = await fetch(API_ROUTES.generateNotesFromMagic, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          headings,
+          subject: 'Ai Magic',
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error generating mind map:", errorData.error);
+        navigate("/ai"); // Redirect to /ai if an error occurs
+        return;
+      }
+  
+      const data = await response.json();
+      console.log("Mind Map generated:", data);
+  
+      navigate(`/note/view/${data.noteId}`); // Redirect to the generated mind map
+      setNotesData({ name: "", subject: "" });
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      navigate("/ai"); // Redirect to /ai if an unexpected error occurs
+    } finally {
+      setIsGeneratingNotes(false);
     }
-
-    const data = await response.json();
-    console.log('Flashcards generated:', data);
-
-    navigate(`/flashcard/set/${data.flashcardSetId}`);
-    setFlashcardData({ name: '', subject: '' });
-  } catch (error) {
-    console.error('Unexpected error:', error);
-  } finally {
-    setIsGeneratingFlashcards(false);
-  }
-};
-
- 
-const handleSubmitQuiz = async (selectedContent) => {
-  const token = localStorage.getItem('token');
-  const notes = selectedContent; // Use the selected content directly
+  };
   
-  setIsGeneratingQuiz(true);
-  
-  try {
-    const response = await fetch(API_ROUTES.generateQuizFromMagic, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        notes,
-        subject: QuizData.subject,
-        token,
-      }),
-    });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Error generating quiz:', errorData.error);
-      return;
+  const handleSubmitTasks = async (selectedContent) => {
+    const token = localStorage.getItem('token');
+    const headings = selectedContent; // Use the selected content directly
+  
+    setIsGeneratingTasks(true);
+    navigate(`/loading-magic`); // Navigate to a loading page
+  
+    try {
+      const response = await fetch(API_ROUTES.generateTasksFromMagic, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          headings,
+          subject: 'helo',
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error generating tasks:', errorData.error);
+        navigate(`/ai`); // Redirect to an error page
+        return;
+      }
+  
+      const data = await response.json();
+      console.log('Tasks generated:', data);
+  
+      navigate(`/planner`); // Navigate to planner once tasks are ready
+      setTasksData({ name: '', subject: '' });
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      navigate(`/ai`); // Handle unexpected errors
+    } finally {
+      setIsGeneratingTasks(false);
     }
+  };
+  
+  
 
-    const data = await response.json();
-    console.log('Quiz generated:', data);
+  const handleSubmitFlashcards = async (selectedContent) => {
+    const token = localStorage.getItem("token");
+    const headings = selectedContent; // Use the selected content directly
+  
+    setIsGeneratingFlashcards(true);
+    navigate("/loading-magic"); // Redirect to loading page
+  
+    try {
+      const response = await fetch(API_ROUTES.generateFlashcardsFromMagic, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          headings,
+          subject: 'Ai Magic',
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error generating flashcards:", errorData.error);
+        navigate("/ai"); // Redirect to /ai if an error occurs
+        return;
+      }
+  
+      const data = await response.json();
+      console.log("Flashcards generated:", data);
+  
+      navigate(`/flashcard/set/${data.flashcardSetId}`); // Redirect to the generated flashcard set
+      setFlashcardData({ name: "", subject: "" });
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      navigate("/ai"); // Redirect to /ai if an unexpected error occurs
+    } finally {
+      setIsGeneratingFlashcards(false);
+    }
+  };
+  
 
-    navigate(`/quiz/${data.quizId}`);
-    setQuizData({ subject: '' });
-  } catch (error) {
-    console.error('Unexpected error:', error);
-  } finally {
-    setIsGeneratingQuiz(false);
-  }
-};
+  const handleSubmitQuiz = async (selectedContent) => {
+    const token = localStorage.getItem("token");
+    const notes = selectedContent; // Use the selected content directly
+  
+    setIsGeneratingQuiz(true);
+    navigate("/loading-magic"); // Redirect to loading page
+  
+    try {
+      const response = await fetch(API_ROUTES.generateQuizFromMagic, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          notes,
+          subject: 'Ai Magic',
+          token,
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error generating quiz:", errorData.error);
+        navigate("/ai"); // Redirect to /ai if an error occurs
+        return;
+      }
+  
+      const data = await response.json();
+      console.log("Quiz generated:", data);
+  
+      navigate(`/quiz/${data.quizId}`); // Redirect to the generated quiz
+      setQuizData({ subject: "" });
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      navigate("/ai"); // Redirect to /ai if an unexpected error occurs
+    } finally {
+      setIsGeneratingQuiz(false);
+    }
+  };
 
   
   const startListening = () => {
@@ -823,7 +933,7 @@ const SparkleIcon = () => (
     
     <button 
       className="flashcard__set__page__ai-explain-btn" 
-      onClick={() => handleGenerateFlashcards(magicModalContent)}
+      onClick={() => handleSubmitFlashcards(magicModalContent)}
       style={{ width: "200px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Flashcards
@@ -831,7 +941,7 @@ const SparkleIcon = () => (
 
     <button 
       className="flashcard__set__page__ai-explain-btn" 
-      onClick={() => handleGenerateMindMap(magicModalContent)}
+      onClick={() => handleSubmitMindMap(magicModalContent)}
       style={{ width: "200px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Mind-Map
@@ -839,18 +949,24 @@ const SparkleIcon = () => (
 
     <button 
       className="flashcard__set__page__ai-explain-btn" 
-      onClick={() => handleGenerateQuiz(magicModalContent)}
+      onClick={() => handleSubmitQuiz(magicModalContent)}
       style={{ width: "200px" }}
     >
       <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Quiz
     </button>
-
     <button 
       className="flashcard__set__page__ai-explain-btn" 
-      onClick={() => handleCreateNotes(magicModalContent)}
+      onClick={() => handleSubmitTasks(magicModalContent)}
       style={{ width: "200px" }}
     >
-      <SparkleIcon className="ai-explain-flashcard-icon" /> Create Notes
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Tasks
+    </button>
+    <button 
+      className="flashcard__set__page__ai-explain-btn" 
+      onClick={() => handleSubmitNotes(magicModalContent)}
+      style={{ width: "200px" }}
+    >
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Generate Notes
     </button>
 
   </div>
@@ -898,6 +1014,51 @@ const SparkleIcon = () => (
     </svg>
     <span className="text__set__page__buttons">
       {isGeneratingFlashcards ? 'Generating...' : 'Generate'}
+    </span>
+  </div>
+</button>
+</div>
+  </div>
+</Modal>
+
+<Modal
+  isOpen={isTasksModalOpen}
+  onRequestClose={() => setIsSettingsModalOpen(false)}
+  className="flashcard__modal__ai__magic__page"
+>
+  <button onClick={() => setIsSettingsModalOpen(false)} className="close-btn__magic__modal__ai__page">
+    <FaTimes />
+  </button>
+  <h2 className="modal-title__magic__modal__ai__page">Generate Tasks</h2>
+  <div className="flashcard-modal-content__magic__modal__ai__page">
+    <input
+      type="text"
+      placeholder="Title"
+      value={TasksData.subject}
+      onChange={(e) => setTasksData({ ...TasksData, subject: e.target.value })}
+      className="modal-input__magic__modal__ai__page"
+    />
+    {/* Removed the textarea, using selected content instead */}
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}}>
+    <button
+  className="flashcard__set__page__modal-generate btn__set__page__buttons"
+  onClick={() => handleSubmitFlashcards(magicModalContent)} 
+  disabled={isGeneratingTasks}
+>
+  <div className={`sparkle__set__page__buttons ${isGeneratingTasks ? 'animating' : ''}`}>
+    <svg
+      height="24"
+      width="24"
+      fill="#FFFFFF"
+      viewBox="0 0 24 24"
+      data-name="Layer 1"
+      id="Layer_1"
+      className="sparkle__set__page__buttons"
+    >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
+    <span className="text__set__page__buttons">
+      {isGeneratingTasks ? 'Generating...' : 'Generate'}
     </span>
   </div>
 </button>

@@ -149,6 +149,7 @@ import GetYtApp from "./math/yt/ytTranscript";
 import MindMap from "./mind maps/GenerateMindMap";
 import MindMapHistory from "./mind maps/MindMapHistory";
 import FeynmanTechnique from "./Feynman Technique/FeynmanTechnique";
+import LoaderMagic from "./math/magicLoader";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -285,6 +286,7 @@ const router = createBrowserRouter([
   {path: '/mindmap/user', element: <MindMapHistory/>},
   {path: '/testing-yt', element: <GetYtApp/>},
   {path: '/feynman-technique', element: <FeynmanTechnique/>},
+  {path: '/loading-magic', element: <LoaderMagic/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
