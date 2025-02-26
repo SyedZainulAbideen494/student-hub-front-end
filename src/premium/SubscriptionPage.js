@@ -269,22 +269,22 @@ useEffect(() => {
         active={duration === 'weekly'}
         onClick={() => {
           setDuration('weekly');
-          setAmount(59);
+          setAmount(49);
         }}
       >
         <span>Weekly Access</span>
-        <span>₹59/week</span>
+        <span>₹49/week</span>
       </Plan>
   
       <Plan
         active={duration === 'monthly'}
         onClick={() => {
           setDuration('monthly');
-          setAmount(179);
+          setAmount(99);
         }}
       >
         <span>Monthly Plan</span>
-        <span>₹179/mo</span>
+        <span>₹99/mo</span>
       </Plan>
   
     
