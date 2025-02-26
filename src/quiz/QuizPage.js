@@ -118,9 +118,11 @@ const QuizPage = () => {
             }));
     
             let submitApiUrl = API_ROUTES.submitQuiz; // Default for non-competitive quizzes
+            let redirectPath = '/quiz/submit'; // Default redirect for non-competitive quizzes
     
             if (is_competive === '1') {
-                submitApiUrl = API_ROUTES.submitCompetitiveQuiz; // Single API for all competitive quizzes
+                submitApiUrl = API_ROUTES.submitCompetitiveQuiz;
+                redirectPath = '/submit/quiz/competitive'; // Redirect for competitive quizzes
             }
     
             // Submit answers to the API
@@ -134,8 +136,8 @@ const QuizPage = () => {
             const score = response.data.score;
             const correctAnswers = response.data.correctAnswers;
     
-            // Navigate to results page with score & correct answers
-            navigate('/quiz/submit', {
+            // Navigate to the correct results page
+            navigate(redirectPath, {
                 state: { score, quizId: id, userAnswers: answers, correctAnswers }
             });
         } catch (error) {
@@ -143,6 +145,7 @@ const QuizPage = () => {
             alert('An error occurred while submitting the quiz. Please try again later.');
         }
     };
+    
     
 
     return (

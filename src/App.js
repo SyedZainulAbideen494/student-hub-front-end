@@ -155,6 +155,7 @@ import LoaderMagic from "./math/magicLoader";
 import CheckSubscription from "./help/CheckSubscription";
 import TrialSuccess from "./help/trail-success";
 import FeaturesCard from "./premium/FeaturesCard";
+import SubmitPageCompExam from "./quiz/submitPage competiveExam";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -294,6 +295,7 @@ const router = createBrowserRouter([
   {path: '/loading-magic', element: <LoaderMagic/>},
   {path: '/trial-success', element: <TrialSuccess/>},
   {path: '/subscription/features', element: <FeaturesCard/>},
+  {path :'/submit/quiz/competitive', element: <SubmitPageCompExam/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
