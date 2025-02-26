@@ -97,9 +97,8 @@ const BestValue = styled.span`
   font-weight: 600;
 `;
 
-const Button = styled.div`
-  background: linear-gradient(135deg, #B68BFF, #D1A3FF);
-  color: white;
+const ButtonBase = styled.button`
+  width: 100%; /* Ensures both buttons take full width */
   padding: 0.9rem;
   font-size: 1rem;
   font-weight: 600;
@@ -107,13 +106,27 @@ const Button = styled.div`
   margin-top: 1.5rem;
   cursor: pointer;
   transition: 0.3s;
+  text-align: center;
   box-shadow: 0px 6px 16px rgba(182, 139, 255, 0.4);
+`;
+
+const BorderButton = styled(ButtonBase)`
+  background: transparent;
+  border: 2.5px solid #6F42C1;
+  color: #6F42C1;
+`;
+
+const Button = styled(ButtonBase)`
+  background: linear-gradient(135deg, #B68BFF, #D1A3FF);
+  color: white;
+  border: none;
 
   &:hover {
     background: linear-gradient(135deg, #D1A3FF, #B68BFF);
     transform: scale(1.02);
   }
 `;
+
 
 const Countdown = styled.div`
   font-size: 0.9rem;
@@ -169,22 +182,7 @@ const glow = keyframes`
   100% { box-shadow: 0px 0px 10px rgba(210, 173, 255, 0.4); }
 `;
 
-const BorderButton = styled.button`
-  background: transparent;
-  border: 2.5px solid #6F42C1;
-  color: #6F42C1;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 0.8rem;
-  transition: all 0.2s ease-in-out;
 
-  &:hover {
-    background: rgba(111, 66, 193, 0.1);
-  }
-`;
 
 
 
