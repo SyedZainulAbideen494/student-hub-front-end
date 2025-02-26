@@ -73,9 +73,9 @@ const FeaturesCard = () => {
   <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>AI-Powered Study Plan</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Smart Task Tracker</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> <strong>Convert Notes into Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Mind Maps & Quizzes</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Mind Maps, Flashcards, Notes & Quizzes</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI Study Assistant</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> <strong>Convert PDFs into Notes & Flashcards</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> <strong>Convert PDFs into Notes, Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>Generate Quizzes & Mind Maps from PDFs</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> <strong>Sticky Notes for Quick Thoughts</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>Find Best Study Resources</strong></FeatureItem>
