@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_ROUTES } from "../app_modules/apiRoutes";
 
 const CheckSubscription = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const CheckSubscription = () => {
 
             try {
                 const response = await axios.post(
-                    "http://localhost:8080/check-subscription/trial",
+                    API_ROUTES.checkSubscriptionTrail,
                     { token }, 
                     { headers: { "Content-Type": "application/json" } }
                 );
