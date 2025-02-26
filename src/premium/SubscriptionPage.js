@@ -142,7 +142,19 @@ const BackButton = styled.div`
   &:hover {
     background: rgba(0, 0, 0, 0.1); /* Slightly darker on hover */
   }
+
+
 `;
+
+const Subtitle = styled.p`
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #6B5B95; /* Soft elite color */
+  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 80%;
+`;
+
 
 useEffect(() => {
   const token = localStorage.getItem('token');
@@ -240,59 +252,52 @@ useEffect(() => {
   return (
     <SubscriptionWrapper>
     {showConfetti && <Confetti numberOfPieces={200} />}
-
+  
     <Card>
-    <BackButton onClick={() => nav('/')}>
-      <FiArrowLeft/>
-    </BackButton>
 
+  
+      {/* 🚀 Premium Header */}
       <Header />
-      <Title>Pricing Plan</Title>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+  {/* 🎯 Exclusive Messaging */}
+  <Title>One Price. Unlimited Learning.</Title>
+  <Subtitle>The AI-powered study ecosystem for toppers.</Subtitle>
+</div>
 
-
-<Plan
-  active={duration === 'weekly'}
-  onClick={() => {
-    setDuration('weekly');
-    setAmount(39);
-  }}
->
-  <span>Weekly Plan</span>
-  <span>₹39/week</span>
-</Plan>
-
-<Plan
-  active={duration === 'monthly'}
-  onClick={() => {
-    setDuration('monthly');
-    setAmount(99);
-  }}
->
-  <span>Monthly Plan</span>
-  <span>₹99/mo</span>
-</Plan>
-
-<Plan
-  active={duration === '6months'}
-  onClick={() => {
-    setDuration('6months');
-    setAmount(499);
-  }}
->
-  <span>6 Months Plan</span>
-  <span>
-    ₹499 <BestValue>Best Value</BestValue>
-  </span>
-</Plan>
-
-  {isPremium ? (
-   <Button>You have premium!</Button>
-    ) : (
-      <Button onClick={handlePayment}>Continue</Button>
-    )}
+      {/* 📌 Pricing Plans */}
+      <Plan
+        active={duration === 'weekly'}
+        onClick={() => {
+          setDuration('weekly');
+          setAmount(69);
+        }}
+      >
+        <span>Weekly Access</span>
+        <span>₹69/week</span>
+      </Plan>
+  
+      <Plan
+        active={duration === 'monthly'}
+        onClick={() => {
+          setDuration('monthly');
+          setAmount(229);
+        }}
+      >
+        <span>Monthly Plan</span>
+        <span>₹229/mo</span>
+      </Plan>
+  
+    
+  
+      {/* 🏆 Call to Action */}
+      {isPremium ? (
+        <Button>You have premium!</Button>
+      ) : (
+        <Button onClick={handlePayment}>Join the Smartest Students</Button>
+      )}
     </Card>
   </SubscriptionWrapper>
-
+  
   );
 };
 

@@ -10,6 +10,7 @@ import axios from 'axios';
 import { API_ROUTES } from './apiRoutes';
 import { BsFileBarGraph, BsFillCalendarMonthFill } from 'react-icons/bs';
 import { FiGift, FiMap } from 'react-icons/fi';
+import CheckSubscription from '../help/CheckSubscription';
 
 const FooterNav = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);
@@ -61,9 +62,10 @@ const FooterNav = () => {
 
     );
 
-
+   
     return (
         <div className="footer-nav">
+               <CheckSubscription/>
             {/* Primary Buttons */}
             <Link to='/' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>

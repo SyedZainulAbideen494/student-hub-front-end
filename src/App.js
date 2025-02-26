@@ -4,9 +4,11 @@ import {
   RouterProvider,
   Link,
   Params,
+  useNavigate,
 } from "react-router-dom";
 import "./index.css";
 import "./App.css";
+import axios from "axios";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import Dashbaord from "./dashbaord/dashboard";
@@ -150,6 +152,8 @@ import MindMap from "./mind maps/GenerateMindMap";
 import MindMapHistory from "./mind maps/MindMapHistory";
 import FeynmanTechnique from "./Feynman Technique/FeynmanTechnique";
 import LoaderMagic from "./math/magicLoader";
+import CheckSubscription from "./help/CheckSubscription";
+import TrialSuccess from "./help/trail-success";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -287,6 +291,7 @@ const router = createBrowserRouter([
   {path: '/testing-yt', element: <GetYtApp/>},
   {path: '/feynman-technique', element: <FeynmanTechnique/>},
   {path: '/loading-magic', element: <LoaderMagic/>},
+  {path: '/trial-success', element: <TrialSuccess/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
@@ -345,6 +350,7 @@ function App() {
     const rawData = window.atob(base64);
     return new Uint8Array([...rawData].map((char) => char.charCodeAt(0)));
   };
+
 
   return (
     <div>
