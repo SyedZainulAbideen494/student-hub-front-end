@@ -50,7 +50,8 @@ const QuizPage = () => {
 
                 // If it's a competitive quiz, start the timer
                 if (response.data.quiz.is_competive === '1') {
-                    setTimeLeft(45 * 60); // 40 minutes in seconds
+                    setTimeLeft(25 * 60); // 25 minutes in seconds
+
                 }
                 console.log(response.data.quiz.is_competive)
             } catch (error) {
