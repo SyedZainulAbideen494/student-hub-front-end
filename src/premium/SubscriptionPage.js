@@ -5,9 +5,10 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
 import { useNavigate } from 'react-router-dom';
 import { FaCrown } from 'react-icons/fa';
-import styled from 'styled-components';
+import styled, { keyframes } from "styled-components";
 import Confetti from 'react-confetti';
 import { FiArrowLeft } from 'react-icons/fi';
+import FeaturesCard from './FeaturesCard';
 
 const PaymentComponent = () => {
   const [amount, setAmount] = useState(99); // Default to ₹129 (monthly)
@@ -155,6 +156,21 @@ const Subtitle = styled.p`
   max-width: 80%;
 `;
 
+// 🎨 Gradient Shine Animation for Best Value Badge
+const shimmer = keyframes`
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+`;
+
+// 🌟 Glowing Header Effect
+const glow = keyframes`
+  0% { box-shadow: 0px 0px 10px rgba(210, 173, 255, 0.4); }
+  50% { box-shadow: 0px 0px 18px rgba(210, 173, 255, 0.8); }
+  100% { box-shadow: 0px 0px 10px rgba(210, 173, 255, 0.4); }
+`;
+
+
+
 
 useEffect(() => {
   const token = localStorage.getItem('token');
@@ -275,17 +291,11 @@ useEffect(() => {
         <span>Weekly Access</span>
         <span>₹59/week</span>
       </Plan>
-  
-      <Plan
-        active={duration === 'monthly'}
-        onClick={() => {
-          setDuration('monthly');
-          setAmount(119);
-        }}
-      >
-        <span>Monthly Plan</span>
-        <span>₹119/mo</span>
-      </Plan>
+
+      <Plan active={duration === "monthly"} onClick={() => { setDuration("monthly"); setAmount(119); }}>
+          <span>Monthly Plan <BestValue>Best Value</BestValue></span>
+          <span>₹119/mo</span>
+        </Plan>
   
     
   
@@ -293,9 +303,10 @@ useEffect(() => {
       {isPremium ? (
         <Button>You have premium!</Button>
       ) : (
-        <Button onClick={handlePayment}>Join the Smartest Students</Button>
+         <Button onClick={handlePayment}>{`Get ${duration === "weekly" ? "Weekly" : "Monthly"} Plan`}</Button>
       )}
     </Card>
+    <FeaturesCard/>
   </SubscriptionWrapper>
   
   );
