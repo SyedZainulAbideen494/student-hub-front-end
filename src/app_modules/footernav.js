@@ -201,10 +201,10 @@ const FooterNav = () => {
         <span className="btn-label">AI Report</span>
     </button>
 </Link> 
-<Link to='/subscription' style={{ textDecoration: 'none', position: 'relative' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
-        <FaCrown className="icon-footer-nav"/>
-        <span className="btn-label">Premium</span>
+<Link to='/insta-story' style={{ textDecoration: 'none', position: 'relative' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
+        <FaChartLine className="icon-footer-nav"/>
+        <span className="btn-label">Share Stats</span>
     </button>
 </Link>
 
