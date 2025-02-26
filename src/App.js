@@ -154,6 +154,7 @@ import FeynmanTechnique from "./Feynman Technique/FeynmanTechnique";
 import LoaderMagic from "./math/magicLoader";
 import CheckSubscription from "./help/CheckSubscription";
 import TrialSuccess from "./help/trail-success";
+import FeaturesCard from "./premium/FeaturesCard";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -292,6 +293,7 @@ const router = createBrowserRouter([
   {path: '/feynman-technique', element: <FeynmanTechnique/>},
   {path: '/loading-magic', element: <LoaderMagic/>},
   {path: '/trial-success', element: <TrialSuccess/>},
+  {path: '/subscription/features', element: <FeaturesCard/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

@@ -169,6 +169,22 @@ const glow = keyframes`
   100% { box-shadow: 0px 0px 10px rgba(210, 173, 255, 0.4); }
 `;
 
+const BorderButton = styled.button`
+  background: transparent;
+  border: 2.5px solid #6F42C1;
+  color: #6F42C1;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: rgba(111, 66, 193, 0.1);
+  }
+`;
 
 
 
@@ -299,14 +315,22 @@ useEffect(() => {
   
     
   
-      {/* 🏆 Call to Action */}
-      {isPremium ? (
-        <Button>You have premium!</Button>
-      ) : (
-         <Button onClick={handlePayment}>{`Get ${duration === "weekly" ? "Weekly" : "Monthly"} Plan`}</Button>
-      )}
+{/* 🏆 Call to Action */}
+{isPremium ? (
+  <>
+    <Button>You have Premium! 🔥</Button>
+       <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>
+  </>
+) : (
+  <>
+    <Button onClick={handlePayment}>{`Unlock ${duration === "weekly" ? "Weekly" : "Monthly"} Access Now 🚀`}</Button>
+    <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>
+  </>
+)}
+
+
     </Card>
-    <FeaturesCard/>
+
   </SubscriptionWrapper>
   
   );
