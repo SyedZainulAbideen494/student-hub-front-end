@@ -105,7 +105,7 @@ Continue
       className="notnow__button__Welcome__page__new"
       onClick={() => nav('/')}
   >
-      Not Now <span className="fomo__text__Welcome__page__new">(Next time: ₹229/month)</span>
+      Not Now <span className="fomo__text__Welcome__page__new">(Next time: ₹99/month)</span>
   </button>
     )}
 
