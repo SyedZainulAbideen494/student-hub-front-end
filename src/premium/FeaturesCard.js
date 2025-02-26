@@ -99,25 +99,31 @@ const FeaturesPage = () => {
       <FeaturesWrapper>
         <Title>✨ The Ultimate Study Ecosystem</Title>
         <FeatureList>
-          <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>AI-Powered Study Plan</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Smart Task Tracker</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> <strong>Convert Notes into Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Mind Maps, Flashcards, Notes & Quizzes</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI Study Assistant</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> <strong>Convert PDFs into Notes, Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>Generate Quizzes & Mind Maps from PDFs</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> <strong>Sticky Notes for Quick Thoughts</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>Find Best Study Resources</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaUsers /></IconWrapper> <strong>Join Study Rooms</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> <strong>Competitive Exam Mock Tests</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaChartBar /></IconWrapper> <strong>AI Weekly Performance Report</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaCalendarAlt /></IconWrapper> <strong>Smart Calendar & To-Do List</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> <strong>AI-Powered Pomodoro Timer</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaLock /></IconWrapper> <strong>Secure Document Locker</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaImage /></IconWrapper> <strong>AI Assistant Processes PDFs & Images</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>AI Quiz Performance Report</strong></FeatureItem>
-          <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>AI Explanation on Each Flashcard</strong></FeatureItem>
-        </FeatureList>
+  <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>AI-Powered Study Plan</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Smart Task Tracker</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> <strong>Convert Notes into Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Mind Maps, Flashcards, Notes & Quizzes</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI Study Assistant</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> <strong>Convert PDFs into Notes, Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>Generate Quizzes & Mind Maps from PDFs</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> <strong>Sticky Notes for Quick Thoughts</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>Find Best Study Resources</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaUsers /></IconWrapper> <strong>Join Study Rooms</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> <strong>Competitive Exam Mock Tests</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaChartBar /></IconWrapper> <strong>AI Weekly Performance Report</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaCalendarAlt /></IconWrapper> <strong>Smart Calendar & To-Do List</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> <strong>AI-Powered Pomodoro Timer</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaLock /></IconWrapper> <strong>Secure Document Locker</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaImage /></IconWrapper> <strong>AI Assistant Processes PDFs & Images</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>AI Quiz Performance Report</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>AI Explanation on Each Flashcard</strong></FeatureItem>
+
+  {/* 🚀 FOMO Trigger */}
+  <FeatureItem style={{ textAlign: 'center', fontWeight: 'bold', color: '#6F42C1', fontSize: '1.1rem', paddingTop: '1rem' }}>
+    ...and SO much more! 🚀🔥
+  </FeatureItem>
+</FeatureList>
+
       </FeaturesWrapper>
     </PageWrapper>
   );
