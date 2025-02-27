@@ -65,7 +65,6 @@ const FooterNav = () => {
    
     return (
         <div className="footer-nav">
-               <CheckSubscription/>
             {/* Primary Buttons */}
             <Link to='/' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>
@@ -201,10 +200,10 @@ const FooterNav = () => {
         <span className="btn-label">AI Report</span>
     </button>
 </Link> 
-<Link to='/insta-story' style={{ textDecoration: 'none', position: 'relative' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
-        <FaChartLine className="icon-footer-nav"/>
-        <span className="btn-label">Share Stats</span>
+<Link to='/subscription' style={{ textDecoration: 'none', position: 'relative' }}>
+    <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
+        <FaCrown className="icon-footer-nav"/>
+        <span className="btn-label">Premium</span>
     </button>
 </Link>
 

@@ -3,8 +3,8 @@ import axios from 'axios';
 import './SubscriptionPage.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
 import FooterNav from '../app_modules/footernav';
-import { useNavigate } from 'react-router-dom';
-import { FaCrown } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaArrowLeft, FaCrown } from 'react-icons/fa';
 import styled, { keyframes } from "styled-components";
 import Confetti from 'react-confetti';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -284,8 +284,9 @@ useEffect(() => {
     {showConfetti && <Confetti numberOfPieces={200} />}
   
     <Card>
-
-  
+<Link to='/'>
+  <BackButton><FaArrowLeft/></BackButton>
+  </Link>
       {/* 🚀 Premium Header */}
       <Header />
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
