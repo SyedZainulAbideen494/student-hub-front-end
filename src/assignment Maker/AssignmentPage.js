@@ -62,7 +62,6 @@ const AssignmentPage = () => {
 
         {assignment ? (
           <div className="assignment_maker__result__get_Page__Assigment">
-            <h3 className="assignment_maker__result_title__get_Page__Assigment">Generated Assignment</h3>
             <div
               ref={contentRef}
               contentEditable
