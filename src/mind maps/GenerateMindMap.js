@@ -35,7 +35,7 @@ const MindMapGenerator = () => {
       return;
     }
 
-    if (!isPremium && mindMapCount >= 2) {
+    if (!isPremium && mindMapCount >= 1) {
       setIsUpgradeModalOpen(true);
       return;
     }

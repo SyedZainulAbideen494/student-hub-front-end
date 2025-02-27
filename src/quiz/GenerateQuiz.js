@@ -69,7 +69,7 @@ const GenerateQuiz = () => {
             })
             .then((res) => {
               setFlashcardsCount(res.data.QuizzesCount);
-              if (res.data.QuizzesCount >= 2) { // Adjusted to 2 per week limit
+              if (res.data.QuizzesCount >= 1) { // Adjusted to 2 per week limit
                 setIsExceededLimit(true);
               }
             })
@@ -227,7 +227,7 @@ const handleQuizAnswers = (quizId) => {
     marginBottom: '10px'
   }}>
     <strong style={{ color: '#ff9800' }}>Uh-oh!</strong> You've hit the free limit.  
-    You can only generate <strong>2 AI quizzes per week</strong> with the free plan.  
+    You can only generate <strong>1 AI quizzes per week</strong> with the free plan.  
     Unlock <strong>unlimited AI quizzes</strong> & more with <strong>Edusify Premium</strong>! 🚀  
   </span>
   <button 
