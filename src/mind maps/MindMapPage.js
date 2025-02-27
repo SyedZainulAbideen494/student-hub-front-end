@@ -13,15 +13,14 @@ const MindMap = () => {
   const navigate = useNavigate();
   const mindmapId = params.mindMapId;
 
-  // **Luxurious Colors & Soft Gradients**
+  // **Sleek & Elegant Colors** (Apple-like soft gradients & neutral tones)
   const nodeColors = [
-    "linear-gradient(135deg, #f7f7f7, #e6e6e6)", // Elegant Silver
-    "linear-gradient(135deg, #dce5f6, #ffffff)", // Frosted Blue-White
-    "linear-gradient(135deg, #f0f8ff, #ffffff)", // Subtle Ice White
-    "linear-gradient(135deg, #eaeaea, #d4d4d4)", // Minimalist Platinum
-    "linear-gradient(135deg, #ffffff, #f9f9f9)", // Apple-like Glass
+    "linear-gradient(135deg, #f4f4f4, #eaeaea)", // Soft White-Gray
+    "linear-gradient(135deg, #dfe9f3, #ffffff)", // Frosted Silver-Blue
+    "linear-gradient(135deg, #e3f0ff, #f9f9f9)", // Subtle Sky-White
+    "linear-gradient(135deg, #f0f0f0, #dcdcdc)", // Minimalist Gray
+    "linear-gradient(135deg, #ffffff, #f8f8f8)", // Apple-like Glassmorphism
   ];
-
   useEffect(() => {
     const fetchMindMap = async () => {
       try {
@@ -35,20 +34,18 @@ const MindMap = () => {
           id: node.id.toString(),
           position: { x: node.x, y: node.y },
           data: { label: node.label },
-          draggable: true,
+          draggable: true, // Ensure the node is draggable
           style: {
             background: nodeColors[index % nodeColors.length],
-            color: "#333",
-            borderRadius: "18px",
-            padding: "12px 18px",
-            boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
-            fontSize: "15px",
+            color: "black",
+            borderRadius: "15px",
+            padding: "10px 15px",
+            boxShadow: "0 4px 10px rgba(255, 255, 255, 0.2)",
+            fontSize: "14px",
             fontWeight: "bold",
             textAlign: "center",
-            cursor: "grab",
-            transition: "all 0.3s ease-in-out",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
-            backdropFilter: "blur(10px)",
+            cursor: "grab", // Visual indication
+            transition: "0.3s",
           },
         }));
 
@@ -57,7 +54,7 @@ const MindMap = () => {
           source: edge.from.toString(),
           target: edge.to.toString(),
           animated: false,
-          style: { stroke: "#888", strokeWidth: 3 },
+          style: { stroke: "#333", strokeWidth: 4 },
         }));
 
         setNodes(formattedNodes);
@@ -86,82 +83,68 @@ const MindMap = () => {
       style={{
         width: "100vw",
         height: "100vh",
-        background: "linear-gradient(135deg, #1a1a1a, #111)",
+        background: "#121212",
         overflow: "hidden",
         position: "relative",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
       }}
     >
       {loading ? (
-        <p style={{ color: "#fff", textAlign: "center", fontSize: "18px" }}>
+        <p style={{ color: "#fff", textAlign: "center", marginTop: "20px" }}>
           Loading mind map...
         </p>
       ) : (
         <>
-          {/* **Exit Button - Premium Look** */}
+          {/* Exit Button */}
           <button
             onClick={handleBack}
             style={{
               position: "absolute",
               top: "20px",
               left: "20px",
-              background: "rgba(255, 255, 255, 0.1)",
-              color: "#ffffff",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              padding: "12px 20px",
-              borderRadius: "10px",
-              fontSize: "15px",
+              background: "rgba(255, 255, 255, 0.15)",
+              color: "#fff",
+              border: "none",
+              padding: "10px 18px",
+              borderRadius: "8px",
+              fontSize: "14px",
               fontWeight: "bold",
               cursor: "pointer",
-              transition: "0.3s ease-in-out",
-              backdropFilter: "blur(8px)",
+              transition: "0.3s",
+              backdropFilter: "blur(5px)",
               zIndex: 9999,
             }}
             onMouseOver={(e) =>
-              (e.target.style.background = "rgba(255, 255, 255, 0.25)")
+              (e.target.style.background = "rgba(255, 255, 255, 0.3)")
             }
             onMouseOut={(e) =>
-              (e.target.style.background = "rgba(255, 255, 255, 0.1)")
+              (e.target.style.background = "rgba(255, 255, 255, 0.15)")
             }
           >
-            ⬅ Exit
+            Exit
           </button>
 
-          {/* **Mind Map - Ultra Smooth & Elegant** */}
-          <div
+           {/* Mind Map with Smooth Dragging & Clean Layout */}
+           <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            fitView
+            zoomOnScroll
+            panOnScroll
+            panOnDrag
+            elementsSelectable
+            nodesDraggable
+            minZoom={0.4}
+            maxZoom={1.8}
+            defaultViewport={{ x: 0, y: 0, zoom: 1 }}
             style={{
-              width: "90%",
-              height: "90%",
-              borderRadius: "20px",
-              boxShadow: "0 10px 40px rgba(255, 255, 255, 0.05)",
-              overflow: "hidden",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              width: "100%",
+              height: "100%",
+              borderRadius: "12px",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.1)",
             }}
-          >
-            <ReactFlow
-              nodes={nodes}
-              edges={edges}
-              onNodesChange={onNodesChange}
-              fitView
-              zoomOnScroll
-              panOnScroll
-              panOnDrag
-              elementsSelectable
-              nodesDraggable
-              minZoom={0.4}
-              maxZoom={1.8}
-              defaultViewport={{ x: 0, y: 0, zoom: 1 }}
-              style={{
-                width: "100%",
-                height: "100%",
-                background: "rgba(255, 255, 255, 0.05)",
-              }}
-              proOptions={{ hideAttribution: true }}
-            />
-          </div>
+            proOptions={{ hideAttribution: true }}
+          />
         </>
       )}
     </div>
