@@ -205,7 +205,7 @@ useEffect(() => {
         return;
       }
   
-      let planAmount = 99; // Always ₹99 for monthly plan
+      let planAmount = 119; // Always ₹99 for monthly plan
   
       const { data } = await axios.post(API_ROUTES.getPremium, {
         amount: amount,
