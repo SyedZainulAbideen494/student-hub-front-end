@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard, FaNewspaper } from 'react-icons/fa';
-import { MdDashboard } from 'react-icons/md'; // Material Dashboard icon
+import { MdAssessment, MdAssignment, MdCampaign, MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { GiMaterialsScience } from 'react-icons/gi'; 
@@ -114,6 +114,31 @@ const FooterNav = () => {
         <span className="btn-label">Resources Finder </span>
     </button>
 </Link>
+
+<Link to='/assignment-maker' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/assignment-maker' ? 'active' : ''}`}>
+                    <MdAssignment  className="icon-footer-nav" />
+                    <span className="btn-label">Assignment Maker</span>
+                    <span className='new-label-footer-nav'>New</span>
+                </button>
+            </Link>
+
+
+            <Link to='/whats-new' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/whats-new' ? 'active' : ''}`}>
+                    <MdCampaign  className="icon-footer-nav" />
+                    <span className="btn-label">What's New</span>
+                </button>
+            </Link>
+
+            <Link to='/insta-story' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
+                    <FaChartLine  className="icon-footer-nav" />
+                    <span className="btn-label">Share Stats</span>
+                </button>
+            </Link>
+
+
 <Link to='/mindmap/create' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/mindmap/create' ? 'active' : ''}`}>
     <FiMap className="icon-footer-nav" />

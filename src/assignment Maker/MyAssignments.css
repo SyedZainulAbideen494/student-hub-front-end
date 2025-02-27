@@ -1,0 +1,85 @@
+/* 🌟 Root Styling */
+:root {
+    --primary-color: #f9f9fb; /* Clean white */
+    --secondary-color: #ececf1; /* Light grey */
+    --text-color: #333; /* Dark grey for readability */
+    --card-bg: white;
+    --shadow: 0px 6px 16px rgba(0, 0, 0, 0.08);
+    --border-radius: 12px;
+    --hover-bg: #f1f1f7; /* Subtle hover effect */
+}
+
+/* 📂 Assignments Page */
+.assignments_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--primary-color);
+    padding: 20px;
+}
+
+/* 📜 Page Title */
+.assignments_title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* 📑 Assignments List */
+.assignments_list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* 📄 Assignment Card */
+.assignment_card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--shadow);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.assignment_card:hover {
+    background: var(--hover-bg);
+    transform: translateY(-3px);
+}
+
+/* 📝 Assignment Title */
+.assignment_title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* 📅 Assignment Date */
+.assignment_date {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 📱 Mobile Optimized */
+@media (max-width: 768px) {
+    .assignments_list {
+        width: 95%;
+    }
+
+    .assignment_card {
+        padding: 12px;
+    }
+
+    .assignments_title {
+        font-size: 22px;
+    }
+}

@@ -1,0 +1,134 @@
+/* 🌟 Root Styling: Apple-Like Aesthetic */
+:root {
+    --primary-color: #f9f9fb; /* Soft white background */
+    --secondary-color: #ececf1; /* Light grey contrast */
+    --text-color: #333; /* Dark grey for readability */
+    --button-color: #4a90e2; /* Premium blue */
+    --button-hover: #357abd; /* Darker blue hover effect */
+    --border-radius: 14px; /* Smooth rounded edges */
+    --shadow: 0px 6px 16px rgba(0, 0, 0, 0.08); /* Soft Apple-like shadow */
+    --glass-bg: rgba(255, 255, 255, 0.6); /* Glassmorphism effect */
+    --glass-border: rgba(255, 255, 255, 0.4); /* Border for glassmorphism */
+}
+
+/* 🌍 Full Page Styling */
+.assignment_maker__get_Page__Assigment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    width: 100%;
+    background: var(--primary-color); /* Clean white background */
+    box-sizing: border-box;
+}
+
+/* 📜 Assignment Container */
+.assignment_maker__container__get_Page__Assigment {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px); /* Glassmorphism effect */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 800px; /* Keeps structure */
+    padding: 25px;
+    border: 1px solid var(--glass-border);
+    transition: 0.3s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 🔙 Back Button */
+.assignment_maker__back_btn__get_Page__Assigment {
+    background: transparent;
+    border: none;
+    color: var(--button-color);
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-bottom: 10px;
+}
+
+.assignment_maker__back_btn__get_Page__Assigment:hover {
+    color: var(--button-hover);
+}
+
+/* 🏷️ Page Title */
+.assignment_maker__title__get_Page__Assigment {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+/* 📑 Assignment Result Box */
+.assignment_maker__result__get_Page__Assigment {
+    background: var(--secondary-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    width: 90%; /* Instead of 100% for better fit */
+    max-width: 750px;
+}
+
+/* 📝 Editable Content Box */
+.assignment_maker__editable__get_Page__Assigment {
+    background: white;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: inset var(--shadow);
+    min-height: 300px;
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid var(--secondary-color);
+    font-size: 16px;
+    line-height: 1.6;
+    width: 100%; /* Prevents overflow on mobile */
+    max-width: 700px;
+}
+
+/* 📥 Download Button */
+.assignment_maker__download__get_Page__Assigment {
+    background-color: var(--button-color);
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: block;
+    width: auto; /* Instead of full width */
+    text-align: center;
+    margin: 20px auto 0 auto; /* Centers button */
+    transition: 0.3s ease-in-out;
+}
+
+.assignment_maker__download__get_Page__Assigment:hover {
+    background-color: var(--button-hover);
+}
+
+/* 📱 Mobile Optimized */
+@media (max-width: 768px) {
+    .assignment_maker__container__get_Page__Assigment {
+        padding: 18px;
+        width: 95%; /* Prevents side cut-off */
+    }
+
+    .assignment_maker__title__get_Page__Assigment {
+        font-size: 22px;
+    }
+
+    .assignment_maker__editable__get_Page__Assigment {
+        width: 90%; /* Full width but inside container */
+        max-width: 100%; /* Prevents going out of bounds */
+    }
+
+    .assignment_maker__download__get_Page__Assigment {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+

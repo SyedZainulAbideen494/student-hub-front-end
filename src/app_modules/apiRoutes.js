@@ -227,5 +227,9 @@ export const API_ROUTES = {
   generateMindMapsFromPDF: `${API_URL}/api/mindmaps/generate-from-pdf`,
   generateTasksFromMagic: `${API_URL}/api/tasks/generate/from-magic`,
   generateNotesFromMagic: `${API_URL}/api/notes/generate/from-magic`,
-  checkSubscriptionTrail: `${API_URL}/check-subscription/trial`
+  checkSubscriptionTrail: `${API_URL}/check-subscription/trial`,
+  generateAssignment: `${API_URL}/api/chat/assignment`,
+  fetchAssignment: `${API_URL}/api/chat/assignment`,
+  getAllAssignments: `${API_URL}/api/get/assignments`,
+  checkUserAssignment: `${API_URL}/api/chat/user-assignments`
 }

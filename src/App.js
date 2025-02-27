@@ -156,6 +156,10 @@ import CheckSubscription from "./help/CheckSubscription";
 import TrialSuccess from "./help/trail-success";
 import FeaturesCard from "./premium/FeaturesCard";
 import SubmitPageCompExam from "./quiz/submitPage competiveExam";
+import AssignmentMaker from "./assignment Maker/assignment maker";
+import AssignmentPage from "./assignment Maker/AssignmentPage";
+import MyAssignments from "./assignment Maker/MyAssignments";
+import LoaderAssignemnt from "./assignment Maker/loaderAssignment";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -296,6 +300,10 @@ const router = createBrowserRouter([
   {path: '/trial-success', element: <TrialSuccess/>},
   {path: '/subscription/features', element: <FeaturesCard/>},
   {path :'/submit/quiz/competitive', element: <SubmitPageCompExam/>},
+  {path: '/assignment-maker', element: <AssignmentMaker/>},
+  {path: '/assignment/:id', element: <AssignmentPage/>},
+  {path: '/my-assignments', element: <MyAssignments/>},
+  {path: '/loading-assignment', element: <LoaderAssignemnt/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
