@@ -13,14 +13,14 @@ const MindMap = () => {
   const navigate = useNavigate();
   const mindmapId = params.mindMapId;
 
+  // **Sleek & Elegant Colors** (Apple-like soft gradients & neutral tones)
   const nodeColors = [
-    "linear-gradient(135deg, #dfe9f3, #ffffff)", // Soft White-Blue
-    "linear-gradient(135deg, #fbc2eb, #a6c1ee)", // Soft Pink-Blue
-    "linear-gradient(135deg, #fdfbfb, #ebedee)", // Light Silver
-    "linear-gradient(135deg, #cfd9df, #e2ebf0)", // Subtle Gray
-    "linear-gradient(135deg, #e0c3fc, #8ec5fc)", // Pastel Purple-Blue
+    "linear-gradient(135deg, #f4f4f4, #eaeaea)", // Soft White-Gray
+    "linear-gradient(135deg, #dfe9f3, #ffffff)", // Frosted Silver-Blue
+    "linear-gradient(135deg, #e3f0ff, #f9f9f9)", // Subtle Sky-White
+    "linear-gradient(135deg, #f0f0f0, #dcdcdc)", // Minimalist Gray
+    "linear-gradient(135deg, #ffffff, #f8f8f8)", // Apple-like Glassmorphism
   ];
-
   useEffect(() => {
     const fetchMindMap = async () => {
       try {
@@ -123,21 +123,26 @@ const MindMap = () => {
             Exit
           </button>
 
-          {/* Mind Map */}
-          <ReactFlow
+           {/* Mind Map with Smooth Dragging & Clean Layout */}
+           <ReactFlow
             nodes={nodes}
             edges={edges}
-            onNodesChange={onNodesChange} // Handle node movement
+            onNodesChange={onNodesChange}
             fitView
             zoomOnScroll
             panOnScroll
             panOnDrag
             elementsSelectable
             nodesDraggable
-            minZoom={0.2}
-            maxZoom={2}
+            minZoom={0.4}
+            maxZoom={1.8}
             defaultViewport={{ x: 0, y: 0, zoom: 1 }}
-            style={{ width: "100%", height: "100%" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              borderRadius: "12px",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.1)",
+            }}
             proOptions={{ hideAttribution: true }}
           />
         </>
