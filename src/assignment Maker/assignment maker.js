@@ -74,7 +74,19 @@ const GenerateAssignment = () => {
         <div className="assignment_maker__form">
           <input type="text" className="assignment_maker__input" placeholder="Enter Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
           <textarea className="assignment_maker__textarea" placeholder="Additional Details" value={details} onChange={(e) => setDetails(e.target.value)} />
-          <input type="number" className="assignment_maker__input" placeholder="Number of Pages" value={pages} onChange={(e) => setPages(e.target.value)} />
+          <input
+  type="number"
+  className="assignment_maker__input"
+  placeholder="Number of Pages"
+  value={pages}
+  onChange={(e) => {
+    const value = Math.min(15, Math.max(1, Number(e.target.value))); // Ensure value stays between 1 and 15
+    setPages(value);
+  }}
+  max={15}
+  min={1} // Prevents values below 1
+/>
+
           <button className="assignment_maker__button" onClick={generateAssignment} disabled={loading || (!isPremium && hasGenerated)}>
             {loading ? "Generating..." : hasGenerated && !isPremium ? "Upgrade to Generate More" : "Generate Assignment"}
           </button>
