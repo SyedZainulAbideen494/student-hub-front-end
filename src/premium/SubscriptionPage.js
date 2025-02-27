@@ -330,7 +330,6 @@ useEffect(() => {
   
     
   
-{/* 🏆 Call to Action */}
 {isPremium ? (
   <>
     <Button>You have Premium! 🔥</Button>
