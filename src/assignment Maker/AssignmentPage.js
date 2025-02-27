@@ -53,32 +53,26 @@ const AssignmentPage = () => {
   }
 
   return (
-    <div className="assignment_maker__get_Page__Assigment">
-      <div className="assignment_maker__container__get_Page__Assigment">
-        <button className="assignment_maker__back_btn__get_Page__Assigment" onClick={() => navigate(-2)}>
-          ← Back
-        </button>
-        <h2 className="assignment_maker__title__get_Page__Assigment">📄 Assignment</h2>
-
-        {assignment ? (
-          <div className="assignment_maker__result__get_Page__Assigment">
-            <div
-              ref={contentRef}
-              contentEditable
-              suppressContentEditableWarning
-              className="assignment_maker__editable__get_Page__Assigment"
-            >
-              <div dangerouslySetInnerHTML={{ __html: assignment }} />
-            </div>
-            <button className="assignment_maker__download__get_Page__Assigment" onClick={downloadPDF}>
-              Download as PDF
-            </button>
-          </div>
-        ) : (
-          <p className="assignment_maker__not_found__get_Page__Assigment">Assignment not found.</p>
-        )}
-      </div>
+    <div className="assignment-maker">
+    <div className="assignment-container">
+      <button className="back-btn" onClick={() => navigate(-2)}>← Back</button>
+      
+      <h2 className="assignment-title">📄 Your Assignment</h2>
+  
+      {assignment ? (
+        <div className="assignment-content" ref={contentRef} contentEditable suppressContentEditableWarning>
+          <div dangerouslySetInnerHTML={{ __html: assignment }} />
+        </div>
+      ) : (
+        <p className="assignment-not-found">Assignment not found.</p>
+      )}
+  
+      {assignment && (
+        <button className="download-btn" onClick={downloadPDF}>⬇ Download PDF</button>
+      )}
     </div>
+  </div>
+  
   );
 };
 
