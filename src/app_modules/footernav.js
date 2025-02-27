@@ -65,6 +65,7 @@ const FooterNav = () => {
    
     return (
         <div className="footer-nav">
+                    <CheckSubscription/>
                         {/* Primary Buttons */}
             <Link to='/' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>
