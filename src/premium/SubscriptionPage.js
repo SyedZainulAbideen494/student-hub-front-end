@@ -290,7 +290,9 @@ useEffect(() => {
   
     <Card>
       
-
+<Link to='/'>
+  <BackButton><FaArrowLeft/></BackButton>
+  </Link>
       {/* 🚀 Premium Header */}
       <Header />
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
