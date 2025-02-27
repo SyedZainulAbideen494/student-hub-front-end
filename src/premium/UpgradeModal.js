@@ -4,13 +4,15 @@ import { useNavigate } from 'react-router-dom';
 
 const UpgradeModal = ({ message, isOpen, onClose }) => {
   const [isUpgrading, setIsUpgrading] = useState(false);
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   if (!isOpen) return null; // Hide modal if not open
 
   const handleUpgrade = () => {
     setIsUpgrading(true);
-nav('/subscription')
+    setTimeout(() => {
+      nav('/subscription');
+    }, 0); // Simulating a small delay for UX (optional)
   };
 
   return (
