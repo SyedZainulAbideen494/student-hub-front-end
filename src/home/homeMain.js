@@ -26,6 +26,7 @@ import PaymentComponentModal from "../premium/modal/SubscriptionPage";
 import OneTimeOffer from "../premium/modal/onetimeModal";
 import ValentineModal from "../gift Cards/modals/ValentineModal";
 import ExamTimeOffer from "../premium/modal/exam-time-modal";
+import SubscriptionRedirector from "../premium/SubscriptionRedirector";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -138,6 +139,7 @@ const HomeMain = () => {
   return (
     <Fragment>
         <>
+        <SubscriptionRedirector/>
           <ReviewModal />
           <HomeTopBoxes />
           <FeedbackFormWeekly />
