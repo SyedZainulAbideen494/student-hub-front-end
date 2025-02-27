@@ -205,7 +205,12 @@ useEffect(() => {
         return;
       }
   
-      let planAmount = 119; // Always ₹99 for monthly plan
+      let planAmount = 119; // Default to monthly
+
+      if (duration === 'daily') planAmount = 29;
+      else if (duration === 'weekly') planAmount = 59;
+      else if (duration === 'monthly') planAmount = 119;
+      
   
       const { data } = await axios.post(API_ROUTES.getPremium, {
         amount: amount,
@@ -284,6 +289,7 @@ useEffect(() => {
     {showConfetti && <Confetti numberOfPieces={200} />}
   
     <Card>
+      
 <Link to='/'>
   <BackButton><FaArrowLeft/></BackButton>
   </Link>
@@ -294,6 +300,16 @@ useEffect(() => {
   <Title>One Price. Unlimited Learning.</Title>
   <Subtitle>The AI-powered study ecosystem for toppers.</Subtitle>
 </div>
+<Plan
+  active={duration === 'daily'}
+  onClick={() => {
+    setDuration('daily');
+    setAmount(9); // Set daily price
+  }}
+>
+  <span>Daily Access</span>
+  <span>₹9/day</span>
+</Plan>
 
       {/* 📌 Pricing Plans */}
       <Plan
@@ -322,7 +338,10 @@ useEffect(() => {
   </>
 ) : (
   <>
-    <Button onClick={handlePayment}>{`Unlock ${duration === "weekly" ? "Weekly" : "Monthly"} Access Now 🚀`}</Button>
+ <Button onClick={handlePayment}>
+  {`Unlock ${duration === "daily" ? "Daily" : duration === "weekly" ? "Weekly" : "Monthly"} Access Now 🚀`}
+</Button>
+
     <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>
   </>
 )}
