@@ -55,7 +55,7 @@ const AssignmentPage = () => {
   return (
     <div className="assignment-maker">
     <div className="assignment-container">
-      <button className="back-btn" onClick={() => navigate(-2)}>← Back</button>
+      <button className="back-btn" onClick={() => navigate(-2)}>←</button>
       
       <h2 className="assignment-title">📄 Your Assignment</h2>
   
