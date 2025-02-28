@@ -337,8 +337,15 @@ useEffect(() => {
   </>
 ) : (
   <>
- <Button onClick={handlePayment}>
-  {`Unlock ${duration === "daily" ? "Daily" : duration === "weekly" ? "Weekly" : "Monthly"} Access Now 🚀`}
+<Button 
+  onClick={handlePayment} 
+  disabled={!duration} // Disable if no plan is selected
+  style={{
+    opacity: !duration ? 0.6 : 1, // Reduce opacity when disabled
+    cursor: !duration ? 'not-allowed' : 'pointer' // Change cursor style
+  }}
+>
+  Get Premium
 </Button>
 
     <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>

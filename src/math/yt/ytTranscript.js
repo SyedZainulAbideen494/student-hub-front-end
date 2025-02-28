@@ -1,45 +1,74 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { API_ROUTES } from "../../app_modules/apiRoutes";
 
-function GetYtApp() {
-    const [videoUrl, setVideoUrl] = useState("");
-    const [transcript, setTranscript] = useState("");
-    const [loading, setLoading] = useState(false);
+const YouTubeSummarizer = () => {
+  const [youtubeLink, setYoutubeLink] = useState("");
+  const [summary, setSummary] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-    const fetchTranscript = async () => {
-        if (!videoUrl) return alert("Please enter a YouTube URL!");
-        setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSummary("");
+    setError("");
+    setLoading(true);
 
-        try {
-            const response = await axios.post(API_ROUTES.aiYtSummary, { videoUrl });
-            setTranscript(response.data.transcript);
-        } catch (error) {
-            alert("Failed to fetch transcript.");
-        }
-        
-        setLoading(false);
-    };
+    const token = localStorage.getItem("token");
 
-    return (
-        <div style={{ padding: "20px" }}>
-            <h2>YouTube Video Transcript</h2>
-            <input
-                type="text"
-                placeholder="Enter YouTube video URL"
-                value={videoUrl}
-                onChange={(e) => setVideoUrl(e.target.value)}
-                style={{ width: "300px", padding: "5px", marginRight: "10px" }}
-            />
-            <button onClick={fetchTranscript} disabled={loading}>
-                {loading ? "Fetching..." : "Get Transcript"}
-            </button>
-            <div style={{ marginTop: "20px", whiteSpace: "pre-wrap" }}>
-                <h3>Transcript:</h3>
-                <p>{transcript || "No transcript yet."}</p>
-            </div>
+    if (!token) {
+      setError("You must be logged in to use this feature.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://srv594954.hstgr.cloud/api/chat/ai/yt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ youtubeLink, chatHistory: [], token }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to fetch summary.");
+      }
+
+      setSummary(data.response);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h2>🎥 YouTube Video Summarizer</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter YouTube Link"
+          value={youtubeLink}
+          onChange={(e) => setYoutubeLink(e.target.value)}
+          required
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Summarizing..." : "Get Summary"}
+        </button>
+      </form>
+
+      {error && <p className="error">{error}</p>}
+
+      {summary && (
+        <div className="summary">
+          <h3>📜 Summary:</h3>
+          <p>{summary}</p>
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
 
-export default GetYtApp;
+export default YouTubeSummarizer;

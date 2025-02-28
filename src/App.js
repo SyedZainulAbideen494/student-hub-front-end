@@ -160,6 +160,7 @@ import AssignmentMaker from "./assignment Maker/assignment maker";
 import AssignmentPage from "./assignment Maker/AssignmentPage";
 import MyAssignments from "./assignment Maker/MyAssignments";
 import LoaderAssignemnt from "./assignment Maker/loaderAssignment";
+import YouTubeSummarizer from "./math/yt/ytTranscript";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -304,6 +305,7 @@ const router = createBrowserRouter([
   {path: '/assignment/:id', element: <AssignmentPage/>},
   {path: '/my-assignments', element: <MyAssignments/>},
   {path: '/loading-assignment', element: <LoaderAssignemnt/>},
+  {path: '/yt', element: <YouTubeSummarizer/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
