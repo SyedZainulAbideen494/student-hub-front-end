@@ -231,5 +231,6 @@ export const API_ROUTES = {
   generateAssignment: `${API_URL}/api/chat/assignment`,
   fetchAssignment: `${API_URL}/api/chat/assignment`,
   getAllAssignments: `${API_URL}/api/get/assignments`,
-  checkUserAssignment: `${API_URL}/api/chat/user-assignments`
+  checkUserAssignment: `${API_URL}/api/chat/user-assignments`,
+  checkConvoCountAi: `${API_URL}/check-convo-count`
 }

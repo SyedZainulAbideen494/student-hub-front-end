@@ -162,21 +162,38 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
   
     if (!conversationStarted) setConversationStarted(true);
   
-    const newHistory = [...chatHistory, { role: 'user', parts: [{ text: message || " " }] }];
+    const newHistory = [...chatHistory, { role: "user", parts: [{ text: message || " " }] }];
     setChatHistory(newHistory);
     setLoading(true);
   
-    const token = localStorage.getItem('token'); // Retrieve token from localStorage
+    const token = localStorage.getItem("token");
   
     try {
+      // If user is NOT premium, check today's conversation count
+      if (!isPremium) {
+        try {
+          const convoResponse = await axios.post(API_ROUTES.checkConvoCountAi, { token });
+      
+          if (convoResponse.data.convoCount >= 5) {
+            setChatHistory([
+              ...newHistory,
+              { role: "model", parts: [{ text: "You've reached the daily limit. Upgrade to Premium for unlimited chats!" }] },
+            ]);
+            setLoading(false);
+            return;
+          }
+        } catch (error) {
+          console.error("Error checking conversation count:", error);
+        }
+      }
+      
       let formattedResultText = "";
       let followUpMessage = message;
   
       if (pdfFile) {
-        // Process PDF file
         const formData = new FormData();
         formData.append("file", pdfFile);
-        formData.append("prompt", message || "Analyze this PDF and provide insights."); // Ensure a message is always sent
+        formData.append("prompt", message || "Analyze this PDF and provide insights.");
         formData.append("token", token);
   
         const response = await axios.post(API_ROUTES.aiPdfProcessing, formData, {
@@ -185,10 +202,8 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
   
         formattedResultText = formatContent(response.data.result);
         followUpMessage = message || "Here's the extracted information from your PDF.";
-        setPdfFile(null); // Clear the file after processing
-      } 
-      else if (image) {
-        // Process Image file
+        setPdfFile(null);
+      } else if (image) {
         const formData = new FormData();
         formData.append("image", image);
         formData.append("prompt", message || "Analyze this image and provide details.");
@@ -200,28 +215,25 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
   
         formattedResultText = formatContent(response.data.result);
         followUpMessage = message || "Here's what I found in the image.";
-        setImage(null); // Clear the image
-      } 
-      else {
-        // Process Text-only message
-        if (!message.trim()) throw new Error("Message cannot be empty."); // Prevent sending empty message
+        setImage(null);
+      } else {
+        if (!message.trim()) throw new Error("Message cannot be empty.");
   
         const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
         formattedResultText = formatContent(response.data.response);
         followUpMessage = "";
       }
   
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: formattedResultText }] }]);
-      setMessage(followUpMessage); // Clear or update message field
-    } 
-    catch (error) {
-      console.error('Error sending message:', error);
-      setChatHistory([...newHistory, { role: 'model', parts: [{ text: 'Something went wrong. Please try again later.' }] }]);
-    } 
-    finally {
+      setChatHistory([...newHistory, { role: "model", parts: [{ text: formattedResultText }] }]);
+      setMessage(followUpMessage);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setChatHistory([...newHistory, { role: "model", parts: [{ text: "Something went wrong. Please try again later." }] }]);
+    } finally {
       setLoading(false);
     }
   };
+  
   
 
   
