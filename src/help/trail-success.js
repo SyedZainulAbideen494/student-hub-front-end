@@ -10,7 +10,7 @@ const TrialSuccess = () => {
         <div style={styles.container}>
 
             <p style={styles.subText}>
-                You've unlocked a <strong>1-day free trial</strong> of Edusify! 🚀
+                You've unlocked a <strong>3-day free trial</strong> of Edusify! 🚀
             </p>
 
             {/* 🎁 Gift Box Animation */}
