@@ -204,7 +204,7 @@ const validatePhoneNumber = (phone) => {
             <>
                 <h2 className="signup-sign-up-page-heading">Create Your Account</h2>
                 <p className="signup-sign-up-page-subtext">
-                    Welcome to Edusify: Your Free AI-Powered Platform for Students!
+                    Welcome to Edusify: AI-Powered Platform for Students!
                 </p>
             </>
         )}
