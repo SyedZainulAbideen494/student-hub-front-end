@@ -115,29 +115,6 @@ const FooterNav = () => {
     </button>
 </Link>
 
-<Link to='/assignment-maker' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/assignment-maker' ? 'active' : ''}`}>
-                    <MdAssignment  className="icon-footer-nav" />
-                    <span className="btn-label">Assignment Maker</span>
-                    <span className='new-label-footer-nav'>New</span>
-                </button>
-            </Link>
-
-
-            <Link to='/whats-new' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/whats-new' ? 'active' : ''}`}>
-                    <MdCampaign  className="icon-footer-nav" />
-                    <span className="btn-label">What's New</span>
-                </button>
-            </Link>
-
-            <Link to='/insta-story' style={{ textDecoration: 'none' }}>
-                <button className={`nav-btn-footer-nav ${location.pathname === '/insta-story' ? 'active' : ''}`}>
-                    <FaChartLine  className="icon-footer-nav" />
-                    <span className="btn-label">Share Stats</span>
-                </button>
-            </Link>
-
 
 <Link to='/mindmap/create' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/mindmap/create' ? 'active' : ''}`}>
@@ -182,12 +159,13 @@ const FooterNav = () => {
         <span className="btn-label">Locker</span>
     </button>
 </Link>
-<Link to='/gift-card' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/gift-card' ? 'active' : ''}`}>
-        <FiGift className="icon-footer-nav" /> {/* Changed icon to FaFolder */}
-        <span className="btn-label">Gift Cards</span>
-    </button>
-</Link>
+<Link to='/assignment-maker' style={{ textDecoration: 'none' }}>
+                <button className={`nav-btn-footer-nav ${location.pathname === '/assignment-maker' ? 'active' : ''}`}>
+                    <MdAssignment  className="icon-footer-nav" />
+                    <span className="btn-label">Assignment Maker</span>
+                    <span className='new-label-footer-nav'>New</span>
+                </button>
+            </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/calendar' ? 'active' : ''}`}>
                         <FaCalendarAlt className="icon-footer-nav" />
