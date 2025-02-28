@@ -8,7 +8,8 @@ import {
   FaChartLine,
   FaPlayCircle,
   FaCommentDots,
-  FaBookOpen
+  FaBookOpen,
+  FaFileInvoice
 } from 'react-icons/fa';
 
 const PageWrapper = styled.div`
@@ -117,12 +118,14 @@ const FeaturesPage = () => {
   <FeatureItem><IconWrapper><FaImage /></IconWrapper> <strong>AI Assistant Processes PDFs & Images</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>AI Quiz Performance Report</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>AI Explanation on Each Flashcard</strong></FeatureItem>
+  <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> <strong>AI Assignment Maker</strong></FeatureItem>  
 
   {/* 🚀 FOMO Trigger */}
   <FeatureItem style={{ textAlign: 'center', fontWeight: 'bold', color: '#6F42C1', fontSize: '1.1rem', paddingTop: '1rem' }}>
     ...and SO much more! 🚀🔥
   </FeatureItem>
 </FeatureList>
+
 
       </FeaturesWrapper>
     </PageWrapper>
