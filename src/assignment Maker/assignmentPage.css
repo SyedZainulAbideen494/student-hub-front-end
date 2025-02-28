@@ -89,7 +89,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .assignment-container {
-    height: 90vh; /* Adjust height for mobile */
+    height: 100vh; /* Adjust height for mobile */
     padding: 20px;
   }
   
@@ -98,7 +98,7 @@
   }
 
   .assignment-content {
-    max-height: 250px; /* Adjust for mobile */
+    max-height: 450px; /* Adjust for mobile */
   }
 
   .download-btn {
