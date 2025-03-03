@@ -23,7 +23,7 @@
     "agora-rtc-sdk-ng": "^4.22.2",
     "animate.css": "^4.1.1",
     "antd": "^5.21.6",
-    "axios": "^1.7.9",
+    "axios": "^1.8.1",
     "better-react-mathjax": "^2.0.4-beta1",
     "buffer": "^6.0.3",
     "canvas-confetti": "^1.9.3",

@@ -139,7 +139,7 @@ const HomeMain = () => {
   return (
     <Fragment>
         <>
-
+          <ExamTimeOffer/>
           <ReviewModal />
           <HomeTopBoxes />
           <FeedbackFormWeekly />

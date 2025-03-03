@@ -47,7 +47,7 @@ const ExamTimeOffer = () => {
       }
 
       const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount: 79,
+        amount: 89,
         currency: "INR",
         subscription_plan: "premium",
         token,
@@ -106,7 +106,7 @@ const ExamTimeOffer = () => {
 </p>
 
             <div className="exam-price-box__exam__modal">
-                <span className="price">Only <strong>₹79</strong> / month</span>
+                <span className="price">Only <strong>₹89</strong> / month</span>
             </div>
             
             <p className="lowest-price__exam__modal">This is your edge—don’t miss out.</p>

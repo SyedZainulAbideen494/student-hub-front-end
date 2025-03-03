@@ -10,14 +10,12 @@ const SubscriptionRedirector = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (token) {
-      axios
-        .post(API_ROUTES.checkSubscription, {}, { headers: { Authorization: token } })
-        .then(response => setIsPremium(response.data.premium))
-        .catch(() => setIsPremium(false));
-    } else {
-      setIsPremium(false);
-    }
+    if (!token) return; // Do nothing if there is no token
+
+    axios
+      .post(API_ROUTES.checkSubscription, {}, { headers: { Authorization: token } })
+      .then(response => setIsPremium(response.data.premium))
+      .catch(() => setIsPremium(false));
   }, []);
 
   useEffect(() => {
