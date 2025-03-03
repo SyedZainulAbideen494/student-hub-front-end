@@ -275,7 +275,7 @@ const handleSliderChange = () => {
       if (isPremium) {
         generateTasks(mainTask, days, taskStyle); // Proceed with the task generation if premium
       } else {
-        setIsUpgradeModalOpen(true)
+        navigate('/subscription')
       }
     };
     

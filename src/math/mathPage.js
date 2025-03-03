@@ -180,6 +180,7 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
               { role: "model", parts: [{ text: "You've reached the daily limit. Upgrade to Premium for unlimited chats!" }] },
             ]);
             setLoading(false);
+            navigate('/subscription')
             return;
           }
         } catch (error) {
@@ -333,7 +334,7 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
     setIsMagicModalOpen(false);
   
     if (!isPremium) {
-      setIsUpgradeModalOpen(true); // Show upgrade modal for non-premium users
+      navigate('/subscription')
       setIsMagicModalOpen(false); // Close magic modal
       return;
   }
@@ -361,7 +362,7 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
     const token = localStorage.getItem("token");
 
     if (!isPremium) {
-      setIsUpgradeModalOpen(true); // Show upgrade modal for non-premium users
+      navigate('/subscription')
       setIsMagicModalOpen(false); // Close magic modal
       return;
   }
@@ -409,7 +410,7 @@ const handleSubmitNotes = async (selectedContent) => {
   const token = localStorage.getItem("token");
 
   if (!isPremium) {
-    setIsUpgradeModalOpen(true); // Show upgrade modal for non-premium users
+    navigate('/subscription')
     setIsMagicModalOpen(false); // Close magic modal
     return;
 }
@@ -457,7 +458,7 @@ const handleSubmitNotes = async (selectedContent) => {
     const token = localStorage.getItem('token');
 
     if (!isPremium) {
-      setIsUpgradeModalOpen(true); // Show upgrade modal for non-premium users
+      navigate('/subscription')
       setIsMagicModalOpen(false); // Close magic modal
       return;
   }
@@ -506,7 +507,7 @@ const handleSubmitFlashcards = async (selectedContent) => {
 
   // Check if the user is not premium and has exhausted their free usage
   if (!isPremium) {
-    setIsUpgradeModalOpen(true); // Show upgrade modal for non-premium users
+    navigate('/subscription')
     setIsMagicModalOpen(false); // Close magic modal
     return;
 }
@@ -556,7 +557,7 @@ const handleSubmitQuiz = async (selectedContent) => {
 
   // Check if the user is not premium and prevent access to the quiz feature
   if (!isPremium) {
-      setIsUpgradeModalOpen(true); // Show upgrade modal for non-premium users
+    navigate('/subscription')
       setIsMagicModalOpen(false); // Close magic modal
       return;
   }
