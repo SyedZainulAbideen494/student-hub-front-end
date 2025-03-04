@@ -41,7 +41,10 @@ const Leaderboard2 = () => {
             6. Complete a Pomodoro session: <strong>10 points</strong>
           </p>
           <p className="modal-description__leaderboard__instr">
-            7. Creating Notes: <strong>10 points</strong>
+            7. Create Notes: <strong>10 points</strong>
+          </p>
+          <p className="modal-warning__leaderboard__instr">
+            ⚠️ <strong>Stay Active!</strong> If you don’t perform any activity for 24 hours, <strong>10 points will be deducted</strong>.
           </p>
           <button className="modal-close-btn__leaderboard__instr" onClick={onClose}>
             Close
@@ -50,10 +53,8 @@ const Leaderboard2 = () => {
       </div>
     );
   };
-  
-  
 
-
+  
   useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
