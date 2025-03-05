@@ -174,7 +174,7 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
         try {
           const convoResponse = await axios.post(API_ROUTES.checkConvoCountAi, { token });
       
-          if (convoResponse.data.convoCount >= 3) {
+          if (convoResponse.data.convoCount >= 5) {
             setChatHistory([
               ...newHistory,
               { role: "model", parts: [{ text: "You've reached the daily limit. Upgrade to Premium for unlimited chats!" }] },
