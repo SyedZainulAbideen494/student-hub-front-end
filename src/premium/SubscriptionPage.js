@@ -11,9 +11,9 @@ import { FiArrowLeft } from 'react-icons/fi';
 import FeaturesCard from './FeaturesCard';
 
 const PaymentComponent = () => {
-  const [amount, setAmount] = useState(99); // Default to ₹129 (monthly)
+  const [amount, setAmount] = useState(99); // Default ₹99 (monthly)
   const [subscriptionPlan, setSubscriptionPlan] = useState('premium');
-  const [duration, setDuration] = useState(''); // Always set to 'monthly' now
+  const [duration, setDuration] = useState('monthly'); // Ensure default is 'monthly'
   const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
   const [isPremium, setIsPremium] = useState(null);
   const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
