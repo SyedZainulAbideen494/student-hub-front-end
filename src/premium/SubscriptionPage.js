@@ -304,7 +304,7 @@ useEffect(() => {
   active={duration === 'daily'}
   onClick={() => {
     setDuration('daily');
-    setAmount(19); // Set daily price
+    setAmount(9); // Set daily price
   }}
 >
   <span>Daily Access</span>
