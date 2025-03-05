@@ -304,11 +304,11 @@ useEffect(() => {
   active={duration === 'daily'}
   onClick={() => {
     setDuration('daily');
-    setAmount(29); // Set daily price
+    setAmount(19); // Set daily price
   }}
 >
   <span>Daily Access</span>
-  <span>₹29/day</span>
+  <span>₹9/day</span>
 </Plan>
 
       {/* 📌 Pricing Plans */}
@@ -316,16 +316,16 @@ useEffect(() => {
         active={duration === 'weekly'}
         onClick={() => {
           setDuration('weekly');
-          setAmount(59);
+          setAmount(39);
         }}
       >
         <span>Weekly Access</span>
-        <span>₹59/week</span>
+        <span>₹39/week</span>
       </Plan>
 
-      <Plan active={duration === "monthly"} onClick={() => { setDuration("monthly"); setAmount(149); }}>
+      <Plan active={duration === "monthly"} onClick={() => { setDuration("monthly"); setAmount(99); }}>
           <span>Monthly Plan <BestValue>Best Value</BestValue></span>
-          <span>₹149/mo</span>
+          <span>₹99/mo</span>
         </Plan>
   
     
