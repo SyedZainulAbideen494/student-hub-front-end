@@ -83,7 +83,7 @@ const FooterNav = () => {
 <Link to='/planner' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/planner' ? 'active' : ''}`}>
                     <HiBookOpen className="icon-footer-nav" />
-                    <span className="btn-label">to-do list</span>
+                    <span className="btn-label">To-do list</span>
                 </button>
             </Link>
             <button className={`nav-btn-footer-nav ${isPopupVisible ? 'active' : ''}`} onClick={togglePopup}>
@@ -119,7 +119,6 @@ const FooterNav = () => {
     <button className={`nav-btn-footer-nav ${location.pathname === '/mindmap/create' ? 'active' : ''}`}>
     <FiMap className="icon-footer-nav" />
         <span className="btn-label">Mind Maps </span>
-        <span className='new-label-footer-nav'>New</span>
     </button>
 </Link>
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
@@ -162,7 +161,6 @@ const FooterNav = () => {
                 <button className={`nav-btn-footer-nav ${location.pathname === '/assignment-maker' ? 'active' : ''}`}>
                     <MdAssignment  className="icon-footer-nav" />
                     <span className="btn-label">Assignment Maker</span>
-                    <span className='new-label-footer-nav'>New</span>
                 </button>
             </Link>
                 <Link to='/calendar' style={{ textDecoration: 'none' }}>
