@@ -361,11 +361,14 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
   const handleSubmitMindMap = async (selectedContent) => {
     const token = localStorage.getItem("token");
 
-    if (!isPremium) {
-      navigate('/subscription')
-      setIsMagicModalOpen(false); // Close magic modal
-      return;
-  }
+       // Check if the user is not premium and has exhausted their free usage
+       if (!isPremium) {
+        const canUseMagic = await checkMagicUsage();
+        if (!canUseMagic) {
+            setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+            return;
+        }
+    }
 
     const headings = selectedContent; // Use selected content directly
 
@@ -409,11 +412,14 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
 const handleSubmitNotes = async (selectedContent) => {
   const token = localStorage.getItem("token");
 
-  if (!isPremium) {
-    navigate('/subscription')
-    setIsMagicModalOpen(false); // Close magic modal
-    return;
-}
+    // Check if the user is not premium and has exhausted their free usage
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          return;
+      }
+  }
 
   const headings = selectedContent; // Use selected content directly
 
@@ -457,10 +463,13 @@ const handleSubmitNotes = async (selectedContent) => {
   const handleSubmitTasks = async (selectedContent) => {
     const token = localStorage.getItem('token');
 
+    // Check if the user is not premium and has exhausted their free usage
     if (!isPremium) {
-      navigate('/subscription')
-      setIsMagicModalOpen(false); // Close magic modal
-      return;
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          return;
+      }
   }
 
     const headings = selectedContent; // Use the selected content directly
@@ -505,12 +514,14 @@ const handleSubmitNotes = async (selectedContent) => {
 const handleSubmitFlashcards = async (selectedContent) => {
   const token = localStorage.getItem("token");
 
-  // Check if the user is not premium and has exhausted their free usage
-  if (!isPremium) {
-    navigate('/subscription')
-    setIsMagicModalOpen(false); // Close magic modal
-    return;
-}
+    // Check if the user is not premium and has exhausted their free usage
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          return;
+      }
+  }
 
   const headings = selectedContent; // Use the selected content directly
 
@@ -555,11 +566,13 @@ const handleSubmitFlashcards = async (selectedContent) => {
 const handleSubmitQuiz = async (selectedContent) => {
   const token = localStorage.getItem("token");
 
-  // Check if the user is not premium and prevent access to the quiz feature
-  if (!isPremium) {
-    navigate('/subscription')
-      setIsMagicModalOpen(false); // Close magic modal
-      return;
+    // Check if the user is not premium and has exhausted their free usage
+    if (!isPremium) {
+      const canUseMagic = await checkMagicUsage();
+      if (!canUseMagic) {
+          setIsUpgradeModalOpen(true); // Show upgrade modal if free user has exhausted limit
+          return;
+      }
   }
 
   const notes = selectedContent; // Use the selected content directly
