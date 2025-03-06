@@ -83,37 +83,31 @@ const FeaturesPage = () => {
   return (
     <PageWrapper>
 
-      <FeaturesWrapper>
-        <Title>The Ultimate Study Ecosystem</Title>
-        <FeatureList>
-  <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>AI-Powered Study Plan</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Smart Task Tracker</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> <strong>Convert Notes into Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Mind Maps, Flashcards, Notes & Quizzes</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI Study Assistant</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> <strong>Convert PDFs into Notes, Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>Generate Quizzes & Mind Maps from PDFs</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> <strong>Sticky Notes for Quick Thoughts</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>Find Best Study Resources</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaUsers /></IconWrapper> <strong>Join Study Rooms</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> <strong>Competitive Exam Mock Tests</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaChartBar /></IconWrapper> <strong>AI Weekly Performance Report</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaCalendarAlt /></IconWrapper> <strong>Smart Calendar & To-Do List</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> <strong>AI-Powered Pomodoro Timer</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaLock /></IconWrapper> <strong>Secure Document Locker</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaImage /></IconWrapper> <strong>AI Assistant Processes PDFs & Images</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>AI Quiz Performance Report</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>AI Explanation on Each Flashcard</strong></FeatureItem>
-  <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> <strong>AI Assignment Maker</strong></FeatureItem>  
+<FeaturesWrapper>
+  <Title>The Ultimate Study Ecosystem</Title>
+  <FeatureList>
 
-  {/* 🚀 FOMO Trigger */}
-  <FeatureItem style={{ textAlign: 'center', fontWeight: 'bold', color: '#6F42C1', fontSize: '1.1rem', paddingTop: '1rem' }}>
-    ...and SO much more! 🚀🔥
-  </FeatureItem>
-</FeatureList>
+    {/* 🚀 PREMIUM BENEFITS - EXCLUSIVITY & FOMO 🔥 */}
+    <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>Unlimited AI Usage – No Limits, No Restrictions! 🔥</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>Unlimited AI Quizzes, Flashcards & Mind Maps</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>AI-Powered PDF to Quiz, Flashcards, Mind Maps & Notes</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Notes Creation – Generate Any Study Material Instantly</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Unlimited Study Plans – Adapt to Your Learning Needs</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> <strong>Generate Tasks According to Your Study Plan</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>AI-Powered Task Generation – Smart, Personalized & Efficient</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>AI Quiz Analysis – Know Your Strengths & Weaknesses</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> <strong>AI Competitive Exam Quizzes – NEET, JEE & More</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>Exclusive Study Resources – Currently featuring NEET Guide</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI-Generated Responses for Tasks, Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
+    <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> <strong>Unlimited AI Assignment Generation – Get Your Work Done Instantly</strong></FeatureItem>
 
+    {/* 🚀 FOMO Trigger */}
+    <FeatureItem style={{ textAlign: 'center', fontWeight: 'bold', color: '#6F42C1', fontSize: '1.1rem', paddingTop: '1rem' }}>
+      ...and SO MUCH MORE! 🚀🔥<br/> Upgrade to Edusify Premium & Unlock Your Full Potential!  
+    </FeatureItem>
+  </FeatureList>
+</FeaturesWrapper>
 
-      </FeaturesWrapper>
     </PageWrapper>
   );
 };
