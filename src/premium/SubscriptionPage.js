@@ -299,7 +299,7 @@ useEffect(() => {
   {/* 🎯 Exclusive Messaging */}
   <Title>One Price. Unlimited Learning.</Title>
   <Subtitle>The AI-powered study ecosystem for toppers.</Subtitle>
-</div>
+</div> {/* 
 <Plan
   active={duration === 'daily'}
   onClick={() => {
@@ -309,7 +309,7 @@ useEffect(() => {
 >
   <span>Daily Access</span>
   <span>₹9/day</span>
-</Plan>
+</Plan> */}
 
       {/* 📌 Pricing Plans */}
       <Plan
