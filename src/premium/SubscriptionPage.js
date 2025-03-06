@@ -177,8 +177,9 @@ const PaymentComponent = () => {
 
       {/* Subscription Section */}
       <SubscriptionContainer>
-        <Title>Unlock Your Learning Potential!</Title>
-        <Subtitle>Master Any Topic with AI-Generated Mind Maps. Simplify Complex Ideas.</Subtitle>
+      <Title>Effortless Learning Starts Here.</Title>
+<Subtitle>AI-powered smart tools—designed for top achievers.</Subtitle>
+
 
         <Plans>
           {/* 1 Month Plan (Best Offer) */}
