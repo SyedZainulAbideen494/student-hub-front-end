@@ -84,7 +84,7 @@ const FeaturesPage = () => {
     <PageWrapper>
 
       <FeaturesWrapper>
-        <Title>✨ The Ultimate Study Ecosystem</Title>
+        <Title>The Ultimate Study Ecosystem</Title>
         <FeatureList>
   <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>AI-Powered Study Plan</strong></FeatureItem>
   <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Smart Task Tracker</strong></FeatureItem>
