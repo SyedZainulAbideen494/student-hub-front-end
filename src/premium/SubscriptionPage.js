@@ -299,7 +299,7 @@ useEffect(() => {
   {/* 🎯 Exclusive Messaging */}
   <Title>One Price. Unlimited Learning.</Title>
   <Subtitle>The AI-powered study ecosystem for toppers.</Subtitle>
-</div> {/* 
+</div>
 <Plan
   active={duration === 'daily'}
   onClick={() => {
@@ -309,7 +309,7 @@ useEffect(() => {
 >
   <span>Daily Access</span>
   <span>₹9/day</span>
-</Plan> */}
+</Plan>
 
       {/* 📌 Pricing Plans */}
       <Plan
@@ -333,7 +333,7 @@ useEffect(() => {
 {isPremium ? (
   <>
     <Button>You have Premium! 🔥</Button>
-       <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>
+     {/*   <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>*/}
   </>
 ) : (
   <>
@@ -348,11 +348,11 @@ useEffect(() => {
   Get Premium
 </Button>
 
-    <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>
+    {/*  <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>*/}
   </>
 )}
 
-
+<FeaturesCard/>
     </Card>
 
   </SubscriptionWrapper>

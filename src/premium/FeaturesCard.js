@@ -16,7 +16,6 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 85%;
   padding: 2rem;
 `;
 
@@ -38,19 +37,7 @@ const BackButton = styled.button`
 `;
 
 const FeaturesWrapper = styled.div`
-  width: 90%;
-  max-width: 400px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-align: left;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(230, 230, 230, 0.7);
-  
-  @media (max-width: 768px) {
-    width: 90%;
-    padding: 1.2rem;
-  }
+
 `;
 
 const Title = styled.h2`
@@ -95,7 +82,6 @@ const FeaturesPage = () => {
 
   return (
     <PageWrapper>
-      <BackButton onClick={() => navigate(-1)}>←</BackButton>
 
       <FeaturesWrapper>
         <Title>✨ The Ultimate Study Ecosystem</Title>
