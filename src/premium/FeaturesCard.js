@@ -84,7 +84,7 @@ const FeaturesPage = () => {
     <PageWrapper>
 
 <FeaturesWrapper>
-  <Title>The Ultimate Study Ecosystem</Title>
+   {/*  <Title>The Ultimate Study Ecosystem</Title> */}
   <FeatureList>
 
     {/* 🚀 PREMIUM BENEFITS - EXCLUSIVITY & FOMO 🔥 */}
