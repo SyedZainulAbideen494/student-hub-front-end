@@ -96,6 +96,10 @@ const Footer = styled.p`
   text-align: center;
   font-weight: 500;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 `;
 
 const PaymentComponent = () => {
