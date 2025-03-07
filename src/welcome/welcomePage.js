@@ -62,7 +62,7 @@ const Subtitle = styled.p`
 `;
 
 const Button = styled.button`
-    background: #E4A1A1; // 🌸 Soft Dusty Rose
+    background: #A68DAD; // 💜 Muted Lavender - Premium & Soft
     color: white;
     border: none;
     padding: 14px 40px;
@@ -70,11 +70,11 @@ const Button = styled.button`
     font-weight: 500;
     border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(228, 161, 161, 0.3);
+    box-shadow: 0px 5px 15px rgba(166, 141, 173, 0.3);
     transition: all 0.3s ease-in-out;
     
     &:hover {
-        background: linear-gradient(to right, #E4A1A1, #D08A8A); // Elegant gradient hover
+        background: linear-gradient(to right, #A68DAD, #90789B); // Soft gradient hover
         transform: scale(1.05);
     }
 `;

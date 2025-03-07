@@ -115,7 +115,7 @@ const Login = () => {
             } else {
                 // If the verification is successful
                 localStorage.setItem('token', response.data.token);
-                nav("/welcome"); // Navigate to welcome page
+                nav("/"); // Navigate to welcome page
             }
         }).catch((error) => {
             setLoading(false); // Stop loading indicator
