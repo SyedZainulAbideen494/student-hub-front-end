@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
+import Lottie from "lottie-react";
+import successAnimation from "./tick-success.json"; // Place JSON in src folder
 import styled from "styled-components";
 
 const SuccessPage = () => {
@@ -17,14 +19,14 @@ const SuccessPage = () => {
 
   return (
     <SuccessWrapper>
-      <Confetti numberOfPieces={100} />
+    
       <CloseButton onClick={handleGoBack}>✕</CloseButton>
       <Card>
         <BadgeContainer className={showBadge ? "show" : ""}>
-          🏆
+          <Lottie animationData={successAnimation} loop={true} />
         </BadgeContainer>
-        <Title>Congratulations!</Title>
-<Subtitle>You’ve unlocked Edusify Premium. Get ready to level up your learning!</Subtitle>
+        <Title>Success!</Title>
+        <Subtitle>You’ve unlocked Edusify Premium. Get ready to level up your learning!</Subtitle>
       </Card>
     </SuccessWrapper>
   );
@@ -40,19 +42,19 @@ const SuccessWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #0e0e10;
+  background: #f9f9f9;
   position: relative;
   font-family: "Poppins", sans-serif;
 `;
 
 const Card = styled.div`
-  background: #141417;
+  background: white;
   width: 65%;
-  max-width: 350px;
+  max-width: 380px;
   border-radius: 20px;
   text-align: center;
   padding: 2rem;
-  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   position: relative;
 `;
 
@@ -61,16 +63,14 @@ const CloseButton = styled.div`
   top: 20px;
   right: 20px;
   font-size: 20px;
-  color: white;
+  color: #333;
   cursor: pointer;
 `;
 
 const BadgeContainer = styled.div`
-  font-size: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 10px 15px;
-  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin: auto;
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.5s ease-in-out;
@@ -82,30 +82,13 @@ const BadgeContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 1.5rem;
-  color: white;
+  font-size: 1.6rem;
+  color: #333;
   margin-top: 1rem;
 `;
 
 const Subtitle = styled.p`
   font-size: 1rem;
-  color: #bbb;
+  color: #555;
   margin-top: 0.5rem;
-`;
-
-const Button = styled.button`
-  background: #8a2be2;
-  color: white;
-  font-size: 1rem;
-  padding: 0.8rem;
-  width: 100%;
-  margin-top: 1.5rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    background: #7a1fd8;
-  }
 `;
