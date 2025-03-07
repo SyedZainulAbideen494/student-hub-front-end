@@ -36,7 +36,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: #FAF3E0; // 🌿 Soft warm beige
+    background: white; // 🌿 Soft warm beige
     color: #2D3748;
     text-align: center;
     padding: 20px;
@@ -62,7 +62,7 @@ const Subtitle = styled.p`
 `;
 
 const Button = styled.button`
-    background: #A68DAD; // 💜 Muted Lavender - Premium & Soft
+    background: #a0c4ff; // 💜 Muted Lavender - Premium & Soft
     color: white;
     border: none;
     padding: 14px 40px;
