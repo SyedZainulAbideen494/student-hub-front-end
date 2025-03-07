@@ -1,134 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { FaStar } from 'react-icons/fa';
-import './welcome.css';
-import { API_ROUTES } from '../app_modules/apiRoutes';
+import React, { useEffect, useState } from 'react';
+import Lottie from 'lottie-react';
+import confettiAnimation from './confettie.json'; // 🎉 Add animation file
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Welcome = () => {
     const [transition, setTransition] = useState('');
-    const [offerPrice, setOfferPrice] = useState(59); // Discounted price
-      const [isPremium, setIsPremium] = useState(null);
-    const nav = useNavigate()
+    const nav = useNavigate();
 
     useEffect(() => {
         setTransition('show');
     }, []);
 
-    const handlePayment = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                alert('Please log in to subscribe.');
-                return;
-            }
-
-            const planAmount = offerPrice === 59 ? 59 : 99; // Check if user skips
-
-            const { data } = await axios.post(API_ROUTES.getPremium, {
-                amount: planAmount,
-                currency: 'INR',
-                subscription_plan: 'monthly',
-                token,
-                duration: '1 month',
-            });
-
-            const options = {
-                key: 'rzp_live_jPX6SxetQbApHC',
-                amount: data.order.amount,
-                currency: 'INR',
-                order_id: data.order.id,
-                name: 'Edusify',
-                description: 'Exclusive Study Experience',
-                handler: async (response) => {
-                    const { data } = await axios.post(API_ROUTES.verifyPayment, {
-                        payment_id: response.razorpay_payment_id,
-                        order_id: response.razorpay_order_id,
-                        signature: response.razorpay_signature,
-                        token,
-                        subscription_plan: 'monthly',
-                        duration: 'monthly',
-                    });
-
-                    if (data.success) {
-                      nav('/payment-success');
-                    } else {
-                        alert('Payment verification failed!');
-                    }
-                },
-                theme: { color: "#000000" },
-      
-                method: {
-                  upi: true, // ✅ Enable UPI but force manual entry
-                  card: true,
-                  netbanking: true,
-                  wallet: true,
-                },
-              
-                config: {
-                  display: {
-                    hide: ["upi_recommended"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
-                  },
-                },
-              
-                prefill: {
-                  method: "upi", // ✅ Forces users to enter UPI ID manually
-                },
-              };
-              
-              const razorpayInstance = new window.Razorpay(options);
-              razorpayInstance.open();
-        } catch (error) {
-            console.error('Error initiating payment', error);
-        }
-    };
-
-    useEffect(() => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-          .then(response => setIsPremium(response.data.premium))
-          .catch(() => setIsPremium(false));
-      } else {
-        setIsPremium(false);
-      }
-    }, []);
-
     return (
-        <div className={`welcome__container__Welcome__page__new ${transition}`}>
-            <h1 className="welcome__title__Welcome__page__new">Welcome to Edusify </h1>
-            <p className="welcome__subtitle__Welcome__page__new">The study app that just <strong>gets</strong> you.</p>
+        <Wrapper className={transition}>
+            {/* 🎉 Soft Confetti Animation */}
+            <LottieWrapper>
+                <Lottie animationData={confettiAnimation} loop={true} />
+            </LottieWrapper>
 
-            <div className="welcome__premium__section__Welcome__page__new">
-                <h3 className="premium__title__Welcome__page__new">🎀 Special Offer: ₹59/month</h3>
-                <p className="premium__description__Welcome__page__new">Get everything. No limits. Just perfect.</p>
-                {isPremium ? (
-    <button className="premium__button__Welcome__page__new">You have premium!</button>
-    ) : (
-      <button onClick={handlePayment} className="premium__button__Welcome__page__new">
-                    <FaStar className="premium__icon__Welcome__page__new" /> Claim Now
-                </button>
-    )}
-  
-  {isPremium ? (
- <button
- className="notnow__button__Welcome__page__new"
- onClick={() => nav('/')}
->
-Continue
-</button>
-    ) : (
-      <button
-      className="notnow__button__Welcome__page__new"
-      onClick={() => nav('/')}
-  >
-      Not Now <span className="fomo__text__Welcome__page__new">(Next time: ₹99/month)</span>
-  </button>
-    )}
+            <Title>Welcome to Edusify!</Title>
+            <Subtitle>You've taken the first step towards better learning. Let's go! ✨</Subtitle>
 
-            </div>
-        </div>
+            <Button onClick={() => nav('/')}>Start Learning →</Button>
+        </Wrapper>
     );
 };
 
 export default Welcome;
+
+// Styled Components
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #FAF3E0; // 🌿 Soft warm beige
+    color: #2D3748;
+    text-align: center;
+    padding: 20px;
+`;
+
+const LottieWrapper = styled.div`
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+`;
+
+const Title = styled.h1`
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2D3748; // Muted navy
+`;
+
+const Subtitle = styled.p`
+    font-size: 16px;
+    color: #6B7280; // Soft gray-blue
+    margin-bottom: 25px;
+`;
+
+const Button = styled.button`
+    background: #E4A1A1; // 🌸 Soft Dusty Rose
+    color: white;
+    border: none;
+    padding: 14px 40px;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(228, 161, 161, 0.3);
+    transition: all 0.3s ease-in-out;
+    
+    &:hover {
+        background: linear-gradient(to right, #E4A1A1, #D08A8A); // Elegant gradient hover
+        transform: scale(1.05);
+    }
+`;
