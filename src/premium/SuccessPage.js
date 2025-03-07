@@ -21,7 +21,7 @@ const SuccessPage = () => {
       <CloseButton onClick={handleGoBack}>✕</CloseButton>
       <Content className={showContent ? "show" : ""}>
         <LottieContainer>
-          <Lottie animationData={successAnimation} loop={false} />
+          <Lottie animationData={successAnimation} loop={true} />
         </LottieContainer>
         <Title>Success!</Title>
         <Subtitle>You’ve unlocked Edusify Premium. Get ready to level up your learning!</Subtitle>
