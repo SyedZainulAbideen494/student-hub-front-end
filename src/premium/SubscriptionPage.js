@@ -142,7 +142,7 @@ const PaymentComponent = () => {
             subscription_plan: "Edusify Premium",
             duration: selectedPlan,
           });
-
+      
           if (data.success) {
             navigate("/payment-success");
           } else {
@@ -150,10 +150,28 @@ const PaymentComponent = () => {
           }
         },
         theme: { color: "#000000" },
+      
+        method: {
+          upi: true, // ✅ Enable UPI but force manual entry
+          card: true,
+          netbanking: true,
+          wallet: true,
+        },
+      
+        config: {
+          display: {
+            hide: ["upi_recommended"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
+          },
+        },
+      
+        prefill: {
+          method: "upi", // ✅ Forces users to enter UPI ID manually
+        },
       };
-
+      
       const razorpayInstance = new window.Razorpay(options);
       razorpayInstance.open();
+      
     } catch (error) {
       console.error("Error initiating payment", error);
     }
