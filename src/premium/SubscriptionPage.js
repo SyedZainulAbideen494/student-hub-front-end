@@ -185,14 +185,14 @@ const PaymentComponent = () => {
           {/* 1 Month Plan (Best Offer) */}
           <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
             <BestOfferTag>BEST OFFER</BestOfferTag>
-            <h2>1 MONTH</h2>
+            <h4>1 MONTH</h4>
             <p>₹3.30 per day</p>
-            <p style={{ fontSize: "12px", color: "#bbb" }}>Billed ₹99.00 per month</p>
+            <p style={{ fontSize: "12px", color: "#bbb" }}>Billed ₹99 per month</p>
           </PlanBox>
 
           {/* 1 Week Plan */}
           <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-            <h2>1 WEEK</h2>
+            <h4>1 WEEK</h4>
             <p>₹5.57 per day</p>
             <p style={{ fontSize: "12px", color: "#bbb" }}>Billed ₹39 per week</p>
           </PlanBox>
