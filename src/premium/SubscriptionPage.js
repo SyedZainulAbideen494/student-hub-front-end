@@ -242,7 +242,7 @@ const PaymentComponent = () => {
   
       {/* CTA Button */}
       {isPremium ? (
-        <Button disabled>You already have Premium! 🔥</Button>
+        <Button disabled>You have Premium! 🔥</Button>
       ) : (
         <Button onClick={handlePayment}>Unlock Edusify Premium</Button>
       )}
