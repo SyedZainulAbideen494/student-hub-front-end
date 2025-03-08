@@ -54,7 +54,7 @@
   margin: 5px 0;
 }
 
-.download-btn {
+.download-btn__android {
   background-color: #007aff; /* Apple blue for button */
   color: white;
   padding: 15px 40px;

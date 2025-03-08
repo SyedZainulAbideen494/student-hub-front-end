@@ -76,7 +76,7 @@ const DownloadPageAndroid = () => {
     logo: "https://edusify-download.vercel.app/static/media/1722866972968-removebg-preview.7e58008fdb08fcfb6a92.png",
     rating: 4.8,
     version: "2.0.1",
-    lastUpdated: "Nov 2, 2024",
+    lastUpdated: "March 8, 2025.",
   };
 
   const modalStyle = {
@@ -165,7 +165,7 @@ if (isInAppBrowser) {
             </div>
             <p className="app-version">Version: {app.version}</p>
             <p className="app-updated">Last updated: {app.lastUpdated}</p>
-            <button className="download-btn" onClick={handleInstallClick}>Download</button>
+            <button className="download-btn__android" onClick={handleInstallClick}>Download</button>
           </div>
         </div>
 
@@ -176,7 +176,7 @@ if (isInAppBrowser) {
         
         <div className="note-container">
           <p className="download-note">
-            If you can't download, copy this link and paste it in Chrome: <strong>https://edusify-download.vercel.app</strong>
+            If you can't download, copy this link and paste it in Chrome: <strong>https://edusify.vercel.app/android/download</strong>
           </p>
         </div>
       </div>
