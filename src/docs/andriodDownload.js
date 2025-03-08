@@ -6,6 +6,8 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 const DownloadPageAndroid = () => {
   const [isInAppBrowser, setIsInAppBrowser] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const downloadLink = "https://edusify.vercel.app/android/download";
 
   useEffect(() => {
     const checkInAppBrowser = () => {
@@ -152,6 +154,13 @@ if (isInAppBrowser) {
   );
 }
 
+const handleCopyLink = () => {
+  navigator.clipboard.writeText(downloadLink).then(() => {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Show "Copied!" for 2 seconds
+  });
+};
+
   return (
     <div className="download-page">
       <div className="app-details">
@@ -174,10 +183,26 @@ if (isInAppBrowser) {
           <p>{app.description}</p>
         </div>
         
-        <div className="note-container">
+         <div className="note-container">
           <p className="download-note">
-            If you can't download, copy this link and paste it in Chrome: <strong>https://edusify.vercel.app/android/download</strong>
+            If you can't download, copy this link and paste it in Chrome:<br /> 
+            <strong>{downloadLink}</strong>
           </p>
+          <button 
+            className="copy-btn" 
+            onClick={handleCopyLink}
+            style={{
+              marginTop: "10px",
+              padding: "8px 12px",
+              backgroundColor: "#007bff",
+              color: "#fff",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer"
+            }}
+          >
+            {copied ? "Copied!" : "Copy Link"}
+          </button>
         </div>
       </div>
     </div>
