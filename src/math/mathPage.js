@@ -965,7 +965,9 @@ const SparkleIcon = () => (
 </div>
 
 </div>
-
+<div style={{textAlign: 'center'}}>
+<small className="disclaimer-text">Edusify can make mistakes. Check important info.</small>
+</div>
       </div>
       <Modal
   isOpen={isMagicModalOpen}

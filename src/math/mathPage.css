@@ -58,6 +58,12 @@
   transition: color 0.2s ease, transform 0.2s ease;
   padding: 8px;
 }
+.disclaimer-text {
+  font-size: 8px;
+  color: #999;
+  margin-top: 1px;
+  display: block;
+}
 
 .settings-btn:hover {
   transform: scale(1.1); /* Optional: Adds a subtle zoom effect on hover */
