@@ -842,11 +842,17 @@ const SparkleIcon = () => (
                     />
                   </MathJaxContext>
                   {result.role === 'model' && (
+                   <div>
                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-    <button className="flashcard__set__page__ai-explain-btn" onClick={() => handleMagicButtonClick(result.parts.map((part) => part.text).join(''))}>
-       <SparkleIcon className="ai-explain-flashcard-icon" /> Click Here
-       </button>
+                     <button className="flashcard__set__page__ai-explain-btn" onClick={() => handleMagicButtonClick(result.parts.map((part) => part.text).join(''))}>
+                       <SparkleIcon className="ai-explain-flashcard-icon" /> Click Here
+                     </button>
+                   </div>
+                   <div style={{fontSize: '12px', color: '#888', textAlign: 'center', marginTop: '10px'}}>
+  This chatbot is just an assistant and can't add tasks, edit to-dos, or modify study plans. Please manage them manually.
+</div>
                  </div>
+                 
                   )}
                 </div>
               </div>
