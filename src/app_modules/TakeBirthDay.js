@@ -12,22 +12,29 @@ const BirthdayModal = () => {
 
   const checkModalConditions = () => {
     const firstSignInTime = localStorage.getItem('firstSignInTime');
-    const birthdaySubmitted = localStorage.getItem('birthdaySubmitted'); // Check if the birthday was submitted
-  
+    const birthdaySubmitted = localStorage.getItem('birthdaySubmitted');
+    const lastShownTime = localStorage.getItem('lastShownBirthdayModal'); // Get last shown time
+
     if (birthdaySubmitted === 'true') {
-      setIsOpen(false); // Do not show the modal if already submitted
+      setIsOpen(false);
       return;
     }
-  
+
+    const currentTime = new Date().getTime();
+
     if (!firstSignInTime) {
-      const currentTime = new Date().getTime();
       localStorage.setItem('firstSignInTime', currentTime);
     } else {
-      const now = new Date().getTime();
-      const timeSinceSignIn = (now - firstSignInTime) / (1000 * 60 * 60); // Time in hours
-  
+      const timeSinceSignIn = (currentTime - firstSignInTime) / (1000 * 60 * 60); 
+
+      // Check if the modal was shown in the last 3 minutes
+      if (lastShownTime && currentTime - lastShownTime < 3 * 60 * 1000) {
+        return; // Don't show the modal if it was shown in the last 3 minutes
+      }
+
+      // Show the modal if 3 hours have passed since the first sign-in, or after 3 minutes if the modal was just closed
       if (timeSinceSignIn >= 3) {
-        setIsOpen(true); // Show the modal if conditions are met
+        setIsOpen(true);
       }
     }
   };
@@ -59,6 +66,8 @@ const BirthdayModal = () => {
   };
 
   const handleLaterClick = () => {
+    const currentTime = new Date().getTime();
+    localStorage.setItem('lastShownBirthdayModal', currentTime); // Store the time when modal is shown
     setIsOpen(false);
   };
 
