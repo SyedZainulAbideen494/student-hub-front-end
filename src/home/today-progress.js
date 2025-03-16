@@ -215,7 +215,7 @@ const TodayProgress = () => {
           )}
         </div>
       </div>
-      <GuideBanner/>
+
     </div>
   );
 };
