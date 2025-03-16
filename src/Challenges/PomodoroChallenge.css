@@ -1,0 +1,133 @@
+/* Fullscreen Centered Container */
+.container__pomodoro__weekly__challenge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #eef1f6, #e3e5e8);
+    font-family: "SF Pro Display", sans-serif;
+    padding: 20px;
+}
+
+/* Glassmorphism Card */
+.card__pomodoro__weekly__challenge {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card__pomodoro__weekly__challenge:hover {
+    transform: translateY(-5px);
+}
+
+/* Header */
+.header__pomodoro__weekly__challenge h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 8px;
+}
+
+.header__pomodoro__weekly__challenge p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Progress Circle */
+.progress__wrapper__pomodoro__weekly__challenge {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px;
+}
+
+/* Glow Effect */
+.glow__pomodoro__weekly__challenge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 122, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.glow-active {
+    opacity: 1;
+    animation: pulse 1.5s infinite alternate;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Claim Button */
+.claim__button__pomodoro__weekly__challenge {
+    background: linear-gradient(135deg, #007aff, #004cbf);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+}
+
+.claim__button__pomodoro__weekly__challenge:hover {
+    background: linear-gradient(135deg, #004cbf, #002f7f);
+    transform: scale(1.05);
+}
+
+/* Locked Claim Button */
+.claim__button__locked__pomodoro__weekly__challenge {
+    background: #e0e0e5;
+    color: #999;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.hours__text__pomodoro__weekly__challenge {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444; /* Slightly soft for elegance */
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin-top: 25px; /* Brings it closer to the progress bar */
+    margin-bottom: 20px; /* Balanced spacing */
+    opacity: 0.85; /* Softens it slightly */
+}
+
+
+/* Back Button */
+.back__button__pomodoro__weekly__challenge {
+    margin-top: 12px;
+    background: #f5f5f5;
+    color: #555;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.back__button__pomodoro__weekly__challenge:hover {
+    background: #e0e0e5;
+}

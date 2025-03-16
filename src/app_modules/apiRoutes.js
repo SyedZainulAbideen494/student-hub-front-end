@@ -232,5 +232,8 @@ export const API_ROUTES = {
   fetchAssignment: `${API_URL}/api/chat/assignment`,
   getAllAssignments: `${API_URL}/api/get/assignments`,
   checkUserAssignment: `${API_URL}/api/chat/user-assignments`,
-  checkConvoCountAi: `${API_URL}/check-convo-count`
+  checkConvoCountAi: `${API_URL}/check-convo-count`,
+  fetchPomodoroChallengeProgress: `${API_URL}/pomodoro/weekly-progress-premium`,
+  checkWeeklyRewardClaimed: `${API_URL}/pomodoro/check-claim`,
+  claimPremiumReward: `${API_URL}/pomodoro/claim`
 }

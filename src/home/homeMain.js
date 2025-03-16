@@ -27,6 +27,8 @@ import OneTimeOffer from "../premium/modal/onetimeModal";
 import ValentineModal from "../gift Cards/modals/ValentineModal";
 import ExamTimeOffer from "../premium/modal/exam-time-modal";
 import SubscriptionRedirector from "../premium/SubscriptionRedirector";
+import AIAgent from "../ai agent/ai agent";
+import PomodoroChallengeBannerPremium from "../Challenges/PomodoroChallengeBannerPremium";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -143,6 +145,7 @@ const HomeMain = () => {
           <SubscriptionRedirector/>
           <ReviewModal />
           <HomeTopBoxes />
+          <PomodoroChallengeBannerPremium/>
           <FeedbackFormWeekly />
           <TodayEventsAndTasks />
           <FriendsDashboard />

@@ -1,0 +1,108 @@
+.pomodoro__challenge__banner__premium {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.8); /* Glass effect */
+    border-radius: 12px;
+    padding: 18px 24px;
+    max-width: 400px; /* Sleek size */
+    text-align: left;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(10px);
+    gap: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .pomodoro__challenge__banner__premium:hover {
+    transform: translateY(-3px);
+  }
+  
+  .animation__wrapper__challenge__banner__premium {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+  }
+  
+  .text__content__challenge__banner__premium {
+    flex-grow: 1;
+  }
+  
+  .challenge__title__challenge__banner__premium {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .icon__challenge__banner__premium {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .challenge__description__challenge__banner__premium {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  
+  /* Glassy Button */
+  .challenge__btn__challenge__banner__premium {
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .challenge__btn__challenge__banner__premium:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+  }
+  
+  .btn__icon__challenge__banner__premium {
+    font-size: 1rem;
+  }
+  
+  /* ✅ Keep Left-Right Layout on Small Screens */
+  @media (max-width: 480px) {
+    .pomodoro__challenge__banner__premium {
+      max-width: 85%;
+      padding: 12px 16px;
+      gap: 12px;
+    }
+  
+    .animation__wrapper__challenge__banner__premium {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .challenge__title__challenge__banner__premium {
+      font-size: 1.1rem;
+    }
+  
+    .challenge__description__challenge__banner__premium {
+      font-size: 0.85rem;
+    }
+  
+    .challenge__btn__challenge__banner__premium {
+      font-size: 0.85rem;
+      padding: 8px 14px;
+    }
+  }
+  
