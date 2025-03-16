@@ -29,6 +29,7 @@ import ExamTimeOffer from "../premium/modal/exam-time-modal";
 import SubscriptionRedirector from "../premium/SubscriptionRedirector";
 import AIAgent from "../ai agent/ai agent";
 import PomodoroChallengeBannerPremium from "../Challenges/PomodoroChallengeBannerPremium";
+import GuideBanner from "../guides/neet/guideBanner";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -146,6 +147,7 @@ const HomeMain = () => {
           <ReviewModal />
           <HomeTopBoxes />
           <PomodoroChallengeBannerPremium/>
+          <GuideBanner/>
           <FeedbackFormWeekly />
           <TodayEventsAndTasks />
           <FriendsDashboard />
