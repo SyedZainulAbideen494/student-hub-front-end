@@ -466,7 +466,7 @@ const SparkleIcon = () => (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "10px" }}>
               <img
                 src={`data:image/png;base64,${chatHistory[chatHistory.length - 1].parts.find((part) => part.image)?.image}`}
-                alt="Generated"
+               alt="If the image is not visible, please click the settings icon in the top right, clear messages, and try again."
                 style={{ maxWidth: "100%", borderRadius: "8px", marginBottom: "12px" }}
               />
 
