@@ -1,0 +1,105 @@
+/* Container */
+.__image__gen__page__Ai__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f9f9f9;
+    font-family: "SF Pro Display", sans-serif;
+  }
+  
+  /* Title */
+  .__image__gen__page__Ai__title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 20px;
+  }
+  
+  /* Chatbox */
+  .__image__gen__page__Ai__chatbox {
+    width: 60%;
+    height: 60vh;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Messages */
+  .__image__gen__page__Ai__message {
+    max-width: 75%;
+    padding: 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  
+  .__image__gen__page__Ai__user {
+    align-self: flex-end;
+    background: #007aff;
+    color: white;
+  }
+  
+  .__image__gen__page__Ai__ai {
+    align-self: flex-start;
+    background: #eaeaea;
+    color: #222;
+  }
+  
+  /* Images */
+  .__image__gen__page__Ai__message img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Loading */
+  .__image__gen__page__Ai__loading {
+    align-self: center;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Input & Button */
+  .__image__gen__page__Ai__input {
+    display: flex;
+    gap: 10px;
+    width: 60%;
+    margin-top: 20px;
+  }
+  
+  .__image__gen__page__Ai__input__field {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+  }
+  
+  .__image__gen__page__Ai__send {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #007aff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .__image__gen__page__Ai__send:hover {
+    background: #005bb5;
+  }
+  

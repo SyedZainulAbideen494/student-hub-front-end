@@ -1,71 +1,99 @@
-/* 🌟 AI Selection Page Styling 🌟 */
+/* 🌟 AI Selection Page - Premium Glassmorphism */
 
-.ai-selection-container-ai-selection-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #f5f5f7, #e3e4e8);
-    text-align: center;
+.copo__container__ai__selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f5f7, #e3e4e8);
+  text-align: center;
+  position: relative;
+}
+
+/* 🏆 Floating SVG */
+.copo__floating__svg {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.2;
+  animation: copo__float__ai 6s infinite ease-in-out alternate;
+}
+
+/* ✨ Title */
+.copo__title__ai__selection {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 40px;
+  font-family: "SF Pro Display", sans-serif;
+}
+
+/* 🔲 Button Container */
+.copo__buttons__ai__selection {
+  display: flex;
+  gap: 20px;
+}
+
+/* 🔳 Glassmorphism Buttons */
+.copo__btn__ai__selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.15);
+  color: #222;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: "SF Pro Display", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🎯 Button Hover Effects */
+.copo__btn__ai__selection:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 🚀 Button Click Effect */
+.copo__btn__ai__selection:active {
+  transform: scale(0.96);
+}
+
+/* 🎨 Icons */
+.copo__icon__ai__selection {
+  font-size: 1.6rem;
+}
+
+/* 🌊 Floating Animation */
+@keyframes copo__float__ai {
+  0% {
+      transform: translateX(-50%) translateY(0);
   }
-  
-  /* 🏆 Title */
-  .ai-title-ai-selection-page {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #222;
-    margin-bottom: 40px;
-    font-family: "SF Pro Display", sans-serif;
+  100% {
+      transform: translateX(-50%) translateY(20px);
   }
-  
-  /* 🔲 Button Container */
-  .ai-buttons-ai-selection-page {
-    display: flex;
-    gap: 20px;
-  }
-  
-  /* 🔳 Glassmorphism Button */
-  .ai-btn-ai-selection-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.2);
-    color: #222;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    font-family: "SF Pro Display", sans-serif;
-  }
-  
-  /* 🎯 Button Hover Effect */
-  .ai-btn-ai-selection-page:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.4);
-  }
-  
-  /* 🎨 Icons */
-  .ai-icon-ai-selection-page {
-    font-size: 1.5rem;
-  }
-  
-  /* 📱 Responsive Design */
-  @media (max-width: 768px) {
-    .ai-buttons-ai-selection-page {
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .copo__buttons__ai__selection {
       flex-direction: column;
-    }
-  
-    .ai-btn-ai-selection-page {
+  }
+
+  .copo__btn__ai__selection {
       width: 100%;
       max-width: 300px;
-    }
   }
-  
+}

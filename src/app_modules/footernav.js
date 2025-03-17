@@ -73,7 +73,7 @@ const FooterNav = () => {
                 </button>
             </Link>
 
-            <Link to='/ai' style={{ textDecoration: 'none' }}>
+            <Link to='/ai/select' style={{ textDecoration: 'none' }}>
     <button className={`nav-btn-footer-nav ${location.pathname === '/ai' ? 'active' : ''}`}>
         <SparkleIcon className="icon-footer-nav" />
         <span className="btn-label">AI</span>
