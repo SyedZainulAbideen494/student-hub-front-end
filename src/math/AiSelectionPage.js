@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBrain } from "react-icons/fa"; // AI Brain Icon
-import { MdBrush } from "react-icons/md"; // Creative Brush Icon
-import "./AiSelectionPage.css"; // Import the CSS
+import { FaBrain, FaPencilAlt, FaLayerGroup, FaRegLightbulb } from "react-icons/fa"; 
+import { MdBrush, MdQuiz } from "react-icons/md"; 
+import "./AiSelectionPage.css"; 
 
 const AiSelectionPage = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const AiSelectionPage = () => {
   return (
     <div className="copo__container__ai__selection">
       <h1 className="copo__title__ai__selection">Choose Your AI</h1>
-      
+
       {/* SVG Floating Animation */}
       <div className="copo__floating__svg">
         <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
@@ -24,10 +24,26 @@ const AiSelectionPage = () => {
           <FaBrain className="copo__icon__ai__selection" />
           AI Chatbot
         </button>
-        
+
         <button className="copo__btn__ai__selection copo__btn__image" onClick={() => navigate("/ai/image")}>
           <MdBrush className="copo__icon__ai__selection" />
           AI Image Generator
+        </button>
+
+        <button className="copo__btn__ai__selection copo__btn__notes" onClick={() => navigate("/notes/create/ai")}>
+          <FaPencilAlt className="copo__icon__ai__selection" />
+          AI Notes
+        </button>
+
+        <button className="copo__btn__ai__selection copo__btn__quiz" onClick={() => navigate("/quiz/ai")}>
+          <MdQuiz className="copo__icon__ai__selection" />
+          AI Quizzes
+        </button>
+
+
+        <button className="copo__btn__ai__selection copo__btn__mindmaps" onClick={() => navigate("/mindmap/create")}>
+          <FaRegLightbulb className="copo__icon__ai__selection" />
+          AI Mind Maps
         </button>
       </div>
     </div>
