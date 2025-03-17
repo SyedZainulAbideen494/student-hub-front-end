@@ -235,5 +235,6 @@ export const API_ROUTES = {
   checkConvoCountAi: `${API_URL}/check-convo-count`,
   fetchPomodoroChallengeProgress: `${API_URL}/pomodoro/weekly-progress-premium`,
   checkWeeklyRewardClaimed: `${API_URL}/pomodoro/check-claim`,
-  claimPremiumReward: `${API_URL}/pomodoro/claim`
+  claimPremiumReward: `${API_URL}/pomodoro/claim`,
+  generateImage: `${API_URL}/generate-image`
 }

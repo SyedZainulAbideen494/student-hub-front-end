@@ -162,6 +162,8 @@ import MyAssignments from "./assignment Maker/MyAssignments";
 import LoaderAssignemnt from "./assignment Maker/loaderAssignment";
 import YouTubeSummarizer from "./math/yt/ytTranscript";
 import PomodoroChallenge from "./Challenges/PomodoroChallenge";
+import MathPageImageGen from "./math/mathPageImageGen";
+import AiSelectionPage from "./math/AiSelectionPage";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -200,6 +202,8 @@ const router = createBrowserRouter([
   {path: '/comments/:id', element: <CommentsPage/>},
   {path: '/profile/:id', element: <UsersProfile/>},
   {path: '/ai', element: <MathPage/>},
+  {path: '/ai/image', element: <MathPageImageGen/>},
+  {path: '/ai/select', element: <AiSelectionPage/>},
   {path: '/science/helper', element: <ScienceHelper/>},
   {path: '/search', element: <SearchPage/>},
   {path: '/settings', element: <SettingsPage/>},
