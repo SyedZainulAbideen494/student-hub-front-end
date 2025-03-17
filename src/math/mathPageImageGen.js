@@ -136,18 +136,7 @@ const [imageChatHistory, setImageChatHistory] = useState([]);
     setIsSettingsModalOpen(!isSettingsModalOpen);
   };
 
-  useEffect(() => {
-      // Check local storage for tutorial completion status
-      const completed = localStorage.getItem('AIPageTutorialComplete');
-      if (completed) {
-          setTutorialComplete(true); // Set tutorialComplete to true if found
-      }
-  }, []);
 
-  const handleTutorialComplete = () => {
-      setTutorialComplete(true); // Hide tutorial when complete
-      localStorage.setItem('AIPageTutorialComplete', 'true'); // Store completion status in local storage
-  };
 
   const navigate = useNavigate();
   const messagesEndRef = useRef(null);
@@ -221,7 +210,7 @@ const [imageChatHistory, setImageChatHistory] = useState([]);
       console.error("Error generating image:", error);
       setChatHistory([
         ...newHistory,
-        { role: "model", parts: [{ text: "Something went wrong while generating the image. Please try again later." }] },
+        { role: "model", parts: [{ text: "Oops! Something went wrong while generating the image. Please try again later, or clear previous messages by tapping the settings icon in the top right." }] },
       ]);
     } finally {
       setLoading(false);
@@ -342,17 +331,29 @@ const SparkleIcon = () => (
 
   return (
     <div className="mathsolver-container">
-           {!tutorialComplete && <AIPageTutorial onComplete={handleTutorialComplete} />}
-
+     
 
            <div className="math-page-header">
   <button className="back-btn" onClick={() => navigate('/')}>
     <FaArrowLeft />
   </button>
 
-  <div style={{ fontSize: "10px", color: "#666", textAlign: "center", padding: "4px 0" }}>
-
+  <div
+  style={{
+    fontSize: "12px",
+    color: "#888",
+    textAlign: "center",
+    padding: "6px 0",
+    fontWeight: "500",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    opacity: "0.8",
+  }}
+>
+  Beta
 </div>
+
+
 
 
   <button className={`settings-btn ${isSettingsModalOpen ? 'active' : ''}`} onClick={toggleSettingsModal}>
