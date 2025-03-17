@@ -30,21 +30,6 @@ const AiSelectionPage = () => {
           AI Image Generator
         </button>
 
-        <button className="copo__btn__ai__selection copo__btn__notes" onClick={() => navigate("/notes/create/ai")}>
-          <FaPencilAlt className="copo__icon__ai__selection" />
-          AI Notes
-        </button>
-
-        <button className="copo__btn__ai__selection copo__btn__quiz" onClick={() => navigate("/quiz/ai")}>
-          <MdQuiz className="copo__icon__ai__selection" />
-          AI Quizzes
-        </button>
-
-
-        <button className="copo__btn__ai__selection copo__btn__mindmaps" onClick={() => navigate("/mindmap/create")}>
-          <FaRegLightbulb className="copo__icon__ai__selection" />
-          AI Mind Maps
-        </button>
       </div>
     </div>
   );
