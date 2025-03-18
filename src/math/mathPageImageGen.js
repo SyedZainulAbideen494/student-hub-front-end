@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./mathPageImageGen.css";
 import Loader from "./ImageGnnLoader"; // Full-Page Loader Component
-import { FiDownload } from "react-icons/fi"; // Download Icon
+import { FiDownload,FiArrowLeft } from "react-icons/fi"; // Download Icon
 import { API_ROUTES } from "../app_modules/apiRoutes";
+import FooterNav from "../app_modules/footernav";
 
 const MathPageImageGen = () => {
   const [message, setMessage] = useState("");
@@ -47,6 +48,11 @@ const MathPageImageGen = () => {
     }
   };
 
+  const goBack = () => {
+    window.history.back();
+  };
+
+
   // Function to Download the Image
   const downloadImage = () => {
     if (!image) return;
@@ -73,6 +79,10 @@ const MathPageImageGen = () => {
 
   return (
     <div className="container-ImageGen">
+
+<button className="backBtn-ImageGen" onClick={goBack}>
+        <FiArrowLeft size={22} />
+      </button>
       <h2 className="title-ImageGen">AI Image Generator</h2>
 
       <div className="inputBox-ImageGen">
