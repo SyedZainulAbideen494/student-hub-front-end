@@ -1,5 +1,4 @@
 /* 🌟 AI Selection Page - Premium Glassmorphism */
-
 .copo__container__ai__selection {
   display: flex;
   flex-direction: column;
@@ -11,6 +10,32 @@
   position: relative;
   padding: 20px;
   overflow-y: auto;
+}
+
+/* 🔙 Back Button */
+.copo__back__btn {
+  position: absolute;
+  top: 6px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.copo__back__btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* 🏆 Floating SVG */
@@ -53,7 +78,6 @@
   border-radius: 12px;
   cursor: pointer;
   backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
   background: rgba(255, 255, 255, 0.15);
   color: #222;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -62,8 +86,6 @@
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-
-  /* 👇 Initial animation state */
   opacity: 0;
   transform: translateY(50px);
 }
@@ -71,8 +93,8 @@
 /* 🎯 Button Hover Effects */
 .copo__btn__ai__selection:hover {
   transform: scale(1.06);
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* 🚀 Button Click Effect */
@@ -80,41 +102,36 @@
   transform: scale(0.96);
 }
 
-/* 🎨 Icons */
-.copo__icon__ai__selection {
-  font-size: 1.6rem;
-}
-
 /* 🌊 Floating Animation */
 @keyframes copo__float__ai {
   0% {
-      transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
   100% {
-      transform: translateX(-50%) translateY(20px);
+    transform: translateX(-50%) translateY(20px);
   }
 }
 
 /* 🌀 Smooth Enter Animation */
 @keyframes copo__fade__in {
   0% {
-      opacity: 0;
-      transform: translateY(50px);
+    opacity: 0;
+    transform: translateY(50px);
   }
   100% {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 /* 📱 Responsive Design */
 @media (max-width: 768px) {
   .copo__buttons__ai__selection {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .copo__btn__ai__selection {
-      width: 100%;
-      max-width: 300px;
+    width: 100%;
+    max-width: 300px;
   }
 }

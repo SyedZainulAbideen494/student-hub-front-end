@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaBrain, FaMap } from "react-icons/fa";
-import { MdBrush, MdQuiz, MdNotes, MdOutlineAssignment } from "react-icons/md";
+import { MdBrush, MdQuiz, MdNotes, MdOutlineAssignment, MdArrowBack } from "react-icons/md";
 import "./AiSelectionPage.css";
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import axios from "axios";
@@ -17,10 +17,11 @@ const AiSelectionPage = () => {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
-      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-        .then(response => setIsPremium(response.data.premium))
+      axios
+        .post(API_ROUTES.checkSubscription, {}, { headers: { Authorization: token } })
+        .then((response) => setIsPremium(response.data.premium))
         .catch(() => setIsPremium(false));
     } else {
       setIsPremium(false);
@@ -29,6 +30,12 @@ const AiSelectionPage = () => {
 
   return (
     <div className="copo__container__ai__selection">
+      {/* 🔙 Back Button */}
+      <button className="copo__back__btn" onClick={() => navigate(-2)}>
+        <MdArrowBack className="copo__back__icon" />
+        Back
+      </button>
+
       <h1 className="copo__title__ai__selection">Choose Your AI</h1>
 
       {/* SVG Floating Animation */}
