@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBrain, FaPencilAlt, FaLayerGroup, FaRegLightbulb } from "react-icons/fa"; 
-import { MdBrush, MdQuiz } from "react-icons/md"; 
-import "./AiSelectionPage.css"; 
+import { FaBrain, FaMap } from "react-icons/fa";
+import { MdBrush, MdQuiz, MdNotes, MdOutlineAssignment } from "react-icons/md";
+import "./AiSelectionPage.css";
+import { API_ROUTES } from "../app_modules/apiRoutes";
+import axios from "axios";
 
 const AiSelectionPage = () => {
   const navigate = useNavigate();
+  const [animate, setAnimate] = useState(false);
+  const [isPremium, setIsPremium] = useState(null);
+
+  // Activate animation when component mounts
+  useEffect(() => {
+    setTimeout(() => setAnimate(true), 100);
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+        .then(response => setIsPremium(response.data.premium))
+        .catch(() => setIsPremium(false));
+    } else {
+      setIsPremium(false);
+    }
+  }, []);
 
   return (
     <div className="copo__container__ai__selection">
@@ -20,16 +40,26 @@ const AiSelectionPage = () => {
       </div>
 
       <div className="copo__buttons__ai__selection">
-        <button className="copo__btn__ai__selection copo__btn__chat" onClick={() => navigate("/ai")}>
-          <FaBrain className="copo__icon__ai__selection" />
-          AI Chatbot
-        </button>
-
-        <button className="copo__btn__ai__selection copo__btn__image" onClick={() => navigate("/ai/image")}>
-          <MdBrush className="copo__icon__ai__selection" />
-          AI Image Generator
-        </button>
-
+        {[
+          { icon: <FaBrain />, text: "AI Chatbot", path: "/ai" },
+          { icon: <MdBrush />, text: "AI Image Generator", path: isPremium ? "/ai/image" : "/subscription" },
+          { icon: <MdNotes />, text: "AI Notes", path: isPremium ? "/notes/create/ai" : "/subscription" },
+          { icon: <MdQuiz />, text: "AI Quizzes", path: "/quiz/ai" },
+          { icon: <FaMap />, text: "AI Mind Maps", path: "/mindmap/create" },
+          { icon: <MdOutlineAssignment />, text: "AI Assignment Maker", path: "/assignment-maker" }
+        ].map((item, index) => (
+          <button
+            key={index}
+            className="copo__btn__ai__selection"
+            onClick={() => navigate(item.path)}
+            style={{
+              animation: animate ? `copo__fade__in 0.5s ease-out ${index * 0.1}s forwards` : "none"
+            }}
+          >
+            {item.icon}
+            {item.text}
+          </button>
+        ))}
       </div>
     </div>
   );

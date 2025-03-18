@@ -5,10 +5,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(135deg, #f5f5f7, #e3e4e8);
   text-align: center;
   position: relative;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 /* 🏆 Floating SVG */
@@ -33,7 +35,9 @@
 /* 🔲 Button Container */
 .copo__buttons__ai__selection {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 /* 🔳 Glassmorphism Buttons */
@@ -57,6 +61,11 @@
   font-family: "SF Pro Display", sans-serif;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+
+  /* 👇 Initial animation state */
+  opacity: 0;
+  transform: translateY(50px);
 }
 
 /* 🎯 Button Hover Effects */
@@ -83,6 +92,18 @@
   }
   100% {
       transform: translateX(-50%) translateY(20px);
+  }
+}
+
+/* 🌀 Smooth Enter Animation */
+@keyframes copo__fade__in {
+  0% {
+      opacity: 0;
+      transform: translateY(50px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
   }
 }
 
