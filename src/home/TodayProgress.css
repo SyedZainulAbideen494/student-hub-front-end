@@ -1,65 +1,103 @@
-/* Main container */
+/* 🌟 Premium Glassmorphism Container */
 .today-progress-dashboard__container {
     padding: 20px;
-    background-color: #ffffff; /* Soft off-white background */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly darker shadow */
+    background: rgba(255, 255, 255, 0.2); /* Translucent for glassmorphism */
+    backdrop-filter: blur(15px);
+    border-radius: 15px; /* Softer rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Elegant shadow */
     max-width: 600px;
     margin: 10px auto;
     width: 90%;
+    animation: fadeIn 0.7s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Hover Effect - Slight Lift */
+.today-progress-dashboard__container:hover {
+    transform: translateY(-3px);
+}
 
+/* ✨ Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🏆 Inline Flexbox for Layout */
 .inline__today-progress-dashboard__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Left side - Study Time Text */
+/* 🎯 Left Side - Study Time Text */
 .study-time__today-progress-dashboard--left {
     flex: 1;
     text-align: left;
 }
 
-/* Time Text Styling */
+/* 📊 Study Time Number */
 .study-time-left__today-progress-dashboard--text {
-    font-size: 26px;
-    font-weight: 600;
-    color: #333333; /* Dark gray for readability */
+    font-size: 28px;
+    font-weight: 700;
+    color: #222; /* Darker for contrast */
+    transition: color 0.3s ease-in-out;
 }
 
+/* 🏷 Label Under Study Time */
 .study-time-left-label__today-progress-dashboard--text {
     font-size: 12px;
-    color: #888888; /* Light gray for the label */
+    color: #777;
 }
 
-/* Pomodoro progress circle container */
+/* 🟢 Pomodoro Progress Circle */
 .pomodoro-progress-circle__today-progress-dashboard--container {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: popIn 0.7s ease-in-out;
 }
 
-/* Styling for the progress circle text */
+/* 🔵 Circular Progress Bar Text */
 .react-circular-progressbar-text {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
-    color: #ff0000; /* Darker shade for text in the circle */
+    fill: #ff5555; /* Vibrant shade */
+    transition: fill 0.3s ease-in-out;
 }
 
-/* Error and loading states */
+/* ⚡ Subtle Pop Animation */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 🚀 Error, Loading, and No Plan States */
 .loading__today-progress-dashboard--container,
 .error__today-progress-dashboard--container,
 .no-study-plan__today-progress-dashboard--container {
     text-align: center;
     padding: 20px;
-    color: #555555; /* Softer gray */
+    color: #555; /* Softer contrast */
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Responsive Design */
+/* 🎯 Responsive Design for Mobile */
 @media (max-width: 768px) {
     .today-progress-dashboard__container {
         padding: 15px;
@@ -71,11 +109,11 @@
     }
 
     .study-time-left__today-progress-dashboard--text {
-        font-size: 20px; /* Smaller text size on mobile */
+        font-size: 22px; /* Slightly smaller */
     }
 
     .study-time-left-label__today-progress-dashboard--text {
-        font-size: 10px; /* Smaller label text */
+        font-size: 10px;
     }
 
     .pomodoro-progress-circle__today-progress-dashboard--container {
@@ -84,27 +122,174 @@
     }
 
     .react-circular-progressbar-text {
-        font-size: 12px; /* Adjust font size for mobile */
+        font-size: 13px; /* Adjusted for mobile */
     }
 }
 
-/* View Today's Plan Button */
+/* 🎯 View Today's Plan Button Container */
 .view-plan-btn__today-progress-dashboard--container {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 6px;
-  }
-  
-  .view-plan-btn__today-progress-dashboard {
-    padding: 9px 20px;
-    background-color: #1D1A23;
+    margin-top: 10px;
+}
+
+/* 🚀 View Plan Button - Premium Look */
+.view-plan-btn__today-progress-dashboard {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #1D1A23, #2E2B38);
     color: white;
     font-size: 14px;
     font-weight: bold;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🚀 Button Hover & Click Effects */
+.view-plan-btn__today-progress-dashboard:hover {
+    background: linear-gradient(135deg, #2E2B38, #3A3645);
+    transform: scale(1.05);
+}
+
+.view-plan-btn__today-progress-dashboard:active {
+    transform: scale(0.98);
+}
+
+/* 📂 Floating Back Button (Arrow Only) */
+.back-btn__today-progress-dashboard {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🎯 Arrow Only Icon */
+.back-btn__today-progress-dashboard::before {
+    content: '←';
+    font-size: 18px;
+    color: #222;
+    font-weight: bold;
+}
+
+/* 🚀 Back Button Hover */
+.back-btn__today-progress-dashboard:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+}
+
+
+/* 🌟 Main Container - High-End Glassmorphic Look */
+.dashboard__today__progress__container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Light glass effect */
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* 🔥 Always Keep 2 Items Inline */
+.dashboard__today__progress__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Ensures 2 items per row */
+    gap: 16px;
+}
+
+/* 🎯 Individual Cards */
+.dashboard__today__progress__card {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔥 Hover Effects */
+.dashboard__today__progress__card:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* 📌 Card Titles */
+.dashboard__today__progress__card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1D1A23;
+    margin-bottom: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 📊 Text Inside Cards */
+.dashboard__today__progress__card p {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+/* 🟢 Circular Progress Bar */
+.dashboard__progress__circle {
+    width: 100px !important;
+    height: 100px !important;
+    margin: auto;
+    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.1));
+}
+
+/* ✨ Smooth Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 Responsive Design - 2 Items Inline Even on Small Screens */
+@media (max-width: 600px) {
+    .dashboard__today__progress__row {
+        grid-template-columns: repeat(2, 1fr); /* Keeps 2 items inline even on mobile */
+        gap: 10px;
+    }
+
+    .dashboard__today__progress__container {
+        padding: 15px;
+    }
+
+    .dashboard__today__progress__card {
+        padding: 14px;
+    }
+
+    .dashboard__today__progress__card h3 {
+        font-size: 16px;
+    }
+
+    .dashboard__today__progress__card p {
+        font-size: 13px;
+    }
+
+    .dashboard__progress__circle {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}

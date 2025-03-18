@@ -149,72 +149,52 @@ const TodayProgress = () => {
 
       </div>
 
-      <div className="card__today__ai__pan_overview__container">
-               {/* Today's Task Completion Card */}
-               <div className="card__today__ai__pan_overview">
-          <h3>Today's Task</h3>
-          <CircularProgressbar
-            value={taskCompletionTodayPercentage}
-            text={`${taskCompletionTodayPercentage.toFixed(0)}%`}
-            styles={{
-              path: {
-                stroke: '#a2d2ff',
-                strokeLinecap: 'round',
-                strokeWidth: 8,
-              },
-              trail: {
-                stroke: '#e0e0e0',
-              },
-              text: {
-                fill: '#333',
-                fontSize: '16px',
-                fontWeight: 'bold',
-              },
-            }}
-          />
-        </div>
+      <div className="dashboard__today__progress__container">
+  <div className="dashboard__today__progress__row">
+    {/* Today's Task Completion Card */}
+    <div className="dashboard__today__progress__card">
+      <h3>Today's Task</h3>
+      <CircularProgressbar
+        value={taskCompletionTodayPercentage}
+        text={`${taskCompletionTodayPercentage.toFixed(0)}%`}
+        className="dashboard__progress__circle"
+      />
+    </div>
 
-        {/* Overall Task Completion Card */}
-        <div className="card__today__ai__pan_overview">
-          <h3>Overall Tasks</h3>
-          <CircularProgressbar
-            value={taskCompletionOverallPercentage}
-            text={`${taskCompletionOverallPercentage.toFixed(0)}%`}
-            styles={{
-              path: {
-                stroke: '#bdb2ff',
-                strokeLinecap: 'round',
-                strokeWidth: 8,
-              },
-              trail: {
-                stroke: '#e0e0e0',
-              },
-              text: {
-                fill: '#333',
-                fontSize: '16px',
-                fontWeight: 'bold',
-              },
-            }}
-          />
-        </div>
-        {/* Subject Card   */}
-        <div className="card__today__ai__pan_overview">
-          <h3>Subjects</h3>
-          <p>{todayPlan.subjects.join(', ') || 'No subjects planned'}</p>
-        </div>
+    {/* Overall Task Completion Card */}
+    <div className="dashboard__today__progress__card">
+      <h3>Overall Tasks</h3>
+      <CircularProgressbar
+        value={taskCompletionOverallPercentage}
+        text={`${taskCompletionOverallPercentage.toFixed(0)}%`}
+        className="dashboard__progress__circle"
+      />
+    </div>
+  </div>
 
-        <div className="card__today__ai__pan_overview">
-          <h3>Sessions</h3>
-          {todayPlan.hours_allocation.length > 0 ? (
-            todayPlan.hours_allocation.map((allocation, idx) => (
-              <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours * 60} minutes</p>
+  <div className="dashboard__today__progress__row">
+    {/* Subject Card */}
+    <div className="dashboard__today__progress__card">
+      <h3>Subjects</h3>
+      <p>{todayPlan.subjects.join(', ') || 'No subjects planned'}</p>
+    </div>
 
-            ))
-          ) : (
-            <p>No session times allocated</p>
-          )}
-        </div>
-      </div>
+    {/* Session Card */}
+    <div className="dashboard__today__progress__card">
+      <h3>Sessions</h3>
+      {todayPlan.hours_allocation.length > 0 ? (
+        todayPlan.hours_allocation.map((allocation, idx) => (
+          <p key={idx}>
+            <strong>{allocation.subject}:</strong> {allocation.hours * 60} min
+          </p>
+        ))
+      ) : (
+        <p>No session times allocated</p>
+      )}
+    </div>
+  </div>
+</div>
+
 
     </div>
   );
