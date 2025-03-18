@@ -143,7 +143,7 @@ const HomeMain = () => {
     <Fragment>
         <>
         <BirthdayModal/>
-          <ExamTimeOffer/>
+          <SubscriptionRedirector/>
           <ReviewModal />
           <HomeTopBoxes />
           <PomodoroChallengeBannerPremium/>
