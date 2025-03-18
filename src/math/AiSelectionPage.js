@@ -31,7 +31,7 @@ const AiSelectionPage = () => {
   return (
     <div className="copo__container__ai__selection">
       {/* 🔙 Back Button */}
-      <button className="copo__back__btn" onClick={() => navigate(-2)}>
+      <button className="copo__back__btn" onClick={() => navigate('/')}>
         <MdArrowBack className="copo__back__icon" />
         
       </button>
