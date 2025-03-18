@@ -150,27 +150,71 @@ const TodayProgress = () => {
       </div>
 
       <div className="dashboard__today__progress__container">
-  <div className="dashboard__today__progress__row">
-    {/* Today's Task Completion Card */}
-    <div className="dashboard__today__progress__card">
-      <h3>Today's Task</h3>
-      <CircularProgressbar
-        value={taskCompletionTodayPercentage}
-        text={`${taskCompletionTodayPercentage.toFixed(0)}%`}
-        className="dashboard__progress__circle"
-      />
-    </div>
-
-    {/* Overall Task Completion Card */}
-    <div className="dashboard__today__progress__card">
-      <h3>Overall Tasks</h3>
-      <CircularProgressbar
-        value={taskCompletionOverallPercentage}
-        text={`${taskCompletionOverallPercentage.toFixed(0)}%`}
-        className="dashboard__progress__circle"
-      />
-    </div>
+      <div className="dashboard__today__progress__row">
+  {/* Today's Task Completion Card */}
+  <div className="dashboard__today__progress__card">
+    <h3>Today's Task</h3>
+    <CircularProgressbar
+      value={taskCompletionTodayPercentage}
+      text={`${taskCompletionTodayPercentage.toFixed(0)}%`}
+      styles={{
+        path: {
+          stroke: 'url(#todayTaskGradient)',
+          strokeLinecap: 'round',
+          strokeWidth: 8,
+        },
+        trail: {
+          stroke: '#e0e0e0',
+        },
+        text: {
+          fill: '#333',
+          fontSize: '16px',
+          fontWeight: 'bold',
+        },
+      }}
+    />
   </div>
+
+  {/* Overall Task Completion Card */}
+  <div className="dashboard__today__progress__card">
+    <h3>Overall Tasks</h3>
+    <CircularProgressbar
+      value={taskCompletionOverallPercentage}
+      text={`${taskCompletionOverallPercentage.toFixed(0)}%`}
+      styles={{
+        path: {
+          stroke: 'url(#overallTaskGradient)',
+          strokeLinecap: 'round',
+          strokeWidth: 8,
+        },
+        trail: {
+          stroke: '#e0e0e0',
+        },
+        text: {
+          fill: '#333',
+          fontSize: '16px',
+          fontWeight: 'bold',
+        },
+      }}
+    />
+  </div>
+
+  {/* SVG Gradients for Stroke Colors */}
+  <svg width="0" height="0">
+    <defs>
+      <linearGradient id="todayTaskGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#6A93FF" />
+        <stop offset="100%" stopColor="#A2D2FF" />
+      </linearGradient>
+
+      <linearGradient id="overallTaskGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#8E6AFF" />
+        <stop offset="100%" stopColor="#BDB2FF" />
+      </linearGradient>
+    </defs>
+  </svg>
+</div>
+
 
   <div className="dashboard__today__progress__row">
     {/* Subject Card */}
