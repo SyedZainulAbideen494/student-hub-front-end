@@ -803,9 +803,6 @@ const SparkleIcon = () => (
         Chat History
       </button>
 
-      <button className="modal-btn" onClick={swicthChatbot}>
-        Image Generation
-      </button>
  
     </div>
   )}
