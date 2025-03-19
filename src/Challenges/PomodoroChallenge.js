@@ -11,7 +11,7 @@ const PomodoroChallenge = () => {
   const [progress, setProgress] = useState(0);
   const [completed, setCompleted] = useState(false);
   const [claimed, setClaimed] = useState(false);
-  const [challengeGoal, setChallengeGoal] = useState(90000); // 25 Hours in seconds
+  const [challengeGoal, setChallengeGoal] = useState(54000); // 15 Hours in seconds
   const [totalTime, setTotalTime] = useState(0);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -21,12 +21,12 @@ const PomodoroChallenge = () => {
       const response = await axios.get(API_ROUTES.fetchPomodoroChallengeProgress, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
-  
+
       const claimResponse = await axios.get(API_ROUTES.checkWeeklyRewardClaimed, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
-  
-      const { total_time = 0, challenge_goal = 90000 } = response.data;
+
+      const { total_time = 0, challenge_goal = 54000 } = response.data;
       setChallengeGoal(challenge_goal);
       setTotalTime(total_time);
       setProgress((total_time / challenge_goal) * 100);
@@ -50,7 +50,7 @@ const PomodoroChallenge = () => {
       const response = await axios.post(API_ROUTES.claimPremiumReward, {
         token: localStorage.getItem("token"),
       });
-  
+
       if (response.data.message === "Premium claimed successfully" || response.data.message === "Premium extended successfully") {
         setClaimed(true);
         navigate("/payment-success");
@@ -65,7 +65,7 @@ const PomodoroChallenge = () => {
       <div className="card__pomodoro__weekly__challenge">
         <div className="header__pomodoro__weekly__challenge">
           <h1>Weekly Pomodoro Challenge</h1>
-          <p>Complete 25 hours of study this week to claim 1-day Premium!</p>
+          <p>Complete 15 hours of study this week to claim 1-day Premium!</p>
         </div>
 
         {/* Progress Bar */}
@@ -84,7 +84,7 @@ const PomodoroChallenge = () => {
 
         {/* Hours Completed Text */}
         <p className="hours__text__pomodoro__weekly__challenge">
-          {loading ? "Loading..." : `${(totalTime / 3600).toFixed(1)} hrs / 25 hrs completed`}
+          {loading ? "Loading..." : `${(totalTime / 3600).toFixed(1)} hrs / 15 hrs completed`}
         </p>
 
         {/* Claim Button */}
