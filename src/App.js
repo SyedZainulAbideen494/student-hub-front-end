@@ -164,6 +164,7 @@ import YouTubeSummarizer from "./math/yt/ytTranscript";
 import PomodoroChallenge from "./Challenges/PomodoroChallenge";
 import MathPageImageGen from "./math/mathPageImageGen";
 import AiSelectionPage from "./math/AiSelectionPage";
+import LoaderQuizGen from "./quiz/quizGenLaoder";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -312,6 +313,7 @@ const router = createBrowserRouter([
   {path: '/loading-assignment', element: <LoaderAssignemnt/>},
   {path: '/yt', element: <YouTubeSummarizer/>},
   {path: '/week-challenge', element: <PomodoroChallenge/>},
+  {path: '/loader/quiz/ai', element: <LoaderQuizGen/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

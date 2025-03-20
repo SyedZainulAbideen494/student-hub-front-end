@@ -25,35 +25,42 @@ const GenerateQuiz = () => {
   
     // Check if subject or topic is missing
     if (!subject || !topic) {
-      alert('Please provide both subject and topic.');
-      setLoading(false);
-      return; // Prevent further execution
+        alert("Please provide both subject and topic.");
+        setLoading(false);
+        return; // Prevent further execution
     }
   
-    const token = localStorage.getItem('token');
-  
+    const token = localStorage.getItem("token");
+
+    // **Navigate to a loading page before making the API call**
+    navigate("/loader/quiz/ai");
+
     try {
-      const response = await fetch(API_ROUTES.generateAiQuiz, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ subject, topic, token }),
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to generate quiz, please try again');
-      }
-  
-      const data = await response.json();
-      navigate(`/quiz/${data.quizId}`);
+        const response = await fetch(API_ROUTES.generateAiQuiz, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ subject, topic, token }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to generate quiz, please try again");
+        }
+
+        const data = await response.json();
+
+        // **Navigate to the actual quiz page once loaded**
+        navigate(`/quiz/${data.quizId}`);
     } catch (err) {
-      console.error('Error:', err);
-      setError(err.message);
+        console.error("Error:", err);
+        setError(err.message);
+        navigate("/error"); // Redirect to an error page if needed
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
   
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -126,277 +133,115 @@ const handleQuizAnswers = (quizId) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    
+    // Navigate to the loading screen
+    navigate("/loader/quiz/ai");
 
     // Extract the file from the form
     const file = selectedFile;
 
-    // Validation check for missing fields
-    if (!file || !subject || !topic) {
-      alert('Please upload a PDF, and provide both a subject and a topic before generating the quiz.');
-      setLoading(false);
-      return;
+    // Auto-fill subject and topic if empty using filename
+    let autoSubject = subject;
+    let autoTopic = topic;
+
+    if (file && file.name) {
+        const fileName = file.name.replace(/\.[^/.]+$/, ""); // Remove extension
+        const words = fileName.split(" "); // Split into words
+
+        if (!subject) autoSubject = words[0] || "Unknown Subject"; // Use first word as subject
+        if (!topic) autoTopic = words.slice(1).join(" ") || "General"; // Use remaining words as topic
     }
 
-    const token = localStorage.getItem('token');
+    // Validation check for missing fields
+    if (!file || !autoSubject || !autoTopic) {
+        alert("Please upload a PDF, and ensure subject and topic are correctly set.");
+        setLoading(false);
+        return;
+    }
+
+    const token = localStorage.getItem("token");
     const formData = new FormData();
-    formData.append('pdf', file);
-    formData.append('subject', subject);
-    formData.append('topic', topic);
-    formData.append('token', token);
+    formData.append("pdf", file);
+    formData.append("subject", autoSubject);
+    formData.append("topic", autoTopic);
+    formData.append("token", token);
 
     try {
-      const response = await fetch(API_ROUTES.generateQuizFromPDF, {
-        method: 'POST',
-        body: formData,
-      });
+        const response = await fetch(API_ROUTES.generateQuizFromPDF, {
+            method: "POST",
+            body: formData,
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to generate quiz from PDF, please try again');
-      }
+        if (!response.ok) {
+            throw new Error("Failed to generate quiz from PDF, please try again");
+        }
 
-      const data = await response.json();
-      navigate(`/quiz/${data.quizId}`);
+        const data = await response.json();
+        navigate(`/quiz/${data.quizId}`);
     } catch (err) {
-      console.error('Error:', err);
-      setError(err.message);
+        console.error("Error:", err);
+        setError(err.message);
+        // If an error occurs, navigate back or show an error screen
+        navigate("/error"); // Or show a toast message instead
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
 
 
   return (
-    <div>
-    <div className="generate-quiz-container__quiz__ai__gen">
-      <header className="header__quiz__ai__gen">
-        <button className="back-button__quiz__ai__gen" onClick={() => navigate(-1)}>
-          ←
-        </button>
+    <div className="quiz-container__new__ui__Ai__gen__Quiz">
+      <header className="header__new__ui__Ai__gen__Quiz">
+        <button className="back-button__new__ui__Ai__gen__Quiz" onClick={() => navigate(-1)}>←</button>
       </header>
-      <h1 className="title__quiz__ai__gen">Generate Quiz</h1>
-      <form onSubmit={generateQuiz} className="generate-quiz-form__quiz__ai__gen">
-        <label className="label__quiz__ai__gen">
-          Subject:
-          <input
-            type="text"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            className="input__quiz__ai__gen"
-            required
-          />
-        </label>
-        <label className="label__quiz__ai__gen">
-          Topic (name):
-          <input
-            type="text"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            className="input__quiz__ai__gen"
-            required
-          />
-        </label>
-        <div className="centered-button-container">
-        {isExceededLimit && !isPremium ? (
-          <div 
-  className="PDFNotesCreation__lockMessage__quizzes" 
-  style={{ 
-    color: '#444', 
-    fontSize: '16px', 
-    fontWeight: '500', 
-    textAlign: 'center', 
-    padding: '14px 16px', 
-    backgroundColor: '#fff7e6',  
-    borderRadius: '12px', 
-    boxShadow: '0 6px 12px rgba(0, 0, 0, 0.08)', 
-    border: '1px solid #ffcc80', 
-    display: 'flex', 
-    flexDirection: 'column',  // Column direction for mobile
-    alignItems: 'center',     // Center everything horizontally
-    justifyContent: 'center', // Center everything vertically
-    gap: '12px',              // Increased gap for a cleaner layout
-    maxWidth: '400px',
-    margin: '0 auto',         // Center the container horizontally
-    width: '100%'             // Allow the container to take full width
-  }}
->
-  <span style={{ fontSize: '24px' }}>🔒</span> {/* Larger lock icon for better mobile visibility */}
-  <span style={{
-    fontSize: '16px',
-    fontWeight: '500',
-    marginBottom: '10px'
-  }}>
-    <strong style={{ color: '#ff9800' }}>Uh-oh!</strong> You've hit the free limit.  
-    You can only generate <strong>1 AI quizzes per week</strong> with the free plan.  
-    Unlock <strong>unlimited AI quizzes</strong> & more with <strong>Edusify Premium</strong>! 🚀  
-  </span>
-  <button 
-    style={{
-      backgroundColor: '#ff9800', 
-      color: '#fff', 
-      border: 'none', 
-      padding: '10px 16px', 
-      borderRadius: '8px', 
-      fontWeight: '600', 
-      cursor: 'pointer',
-      transition: '0.3s',
-      fontSize: '16px',
-      minWidth: '160px',
-      textAlign: 'center',
-    }}
-    onClick={() => navigate('/subscription')} // Add your navigation function here
-  >
-    Upgrade Now →
-  </button>
-</div>
+      <h1 className="title__new__ui__Ai__gen__Quiz">Generate AI Quiz</h1>
 
+      <form onSubmit={generateQuiz} className="quiz-form__new__ui__Ai__gen__Quiz">
+        <div className="input-group__new__ui__Ai__gen__Quiz">
+          <label>Subject</label>
+          <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} required />
+        </div>
+        <div className="input-group__new__ui__Ai__gen__Quiz">
+          <label>Topic Name</label>
+          <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} required />
+        </div>
 
-) : (
-  <button
-    className="flashcard__set__page__modal-generate btn__set__page__buttons"
-    onClick={generateQuiz}
-    disabled={loading}
-  >
-    <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
-      <svg
-        height="24"
-        width="24"
-        fill="#FFFFFF"
-        viewBox="0 0 24 24"
-        data-name="Layer 1"
-        id="Layer_1"
-        className="sparkle__set__page__buttons"
-      >
-        <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-      </svg>
-      <span className="text__set__page__buttons">
-        {loading ? 'Generating...' : 'Generate Quiz'}
-      </span>
-    </div>
-  </button>
-)}
-
-
-      
-</div>
-    </form>
-
-    <form onSubmit={generateQuizFromPDF} className="generate-quiz-form">
-  <p>Or Generate from PDF</p>
-  
-  {isPremium ? (
-    <label className="file-input-label">
-      <input
-        type="file"
-        accept="application/pdf"
-        required
-        className="file-input"
-        onChange={handleFileChange}
-      />
-      <span>Choose File</span>
-    </label>
-  ) : (
-    <p
-    style={{
-      color: '#222', // Deep grey for a premium look
-      fontSize: '16px',
-      fontWeight: '500',
-      marginTop: '12px',
-      padding: '12px 18px',
-      backgroundColor: '#f9f9f9', // Light grey Apple-like theme
-      borderRadius: '10px',
-      textAlign: 'center',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)', // Soft shadow for depth
-      border: '1px solid #e0e0e0', // Subtle premium border
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      maxWidth: '300px', // Keeps it compact and elegant
-      margin: 'auto', // Centers it
-      fontFamily: "'SF Pro Display', sans-serif", // Apple-style font
-    }}
-  >
-    <span style={{ fontSize: '18px' }}>👑</span>
-    <span>Upgrade to Premium for PDF Quizzes</span>
-  </p>
-  
-  )}
-
-  {/* Display selected file name */}
-  {selectedFile && <p>Selected File: {selectedFile.name}</p>}
-  
-  <div className="centered-button-container">
-    <button
-      className="flashcard__set__page__modal-generate btn__set__page__buttons"
-      disabled={loading}
-      type="submit"
-    >
-      <div className={`sparkle__set__page__buttons ${loading ? 'animating' : ''}`}>
-        <svg
-          height="24"
-          width="24"
-          fill="#FFFFFF"
-          viewBox="0 0 24 24"
-          data-name="Layer 1"
-          id="Layer_1"
-          className="sparkle__set__page__buttons"
-        >
-          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-        </svg>
-        <span className="text__set__page__buttons">
-          {loading ? 'Generating...' : 'Generate From PDF'}
-        </span>
-      </div>
-    </button>
-  </div>
-</form>
-
-      {error && <p className="error-message__quiz__ai__gen">Error: {error}</p>}
-    </div>
-          {quizzes.length === 0 ? (
-            <div className="no_quiz_found_container" style={{marginTop:'20px'}}>
-            <div className="no-quizzes-message">
-                <p>No quizzes found. Create your first quiz!</p>
+        <div className="centered-button-container__new__ui__Ai__gen__Quiz">
+          {isExceededLimit && !isPremium ? (
+            <div className="locked-message__new__ui__Ai__gen__Quiz">
+              <span>🔒</span>
+              <p>You've reached the free limit! Upgrade to **Edusify Premium** for unlimited AI quizzes. 🚀</p>
+              <button onClick={() => navigate('/subscription')}>Upgrade Now →</button>
             </div>
-            <div className="card_no-quizzes"></div>
+          ) : (
+            <button type="submit" disabled={loading} className="generate-button__new__ui__Ai__gen__Quiz">
+              {loading ? "Generating..." : "Generate Quiz"}
+            </button>
+          )}
         </div>
-      ) : (
-        <div style={{ textAlign: 'center', width: '100%' }}>
-  <h2 className="quizzes-heading" style={{ marginTop: '20px', marginBottom: '20px', fontSize: '24px', fontWeight: 'bold' }}>
-    Your Quizzes
-  </h2>
-  <ul className="quizzes-list-home-page-quiz-page" style={{ marginTop: '20px', width: '80%', marginLeft: 'auto', marginRight: 'auto' }}>
-    {filteredQuizzes.map(quiz => (
-      <li key={quiz.id} className="quiz-item-home-page-quiz-page">
-        <div className="quiz-header">
-          <span className="quiz-title-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-            {quiz.title}
-          </span><br /><br />
-          <span className="quiz-date-home-page-quiz-page">Created At: {formatDate(quiz.created_at)}</span>
-        </div><br />
-        <div className="quiz-actions-quiz-page">
-          <button className="delete-button-home-page-quiz-page" onClick={() => navigate(`/quiz/${quiz.id}`)}>
-            <FaPlay />
-          </button>
-          <button 
-                    className="view-answers-button-home-page-quiz-page" 
-                    onClick={() => handleQuizAnswers(quiz.id)} 
-                    aria-label="View Quiz Answers"
-                >
-                    <div className="view-answers-content">
-                        <FaEye />
-                        <span> View Answers</span>
-                    </div>
-                </button>
-        </div>
-      </li>
-    ))}
-  </ul>
-</div>
+      </form>
 
-      )}
-      </div>
+      <form onSubmit={generateQuizFromPDF} className="pdf-quiz-form__new__ui__Ai__gen__Quiz">
+        <p>Or Generate from PDF</p>
+        {isPremium ? (
+          <label className="file-input__new__ui__Ai__gen__Quiz">
+            <input type="file" accept="application/pdf" required onChange={handleFileChange} />
+            <span>Choose File</span>
+          </label>
+        ) : (
+          <p className="premium-lock-message__new__ui__Ai__gen__Quiz">👑 Upgrade to Premium for PDF Quizzes</p>
+        )}
+
+        {selectedFile && <p className="selected-file__new__ui__Ai__gen__Quiz">Selected File: {selectedFile.name}</p>}
+
+        <button type="submit" disabled={loading} className="generate-pdf-button__new__ui__Ai__gen__Quiz">
+          {loading ? "Generating..." : "Generate From PDF"}
+        </button>
+      </form>
+
+      {error && <p className="error-message__new__ui__Ai__gen__Quiz">Error: {error}</p>}
+    </div>
   );
 };
 
