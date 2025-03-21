@@ -436,111 +436,34 @@ const quillModules = {
                     <span className="arrow-note-detail-page">&#8592;</span> 
                 </button>
                 {isPremium ? (
-                    <div className='note-btn-contaioner'>
-             
-             <div className="centered-button-container__notes__page__Details">
-                <button
-          className="flashcard__set__page__modal-generate btn__set__page__buttons"
-          disabled={loadingQuiz}
-          onClick={generateQuizFromNotes}
-        >
-          <div className={`sparkle__set__page__buttons ${loadingQuiz ? 'animating' : ''}`}>
-            <svg
-              height="24"
-              width="24"
-              fill="#FFFFFF"
-              viewBox="0 0 24 24"
-              data-name="Layer 1"
-              id="Layer_1"
-              className="sparkle__set__page__buttons"
-            >
+  <div className="note-btn-container">
+    {[
+      { label: "Generate Quiz", onClick: generateQuizFromNotes, loading: loadingQuiz },
+      { label: "Generate Mind Map", onClick: generateMindMapFromNotes, loading: loadingMindMap },
+      { label: "Generate Flashcards", onClick: generateFlashcardsFromNotes, loading: loadingFlashcards },
+    ].map(({ label, onClick, loading }, index) => (
+      <div key={index} className="centered-button-container__notes__page__Details" style={{ marginTop: index !== 0 ? "8px" : "0px" }}>
+        <button className="flashcard__set__page__modal-generate btn__set__page__buttons" disabled={loading} onClick={onClick}>
+          <div className={`sparkle__set__page__buttons ${loading ? "animating" : ""}`}>
+            <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" className="sparkle__set__page__buttons">
               <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
             </svg>
-            <span className="text__set__page__buttons">
-              {loadingQuiz ? 'Generating...' : '  Generate Quiz'}
-            </span>
+            <span className="text__set__page__buttons">{loading ? "Generating..." : ` ${label}`}</span>
           </div>
         </button>
-        </div>
+      </div>
+    ))}
+  </div>
+) : (
+  <div className="note-btn-container__notes__page__Details">
+    {["Generate Flashcards", "Generate Mind Map", "Generate Quiz"].map((label, index) => (
+      <button key={index} className="action__button__today__ai__pan_overview__locked__premium__" disabled>
+        <FaLock className="lock-icon" style={{ marginRight: "10px" }} /> {label} <span>Premium</span>
+      </button>
+    ))}
+  </div>
+)}
 
-        <div className="centered-button-container__notes__page__Details" style={{marginTop: '8px'}}>
-        <button
-          className="flashcard__set__page__modal-generate btn__set__page__buttons"
-          disabled={loadingMindMap}
-          onClick={generateMindMapFromNotes}
-        >
-          <div className={`sparkle__set__page__buttons ${loadingMindMap ? 'animating' : ''}`}>
-            <svg
-              height="24"
-              width="24"
-              fill="#FFFFFF"
-              viewBox="0 0 24 24"
-              data-name="Layer 1"
-              id="Layer_1"
-              className="sparkle__set__page__buttons"
-            >
-              <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-            </svg>
-            <span className="text__set__page__buttons">
-              {loadingMindMap ? 'Generating...' : '  Generate Mind map'}
-            </span>
-          </div>
-        </button>
-        </div>
-
-        <div className="centered-button-container__notes__page__Details" style={{marginTop: '8px'}}>
-        <button
-          className="flashcard__set__page__modal-generate btn__set__page__buttons"
-          disabled={loadingFlashcards}
-          onClick={generateFlashcardsFromNotes}
-        >
-          <div className={`sparkle__set__page__buttons ${loadingFlashcards ? 'animating' : ''}`}>
-            <svg
-              height="24"
-              width="24"
-              fill="#FFFFFF"
-              viewBox="0 0 24 24"
-              data-name="Layer 1"
-              id="Layer_1"
-              className="sparkle__set__page__buttons"
-            >
-              <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-            </svg>
-            <span className="text__set__page__buttons">
-              {loadingFlashcards ? 'Generating...' : '  Generate Flashcards'}
-            </span>
-          </div>
-        </button>
-        </div>
-                    </div>
-    ) : (
-
-      <div className="note-btn-contaioner__notes__page__Details">
-  <button 
-    className="action__button__today__ai__pan_overview__locked__premium__"
-    disabled
-   // Makes the button block level and sets size
-  >
-    <FaLock className="lock-icon" style={{ marginRight: '10px' }} /> Generate Flashcards <span>Premium</span>
-  </button>
-  
-  <button 
-    className="action__button__today__ai__pan_overview__locked__premium__"
-    disabled
- // Makes the button block level and sets size
-  >
-    <FaLock className="lock-icon" style={{ marginRight: '10px' }} /> Generate Mind-Map <span>Premium</span>
-  </button>
-  <button 
-    className="action__button__today__ai__pan_overview__locked__premium__"
-    disabled
- // Makes the button block level and sets size
-  >
-    <FaLock className="lock-icon" style={{ marginRight: '10px' }} /> Generate Quiz <span>Premium</span>
-  </button>
-</div>
-
-    )}
 <br/>
                 <h1 style={{textAlign: 'center'}}>{editMode ? 'Edit Note' : note.title}</h1>
 
