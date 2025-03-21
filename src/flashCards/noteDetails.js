@@ -438,7 +438,7 @@ const quillModules = {
                 {isPremium ? (
                     <div className='note-btn-contaioner'>
              
-                    <div className="centered-button-container">
+             <div className="centered-button-container__notes__page__Details">
                 <button
           className="flashcard__set__page__modal-generate btn__set__page__buttons"
           disabled={loadingQuiz}
@@ -463,7 +463,7 @@ const quillModules = {
         </button>
         </div>
 
-        <div className="centered-button-container">
+        <div className="centered-button-container__notes__page__Details" style={{marginTop: '8px'}}>
         <button
           className="flashcard__set__page__modal-generate btn__set__page__buttons"
           disabled={loadingMindMap}
@@ -488,8 +488,8 @@ const quillModules = {
         </button>
         </div>
 
-        <div className="centered-button-container">
-                <button
+        <div className="centered-button-container__notes__page__Details" style={{marginTop: '8px'}}>
+        <button
           className="flashcard__set__page__modal-generate btn__set__page__buttons"
           disabled={loadingFlashcards}
           onClick={generateFlashcardsFromNotes}
@@ -515,7 +515,7 @@ const quillModules = {
                     </div>
     ) : (
 
-<div className="centered-button-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+      <div className="note-btn-contaioner__notes__page__Details">
   <button 
     className="action__button__today__ai__pan_overview__locked__premium__"
     disabled

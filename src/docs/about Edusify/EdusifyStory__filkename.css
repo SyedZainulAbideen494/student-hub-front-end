@@ -1,0 +1,73 @@
+/* White-Cream Aesthetic Background */
+.storyContainer__filkename {
+    position: absolute; /* Changed from fixed to absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh; /* Allows scrolling */
+    background: rgba(255, 249, 243, 0.9); /* Soft cream tone */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    padding: 50px 20px; /* Increased padding for better spacing */
+    box-sizing: border-box;
+    overflow-y: auto; /* Enables vertical scrolling */
+  }
+  
+  /* Centered Story Content */
+  .storyContent__filkename {
+    width: 90%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn__filkename 0.5s ease-in-out;
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn__filkename {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Title - Elegant Cursive */
+  .storyTitle__filkename {
+    font-family: "Dancing Script", cursive;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #5A4A42; /* Soft brown-gold */
+    margin-bottom: 15px;
+  }
+  
+  /* Story Text */
+  .storyText__filkename {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    color: #7D6F64;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 90%;
+  }
+  
+  /* Fully Responsive Design */
+  @media (max-width: 768px) {
+    .storyContent__filkename {
+      width: 95%;
+      padding: 30px;
+    }
+    .storyTitle__filkename {
+      font-size: 2.5rem;
+    }
+    .storyText__filkename {
+      font-size: 1rem;
+    }
+  }

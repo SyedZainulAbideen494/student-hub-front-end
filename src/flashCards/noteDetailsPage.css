@@ -527,3 +527,20 @@
 .btn-1__Save__flashcard:hover::after {
     transform: rotate(150deg);
 }
+
+
+.note-btn-contaioner__notes__page__Details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Spacing between buttons */
+    width: 100%;
+    padding: 20px;
+}
+
+.centered-button-container__notes__page__Details {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
