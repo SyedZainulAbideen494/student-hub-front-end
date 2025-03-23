@@ -146,7 +146,6 @@ const HomeMain = () => {
           <SubscriptionRedirector/>
           <ReviewModal />
           <HomeTopBoxes />
-          <PomodoroChallengeBannerPremium/>
           <FeedbackFormWeekly />
           <TodayEventsAndTasks />
           <FriendsDashboard />
