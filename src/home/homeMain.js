@@ -197,7 +197,7 @@ const HomeMain = () => {
         e.target.style.transform = 'scale(1)';
       }}
     >
-      Syed Zain Ul Abideen
+      Syed Zain-ul Abideen
     </a>
   </div>
 </div>
