@@ -152,23 +152,57 @@ const HomeMain = () => {
           <div style={{ margin: '20px 0' }}>
             <InviteFriends />
           </div>
-          <div style={{ marginBottom: '90px' }}>
-            <div className="button-container__feedback__btn__planner__page">
-              <button
-                onClick={toggleFeedbackForm}
-                style={{
-                  backgroundColor: 'transparent',
-                  color: '#48cae4',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '10px',
-                }}
-              >
-                {showFeedbackForm ? 'Cancel' : 'Provide Feedback'}
-              </button>
-            </div>
-            {showFeedbackForm && <FeedbackForm />}
-          </div>
+          <div style={{ marginBottom: '90px', textAlign: 'center' }}>
+  <div 
+    className="made-by-container" 
+    style={{ 
+      padding: '15px', 
+      opacity: '0.9', 
+      backdropFilter: 'blur(8px)', 
+      borderRadius: '10px', 
+      display: 'inline-block'
+    }}
+  >
+    <p 
+      style={{ 
+        fontSize: '14px', 
+        color: '#48cae4', 
+        fontWeight: '500', 
+        fontFamily: 'serif', 
+        letterSpacing: '0.5px',
+        margin: '0'
+      }}
+    >
+      Made with <span style={{ color: '#ffafcc' }}>❤️</span> by  
+    </p>
+    <a 
+      href="https://www.instagram.com/_syed_zain_ul/" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      style={{ 
+        textDecoration: 'none', 
+        color: '#a2d2ff', 
+        fontWeight: '600', 
+        fontSize: '16px',
+        display: 'block',
+        transition: 'color 0.3s ease-in-out, transform 0.3s ease-in-out',
+        marginTop: '5px'
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.color = '#f48fb1'; 
+        e.target.style.transform = 'scale(1.05)';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.color = '#ffafcc'; 
+        e.target.style.transform = 'scale(1)';
+      }}
+    >
+      Syed Zain Ul Abideen
+    </a>
+  </div>
+</div>
+
+
           <FooterNav />
         </>
     </Fragment>
