@@ -166,6 +166,7 @@ import MathPageImageGen from "./math/mathPageImageGen";
 import AiSelectionPage from "./math/AiSelectionPage";
 import LoaderQuizGen from "./quiz/quizGenLaoder";
 import EdusifyStory__filkename from "./docs/about Edusify/EdusifyStory__filkename";
+import YouTubeCaptionFetcher from "./Youtube video caption/YtCaption";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -316,6 +317,7 @@ const router = createBrowserRouter([
   {path: '/week-challenge', element: <PomodoroChallenge/>},
   {path: '/loader/quiz/ai', element: <LoaderQuizGen/>},
   {path: '/story-of-edusify', element: <EdusifyStory__filkename/>},
+  {path: '/youtube-ai', element: <YouTubeCaptionFetcher/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

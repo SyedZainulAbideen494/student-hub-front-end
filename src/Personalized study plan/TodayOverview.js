@@ -191,9 +191,9 @@ function TodayAiOverview() {
             Get New Plan
           </button>
         ) : (
-<button className="action__button__today__ai__pan_overview__locked__premium__" disabled>
-  <FaLock className="lock-icon" /> Get New Plan <span>Premium</span>
-</button>
+          <button className="action__button__today__ai__pan_overview" onClick={handleNewPlan}>
+          Get New Plan
+        </button>
 
         )}
 
