@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import { API_ROUTES } from "../app_modules/apiRoutes";
+import TestimonialsSection from "./testimonials";
 
 
 
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
   justify-content: center;
   background: #0d0d0d;
   color: white;
-  height: 100vh;
+  height: 170vh;
   padding: 20px;
   position: relative;
 `;
@@ -175,7 +176,7 @@ const PaymentComponent = () => {
             alert("Payment verification failed!");
           }
         },
-        theme: { color: "#121212" },
+        theme: { color: "#000000" },
       
         method: {
           upi: true, // ✅ Enable UPI but force manual entry
@@ -186,7 +187,7 @@ const PaymentComponent = () => {
       
         config: {
           display: {
-            hide: ["recommended", "Pay by any UPI App"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
+            hide: ["upi_recommended"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
           },
         },
       
@@ -242,7 +243,7 @@ const PaymentComponent = () => {
   
       {/* CTA Button */}
       {isPremium ? (
-        <Button>You have Premium! 🔥</Button>
+        <Button disabled>You have Premium! 🔥</Button>
       ) : (
         <Button onClick={handlePayment}>Unlock Edusify Premium</Button>
       )}
@@ -250,6 +251,7 @@ const PaymentComponent = () => {
       {/* Secure Payment Notice */}
       <Footer>🔒 Secure Payment via Razorpay</Footer>
     </SubscriptionContainer>
+    <TestimonialsSection/>
   </Wrapper>
   );
 };
