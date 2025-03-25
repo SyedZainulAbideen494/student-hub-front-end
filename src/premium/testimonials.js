@@ -33,7 +33,7 @@ const TestimonialsSection = () => {
 // Animation for smooth scrolling
 const scrollAnimation = keyframes`
   from { transform: translateX(0); }
-  to { transform: translateX(-15%); }
+  to { transform: translateX(-10%); }
 `;
 
 const starsAnimation = keyframes`
