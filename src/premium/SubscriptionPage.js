@@ -175,7 +175,7 @@ const PaymentComponent = () => {
             alert("Payment verification failed!");
           }
         },
-        theme: { color: "#000000" },
+        theme: { color: "#121212" },
       
         method: {
           upi: true, // ✅ Enable UPI but force manual entry
@@ -186,7 +186,7 @@ const PaymentComponent = () => {
       
         config: {
           display: {
-            hide: ["upi_recommended"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
+            hide: ["recommended", "Pay by any UPI App"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
           },
         },
       
@@ -242,7 +242,7 @@ const PaymentComponent = () => {
   
       {/* CTA Button */}
       {isPremium ? (
-        <Button disabled>You have Premium! 🔥</Button>
+        <Button>You have Premium! 🔥</Button>
       ) : (
         <Button onClick={handlePayment}>Unlock Edusify Premium</Button>
       )}
