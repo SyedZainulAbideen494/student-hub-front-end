@@ -87,8 +87,6 @@ const TestimonialCard = styled.div`
   background: rgba(255, 255, 255, 0.06);
   border-radius: 18px;
   padding: 24px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
   text-align: left;
   position: relative;
