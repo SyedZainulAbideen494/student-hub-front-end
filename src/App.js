@@ -50,7 +50,6 @@ import AboutAppPage from "./help/AboutAppPage";
 import HomeMain from "./home/homeMain";
 import ViewFlashCard from "./flashCards/viewFlashcard";
 import CreateFlashcard from "./flashCards/createFlashcard";
-import PaymentButton from "./testing/testingpayment";
 import QuizGuidePage from "./quiz/quizGuidePage";
 import Leaderboard from "./streaks/leaderBoard";
 import FlashcardLibraryPage from "./Flashcard/FlashcardLibraryPage";
@@ -70,15 +69,11 @@ import EmailSender from "./Email sender/EmailSender";
 import ReportCardMaker from "./toolkit/ReportCardMaker";
 import DownloadPageAndorid from "./docs/andriodDownload";
 import ChatHistoryPage from "./math/chatHistory";
-import YouTubeSearch from "./youtube/YouTubeSearch";
-import VideoPage from "./youtube/VideoPage";
 import EmailFetcher from "./Email sender/emailFetcher";
 import GenerateQuiz from "./quiz/GenerateQuiz";
 import DocumentLockerPage from "./documnet locker/DocumentLockerPage";
 import DocumentViewPage from "./documnet locker/ViewDocument";
 import FolderPage from "./documnet locker/FolderPage";
-import CanvasPage from "./canvas/canvas";
-import NotesList from "./canvas/NotesList";
 import QuizAnswersPage from "./quiz/quizAnswers";
 import WhatsNew from "./what's New/whatsnew";
 import AdminPage from "./what's New/AdminPage";
@@ -92,7 +87,6 @@ import StoryGame from "./Games/story";
 import UserReport from "./user report/user-report";
 import ReportDisplayPage from "./user report/ReportDisplayPage";
 import PreviousReports from "./user report/previousReports";
-import YoutubeCaption from "./Youtube video caption/YtCaption";
 import AchievementPage from "./Achivements/AchievementPage";
 import ScientificCalculator from "./toolkit/ScientificCalculator";
 import MainPageRooms from "./Rooms/MainPage";
@@ -107,7 +101,7 @@ import InstaStory from "./Share Stats/Share-stats";
 import PostsRooms from "./Rooms/Joined rooms/roomPosts";
 import RoomProgress from "./Rooms/Joined rooms/Progress";
 import RoomTasks from "./Rooms/Joined rooms/RoomTasks";
-import Onboarding from "./OnBoarding/onBoardng";
+
 import WordScrambleGame from "./Games/wordScramble";
 import PlayGame from "./Games/PlayGame";
 import SwipeFlashcardViewPage from "./Flashcard/swipeCardView";
@@ -131,9 +125,7 @@ import GenerateQuestion from "./question paper/main-question";
 import ViewQuestionPaper from "./question paper/ViewQuestionPaper";
 import AllQuestionPapers from "./question paper/all-paper";
 import TypewriterLoader from "./question paper/TypewriterLoader";
-import VoiceAssistant from "./voice assistant/voice assistant";
 import ViewQuestionPaperExample from "./question paper/ViewQuestionPaper copy";
-import TestModeApp from "./test mode/MainTestPage";
 import GenerateEliteNotesAI from "./flashCards/elite Notes/EliteNotes";
 import QuizGeneratorExam from "./competivie exam/competiveexam";
 import LoaderComponentExamMock from "./competivie exam/comp-exam-loader";
@@ -143,14 +135,12 @@ import AdminResourceReview from "./resoruces finder/components/AdminResourceRevi
 import GiftCardPage from "./gift Cards/GiftCardPage";
 import SendNotificationPage from "./Send noti/notiSend";
 import { API_ROUTES } from "./app_modules/apiRoutes";
-import SearchSchool from "./schools/search-schools";
 import NeetSwipeGuide from "./guides/neet/NeetGuide";
 import GenerateMindMap from "./mind maps/GenerateMindMap";
 import MindMapPage from "./mind maps/MindMapPage";
 import GetYtApp from "./math/yt/ytTranscript";
 import MindMap from "./mind maps/GenerateMindMap";
 import MindMapHistory from "./mind maps/MindMapHistory";
-import FeynmanTechnique from "./Feynman Technique/FeynmanTechnique";
 import LoaderMagic from "./math/magicLoader";
 import CheckSubscription from "./help/CheckSubscription";
 import TrialSuccess from "./help/trail-success";
@@ -166,7 +156,6 @@ import MathPageImageGen from "./math/mathPageImageGen";
 import AiSelectionPage from "./math/AiSelectionPage";
 import LoaderQuizGen from "./quiz/quizGenLaoder";
 import EdusifyStory__filkename from "./docs/about Edusify/EdusifyStory__filkename";
-import YouTubeCaptionFetcher from "./Youtube video caption/YtCaption";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -236,14 +225,10 @@ const router = createBrowserRouter([
   {path: '/toolkit/report-card-maker', element: <ReportCardMaker/>},
   {path: '/android/download', element: <DownloadPageAndorid/>},
   {path:'/ai/chat/history', element: <ChatHistoryPage/>},
-  {path:'/youtube', element: <YouTubeSearch/>},
-  {path: '/video/:videoId', element: <VideoPage/>},
   {path: '/quiz/ai', element: <GenerateQuiz/>},
   {path:'/document-locker', element: <DocumentLockerPage/>},
   {path: '/document/view/:id', element: <DocumentViewPage/>},
   {path: '/folder/:id', element: <FolderPage/>},
-  {path: '/canvas', element: <CanvasPage/>},
-  {path:'/canvas/list', element: <NotesList/>},
   {path: '/quiz/answers/:id',element:<QuizAnswersPage/>},
   {path: '/whats-new', element: <WhatsNew/>},
   {path: '/whats-new-admin', element: <AdminPage/>},
@@ -271,7 +256,6 @@ const router = createBrowserRouter([
   {path: '/how-to-use-edusify', element: <GuideToEdusify/>},
   {path: '/send/noti', element: <SendNotificationPage/>},
   {path: '/insta-story', element: <InstaStory/>},
-  {path: '/onboarding', element: <Onboarding/>},
   {path: '/word-scramble', element: <WordScrambleGame/>},
   {path: '/word-scramble/:gameId', element: <PlayGame/>},
   {path: '/swipe/flashcard/card/view/:id/:setId', element: <SwipeFlashcardViewPage/>},
@@ -291,20 +275,16 @@ const router = createBrowserRouter([
   {path: '/view-paper-example/:id', element: <ViewQuestionPaperExample/>},
   {path: '/all-papers', element: <AllQuestionPapers/>},
   {path: '/type-writter-loader', element: <TypewriterLoader/>},
-  {path: '/voice-assistant', element: <VoiceAssistant/>},
-  {path: '/test-mode', element: <TestModeApp/>},
   {path: '/competive-exam', element: <QuizGeneratorExam/>},
   {path: '/loading/mock-exam', element:<LoaderMockExamApp />},
   {path: '/resource-finder', element: <ResourceFinder/>},
   {path: '/admin-resources-review-page-not-allowed', element: <AdminResourceReview/>},
   {path: '/gift-card', element: <GiftCardPage/>},
-  {path: '/serach-school', element: <SearchSchool/>},
   {path: '/guide/neet', element: <NeetSwipeGuide/>},
   {path: '/mindmap/create', element: <MindMap/>},
   {path: '/mindmap/:mindMapId', element: <MindMapPage/>},
   {path: '/mindmap/user', element: <MindMapHistory/>},
   {path: '/testing-yt', element: <GetYtApp/>},
-  {path: '/feynman-technique', element: <FeynmanTechnique/>},
   {path: '/loading-magic', element: <LoaderMagic/>},
   {path: '/trial-success', element: <TrialSuccess/>},
   {path: '/subscription/features', element: <FeaturesCard/>},
@@ -313,11 +293,9 @@ const router = createBrowserRouter([
   {path: '/assignment/:id', element: <AssignmentPage/>},
   {path: '/my-assignments', element: <MyAssignments/>},
   {path: '/loading-assignment', element: <LoaderAssignemnt/>},
-  {path: '/yt', element: <YouTubeSummarizer/>},
   {path: '/week-challenge', element: <PomodoroChallenge/>},
   {path: '/loader/quiz/ai', element: <LoaderQuizGen/>},
   {path: '/story-of-edusify', element: <EdusifyStory__filkename/>},
-  {path: '/youtube-ai', element: <YouTubeCaptionFetcher/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

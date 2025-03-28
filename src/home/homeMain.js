@@ -16,7 +16,6 @@ import axios from "axios";
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import BirthdayModal from "../app_modules/TakeBirthDay";
 import BirthdayCelebration from "../app_modules/birthdayCelebrate";
-import FoxIcon from "../Edusify fox/FoxIcon";
 import ModalHowTo from "../Pop ups/HowtoUsePopUp";
 import FriendsDashboard from "./FriendsDashboard";
 import FeedbackFormWeekly from "../help/Survey";
@@ -27,7 +26,6 @@ import OneTimeOffer from "../premium/modal/onetimeModal";
 import ValentineModal from "../gift Cards/modals/ValentineModal";
 import ExamTimeOffer from "../premium/modal/exam-time-modal";
 import SubscriptionRedirector from "../premium/SubscriptionRedirector";
-import AIAgent from "../ai agent/ai agent";
 import PomodoroChallengeBannerPremium from "../Challenges/PomodoroChallengeBannerPremium";
 import GuideBanner from "../guides/neet/guideBanner";
 

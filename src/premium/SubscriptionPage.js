@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   justify-content: center;
   background: #0d0d0d;
   color: white;
-  height: 170vh;
+  height: 100vh;
   padding: 20px;
   position: relative;
 `;
@@ -251,7 +251,7 @@ const PaymentComponent = () => {
       {/* Secure Payment Notice */}
       <Footer>🔒 Secure Payment via Razorpay</Footer>
     </SubscriptionContainer>
-    <TestimonialsSection/>
+
   </Wrapper>
   );
 };
