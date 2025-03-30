@@ -156,6 +156,8 @@ import MathPageImageGen from "./math/mathPageImageGen";
 import AiSelectionPage from "./math/AiSelectionPage";
 import LoaderQuizGen from "./quiz/quizGenLaoder";
 import EdusifyStory__filkename from "./docs/about Edusify/EdusifyStory__filkename";
+import FormFilename from "./Pathfinder/FormFilename";
+import CareerPage from "./Pathfinder/CareerPage";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -296,6 +298,8 @@ const router = createBrowserRouter([
   {path: '/week-challenge', element: <PomodoroChallenge/>},
   {path: '/loader/quiz/ai', element: <LoaderQuizGen/>},
   {path: '/story-of-edusify', element: <EdusifyStory__filkename/>},
+  {path: '/pathfinder-form', element: <FormFilename/>},
+  {path: '/career/:id', element: <CareerPage/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

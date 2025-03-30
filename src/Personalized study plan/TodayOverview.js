@@ -186,13 +186,16 @@ function TodayAiOverview() {
 
       {/* Bottom Buttons */}
       <div className="bottom__buttons__today__ai__pan_overview">
-        {isPremium || !isStudyPlanLessThanAMonthOld ? (
+        {isPremium ? (
           <button className="action__button__today__ai__pan_overview" onClick={handleNewPlan}>
             Get New Plan
           </button>
         ) : (
-          <button className="action__button__today__ai__pan_overview" onClick={handleNewPlan}>
-          Get New Plan
+          <button 
+          className="action__button__today__ai__pan_overview__locked__premium__"
+          disabled
+        >
+          <FaLock className="lock-icon" /> Get New Plan<span>Premium</span>
         </button>
 
         )}

@@ -1,0 +1,92 @@
+.container__path__finder__form {
+  max-width: 350px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.title__path__finder__form {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form__path__finder__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.label__path__finder__form {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input__path__finder__form,
+.select__path__finder__form {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.select__path__finder__form {
+  width: 100%;
+}
+.input__path__finder__form {
+  width: 95%;
+}
+
+.input__path__finder__form:focus,
+.select__path__finder__form:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 6px rgba(0, 122, 255, 0.3);
+  outline: none;
+}
+
+.btn__path__finder__form {
+  background: #007aff;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn__path__finder__form:hover {
+  background: #005bb5;
+}
+
+@media (max-width: 600px) {
+  .container__path__finder__form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .title__path__finder__form {
+    font-size: 20px;
+  }
+
+  .input__path__finder__form,
+  .select__path__finder__form {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .btn__path__finder__form {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
