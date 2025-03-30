@@ -156,14 +156,20 @@ function TodayAiOverview() {
       {/* Cards Section */}
       <div className="card__today__ai__pan_overview__container">
         <StudyPlanCard title="Subjects" content={todayPlan.subjects.join(', ')} />
-        <StudyPlanCard
-          title="Session Time"
-          content={todayPlan.hours_allocation.map((allocation, idx) => (
+        <div className="locked__tip__container">
+    <StudyPlanCard
+      title="Session Time"
+      content={
+        <div className={`locked__tip__content ${!isPremium ? 'locked' : ''}`}>
+          {todayPlan.hours_allocation.map((allocation, idx) => (
             <p key={idx}><strong>{allocation.subject}:</strong> {allocation.hours * 60} minutes</p>
           ))}
-        />
-      </div>
-
+        </div>
+      }
+    />
+    {!isPremium && <FaLock className="lock-icon__tip" />} {/* Show lock for non-premium */}
+  </div>
+</div>
     <div className="card__today__ai__pan_overview__container">
   <StudyPlanCard title="Total Study Time" content={`${todayPlan.total_study_time * 60} minutes`} />
 
