@@ -107,7 +107,7 @@ const [isGeneratingNotes, setIsGeneratingNotes] = useState(false);
 const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
 const [NotesData, setNotesData] = useState({ name: "", subject: ""});
 const [thinkingMode, setThinkingMode] = useState(false); // Toggle state
-const [selectedMode, setSelectedMode] = useState("Normal");
+const [selectedMode, setSelectedMode] = useState("Edusify E1");
 const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
