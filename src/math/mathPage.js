@@ -106,6 +106,9 @@ const [activeToggle, setActiveToggle] = useState("");
 const [isGeneratingNotes, setIsGeneratingNotes] = useState(false);
 const [isNotesModalOpen, setIsNotesModalOpen] = useState(false);
 const [NotesData, setNotesData] = useState({ name: "", subject: ""});
+const [thinkingMode, setThinkingMode] = useState(false); // Toggle state
+const [selectedMode, setSelectedMode] = useState("Normal");
+const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -220,7 +223,13 @@ const [NotesData, setNotesData] = useState({ name: "", subject: ""});
       } else {
         if (!message.trim()) throw new Error("Message cannot be empty.");
   
-        const response = await axios.post(API_ROUTES.aiGemini, { message, chatHistory: newHistory, token });
+        const response = await axios.post(API_ROUTES.aiGemini, {
+          message,
+          chatHistory: newHistory,
+          token,
+          thinkingMode, // Send this flag to backend
+        });
+    
         formattedResultText = formatContent(response.data.response);
         followUpMessage = "";
       }
@@ -763,6 +772,15 @@ const swicthChatbot = () => {
   navigate('/ai/image')
 }
 
+const handleSelect = (mode) => {
+  setSelectedMode(mode);
+  setDropdownOpen(false);
+
+  if (mode === "Edusify T1") {
+    setThinkingMode(true);
+  }
+};
+
 
 const SparkleIcon = () => (
   <svg height="24" width="24" fill="#9b4d96" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" className="sparkle">
@@ -780,49 +798,48 @@ const SparkleIcon = () => (
     <FaArrowLeft />
   </button>
 
-  <div style={{ textAlign: "center", padding: "4px 0" }}>
-  <Link 
-        to={isPremium ? "/ai/image" : "/subscription"}
-        style={{ 
-      display: "inline-flex",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "8px 16px",
-      borderRadius: "6px",
-      fontWeight: "600",
-      fontSize: "13px",
-      color: "rgb(112, 215, 255)", /* Futuristic cyan */
-      textDecoration: "none",
-      border: "none",
-      transition: "all 0.3s ease-in-out",
-    }}
-    onMouseOver={(e) => {
-      e.target.style.color = "rgb(191, 90, 242)"; /* Shift to high-tech purple */
-      e.target.style.borderColor = "rgba(191, 90, 242, 0.6)";
-      e.target.style.boxShadow = "0 0 12px rgba(191, 90, 242, 0.5)";
-    }}
-    onMouseOut={(e) => {
-      e.target.style.color = "rgb(112, 215, 255)";
-      e.target.style.borderColor = "rgba(112, 215, 255, 0.6)";
-      e.target.style.boxShadow = "0 0 8px rgba(112, 215, 255, 0.4)";
-    }}
-  >
-    <svg 
-      height="18" 
-      width="18" 
-      fill="currentColor" 
-      viewBox="0 0 24 24" 
-      data-name="Layer 1" 
-      id="Layer_1" 
-      className="sparkle"
-      style={{ marginRight: "6px" }}
-    >
-      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
-    </svg>
-   Swicth to Image Generation
-  </Link>
-</div>
+  <div style={{ textAlign: "center", padding: "4px 0", position: "relative" }}>
+      {/* Button to trigger dropdown */}
+      <button
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+        style={dropdownButtonStyle}
+      >
+        {getSparkleIcon(selectedMode)}
+        {selectedMode} <span style={{ fontSize: "12px", marginLeft: "6px" }}>▼</span>
+      </button>
 
+      {/* Dropdown Menu */}
+      {dropdownOpen && (
+        <div style={dropdownMenuStyle}>
+          {/* Edusify E1 - Everyday Model */}
+          <button onClick={() => handleSelect("Edusify E1")} style={dropdownItemStyle}>
+            {getSparkleIcon("Edusify E1")}
+            <div>
+              <b>Edusify E1</b>
+              <p style={dropdownDescStyle}>Everyday AI model, best for daily student use.</p>
+            </div>
+          </button>
+
+          {/* Edusify T1 - Thinking Model */}
+          <button onClick={() => handleSelect("Edusify T1")} style={dropdownItemStyle}>
+            {getSparkleIcon("Edusify T1")}
+            <div>
+              <b>Edusify T1</b>
+              <p style={dropdownDescStyle}>Thinking model for deep analysis and complex queries.</p>
+            </div>
+          </button>
+
+          {/* Edusify V1 - Vision Model */}
+          <Link to="/ai/image" style={dropdownItemStyle}>
+            {getSparkleIcon("Edusify V1")}
+            <div>
+              <b>Edusify V1</b>
+              <p style={dropdownDescStyle}>Vision model for image generation and visual learning.</p>
+            </div>
+          </Link>
+        </div>
+      )}
+    </div>
 
   <button className={`settings-btn ${isSettingsModalOpen ? 'active' : ''}`} onClick={toggleSettingsModal}>
     <FaCog />
@@ -1323,6 +1340,86 @@ const MathPage = () => {
       {}<MathSolver query={query} setQuery={setQuery} handleCalculate={handleCalculate} handleVoiceCommand={handleVoiceCommand} />
 
     </div>
+  );
+};
+
+// Styles
+const dropdownButtonStyle = {
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "10px 18px",
+  borderRadius: "8px",
+  fontWeight: "600",
+  fontSize: "14px",
+  color: "rgb(112, 215, 255)",
+  background: "transparent",
+  border: "2px solid rgba(112, 215, 255, 0.6)",
+  cursor: "pointer",
+  transition: "all 0.3s ease-in-out",
+};
+
+const dropdownMenuStyle = {
+  position: "absolute",
+  top: "100%",
+  left: "50%",
+  transform: "translateX(-50%)",
+  background: "#222",
+  borderRadius: "8px",
+  padding: "10px 0",
+  boxShadow: "0 6px 12px rgba(0, 0, 0, 0.3)",
+  zIndex: 10,
+  minWidth: "220px",
+};
+
+const dropdownItemStyle = {
+  display: "flex",
+  alignItems: "center",
+  padding: "10px",
+  color: "white",
+  background: "transparent",
+  border: "none",
+  textAlign: "left",
+  cursor: "pointer",
+  fontSize: "14px",
+  transition: "background 0.2s",
+  width: "100%",
+  textDecoration: 'none'
+};
+
+const dropdownDescStyle = {
+  fontSize: "12px",
+  margin: "2px 0 0",
+  color: "rgba(255, 255, 255, 0.7)",
+};
+
+// Sparkle Icons with Different Colors
+const getSparkleIcon = (mode) => {
+  let color;
+  switch (mode) {
+    case "Edusify E1":
+      color = "rgb(112, 215, 255)"; // Cyan
+      break;
+    case "Edusify T1":
+      color = "rgb(191, 90, 242)"; // Purple
+      break;
+    case "Edusify V1":
+      color = "rgb(255, 215, 0)"; // Gold
+      break;
+    default:
+      color = "rgb(112, 215, 255)";
+  }
+
+  return (
+    <svg
+      height="18"
+      width="18"
+      fill={color}
+      viewBox="0 0 24 24"
+      style={{ marginRight: "8px" }}
+    >
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+    </svg>
   );
 };
 

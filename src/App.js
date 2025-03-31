@@ -158,6 +158,7 @@ import LoaderQuizGen from "./quiz/quizGenLaoder";
 import EdusifyStory__filkename from "./docs/about Edusify/EdusifyStory__filkename";
 import FormFilename from "./Pathfinder/FormFilename";
 import CareerPage from "./Pathfinder/CareerPage";
+import DeepResearchApp from "./deep reserach ai/DeepReseacrApp";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -300,6 +301,7 @@ const router = createBrowserRouter([
   {path: '/story-of-edusify', element: <EdusifyStory__filkename/>},
   {path: '/pathfinder-form', element: <FormFilename/>},
   {path: '/career/:id', element: <CareerPage/>},
+  {path: '/ai/deep-research', element: <DeepResearchApp/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
