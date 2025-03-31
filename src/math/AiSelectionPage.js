@@ -49,7 +49,7 @@ const AiSelectionPage = () => {
       <div className="copo__buttons__ai__selection">
         {[
           { icon: <FaBrain />, text: "AI Chatbot", path: "/ai" },
-          { icon: <MdBrush />, text: "AI Image Generator", path: isPremium ? "/ai/image" : "/subscription" },
+          { icon: <MdBrush />, text: "AI Image Generator", path: isPremium ? "/ai/image" : "/ai/image" },
           { icon: <MdNotes />, text: "AI Notes", path: isPremium ? "/notes/create/ai" : "/subscription" },
           { icon: <MdQuiz />, text: "AI Quizzes", path: "/quiz/ai" },
           { icon: <FaMap />, text: "AI Mind Maps", path: "/mindmap/create" },
