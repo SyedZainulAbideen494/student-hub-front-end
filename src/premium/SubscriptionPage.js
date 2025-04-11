@@ -117,16 +117,25 @@ const Button = styled.button`
 `;
 
 const Footer = styled.p`
-  margin-top: 18px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.6);
+  margin-top: 24px;
+  font-size: 13.5px;
+  color:rgb(170, 170, 170); /* Soft premium purple */
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.25s ease;
+
+  &:hover {
+    color: #3D2C8D;
+    text-shadow: 0 1px 1px rgba(93, 42, 156, 0.15);
+  }
 `;
+
 
 
 const PaymentComponent = () => {
@@ -248,8 +257,11 @@ const PaymentComponent = () => {
         <Button onClick={handlePayment}>Unlock Edusify Premium</Button>
       )}
   
-      {/* Secure Payment Notice */}
-      <Footer>🔒 Secure Payment via Razorpay</Footer>
+  <Footer onClick={() => navigate('/subscription/features')}>
+  🚀 Why Top Students Choose Edusify
+</Footer>
+
+
     </SubscriptionContainer>
 
   </Wrapper>

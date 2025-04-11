@@ -1,60 +1,45 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { 
-  FaMagic, FaTasks, FaClipboardCheck, FaBrain, FaFileAlt, FaRegClock, 
-  FaStickyNote, FaLightbulb, FaUsers, FaCalendarAlt, FaLock, FaChartBar, FaStopwatch, 
-  FaFilePdf, FaImage, FaLayerGroup, 
-  FaChartLine,
-  FaPlayCircle,
-  FaCommentDots,
-  FaBookOpen,
-  FaFileInvoice
+import {
+  FaMagic, FaTasks, FaClipboardCheck, FaBrain, FaFileAlt, FaRegClock,
+  FaStickyNote, FaLightbulb, FaUsers, FaCalendarAlt, FaLock, FaChartBar, FaStopwatch,
+  FaFilePdf, FaImage, FaLayerGroup,
+  FaChartLine, FaPlayCircle, FaCommentDots, FaBookOpen, FaFileInvoice
 } from 'react-icons/fa';
 
 const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 2.5rem 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
 `;
 
-const BackButton = styled.button`
-  background: transparent;
-  color: black;
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-  transition: background 0.2s ease-in-out;
-
-  &:hover {
-    background: #5633A7;
-  }
-`;
-
-const FeaturesWrapper = styled.div`
-
-`;
-
-const Title = styled.h2`
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #3D2C8D;
-  margin-bottom: 1rem;
+const Title = styled.h1`
+  font-size: 2rem;
+  font-weight: 700;
   text-align: center;
+  color: #3D2C8D;
+  margin-bottom: 0.5rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.1rem;
+  color: #5e4b8b;
+  text-align: center;
+  margin-bottom: 2rem;
 `;
 
 const FeatureList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 `;
 
 const FeatureItem = styled.li`
@@ -63,18 +48,33 @@ const FeatureItem = styled.li`
   font-size: 1rem;
   font-weight: 500;
   color: #2E1A47;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+  padding: 0.8rem 0.6rem;
+  background: #f9f7fd;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(100, 50, 200, 0.05);
 
-  &:last-child {
-    border-bottom: none;
+  &:hover {
+    background: #f1edfd;
   }
 `;
 
 const IconWrapper = styled.span`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  margin-right: 14px;
+  background: linear-gradient(135deg, #6F42C1, #A066FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const CallToAction = styled.div`
+  margin-top: 2.5rem;
+  text-align: center;
   color: #6F42C1;
-  margin-right: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(100, 50, 200, 0.15);
 `;
 
 const FeaturesPage = () => {
@@ -82,32 +82,30 @@ const FeaturesPage = () => {
 
   return (
     <PageWrapper>
+      <Title>Everything You’ve Ever Wanted in a Study App</Title>
+      <Subtitle>Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.</Subtitle>
 
-<FeaturesWrapper>
-   {/*  <Title>The Ultimate Study Ecosystem</Title> */}
-  <FeatureList>
+      <FeatureList>
+        <FeatureItem><IconWrapper><FaMagic /></IconWrapper> Unlimited AI Usage – No Limits, No Restrictions 🔥</FeatureItem>
+        <FeatureItem><IconWrapper><FaBrain /></IconWrapper> AI Quizzes, Flashcards & Mind Maps – Unlocked Fully</FeatureItem>
+        <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> Convert Any PDF to Quizzes, Notes, Mind Maps Instantly</FeatureItem>
+        <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> Instantly Generate Notes on Any Topic with AI</FeatureItem>
+        <FeatureItem><IconWrapper><FaTasks /></IconWrapper> Study Plans Customized Just for You</FeatureItem>
+        <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> Auto-Generate Daily Study Tasks Based on Your Plan</FeatureItem>
+        <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> AI-Smart Task Generation – Adaptive & Personalized</FeatureItem>
+        <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> Quiz Analysis – Identify Strengths & Weaknesses</FeatureItem>
+        <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> NEET, JEE, Boards & Competitive Quiz Generators</FeatureItem>
+        <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> Exclusive Resources: NEET Guide, More Coming Soon</FeatureItem>
+        <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> AI Assignment Generation – Do More, Stress Less</FeatureItem>
+      </FeatureList>
 
-    {/* 🚀 PREMIUM BENEFITS - EXCLUSIVITY & FOMO 🔥 */}
-    <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>Unlimited AI Usage – No Limits, No Restrictions! 🔥</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>Unlimited AI Quizzes, Flashcards & Mind Maps</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>AI-Powered PDF to Quiz, Flashcards, Mind Maps & Notes</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>AI Notes Creation – Generate Any Study Material Instantly</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Unlimited Study Plans – Adapt to Your Learning Needs</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> <strong>Generate Tasks According to Your Study Plan</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>AI-Powered Task Generation – Smart, Personalized & Efficient</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>AI Quiz Analysis – Know Your Strengths & Weaknesses</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> <strong>AI Competitive Exam Quizzes – NEET, JEE & More</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>Exclusive Study Resources – Currently featuring NEET Guide</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI-Generated Responses for Tasks, Mind Maps, Quizzes & Flashcards</strong></FeatureItem>
-    <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> <strong>Unlimited AI Assignment Generation – Get Your Work Done Instantly</strong></FeatureItem>
-
-    {/* 🚀 FOMO Trigger */}
-    <FeatureItem style={{ textAlign: 'center', fontWeight: 'bold', color: '#6F42C1', fontSize: '1.1rem', paddingTop: '1rem' }}>
-      ...and SO MUCH MORE! 🚀🔥<br/> Upgrade to Edusify Premium & Unlock Your Full Potential!  
-    </FeatureItem>
-  </FeatureList>
-</FeaturesWrapper>
-
+      <CallToAction>
+        …and that’s just the beginning.  
+        <br />
+        <strong>Upgrade to Edusify Premium</strong> & unlock the ultimate study experience.  
+        <br />
+        <span style={{ fontSize: '0.95rem', color: '#2E1A47' }}>No trials. No shortcuts. Just results.</span>
+      </CallToAction>
     </PageWrapper>
   );
 };
