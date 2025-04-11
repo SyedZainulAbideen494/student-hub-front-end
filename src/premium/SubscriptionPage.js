@@ -254,7 +254,7 @@ const PaymentComponent = () => {
       {isPremium ? (
         <Button disabled>You have Premium! 🔥</Button>
       ) : (
-        <Button onClick={handlePayment}>Unlock Edusify Premium</Button>
+        <Button onClick={handlePayment}>Unlock Edusify</Button>
       )}
   
   <Footer onClick={() => navigate('/subscription/features')}>
