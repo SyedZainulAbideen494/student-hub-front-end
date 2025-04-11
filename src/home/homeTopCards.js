@@ -9,6 +9,9 @@ import { faFire, faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'
 import { TypeAnimation } from 'react-type-animation';
 import FeedbackFormWeekly from '../help/Survey';
 import TodayProgress from './today-progress';
+import GuideBanner from '../guides/neet/guideBanner';
+import SubscriptionRedirector from '../premium/SubscriptionRedirector';
+import CheckSubscription from '../help/CheckSubscription';
 
 const TopBoxes = () => {
     const [todayTasks, setTodayTasks] = useState([]);
@@ -154,6 +157,8 @@ const TopBoxes = () => {
 
             <p className="subtext__home__page__component">Here's your overview for today</p>
 <TodayProgress/>
+<GuideBanner/>
+<CheckSubscription/>
         </div>
     );
 };

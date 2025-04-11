@@ -217,9 +217,9 @@ const PaymentComponent = () => {
 
   return (
     <Wrapper>
-    {/* Close Button */}
+    {/* Close Button 
     <CloseButton onClick={() => navigate("/")}>✕</CloseButton>
-  
+  */}
     {/* Subscription Section */}
     <SubscriptionContainer>
       <Title>Effortless Learning. Exceptional Results.</Title>
