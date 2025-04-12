@@ -265,7 +265,6 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
             active={selectedPlan === "daily"}
             onClick={() => setSelectedPlan("daily")}
           >
-            <BestOfferTag>BEST OFFER</BestOfferTag>
             <h4>1 DAY</h4>
             <p>₹8 per day</p>
             <SmallText>Billed ₹8 daily</SmallText>
