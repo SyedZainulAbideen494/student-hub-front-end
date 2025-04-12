@@ -162,6 +162,8 @@ const PaymentComponent = () => {
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("monthly");
   const [isPremium, setIsPremium] = useState(null);
+
+
   // Handle Payment with Razorpay
   const handlePayment = async () => {
     try {
@@ -171,16 +173,23 @@ const PaymentComponent = () => {
         return;
       }
 
-      // Set pricing based on selected plan
-      const planAmount = selectedPlan === "weekly" ? 39 : 99; // Razorpay accepts paise (₹39 → 3900, ₹99 → 9900)
+    // Set pricing based on selected plan
+let planAmount = 0;
+if (selectedPlan === "daily") {
+  planAmount = 8; // ₹8 → 800 paise
+} else if (selectedPlan === "weekly") {
+  planAmount = 39;
+} else if (selectedPlan === "monthly") {
+  planAmount = 99;
+}
 
-      const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount: planAmount,
-        currency: "INR",
-        subscription_plan: "Edusify Premium",
-        token,
-        duration: selectedPlan,
-      });
+const { data } = await axios.post(API_ROUTES.getPremium, {
+  amount: planAmount, // Razorpay accepts amount in paise
+  currency: "INR",
+  subscription_plan: "Edusify Premium",
+  token,
+  duration: selectedPlan,
+});
 
       const options = {
         key: "rzp_live_jPX6SxetQbApHC",
@@ -252,6 +261,15 @@ const PaymentComponent = () => {
         <Subtitle>Smart tools for the next generation of achievers.</Subtitle>
 
         <Plans>
+        <PlanBox
+            active={selectedPlan === "daily"}
+            onClick={() => setSelectedPlan("daily")}
+          >
+            <BestOfferTag>BEST OFFER</BestOfferTag>
+            <h4>1 DAY</h4>
+            <p>₹8 per day</p>
+            <SmallText>Billed ₹8 daily</SmallText>
+          </PlanBox>
           <PlanBox
             active={selectedPlan === "monthly"}
             onClick={() => setSelectedPlan("monthly")}
