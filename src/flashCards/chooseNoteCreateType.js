@@ -68,22 +68,7 @@ const CreateNotesPage = () => {
                 <FaLock className="lock-icon" /> AI Generated Notes<span> Premium</span>
               </button>
             )}
-          {isPremium ? (
-            <button
-            className="create__notes__type__page__option"
-            onClick={() => handleOptionClick('elite')}
-          >
-            Elite Notes
-          </button>
-            ) : (
-              <button 
-                className="create__notes__type__page__option"
-                disabled
-              >
-                <FaLock className="lock-icon" /> Elite Notes<span> Premium</span>
-              </button>
-            )}
-        
+
         {isPremium ? (
          <button
          className="create__notes__type__page__option"
