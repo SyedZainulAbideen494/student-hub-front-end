@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -348,6 +348,14 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     }
   }, []);
 
+  const scrollRef = useRef();
+
+  const handleNext = () => {
+    setStep(2);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  
+
   return (
     <Wrapper>
   {step === 1 && (
@@ -378,13 +386,13 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       </span>
     </CallToAction>
 
-    <Button style={{ marginTop: "2.5rem" }} onClick={() => setStep(2)}>
+    <Button style={{ marginTop: "2.5rem" }} onClick={handleNext}>
       Next 
     </Button>
   </PageWrapper>
 )}
 {step === 2 && (
-  <ScrollContent>
+  <ScrollContent ref={scrollRef}>
     <SubscriptionContainer>
       <Title>Your Edge Begins Here</Title>
       <Subtitle>Precision-crafted for students who expect more from themselves.</Subtitle>
