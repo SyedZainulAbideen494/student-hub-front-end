@@ -113,28 +113,39 @@ const FeaturesPage = () => {
       <Subtitle>Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.</Subtitle>
 
       <FeatureList>
-        <FeatureItem><IconWrapper><FaMagic /></IconWrapper> Unlimited AI Usage – No Limits, No Restrictions 🔥</FeatureItem>
-        <FeatureItem><IconWrapper><FaBrain /></IconWrapper> AI Quizzes, Flashcards & Mind Maps – Unlocked Fully</FeatureItem>
-        <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> Convert Any PDF to Quizzes, Notes, Mind Maps Instantly</FeatureItem>
-        <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> Instantly Generate Notes on Any Topic with AI</FeatureItem>
-        <FeatureItem><IconWrapper><FaTasks /></IconWrapper> Study Plans Customized Just for You</FeatureItem>
-        <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> Auto-Generate Daily Study Tasks Based on Your Plan</FeatureItem>
-        <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> AI-Smart Task Generation – Adaptive & Personalized</FeatureItem>
-        <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> Quiz Analysis – Identify Strengths & Weaknesses</FeatureItem>
-        <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> NEET, JEE, Boards & Competitive Quiz Generators</FeatureItem>
-        <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> Exclusive Resources: NEET Guide, More Coming Soon</FeatureItem>
-        <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> AI Assignment Generation – Do More, Stress Less</FeatureItem>
-      </FeatureList>
+  <FeatureItem><IconWrapper><FaMagic /></IconWrapper> Unlimited AI Usage – No Limits, No Restrictions 🔥</FeatureItem>
+  <FeatureItem><IconWrapper><FaBrain /></IconWrapper> AI Quizzes, Flashcards & Mind Maps – Unlocked Fully</FeatureItem>
+  <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> Convert Any PDF to Quizzes, Notes, Mind Maps Instantly</FeatureItem>
+  <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> Instantly Generate Notes on Any Topic with AI</FeatureItem>
+  <FeatureItem><IconWrapper><FaTasks /></IconWrapper> Study Plans Customized Just for You</FeatureItem>
+  <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> Auto-Generate Daily Study Tasks Based on Your Plan</FeatureItem>
+  <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> AI-Smart Task Generation – Adaptive & Personalized</FeatureItem>
+  <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> Quiz Analysis – Identify Strengths & Weaknesses</FeatureItem>
+  <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> NEET, JEE, Boards & Competitive Quiz Generators</FeatureItem>
+  <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> Exclusive Resources: NEET Guide, More Coming Soon</FeatureItem>
+  <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> AI Assignment Generation – Do More, Stress Less</FeatureItem>
 
-      <CallToAction>
-  This is how toppers prepare in 2025.  
+  {/* New Additions */}
+  <FeatureItem><IconWrapper><FaImage /></IconWrapper> AI Image Generator – Turn Concepts into Visual Gold</FeatureItem>
+  <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> Aesthetic Notes Generator – So Good You’ll Want to Re-read Them</FeatureItem>
+  <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> Resource Finder – Let Edusify Hunt the Best Content for You</FeatureItem>
+  <FeatureItem><IconWrapper><FaChartBar /></IconWrapper> Smart Dashboard – Always Know Where You Stand, At a Glance</FeatureItem>
+  <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> AI Mind Maps – Visualize Complex Topics Like a Genius</FeatureItem>
+  <FeatureItem><IconWrapper><FaUsers /></IconWrapper> Study Rooms – Learn Together, Win Together</FeatureItem>
+  <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> AI Reports – Break Down Any Topic into Simple Wins</FeatureItem>
+  <FeatureItem><IconWrapper><FaLock /></IconWrapper> Document Locker – Secure, Private, Always Within Reach</FeatureItem>
+</FeatureList>
+
+<CallToAction>
+  This isn’t just studying.  
   <br />
-  <strong>Edusify Premium isn’t extra. It’s essential.</strong>  
+  <strong>This is what the top 1% use to stay ahead.</strong>  
   <br />
   <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
-    Stop guessing. Start mastering. Let AI do the heavy lifting.
+    You can keep guessing — or join the students who don’t need to.
   </span>
 </CallToAction>
+
     </PageWrapper>
   );
 };
