@@ -12,24 +12,29 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.5rem 1.5rem;
-  max-width: 720px;
+  padding: 3rem 1.5rem;
+  max-width: 800px;
   margin: 0 auto;
+  background: linear-gradient(135deg, #F8F6FF, #ECE6FF);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(120, 90, 240, 0.1);
 `;
 
 const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #2D1E64;
   text-align: center;
-  color: #3D2C8D;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.1rem;
-  color: #5e4b8b;
+  font-size: 1.15rem;
+  color: #5C4A99;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
+  font-weight: 500;
 `;
 
 const FeatureList = styled.ul`
@@ -45,36 +50,57 @@ const FeatureList = styled.ul`
 const FeatureItem = styled.li`
   display: flex;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  color: #2E1A47;
-  padding: 0.8rem 0.6rem;
-  background: #f9f7fd;
-  border-radius: 10px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(100, 50, 200, 0.05);
+  color: #322154;
+  padding: 0.95rem 1rem;
+  background: #F3F0FF;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  border-left: 4px solid #B49CFF;
+  box-shadow: 0 4px 14px rgba(120, 90, 240, 0.07);
 
   &:hover {
-    background: #f1edfd;
+    background: #EBE3FF;
+    transform: translateY(-2px);
   }
 `;
 
+
 const IconWrapper = styled.span`
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-right: 14px;
   background: linear-gradient(135deg, #6F42C1, #A066FF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+
+  ${FeatureItem}:hover & {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
 `;
+
 
 const CallToAction = styled.div`
   margin-top: 2.5rem;
   text-align: center;
-  color: #6F42C1;
-  font-size: 1.2rem;
+  color: #5E3ABF;
+  font-size: 1.15rem;
   font-weight: 600;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(100, 50, 200, 0.15);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(90, 60, 200, 0.15);
+  line-height: 1.7;
+`;
+
+const Badge = styled.div`
+  font-size: 0.85rem;
+  background: #DAD4FF;
+  padding: 4px 10px;
+  color: #4B3B8E;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
 `;
 
 const FeaturesPage = () => {
@@ -83,6 +109,7 @@ const FeaturesPage = () => {
   return (
     <PageWrapper>
       <Title>Everything You’ve Ever Wanted in a Study App</Title>
+      <Badge>Only available on Edusify Premium</Badge>
       <Subtitle>Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.</Subtitle>
 
       <FeatureList>
@@ -100,12 +127,14 @@ const FeaturesPage = () => {
       </FeatureList>
 
       <CallToAction>
-        …and that’s just the beginning.  
-        <br />
-        <strong>Upgrade to Edusify Premium</strong> & unlock the ultimate study experience.  
-        <br />
-        <span style={{ fontSize: '0.95rem', color: '#2E1A47' }}>No trials. No shortcuts. Just results.</span>
-      </CallToAction>
+  This is how toppers prepare in 2025.  
+  <br />
+  <strong>Edusify Premium isn’t extra. It’s essential.</strong>  
+  <br />
+  <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
+    Stop guessing. Start mastering. Let AI do the heavy lifting.
+  </span>
+</CallToAction>
     </PageWrapper>
   );
 };
