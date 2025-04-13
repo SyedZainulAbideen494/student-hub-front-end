@@ -379,7 +379,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     </CallToAction>
 
     <Button style={{ marginTop: "2.5rem" }} onClick={() => setStep(2)}>
-      Next →
+      Next 
     </Button>
   </PageWrapper>
 )}
