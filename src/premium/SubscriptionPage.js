@@ -256,6 +256,7 @@ const PaymentComponent = () => {
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("monthly");
   const [isPremium, setIsPremium] = useState(null);
+  const [step, setStep] = useState(1);
 
 
   // Handle Payment with Razorpay
@@ -349,69 +350,73 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
   return (
     <Wrapper>
-    <ScrollContent>
-      <SubscriptionContainer>
-        <Title>Your Edge Begins Here</Title>
-        <Subtitle>Precision-crafted for students who expect more from themselves.</Subtitle>
+  {step === 1 && (
+  <PageWrapper>
+    <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
+    <Badge>Only on Edusify Premium</Badge>
+    <Subtitle2>
+      Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.
+    </Subtitle2>
 
-        <Plans>
-          <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
-            <h4>Just Curious</h4>
-            <p>₹8/day</p>
-            <SmallText>Perfect for a quick taste</SmallText>
-          </PlanBox>
-          <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-            <BestOfferTag>Most Chosen</BestOfferTag>
-            <h4>Stay Ahead</h4>
-            <p>₹3.30/day</p>
-            <SmallText>Billed ₹99 monthly</SmallText>
-          </PlanBox>
-          <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-            <h4>Test the Waters</h4>
-            <p>₹39/week</p>
-            <SmallText>Ideal for focused prep weeks</SmallText>
-          </PlanBox>
-        </Plans>
+    <FeatureList>
+      {[["Unlimited AI Usage", <FaMagic />], ["AI Quizzes, Flashcards & Mind Maps", <FaBrain />], ["Convert Any PDF", <FaFilePdf />],
+        ["AI Topic Notes", <FaClipboardCheck />], ["Custom Study Plans", <FaTasks />], ["Daily Task Generation", <FaRegClock />],
+        ["Smart Task Suggestions", <FaLightbulb />], ["Quiz Analytics", <FaChartLine />], ["NEET, JEE, Boards Quizzes", <FaStopwatch />],
+        ["NEET Guide & Resources", <FaBookOpen />], ["AI Assignments", <FaFileInvoice />], ["AI Image Generator", <FaImage />],
+        ["Aesthetic Notes", <FaStickyNote />], ["AI Resource Finder", <FaFileAlt />], ["Smart Dashboard", <FaChartBar />],
+        ["Mind Maps", <FaLayerGroup />], ["Study Rooms", <FaUsers />], ["Document Locker", <FaLock />]]
+        .map(([text, icon]) => (
+          <FeatureItem key={text}><IconWrapper>{icon}</IconWrapper>{text}</FeatureItem>
+        ))}
+    </FeatureList>
 
-        {isPremium ? (
-          <Button disabled>You have Premium! 🔥</Button>
-        ) : (
-          <Button onClick={handlePayment}>Continue with Edusify</Button>
-        )}
+    <CallToAction>
+      This isn’t just studying. <br />
+      <strong>This is what the top 1% use to stay ahead.</strong> <br />
+      <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
+        You can keep guessing — or join the students who don’t need to.
+      </span>
+    </CallToAction>
 
+    <Button style={{ marginTop: "2.5rem" }} onClick={() => setStep(2)}>
+      Next →
+    </Button>
+  </PageWrapper>
+)}
+{step === 2 && (
+  <ScrollContent>
+    <SubscriptionContainer>
+      <Title>Your Edge Begins Here</Title>
+      <Subtitle>Precision-crafted for students who expect more from themselves.</Subtitle>
 
-      </SubscriptionContainer>
-    </ScrollContent>
+      <Plans>
+        <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+          <h4>Just Curious</h4>
+          <p>₹8/day</p>
+          <SmallText>Perfect for a quick taste</SmallText>
+        </PlanBox>
+        <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+          <BestOfferTag>Most Chosen</BestOfferTag>
+          <h4>Stay Ahead</h4>
+          <p>₹3.30/day</p>
+          <SmallText>Billed ₹99 monthly</SmallText>
+        </PlanBox>
+        <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+          <h4>Test the Waters</h4>
+          <p>₹39/week</p>
+          <SmallText>Ideal for focused prep weeks</SmallText>
+        </PlanBox>
+      </Plans>
 
-    <Divider />
+      {isPremium ? (
+        <Button disabled>You have Premium! 🔥</Button>
+      ) : (
+        <Button onClick={handlePayment}>Continue with Edusify</Button>
+      )}
+    </SubscriptionContainer>
+  </ScrollContent>
+)}
 
-    <PageWrapper>
-      <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
-      <Badge>Only on Edusify Premium</Badge>
-      <Subtitle2>
-        Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.
-      </Subtitle2>
-
-      <FeatureList>
-        {[["Unlimited AI Usage", <FaMagic />], ["AI Quizzes, Flashcards & Mind Maps", <FaBrain />], ["Convert Any PDF", <FaFilePdf />],
-          ["AI Topic Notes", <FaClipboardCheck />], ["Custom Study Plans", <FaTasks />], ["Daily Task Generation", <FaRegClock />],
-          ["Smart Task Suggestions", <FaLightbulb />], ["Quiz Analytics", <FaChartLine />], ["NEET, JEE, Boards Quizzes", <FaStopwatch />],
-          ["NEET Guide & Resources", <FaBookOpen />], ["AI Assignments", <FaFileInvoice />], ["AI Image Generator", <FaImage />],
-          ["Aesthetic Notes", <FaStickyNote />], ["AI Resource Finder", <FaFileAlt />], ["Smart Dashboard", <FaChartBar />],
-          ["Mind Maps", <FaLayerGroup />], ["Study Rooms", <FaUsers />], ["Document Locker", <FaLock />]]
-          .map(([text, icon]) => (
-            <FeatureItem key={text}><IconWrapper>{icon}</IconWrapper>{text}</FeatureItem>
-          ))}
-      </FeatureList>
-
-      <CallToAction>
-        This isn’t just studying. <br />
-        <strong>This is what the top 1% use to stay ahead.</strong> <br />
-        <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
-          You can keep guessing — or join the students who don’t need to.
-        </span>
-      </CallToAction>
-    </PageWrapper>
   </Wrapper>
   );
 };
