@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import {
+  FaMagic, FaTasks, FaClipboardCheck, FaBrain, FaFileAlt, FaRegClock,
+  FaStickyNote, FaLightbulb, FaUsers, FaCalendarAlt, FaLock, FaChartBar, FaStopwatch,
+  FaFilePdf, FaImage, FaLayerGroup,
+  FaChartLine, FaPlayCircle, FaCommentDots, FaBookOpen, FaFileInvoice
+} from 'react-icons/fa';
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import TestimonialsSection from "./testimonials";
 
-const MicroTrust = styled.p`
-  font-size: 12px;
-  color: #8e8e93;
-  margin-top: 12px;
-`;
-
+// Styled Components
 const Wrapper = styled.div`
-  background: linear-gradient(145deg, #f5f5f7, #eaeaec);
+  background: linear-gradient(135deg, #F8F6FF, #ECE6FF);
   color: #1c1c1e;
   min-height: 100vh;
   width: 100%;
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
 const ScrollContent = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding: 40px 20px 60px;
+  padding: 40px 20px 80px;
   display: flex;
   justify-content: center;
 `;
@@ -37,24 +38,25 @@ const SubscriptionContainer = styled.div`
   border-radius: 30px;
   padding: 45px 30px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
 `;
 
 const Title = styled.h1`
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 600;
   margin-bottom: 18px;
-  color: #1c1c1e;
-  letter-spacing: 0.8px;
+  color: #2D1E64;
+  letter-spacing: 0.5px;
   line-height: 1.3;
 `;
 
 const Subtitle = styled.p`
   font-size: 15px;
-  color: #6e6e73;
+  color: #5C4A99;
   margin-bottom: 32px;
   line-height: 1.8;
+  font-weight: 500;
 `;
 
 const Plans = styled.div`
@@ -69,31 +71,31 @@ const PlanBox = styled.div`
   padding: 20px;
   border-radius: 20px;
   text-align: center;
-  border: 2px solid ${(props) => (props.active ? "#0071e3" : "#d1d1d6")};
+  border: 2px solid ${(props) => (props.active ? "#7F56D9" : "#d1d1d6")};
   width: 150px;
   background: ${(props) =>
-    props.active ? "rgba(0, 113, 227, 0.1)" : "rgba(255, 255, 255, 0.05)"};
+    props.active ? "rgba(127, 86, 217, 0.12)" : "rgba(255, 255, 255, 0.05)"};
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
   box-shadow: ${(props) =>
-    props.active ? "0 0 12px rgba(0, 113, 227, 0.25)" : "none"};
+    props.active ? "0 0 14px rgba(127, 86, 217, 0.25)" : "none"};
 
   &:hover {
-    border-color: #0071e3;
-    background: rgba(0, 113, 227, 0.12);
+    border-color: #7F56D9;
+    background: rgba(127, 86, 217, 0.14);
     transform: translateY(-3px);
   }
 
   h4 {
     font-size: 16px;
     margin-bottom: 6px;
-    color: #1c1c1e;
+    color: #2D1E64;
   }
 
   p {
     font-size: 14px;
-    color: #8e8e93;
+    color: #6e6e73;
   }
 `;
 
@@ -102,13 +104,13 @@ const BestOfferTag = styled.div`
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: #0071e3;
+  background: #7F56D9;
   color: white;
   font-size: 11px;
   font-weight: 600;
   padding: 5px 12px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.5);
+  box-shadow: 0 4px 12px rgba(127, 86, 217, 0.5);
 `;
 
 const SmallText = styled.p`
@@ -118,7 +120,7 @@ const SmallText = styled.p`
 `;
 
 const Button = styled.button`
-  background: #0071e3;
+  background: #7F56D9;
   color: white;
   border: none;
   padding: 16px 42px;
@@ -129,18 +131,18 @@ const Button = styled.button`
   max-width: 320px;
   transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35);
+  box-shadow: 0 8px 24px rgba(127, 86, 217, 0.35);
 
   &:hover {
-    box-shadow: 0 12px 30px rgba(0, 113, 227, 0.5);
+    box-shadow: 0 12px 30px rgba(127, 86, 217, 0.5);
     transform: translateY(-2px);
   }
 
   &:disabled {
     background: #d1d1d6;
-    box-shadow: none;
     cursor: default;
     opacity: 0.6;
+    box-shadow: none;
   }
 `;
 
@@ -150,20 +152,105 @@ const Footer = styled.p`
   color: #6e6e73;
   text-align: center;
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
   text-decoration: underline;
-  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
-    color: #0071e3;
-    text-shadow: 0 1px 2px rgba(0, 113, 227, 0.3);
+    color: #7F56D9;
   }
 `;
 
+const Divider = styled.div`
+  height: 2px;
+  width: 60px;
+  background: #D6CFFF;
+  margin: 60px auto 40px;
+  border-radius: 10px;
+`;
+
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const Title2 = styled.h2`
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2D1E64;
+  text-align: center;
+  margin-bottom: 0.5rem;
+`;
+
+const Subtitle2 = styled.p`
+  font-size: 1.1rem;
+  color: #5C4A99;
+  text-align: center;
+  margin-bottom: 2.2rem;
+  font-weight: 500;
+`;
+
+const Badge = styled.div`
+  font-size: 0.85rem;
+  background: #DAD4FF;
+  padding: 4px 10px;
+  color: #4B3B8E;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+`;
+
+const FeatureList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const FeatureItem = styled.li`
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #322154;
+  padding: 0.95rem 1rem;
+  background: #F3F0FF;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  border-left: 4px solid #B49CFF;
+  box-shadow: 0 4px 14px rgba(120, 90, 240, 0.07);
+
+  &:hover {
+    background: #EBE3FF;
+    transform: translateY(-2px);
+  }
+`;
+
+const IconWrapper = styled.span`
+  font-size: 1.4rem;
+  margin-right: 14px;
+  background: linear-gradient(135deg, #6F42C1, #A066FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const CallToAction = styled.div`
+  margin-top: 2.5rem;
+  text-align: center;
+  color: #5E3ABF;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(90, 60, 200, 0.15);
+  line-height: 1.7;
+`;
 
 const PaymentComponent = () => {
   const navigate = useNavigate();
@@ -264,55 +351,67 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     <Wrapper>
     <ScrollContent>
       <SubscriptionContainer>
-      <Title>Your Edge Begins Here</Title>
-<Subtitle>Precision-crafted for students who expect more from themselves.</Subtitle>
+        <Title>Your Edge Begins Here</Title>
+        <Subtitle>Precision-crafted for students who expect more from themselves.</Subtitle>
 
-  
         <Plans>
-          <PlanBox
-            active={selectedPlan === "daily"}
-            onClick={() => setSelectedPlan("daily")}
-          >
-       <h4>Just Curious</h4>
-<p>₹8/day</p>
-<SmallText>Perfect for a quick taste</SmallText>
-
+          <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+            <h4>Just Curious</h4>
+            <p>₹8/day</p>
+            <SmallText>Perfect for a quick taste</SmallText>
           </PlanBox>
-  
-          <PlanBox
-            active={selectedPlan === "monthly"}
-            onClick={() => setSelectedPlan("monthly")}
-          >
-          <BestOfferTag>Most Chosen</BestOfferTag>
-<h4>Stay Ahead</h4>
-<p>₹3.30/day</p>
-<SmallText>Billed ₹99 monthly</SmallText>
-
+          <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+            <BestOfferTag>Most Chosen</BestOfferTag>
+            <h4>Stay Ahead</h4>
+            <p>₹3.30/day</p>
+            <SmallText>Billed ₹99 monthly</SmallText>
           </PlanBox>
-  
-          <PlanBox
-            active={selectedPlan === "weekly"}
-            onClick={() => setSelectedPlan("weekly")}
-          >
-          <h4>Test the Waters</h4>
-<p>₹39/week</p>
-<SmallText>Ideal for focused prep weeks</SmallText>
-
+          <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+            <h4>Test the Waters</h4>
+            <p>₹39/week</p>
+            <SmallText>Ideal for focused prep weeks</SmallText>
           </PlanBox>
         </Plans>
-  
+
         {isPremium ? (
           <Button disabled>You have Premium! 🔥</Button>
-
         ) : (
           <Button onClick={handlePayment}>Continue with Edusify</Button>
         )}
-  
-        <Footer onClick={() => navigate("/subscription/features")}>
-        👀 See Why Edusify Isn't Like the Rest
-        </Footer>
+
+
       </SubscriptionContainer>
     </ScrollContent>
+
+    <Divider />
+
+    <PageWrapper>
+      <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
+      <Badge>Only on Edusify Premium</Badge>
+      <Subtitle2>
+        Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.
+      </Subtitle2>
+
+      <FeatureList>
+        {[["Unlimited AI Usage", <FaMagic />], ["AI Quizzes, Flashcards & Mind Maps", <FaBrain />], ["Convert Any PDF", <FaFilePdf />],
+          ["AI Topic Notes", <FaClipboardCheck />], ["Custom Study Plans", <FaTasks />], ["Daily Task Generation", <FaRegClock />],
+          ["Smart Task Suggestions", <FaLightbulb />], ["Quiz Analytics", <FaChartLine />], ["NEET, JEE, Boards Quizzes", <FaStopwatch />],
+          ["NEET Guide & Resources", <FaBookOpen />], ["AI Assignments", <FaFileInvoice />], ["AI Image Generator", <FaImage />],
+          ["Aesthetic Notes", <FaStickyNote />], ["AI Resource Finder", <FaFileAlt />], ["Smart Dashboard", <FaChartBar />],
+          ["Mind Maps", <FaLayerGroup />], ["Study Rooms", <FaUsers />], ["Document Locker", <FaLock />]]
+          .map(([text, icon]) => (
+            <FeatureItem key={text}><IconWrapper>{icon}</IconWrapper>{text}</FeatureItem>
+          ))}
+      </FeatureList>
+
+      <CallToAction>
+        This isn’t just studying. <br />
+        <strong>This is what the top 1% use to stay ahead.</strong> <br />
+        <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
+          You can keep guessing — or join the students who don’t need to.
+        </span>
+      </CallToAction>
+    </PageWrapper>
   </Wrapper>
   );
 };
