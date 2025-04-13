@@ -240,7 +240,7 @@ const nav = useNavigate()
     Regenerate Plan
   </button>
 
-  {/* Show Edit button when not editing */}
+  {/* Show Edit button when not editing 
   {!isEditing && (
     <button
       onClick={() => setIsEditing(true)}
@@ -249,6 +249,7 @@ const nav = useNavigate()
       Edit Plan
     </button>
   )}
+  */}
 
   {/* Show Save button when editing */}
   {isEditing && (
