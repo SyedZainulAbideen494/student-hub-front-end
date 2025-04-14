@@ -252,6 +252,30 @@ const CallToAction = styled.div`
   line-height: 1.7;
 `;
 
+const DreamGlow = styled.h2`
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  background: linear-gradient(120deg, #9F63FF, #FFB1F9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  animation: glowIn 1.2s ease-out forwards;
+
+  @keyframes glowIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+`;
+
+
 const PaymentComponent = () => {
   const navigate = useNavigate();
   const [selectedPlan, setSelectedPlan] = useState("monthly");
@@ -360,22 +384,28 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     <Wrapper>
   {step === 1 && (
   <PageWrapper>
-    <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
+    <DreamGlow>Everything You’ve Ever Wanted in a Study App</DreamGlow>
+
     <Badge>Only on Edusify Premium</Badge>
     <Subtitle2>
       Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.
     </Subtitle2>
 
     <FeatureList>
-      {[["Unlimited AI Usage", <FaMagic />], ["AI Quizzes, Flashcards & Mind Maps", <FaBrain />], ["Convert Any PDF", <FaFilePdf />],
-        ["AI Topic Notes", <FaClipboardCheck />], ["Custom Study Plans", <FaTasks />], ["Daily Task Generation", <FaRegClock />],
-        ["Smart Task Suggestions", <FaLightbulb />], ["Quiz Analytics", <FaChartLine />], ["NEET, JEE, Boards Quizzes", <FaStopwatch />],
-        ["NEET Guide & Resources", <FaBookOpen />], ["AI Assignments", <FaFileInvoice />], ["AI Image Generator", <FaImage />],
-        ["Aesthetic Notes", <FaStickyNote />], ["AI Resource Finder", <FaFileAlt />], ["Smart Dashboard", <FaChartBar />],
-        ["Mind Maps", <FaLayerGroup />], ["Study Rooms", <FaUsers />], ["Document Locker", <FaLock />]]
-        .map(([text, icon]) => (
-          <FeatureItem key={text}><IconWrapper>{icon}</IconWrapper>{text}</FeatureItem>
-        ))}
+      {[
+        ["Start each day with clarity — your plan, already optimized.", <FaRegClock />],
+        ["Smart to-dos. Intelligent breaks. Everything adapts to you.", <FaClipboardCheck />],
+        ["No clutter. Just calm, focused execution.", <FaMagic />],
+        ["AI-generated notes & flashcards that actually feel personal.", <FaStickyNote />],
+        ["Visuals that make complex topics beautifully simple.", <FaBrain />],
+        ["Pomodoros that adapt based on your rhythm — not trends.", <FaStopwatch />],
+        ["A workspace that’s minimal, powerful, and distraction-free.", <FaChartLine />],
+        ["No chaos. Just quiet consistency.", <FaUsers />]
+      ].map(([text, icon]) => (
+        <FeatureItem key={text}>
+          <IconWrapper>{icon}</IconWrapper>{text}
+        </FeatureItem>
+      ))}
     </FeatureList>
 
     <CallToAction>
