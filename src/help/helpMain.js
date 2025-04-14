@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect } from 'react';
+
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTwitter, faTelegram, faChrome, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -8,7 +9,10 @@ import FeedbackForm from './FeedbackForm';
 
 const HelpMain = () => {
   const navigate = useNavigate(); // Hook to navigate
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div className="help-main-container-help-page">
       {/* Back Button */}
