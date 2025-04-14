@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import {
@@ -421,8 +421,14 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       ) : (
         <Button onClick={handlePayment}>Continue with Edusify</Button>
       )}
+      <Link to='/help'>
+          <Footer>
+      Need Help?
+    </Footer>
+    </Link>
     </SubscriptionContainer>
-  </ScrollContent>
+
+      </ScrollContent>
 )}
 
   </Wrapper>
