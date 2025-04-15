@@ -6,7 +6,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
-import { faGear, faUser, faSignOutAlt, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faGear, faUser, faSignOutAlt, faBars, faCircleQuestion } from "@fortawesome/free-solid-svg-icons";
 import { TypeAnimation } from 'react-type-animation';
 import FeedbackFormWeekly from '../help/Survey';
 import TodayProgress from './today-progress';
@@ -176,10 +176,10 @@ const TopBoxes = () => {
           <FontAwesomeIcon icon={faGear} />
           <span>Settings</span>
         </Link>
-        <button className="dropdown-item__dark" onClick={handleLogout}>
-          <FontAwesomeIcon icon={faSignOutAlt} />
-          <span>Logout</span>
-        </button>
+        <Link to="/help" className="dropdown-item__dark">
+  <FontAwesomeIcon icon={faCircleQuestion} />
+  <span>Help</span>
+</Link>
       </div>
     )}
   </div>
