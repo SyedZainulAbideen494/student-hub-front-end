@@ -157,7 +157,7 @@
 }
 
 .quiz-item-home-page-quiz-page {
-    background-color: rgba(0, 0, 0, 0.3); /* White background */
+    background-color: #141414; /* White background */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     border: none;
     border-radius: 15px; /* Slightly rounded corners */
