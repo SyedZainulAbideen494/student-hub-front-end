@@ -103,6 +103,7 @@ function TodayAiOverview() {
       if (response.data.tasks) {
         setTasks(response.data.tasks);
         setShowModal(true); // Show the modal after tasks are generated
+        navigate('/planner')
       } else {
         setTaskError('No tasks generated.');
       }
