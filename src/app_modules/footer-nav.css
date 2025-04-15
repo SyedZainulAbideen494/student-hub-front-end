@@ -17,6 +17,8 @@
     transform: translateX(-50%);
     width: calc(100% - 40px); /* Add spacing on the left and right */
     background: rgba(42, 42, 42, 0.75); /* Lighter dark background for contrast */
+    backdrop-filter: blur(12px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(12px); 
     display: flex;
     justify-content: space-around;
     align-items: center;
