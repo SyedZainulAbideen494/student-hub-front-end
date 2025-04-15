@@ -374,7 +374,7 @@
 .magic__ai__magic__modal__ai__page,
 .flashcard__modal__ai__magic__page,
 .quiz__modal__ai__magic__page {
-  background-color: #fff; /* Clean white background */
+  background-color: #121212; /* Clean white background */
   border-radius: 15px; /* Slightly more rounded corners */
   padding: 20px;
   max-width: 500px;
@@ -382,9 +382,8 @@
   margin: auto;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   animation: modalFadeIn 0.3s ease-out;
-  z-index: 1001; /* Ensure modal is above the overlay */
+  z-index: 10000; /* Ensure modal is above the overlay */
 }
 
 /* Centering modal on the screen */
@@ -392,7 +391,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4); /* Dark overlay to focus on modal */
   z-index: 1000;
   position: fixed;
   top: 0;
