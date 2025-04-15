@@ -4,6 +4,7 @@ import "./StudyPlanPage.css";
 import { FaBook, FaClock } from "react-icons/fa";
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import { Link, useNavigate } from "react-router-dom";
+import LoadingSpinner from "../app_modules/LoadingSpinner";
 
 const StudyPlanPage = () => {
   const [studyPlan, setStudyPlan] = useState(null);
@@ -119,9 +120,23 @@ const nav = useNavigate()
   }
 
   if (!studyPlan) {
-    return <div className="loading-message__Ai__result__plan">Loading...</div>;
+    return (
+      <div
+        className="loading-message__Ai__result__plan"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100%",
+          backgroundColor: "#0a0a0a", // optional for dark background
+        }}
+      >
+        <LoadingSpinner />
+      </div>
+    );
   }
-
+  
   const weeklyTimetable = studyPlan.study_plan?.weekly_timetable || [];
 
   return (
@@ -213,7 +228,7 @@ const nav = useNavigate()
                 </>
               ) : (
                 <>
-                  <span>{allocation?.subject || "N/A"}</span>
+                  <span>{allocation?.subject || "N/A"}</span><br/>
                   <span>{allocation?.hours || "0"}h</span>
                 </>
               )}
@@ -232,7 +247,7 @@ const nav = useNavigate()
 
     </div>
   
-    <div className="sticky-button__Ai__result__plan">
+    <footer className="footer-bar__Ai__result__plan sticky-button__Ai__result__plan">
   <button
     onClick={handlegetNewPlan}
     className="get-started-button__Ai__result__plan"
@@ -240,25 +255,12 @@ const nav = useNavigate()
     Regenerate Plan
   </button>
 
-  {/* Show Edit button when not editing 
-  {!isEditing && (
-    <button
-      onClick={() => setIsEditing(true)}
-      className="get-started-button__Ai__result__plan"
-    >
-      Edit Plan
-    </button>
-  )}
-  */}
-
-  {/* Show Save button when editing */}
   {isEditing && (
     <button onClick={handleSave} className="get-started-button__Ai__result__plan">
       Save Study Plan
     </button>
   )}
 
-  {/* Get Started button remains visible if not in edit mode */}
   {!isEditing && (
     <button
       onClick={handlegetStarted}
@@ -267,7 +269,8 @@ const nav = useNavigate()
       Get Started
     </button>
   )}
-</div>
+</footer>
+
 
   </div>
   

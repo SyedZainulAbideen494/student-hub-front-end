@@ -1,185 +1,195 @@
 .study-plan-container__Ai__result__plan {
     padding: 1rem;
-    text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.heading__Ai__result__plan {
-    font-size: 1.2;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
-    font-weight: bold;
-}
-
-.cards-container__Ai__result__plan {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-    justify-items: center;
-    margin-top: 1rem;
-}
-
-.day-card__Ai__result__plan {
-    padding: 1.5rem;
-    border-radius: 15px;
     text-align: center;
-    width: 180px;
-}
-
-.day-card__Ai__result__plan {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  .day-card__Ai__result__plan:hover {
-    transform: translateY(-5px);
+    color: #eaeaea;
+    font-family: "SF Pro Display", "Poppins", sans-serif;
   }
   
-
-.day-and-hours__Ai__result__plan {
+  .heading__Ai__result__plan {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #9e9e9e;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+  
+  .cards-container__Ai__result__plan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  .day-card__Ai__result__plan {
+    padding: 1.8rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: all 0.35s ease;
+    transform: translateY(0);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  
+  .day-and-hours__Ai__result__plan {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.day-title__Ai__result__plan {
+  }
+  
+  .day-title__Ai__result__plan {
     font-size: 1.1rem;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.hours-circle__Ai__result__plan {
-    position: relative;
+    font-weight: 600;
+    color: #cfcfcf;
+  }
+  
+  .hours-circle__Ai__result__plan {
     width: 50px;
     height: 50px;
-    background: conic-gradient(
-      #3498db var(--progress, 0%),
-      #ffffff var(--progress, 0%)
-    );
     border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    background: conic-gradient(#32d74b var(--progress, 0%), rgba(255, 255, 255, 0.05) var(--progress, 0%));
     display: flex;
-    justify-content: center;
     align-items: center;
-    border: 2px solid #1D1A23 ;
-}
-
-.center-value__Ai__result__plan {
+    justify-content: center;
+    position: relative;
+    transition: background 0.4s ease-in-out;
+  }
+  
+  .center-value__Ai__result__plan {
     font-size: 0.9rem;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.subjects__Ai__result__plan {
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  .subjects__Ai__result__plan {
     margin-top: 1rem;
-}
-
-.subjects-list__Ai__result__plan {
+    text-align: left;
+  }
+  
+  .subjects-list__Ai__result__plan {
     list-style: none;
     padding: 0;
     margin: 0;
     font-size: 0.9rem;
-}
-
-.subject-item__Ai__result__plan {
-    color: #7f8c8d;
-}
-
-.tips__Ai__result__plan {
+    color: #aaa;
+  }
+  
+  .subject-item__Ai__result__plan {
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.4rem;
+    color: #b0b0b0;
+  }
+  
+  .subject-item__Ai__result__plan::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #32d74b;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  
+  .tips__Ai__result__plan {
     margin-top: 1rem;
     font-size: 0.9rem;
-    color: #7f8c8d;
+    color: #999;
     font-style: italic;
-}
+    opacity: 0.9;
+  }
+  
+  /* Sticky Get Started Button */
+  .sticky-button__Ai__result__plan {
+    position: sticky;
+    bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    z-index: 100;
+  }
+  
+  .get-started-button__Ai__result__plan {
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    padding: 0.9rem 1.4rem;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+    margin-right: 10px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+  }
 
-@media (max-width: 768px) {
-    .cards-container__Ai__result__plan {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+  .footer-bar__Ai__result__plan {
+    position: sticky;
+    bottom: 5;
+    width: 90%;
+    padding: 1rem 2rem;
+    background: rgba(22, 22, 24, 0.85);
+    backdrop-filter: blur(16px);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 25px;
+    z-index: 1000;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Mobile Tweaks */
+  @media (max-width: 480px) {
+    .footer-bar__Ai__result__plan {
+      padding: 1rem;
+      gap: 0.75rem;
     }
-
-    .day-card__Ai__result__plan {
-        width: 180px;
+  
+    .get-started-button__Ai__result__plan {
+      width: 100%;
     }
-
-    .hours-circle__Ai__result__plan {
-        width: 40px;
-        height: 40px;
-    }
-
-    .center-value__Ai__result__plan {
-        font-size: 0.8rem;
-    }
-
-    .day-title__Ai__result__plan {
-        font-size: 1rem;
-    }
-
-    .subject-item__Ai__result__plan {
-        font-size: 0.8rem;
-    }
-
-    .tips__Ai__result__plan {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .study-plan-container__Ai__result__plan {
-        padding: 0.5rem;
-    }
-
-    .heading__Ai__result__plan {
-        font-size: 1.5rem;
-    }
-
-    .day-card__Ai__result__plan {
-        width: 120px;
-        padding: 1rem;
-    }
-
-    .hours-circle__Ai__result__plan {
-        width: 35px;
-        height: 35px;
-    }
-
-    .center-value__Ai__result__plan {
-        font-size: 0.7rem;
-    }
-
-    .day-title__Ai__result__plan {
-        font-size: 0.85rem;
-    }
-
-    .subject-item__Ai__result__plan {
-        font-size: 0.7rem;
-    }
-
-    .tips__Ai__result__plan {
-        font-size: 0.7rem;
-    }
-}
-
-
-/* Previous styles... */
-
-/* Top Section */
-.top-section__Ai__result__plan {
+  }
+  
+  
+  
+  /* Top Section */
+  .top-section__Ai__result__plan {
     text-align: center;
     margin-bottom: 2rem;
+    animation: fadeIn 1s ease-in-out;
   }
   
   .main-heading__Ai__result__plan {
     font-size: 2rem;
-    font-weight: bold;
-    color: #2c3e50;
+    font-weight: 700;
+    color: #f1f1f1;
+    letter-spacing: -0.5px;
   }
   
   .description__Ai__result__plan {
-    font-size: 12px;
-    color: #7f8c8d;
-    margin: 0.5rem 0 1rem 0;
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0.5rem auto 1.2rem auto;
+    max-width: 600px;
+  }
+  
+  /* Subtle fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   .image-placeholder__Ai__result__plan {
@@ -190,35 +200,37 @@
   .study-image__Ai__result__plan {
     max-width: 100%;
     border-radius: 15px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
   }
   
-  /* Sticky Button */
-  .sticky-button__Ai__result__plan {
-    position: sticky;
-    bottom: 1rem;
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+  /* Responsive Enhancements */
+  @media (max-width: 768px) {
+    .cards-container__Ai__result__plan {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .day-card__Ai__result__plan {
+      width: 90%;
+      padding: 1.2rem;
+    }
+  
+    .get-started-button__Ai__result__plan {
+      font-size: 12px;
+      padding: 0.7rem 1.2rem;
+    }
   }
   
-  .get-started-button__Ai__result__plan {
-    background-color: #1D1A23;
-    color: #fff;
-    border: none;
-    margin: 0 4px;
-    padding: 0.8rem 1rem;
-    border-radius: 25px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  @media (max-width: 480px) {
+    .cards-container__Ai__result__plan {
+      grid-template-columns: 1fr;
+    }
+  
+    .main-heading__Ai__result__plan {
+      font-size: 1.5rem;
+    }
+  
+    .heading__Ai__result__plan {
+      font-size: 1.2rem;
+    }
   }
-  
-  
-  /* Icon Styling */
-  .icon__Ai__result__plan {
-    color: #3498db;
-    margin-right: 0.5rem;
-  }
-  
-
   
