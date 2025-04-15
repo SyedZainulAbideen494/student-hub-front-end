@@ -533,8 +533,8 @@
 /* Active button style */
 .active__main__page__flashcard__page {
   background: transparent;
-  border: 1px solid #1d1d1d;
-  color: #000000; /* Text color for active button */
+  border: 1px solid #cccccc;
+  color: #dadada; /* Text color for active button */
 }
 
 
