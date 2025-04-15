@@ -15,7 +15,7 @@
 
 .library-title__library__page__component__page {
   font-size: 22px;
-  color: #242433; /* Darker, refined black */
+  color: #d6d6d6; /* Darker, refined black */
   display: flex;
   align-items: center;
   font-weight: 500; /* Medium weight for elegance */
@@ -124,7 +124,7 @@
   font-size: 18px;
   font-weight: 600;
   margin: 10px 0;
-  color: #333; /* Darker text color for readability */
+  color: #dddbdb; /* Darker text color for readability */
   text-align: center;
   width: 100%;
 }
@@ -132,7 +132,7 @@
 .set-topic__library__page__component__page,
 .set-subject__library__page__component__page {
   font-size: 14px;
-  color: #666; /* Subtle grey color */
+  color: #cacaca; /* Subtle grey color */
   margin: 4px 0; /* Space between topic and subject */
   width: 100%;
 }
@@ -141,7 +141,7 @@
 .subject-icon {
   margin-right: 6px;
   font-size: 16px;
-  color: #000000; /* Matching color for consistency */
+  color: #a1a1a1; /* Matching color for consistency */
 }
 
 

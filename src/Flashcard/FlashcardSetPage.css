@@ -26,7 +26,7 @@
   border: none;
   padding: 10px;
   cursor: pointer;
-  color: #000000; /* Apple-like blue */
+  color: #ffffff; /* Apple-like blue */
   font-size: 16px;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -55,7 +55,7 @@
 }
 
 .trash-icon {
-  color: #111111;
+  color: #dfdfdf;
   font-size: 15px;
   transition: color 0.2s, transform 0.2s;
 }
@@ -337,8 +337,8 @@
   }
   
   .tab-button__set__page__tab.active__set__page__tab {
-    border-bottom: 1px solid #000000; /* Underline for active tab */
-    color: black;
+    border-bottom: 1px solid #9b9b9b; /* Underline for active tab */
+    color: rgb(185, 185, 185);
     font-size: 14px;
   }
   
@@ -669,13 +669,10 @@
     color: #666; /* Subtle icon color */
   }
   
-
-
   .flashcard__set__page__status {
     margin-top: 8px;
     text-align: center;
   }
-
 
 
 /* Flashcard Section Layout */
