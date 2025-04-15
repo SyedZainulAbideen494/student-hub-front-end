@@ -1041,7 +1041,9 @@ const SparkleIcon = () => (
   isOpen={isMagicModalOpen}
   onRequestClose={() => setIsMagicModalOpen(false)}
   className="magic__ai__magic__modal__ai__page"
+  overlayClassName="magic__ai__modal__overlay"
 >
+
   <button onClick={() => setIsMagicModalOpen(false)} className="close-btn__magic__modal__ai__page">
     <FaTimes />
   </button>
