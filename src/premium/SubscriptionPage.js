@@ -384,7 +384,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     <Wrapper>
   {step === 1 && (
   <PageWrapper>
-    <DreamGlow>Everything You’ve Ever Wanted in a Study App</DreamGlow>
+    <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
 
     <Badge>Only on Edusify Premium</Badge>
     <Subtitle2>
@@ -392,20 +392,15 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     </Subtitle2>
 
     <FeatureList>
-      {[
-        ["Start each day with clarity — your plan, already optimized.", <FaRegClock />],
-        ["Smart to-dos. Intelligent breaks. Everything adapts to you.", <FaClipboardCheck />],
-        ["No clutter. Just calm, focused execution.", <FaMagic />],
-        ["AI-generated notes & flashcards that actually feel personal.", <FaStickyNote />],
-        ["Visuals that make complex topics beautifully simple.", <FaBrain />],
-        ["Pomodoros that adapt based on your rhythm — not trends.", <FaStopwatch />],
-        ["A workspace that’s minimal, powerful, and distraction-free.", <FaChartLine />],
-        ["No chaos. Just quiet consistency.", <FaUsers />]
-      ].map(([text, icon]) => (
-        <FeatureItem key={text}>
-          <IconWrapper>{icon}</IconWrapper>{text}
-        </FeatureItem>
-      ))}
+      {[["Unlimited AI Usage", <FaMagic />], ["AI Quizzes, Flashcards & Mind Maps", <FaBrain />], ["Convert Any PDF", <FaFilePdf />],
+        ["AI Topic Notes", <FaClipboardCheck />], ["Custom Study Plans", <FaTasks />], ["Daily Task Generation", <FaRegClock />],
+        ["Smart Task Suggestions", <FaLightbulb />], ["Quiz Analytics", <FaChartLine />], ["NEET, JEE, Boards Quizzes", <FaStopwatch />],
+        ["NEET Guide & Resources", <FaBookOpen />], ["AI Assignments", <FaFileInvoice />], ["AI Image Generator", <FaImage />],
+        ["Aesthetic Notes", <FaStickyNote />], ["AI Resource Finder", <FaFileAlt />], ["Smart Dashboard", <FaChartBar />],
+        ["Mind Maps", <FaLayerGroup />], ["Study Rooms", <FaUsers />], ["Document Locker", <FaLock />]]
+        .map(([text, icon]) => (
+          <FeatureItem key={text}><IconWrapper>{icon}</IconWrapper>{text}</FeatureItem>
+        ))}
     </FeatureList>
 
     <CallToAction>
