@@ -16,7 +16,7 @@
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px); /* Add spacing on the left and right */
-    background: rgba(18, 18, 18, 0.9); /* Dark theme with slightly transparent dark color */
+    background: rgba(42, 42, 42, 0.75); /* Lighter dark background for contrast */
     display: flex;
     justify-content: space-around;
     align-items: center;
