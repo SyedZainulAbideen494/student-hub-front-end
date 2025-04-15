@@ -169,7 +169,7 @@
 
 .quiz-title-home-page-quiz-page {
     font-size: 1rem; /* Slightly larger title */
-    color: #505050; /* Apple-like blue for links */
+    color: #afafaf; /* Apple-like blue for links */
     cursor: pointer;
     text-decoration: none;
     transition: color 0.3s ease;
