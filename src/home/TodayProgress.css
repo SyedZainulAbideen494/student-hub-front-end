@@ -213,7 +213,7 @@
 
 /* 🎯 Individual Cards */
 .dashboard__today__progress__card {
-    background: rgba(0, 0, 0, 0.8);
+    background: #020202;
     padding: 18px;
     border-radius: 14px;
     text-align: center;
