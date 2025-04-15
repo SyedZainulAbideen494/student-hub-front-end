@@ -130,7 +130,7 @@
     border-radius: 15px;
     color: #333; /* Darker text color */
     position: relative;
-    background: rgba(0, 0, 0, 0.3); /* White background with subtle shadow */
+    background: #353535; /* White background with subtle shadow */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 12px;
 }
@@ -322,12 +322,12 @@
   }
   
   .user .chat-bubble {
-    background-color: rgba(10, 10, 10, 0.3); /* User color */
+    background-color: #1c1c21; /* User color */
     align-self: flex-end; /* Align to the right */
   }
   
   .model .chat-bubble {
-    background-color: rgba(10, 10, 10, 0.3); /* AI color */
+    background-color: #1c1c21; /* AI color */
     align-self: flex-start; /* Align to the left */
   }
   
