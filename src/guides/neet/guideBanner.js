@@ -33,9 +33,9 @@ export default GuideBanner;
 const BannerWrapper = styled.div`
   width: 80%;
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(30, 30, 30, 0.7);
   backdrop-filter: blur(14px);
-  color: #1a1a1a;
+  color: #f2f2f2;
   padding: 24px;
   border-radius: 14px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
@@ -53,46 +53,46 @@ const TextContent = styled.div`
   margin-bottom: 16px;
 
   h3 {
-    font-size: 18px;
+    font-size: 18.5px;
     font-weight: 600;
-    margin-bottom: 8px;
-    color: #111;
+    margin-bottom: 10px;
+    color: #fff;
   }
 
   p {
-    font-size: 14px;
-    color: #555;
+    font-size: 14.5px;
+    color: #ccc;
     margin-bottom: 6px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .cta-text {
     font-size: 15px;
     font-weight: 500;
-    color: #222;
-    margin-top: 8px;
+    color: #eee;
+    margin-top: 10px;
   }
 
   .cta-text span {
-    color: #00a8cc;
+    color: #76c7ff;
     font-weight: 600;
   }
 `;
 
 const ViewGuideButton = styled.button`
-  background: linear-gradient(135deg, #a8edea, #fed6e3); /* pastel gradient */
+  background: linear-gradient(135deg, #3333ff, #9966ff);
   border: none;
-  color: #1a1a1a;
-  padding: 10px 18px;
+  color: white;
+  padding: 10px 22px;
   font-size: 14px;
   font-weight: 600;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px rgba(153, 102, 255, 0.3);
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.92;
     transform: translateY(-1px);
   }
 `;

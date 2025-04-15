@@ -193,6 +193,7 @@ const TopBoxes = () => {
 
             <p className="subtext__home__page__component">Here's your overview for today</p>
 <TodayProgress/>
+<GuideBanner/>
 <CheckSubscription/>
         </div>
     );
