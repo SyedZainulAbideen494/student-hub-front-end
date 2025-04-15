@@ -110,6 +110,11 @@ const TopBoxes = () => {
     const handleSettingsClick = () => {
        nav('/settings')
     };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        nav('/login');
+      };
     
     useEffect(() => {
         if (showDropdown) {
@@ -171,7 +176,7 @@ const TopBoxes = () => {
           <FontAwesomeIcon icon={faGear} />
           <span>Settings</span>
         </Link>
-        <button className="dropdown-item__dark">
+        <button className="dropdown-item__dark" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} />
           <span>Logout</span>
         </button>
