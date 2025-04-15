@@ -1,108 +1,112 @@
-/* General Page Styling */
+/* Apple-style Dark Theme Page Styling */
 .assignment_maker {
-    background: linear-gradient(135deg, #f8f9fa, #e3e4e8);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: linear-gradient(135deg, #0f0f10, #1a1a1d);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Glassmorphism Container */
+.assignment_maker__container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Title */
+.assignment_maker__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f5f5f7;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Inputs & Textareas */
+.assignment_maker__input,
+.assignment_maker__textarea {
+  width: 93%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f5f5f7;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.assignment_maker__input::placeholder,
+.assignment_maker__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.assignment_maker__input:focus,
+.assignment_maker__textarea:focus {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Button Styling */
+.assignment_maker__button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+}
+
+.assignment_maker__button:hover {
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(108, 92, 231, 0.6);
+}
+
+.assignment_maker__button:disabled {
+  background: rgba(140, 122, 230, 0.2);
+  cursor: not-allowed;
+  color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .assignment_maker__container {
+    width: 95%;
     padding: 20px;
   }
-  
-  /* Container with Glassmorphism */
-  .assignment_maker__container {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(12px);
-    border-radius: 16px;
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease-in-out;
-  }
-  
+}
 
-  /* Title */
+@media (max-width: 480px) {
   .assignment_maker__title {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+    font-size: 20px;
   }
-  
-  /* Form Inputs */
+
   .assignment_maker__input,
   .assignment_maker__textarea {
-    width: 93%;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    margin-bottom: 15px;
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(5px);
-    color: #333;
-    transition: all 0.3s ease-in-out;
+    font-size: 14px;
   }
-  
-  .assignment_maker__input::placeholder,
-  .assignment_maker__textarea::placeholder {
-    color: rgba(0, 0, 0, 0.5);
-  }
-  
-  /* On Focus */
-  .assignment_maker__input:focus,
-  .assignment_maker__textarea:focus {
-    background: rgba(255, 255, 255, 0.8);
-  }
-  
-  /* Button */
+
   .assignment_maker__button {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #6c5ce7, #8e44ad);
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.2s ease;
+    font-size: 14px;
   }
-  
-  .assignment_maker__button:hover {
-    background: linear-gradient(135deg, #8e44ad, #6c5ce7);
-    transform: translateY(-2px);
-  }
-  
-  .assignment_maker__button:disabled {
-    background: rgba(140, 122, 230, 0.5);
-    cursor: not-allowed;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .assignment_maker__container {
-      width: 95%;
-      padding: 20px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .assignment_maker__title {
-      font-size: 20px;
-    }
-  
-    .assignment_maker__input,
-    .assignment_maker__textarea {
-      font-size: 14px;
-    }
-  
-    .assignment_maker__button {
-      font-size: 14px;
-    }
-  }
-  
+}

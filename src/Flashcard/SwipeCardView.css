@@ -1,6 +1,6 @@
 /* Container */
 .swipe-flashcard-container {
-    background-color: #81d8f7;
+    background-color: #121212;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
   .flashcard {
     width: 80%; /* Slight space on sides */
     height: 300px; /* Reduced height */
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -82,11 +82,11 @@
   .show-answer-btn {
     position: absolute;
     bottom: 60px;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
     border: none;
     padding: 8px 16px;
     border-radius: 16px;
-    color: #000;
+    color: #7e7e7e;
     font-size: 14px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -107,7 +107,7 @@
   width: 90%; /* Make sure the buttons span the full width */
   padding: 5px 20px; /* Add horizontal padding */
   box-sizing: border-box; /* Include padding in the total width */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #161616;
 }
 
 /* Individual Button Styles */
@@ -115,11 +115,11 @@
 .i-know-btn,
 .dont-know-btn__,
 .ai-explain-flashcard-icon {
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
   border: none;
   padding: 8px 16px;
   border-radius: 16px;
-  color: #000;
+  color: #757575;
   font-size: 14px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);

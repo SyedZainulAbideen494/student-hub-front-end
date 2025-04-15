@@ -1,104 +1,111 @@
-/* General Styles */
+/* 🌌 General Styles - Dark Theme */
 .assignment-maker {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Fixed height for full visibility */
+  height: 100vh;
   padding: 20px;
-  background: linear-gradient(to bottom, #f8f9fb, #e8ebf0);
+  background: linear-gradient(to bottom, #0c0c0d, #1a1a1d);
 }
 
-/* Container */
+/* 📦 Container */
 .assignment-container {
   width: 90%;
   max-width: 600px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   padding: 25px;
   text-align: center;
   transition: all 0.3s ease;
-  height: 500px; /* Fixed height */
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Back Button */
+/* 🔙 Back Button */
 .back-btn {
   font-size: 16px;
   background: transparent;
   border: none;
-  color: #666;
+  color: #aaa;
   cursor: pointer;
   align-self: flex-start;
   transition: color 0.3s ease;
 }
 .back-btn:hover {
-  color: #000;
+  color: #fff;
 }
 
-/* Title */
+/* 📝 Title */
 .assignment-title {
   font-family: "Playfair Display", serif;
   font-size: 24px;
-  color: #222;
+  color: #ffffff;
   margin-bottom: 15px;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
-/* Assignment Content */
+/* 📄 Assignment Content */
 .assignment-content {
   flex: 1;
-  overflow-y: auto; /* Scrollable if content is too long */
+  overflow-y: auto;
   padding: 15px;
-  background: rgba(255, 255, 255, 0.6);
+  background: #121212;
   border-radius: 12px;
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  color: #444;
+  color: #ffffff;
   line-height: 1.6;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.05);
-  max-height: 280px; /* Prevents overflow */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.2);
+  max-height: 280px;
 }
 
-/* No Assignment Found */
+/* ❌ No Assignment Found */
 .assignment-not-found {
   font-family: "Inter", sans-serif;
   font-size: 16px;
-  color: #888;
+  color: #999;
 }
 
-/* Download Button */
+/* 🍎 Apple-style Download Button */
 .download-btn {
   font-size: 18px;
-  background: linear-gradient(to right, #d4af37, #b88a22);
-  color: white;
+  background: linear-gradient(135deg, #3a3a3c, #5e5e60);
+  color: #f5f5f7;
   padding: 12px 20px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   cursor: pointer;
+  margin-top: 15px;
   transition: all 0.3s ease;
-}
-.download-btn:hover {
-  background: linear-gradient(to right, #b88a22, #d4af37);
-  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), inset 0 0 0 0 rgba(255, 255, 255, 0);
+  backdrop-filter: blur(4px);
 }
 
-/* Responsive Design */
+.download-btn:hover {
+  background: linear-gradient(135deg, #5e5e60, #7c7c80);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+
+/* 📱 Responsive Design */
 @media (max-width: 768px) {
   .assignment-container {
-    height: 100vh; /* Adjust height for mobile */
+    height: 100vh;
     padding: 20px;
   }
-  
+
   .assignment-title {
     font-size: 22px;
   }
 
   .assignment-content {
-    max-height: 450px; /* Adjust for mobile */
+    max-height: 450px;
   }
 
   .download-btn {

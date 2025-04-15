@@ -86,7 +86,7 @@ const ProfilePage = () => {
   return (
     <div className="profile-page">
       <header className="profile-header">
-        <button className="nav-btn-footer-nav" onClick={handleLogout} style={{ color: 'black' }}>
+        <button className="settings-icon-button" onClick={handleLogout} style={{ color: 'black' }}>
           <FaSignOutAlt className="icon-footer-nav" />
           <span className="btn-label">Logout</span>
         </button>

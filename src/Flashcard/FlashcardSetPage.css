@@ -1,11 +1,11 @@
 .flashcard__set__page {
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: #121212;
   }
 
 /* Flashcard Set Page Header */
 .flashcard__set__page__header {
-  background-color: #ffffff;
+  background-color: #121212;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
 .flashcard__set__page__title {
   font-size: 20px;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  color: #333;
+  color: #e6e6e6;
   font-weight: 600;
   text-align: left;
   flex-grow: 1;
@@ -344,8 +344,8 @@
   
 /* Flashcard Container */
 .flashcard__set__page__flashcard {
-  background: #ffffff;
-  border: 1px solid #e0e0e0;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 12px;
   margin: 10px 0;
   padding: 15px;
@@ -362,7 +362,7 @@
 /* Flashcard Question */
 .flashcard__set__page__question {
   font-size: 1.4rem;
-  color: #333;
+  color: #ffffff;
   font-weight: 100;
   margin-bottom: 10px;
   text-align: center; /* Center the question */
@@ -450,7 +450,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -461,7 +461,7 @@
 
 /* Start Learning Button */
 .flashcard__set__page__start-learning-btn {
-  background-color: #000000; /* Green color */
+  background-color: #121212; /* Green color */
   color: white;
   font-size: 1rem;
   padding: 12px 20px;
@@ -481,7 +481,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 20px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     width: 80%;
     max-width: 400px;
     margin: 0 auto;
@@ -625,7 +625,7 @@
     justify-content: center;
     padding: 20px;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     margin: 20px 0;
   }
@@ -683,7 +683,7 @@
   width: 90%; /* Reduced width to make it more compact */
   margin: 30px auto; /* Center the section horizontally */
   padding: 15px; /* Reduced padding for a more minimal feel */
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 12px; /* Curved edges */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
   display: flex;
@@ -708,9 +708,9 @@
 
 .status-filter-button {
   padding: 8px 15px; /* Reduced padding for a smaller look */
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: transparent;
-  color: #333;
+  color: #b4b4b4;
   font-size: 12px; /* Smaller font size */
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -719,8 +719,8 @@
 
 
 .status-filter-button.active {
-  background-color: #ffffff; /* Green for active state */
-  color: rgb(0, 0, 0);
+  background-color: #121212; /* Green for active state */
+  color: rgb(255, 254, 254);
   border-color: #000000;
 }
 
@@ -767,11 +767,11 @@
   max-width: 600px; /* Limit the width for larger screens */
   padding: 12px 15px;
   font-size: 16px;
-  border: 1px solid #e0e0e0; /* Light border */
+  border: 1px solid rgba(0, 0, 0, 0.3); /* Light border */
   border-radius: 25px; /* Rounded corners */
   outline: none;
   transition: all 0.3s ease; /* Smooth hover and focus transitions */
-  background-color: #ffffff; /* White background for contrast */
+  background-color: rgba(0, 0, 0, 0.3); /* White background for contrast */
   color: #333333; /* Text color */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
 }
@@ -793,8 +793,8 @@
 /* AI Explain Button */
 .flashcard__set__page__ai-explain-btn {
   margin-top: 10px;
-  background: #ffffff;  /* Green color */
-  color: black;
+  background: rgba(0, 0, 0, 0.3);  /* Green color */
+  color: rgb(255, 255, 255);
   border: 1.5px solid #007bff;
   padding: 8px 14px;
   cursor: pointer;

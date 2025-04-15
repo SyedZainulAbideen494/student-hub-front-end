@@ -2,14 +2,14 @@
 .flashcards-page {
     font-family: 'Roboto', sans-serif;
     padding: 20px;
-    background-color: #fefeff;
-    color: #333;
+    background-color: #121212;
+    color: #e4e4e4;
     margin-bottom: 100px;
 }
 
 /* Flashcard Form */
 .flashcard-form-flashcards-page {
-    background: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     padding: 20px;
@@ -42,6 +42,7 @@
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 16px;
+    background-color: #121212;
     transition: border-color 0.3s ease;
 }
 
@@ -116,49 +117,55 @@
     transform: scale(0.97); /* Gentle scale on click */
 }
 
-  
-/* Search Bar */
+  /* Search Bar - Dark Theme */
 .search-bar-flashcards-page {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    background-color: #fff;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  background-color: #1E1E1E; /* Dark background */
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow for dark */
+  overflow: hidden;
 }
 
 .search-bar-flashcards-page input[type="text"] {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 0;
-    font-size: 16px;
-    box-shadow: none;
-    outline: none;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  color: #f0f0f0; /* Light text color */
+}
+
+.search-bar-flashcards-page input[type="text"]::placeholder {
+  color: #aaa; /* Dim placeholder for dark mode */
 }
 
 .search-bar-flashcards-page input[type="text"]:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .search-bar-flashcards-page button {
-    background-color: transparent;
-    color: #333;
-    border: none;
-    border-radius: 0;
-    padding: 15px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  background-color: transparent;
+  color: #f0f0f0;
+  border: none;
+  border-radius: 0;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-bar-flashcards-page button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+  background-color: #2d2d2d; /* Slight hover shade */
+  transform: scale(1.05);
 }
+
 
 /* Flashcard List */
 .flashcard-list-flashcards-page {

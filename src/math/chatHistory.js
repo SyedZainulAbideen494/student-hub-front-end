@@ -103,16 +103,7 @@ const ChatHistoryPage = () => {
                   dangerouslySetInnerHTML={{ __html: result.role === 'model' ? formatContent(result.parts.map(part => part.text).join('')) : result.parts.map(part => part.text).join('') }}
                 />
                 </MathJaxContext>
-                {result.role === 'model' && (
-                  <div className="create-flashcard-btn_ai__page__container">
-                    <button
-                      className="create-flashcard-btn_ai__page"
-                      onClick={() => handleCreateFlashcard(result.parts[0].text)}
-                    >
-                      Add To Notes
-                    </button>
-                  </div>
-                )}
+
               </div>
             </div>
           ))

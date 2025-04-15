@@ -1,7 +1,7 @@
 /* General Styles */
 .leaderboard__page__container__leader__board__2 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f5f5f7;
+    background-color: #121212;
     color: #1d1d1f;
     padding: 16px;
     min-height: 100vh;
@@ -22,14 +22,14 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #1d1d1f;
+    color: #ffffff;
     font-size: 14px;
   }
   
   .leaderboard-title__leaderboard__page__leader__board__2 {
     font-size: 20px;
     font-weight: 600;
-    color: #1d1d1f;
+    color: #ffffff;
     margin: 0;
   }
   
@@ -37,7 +37,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #1d1d1f;
+    color: #ffffff;
     font-size: 18px;
   }
   
@@ -50,7 +50,7 @@
   
   /* User Stats Section */
   .user-stats__leaderboard__page__leader__board__2 {
-    background-color: #ffffff;
+    background-color:rgba(0, 0, 0, 0.3) ;
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -62,6 +62,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
     width: 95%;
   }
   
@@ -75,7 +76,7 @@
   .position__leaderboard__page__leader__board__2 {
     font-size: 14px;
     font-weight: 600;
-    color: #1d1d1f;
+    color: #d9d9da;
     min-width: 24px;
   }
   
@@ -89,7 +90,7 @@
   .username__leaderboard__page__leader__board__2 {
     font-size: 14px;
     font-weight: 500;
-    color: #1d1d1f;
+    color: #ffffff;
     flex: 1;
   }
   
@@ -135,7 +136,7 @@
   
   /* Leaderboard Overview */
   .leaderboard-overview__leaderboard__page__leader__board__2 {
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -144,7 +145,7 @@
   .overview-title__leaderboard__page__leader__board__2 {
     font-size: 16px;
     font-weight: 600;
-    color: #1d1d1f;
+    color: #ffffff;
     margin-bottom: 12px;
     text-align: center;
   }
@@ -173,8 +174,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: #121212;
     border-radius: 8px;
+    color: white;
     padding: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -186,15 +188,15 @@
   }
   
   .gold-bg__leaderboard__page__leader__board__2 {
-    background-color: #ffb627;
+    background-color: #d4af37; /* Rich, darker gold */
   }
   
   .silver-bg__leaderboard__page__leader__board__2 {
-    background-color: #f5f5f5;
+    background-color: #b0b0b0; /* Muted silver for dark bg */
   }
   
   .bronze-bg__leaderboard__page__leader__board__2 {
-    background-color: #f7b267;
+    background-color: #cd7f32; /* Deeper bronze for contrast */
   }
   
   .medal__leaderboard__page__leader__board__2 {
@@ -210,7 +212,7 @@
   .suggested-title__page__leader__board__2 {
     font-size: 14px;
     font-weight: 600;
-    color: #1d1d1f;
+    color: #ffffff;
     margin-bottom: 8px;
     text-align: center;
   }
@@ -223,9 +225,10 @@
   }
   
   .suggested-card__page__leader__board__2 {
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     padding: 8px;
+    color: white;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     min-width: 120px;
     text-align: center;
@@ -247,7 +250,7 @@
   
   .user-details__suggested__page__leader__board__2 {
     font-size: 12px;
-    color: #1d1d1f;
+    color: #ffffff;
   }
   
   .view-btn__suggested__page__leader__board__2 {

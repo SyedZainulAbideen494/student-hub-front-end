@@ -310,21 +310,22 @@ const ViewFlashCard = () => {
       key={subject.id}
       style={{
         cursor: 'pointer',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Smooth hover effect
+        transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
         transform: 'translateY(0)',
-        backgroundColor: '#FFFFFF', // Clean white background
-        borderRadius: '16px', // Subtle, modern rounded corners
-        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', // Light and refined shadow
+        backgroundColor: '#1E1E1E', // Dark card background
+        borderRadius: '16px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.6)', // Deeper shadow for dark mode
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '0.5rem', // Consistent gap between elements
-        padding: '12px', // Balanced padding
-        margin: '0', // No extra margin for alignment
-        minHeight: '8rem', // Compact, sleek card height
-        transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+        gap: '0.5rem',
+        padding: '12px',
+        margin: '0',
+        minHeight: '8rem',
+        color: '#EAEAEA', // Light text color
       }}
+      
       onMouseEnter={e => {
         e.currentTarget.style.transform = 'translateY(-0.3rem)';
         e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
@@ -364,7 +365,7 @@ const ViewFlashCard = () => {
           <span style={{
             fontFamily: 'San Francisco, Helvetica Neue, Arial, sans-serif', // Sleek font
             fontWeight: '500', // Medium font weight
-            color: '#333', // Dark gray text for good contrast
+            color: 'white', // Dark gray text for good contrast
             fontSize: '0.9rem', // Moderate size for readability
             textOverflow: 'ellipsis',
             overflow: 'hidden',
@@ -411,9 +412,9 @@ const ViewFlashCard = () => {
                     transition: 'all 0.5s',
                     transform: 'translateY(0)',
                     width: '18rem',
-                    backgroundColor: '#F9FAFB',
+                    backgroundColor: '#1f1f1f', // dark card background
                     borderRadius: '0.5rem',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)', // stronger dark shadow
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -422,7 +423,9 @@ const ViewFlashCard = () => {
                     padding: '1rem',
                     margin: '1rem 0',
                     minHeight: '8rem',
+                    color: '#f0f0f0', // light text color
                   }}
+                  
                   onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-0.5rem)'}
                   onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
                 >

@@ -1,13 +1,14 @@
-/* General styling for the page */
+/* General styling for the page - Dark Theme */
 .flashcards__subject__Page__ {
     font-family: 'Arial', sans-serif;
-    background-color: #fff;
+    background-color: #121212;
     min-height: 100vh;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    color: #e0e0e0;
 }
 
 .loading__subject__Page__ {
@@ -15,50 +16,49 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #F9FAFB;
+    background-color: #1e1e1e;
 }
 
 .error__subject__Page__ {
     text-align: center;
-    color: red;
+    color: #ff6b6b;
     font-weight: bold;
 }
-
 
 .flashcards__subject__header__subject__Page__ {
     display: flex;
     align-items: center;
     padding: 1rem;
     width: 100%;
-    border-bottom: 1px solid #E5E7EB;
+    border-bottom: 1px solid #2c2c2c;
     position: relative;
     margin-bottom: 20px;
-    justify-content: space-between; /* Ensures space between back button, title, and delete button */
+    justify-content: space-between;
 }
 
 .back__btn__subject__Page__ {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1rem; /* Increases the size of the back button */
-    color: #4B5563; /* Adds a gray color */
+    font-size: 1rem;
+    color: #cbd5e1;
 }
 
 .subject__title__subject__Page__ {
     font-size: 1.5rem;
-    color: #111827; /* Darker color for better visibility */
+    color: #f3f4f6;
     text-align: center;
-    flex-grow: 1; /* Ensures title is centered */
+    flex-grow: 1;
 }
 
 .delete__btn__subject__Page__ {
     position: absolute;
-    right: 1rem; /* Moves the delete button further to the right */
+    right: 1rem;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1rem; /* Increases the size of the delete button */
-    color: #EF4444; /* Red color for delete button */
+    font-size: 1rem;
+    color: #f87171;
 }
 
 .flashcards-list__subject__Page__ {
@@ -71,9 +71,9 @@
 
 .flashcard__card__subject__Page__ {
     width: 18rem;
-    background-color: #F9FAFB;
+    background-color: #1f1f1f;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -88,7 +88,7 @@
 }
 
 .flashcard__icon__subject__Page__ {
-    stroke: #A78BFA;
+    stroke: #a78bfa;
 }
 
 .flashcard__details__subject__Page__ {
@@ -98,58 +98,52 @@
 .flashcard__title__subject__Page__ {
     font-weight: bold;
     font-size: 1rem;
-    color: #111827;
+    color: #e5e5e5;
 }
 
 .flashcard__description__subject__Page__ {
     font-size: 0.875rem;
-    color: #6B7280;
+    color: #9ca3af;
 }
 
 .flashcard__actions__subject__Page__ {
     margin-top: 1rem;
     display: flex;
-    justify-content: center; /* Centers the view button horizontally */
-    align-items: center; /* Ensures the button is vertically centered */
+    justify-content: center;
+    align-items: center;
 }
 
 .button__view__btn__subject__page {
-    background-color: #111827; /* Soft Apple-style gradient */
-    color: #ffffff; /* Deep black-grey text */
+    background-color: #1f2937;
+    color: #ffffff;
     font-size: 14px;
     font-weight: 500;
-    border: 1px solid #d1d1d6; /* Subtle macOS-style border */
+    border: 1px solid #374151;
     padding: 8px 24px;
-    border-radius: 10px; /* Smooth edges */
+    border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
-    font-family: 'SF Pro Display', sans-serif; /* Apple-style font */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: 'SF Pro Display', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px; /* Spacing between text and effect */
-  }
-  
- 
-  
-  
-  @keyframes effect__view__btn__subject__page {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+    gap: 6px;
+}
 
+@keyframes effect__view__btn__subject__page {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 .add-note__btn__subject__Page__ {
-    background-color: #1D4ED8;
+    background-color: #2563eb;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -163,7 +157,7 @@
 
 .no-notes__subject__Page__ p {
     font-size: 1rem;
-    color: #6B7280;
+    color: #9ca3af;
 }
 
 .flashcard__card__subject__Page__:hover {
@@ -171,5 +165,5 @@
 }
 
 .flashcard__actions__subject__Page__ .view__btn__subject__Page__:hover {
-    background-color: #45a049;
+    background-color: #10b981;
 }

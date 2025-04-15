@@ -9,6 +9,8 @@
   width: 70%;
   max-width: 480px; /* Limit max width to give a more centered feel */
   margin: auto;
+  background-color: #1c1c1e; /* Dark background */
+  color: white; /* Text color for contrast */
 }
 
 /* Header container for back button and title */
@@ -31,13 +33,14 @@
 .create__notes__type__page__back-icon {
   width: 24px;
   height: 24px;
+  fill: white; /* Ensure icon is visible in dark mode */
 }
 
 /* Title */
 .create__notes__type__page__header {
   font-size: 24px;
   font-weight: 600;
-  color: #333;
+  color: white; /* Title in white for contrast */
   margin-top: 0;
   margin-bottom: 0;
   text-align: center;
@@ -46,7 +49,7 @@
 /* Description text */
 .create__notes__type__page__description {
   font-size: 17px;
-  color: #555;
+  color: #aaa; /* Lighter grey for description */
   text-align: center;
   margin-bottom: 40px;
   font-weight: 300;
@@ -65,7 +68,7 @@
 
 /* Option buttons */
 .create__notes__type__page__option {
-  background-color: #242128; /* Apple blue color */
+  background-color: #242128; /* Apple-inspired dark grey */
   color: white;
   border: none;
   padding: 15px 25px;
@@ -75,13 +78,10 @@
   width: 100%;
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for dark theme */
   cursor: pointer;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
-
-
-
 
 .create__notes__type__page__option:focus {
   outline: none;

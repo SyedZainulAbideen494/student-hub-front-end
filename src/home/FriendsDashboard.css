@@ -1,8 +1,8 @@
 .friend__widget__dashboard {
     width: 300px;
-    background: #fff; /* White background for a modern look */
+    background: #121212;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -11,39 +11,44 @@
     margin: 30px auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: all 0.3s ease;
+    color: #e0e0e0;
 }
 
 .friend__widget__dashboard:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Slightly bigger shadow on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
 }
 
 .friend__widget__dashboard__header {
     display: flex;
-    flex-direction: column; /* Stack the title and tabs */
-    align-items: flex-start; /* Align to the left */
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #333;
     padding-bottom: 15px;
-  }
-  
-  .friend__widget__dashboard__title {
+}
+
+.friend__widget__dashboard__title {
     font-size: 22px;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 10px; /* Add spacing between title and tabs */
-  }
-  
-  .friend__widget__dashboard__tabs {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.friend__widget__dashboard__tabs {
     display: flex;
-    margin-top: 0; /* Remove margin-top for tabs */
-    gap: 20px; /* Space between tabs */
-  }
-  
+    margin-top: 0;
+    gap: 20px;
+}
+
+.friend__widget__dashboard__tab {
+    color: #b0b0b0;
+    cursor: pointer;
+}
 
 .friend__widget__dashboard__tab:hover,
 .friend__widget__dashboard__tab.active {
-    border-bottom: 3px solid #6c63ff; /* Highlighted active tab */
-    color: #6c63ff;
+    border-bottom: 3px solid #8e81ff;
+    color: #8e81ff;
 }
 
 .friend__widget__dashboard__list {
@@ -59,13 +64,13 @@
     align-items: center;
     margin-bottom: 18px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #333;
     transition: background-color 0.3s ease;
     justify-content: space-between;
 }
 
 .friend__widget__dashboard__item:hover {
-    background-color: #f4f4f4; /* Soft hover effect */
+    background-color: #2a2a2a;
 }
 
 .friend__widget__dashboard__avatar {
@@ -82,11 +87,11 @@
 
 .friend__widget__dashboard__username {
     font-weight: 500;
-    color: #4a4a4a;
+    color: #e0e0e0;
 }
 
 .friend__widget__dashboard__view-profile-btn {
-    background-color: #6c63ff;
+    background-color: #8e81ff;
     color: white;
     border: none;
     padding: 6px 14px;
@@ -97,31 +102,31 @@
 }
 
 .friend__widget__dashboard__view-profile-btn:hover {
-    background-color: #5751d1; /* Darker shade on hover */
+    background-color: #6b61db;
 }
 
 .friend__widget__dashboard__footer {
     display: flex;
-    justify-content: center; /* Center align the button */
+    justify-content: center;
     align-items: center;
-    margin-top: 20px; /* Increase margin for better spacing */
+    margin-top: 20px;
 }
 
 .friend__widget__dashboard__btn-inline {
-    background-color: #fff; /* White background for a clean look */
-    color: #4a90e2; /* Soft blue for contrast */
-    border: 2px solid #4a90e2; /* Border to make it look like a floating button */
-    padding: 12px 25px; /* Increased padding for a more comfortable button size */
-    font-size: 16px; /* Slightly larger text */
+    background-color: #2a2a2a;
+    color: #8e81ff;
+    border: 2px solid #8e81ff;
+    padding: 12px 25px;
+    font-size: 16px;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Added scale transition */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Light shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .friend__widget__dashboard__btn-inline:hover {
-    background-color: #f1f1f1; /* Subtle background change on hover */
-    transform: scale(1.05); /* Slight scaling effect on hover */
+    background-color: #3a3a3a;
+    transform: scale(1.05);
 }
 
 .friend__widget__dashboard__buttons {
@@ -130,7 +135,7 @@
 }
 
 .friend__widget__dashboard__buttons button {
-    background-color: #4a90e2; /* Matching the new color scheme */
+    background-color: #8e81ff;
     color: white;
     border: none;
     padding: 6px 14px;
@@ -141,16 +146,15 @@
 }
 
 .friend__widget__dashboard__buttons button:hover {
-    background-color: #357ABD; /* Darker on hover */
+    background-color: #6b61db;
 }
 
 .friend__widget__intrct {
-    font-size: 14px; /* Small text size */
-    color: gray; /* Gray text color */
-    text-align: center; /* Center the text */
-    display: block; /* Make the span behave like a block-level element */
-    margin-top: 10px; /* Add spacing above */
-    margin-bottom: 10px; /* Add spacing below */
-    font-family: Arial, sans-serif; /* Optional: Add a clean font */
-  }
-  
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}

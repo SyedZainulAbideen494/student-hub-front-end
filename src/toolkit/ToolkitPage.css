@@ -1,13 +1,13 @@
 .toolkit__main__page {
     font-family: Arial, sans-serif;
     padding: 30px;
-    background-color: #ffffff; /* Soft light background color */
+    background-color: #121212; /* Soft light background color */
     min-height: 100vh;
     margin-bottom: 70px;
 }
 
 .toolkit__header__page {
-    background-color: #ffffff; /* White header background */
+    background-color: #121212; /* White header background */
     color: #333; /* Darker text color for contrast */
     padding: 3px;
     text-align: center;
@@ -19,7 +19,7 @@
     font-size: 1.8em; /* Slightly larger heading size for emphasis */
     margin: 0; /* Remove default margin */
     font-weight: 700; /* Bolder font weight for the title */
-    color: #3a6c9a; /* Soft blue color for the header text */
+    color: #6d6d6d; /* Soft blue color for the header text */
 }
 
 .app__list__page {
@@ -30,7 +30,7 @@
 }
 
 .app__card__page {
-    background-color: #ffffff; /* Card background */
+    background-color: rgba(0, 0, 0, 0.3); /* Card background */
     border-radius: 12px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
     margin: 15px;

@@ -11,10 +11,9 @@ import {
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import TestimonialsSection from "./testimonials";
 
-// Styled Components
 const Wrapper = styled.div`
-  background: linear-gradient(135deg, #F8F6FF, #ECE6FF);
-  color: #1c1c1e;
+  background: linear-gradient(135deg, #0a0a0a, #1c1c1e);
+  color: #f5f5f7;
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -33,12 +32,12 @@ const SubscriptionContainer = styled.div`
   width: 100%;
   max-width: 460px;
   text-align: center;
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 30px;
   padding: 45px 30px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
   transition: all 0.4s ease;
 `;
 
@@ -46,14 +45,14 @@ const Title = styled.h1`
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 18px;
-  color: #2D1E64;
+  color: #f5f5f7;
   letter-spacing: 0.5px;
   line-height: 1.3;
 `;
 
 const Subtitle = styled.p`
   font-size: 15px;
-  color: #5C4A99;
+  color: #a1a1aa;
   margin-bottom: 32px;
   line-height: 1.8;
   font-weight: 500;
@@ -71,18 +70,18 @@ const PlanBox = styled.div`
   padding: 20px;
   border-radius: 20px;
   text-align: center;
-  border: 2px solid ${(props) => (props.active ? "#7F56D9" : "#d1d1d6")};
+  border: 2px solid ${(props) => (props.active ? "#7f56d9" : "#2c2c2e")};
   width: 150px;
   background: ${(props) =>
-    props.active ? "rgba(127, 86, 217, 0.12)" : "rgba(255, 255, 255, 0.05)"};
+    props.active ? "rgba(127, 86, 217, 0.12)" : "rgba(255, 255, 255, 0.02)"};
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
   box-shadow: ${(props) =>
-    props.active ? "0 0 14px rgba(127, 86, 217, 0.25)" : "none"};
+    props.active ? "0 0 14px rgba(127, 86, 217, 0.4)" : "none"};
 
   &:hover {
-    border-color: #7F56D9;
+    border-color: #7f56d9;
     background: rgba(127, 86, 217, 0.14);
     transform: translateY(-3px);
   }
@@ -90,12 +89,12 @@ const PlanBox = styled.div`
   h4 {
     font-size: 16px;
     margin-bottom: 6px;
-    color: #2D1E64;
+    color: #f5f5f7;
   }
 
   p {
     font-size: 14px;
-    color: #6e6e73;
+    color: #8e8e93;
   }
 `;
 
@@ -104,7 +103,7 @@ const BestOfferTag = styled.div`
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: #7F56D9;
+  background: #7f56d9;
   color: white;
   font-size: 11px;
   font-weight: 600;
@@ -120,7 +119,7 @@ const SmallText = styled.p`
 `;
 
 const Button = styled.button`
-  background: #7F56D9;
+  background: #7f56d9;
   color: white;
   border: none;
   padding: 16px 42px;
@@ -139,9 +138,9 @@ const Button = styled.button`
   }
 
   &:disabled {
-    background: #d1d1d6;
+    background: #3a3a3c;
     cursor: default;
-    opacity: 0.6;
+    opacity: 0.5;
     box-shadow: none;
   }
 `;
@@ -149,21 +148,21 @@ const Button = styled.button`
 const Footer = styled.p`
   margin-top: 30px;
   font-size: 14px;
-  color: #6e6e73;
+  color: #7c7c80;
   text-align: center;
   font-weight: 500;
   text-decoration: underline;
   cursor: pointer;
 
   &:hover {
-    color: #7F56D9;
+    color: #a58dfb;
   }
 `;
 
 const Divider = styled.div`
   height: 2px;
   width: 60px;
-  background: #D6CFFF;
+  background: #3c3c43;
   margin: 60px auto 40px;
   border-radius: 10px;
 `;
@@ -181,14 +180,14 @@ const Title2 = styled.h2`
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
   font-weight: 600;
-  color: #2D1E64;
+  color: #f5f5f7;
   text-align: center;
   margin-bottom: 0.5rem;
 `;
 
 const Subtitle2 = styled.p`
   font-size: 1.1rem;
-  color: #5C4A99;
+  color: #a1a1aa;
   text-align: center;
   margin-bottom: 2.2rem;
   font-weight: 500;
@@ -196,9 +195,9 @@ const Subtitle2 = styled.p`
 
 const Badge = styled.div`
   font-size: 0.85rem;
-  background: #DAD4FF;
+  background: #2c2c2e;
   padding: 4px 10px;
-  color: #4B3B8E;
+  color: #a58dfb;
   border-radius: 20px;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -219,16 +218,16 @@ const FeatureItem = styled.li`
   align-items: center;
   font-size: 1.05rem;
   font-weight: 500;
-  color: #322154;
+  color: #f5f5f7;
   padding: 0.95rem 1rem;
-  background: #F3F0FF;
+  background: #1c1c1e;
   border-radius: 14px;
   transition: all 0.25s ease;
-  border-left: 4px solid #B49CFF;
-  box-shadow: 0 4px 14px rgba(120, 90, 240, 0.07);
+  border-left: 4px solid #7f56d9;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.03);
 
   &:hover {
-    background: #EBE3FF;
+    background: #2c2c2e;
     transform: translateY(-2px);
   }
 `;
@@ -236,7 +235,7 @@ const FeatureItem = styled.li`
 const IconWrapper = styled.span`
   font-size: 1.4rem;
   margin-right: 14px;
-  background: linear-gradient(135deg, #6F42C1, #A066FF);
+  background: linear-gradient(135deg, #7f56d9, #c08fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -244,11 +243,11 @@ const IconWrapper = styled.span`
 const CallToAction = styled.div`
   margin-top: 2.5rem;
   text-align: center;
-  color: #5E3ABF;
+  color: #a58dfb;
   font-size: 1.15rem;
   font-weight: 600;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(90, 60, 200, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
   line-height: 1.7;
 `;
 
@@ -256,7 +255,7 @@ const DreamGlow = styled.h2`
   font-size: 2.5rem;
   font-family: 'Playfair Display', serif;
   font-weight: 700;
-  background: linear-gradient(120deg, #9F63FF, #FFB1F9);
+  background: linear-gradient(120deg, #9f63ff, #ffb1f9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;

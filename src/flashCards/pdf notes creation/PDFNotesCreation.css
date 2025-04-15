@@ -1,211 +1,215 @@
 /* Container */
 .PDFNotesCreation__container {
-    padding: 40px;
-    font-family: 'Helvetica Neue', sans-serif;
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  /* Header */
-  .PDFNotesCreation__header {
-    font-size: 27px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 40px;
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-  
-  /* Back Button */
-  .PDFNotesCreation__backButton {
-    background: none;
-    border: none;
-    color: #007aff;
-    font-size: 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: color 0.3s;
-  }
-  
-  
-  /* Form */
-  .PDFNotesCreation__form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-  
-  /* Options Container */
-  .PDFNotesCreation__optionsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
-  .PDFNotesCreation__toggleOption {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 18px;
-    color: #555;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 14px 20px;
-    border-radius: 25px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-  }
-  
+  padding: 40px;
+  font-family: 'Helvetica Neue', sans-serif;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #1c1c1e; /* Dark background */
+  color: white; /* Text color for contrast */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
 
-  .PDFNotesCreation__toggleOption--selected {
-    background-color: #e1f5ff;
-    color: #007aff;
-    border-color: #007aff;
-  }
-  
-  /* Button */
-  .PDFNotesCreation__button {
-    background-color: #242128;
-    color: #fff;
-    padding: 15px 30px;
-    font-size: 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-    box-shadow: 0 6px 16px rgba(0, 122, 255, 0.2);
-  }
-  
-  .PDFNotesCreation__button:hover {
-    background-color: #005bb5;
-    transform: translateY(-2px);
-  }
-  
-  .PDFNotesCreation__button:disabled {
-    background-color: #a5c8ff;
-    cursor: not-allowed;
-  }
-  
-  /* Error */
-  .PDFNotesCreation__error {
-    color: #ff3b30;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  /* Output */
-  .PDFNotesCreation__output {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
-  
-  .PDFNotesCreation__outputText {
-    white-space: pre-wrap;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  /* File Upload */
-  .PDFNotesCreation__fileUpload__container {
-    max-width: 100%;
-    margin: 30px 0;
-  }
-  
-  .PDFNotesCreation__fileUpload__wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .PDFNotesCreation__fileUpload__box {
-    position: relative;
-    height: 240px;
-    width: 100%;
-    border: 2px dashed #007aff;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  }
-  
-  .PDFNotesCreation__fileUpload__box:hover {
-    background-color: #e6f3ff;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  }
-  
-  .PDFNotesCreation__fileUpload__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .PDFNotesCreation__fileUpload__icon {
-    margin-bottom: 15px;
-    width: 50px;
-    height: 50px;
-  }
-  
-  .PDFNotesCreation__fileUpload__text {
-    font-size: 20px;
-    color: #333;
-    font-weight: 500;
-  }
-  
-  .PDFNotesCreation__fileUpload__input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-  
-  /* Loading Modal */
-  .PDFNotesCreation__loadingModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .PDFNotesCreation__modalContent {
-    background-color: white;
-    padding: 30px 40px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  }
-  
-  .PDFNotesCreation__modalContent p {
-    margin-top: 20px;
-    font-size: 20px;
-    color: #333;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-  
+/* Header */
+.PDFNotesCreation__header {
+  font-size: 27px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #fff; /* White text for the header */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Back Button */
+.PDFNotesCreation__backButton {
+  background: none;
+  border: none;
+  color: #007aff; /* Blue color for contrast */
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.PDFNotesCreation__backButton:hover {
+  color: #00b0ff; /* Lighter blue on hover */
+}
+
+/* Form */
+.PDFNotesCreation__form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Options Container */
+.PDFNotesCreation__optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Toggle Option */
+.PDFNotesCreation__toggleOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  color: #bbb; /* Lighter grey for text */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 14px 20px;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 1px solid #444; /* Darker border */
+  background-color: #2c2c2e; /* Dark background for options */
+}
+
+.PDFNotesCreation__toggleOption--selected {
+  background-color: #1f3c58; /* Selected background */
+  color: #00b0ff; /* Blue text for selected state */
+  border-color: #00b0ff; /* Blue border for selected state */
+}
+
+/* Button */
+.PDFNotesCreation__button {
+  background-color: #242128; /* Dark background for the button */
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.2);
+}
+
+.PDFNotesCreation__button:hover {
+  background-color: #005bb5;
+  transform: translateY(-2px);
+}
+
+.PDFNotesCreation__button:disabled {
+  background-color: #a5c8ff;
+  cursor: not-allowed;
+}
+
+/* Error */
+.PDFNotesCreation__error {
+  color: #ff3b30;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Output */
+.PDFNotesCreation__output {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #2c2c2e; /* Dark background for output */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.PDFNotesCreation__outputText {
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ddd; /* Light grey text for output */
+}
+
+/* File Upload */
+.PDFNotesCreation__fileUpload__container {
+  max-width: 100%;
+  margin: 30px 0;
+}
+
+.PDFNotesCreation__fileUpload__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PDFNotesCreation__fileUpload__box {
+  position: relative;
+  height: 240px;
+  width: 100%;
+  border: 2px dashed #007aff; /* Blue dashed border for upload box */
+  background-color: #333; /* Dark background for file upload box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.PDFNotesCreation__fileUpload__box:hover {
+  background-color: #444; /* Slightly lighter background on hover */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.PDFNotesCreation__fileUpload__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.PDFNotesCreation__fileUpload__icon {
+  margin-bottom: 15px;
+  width: 50px;
+  height: 50px;
+  fill: #007aff; /* Blue icon */
+}
+
+.PDFNotesCreation__fileUpload__text {
+  font-size: 20px;
+  color: #bbb; /* Lighter grey text for instructions */
+  font-weight: 500;
+}
+
+.PDFNotesCreation__fileUpload__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Loading Modal */
+.PDFNotesCreation__loadingModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.PDFNotesCreation__modalContent {
+  background-color: #1c1c1e; /* Dark background for modal content */
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.PDFNotesCreation__modalContent p {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #fff; /* White text for the modal */
+  font-weight: 500;
+  line-height: 1.4;
+}

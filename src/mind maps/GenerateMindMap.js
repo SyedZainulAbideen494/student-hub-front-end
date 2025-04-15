@@ -122,7 +122,7 @@ const MindMapGenerator = () => {
   <div className="glass-card__mind__map__make__page">
     <h1 className="title__mind__map__make__page">Generate AI Mind Map</h1>
 
-    {/* Toggle Buttons for AI & PDF */}
+    {/* Toggle Buttons for AI & PDF 
     <div className="toggle-container__gen__mind__map">
       <button
         className={`toggle-btn__gen__mind__map ${selectedMode === "AI" ? "active__gen__mind__map" : ""}`}
@@ -137,7 +137,7 @@ const MindMapGenerator = () => {
         PDF
       </button>
     </div>
-
+*/}
     <div className="input-container__mind__map__make__page">
       {selectedMode === "AI" ? (
         <>

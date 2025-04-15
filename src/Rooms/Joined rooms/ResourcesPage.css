@@ -2,7 +2,7 @@
 .resources-page__resources__page__rooms {
     font-family: 'Arial', sans-serif;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #121212;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@
     font-size: 15px;
     cursor: pointer;
     border: none;
-    background-color: #e6f7ff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     color: #007bff;
     font-weight: 400;
@@ -57,7 +57,7 @@
 }
 
 .toggle-btn__resources__page__rooms.active {
-    background-color: #007bff;
+    background-color: #081018;
     color: white;
 }
 
@@ -79,7 +79,7 @@
     max-width: 750px; /* Optional: Limit the width for a more centered look */
     margin: 0 15px; /* Adds margin on the sides */
     padding: 15px 20px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     display: flex;

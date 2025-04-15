@@ -205,7 +205,7 @@ return (
                             index === 1 ? 'silver-bg__leaderboard__page__leader__board__2' :
                             index === 2 ? 'bronze-bg__leaderboard__page__leader__board__2' : '';
 
-            const crownClass = user.isPremium ? 'premium-crown__leaderboard' : ''; // Add crown class for premium users
+            // const crownClass = user.isPremium ? 'premium-crown__leaderboard' : '';  Add crown class for premium users
 
             return (
               <div key={user.id} className={`user-card__leaderboard__page__leader__board__2 ${bgClass}`} onClick={() => handleProfileClick(user.id)}>
@@ -216,7 +216,7 @@ return (
                     alt={user.username}
                     className="avatar__leaderboard__page__leader__board__2"
                   />
-                  <span className="username__leaderboard__page__leader__board__2">{user.unique_id}  {user.isPremium && <FaCrown className="premium-crown__leaderboard" />}</span>
+                  <span className="username__leaderboard__page__leader__board__2">{user.unique_id} {/* {user.isPremium && <FaCrown className="premium-crown__leaderboard" />} */}</span>
                 </div>
                 <span className="points__leaderboard__page__leader__board__2">{user.points} pts</span>
                 {bgClass && (
@@ -250,7 +250,7 @@ return (
                   alt={user.username}
                   className="avatar__suggested__page__leader__board__2"
                 />
-                {user.isPremium && <FaCrown className="premium-crown__leaderboard" />}
+              {/* {user.isPremium && <FaCrown className="premium-crown__leaderboard" />} */} 
                 <div className="user-details__suggested__page__leader__board__2">
                   <span className="username__suggested__page__leader__board__2">
                     {user.unique_id.length > 15 ? `${user.unique_id.slice(0, 12)}...` : user.unique_id}

@@ -1,6 +1,6 @@
 .room__progress__room__page {
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #121212;
     border-radius: 25px; /* Round corners for the whole page */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -20,11 +20,11 @@
     margin-top: 30px;
     border-radius: 25px; /* Round corners of the chart container */
     overflow: hidden;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
   }
   
   .room__progress__user {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 25px;
     padding: 15px;
     margin: 10px 0;
@@ -58,7 +58,7 @@
   }
   
   .room__progress__summary {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 15px;
     border-radius: 25px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);

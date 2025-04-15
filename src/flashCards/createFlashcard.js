@@ -364,7 +364,7 @@ const handleCreateSubject = (subjectName) => {
                   position: 'relative',
                   height: '12rem',
                   border: '2px solid #3b82f6',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: '#121212',
                   borderRadius: '0.5rem',
                   cursor: 'pointer',
                   boxShadow: '0 4px 6px rgba(0,0,0,0.1)',

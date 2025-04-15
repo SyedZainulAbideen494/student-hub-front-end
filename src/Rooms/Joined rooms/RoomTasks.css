@@ -1,7 +1,7 @@
 /* General Container */
 .room-tasks-container__room__tasks__page {
     padding: 20px;
-    background-color: #ffffff; /* Soft blue-gray background */
+    background-color: #121212; /* Soft blue-gray background */
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
     position: relative;

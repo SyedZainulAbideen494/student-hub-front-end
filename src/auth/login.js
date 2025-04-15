@@ -42,7 +42,7 @@ const Login = () => {
         return `${maskedLocal}@${domain}`;
     };
 
-    const checkTokenAndRedirect = async (token) => {
+     const checkTokenAndRedirect = async (token) => {
         try {
             const response = await Axios.post(API_ROUTES.sessionCheck, { token });
             if (response.data.exists) {

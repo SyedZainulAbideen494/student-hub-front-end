@@ -1,304 +1,315 @@
+/* Dark theme base colors */
+:root {
+  --bg-dark: #121212;
+  --box-dark: #1e1e1e;
+  --text-light: #f1f1f1;
+  --subtext-light: #aaa;
+  --highlight: #ffb703;
+  --hover-box-dark: #2a2a2a;
+}
+
 /* Container for the home page */
 .home-container__home__page__component {
-    padding: 20px;
-    text-align: left;
-  }
-  
-  /* Home title styling */
-  .home-title__home__page__component {
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Boxes container */
-  .top-boxes-container__home__page__component {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 15px;
-  }
-  
-/* Box styling */
-.box__home__page__component {
-    background-color: #f8f9fa; /* Light gray background for the boxes */
-    color: #333; /* Dark text for readability */
-    padding: 17px;
-    border-radius: 15px;
-    box-shadow: 
-      3px 3px 10px rgba(0, 0, 0, 0.05),   /* Softer shadow */
-      6px 6px 15px rgba(0, 0, 0, 0.1),    /* Lighter shadow */
-      -3px -3px 10px rgba(255, 255, 255, 0.9); /* Highlight shadow */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    transition: transform 0.2s ease-in-out, background-color 0.2s ease; /* Added transition for background color */
-    position: relative;
-    min-height: 100px;
+  padding: 20px;
+  background-color: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: var(--text-light);
 }
 
-/* Hover effect for interaction */
-.box__home__page__component:hover {
-    transform: translateY(-5px);
-    background-color: #e9ecef; /* Slightly darker gray on hover for contrast */
-}
-  
-  /* SVG Icon - smaller, thinner, black & white */
-  .icon__home__page__component {
-    width: 20px;
-    height: 20px;
-    fill: none;
-    stroke: #000; /* Black stroke */
-    stroke-width: 1.5; /* Thinner stroke */
-    margin-bottom: 10px;
-  }
-  
-  /* Count on top */
-  .count__home__page__component {
-    font-size: 28px;
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 8px;
-  }
-  
-  /* Box title below the number */
-  .title__home__page__component {
-    font-size: 15px;
-    font-weight: 600;
-    color: #5e5e5e;
-  }
-  
-/* Clean, subtle background gradient */
-.box__home__page__component {
-    box-shadow: 
-      3px 3px 10px rgba(0, 0, 0, 0.05),   /* Softer shadow */
-      6px 6px 15px rgba(0, 0, 0, 0.1),    /* Lighter shadow */
-      -3px -3px 10px rgba(255, 255, 255, 0.9); /* Highlight shadow with increased brightness */
-}
-
-
-
-  /* Container for the home page */
-.home-container__home__page__component {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  
-  .header__home__page__component {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-  /* Home title styling */
-  .home-title__home__page__component {
-    font-size: 12px;
-    font-weight: 600;
-    color: #333;
-  }
-  
-/* Welcome message container */
-.welcome-container__home__page__component {
-    margin-bottom: 5px; /* Spacing between messages */
-  }
-  
-  
-  /* Subtext styling */
-  .subtext__home__page__component {
-    font-size: 14px;
-    color: #999;
-    margin-top: 3px;
-  }
-
-  /* Add this to your homeTopCards.css */
-
-/* Welcome icon styling */
-.welcome-icon__home__page__component {
-    margin-left: 10px; /* Space between icon and text */
-    color: #ffb703; /* Change icon color */
-    font-size: 10px; /* Size of the icon */
-    vertical-align: middle; /* Align icon with text */
-  }
-  
-
-/* Settings icon styling */
-.settings-icon__home__page__component {
-    margin-left: 20px; /* Space between welcome message and icon */
-    cursor: pointer; /* Show pointer on hover */
-    display: flex;
-    align-items: center; /* Center icon vertically */
-}
-
-/* Adjust icon size */
-.settings-icon__home__page__component i {
-    font-size: 24px; /* Adjust size of the icon */
-    color: #333; /* Icon color */
-}
-
-/* Hover effect for the settings icon */
-.settings-icon__home__page__component:hover {
-    color: #ffb703; /* Change color on hover */
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    transition: transform 0.2s ease-in-out; /* Smooth transition */
-}
-
-
-.box-1__home__page__component {
-    background-color: #f0f8ff; /* Light blue */
-}
-
-.box-2__home__page__component {
-    background-color: #ffe4e1; /* Light pink */
-}
-
-.box-3__home__page__component {
-    background-color: #fafad2; /* Light goldenrod */
-}
-
-.box-4__home__page__component {
-    background-color: #e6e6fa; /* Lavender */
-}
-
-.box-5__home__page__component {
-    background-color: #fffacd; /* Lemon chiffon */
-}
-
-
-/* Welcome container to display content inline */
-.welcome-container__home__page__component {
-  display: flex; /* Aligns children in a row */
-  align-items: center; /* Centers items vertically */
-  margin-bottom: 5px; /* Spacing between messages */
-}
-
-/* Profile avatar styling */
-.profile-avatar {
-  width: 40px; /* Adjust size as needed */
-  height: 40px; /* Adjust size as needed */
-  border-radius: 50%; /* Make it circular */
-  margin-right: 10px; /* Space between the image and text */
-}
-
-/* Welcome message styling */
-.welcome-message__home__page__component {
-  font-size: 15px; /* Larger welcome message */
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 25px;
-}
-
-
-/* Define keyframes for the pop-up effect */
-@keyframes pop-up {
-  0% {
-    transform: translateY(20px); /* Start below */
-    opacity: 0; /* Start invisible */
-  }
-  100% {
-    transform: translateY(0); /* End at original position */
-    opacity: 1; /* End visible */
-  }
-}
-
-/* Apply the animation to the box component */
-.box__home__page__component {
-  animation: pop-up 0.5s ease forwards; /* Animation name, duration, easing, and fill mode */
-  opacity: 0; /* Initially set opacity to 0 */
-}
-
-/* Add delay for each box for staggered animation */
-.box-1__home__page__component {
-  animation-delay: 0s;
-}
-
-.box-2__home__page__component {
-  animation-delay: 0.1s; /* Slight delay */
-}
-
-.box-3__home__page__component {
-  animation-delay: 0.2s; /* Slight delay */
-}
-
-.box-4__home__page__component {
-  animation-delay: 0.3s; /* Slight delay */
-}
-
-
-/* Icons container styling */
-.icons-container__home__page__component {
+/* Header container */
+.header__home__page__component {
   display: flex;
   align-items: center;
-  margin-left: auto; /* Pushes the icons to the right */
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-/* Leaderboard icon styling */
-.leaderboard-icon__home__page__component {
-  margin-left: 15px;
-  color: #ffb703; /* Default icon color */
-  cursor: pointer;
-  align-items: center;
-  text-align: center; /* Center-align the icon and text */
-  text-decoration: none; /* Remove underline for the entire link */
+/* Home title */
+.home-title__home__page__component {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
 }
 
-/* Leaderboard icon text styling */
-.leaderboard-icon__home__page__component p {
-  font-size: 10px;
-  margin-top: 4px; /* Remove margin on top */
-  margin-bottom: 0; /* Remove margin on bottom */
-  text-decoration: none; /* Ensure no underline */
-  color: inherit; /* Inherit color from parent */
-}
-
-/* Hover effect for leaderboard icon */
-.leaderboard-icon__home__page__component:hover {
-  color: #ffb703; /* Same color on hover */
-  transform: scale(1.1); /* Slightly enlarge on hover */
-  transition: transform 0.2s ease-in-out;
-}
-
-
-
-
-/* Flex styling for welcome message and icon */
+/* Welcome section */
 .welcome-container__home__page__component {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 5px;
 }
 
+.welcome-message__home__page__component {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 25px;
+}
 
+.subtext__home__page__component {
+  font-size: 14px;
+  color: var(--subtext-light);
+  margin-top: 3px;
+}
 
+/* Avatar */
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
-/* Adjust styling for larger screens */
+/* Boxes container */
+.top-boxes-container__home__page__component {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* Box styling */
+.box__home__page__component {
+  background-color: var(--box-dark);
+  color: var(--text-light);
+  padding: 17px;
+  border-radius: 15px;
+  box-shadow: 
+    3px 3px 10px rgba(0, 0, 0, 0.5),
+    6px 6px 15px rgba(0, 0, 0, 0.6),
+    -3px -3px 10px rgba(255, 255, 255, 0.03);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+  position: relative;
+  min-height: 100px;
+  animation: pop-up 0.5s ease forwards;
+  opacity: 0;
+}
+
+/* Hover effect */
+.box__home__page__component:hover {
+  transform: translateY(-5px);
+  background-color: var(--hover-box-dark);
+}
+
+/* SVG Icon */
+.icon__home__page__component {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--text-light);
+  stroke-width: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Count */
+.count__home__page__component {
+  font-size: 28px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+/* Box title */
+.title__home__page__component {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--subtext-light);
+}
+
+/* Colorful boxes with soft dark tints */
+.box-1__home__page__component {
+  background-color: #1a2734;
+}
+.box-2__home__page__component {
+  background-color: #342127;
+}
+.box-3__home__page__component {
+  background-color: #32311a;
+}
+.box-4__home__page__component {
+  background-color: #2c2a3e;
+}
+.box-5__home__page__component {
+  background-color: #3a3a22;
+}
+
+/* Pop-up animation */
+@keyframes pop-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.box-1__home__page__component { animation-delay: 0s; }
+.box-2__home__page__component { animation-delay: 0.1s; }
+.box-3__home__page__component { animation-delay: 0.2s; }
+.box-4__home__page__component { animation-delay: 0.3s; }
+
+/* Icons container */
+.icons-container__home__page__component {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Settings icon */
+.settings-icon__home__page__component {
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.settings-icon__home__page__component i {
+  font-size: 24px;
+  color: var(--text-light);
+}
+
+.settings-icon__home__page__component:hover {
+  color: var(--highlight);
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Welcome icon */
+.welcome-icon__home__page__component {
+  margin-left: 10px;
+  color: var(--highlight);
+  font-size: 10px;
+  vertical-align: middle;
+}
+
+/* Leaderboard */
+.leaderboard-icon__home__page__component {
+  margin-left: 15px;
+  color: var(--highlight);
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+.leaderboard-icon__home__page__component p {
+  font-size: 10px;
+  margin-top: 4px;
+  margin-bottom: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.leaderboard-icon__home__page__component:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Media Queries */
 @media (min-width: 769px) {
   .home-container__home__page__component {
-      display: flex;
-      align-items: center; /* Centers content vertically */
-      justify-content: center; /* Centers content horizontally */
-      max-width: 1200px; /* Optional: Limit maximum width for large screens */
-      margin: 0 auto; /* Center the container itself horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .top-boxes-container__home__page__component {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Two columns for boxes */
-      gap: 20px; /* Adjust gap between boxes */
-      justify-content: center; /* Center-align boxes */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
   }
 }
 
-/* Adjust box sizes for larger screens */
 @media (min-width: 1024px) {
   .box__home__page__component {
-      min-height: 150px; /* Increase height for larger screens */
+    min-height: 150px;
+  }
+}
+
+.icons-container__home__page__component {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  overflow: visible;
+  z-index: 1;
+}
+
+.burger-menu__home__page__component {
+  position: relative;
+  z-index: 1000;
+}
+
+.burger-btn__dark {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #111;
+  padding: 12px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: #f5f5f7;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu__dark {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 10px 0;
+  width: 180px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+.dropdown-item__dark {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #f5f5f7;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.25s;
+  text-decoration: none;
+}
+
+.dropdown-item__dark span {
+  margin-left: 12px;
+}
+
+.dropdown-item__dark:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -30,7 +30,7 @@ const StudyPlanCard = ({ title, content }) => (
 );
 
 const TaskList = ({ tasks }) => (
-  <div className="tasks__list__plan__ai__tasks__generated">
+  <div className="tasks__list__plan__ai__tasks__generated" >
     <h3 className="tasks__list__header__plan__ai__tasks__generated">Tasks</h3>
     <ul className="tasks__list__items__plan__ai__tasks__generated">
       {tasks.map((task, idx) => (

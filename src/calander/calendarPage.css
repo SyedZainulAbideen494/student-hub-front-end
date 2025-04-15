@@ -1,7 +1,7 @@
 /* General Styles */
 .calendar-page {
     padding: 10px;
-    background-color: #f5f5f5;
+    background-color: #121212;
     display: flex;
     flex-direction: column;
     margin-bottom: 60px;
@@ -15,7 +15,7 @@
     text-align: center;
     font-size: 2.2em;
     width: 100%; /* Set to 100% to prevent exceeding parent */
-    color: #121212;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -33,7 +33,7 @@
 /* Event Form */
 .event-form-calendar-page {
     padding: 20px;
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     margin-top: 30px;
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Consistent shadow */
@@ -50,12 +50,13 @@
     border-radius: 50px;
     cursor: pointer;
     border: 0;
-    background-color: #fdfffc;
+    background-color: #161616;
     box-shadow: rgb(0 0 0 / 10%) 0 0 8px;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 12px;
     transition: all 0.5s ease;
+    color: white;
 }
 
 .toggle-form-button-calendar-page:active {
@@ -74,7 +75,7 @@
 
 .section-title-calendar-page {
     font-size: 1em; /* Increased font size */
-    color: #333;
+    color: #ffffff;
     margin-bottom: 15px;
     text-align: center;
     font-weight: bold;
@@ -85,6 +86,7 @@
     padding: 14px;
     margin-bottom: 30px;
     border: 1px solid #ccc;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 1.1em; /* Slightly larger font size */
@@ -129,7 +131,7 @@
     margin-bottom: 40px;
     padding: 20px;
     margin-top: 40px;
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
 }
@@ -138,7 +140,7 @@
 .event-item-calendar-page {
     margin: 10px 0;
     padding: 50px;
-    background: #ffffff;
+    background: #121212;
     border-radius: 15px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     display: flex;

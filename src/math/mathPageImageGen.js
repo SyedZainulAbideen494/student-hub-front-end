@@ -77,14 +77,17 @@ const MathPageImageGen = () => {
     </svg>
   );
 
-  return (
+  return  (
     <div className="container-ImageGen">
-
-<button className="backBtn-ImageGen" onClick={goBack}>
+      {/* Back Button */}
+      <button className="backBtn-ImageGen" onClick={goBack}>
         <FiArrowLeft size={22} />
       </button>
+
+      {/* Title */}
       <h2 className="title-ImageGen">AI Image Generator</h2>
 
+      {/* Input Box */}
       <div className="inputBox-ImageGen">
         <input
           type="text"
@@ -97,24 +100,26 @@ const MathPageImageGen = () => {
         </button>
       </div>
 
-      {loading && <Loader />} {/* Full-page loader */}
+      {/* Full Page Loader */}
+      {loading && <Loader />}
 
+      {/* Error Message */}
       {error && <p className="error-ImageGen">{error}</p>}
+
+      {/* Response Text */}
       {responseText && <p className="responseText-ImageGen">{responseText}</p>}
 
+      {/* Generated Image */}
       {image && (
-  <div className="imageContainer-ImageGen">
-    <img src={image} alt="Generated" />
-
-    {/* Centered Download Button */}
-    <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
-      <button className="downloadBtn-ImageGen" onClick={downloadImage}>
-        <FiDownload size={20} /> Download
-      </button>
-    </div>
-  </div>
-)}
-
+        <div className="imageContainer-ImageGen">
+          <img src={image} alt="Generated" />
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "15px" }}>
+            <button className="downloadBtn-ImageGen" onClick={downloadImage}>
+              <FiDownload size={20} /> Download
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

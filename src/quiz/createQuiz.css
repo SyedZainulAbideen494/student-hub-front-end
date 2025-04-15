@@ -1,11 +1,13 @@
 /* Create Quiz Page */
 .create-quiz-page {
     padding: 30px;
-    background-color: #f9f9f9;
+    background-color: #121212;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     max-width: 900px;
     margin: 0 auto;
+    color: #f1f1f1;
+    font-family: "SF Pro Display", sans-serif;
 }
 
 .instructions-container {
@@ -15,9 +17,9 @@
 .instructions-toggle-btn {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    border: 1px solid #2c2c2e;
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -26,15 +28,16 @@
 }
 
 .instructions-toggle-btn:hover {
-    background-color: #0056b3;
+    background-color: #2c2c2e;
 }
 
 .instructions-modal {
     padding: 20px;
-    background-color: white;
+    background-color: #1e1e1e;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     position: relative;
+    color: #f1f1f1;
 }
 
 .instructions-modal h3 {
@@ -44,8 +47,8 @@
 .close-modal-btn {
     padding: 10px 15px;
     font-size: 14px;
-    background-color: #dc3545;
-    color: white;
+    background-color: #3a3a3c;
+    color: #f1f1f1;
     border: none;
     border-radius: 25px;
     cursor: pointer;
@@ -56,31 +59,32 @@
 }
 
 .close-modal-btn:hover {
-    background-color: #c82333;
+    background-color: #4a4a4c;
 }
 
 .quiz-form {
     padding: 20px;
-    background-color: white;
+    background-color: #1e1e1e;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .form-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
 }
 
 .form-input, .form-textarea {
     width: calc(100% - 20px);
     padding: 12px;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #2a2a2c;
     border-radius: 10px;
     font-size: 16px;
-    color: #333;
+    background-color: #2c2c2e;
+    color: #f1f1f1;
 }
 
 .form-textarea {
@@ -89,9 +93,9 @@
 
 .question-card {
     padding: 15px;
-    background-color: white;
+    background-color: #1f1f1f;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     margin-bottom: 20px;
     position: relative;
 }
@@ -100,10 +104,11 @@
     width: calc(100% - 80px);
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #2c2c2e;
     border-radius: 8px;
     font-size: 16px;
-    color: #333;
+    background-color: #2c2c2e;
+    color: #f1f1f1;
 }
 
 .actions {
@@ -121,37 +126,38 @@
     transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
+    font-weight: 500;
 }
 
 .remove-question-btn, .remove-answer-btn {
-    background-color: #000000;
+    background-color: #2c2c2e;
     color: white;
 }
 
 .remove-question-btn:hover, .remove-answer-btn:hover {
-    background-color: #000000;
+    background-color: #3a3a3c;
 }
 
 .add-answer-btn {
-    background-color: #000000;
+    background-color: #2c2c2e;
     color: white;
 }
 
 .add-answer-btn:hover {
-    background-color: #000000;
+    background-color: #3a3a3c;
 }
 
 .add-question-btn {
-    background-color: #007bff;
+    background-color: #0a84ff;
     color: white;
 }
 
 .add-question-btn:hover {
-    background-color: #0056b3;
+    background-color: #006edc;
 }
 
 .submit-quiz-btn {
-    background-color: #007bff;
+    background-color: #0a84ff;
     color: white;
     width: 100%;
     padding: 15px;
@@ -165,14 +171,14 @@
 }
 
 .submit-quiz-btn:hover {
-    background-color: #0056b3;
+    background-color: #006edc;
 }
 
 .answer-card {
     display: flex;
     align-items: center;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #2c2c2e;
     border-radius: 8px;
     margin-bottom: 10px;
     position: relative;
@@ -182,16 +188,18 @@
     width: calc(100% - 80px);
     padding: 8px;
     margin-right: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #3a3a3c;
     border-radius: 8px;
     font-size: 16px;
-    color: #333;
+    background-color: #3a3a3c;
+    color: #f1f1f1;
 }
 
 .correct-answer-label {
     display: flex;
     align-items: center;
     margin-right: 10px;
+    color: #ccc;
 }
 
 .correct-answer-radio {
@@ -206,16 +214,16 @@
 
 .icon {
     font-size: 20px;
+    color: #aaa;
 }
 
 .correct {
-    color: #28a745;
+    color: #32d74b;
 }
 
 .incorrect {
-    color: #e4172b;
+    color: #ff453a;
 }
-
 
 /* Animation Styles */
 .fade-enter {

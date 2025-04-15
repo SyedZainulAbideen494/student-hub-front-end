@@ -1,8 +1,8 @@
 /* General Styles */
 .App-dashboard-planner {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: #ffffff; /* White background for the main area */
-    color: #333333; /* Dark text for readability */
+    background: #121212; /* White background for the main area */
+    color: #ffffff; /* Dark text for readability */
     padding: 40px 60px;
     border-radius: 20px;
     max-width: 1200px;
@@ -14,7 +14,7 @@
 
 /* Header */
 .header-title {
-    color: #181818; /* Dark gray for header text */
+    color: #ffffff; /* Dark gray for header text */
     text-align: center;
     margin-bottom: 40px;
     font-size: 2em;
@@ -42,115 +42,88 @@
     margin: 30px 0;
     animation: fadeInBottom 1s ease-in-out; /* Apply fade-in from bottom animation */
 }
-
 /* Calendar Styles */
 .react-calendar {
-    border: 4px solid #4A90E2;
-    border-radius: 16px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
-    background: #ffffff;
-    padding: 30px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    animation: fadeInBottom 1s ease-in-out; /* Apply fade-in from bottom animation */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(20px);
+  padding: 30px;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  animation: fadeInBottom 1s ease-in-out;
+  color: #f1f1f1;
 }
 
+/* Hover effect on calendar */
 .react-calendar:hover {
-    border-color: #357ABD;
-    box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
 }
 
 /* Tile Styles */
 .react-calendar__tile {
-    position: relative;
-    padding: 12px;
-    transition: background 0.3s, color 0.3s, transform 0.3s;
-    border-radius: 12px;
-    cursor: pointer;
-    animation: fadeInBottom 0.6s ease-in-out; /* Apply fade-in from bottom animation to tiles */
-}
-
-/* Active Tile */
-.react-calendar__tile--active {
-    background: #abc4ff;
-    color: #ffffff;
-    border-radius: 50%;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Current Tile */
-.react-calendar__tile--now {
-    border: 2px solid #abc4ff;
-    border-radius: 50%;
-}
-
-/* Tile with Tasks */
-.react-calendar__tile--has-tasks {
-    background: #E8F4FD;
-    border-radius: 12px;
-}
-
-/* Task Dot */
-.react-calendar__tile--has-tasks::after {
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #4A90E2;
-    border: 2px solid #ffffff;
+  position: relative;
+  padding: 12px;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+  border-radius: 12px;
+  cursor: pointer;
+  background: transparent;
+  color: #dcdcdc;
 }
 
 /* Hover Effect on Tiles */
 .react-calendar__tile:hover {
-    background: #F0F4F8;
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
 }
 
 /* Active Tile */
 .react-calendar__tile--active {
-    background: #abc4ff;
-    color: #ffffff;
-    border-radius: 50%;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #4e6aff;
+  color: #fff;
+  border-radius: 50%;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(78, 106, 255, 0.6);
 }
 
-/* Current Tile */
+/* Current Day Tile */
 .react-calendar__tile--now {
-    border: 2px solid #abc4ff;
-    border-radius: 50%;
+  border: 2px solid #4e6aff;
+  border-radius: 50%;
 }
 
 /* Tile with Tasks */
 .react-calendar__tile--has-tasks {
-    background: #E8F4FD;
-    border-radius: 12px;
+  background: rgba(78, 106, 255, 0.1);
+  border-radius: 12px;
 }
 
 /* Task Dot */
 .react-calendar__tile--has-tasks::after {
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #4A90E2;
-    border: 2px solid #ffffff;
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4e6aff;
+  border: 2px solid #1e1e1e;
 }
 
-/* Hover Effect on Tiles */
-.react-calendar__tile:hover {
-    background: #F0F4F8;
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Animations */
+@keyframes fadeInBottom {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
-
 
 /* Style for the select element */
 .task-form select {
@@ -158,7 +131,7 @@
     padding: 14px;
     border: 2px solid #796BD5; /* Border color */
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #121212;
     font-size: 16px;
     color: #333333;
     cursor: pointer;
@@ -176,7 +149,7 @@
 
 /* Task Form Styles */
 .task-form {
-    background: #ffffff;
+    background: #121212;
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
@@ -223,7 +196,7 @@
 /* Task List Styles */
 .task-list,
 .all-tasks-card {
-    background: #ffffff;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
@@ -239,7 +212,7 @@
 }
 
 .task-item {
-    background: #f9f9f9;
+    background: #121212;
     border: 1px solid transparent;
     border-radius: 12px;
     padding: 25px;
@@ -254,7 +227,7 @@
 }
 
 .task-title {
-    color: #181818;
+    color: #fffefe;
     margin-bottom: 15px;
     font-size: 1.6em;
     font-weight: 600;
@@ -267,7 +240,7 @@
 }
 
 .all-tasks-card .task-item {
-    background: #ffffff;
+    background: #121212;
     border: 1px solid #e0e0e0;
     padding: 20px;
     margin-bottom: 20px;
@@ -375,7 +348,7 @@
     gap: 20px;
 }
 .task {
-    background-color: #ffffff;
+    background-color: #121212;
     border: 1px solid transparent;
     border-radius: 25px;
     padding: 20px;
@@ -541,6 +514,7 @@
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease-in-out;
   }
   
@@ -558,7 +532,7 @@
   .form-heading__planner__page__ai__gen {
     font-size: 26px;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
     margin-right: 10px;
   }
   
@@ -583,7 +557,7 @@
   
   .input-label__planner__page__ai__gen {
     font-size: 16px;
-    color: #555;
+    color: #ffffff;
     margin-bottom: 8px;
     display: block;
   }
@@ -593,6 +567,8 @@
     padding: 14px;
     font-size: 16px;
     border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
     border: 1px solid #ddd;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
@@ -775,8 +751,9 @@
   }
   
   .modal-container__modal__Add__tasks {
-    background: white;
+    background: rgb(0, 0, 0);
     padding: 15px;
+    color: white;
     border-radius: 8px;
     width: calc(100% - 40px); /* Add margin on the sides */
     max-width: 350px; /* Maintain a limit on the modal width */
@@ -802,14 +779,14 @@
   
   .modal-title__modal__Add__tasks {
     font-size: 16px;
-    color: #211F26;
+    color: #ffffff;
   }
   
   
   .close-modal-btn__modal__Add__tasks--top {
     background: none;
     border: none;
-    color: #181818;
+    color: #ffffff;
     cursor: pointer;
     font-size: 14px;
   }
@@ -830,8 +807,10 @@
   .form-group__modal__Add__tasks select {
     width: 94%;
     padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 15px;
+    background-color: #121212;
+    color: #000;
+    border: 1px solid #121212;
+    border-radius: 9px;
     font-size: 14px;
   }
   
@@ -868,7 +847,9 @@
   .form-group-inline__modal__Add__tasks input {
     width: 48%; /* Adjust width to share space equally */
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #121212;
+    background-color: #121212;
+    color: white;
     border-radius: 5px;
     font-size: 14px;
   }
@@ -884,7 +865,7 @@
 
 /* Main button styling */
 .__add__tasks__btn__planner__page__bottom {
-  background-color: #7ac8ec; /* Fresh green background for a task-oriented button */
+  background-color: rgba(0, 0, 0, 0.3); /* Fresh green background for a task-oriented button */
   color: white;
   font-size: 18px;
   padding: 10px 15px;
@@ -910,11 +891,7 @@
   transition: transform 0.3s ease;
 }
 
-/* Button hover effects */
-.__add__tasks__btn__planner__page__bottom:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
-  transform: translateY(-3px); /* Subtle lifting effect */
-}
+
 
 /* Button focus effect (optional for better UX) */
 .__add__tasks__btn__planner__page__bottom:focus {

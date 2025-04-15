@@ -122,15 +122,15 @@ const TodayProgress = () => {
               text={`${studyTimePercentage.toFixed(0)}%`}  // Display percentage in the circle
               styles={{
                 path: {
-                  stroke: '#000000',  // Change to a minimal green color, you can choose any color you like
+                  stroke: '#11111',  // Change to a minimal green color, you can choose any color you like
                   strokeLinecap: 'round',
                   strokeWidth: 8,  // Adjust the stroke width if needed
                 },
                 trail: {
-                  stroke: '#e0e0e0',  // Light gray color for the background circle
+                  stroke: '#121212',  // Light gray color for the background circle
                 },
                 text: {
-                  fill: '#333',  // Dark gray color for the text inside the circle
+                  fill: 'white',  // Dark gray color for the text inside the circle
                   fontSize: '16px',
                   fontWeight: 'bold',
                 },
@@ -164,10 +164,10 @@ const TodayProgress = () => {
           strokeWidth: 8,
         },
         trail: {
-          stroke: '#e0e0e0',
+          stroke: '#121212',
         },
         text: {
-          fill: '#333',
+          fill: 'white',
           fontSize: '16px',
           fontWeight: 'bold',
         },
@@ -188,10 +188,10 @@ const TodayProgress = () => {
           strokeWidth: 8,
         },
         trail: {
-          stroke: '#e0e0e0',
+          stroke: '#121212',
         },
         text: {
-          fill: '#333',
+          fill: 'white',
           fontSize: '16px',
           fontWeight: 'bold',
         },

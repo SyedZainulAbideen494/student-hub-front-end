@@ -947,7 +947,7 @@ const SparkleIcon = () => (
   {/* Image input field with label */}
   <div className="image-upload-container">
     <label htmlFor="imageUpload" className="image-upload-label">
-      <i className="fas fa-paperclip" style={{ marginRight: '10px' }}>
+      <i className="fas fa-paperclip" style={{ marginRight: '10px', color: '#464646' }}>
         {image && (
           <div className="image-preview-container">
             <img src={imageprev} alt="Image Preview" style={{ maxWidth: '30px', maxHeight: '30px' }} />
@@ -967,7 +967,7 @@ const SparkleIcon = () => (
 {/* PDF input field */}
 <div className="pdf-upload-container">
   <label htmlFor="pdfUpload" className="pdf-upload-label">
-    <i className="fas fa-file-pdf" style={{ marginRight: '10px' }}>
+    <i className="fas fa-file-pdf" style={{ marginRight: '10px', color: '#464646' }}>
       {pdfFile && (
         <div className="pdf-preview-container">
           <span style={{ fontSize: '7px' }}>uploaded!</span>

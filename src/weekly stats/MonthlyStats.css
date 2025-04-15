@@ -2,10 +2,10 @@
 .monthly__stats-container {
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #4A4A4A;
+    color: #8a8a8a;
     max-width: 700px;
     margin: 0 auto;
-    background-color: #f9fafb;
+    background-color: #121212;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -43,7 +43,7 @@
 .monthly__stats-page-title {
     font-size: 20px; /* Larger for emphasis */
     font-weight: 600;
-    color: #333;
+    color: #747474;
     text-align: center;
     flex-grow: 1;
     margin-bottom: 15px; /* Space after title */
@@ -52,7 +52,7 @@
 /* Style for the question mark icon */
 .question-icon__stats-stat {
     font-size: 20px; /* Larger for visibility */
-    color: #1d2129;
+    color: #919191;
     cursor: pointer;
     margin-left: 15px;
 }
@@ -100,7 +100,7 @@
 
 /* Section Wrapper */
 .monthly__stats-section {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -115,7 +115,7 @@
     align-items: center;
     padding: 18px;
     border-radius: 10px;
-    background-color: #f1f1f1;
+    background-color: #121212;
     margin-bottom: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -128,14 +128,14 @@
 /* Stat Label */
 .monthly__stats-stat-label {
     font-size: 16px;
-    color: #6c757d;
+    color: #949494;
 }
 
 /* Stat Value */
 .monthly__stats-stat-value {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #919191;
 }
 
 /* Hover Effects */

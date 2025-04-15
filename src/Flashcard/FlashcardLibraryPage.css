@@ -1,6 +1,6 @@
 .flashcard__library__page__component__page {
   padding: 4px;
-  background-color: #fcfbfb;
+  background-color: #121212;
 }
 .header__library__page__component__page {
   display: flex;
@@ -9,13 +9,13 @@
   margin-bottom: 60px;
   border-radius: 25px;
   padding: 0 20px; /* Add some padding to make it feel balanced */
-  background-color: #ffffff; /* Light grey Apple-like background */
+  background-color: rgba(0, 0, 0, 0.3); /* Light grey Apple-like background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for depth */
 }
 
 .library-title__library__page__component__page {
   font-size: 22px;
-  color: #1c1c1e; /* Darker, refined black */
+  color: #242433; /* Darker, refined black */
   display: flex;
   align-items: center;
   font-weight: 500; /* Medium weight for elegance */
@@ -82,7 +82,7 @@
 .set-card__library__page__component__page {
   border-radius: 20px; /* Soft rounded edges */
   padding: 24px; /* Increased padding for spacious look */
-  background: linear-gradient(135deg, #F8F9FB, #FFFFFF); /* Subtle gradient background */
+  background: rgba(0, 0, 0, 0.3); /* Subtle gradient background */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Depth with a gentle shadow */
   transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
   max-width: 320px; /* Consistent width */

@@ -1,7 +1,7 @@
 /* General Styles */
 .note-detail-page {
     font-family: 'Roboto', sans-serif;
-    background-color: #fafafa;
+    background-color: #121212;
     max-width: 1200px;
     margin: 20px auto;
     border-radius: 16px;
@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    border-bottom: 2px solid #ececec;
+    border-bottom: 2px solid #121212;
     padding-bottom: 15px;
 }
 
@@ -45,18 +45,19 @@
 .note-header-note-detail-page h1 {
     font-size: 32px;
     margin: 0;
-    color: #333;
+    color: #ffffff;
     font-weight: 700;
 }
 
 /* Content */
 .note-content-note-detail-page {
-    background-color: #ffffff;
+    background-color: #121212;
     border-radius: 16px;
     padding: 25px;
     overflow-y: auto;
     line-height: 1.6;
     width: 90%;
+    color: white;
 }
 
 /* Note Description */

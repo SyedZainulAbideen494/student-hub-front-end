@@ -235,7 +235,7 @@ const handleQuizAnswers = (quizId) => {
 
         {selectedFile && <p className="selected-file__new__ui__Ai__gen__Quiz">Selected File: {selectedFile.name}</p>}
 
-        <button type="submit" disabled={loading} className="generate-pdf-button__new__ui__Ai__gen__Quiz">
+        <button type="submit" disabled={loading} className="generate-pdf-button__new__ui__Ai__gen__Quiz" style={{marginTop: '15px'}}>
           {loading ? "Generating..." : "Generate From PDF"}
         </button>
       </form>

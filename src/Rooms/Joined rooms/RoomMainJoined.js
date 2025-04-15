@@ -104,10 +104,8 @@ const RoomMainPageJoined = () => {
       <div className="room__members__page__tabs">
   <button onClick={() => handleTabChange("tasks")}>Tasks</button>
   <button onClick={() => handleTabChange("progress")}>Progress</button>
-  <button onClick={() => handleTabChange("leaderboard")}>Leaderboard</button>
   <button onClick={() => handleTabChange("activity")}>Activity</button>
   <button onClick={() => handleTabChange("resources")}>Resources</button>
-  <button onClick={() => handleTabChange("post")}>Posts</button>
 
       </div>
 

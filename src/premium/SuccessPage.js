@@ -33,34 +33,47 @@ const SuccessPage = () => {
 export default SuccessPage;
 
 // Styled Components
-
 const SuccessWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #f9f9f9;
-  font-family: "Poppins", sans-serif;
+  background: #0a0a0a;
+  font-family: "SF Pro Display", "Poppins", sans-serif;
   position: relative;
+  overflow: hidden;
 `;
 
 const CloseButton = styled.div`
   position: absolute;
   top: 20px;
   right: 30px;
-  font-size: 22px;
-  color: #555;
+  font-size: 26px;
+  color: #888;
   cursor: pointer;
+  transition: color 0.2s ease;
+z-index: 1000000;
+  &:hover {
+    color: #fff;
+  }
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 480px;
+  margin: 0 20px;
   opacity: 0;
   transform: scale(0.9);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
 
   &.show {
     opacity: 1;
@@ -71,18 +84,21 @@ const Content = styled.div`
 const LottieContainer = styled.div`
   width: 180px;
   height: 180px;
+  filter: drop-shadow(0 0 20px #30d158); /* Subtle success glow */
 `;
 
 const Title = styled.h1`
   font-size: 2rem;
-  color: #333;
+  color: #ffffff;
   margin-top: 20px;
+  font-weight: 600;
 `;
 
 const Subtitle = styled.p`
   font-size: 1.1rem;
-  color: #666;
+  color: #aaa;
   margin-top: 10px;
   text-align: center;
-  max-width: 80%;
+  max-width: 90%;
+  line-height: 1.5;
 `;

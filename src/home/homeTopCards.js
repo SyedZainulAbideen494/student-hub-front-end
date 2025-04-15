@@ -6,6 +6,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faGrinBeam, faTrophy } from '@fortawesome/free-solid-svg-icons'; // Import the grin beam icon
+import { faGear, faUser, faSignOutAlt, faBars } from "@fortawesome/free-solid-svg-icons";
 import { TypeAnimation } from 'react-type-animation';
 import FeedbackFormWeekly from '../help/Survey';
 import TodayProgress from './today-progress';
@@ -21,6 +22,8 @@ const TopBoxes = () => {
     const [profile, setProfile] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [showDropdown, setShowDropdown] = useState(false);
+
     const nav = useNavigate()
     const token = localStorage.getItem('token');
     const location = useLocation();
@@ -108,7 +111,17 @@ const TopBoxes = () => {
        nav('/settings')
     };
     
-
+    useEffect(() => {
+        if (showDropdown) {
+          const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+          document.body.style.overflow = 'hidden';
+          document.body.style.paddingRight = `${scrollBarWidth}px`; // prevent right shift
+        } else {
+          document.body.style.overflow = '';
+          document.body.style.paddingRight = '';
+        }
+      }, [showDropdown]);
+      
     // Render the component
     return (
         <div className="home-container__home__page__component">
@@ -141,14 +154,32 @@ const TopBoxes = () => {
         cursor={false} // Hide the typing cursor
     />
 </p>
+<div className="icons-container__home__page__component">
+  {/* Burger Icon with Dropdown */}
+  <div className="burger-menu__home__page__component">
+    <button onClick={() => setShowDropdown(!showDropdown)} className="burger-btn__dark">
+      <FontAwesomeIcon icon={faBars} size="lg" />
+    </button>
 
-                <div className="icons-container__home__page__component">
-  {/* Leaderboard icon */}
-  <Link to='/leaderboard' className="leaderboard-icon__home__page__component">
-    <FontAwesomeIcon icon={faTrophy} size="lg" />
-    <p>Leaderboard</p>
-  </Link>
+    {showDropdown && (
+      <div className="dropdown-menu__dark">
+        <Link to="/profile" className="dropdown-item__dark">
+          <FontAwesomeIcon icon={faUser} />
+          <span>Profile</span>
+        </Link>
+        <Link to="/settings" className="dropdown-item__dark">
+          <FontAwesomeIcon icon={faGear} />
+          <span>Settings</span>
+        </Link>
+        <button className="dropdown-item__dark">
+          <FontAwesomeIcon icon={faSignOutAlt} />
+          <span>Logout</span>
+        </button>
+      </div>
+    )}
+  </div>
 </div>
+
 
             </>
         )}
@@ -157,7 +188,6 @@ const TopBoxes = () => {
 
             <p className="subtext__home__page__component">Here's your overview for today</p>
 <TodayProgress/>
-<GuideBanner/>
 <CheckSubscription/>
         </div>
     );

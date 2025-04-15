@@ -1,7 +1,7 @@
 /* Overall Container */
 .room__members__page__container {
     padding: 20px;
-    background-color: #fff;
+    background-color: #121212;
     margin: 0 auto;
     max-width: 1000px;
     border-radius: 10px;
@@ -14,7 +14,7 @@
     gap: 15px;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid #121212;
     overflow-x: auto; /* Ensures horizontal scrolling */
     white-space: nowrap; /* Prevents line breaks */
     justify-content: flex-start; /* Aligns the tabs to the left */
@@ -27,7 +27,7 @@
     font-size: 14px;
     cursor: pointer;
     border: none;
-    background-color: #e6f7ff;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     color: #007bff;
     font-weight: 400;
@@ -58,24 +58,18 @@
     padding: 6px 10px;
     font-size: 12px;
     cursor: pointer;
-    background-color: #79ddff;
+    background-color: rgba(0, 0, 0, 0.3);
     color: white;
     border: none;
     border-radius: 30px;
     transition: background-color 0.3s;
 }
 
-.room__members__page__action__btn:hover {
-    background-color: #4db8ff;
-}
 
 .leave-btn {
-    background-color: #ff4d4d;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
-.leave-btn:hover {
-    background-color: #e60000;
-}
 
 /* Members List */
 .room__members__page__cards-container {
@@ -93,7 +87,7 @@
 
 /* Member Card Styling */
 .room__members__page__member__card {
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 10px 12px;
     border-radius: 10px;
     display: flex;
@@ -117,7 +111,7 @@
 /* Member Name Styling */
 .room__members__page__member__name {
     font-size: 14px;
-    color: #333;
+    color: #ffffff;
     margin-left: 10px;
     white-space: nowrap;
     overflow: hidden;

@@ -3,7 +3,7 @@
   padding: 40px;
   font-family: 'Helvetica Neue', sans-serif;
   color: #333;
-  background-color: #fff; /* White background */
+  background-color: #121212; /* White background */
   max-width: 1200px;
   margin: 0 auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow for elegance */
@@ -39,7 +39,7 @@
 .welcome-message-help-page {
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #636363;
   text-align: center;
   margin-bottom: 20px;
   line-height: 1.4;
@@ -114,7 +114,7 @@
 .help-section {
   margin-top: 40px;
   padding: 40px;
-  background-color: #f8f8f8;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft shadow */
 }
@@ -157,7 +157,7 @@
 .feature-usage-section {
   margin-top: 40px;
   padding: 40px;
-  background-color: #f2f2f2;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
@@ -224,7 +224,7 @@
 .thank-you-section {
   margin-top: 40px;
   padding: 40px;
-  background-color: #f2f2f2;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #333;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);

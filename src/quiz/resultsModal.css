@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@
 }
 
 .results-modal {
-    background: #ffffff;
+    background: #121212;
     border-radius: 8px; /* Slightly smaller radius */
     padding: 15px; /* Reduced padding */
     max-width: 500px; /* Slightly narrower width */
@@ -29,7 +29,7 @@
 
 .modal-header {
     top: 0;
-    background: #ffffff;
+    background: #121212;
     padding: 8px 0;
     border-bottom: 1px solid #ddd;
     display: flex;
@@ -67,7 +67,7 @@
 .result-quiz-title {
     font-size: 16px;
     font-weight: bold;
-    color: #222;
+    color: #a3a3a3;
 }
 
 .result-date, .result-score {
@@ -115,7 +115,7 @@
 .ai-tip {
     display: flex;
     align-items: center;
-    background: #f8faff;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 6px;
     padding: 12px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -130,7 +130,7 @@
 
 .ai-tip p {
     font-size: 13px;
-    color: #333;
+    color: #8d8d8d;
 }
 
 .close-button {

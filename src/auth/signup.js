@@ -169,7 +169,7 @@ const validatePhoneNumber = (phone) => {
     };
 
     
-   const checkTokenAndRedirect = async (token) => {
+const checkTokenAndRedirect = async (token) => {
         try {
             const response = await axios.post(API_ROUTES.sessionCheck, { token });
             if (response.data.exists) {
@@ -327,9 +327,9 @@ const validatePhoneNumber = (phone) => {
                 </button>
             )}
         </form>
-        <p style={{ textAlign: 'center', fontSize: '14px', color: '#333', marginTop: '20px' }}>
+        <p style={{ textAlign: 'center', fontSize: '14px', color: 'white', marginTop: '20px' }}>
             Already have an account?
-            <span style={{ fontWeight: 'bold', color: '#007bff' }}>
+            <span style={{ fontWeight: 'bold', color: 'white' }}>
                 <Link to='/login' style={{color: 'black'}}> Login</Link>
             </span>
         </p>

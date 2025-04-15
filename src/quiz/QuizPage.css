@@ -1,7 +1,7 @@
 /* Quiz Page */
 .quiz-page-attend {
     padding: 0;
-    background-color: #f4f5f7; /* Soft neutral gray */
+    background-color: #121212; /* Soft neutral gray */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
-    background: linear-gradient(90deg, #4e91f0, #6ba9ff); /* Subtle blue gradient */
+    background: #131313; /* Subtle blue gradient */
     color: #ffffff;
     position: sticky;
     top: 0;
@@ -67,7 +67,7 @@
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
-    background-color: #ffffff; /* Clean white background */
+    background-color: rgba(0, 0, 0, 0.3); /* Clean white background */
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -78,7 +78,7 @@
 .question-text-attend {
     font-size: 22px;
     margin-bottom: 20px;
-    color: #2c2c2c;
+    color: #c7c7c7;
     font-weight: 500;
 }
 
@@ -88,18 +88,15 @@
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    background-color: #f9fafb; /* Soft gray background */
-    border: 1px solid #d1d5db; /* Subtle border */
+    background-color: #121212; /* Soft gray background */
+    border: 1px solid #121212; /* Subtle border */
     border-radius: 20px;
     padding: 10px 15px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.answer-container-attend:hover {
-    background-color: #eef2f7; /* Highlight on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 .answer-radio-attend {
     margin-right: 12px;
@@ -111,7 +108,7 @@
 
 .answer-text-attend {
     font-size: 18px;
-    color: #2c2c2c;
+    color: #b3b3b3;
     font-weight: 400;
 }
 
@@ -119,7 +116,7 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-color: #ffffff; /* Clean white footer */
+    background-color: #141414; /* Clean white footer */
     width: 95%;
     position: fixed;
     bottom: 0;
@@ -127,7 +124,6 @@
     border-radius: 20px;
     margin: 0 auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e6eaf1; /* Match card borders */
 }
 
 .navigation-button-attend {

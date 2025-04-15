@@ -41,7 +41,7 @@
     --width-of-input: 300px; /* Increased width for better centering */
     --height-of-input: 40px;
     --border-height: 2px;
-    --input-bg: #fff;
+    --input-bg: rgba(0, 0, 0, 0.3);
     --border-color: #2f2ee9;
     --border-radius: 30px;
     --after-border-radius: 1px;
@@ -127,8 +127,8 @@
 
 /* Button Styling */
 .quiz-create-btn-home-page {
-    border: 2px solid #24b4fb;
-    background-color: #24b4fb;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 0.8em; /* Slightly smaller border radius */
     cursor: pointer;
     padding: 8px; /* Smaller padding for a more compact button */
@@ -144,16 +144,11 @@
     gap: 6px; /* Adds space between icon and text */
 }
 
-.quiz-create-btn-home-page:hover {
-    background-color: #0071e2; /* Darker shade on hover */
-}
 
 .quiz-create-btn-home-page svg {
     height: 20px; /* Smaller icon size */
     width: 20px;
 }
-
-
 
 .quizzes-list-home-page-quiz-page {
     list-style-type: none;
@@ -162,7 +157,7 @@
 }
 
 .quiz-item-home-page-quiz-page {
-    background-color: #ffffff; /* White background */
+    background-color: rgba(0, 0, 0, 0.3); /* White background */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     border: none;
     border-radius: 15px; /* Slightly rounded corners */
@@ -171,14 +166,10 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.quiz-item-home-page-quiz-page:hover {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
-    transform: translateY(-2px); /* Subtle lift effect */
-}
 
 .quiz-title-home-page-quiz-page {
     font-size: 1rem; /* Slightly larger title */
-    color: #000000; /* Apple-like blue for links */
+    color: #505050; /* Apple-like blue for links */
     cursor: pointer;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -202,8 +193,8 @@
 }
 
 .quiz-actions-quiz-page button {
-    background-color: #F0F0F0; /* Light gray background for buttons */
-    color: #333; /* Dark gray text */
+    background-color: #121212; /* Light gray background for buttons */
+    color: #ffffff; /* Dark gray text */
     border: none;
     padding: 10px 18px; /* Comfortable padding */
     font-size: 0.95rem; /* Consistent font size */

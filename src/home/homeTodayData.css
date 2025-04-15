@@ -1,145 +1,127 @@
+/* Container for Home Page Components */
 .today-container__home__page__component {
-    padding: 20px;
-    border-radius: 12px; /* Softer corners */
-    text-align: center; /* Center text in the container */
-    margin-bottom: 60px;
-    margin-top: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 20px;
+  background-color: #121212;
 }
 
+/* Section Headers */
 .section-header {
-    align-items: center; /* Center items vertically */
-    font-size: 15px;
-    text-align: center;
-    margin-bottom: 20px; /* Spacing between sections */
+  align-items: center;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #e0e0e0;
 }
 
+/* See All Button */
 .see-all-button {
-    background-color: transparent; /* Transparent button */
-    color: #007aff; /* Apple-like blue color */
-    border: none;
-    border-radius: 20px; /* Rounded edges */
-    padding: 8px 15px; /* Button padding */
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transition for background and text color */
-    font-size: 14px;
+  background-color: transparent;
+  color: #007aff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 14px;
 }
 
 .see-all-button:hover {
-    background-color: rgba(0, 122, 255, 0.1); /* Light blue background on hover */
-    color: #0051a8; /* Darker blue on hover */
+  background-color: rgba(0, 122, 255, 0.1);
+  color: #0051a8;
 }
 
+/* Event List Components */
 .event-list__home__page__component,
 .task-list__home__page__component {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
+/* Event/Task Item */
 .event-item__home__page__component,
 .task-item__home__page__component {
-    padding: 25px 15px; /* Reduced padding for a tighter design */
-    border: 1px solid #dee2e6;
-    border-radius: 12px; /* Softer corners */
-    margin: 15px 0; /* Increased margin for better spacing */
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
-    transition: transform 0.2s ease, box-shadow 0.3s ease; /* Transition effect for lift and shadow */
-    display: flex; /* Flex display for icon and text */
-    align-items: center; /* Center items vertically */
+  padding: 25px 15px;
+  border: 1px solid #333;
+  border-radius: 12px;
+  margin: 15px 0;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
-.event-item__home__page__component:hover,
-.task-item__home__page__component:hover {
-    transform: translateY(-2px); /* Slight lift effect on hover */
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
-}
 
 .event-item__home__page__component svg,
 .task-item__home__page__component svg {
-    margin-right: 10px; /* Space between icon and text */
-    color: #007aff; /* Icon color matching the button */
-    font-size: 1.2em; /* Adjust icon size */
+  margin-right: 10px;
+  color: #007aff;
+  font-size: 1.2em;
 }
 
-.event-item__home__page__component {
-    background-color: #f0f8ff;
-}
-.task-item__home__page__component {
-    background-color: #e6e6fa;
-}
-
+/* Section Component */
 .section__home__page__component {
-    padding: 25px 15px; /* Reduced padding for a tighter design */
-    border-radius: 12px; /* Softer corners */
-    background-color: #ffffff; /* White background for items */
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
-    margin-top: 25px;
+  padding: 25px 15px;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+  color: #e0e0e0;
 }
 
-
-
-/* From Uiverse.io by cssbuttons-io */ 
+/* Call to Action Button */
 .go-page-home-component-btn {
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    margin-top: 30px;
-    outline: none;
-  }
-  
-  .go-page-home-component-btn:hover {
-    background-color: #23c483;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
-  }
-  
-  .go-page-home-component-btn:active {
-    transform: translateY(-1px);
-  }
-
-
-  .toggle-view-btn__view__type__date {
-    background-color: #ffffff; /* Light background */
-    color: #000000; /* Soft blue text */
-    border: 1px solid #ffffff; /* Light border */
-    padding: 8px; /* Padding for comfortable spacing */
-    border-radius: 8px; /* Rounded corners for elegance */
-    font-size: 12px; /* Small, readable text */
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #c0c0c0;
+  background-color: #121212;
+  border: none;
+  border-radius: 45px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  margin-top: 30px;
+  outline: none;
 }
 
+
+/* Toggle View Button */
+.toggle-view-btn__view__type__date {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+}
 
 .toggle-view-btn__view__type__date:active {
-    background-color: #dee2e6; /* Even darker on click */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Slight shadow on click */
+  background-color: #444444;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-
-
+/* Button Container for Multiple Actions */
 .Btn-Container__multiple {
   display: flex;
-  gap: 10px; /* Added space between buttons */
+  gap: 10px;
   justify-content: center;
 }
 
+/* Individual Action Button */
 .Btn-Container__whstaNeww_btn,
 .Btn-Container__monthlyStats_btn {
   display: flex;
-  width: 140px; /* Reduced width */
-  height: 45px; /* Reduced height */
+  width: 140px;
+  height: 45px;
   background-color: #1d2129;
   border-radius: 30px;
   box-shadow: 0px 5px 10px #bebebe;
@@ -151,8 +133,8 @@
 
 .icon-Container__whstaNeww_btn,
 .icon-Container__monthlyStats_btn {
-  width: 30px; /* Adjusted size */
-  height: 30px; /* Adjusted size */
+  width: 30px;
+  height: 30px;
   background-color: #f59aff;
   display: flex;
   align-items: center;
@@ -163,16 +145,17 @@
 
 .text__whstaNeww_btn,
 .text__monthlyStats_btn {
-  width: calc(100px - 30px); /* Adjusted width */
+  width: calc(100px - 30px);
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 0.9em; /* Slightly smaller font */
+  font-size: 0.9em;
   letter-spacing: 1px;
 }
 
+/* Hover Effects for Buttons */
 .Btn-Container__whstaNeww_btn svg,
 .Btn-Container__monthlyStats_btn svg {
   transition-duration: 1.5s;
@@ -185,266 +168,43 @@
 
 @keyframes arrow__whstaNeww_btn {
   0% {
-    opacity: 0;
-    margin-left: 0px;
+      opacity: 0;
+      margin-left: 0px;
   }
   100% {
-    opacity: 1;
-    margin-left: 5px;  /* Adjusted margin */
+      opacity: 1;
+      margin-left: 5px;
   }
 }
 
+/* Media Queries for Responsive Design */
 @media (min-width: 769px) {
-  /* Parent container for centering */
   .home-page-container {
-    display: flex;
-    justify-content: center; /* Centers sections horizontally */
-    align-items: center; /* Centers sections vertically */
-    flex-wrap: wrap; /* Allows wrapping if multiple sections */
-    gap: 20px; /* Space between sections */
-    padding: 20px; /* Padding around the content */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
   }
 
   .section__home__page__component {
-    width: 300px; /* Fixed width for sections */
-    padding: 25px 15px; /* Reduced padding for a tighter design */
-    border-radius: 12px; /* Softer corners */
-    background-color: #ffffff; /* White background for items */
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1); /* Box shadow with 25px radius */
-    margin-top: 25px;
+      width: 300px;
+      padding: 25px 15px;
+      border-radius: 12px;
+      background-color: #333333;
+      box-shadow: 0 4px 25px rgba(255, 255, 255, 0.1);
+      margin-top: 25px;
   }
 
   .today-container__home__page__component {
-    padding: 20px;
-    border-radius: 12px; /* Softer corners */
-    text-align: center; /* Center text in the container */
-    margin-bottom: 60px;
-    margin-top: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    align-items: center;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 60px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      align-items: center;
+      background-color: #1e1e1e;
   }
-}
-
-
-
-
-
-
-
-
-
-/* Updated CSS with the fixes */
-.button__btn___gen__report__top {
-  --h-button: 48px;
-  --w-button: 120px; /* Increased the width */
-  --round: 0.75rem;
-  cursor: pointer;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  background: radial-gradient(
-      65.28% 65.28% at 50% 100%,
-      rgba(223, 113, 255, 0.8) 0%,
-      rgba(223, 113, 255, 0) 100%
-    ),
-    linear-gradient(0deg, #7a5af8, #7a5af8);
-  border-radius: var(--round);
-  border: none;
-  outline: none;
-  padding: 12px 18px;
-  margin-bottom: 20px; /* Added margin-top for spacing */
-}
-
-.button__btn___gen__report__top::before,
-.button__btn___gen__report__top::after {
-  content: "";
-  position: absolute;
-  inset: var(--space);
-  transition: all 0.5s ease-in-out;
-  border-radius: calc(var(--round) - var(--space));
-  z-index: 0;
-}
-
-.button__btn___gen__report__top::before {
-  --space: 1px;
-  background: linear-gradient(
-    177.95deg,
-    rgba(255, 255, 255, 0.19) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.button__btn___gen__report__top::after {
-  --space: 2px;
-  background: radial-gradient(
-      65.28% 65.28% at 50% 100%,
-      rgba(223, 113, 255, 0.8) 0%,
-      rgba(223, 113, 255, 0) 100%
-    ),
-    linear-gradient(0deg, #7a5af8, #7a5af8);
-}
-
-.button__btn___gen__report__top:active {
-  transform: scale(0.95);
-}
-
-.fold__btn___gen__report__top {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 1rem;
-  width: 1rem;
-  display: inline-block;
-  transition: all 0.5s ease-in-out;
-  background: radial-gradient(
-    100% 75% at 55%,
-    rgba(223, 113, 255, 0.8) 0%,
-    rgba(223, 113, 255, 0) 100%
-  );
-  box-shadow: 0 0 3px black;
-  border-bottom-left-radius: 0.5rem;
-  border-top-right-radius: var(--round);
-}
-
-.fold__btn___gen__report__top::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 150%;
-  height: 150%;
-  transform: rotate(45deg) translateX(0%) translateY(-18px);
-  background-color: #e8e8e8;
-  pointer-events: none;
-}
-
-.button__btn___gen__report__top:hover .fold__btn___gen__report__top {
-  margin-top: -1rem;
-  margin-right: -1rem;
-}
-
-.points_wrapper__btn___gen__report__top {
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  position: absolute;
-  z-index: 1;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top {
-  bottom: -10px;
-  position: absolute;
-  animation: floating-points infinite ease-in-out;
-  pointer-events: none;
-  width: 2px;
-  height: 2px;
-  background-color: #fff;
-  border-radius: 9999px;
-}
-
-@keyframes floating-points {
-  0% {
-    transform: translateY(0);
-  }
-  85% {
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(-55px);
-    opacity: 0;
-  }
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(1) {
-  left: 10%;
-  opacity: 1;
-  animation-duration: 2.35s;
-  animation-delay: 0.2s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(2) {
-  left: 30%;
-  opacity: 0.7;
-  animation-duration: 2.5s;
-  animation-delay: 0.5s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(3) {
-  left: 25%;
-  opacity: 0.8;
-  animation-duration: 2.2s;
-  animation-delay: 0.1s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(4) {
-  left: 44%;
-  opacity: 0.6;
-  animation-duration: 2.05s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(5) {
-  left: 50%;
-  opacity: 1;
-  animation-duration: 1.9s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(6) {
-  left: 75%;
-  opacity: 0.5;
-  animation-duration: 1.5s;
-  animation-delay: 1.5s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(7) {
-  left: 88%;
-  opacity: 0.9;
-  animation-duration: 2.2s;
-  animation-delay: 0.2s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(8) {
-  left: 58%;
-  opacity: 0.8;
-  animation-duration: 2.25s;
-  animation-delay: 0.2s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(9) {
-  left: 98%;
-  opacity: 0.6;
-  animation-duration: 2.5s;
-  animation-delay: 0.4s;
-}
-
-.points_wrapper__btn___gen__report__top .point__btn___gen__report__top:nth-child(10) {
-  left: 65%;
-  opacity: 0.4;
-  animation-duration: 1.7s;
-  animation-delay: 1.2s;
-}
-
-.inner__btn___gen__report__top {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: #fff;
-  letter-spacing: 1.5px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.icon__btn___gen__report__top {
-  width: 16px;
-  height: 16px;
-  margin-right: 10px;
-  transform: rotate(0deg); /* Removed rotation */
 }

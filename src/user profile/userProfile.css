@@ -3,7 +3,7 @@
   font-family: 'Arial', sans-serif;
   margin: 20px;
   padding: 20px;
-  background-color: #f7f9fc;
+  background-color: #121212;
   border-radius: 25px;
   max-width: 700px;
   margin: auto;
@@ -73,7 +73,7 @@
 }
 
 .info__block__guest {
-  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 15px 20px;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -94,13 +94,15 @@
 
 /* Top Subjects */
 .top__subjects__guest {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .top__subjects__title__guest {
   font-size: 18px;
-  color: #2d3436;
+  color: #919191;
   margin-bottom: 10px;
+  margin-top: 50px;
+  text-align: center;
   font-weight: 600;
 }
 
@@ -113,7 +115,7 @@
 .subject__tag__guest {
   display: flex;
   align-items: center;
-  background-color: #70a1ff;
+  background-color: rgba(0, 0, 0, 0.3);
   color: white;
   padding: 8px 18px;
   border-radius: 20px;
@@ -124,12 +126,6 @@
 }
 
 
-
-.subject__tag__guest:hover {
-  background-color: #4e8bf7;
-  transform: translateY(-5px);
-}
-
 .subject__icon__guest {
   margin-right: 10px;
   font-size: 18px;
@@ -139,7 +135,7 @@
 
 /* Activity Section */
 .activity__guest {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -160,7 +156,7 @@
 }
 
 .activity__card__guest {
-  background-color: #ecf0f1;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 15px;
   border-radius: 8px;
   font-size: 14px;
@@ -209,7 +205,7 @@
 /* Main Resources Section */
 .resources__section__user__profile {
   padding: 25px;
-  background-color: #ffffff; /* Light gradient background */
+  background-color: rgba(0, 0, 0, 0.3); /* Light gradient background */
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   max-width: 900px;
@@ -237,9 +233,9 @@
 
 .toggle__btn__user__profile {
   padding: 7px 12px;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #555;
-  border: 2px solid #ddd;
+  border: 2px solid rgba(0, 0, 0, 0.3);
   border-radius: 25px;
   cursor: pointer;
   display: flex;
@@ -250,9 +246,10 @@
 }
 
 .toggle__btn__user__profile.active__user__profile {
-  background-color: #7f85ff; /* Soft blue background */
+  background-color: #171717; /* Soft blue background */
   color: #fff;
   border-color: #7f85ff;
+  box-shadow: 0 0 5px rgba(127, 133, 255, 0.7);
 }
 
 .toggle__btn__user__profile:focus {
@@ -274,7 +271,7 @@
 }
 
 .resource__item__user__profile {
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 18px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -283,7 +280,7 @@
   align-items: center;
   gap: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f0f0f0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 

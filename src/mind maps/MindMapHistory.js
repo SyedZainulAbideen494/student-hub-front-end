@@ -84,9 +84,6 @@ const MindMapHistory = () => {
               onClick={() => navigate(`/mindmap/${mindmap.id}`)}
             >
               <h2 className="mindmap-name__main__maps__view">{mindmap.name}</h2>
-              <p className="mindmap-subject__main__maps__view">
-                <span className="subject-badge__main__maps__view">{mindmap.subject}</span>
-              </p>
               <p className="mindmap-date__main__maps__view">
                 <strong>Created on:</strong> {new Date(mindmap.created_at).toLocaleDateString()}
               </p>

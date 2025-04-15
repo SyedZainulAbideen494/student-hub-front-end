@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f2f2f2; /* Light background for better contrast */
+  background: linear-gradient(135deg, #0c0c0c, #1a1a1a); /* Dark gradient */
 }
 
 /* Spinner */
@@ -15,7 +15,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(15, 15, 15, 0.85); /* Dark overlay */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,54 +24,57 @@
 
 /* Login container */
 .login-container {
-  max-width: 360px; /* Slightly narrower for a compact look */
-  padding: 20px;
-  border: 1px solid #ddd; /* Softer border color */
-  border-radius: 12px; /* Rounded corners for a modern feel */
-  background-color: #ffffff;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+  max-width: 360px;
+  padding: 25px;
+  border: 1px solid #2c2c2c;
+  border-radius: 15px;
+  background-color: rgba(25, 25, 25, 0.9);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  font-family: 'SF Pro Text', 'Segoe UI', 'Arial', sans-serif;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(16px);
 }
 
 .login-container:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.9);
 }
 
 .login-container h2 {
-  font-size: 1.6rem; /* Smaller heading */
+  font-size: 1.6rem;
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  background: linear-gradient(to right, #007aff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .login-container p {
   text-align: center;
-  color: #555; /* Softer color for the message */
-  font-size: 0.9rem; /* Smaller text */
+  color: #aaa;
+  font-size: 0.9rem;
   margin-bottom: 20px;
 }
 
 .welcome-message {
-  font-size: 1.2rem; /* Slightly smaller text for the welcome message */
+  font-size: 1.1rem;
   text-align: center;
-  color: #333;
+  color: #ccc;
   margin-bottom: 20px;
 }
 
 .error-message {
-  color: #ff6347;
+  color: #ff4c4c;
   margin-bottom: 10px;
   text-align: center;
-  font-size: 0.9rem; /* Smaller font size */
+  font-size: 0.9rem;
 }
 
 .input-container-login {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-  border-bottom: 2px solid #ddd; /* Softer border color */
+  border-bottom: 2px solid #333;
   padding-bottom: 10px;
   position: relative;
 }
@@ -81,23 +84,25 @@
 }
 
 .icon {
-  margin-right: 12px; /* Slightly more spacing */
+  margin-right: 12px;
   font-size: 1.2rem;
-  color: #777; /* Slightly lighter color */
+  color: #666;
 }
 
 .login-container input {
   flex: 1;
-  padding: 12px 40px 12px 12px; /* Space for icon */
-  border: 1px solid #ddd;
+  padding: 12px 40px 12px 12px;
+  border: 1px solid #444;
   border-radius: 8px;
   font-size: 1rem;
-  background: #fff;
-  transition: border-color 0.3s ease;
+  background: #1a1a1a;
+  color: #eee;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-container input:focus {
-  border-color: #007bff;
+  border-color: #007aff;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
   outline: none;
 }
 
@@ -107,27 +112,27 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.2rem;
-  color: #666;
+  color: #888;
   cursor: pointer;
 }
 
 /* Button styling */
 .login-container button[type="submit"] {
-  background-color: #000; /* Black button */
-  color: #ffffff;
+  background-color: #007aff;
+  color: #fff;
   border: none;
-  padding: 14px 30px; /* Increased padding for wider button */
-  font-size: 0.9rem; /* Smaller font size */
+  padding: 14px 30px;
+  font-size: 0.9rem;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 15px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 100%; /* Full width of the container */
-  text-align: center; /* Center text */
+  width: 100%;
+  text-align: center;
 }
 
 .login-container button[type="submit"]:hover {
-  background-color: #333; /* Darker black shade for hover */
+  background-color: #339dff;
   transform: scale(1.02);
 }
 
@@ -137,12 +142,13 @@
 }
 
 .links-login a {
-  color: #007bff;
+  color: #66bfff;
   text-decoration: none;
   font-size: 0.9rem;
+  transition: color 0.2s ease;
 }
 
 .links-login a:hover {
   text-decoration: underline;
-  color: #0056b3;
+  color: #99ccff;
 }

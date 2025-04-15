@@ -1,7 +1,7 @@
 /* Container */
 .pre__list__reports__container {
     padding: 20px;
-    background-color: #fff; /* White background for clean contrast */
+    background-color: #121212; /* White background for clean contrast */
     color: #333; /* Dark text for readability */
     border-radius: 16px; /* Rounded corners for container */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
@@ -62,7 +62,7 @@
 
 /* Report Card */
 .pre__list__reports__card {
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 15px;
     border-radius: 15px; /* Rounded corners for each card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow effect */

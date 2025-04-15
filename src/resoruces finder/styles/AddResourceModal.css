@@ -14,7 +14,7 @@
 
 /* Modal Content */
 .modal__content__resources__finder__page {
-    background-color: #ffffff;
+    background-color: #121212;
     border-radius: 16px;
     padding: 2rem;
     width: 80%;
@@ -41,21 +41,19 @@
     top: 1.5rem;
     right: 1.5rem;
     font-size: 1.5rem;
-    color: #6c757d;
+    color: #ffffff;
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
-.close__icon__resources__finder__page:hover {
-    color: #212529;
-}
+
 
 /* Modal Title */
 .modal__content__resources__finder__page h2 {
     font-size: 1rem;
     font-weight: 600;
     margin: 0 0 1.5rem 0;
-    color: #212529;
+    color: #ffffff;
     margin-top: 20px;
     text-align: center;
 }
@@ -63,7 +61,7 @@
 /* Message */
 .message__resources__finder__page {
     font-size: 0.95rem;
-    color: #6c757d;
+    color: #ffffff;
     text-align: center;
     margin: 0 0 1.5rem 0;
 }
@@ -79,11 +77,11 @@
 .modal__content__resources__finder__page textarea {
     width: 88%;
     padding: 0.70rem 1rem;
-    border: 1px solid #e9ecef;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     font-size: 0.95rem;
     color: #212529;
-    background-color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -130,11 +128,11 @@
 .select__add_resources__type {
     width: 100%;
     padding: 10px;
-    border: 2px solid #d1d5db;  /* Soft gray border */
+    border: 2px solid rgba(0, 0, 0, 0.3);  /* Soft gray border */
     border-radius: 8px; /* Rounded corners */
     font-size: 16px;
-    background-color: #fff; /* White background */
-    color: #333; /* Dark text */
+    background-color: rgba(0, 0, 0, 0.3); /* White background */
+    color: #ffffff; /* Dark text */
     outline: none;
     transition: all 0.3s ease-in-out;
     cursor: pointer;

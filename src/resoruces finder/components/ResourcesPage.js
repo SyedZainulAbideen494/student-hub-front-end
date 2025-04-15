@@ -236,7 +236,6 @@ const ResourceFinder = () => {
     </div>
 )}
 
-<GuideBanner/>
                 {filteredResources.length > 0 ? (
                     filteredResources.map((res) => (
                         <div key={res.id} className="resource__card__resources__finder__page">
