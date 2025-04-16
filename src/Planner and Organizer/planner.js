@@ -477,7 +477,7 @@ const handleSliderChange = () => {
 <div className="task-list">
                 <h2 className="section-title" style={{textAlign: 'center'}}><FaTasks /> All Tasks</h2>
                 <div className="task-container">
-                    {getAllTasks().map(task => (
+                {getAllTasks().slice().reverse().map(task => (
                         <div key={task.id} className={`task ${getPriorityClass(task.priority)}`}>
                             <h3 className="task-title">{task.title}</h3>
                             <p className="task-description" style={{ whiteSpace: 'pre-wrap' }}>{task.description}</p>
