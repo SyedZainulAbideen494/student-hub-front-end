@@ -77,18 +77,11 @@
   backdrop-filter: blur(4px);
 }
 
-.flow__user__option:hover {
+
+.flow__user__selected {
   background-color: #1d1a23;
   color: white;
   border-color: #6c88d1;
-  transform: translateY(-2px);
-}
-
-.flow__user__selected {
-  background-color: #6c88d1;
-  color: #fff;
-  border-color: #6c88d1;
-  font-weight: 600;
 }
 
 /* Navigation */
