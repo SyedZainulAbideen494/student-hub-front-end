@@ -330,7 +330,7 @@ const checkTokenAndRedirect = async (token) => {
         <p style={{ textAlign: 'center', fontSize: '14px', color: 'white', marginTop: '20px' }}>
             Already have an account?
             <span style={{ fontWeight: 'bold', color: 'white' }}>
-                <Link to='/login' style={{color: 'black'}}> Login</Link>
+                <Link to='/login' style={{color: 'white'}}> Login</Link>
             </span>
         </p>
     </div>
