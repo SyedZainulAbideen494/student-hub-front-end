@@ -100,18 +100,19 @@ const CreateFlashcardSet = () => {
   return (
     <div className="create__flashcard__Set__Page">
       <header className="header__create__flashcard__Set__Page">
-        <button className="back-button__create__flashcard__Set__Page" onClick={() => nav(-1)}>
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            className="back-button-icon__create__flashcard__Set__Page"
-            fill="#000000"
-            width="24"
-            height="24"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
+      <button className="back-button__create__flashcard__Set__Page" onClick={() => nav(-1)}>
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    className="back-button-icon__create__flashcard__Set__Page"
+    fill="#ffffff" // Correct white color
+    width="24"
+    height="24"
+  >
+    <path d="M15 18l-6-6 6-6" />
+  </svg>
+</button>
+
         <h1 className="header-title__create__flashcard__Set__Page">Create Flashcard Set</h1>
       </header>
       <p className="header-subtitle__create__flashcard__Set__Page">Fill in the details below to get started!</p>
