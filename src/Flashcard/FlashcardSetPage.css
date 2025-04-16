@@ -674,52 +674,63 @@
     text-align: center;
   }
 
-
 /* Flashcard Section Layout */
 .flashcard__set__page__second__header__sec {
-  width: 90%; /* Reduced width to make it more compact */
-  margin: 30px auto; /* Center the section horizontally */
-  padding: 15px; /* Reduced padding for a more minimal feel */
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 12px; /* Curved edges */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  width: 80%;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(20, 20, 20, 0.9); /* Deep dark semi-transparent */
+  backdrop-filter: blur(12px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6); /* Floating depth */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
-  gap: 10px; /* Reduced gap for a more compact layout */
+  align-items: center;
+  gap: 14px;
 }
 
 /* Filter Section */
 .flashcard__set__page__filter-section {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Reduced gap for minimal spacing */
+  gap: 12px;
 }
 
 /* Status Filter */
 .flashcard__set__page__status-filter {
   display: flex;
-  gap: 10px; /* Reduced gap for tighter layout */
+  gap: 12px;
   justify-content: center;
 }
 
 .status-filter-button {
-  padding: 8px 15px; /* Reduced padding for a smaller look */
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  background-color: transparent;
-  color: #b4b4b4;
-  font-size: 12px; /* Smaller font size */
+  padding: 10px 18px;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+  background: rgba(35, 35, 35, 0.85);
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 8px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+.status-filter-button:hover {
+  background: rgba(50, 50, 50, 0.9);
+  color: #fff;
+  transform: translateY(-2px);
+}
 
 .status-filter-button.active {
-  background-color: #121212; /* Green for active state */
-  color: rgb(255, 254, 254);
-  border-color: #000000;
+  background-color: #0f0f0f;
+  color: #f8f8f8;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.05);
 }
+
 
 /* Swipe Mode Button */
 .flashcard__set__page__show-first-btn {
