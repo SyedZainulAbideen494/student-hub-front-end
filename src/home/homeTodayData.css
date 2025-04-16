@@ -1,93 +1,134 @@
-/* Container for Home Page Components */
+/* ---------- CONTAINER ---------- */
 .today-container__home__page__component {
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  margin-bottom: 60px;
-  margin-top: 20px;
-  background-color: rgba(10, 10, 10, 0.5);
-}
-
-/* Section Headers */
-.section-header {
-  align-items: center;
-  font-size: 15px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #e0e0e0;
-}
-
-/* See All Button */
-.see-all-button {
-  background-color: transparent;
-  color: #007aff;
-  border: none;
+  padding: 24px;
   border-radius: 20px;
-  padding: 8px 15px;
+  text-align: center;
+  margin: 30px 0 70px;
+  background: linear-gradient(145deg, #161616, #1a1a1a);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.6),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* ---------- SECTION HEADER ---------- */
+.section-header {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: #d4d4d4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+
+/* ---------- SEE ALL BUTTON ---------- */
+.see-all-button {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #82bfff;
+  border: 1px solid rgba(130, 191, 255, 0.2);
+  border-radius: 50px;
+  padding: 8px 20px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
 }
 
 .see-all-button:hover {
-  background-color: rgba(0, 122, 255, 0.1);
-  color: #0051a8;
+  background-color: rgba(130, 191, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.03);
 }
 
-/* Event List Components */
+
+/* ---------- LIST COMPONENTS ---------- */
 .event-list__home__page__component,
 .task-list__home__page__component {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-/* Event/Task Item */
+
+/* ---------- ITEM CARD ---------- */
 .event-item__home__page__component,
 .task-item__home__page__component {
-  padding: 25px 15px;
-  border: 1px solid #333;
-  border-radius: 12px;
-  margin: 15px 0;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  padding: 20px 18px;
+  border-radius: 16px;
+  margin: 18px 0;
   display: flex;
   align-items: center;
-  background-color: #121212;
-  color: #e0e0e0;
+  gap: 12px;
+  background: linear-gradient(135deg, #1a1a1a, #121212);
+  color: #e4e4e4;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.65),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.event-item__home__page__component:hover,
+.task-item__home__page__component:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.7),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.04);
 }
 
 
+/* ---------- ITEM ICON ---------- */
 .event-item__home__page__component svg,
 .task-item__home__page__component svg {
-  margin-right: 10px;
-  color: #007aff;
-  font-size: 1.2em;
+  color: #2f93ff;
+  font-size: 1.4em;
 }
 
-/* Section Component */
+
+/* ---------- SECTION BOX ---------- */
 .section__home__page__component {
-  padding: 25px 15px;
-  border-radius: 12px;
-  background-color: rgba(0, 0, 0, 0.3);
-  margin-top: 25px;
-  color: #e0e0e0;
+  padding: 24px 20px;
+  border-radius: 16px;
+  margin-top: 30px;
+  background: linear-gradient(135deg, #151515, #1a1a1a);
+  color: #dddddd;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.5),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.02);
 }
 
-/* Call to Action Button */
+
+/* ---------- CTA BUTTON ---------- */
 .go-page-home-component-btn {
-  padding: 1.3em 3em;
-  font-size: 12px;
+  padding: 1em 2.5em;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #c0c0c0;
-  background-color: #121212;
-  border: none;
-  border-radius: 45px;
-  transition: all 0.3s ease 0s;
+  letter-spacing: 1.8px;
+  font-weight: 600;
+  color: #f0f0f0;
+  background: linear-gradient(145deg, #1a1a1a, #121212);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 60px;
   cursor: pointer;
-  margin-top: 30px;
-  outline: none;
+  margin-top: 35px;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.6),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.02);
+}
+
+.go-page-home-component-btn:hover {
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  transform: scale(1.04);
+  color: #ffffff;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.7),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.03);
 }
 
 
