@@ -4,11 +4,11 @@
   border-radius: 20px;
   text-align: center;
   margin: 30px 0 70px;
-  background: linear-gradient(145deg, #161616, #1a1a1a);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(145deg, #0d0d0d, #0a0a0a); /* darker base */
+  border: 1px solid rgba(255, 255, 255, 0.025);
   box-shadow: 
-    0 4px 10px rgba(0, 0, 0, 0.6),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.05);
+    0 4px 10px rgba(0, 0, 0, 0.9),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.02);
   transition: all 0.3s ease-in-out;
 }
 
@@ -18,34 +18,35 @@
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 24px;
-  color: #d4d4d4;
-  letter-spacing: 0.5px;
+  color: #f1f1f1;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
 }
 
 
 /* ---------- SEE ALL BUTTON ---------- */
 .see-all-button {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: #82bfff;
-  border: 1px solid rgba(130, 191, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #4da6ff;
+  border: 1px solid rgba(77, 166, 255, 0.2);
   border-radius: 50px;
   padding: 8px 20px;
   cursor: pointer;
   font-weight: 600;
   font-size: 13px;
   transition: all 0.25s ease;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 6px rgba(77, 166, 255, 0.15);
 }
 
 .see-all-button:hover {
-  background-color: rgba(130, 191, 255, 0.15);
+  background-color: rgba(77, 166, 255, 0.1);
   color: #ffffff;
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 
-/* ---------- LIST COMPONENTS ---------- */
+/* ---------- LIST CONTAINERS ---------- */
 .event-list__home__page__component,
 .task-list__home__page__component {
   list-style: none;
@@ -54,81 +55,81 @@
 }
 
 
-/* ---------- ITEM CARD ---------- */
+/* ---------- ITEM CARDS ---------- */
 .event-item__home__page__component,
 .task-item__home__page__component {
   padding: 20px 18px;
-  border-radius: 16px;
+  border-radius: 18px;
   margin: 18px 0;
   display: flex;
   align-items: center;
   gap: 12px;
-  background: linear-gradient(135deg, #1a1a1a, #121212);
-  color: #e4e4e4;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(135deg, #111111, #0a0a0a); /* much darker base */
+  color: #f3f3f3;
+  border: 1px solid rgba(255, 255, 255, 0.03);
   box-shadow: 
-    0 6px 20px rgba(0, 0, 0, 0.65),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.03);
+    0 8px 24px rgba(0, 0, 0, 0.85),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.015);
   transition: all 0.3s ease;
 }
 
 .event-item__home__page__component:hover,
 .task-item__home__page__component:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.7),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.04);
+    0 12px 30px rgba(0, 0, 0, 0.9),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.025);
 }
 
 
-/* ---------- ITEM ICON ---------- */
+/* ---------- ITEM ICONS ---------- */
 .event-item__home__page__component svg,
 .task-item__home__page__component svg {
-  color: #2f93ff;
+  color: #3399ff;
   font-size: 1.4em;
 }
 
 
-/* ---------- SECTION BOX ---------- */
+/* ---------- SECTION BOXES ---------- */
 .section__home__page__component {
   padding: 24px 20px;
   border-radius: 16px;
   margin-top: 30px;
-  background: linear-gradient(135deg, #151515, #1a1a1a);
-  color: #dddddd;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, #0c0c0c, #0a0a0a);
+  color: #eeeeee;
+  border: 1px solid rgba(255, 255, 255, 0.035);
   box-shadow:
-    0 4px 15px rgba(0, 0, 0, 0.5),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.02);
+    0 4px 12px rgba(0, 0, 0, 0.7),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.01);
 }
 
 
 /* ---------- CTA BUTTON ---------- */
 .go-page-home-component-btn {
-  padding: 1em 2.5em;
+  padding: 1em 2.6em;
   font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 1.8px;
+  letter-spacing: 2px;
   font-weight: 600;
-  color: #f0f0f0;
-  background: linear-gradient(145deg, #1a1a1a, #121212);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+  background: linear-gradient(145deg, #151515, #090909);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 60px;
   cursor: pointer;
   margin-top: 35px;
   transition: all 0.3s ease;
   box-shadow: 
-    0 6px 20px rgba(0, 0, 0, 0.6),
+    0 6px 18px rgba(0, 0, 0, 0.7),
     inset 0 0 0.5px rgba(255, 255, 255, 0.02);
 }
 
 .go-page-home-component-btn:hover {
-  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-  transform: scale(1.04);
+  background: linear-gradient(145deg, #1f1f1f, #0f0f0f);
+  transform: scale(1.05);
   color: #ffffff;
   box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.7),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.03);
+    0 10px 28px rgba(0, 0, 0, 0.85),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.025);
 }
 
 
