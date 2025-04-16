@@ -522,10 +522,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-  
-  .ai-task-generator__planner__page__ai__gen:hover {
-    transform: translateY(-5px);
-  }
+
   
   .form-header__planner__page__ai__gen {
     display: flex;
