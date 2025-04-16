@@ -765,7 +765,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: 500;
-    color: #333;
+    color: #ffffff;
   }
   
   .form-group__modal__Add__tasks input,
@@ -774,7 +774,7 @@
     width: 94%;
     padding: 8px;
     background-color: #121212;
-    color: #000;
+    color: #ffffff;
     border: 1px solid #121212;
     border-radius: 9px;
     font-size: 14px;
