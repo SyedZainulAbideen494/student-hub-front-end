@@ -1,7 +1,7 @@
 /* General Styles */
 .App-dashboard-planner {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background: #121212; /* White background for the main area */
+    background: rgba(10, 10, 10, 0.5); /* White background for the main area */
     color: #ffffff; /* Dark text for readability */
     padding: 40px 60px;
     border-radius: 20px;
@@ -472,58 +472,22 @@
 }
 
 
-/* Container to center the button */
-.button-container__feedback__btn__planner__page  {
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically (if needed) */
-    margin-bottom: 12px;
-}
-
-/* Button styles */
-.feedback__btn__planner__page {
-    display: block; /* Change to block for margin auto to work */
-    margin: 0 auto; /* Center the button */
-    background-color: #7161ef; /* Primary button color */
-    color: #fff; /* Text color */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding for the button */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Transition effects */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.feedback__btn__planner__page:hover {
-    background-color: #a38dff; /* Lighter shade on hover */
-    transform: translateY(-2px); /* Lift effect on hover */
-}
-
-.feedback__btn__planner__page:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 0 3px rgba(113, 97, 239, 0.5); /* Custom focus outline */
-}
-
-
 
 .ai-task-generator__planner__page__ai__gen {
   max-width: 420px;
   margin: 50px auto;
   padding: 30px;
   border-radius: 16px;
-  background: linear-gradient(135deg, #0a0a0a, #151515); /* deep gradient */
-  border: 1px solid rgba(255, 255, 255, 0.05); /* faint white edge */
+  background: linear-gradient(135deg, #0a0a0a, #141414); /* deep, matte gradient */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border for definition */
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.03); /* outer rim for Apple-like lift */
+    0 10px 25px rgba(0, 0, 0, 0.7), /* darker shadow for a more muted lift */
+    0 0 0 1px rgba(255, 255, 255, 0.03); /* very faint outline */
   text-align: center;
-  color: #f2f2f2;
+  color: #d1d1d1; /* soft light gray for subtle text contrast */
   transition: all 0.3s ease-in-out;
 }
 
-
-  
   .form-header__planner__page__ai__gen {
     display: flex;
     justify-content: center;
