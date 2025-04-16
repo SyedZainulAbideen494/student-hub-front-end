@@ -5,6 +5,9 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 import LoaderFlashcardExplain from './flashcardExplainLoader';
 import axios from 'axios';
 import UpgradeModal from '../premium/UpgradeModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faCheckCircle, faTimesCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const formatContent = (content) => {
   // Format code blocks
@@ -60,6 +63,7 @@ const SwipeFlashcardViewPage = () => {
   const [loading, setLoading] = useState(false); // Loading state for modal
   const [isPremium, setIsPremium] = useState(null);
   const [isUpgradeModalOpen, setIsUpgradeModalOpen] = useState(false); // Add state
+  const [responseStats, setResponseStats] = useState({ known: 0, unknown: 0 });
 
   const nav = useNavigate();
   const swipeCardRef = useRef();
@@ -135,16 +139,18 @@ const SwipeFlashcardViewPage = () => {
   };
 
   const handleIKnow = async () => {
-    // Update status as 'known' and proceed with swipe
     await updateFlashcardStatus(flashcards[currentIndex]?.id, 'I Know');
+    setResponseStats(prev => ({ ...prev, known: prev.known + 1 }));
     animateSwipe('right');
   };
+  
 
   const handleIDontKnow = async () => {
-    // Update status as 'unknown' and proceed with swipe
     await updateFlashcardStatus(flashcards[currentIndex]?.id, `I Don't Know`);
+    setResponseStats(prev => ({ ...prev, unknown: prev.unknown + 1 }));
     animateSwipe('left');
   };
+  
 
   const animateSwipe = (direction) => {
     // Trigger swipe animation without actual touch interaction
@@ -218,10 +224,27 @@ const SwipeFlashcardViewPage = () => {
   return (
     <div className="swipe-flashcard-container">
       {quizComplete ? (
-        <div className="results">
-          <h2>set Complete!</h2>
-          <button onClick={() => nav(-1)}>Go Back</button>
-        </div>
+       
+<div className="results__flashcard__Swipe__result">
+  <h2 className="title__flashcard__Swipe__result">Set Complete</h2>
+  <p className="subtitle__flashcard__Swipe__result">Here’s how you did</p>
+
+  <div className="stats__flashcard__Swipe__result">
+    <div className="stat__item__flashcard__Swipe__result known">
+      <FontAwesomeIcon icon={faCheckCircle} className="icon known-icon" />
+      <span>{responseStats.known}</span>
+    </div>
+    <div className="stat__item__flashcard__Swipe__result unknown">
+      <FontAwesomeIcon icon={faTimesCircle} className="icon unknown-icon" />
+      <span>{responseStats.unknown}</span>
+    </div>
+  </div>
+
+  <button className="back-btn__flashcard__Swipe__result" onClick={() => nav(-1)}>
+    <FontAwesomeIcon icon={faArrowLeft} className="btn-icon" />
+    <span className="btn-text">Return</span>
+  </button>
+</div>
       ) : (
         <>
           <div
