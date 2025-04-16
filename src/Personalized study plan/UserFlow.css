@@ -95,7 +95,7 @@
 }
 
 .flow__user__btn {
-  background-color: #433363;
+  background-color: #4e91f0; /* Bright, eye-catching blue */
   color: white;
   border: none;
   padding: 14px 28px;
@@ -104,8 +104,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 18px rgba(72, 118, 255, 0.3); /* Enhanced shadow for depth */
+  position: relative;
+  z-index: 1;
 }
+
+
 
 .flow__user__btn:hover:not(:disabled) {
   background-color: #29242f;
