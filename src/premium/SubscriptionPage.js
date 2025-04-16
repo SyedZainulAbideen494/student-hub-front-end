@@ -293,7 +293,7 @@ const PaymentComponent = () => {
     // Set pricing based on selected plan
 let planAmount = 0;
 if (selectedPlan === "daily") {
-  planAmount = 8; // ₹8 → 800 paise
+  planAmount = 15; // ₹8 → 800 paise
 } else if (selectedPlan === "weekly") {
   planAmount = 39;
 } else if (selectedPlan === "monthly") {
@@ -430,7 +430,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       <Plans>
         <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
           <h4>Just Curious</h4>
-          <p>₹8/day</p>
+          <p>₹15/day</p>
           <SmallText>Perfect for a quick taste</SmallText>
         </PlanBox>
         <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
