@@ -377,8 +377,15 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     setStep(2);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  
 
+  useEffect(() => {
+    // Scroll to the top of the page on load
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Smooth scrolling animation
+    });
+  }, []); // Empty dependency array to run only once when the component is mounted
+  
   return (
     <Wrapper>
   {step === 1 && (
