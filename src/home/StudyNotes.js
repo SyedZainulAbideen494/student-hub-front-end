@@ -3,6 +3,7 @@ import { FaStickyNote, FaEye, FaThumbtack, FaTrash } from 'react-icons/fa';
 import NoContentCardStickyNote from './nocontentStickyNote';
 import './StudyNotes.css';
 import { API_ROUTES } from '../app_modules/apiRoutes';
+import NoContentCardFace from './nocontentcard';
 
 const StudyNotes = () => {
     const [notes, setNotes] = useState([]);
@@ -134,7 +135,7 @@ const StudyNotes = () => {
 
                          ))
                 ) : (
-                    <NoContentCardStickyNote />
+                    <NoContentCardFace />
                 )}
                 <button 
                     onClick={() => setModalOpen(true)} 

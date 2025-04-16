@@ -4,24 +4,28 @@ import styled from 'styled-components';
 
 const NoContentCardFace = () => {
     return (
-        <StyledWrapper>
-        <div className="center">
-          <div className="design">
-            <div className="circle-1 center color-border">
-              <div className="circle-2 center color-border">
-                <div className="circle-3 center color-border">
-                  <div className="circle-4 center color-border">
-                    <div className="circle-5" />
+      <StyledWrapper>
+      <div className="center">
+        <div className="design">
+          <div className="circle-1 center color-border">
+            <div className="circle-2 center color-border">
+              <div className="circle-3 center color-border">
+                <div className="circle-4 center color-border">
+                  <div className="circle-5">
+                    <div className="in-circle-1 in-circle" />
+                    <div className="in-circle-2 in-circle" />
+                    <div className="in-circle-3 in-circle" />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="mountain-1 shape shadow" />
-            <div className="mountain-2 shape" />
-            <div className="mountain-3 shape shadow" />
           </div>
+          <div className="mountain-1 shape shadow" />
+          <div className="mountain-2 shape" />
+          <div className="mountain-3 shape shadow" />
         </div>
-      </StyledWrapper>
+      </div>
+    </StyledWrapper>
     );
 };
 const StyledWrapper = styled.div`
@@ -30,26 +34,25 @@ const StyledWrapper = styled.div`
     justify-content: center;
     align-items: center;
   }
-
   .design {
     height: 200px;
     width: 200px;
     border-radius: 40px;
-    background: linear-gradient(180deg, #00000e 13%, #353283 100%);
+    background: rgb(255, 11, 0);
+    background: linear-gradient(
+      180deg,
+      rgb(174, 0, 255) 13%,
+      rgb(55, 0, 88) 100%
+    );
     position: relative;
     overflow: hidden;
-    transition: 1s ease-in-out;
   }
 
-  /* Removed the hover effect since it's now the default */
-  
   .color-border {
     border-radius: 50%;
     background-color: #ffffff20;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.1);
-    animation: sun 3s infinite;
   }
-
   .circle-1 {
     height: 220px;
     width: 220px;
@@ -74,6 +77,37 @@ const StyledWrapper = styled.div`
     width: 70px;
     border-radius: 50%;
     background-color: #ffffff;
+    box-shadow: inset gray 0px 0px 60px -20px;
+    position: relative;
+  }
+  .in-circle {
+    position: absolute;
+    background-color: #d1d1d1;
+    border-radius: 50%;
+  }
+  .in-circle-1 {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    background-color: #d1d1d1;
+    box-shadow: inset -1px 0px 0px 0px #b6b6b6;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+  }
+  .in-circle-2 {
+    height: 8px;
+    width: 8px;
+    box-shadow: inset -0.75px 0px 0px 0px #b6b6b6;
+    top: 32px;
+    right: 18px;
+  }
+  .in-circle-3 {
+    height: 5px;
+    width: 5px;
+    box-shadow: inset -0.25px 0px 0px 0px #b6b6b6;
+    top: 26px;
+    right: 13px;
   }
 
   .shape {
@@ -83,70 +117,22 @@ const StyledWrapper = styled.div`
     transform: rotate(45deg);
     position: absolute;
   }
-
   .shadow {
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
   }
-
   .mountain-1 {
     z-index: 1;
     bottom: -100px;
     left: -100px;
-    animation: motion 5s infinite;
   }
-
   .mountain-2 {
     bottom: -110px;
     left: -30px;
-    animation: motion1 5s infinite;
-    animation-delay: 1s;
   }
-
   .mountain-3 {
     z-index: 2;
     bottom: -150px;
     left: 90px;
-    animation: motion2 5s infinite;
-    animation-delay: 0.5s;
-  }
-
-  @keyframes motion {
-    40% {
-      bottom: -95px;
-      left: -95px;
-    }
-    80% {
-      bottom: -98px;
-      left: -98px;
-    }
-  }
-
-  @keyframes motion1 {
-    30% {
-      left: -25px;
-    }
-    80% {
-      left: -28px;
-    }
-  }
-
-  @keyframes motion2 {
-    40% {
-      bottom: -145px;
-      left: 85px;
-    }
-    80% {
-      bottom: -148px;
-      left: 88px;
-    }
-  }
-
-  @keyframes sun {
-    80% {
-      right: -48px;
-      top: -48px;
-    }
-  }
-`;
+  }`;
 
 export default NoContentCardFace;

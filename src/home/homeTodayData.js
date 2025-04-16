@@ -135,7 +135,7 @@ const TodayEventsAndTasks = () => {
                         ))}
                     </ul>
                 ) : (
-                    <NoContentCardTask />
+                    <NoContentCardFace />
                 )}
                 <button onClick={handleGoToPlanner} className='go-page-home-component-btn'>Go To Planner</button>
             </div>
