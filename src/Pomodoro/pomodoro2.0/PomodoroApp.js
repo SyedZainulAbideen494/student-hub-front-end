@@ -214,20 +214,30 @@ const PomodoroApp = () => {
     {/* Timer Display */}
     <div className="timer__pomodoro__new">
       <div className="circular-timer__Pomodoro__new">
-        <svg className="circle__Pomodoro__new" width="200" height="200">
-          <circle className="circle-bg__Pomodoro__new" cx="100" cy="100" r="90" strokeWidth="10" />
-          <circle
-            className="circle-progress__Pomodoro__new"
-            cx="100"
-            cy="100"
-            r="90"
-            strokeWidth="10"
-            style={{
-              strokeDasharray: `${(timer / (isStudyTime ? timerLength : breakLength)) * 565}px 565px`,
-              transition: 'stroke-dasharray 1s ease-out',
-            }}
-          />
-        </svg>
+      <svg className="circle__Pomodoro__new" width="200" height="200">
+  <defs>
+    <linearGradient id="pomodoroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#d88cff" />       {/* Pinkish-Purple Glow */}
+      <stop offset="50%" stopColor="#9389ff" />       {/* Soft Lavender */}
+      <stop offset="100%" stopColor="#6be6ff" />      {/* Electric Blue */}
+    </linearGradient>
+  </defs>
+  <circle className="circle-bg__Pomodoro__new" cx="100" cy="100" r="90" strokeWidth="10" />
+  <circle
+    className="circle-progress__Pomodoro__new"
+    cx="100"
+    cy="100"
+    r="90"
+    strokeWidth="10"
+    style={{
+      strokeDasharray: `${(timer / (isStudyTime ? timerLength : breakLength)) * 565}px 565px`,
+      transition: 'stroke-dasharray 1s ease-out',
+      stroke: 'url(#pomodoroGradient)', // Apply gradient here
+    }}
+  />
+</svg>
+
+
         <p className="timer-number__Pomodoro__new">{formatTime(timer)}</p>
       </div>
     </div>
