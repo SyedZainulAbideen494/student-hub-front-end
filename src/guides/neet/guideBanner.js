@@ -31,27 +31,48 @@ const GuideBanner = () => {
 
 export default GuideBanner;
 
-
 const BannerWrapper = styled.div`
   width: 80%;
   max-width: 520px;
-  padding: 26px;
-  margin: 20px auto;
+  padding: 28px;
+  margin: 24px auto;
   border-radius: 20px;
-  background: linear-gradient(145deg, rgba(20, 20, 20, 0.85), rgba(10, 10, 10, 0.75));
+
+  background: linear-gradient(
+    145deg,
+    rgba(28, 28, 28, 0.95),
+    rgba(18, 18, 18, 0.92)
+  );
+
   border: 1px solid rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(22px);
+
   box-shadow:
-    inset 0 0 0.5px rgba(255, 255, 255, 0.03),
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    0 0 1px rgba(255, 255, 255, 0.02);
-  color: #f4f4f4;
+    0 6px 12px rgba(0, 0, 0, 0.4),
+    0 16px 24px rgba(0, 0, 0, 0.6),
+    0 0 0.8px rgba(255, 255, 255, 0.02);
+
+  color: #f1f1f1;
   text-align: center;
   position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease-in-out;
+
+  transition: all 0.4s ease;
+
+  /* Slight floaty animation */
+  animation: floatIn 0.6s ease-out forwards;
+  transform: translateY(6px);
+  opacity: 0;
+
+  @keyframes floatIn {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 `;
 
 const TextContent = styled.div`
