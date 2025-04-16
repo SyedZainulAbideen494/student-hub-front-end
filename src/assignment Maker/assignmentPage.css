@@ -118,3 +118,11 @@
 .assignment-content h1 {
   color: #fff !important; /* force white, override inline or default */
 }
+
+.assignment-content h2 {
+  color: #fff !important; /* force white, override inline or default */
+}
+
+.assignment-content h3 {
+  color: #fff !important; /* force white, override inline or default */
+}
