@@ -2,293 +2,252 @@
 .quiz-home-page-quiz-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     border-radius: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    background-color: #0d0d0d;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
 
 /* Header Section */
 .quiz-header-container-quiz-page {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 30px;
+    gap: 25px;
+    margin-bottom: 35px;
 }
 
-
-/* From Uiverse.io by satyamchaudharydev */ 
-/* From uiverse.io by @satyamchaudharydev */
-/* removing default style of button */
-
-/* Centering the search bar form */
+/* Center Search Bar */
 .search-bar-container {
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center;     /* Centers vertically if needed */
-    padding: 20px 0;         /* Optional padding to give space around the search bar */
+    justify-content: center;
+    padding: 25px 0;
 }
-/* From Uiverse.io by satyamchaudharydev */
-/* From uiverse.io by @satyamchaudharydev */
-/* removing default style of button */
-.form__search__bar__quiz__page button {
-    border: none;
-    background: none;
-    color: #8b8ba7;
-}
-/* styling of whole input container */
+
+/* Search Form */
 .form__search__bar__quiz__page {
-    --timing: 0.3s;
-    --width-of-input: 300px; /* Increased width for better centering */
-    --height-of-input: 40px;
-    --border-height: 2px;
-    --input-bg: rgba(0, 0, 0, 0.3);
-    --border-color: #2f2ee9;
-    --border-radius: 30px;
-    --after-border-radius: 1px;
+    --width-of-input: 360px;
+    --height-of-input: 45px;
     position: relative;
     width: var(--width-of-input);
     height: var(--height-of-input);
     display: flex;
     align-items: center;
-    padding-inline: 0.8em;
-    border-radius: var(--border-radius);
-    transition: border-radius 0.5s ease;
-    background: var(--input-bg, #fff);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0 1em;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 0 1px #2f2ee9, 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
 }
 
-/* styling of Input */
+/* Input */
 .input__search__bar__quiz__page {
-    font-size: 0.9rem;
-    background-color: transparent;
+    font-size: 1rem;
+    background: transparent;
     width: 100%;
     height: 100%;
-    padding-inline: 0.5em;
-    padding-block: 0.7em;
+    padding: 0.5em;
+    color: #eee;
     border: none;
 }
 
-/* styling of animated border */
+/* Border animation */
 .form__search__bar__quiz__page:before {
     content: "";
     position: absolute;
-    background: var(--border-color);
+    background: linear-gradient(90deg, #2f2ee9, #5b5bf0);
     transform: scaleX(0);
     transform-origin: center;
     width: 100%;
-    height: var(--border-height);
+    height: 2px;
     left: 0;
     bottom: 0;
-    border-radius: 1px;
-    transition: transform var(--timing) ease;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
 }
 
-/* Hover on Input */
 .form__search__bar__quiz__page:focus-within {
-    border-radius: var(--after-border-radius);
+    box-shadow: 0 0 0 2px #2f2ee9;
 }
 
 .input__search__bar__quiz__page:focus {
     outline: none;
 }
 
-/* here is code of animated border */
 .form__search__bar__quiz__page:focus-within:before {
-    transform: scale(1);
+    transform: scaleX(1);
 }
 
-/* styling of close button */
-/* == you can click the close button to remove text == */
+/* Clear Button */
 .reset__search__bar__quiz__page {
-    border: none;
     background: none;
+    border: none;
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.3s ease;
 }
 
-/* close button shown when typing */
 .input__search__bar__quiz__page:not(:placeholder-shown) ~ .reset__search__bar__quiz__page {
     opacity: 1;
     visibility: visible;
 }
 
-/* sizing svg icons */
+/* Search Icon */
 .form__search__bar__quiz__page .svg__search__bar__quiz__page {
-    width: 17px;
-    margin-top: 3px;
+    width: 18px;
+    fill: #bcbcbc;
 }
 
-/* Buttons Section */
+/* Header Buttons */
 .quiz-header-buttons-quiz-page {
     display: flex;
     justify-content: center;
-    gap: 12px; /* Reduced gap */
+    gap: 16px;
 }
 
-/* Button Styling */
+/* Create Button */
 .quiz-create-btn-home-page {
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 0.8em; /* Slightly smaller border radius */
+    border: 1px solid #5b5bf0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 6px 10px;
     cursor: pointer;
-    padding: 8px; /* Smaller padding for a more compact button */
-    transition: all ease-in-out 0.2s;
-    font-size: 14px; /* Smaller font size */
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.quiz-create-btn-home-page:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(95, 95, 255, 0.3);
 }
 
 .quiz-create-btn-home-page .quiz-create-btn-home-page-span {
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: #fff;
-    gap: 6px; /* Adds space between icon and text */
+    gap: 8px;
 }
-
 
 .quiz-create-btn-home-page svg {
-    height: 20px; /* Smaller icon size */
     width: 20px;
+    height: 20px;
 }
 
+/* Quiz List */
 .quizzes-list-home-page-quiz-page {
-    list-style-type: none;
-    padding-left: 0;
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
+/* Quiz Card */
 .quiz-item-home-page-quiz-page {
-    background-color: #141414; /* White background */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border: none;
-    border-radius: 15px; /* Slightly rounded corners */
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    background: #121212;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.quiz-item-home-page-quiz-page:hover {
+    transform: scale(1.015);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
 
+/* Quiz Title */
 .quiz-title-home-page-quiz-page {
-    font-size: 1rem; /* Slightly larger title */
-    color: #afafaf; /* Apple-like blue for links */
-    cursor: pointer;
+    font-size: 1.1rem;
+    color: #e0e0e0;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .quiz-title-home-page-quiz-page:hover {
-    color: #0051A8; /* Darker blue on hover */
+    color: #5b5bf0;
     text-decoration: underline;
 }
 
+/* Quiz Date */
 .quiz-date-home-page-quiz-page {
-    font-size: 0.9rem;
-    color: #888; /* Lighter gray for date */
-    margin-top: 5px; /* Added margin for spacing */
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 6px;
 }
 
+/* Actions */
 .quiz-actions-quiz-page {
     display: flex;
-    gap: 12px; /* Consistent spacing */
-    margin-top: 15px;
+    gap: 12px;
+    margin-top: 18px;
 }
 
 .quiz-actions-quiz-page button {
-    background-color: #121212; /* Light gray background for buttons */
-    color: #ffffff; /* Dark gray text */
-    border: none;
-    padding: 10px 18px; /* Comfortable padding */
-    font-size: 0.95rem; /* Consistent font size */
-    border-radius: 20px; /* Rounded corners */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    background: #1f1f1f;
+    color: #fff;
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: 1px solid #2f2ee9;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
 .quiz-actions-quiz-page button:hover {
-    background-color: #E1E1E1; /* Slightly darker gray on hover */
-    transform: translateY(-1px); /* Subtle lift effect */
+    background: #2f2ee9;
+    transform: translateY(-1px);
 }
 
-.quiz-actions-quiz-page button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.5); /* Apple blue focus outline */
-}
-
-
-
+/* No Quizzes Container */
 .no_quiz_found_container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 40px;
 }
 
 .card_no-quizzes {
-    width: 200px;
-    height: 250px;
-    border: none;
-    border-radius: 10px;
-    background: radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), 
-                radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), 
-                linear-gradient(135deg, #ff0000 0%, #000036 100%), 
-                radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), 
-                linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%);
-    background-blend-mode: normal, normal, screen, overlay, normal;
-    box-shadow: 0px 0px 10px 1px #000000;
-    margin-bottom: 20px; /* Space between card and message */
+    width: 240px;
+    height: 260px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #ffdad5, #d6a4f4, #a6c1ee);
+    background-blend-mode: multiply;
+    box-shadow: 0 0 12px 2px #000;
+    margin-bottom: 20px;
 }
 
+/* No Quiz Message */
 .no-quizzes-message {
-    margin: 10px;
-    font-size: 0.9rem; /* Smaller font size */
-    color: #333; /* Adjust the color if needed */
+    font-size: 0.9rem;
+    color: #ccc;
 }
 
 .no-quizzes-message p {
-    margin-bottom: 15px;
-    font-size: 0.8rem; /* Smaller font size for the message */
-    color: #666;
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 10px;
 }
 
-/* Styling the "Create Quiz" button */
+/* First Quiz Button */
 .create-first-quiz-button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Green background */
+    gap: 10px;
+    padding: 10px 22px;
+    background: linear-gradient(to right, #4CAF50, #6ecf73);
     color: white;
-    border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border: none;
+    transition: all 0.3s ease;
 }
 
 .create-first-quiz-button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background: linear-gradient(to right, #45a049, #5ec063);
 }
 
 .create-first-quiz-button svg {
-    margin-right: 5px; /* Space between the icon and the text */
-}
-
-
-.create-first-quiz-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: transparent;
-    color: #74c69d;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-
-.create-first-quiz-button svg {
-    margin-right: 8px;
-    font-size: 1.2rem; /* Adjust as needed */
+    font-size: 1.1rem;
 }

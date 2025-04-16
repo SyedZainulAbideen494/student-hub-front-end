@@ -1,6 +1,6 @@
 /* Container */
 .swipe-flashcard-container {
-    background-color: #121212;
+    background-color: #0e0e0e;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@
   .flashcard {
     width: 80%; /* Slight space on sides */
     height: 300px; /* Reduced height */
-    background-color: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
     border-radius: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -58,8 +58,9 @@
   
   /* Back side of the flashcard (Answer) */
   .flashcard .back {
-    background-color: #fff;
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
     transform: rotateY(180deg); /* Rotate the back side 180 degrees */
+    border-radius: 15px;
   }
   
   /* Progress Bar */
