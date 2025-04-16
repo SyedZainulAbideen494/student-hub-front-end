@@ -6,8 +6,8 @@
   min-height: 100vh;
   background-color: #1A1A1A; /* Deep dark background for contrast */
   color: #E0E0E0; /* Light text for better readability */
-  border-radius: 10px; /* Soft rounded corners */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  border-radius: 12px; /* Slightly more rounded edges */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3); /* More pronounced shadow for depth */
   position: relative;
   transition: all 0.3s ease-in-out; /* Smooth transition */
 }
@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 25px; /* Reduced space for tighter layout */
 }
 
 .back-button__create__flashcard__Set__Page {
@@ -25,59 +25,60 @@
   border: none;
   color: #E0E0E0;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px; /* Slightly larger for visibility */
   display: flex;
   align-items: center;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.2s ease;
 }
 
 .back-button__create__flashcard__Set__Page:hover {
   color: #FF7043; /* Subtle hover color */
+  transform: scale(1.05); /* Slight zoom effect for emphasis */
 }
 
 .header-title__create__flashcard__Set__Page {
-  font-size: 26px; /* Slightly larger for prominence */
+  font-size: 28px; /* Slightly larger for prominence */
   margin: 0;
   flex: 1;
   text-align: center;
-  font-weight: 500; /* Medium weight for sophistication */
+  font-weight: 600; /* Bold for a stronger impact */
 }
 
 .header-subtitle__create__flashcard__Set__Page {
-  font-size: 18px;
-  color: #B0B0B0; /* Softer gray */
+  font-size: 20px; /* Slightly larger for better readability */
+  color: #B0B0B0; /* Softer gray for the subtitle */
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px; /* Slightly more space for balance */
 }
 
 .form-container__create__flashcard__Set__Page {
-  background-color: #2C2C2C; /* Darker background for the form */
-  border-radius: 15px;
-  padding: 25px;
+  background-color: #2C2C2C; /* Darker background for form */
+  border-radius: 18px; /* More rounded for a smoother look */
+  padding: 30px;
   width: 100%;
-  max-width: 420px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  max-width: 450px; /* Slightly wider form for improved design balance */
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35); /* Deeper shadow for depth */
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 40px; /* Slightly more margin for spacing */
 }
 
 .input-group__create__flashcard__Set__Page {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 30px; /* Increased margin for better separation */
 }
 
 .input__create__flashcard__Set__Page {
-  padding: 14px;
-  margin-bottom: 20px;
+  padding: 16px;
+  margin-bottom: 22px; /* More space between inputs */
   border: 1px solid #555;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 12px; /* Rounder corners for a smoother feel */
+  font-size: 18px;
   color: #E0E0E0;
   background-color: #333;
-  transition: border-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .input__create__flashcard__Set__Page:focus {
@@ -87,58 +88,58 @@
 }
 
 .create-button__create__flashcard__Set__Page {
-  padding: 16px;
+  padding: 18px;
   background-color: #333; /* Dark button background */
   color: #E0E0E0;
   border: 1px solid #444;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: 12px;
+  font-size: 20px; /* Larger font for better readability */
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 .create-button__create__flashcard__Set__Page:hover {
-  background-color: #444; /* Slightly lighter on hover */
-  transform: translateY(-2px); /* Subtle lift on hover */
+  background-color: #444; /* Slightly lighter background on hover */
+  transform: translateY(-4px); /* Slight lift on hover */
 }
 
 .pdf-upload-container__create__flashcard__Set__Page {
   background-color: #333;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-  margin-top: 30px;
+  padding: 22px;
+  border-radius: 15px; /* Rounder edges */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  margin-top: 35px;
   width: 90%;
-  max-width: 420px;
+  max-width: 450px;
 }
 
 .file-input__create__flashcard__Set__Page {
-  padding: 14px;
-  margin-bottom: 18px;
+  padding: 16px;
+  margin-bottom: 22px;
   border: 1px solid #555;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: #444;
   color: #E0E0E0;
-  transition: border-color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .generate-button__create__flashcard__Set__Page {
-  padding: 16px;
+  padding: 18px;
   background-color: #4CAF50; /* Subtle green for the generate button */
   color: white;
   border: 1px solid #4CAF50;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: 12px;
+  font-size: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
 
 .generate-button__create__flashcard__Set__Page:hover {
   background-color: #45a049; /* Slightly darker green on hover */
-  transform: translateY(-2px);
+  transform: translateY(-4px); /* Lift effect */
 }
 
 .generate-button__create__flashcard__Set__Page:disabled {
