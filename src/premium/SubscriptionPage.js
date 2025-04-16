@@ -94,7 +94,7 @@ const PlanBox = styled.div`
 
   p {
     font-size: 14px;
-    color: #8e8e93;
+    color:rgb(255, 255, 255);
   }
 `;
 

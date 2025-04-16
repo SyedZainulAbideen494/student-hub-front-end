@@ -188,62 +188,6 @@
   padding: 24px;
 }
 
-.item--1__flashcard__stat,
-.item--2__flashcard__stat,
-.item--3__flashcard__stat,
-.item--4__flashcard__stat {
-  width: calc(50% - 12px);
-  padding: 24px;
-  border-radius: 20px;
-  text-align: center;
-  color: #333;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease-in-out;
-}
-
-.item--1__flashcard__stat:hover,
-.item--2__flashcard__stat:hover,
-.item--3__flashcard__stat:hover,
-.item--4__flashcard__stat:hover {
-  transform: translateY(-8px);
-}
-
-.item--1__flashcard__stat {
-  background: #f0f8ff;
-}
-
-.item--2__flashcard__stat {
-  background: #ffe4e1;
-}
-
-.item--3__flashcard__stat {
-  background: #fafad2;
-}
-
-.item--4__flashcard__stat {
-  background: #e6e6fa;
-}
-
-.item--1__flashcard__stat h3,
-.item--2__flashcard__stat h3,
-.item--3__flashcard__stat h3,
-.item--4__flashcard__stat h3 {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.item--1__flashcard__stat p,
-.item--2__flashcard__stat p,
-.item--3__flashcard__stat p,
-.item--4__flashcard__stat p {
-  font-size: 18px;
-  color: #666;
-}
 
 .icon-container__flashcard__stat {
   margin-bottom: 12px;
