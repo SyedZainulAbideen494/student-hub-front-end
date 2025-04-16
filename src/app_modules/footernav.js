@@ -65,7 +65,7 @@ const FooterNav = () => {
    
     return (
         <div className="footer-nav">
-
+<CheckSubscription/>
             <Link to='/' style={{ textDecoration: 'none' }}>
                 <button className={`nav-btn-footer-nav ${location.pathname === '/' ? 'active' : ''}`}>
                     <MdDashboard  className="icon-footer-nav" />
