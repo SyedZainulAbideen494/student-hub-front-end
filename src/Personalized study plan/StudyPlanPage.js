@@ -140,140 +140,130 @@ const nav = useNavigate()
   const weeklyTimetable = studyPlan.study_plan?.weekly_timetable || [];
 
   return (
-    <div className="study-plan-container__Ai__result__plan">
-    {/* Confetti effect */}
-    {showConfetti && (
-      <Confetti
-        width={window.innerWidth}
-        height={window.innerHeight}
-        recycle={false}
-      />
-    )}
-  
-    {/* Top Section */}
-    <div className="top-section__Ai__result__plan">
-      <h1 className="main-heading__Ai__result__plan">Achieve Your Goals</h1>
-      <p className="description__Ai__result__plan">
-        Your personalized study plan is designed to help you manage your time
-        effectively, stay focused, and achieve academic success.
-      </p>
-    </div>
-  
-    <h1 className="heading__Ai__result__plan">
-      Your Personalized <br />
-      Study Plan
-    </h1>
-  
-    <div className="cards-container__Ai__result__plan">
+<div className="study-plan-container__Ai__result__plan">
+  {/* Confetti effect */}
+  {showConfetti && (
+    <Confetti
+      width={window.innerWidth}
+      height={window.innerHeight}
+      recycle={false}
+    />
+  )}
+
+  {/* Top Section */}
+  <div className="top-section__Ai__result__plan">
+    <h1 className="main-heading__Ai__result__plan">Achieve Your Goals</h1>
+    <p className="description__Ai__result__plan">
+      Your personalized study plan is more than just a guide — it’s a pathway to success.  
+      Stay focused, balanced, and ahead with precision.
+    </p>
+  </div>
+
+  {/* Main Heading */}
+  <h1 className="heading__Ai__result__plan">
+    Your Personalized <br />
+    Study Plan
+  </h1>
+
+  {/* Weekly Timetable */}
+  <div className="cards-container__Ai__result__plan">
     {weeklyTimetable.map((dayPlan, dayIndex) => {
-  const totalHours = calculateTotalHours(dayPlan?.hours_allocation || []);
-  return (
-    <div key={dayIndex} className="day-card__Ai__result__plan">
-      {/* Day and Hours */}
-      <div className="day-and-hours__Ai__result__plan">
-        <div className="day-title__Ai__result__plan">
-          {dayPlan?.day || "Unknown Day"}
-        </div>
-        <div className="hours-circle__Ai__result__plan">
-          <div
-            className="progress__Ai__result__plan"
-            style={{
-              "--progress": `${(totalHours / 12) * 100}%`,
-            }}
-          ></div>
-          <div className="center-value__Ai__result__plan">
-            {totalHours.toFixed(1)}h
+      const totalHours = calculateTotalHours(dayPlan?.hours_allocation || []);
+      return (
+        <div key={dayIndex} className="day-card__Ai__result__plan">
+          {/* Day & Progress Circle */}
+          <div className="day-and-hours__Ai__result__plan">
+            <div className="day-title__Ai__result__plan">
+              {dayPlan?.day || "Unknown Day"}
+            </div>
+            <div className="hours-circle__Ai__result__plan">
+              <div
+                className="progress__Ai__result__plan"
+                style={{
+                  "--progress": `${(totalHours / 12) * 100}%`,
+                }}
+              ></div>
+              <div className="center-value__Ai__result__plan">
+                {totalHours.toFixed(1)}h
+              </div>
+            </div>
+          </div>
+
+          {/* Subject Allocation */}
+          <div className="subjects__Ai__result__plan">
+            <ul className="subjects-list__Ai__result__plan">
+              {(dayPlan?.hours_allocation || []).map((allocation, subjectIndex) => (
+                <li key={subjectIndex} className="subject-item__Ai__result__plan">
+                  {isEditing ? (
+                    <>
+                      <input
+                        type="text"
+                        value={allocation?.subject || ""}
+                        onChange={(e) =>
+                          handleUpdate(dayIndex, subjectIndex, e.target.value, "subject")
+                        }
+                        className="input-edit__Ai__result__plan"
+                        placeholder="Subject"
+                      />
+                      <input
+                        type="number"
+                        value={allocation?.hours || ""}
+                        onChange={(e) =>
+                          handleUpdate(dayIndex, subjectIndex, e.target.value, "hours")
+                        }
+                        className="input-edit__Ai__result__plan"
+                        placeholder="Hours"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <span>{allocation?.subject || "N/A"}</span><br />
+                      <span>{allocation?.hours || "0"}h</span>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Daily Tip */}
+          <div className="tips__Ai__result__plan">
+            <span>{dayPlan?.tips || "No Tips for this day."}</span>
           </div>
         </div>
-      </div>
+      );
+    })}
+  </div>
 
-      {/* Subjects */}
-      <div className="subjects__Ai__result__plan">
-        <ul className="subjects-list__Ai__result__plan">
-          {(dayPlan?.hours_allocation || []).map((allocation, subjectIndex) => (
-            <li key={subjectIndex} className="subject-item__Ai__result__plan">
-              {isEditing ? (
-                <>
-                  <input
-                    type="text"
-                    value={allocation?.subject || ""}
-                    onChange={(e) =>
-                      handleUpdate(dayIndex, subjectIndex, e.target.value, "subject")
-                    }
-                    style={{
-                      padding: "10px",
-                      borderRadius: "20px",
-                      border: "1px solid #ccc",
-                      width: "100%",
-                      marginBottom: "8px",
-                      fontSize: "14px",
-                      boxSizing: "border-box",
-                    }}
-                  />
-                  <input
-                    type="number"
-                    value={allocation?.hours || ""}
-                    onChange={(e) =>
-                      handleUpdate(dayIndex, subjectIndex, e.target.value, "hours")
-                    }
-                    style={{
-                      padding: "10px",
-                      borderRadius: "20px",
-                      border: "1px solid #ccc",
-                      width: "100%",
-                      fontSize: "14px",
-                      boxSizing: "border-box",
-                    }}
-                  />
-                </>
-              ) : (
-                <>
-                  <span>{allocation?.subject || "N/A"}</span><br/>
-                  <span>{allocation?.hours || "0"}h</span>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Tips (No edit option) */}
-      <div className="tips__Ai__result__plan">
-        <span>{dayPlan?.tips || "No Tips"}</span>
-      </div>
-    </div>
-  );
-})}
-
-    </div>
-  
-    <footer className="footer-bar__Ai__result__plan sticky-button__Ai__result__plan">
-  <button
-    onClick={handlegetNewPlan}
-    className="get-started-button__Ai__result__plan"
-  >
-    Regenerate Plan
-  </button>
-
-  {isEditing && (
-    <button onClick={handleSave} className="get-started-button__Ai__result__plan">
-      Save Study Plan
-    </button>
-  )}
-
-  {!isEditing && (
+  {/* Action Buttons */}
+  <footer className="footer-bar__Ai__result__plan sticky-button__Ai__result__plan">
     <button
-      onClick={handlegetStarted}
+      onClick={handlegetNewPlan}
       className="get-started-button__Ai__result__plan"
     >
-      Get Started
+      Regenerate Plan
     </button>
-  )}
-</footer>
 
+    {isEditing && (
+      <button
+        onClick={handleSave}
+        className="get-started-button__Ai__result__plan"
+      >
+        Save Plan
+      </button>
+    )}
 
-  </div>
-  
+    {!isEditing && (
+      <button
+        onClick={handlegetStarted}
+        className="get-started-button__Ai__result__plan primary-glow"
+      >
+        Get Started
+      </button>
+    )}
+  </footer>
+</div>
+
   );
 };
 
