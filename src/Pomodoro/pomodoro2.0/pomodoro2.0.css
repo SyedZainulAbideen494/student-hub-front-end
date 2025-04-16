@@ -205,7 +205,7 @@
   /* Dark Theme: Start and End Session Buttons */
   .home__pomodoro__new.dark__Pomodoro__new .start-session__Pomodoro__new,
   .home__pomodoro__new.dark__Pomodoro__new .end-session__Pomodoro__new {
-    background-color: #ffffff;
+    background: linear-gradient(180deg, #F5F5F5 20%, #F1E8D6 80%);    
     color: #333;
     border: none;
     padding: 10px; 
