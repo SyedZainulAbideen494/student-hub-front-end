@@ -130,7 +130,6 @@ const Button = styled.button`
   max-width: 320px;
   transition: all 0.3s ease;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(127, 86, 217, 0.35);
 
   &:hover {
     box-shadow: 0 12px 30px rgba(127, 86, 217, 0.5);
@@ -385,7 +384,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       behavior: 'smooth', // Smooth scrolling animation
     });
   }, []); // Empty dependency array to run only once when the component is mounted
-  
+
   return (
     <Wrapper>
   {step === 1 && (
