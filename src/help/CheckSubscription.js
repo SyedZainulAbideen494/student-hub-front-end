@@ -8,8 +8,15 @@ const CheckSubscription = () => {
 
   useEffect(() => {
     const checkSubscription = async () => {
+      // First show loading screen
+      navigate("/loading/home");
+
       const token = localStorage.getItem("token");
-      if (!token) return;
+      if (!token) {
+        // No token, go back to home
+        navigate("/");
+        return;
+      }
 
       try {
         const response = await axios.post(
@@ -22,9 +29,14 @@ const CheckSubscription = () => {
 
         if (status === "redirect_subscription") {
           navigate("/subscription");
+        } else {
+          // Success — navigate to home after check
+          navigate("/");
         }
       } catch (error) {
         console.error("❌ Error checking subscription:", error);
+        // On error, still navigate to home
+        navigate("/");
       }
     };
 

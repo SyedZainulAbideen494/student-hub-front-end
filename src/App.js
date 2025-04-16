@@ -161,6 +161,7 @@ import CareerPage from "./Pathfinder/CareerPage";
 import DeepResearchApp from "./deep reserach ai/DeepReseacrApp";
 import EdusifyArticle1 from "./seo/EdusifyArticle1";
 import EdusifyArticle2 from "./seo/EdusifyArticle2";
+import LoadingHome from "./help/loaderHome";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -306,6 +307,7 @@ const router = createBrowserRouter([
   {path: '/ai/deep-research', element: <DeepResearchApp/>},
   {path: '/edusify-article-1-boost-study-productivity', element: <EdusifyArticle1/>},
   {path: '/edusify-article-2-study-tools-ai', element: <EdusifyArticle2/>},
+  {path: '/loading/home', element: <LoadingHome/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
