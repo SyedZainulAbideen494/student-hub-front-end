@@ -90,17 +90,19 @@
 }
 
 
-/* ---------- SECTION BOXES ---------- */
 .section__home__page__component {
   padding: 24px 20px;
   border-radius: 16px;
   margin-top: 30px;
-  background: linear-gradient(135deg, #0c0c0c, #0a0a0a);
-  color: #eeeeee;
-  border: 1px solid rgba(255, 255, 255, 0.035);
+  background: linear-gradient(135deg, #1a1a1a, #121212); /* slightly lighter */
+  color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0.06); /* slightly stronger edge */
   box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.7),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.01);
+    0 10px 30px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.02), /* outer rim */
+    inset 0 1px 1px rgba(255, 255, 255, 0.04); /* inner light glow */
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease-in-out;
 }
 
 
