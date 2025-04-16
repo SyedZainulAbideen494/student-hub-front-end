@@ -125,22 +125,6 @@
   color: var(--subtext-light);
 }
 
-/* Colorful boxes with soft dark tints */
-.box-1__home__page__component {
-  background-color: #1a2734;
-}
-.box-2__home__page__component {
-  background-color: #342127;
-}
-.box-3__home__page__component {
-  background-color: #32311a;
-}
-.box-4__home__page__component {
-  background-color: #2c2a3e;
-}
-.box-5__home__page__component {
-  background-color: #3a3a22;
-}
 
 /* Pop-up animation */
 @keyframes pop-up {

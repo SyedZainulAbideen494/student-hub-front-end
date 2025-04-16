@@ -382,39 +382,74 @@
     gap: 10px;
     overflow: visible;
 }
-
-.item__planner__data {
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    animation: popupAnimation 1s ease-in-out; /* Popup animation applied */
+.item--1__planner__data,
+.item--2__planner__data,
+.item--3__planner__data,
+.item--4__planner__data {
+  border-radius: 18px;
+  padding: 24px 20px;
+  color: #f2f2f2;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(145deg, rgba(20, 20, 20, 0.7), rgba(10, 10, 10, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 0 0.5px rgba(255, 255, 255, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.01);
+  transition: transform 0.3s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.item__planner__data svg {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+/* Reflective shine layer */
+.item--1__planner__data::before,
+.item--2__planner__data::before,
+.item--3__planner__data::before,
+.item--4__planner__data::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at top left, rgba(255,255,255,0.05), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
 }
 
+/* Hover for subtle neon glow */
+.item--1__planner__data:hover,
+.item--2__planner__data:hover,
+.item--3__planner__data:hover,
+.item--4__planner__data:hover {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.9),
+    0 0 8px rgba(255, 255, 255, 0.03),
+    0 0 16px rgba(100, 100, 255, 0.05);
+  transform: scale(1.015);
+}
+
+/* Color-specific glow edge + subtle icon header */
 .item--1__planner__data {
-    background: #f0f8ff;
+  border-left: 3px solid rgba(135, 206, 250, 0.6);
+  box-shadow: 0 4px 12px rgba(135, 206, 250, 0.15);
 }
 
 .item--2__planner__data {
-    background: #ffe4e1;
+  border-left: 3px solid rgba(255, 182, 193, 0.6);
+  box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
 }
 
 .item--3__planner__data {
-    background: #fafad2;
+  border-left: 3px solid rgba(250, 250, 210, 0.6);
+  box-shadow: 0 4px 12px rgba(250, 250, 210, 0.15);
 }
 
 .item--4__planner__data {
-    background: #e6e6fa;
+  border-left: 3px solid rgba(230, 230, 250, 0.6);
+  box-shadow: 0 4px 12px rgba(230, 230, 250, 0.15);
 }
+
 
 .quantity__planner__data {
     font-size: 30px;
