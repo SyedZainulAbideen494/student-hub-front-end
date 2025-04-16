@@ -63,7 +63,7 @@ const TodayProgressAiOverView = ({ selectedDay }) => {
             styles={{
               path: { stroke: '#11111', strokeLinecap: 'round', strokeWidth: 8 },
               trail: { stroke: '#121212' },
-              text: { fill: '#333', fontSize: '16px', fontWeight: 'bold' },
+              text: { fill: 'white', fontSize: '16px', fontWeight: 'bold' },
             }}
           />
         </div>
