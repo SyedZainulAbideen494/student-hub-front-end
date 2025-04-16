@@ -178,7 +178,7 @@
   
   /* Dark Theme: Circle Progress */
   .home__pomodoro__new.dark__Pomodoro__new .circle-progress__Pomodoro__new {
-    stroke: #624EFF; 
+    stroke: #bfa9f7  ; 
   }
   
   /* Button and input styles */
@@ -222,20 +222,42 @@
     align-items: center;
     justify-content: center;
   }
+
+
+  .home__pomodoro__new.dark__Pomodoro__new .slider__dark__Light__pomodoro::before {
+    display: none;
+  }
+
   
+  .home__pomodoro__new.dark__Pomodoro__new .sun__dark__Light__pomodoro {
+    display: none;
+  }
+  .home__pomodoro__new.dark__Pomodoro__new .moon__dark__Light__pomodoro svg path {
+    fill: #ffffff;
+  }
+  .home__pomodoro__new:not(.dark__Pomodoro__new) .moon__dark__Light__pomodoro {
+    display: none;
+  }
+    .home__pomodoro__new:not(.dark__Pomodoro__new) .slider__dark__Light__pomodoro::before {
+  display: none;
+}
+
   /* Light Theme: Toggle Button */
   .home__pomodoro__new.light__Pomodoro__new .toggle-theme__Pomodoro__new {
     background-color: #333;
     color: white;
   }
   
-  /* Dark Theme: Toggle Button */
-  .home__pomodoro__new.dark__Pomodoro__new .toggle-theme__Pomodoro__new {
-    background-color: #f0f0f0;
-    color: #333;
-  }
-  
+/* Dark Theme: Toggle Button */
+.home__pomodoro__new.dark__Pomodoro__new .toggle-theme__Pomodoro__new {
+  background: linear-gradient(90deg, #f6c9b7 0%, #bfa9f7 100%);
+  color: #333;
+}
 
+.home__pomodoro__new.dark__Pomodoro__new .slider__dark__Light__pomodoro {
+  background: linear-gradient(90deg, #f9b6c2 0%, #d2b7f2 100%);
+  transition: background 0.
+}
   
   /* Responsive design */
   @media (max-width: 768px) {
