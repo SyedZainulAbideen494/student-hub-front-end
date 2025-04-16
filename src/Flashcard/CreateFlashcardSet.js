@@ -228,7 +228,7 @@ const CreateFlashcardSet = () => {
       style={{
         marginTop: "10px",
         fontSize: "0.9rem",
-        color: "#333",
+        color: "white",
         fontWeight: "500",
       }}
     >
