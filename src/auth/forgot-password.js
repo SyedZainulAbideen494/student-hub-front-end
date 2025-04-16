@@ -24,7 +24,7 @@ const ForgotPassword = () => {
 
     try {
       await axios.post(API_ROUTES.forgotPassword, { emailOrPhone });
-      setMessage('Instructions have been sent to your email.');
+      setMessage('Reset instructions have been sent to your email. Please check your inbox and spam folder.');
     } catch (error) {
       setError('An error occurred. Please try again later.');
     } finally {

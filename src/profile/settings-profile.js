@@ -172,11 +172,12 @@ const SettingsPage = () => {
   return (
     <div className="settings-page">
    <header className="settings-header">
-  <button className="settings-nav-button" onClick={() => navigate(-1)}>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style={{ marginTop: '0' }}>
-      <path d="M15 3L8 12l7 9" stroke="#000" strokeWidth="2" fill="none" />
-    </svg>
-  </button>
+   <button className="settings-nav-button" onClick={() => navigate(-1)}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style={{ marginTop: '0' }}>
+    <path d="M15 3L8 12l7 9" stroke="#fff" strokeWidth="2" fill="none" />
+  </svg>
+</button>
+
   <h3>Settings</h3>
 </header>
 
