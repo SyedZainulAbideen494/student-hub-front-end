@@ -173,7 +173,7 @@ const checkTokenAndRedirect = async (token) => {
         try {
             const response = await axios.post(API_ROUTES.sessionCheck, { token });
             if (response.data.exists) {
-                nav('/');
+                nav('/welcome');
             } else {
                 console.error('No matching token found.');
             }

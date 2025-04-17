@@ -1,80 +1,103 @@
-import React, { useEffect, useState } from 'react';
-import Lottie from 'lottie-react';
-import confettiAnimation from './confettie.json'; // 🎉 Add animation file
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const Welcome = () => {
-    const [transition, setTransition] = useState('');
-    const nav = useNavigate();
-
-    useEffect(() => {
-        setTransition('show');
-    }, []);
-
-    return (
-        <Wrapper className={transition}>
-            {/* 🎉 Soft Confetti Animation */}
-            <LottieWrapper>
-                <Lottie animationData={confettiAnimation} loop={true} />
-            </LottieWrapper>
-
-            <Title>Welcome to Edusify!</Title>
-            <Subtitle>You've taken the first step towards better learning. Let's go! ✨</Subtitle>
-
-            <Button onClick={() => nav('/')}>Start Learning →</Button>
-        </Wrapper>
-    );
-};
-
-export default Welcome;
-
-// Styled Components
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: white; // 🌿 Soft warm beige
-    color: #2D3748;
-    text-align: center;
-    padding: 20px;
+// Soft fade-up and subtle scale
+const fadeUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 `;
 
-const LottieWrapper = styled.div`
-    width: 140px;
-    height: 140px;
-    margin-bottom: 20px;
+const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+`;
+
+const Content = styled.div`
+  text-align: center;
+  max-width: 620px;
+  width: 100%;
+  animation: ${fadeUp} 1s ease-out forwards;
+  opacity: 0;
 `;
 
 const Title = styled.h1`
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #2D3748; // Muted navy
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  color: #ffffff;
+  background: linear-gradient(120deg, #ffffff, #d4d4d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
 `;
 
 const Subtitle = styled.p`
-    font-size: 16px;
-    color: #6B7280; // Soft gray-blue
-    margin-bottom: 25px;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: #a0a0a5;
+  line-height: 1.6;
+  max-width: 90%;
+  margin: 0 auto 42px auto;
 `;
 
 const Button = styled.button`
-    background: #a0c4ff; // 💜 Muted Lavender - Premium & Soft
-    color: white;
-    border: none;
-    padding: 14px 40px;
-    font-size: 17px;
-    font-weight: 500;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0px 5px 15px rgba(166, 141, 173, 0.3);
-    transition: all 0.3s ease-in-out;
-    
-    &:hover {
-        background: linear-gradient(to right, #A68DAD, #90789B); // Soft gradient hover
-        transform: scale(1.05);
-    }
+  padding: 15px 34px;
+  font-size: 1.05rem;
+  background: #1c1c21;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background: #27272d;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  }
+
+  &:active {
+    transform: scale(0.98);
+    background: #141418;
+  }
 `;
+
+const Welcome = () => {
+  const nav = useNavigate();
+
+  return (
+<Wrapper>
+  <Content>
+    <Title>Designed to help you flow</Title>
+    <Subtitle>
+      Everything here is built around you.  <br/>
+      The way you think. The way you learn.   <br/>
+      Let’s craft a plan that just… fits.
+    </Subtitle>
+    <Button onClick={() => nav('/flow-user-data')}>
+  Get Your Custom Plan
+</Button>
+
+  </Content>
+</Wrapper>
+
+  );
+};
+
+export default Welcome;
