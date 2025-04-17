@@ -9,7 +9,7 @@ const SuccessPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 200); // faster response
+    const timer = setTimeout(() => setShow(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -26,21 +26,21 @@ const SuccessPage = () => {
         </LottieBox>
         <Heading>Premium Unlocked</Heading>
         <Text>
-          You’ve officially entered the elite learning experience.
+          You’ve officially entered the <Highlight>elite</Highlight> learning experience.
           <br />
           Welcome to <Brand>Edusify Premium</Brand>.
         </Text>
-        <CTA onClick={handleStart}>Get Started</CTA>
+        <CTA onClick={handleStart}>Start Exploring</CTA>
       </Card>
     </Wrapper>
   );
 };
 
-// Animations
-const fadeUp = keyframes`
+// ANIMATIONS
+const fadePop = keyframes`
   from {
     opacity: 0;
-    transform: translateY(40px) scale(0.96);
+    transform: translateY(30px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -48,27 +48,28 @@ const fadeUp = keyframes`
   }
 `;
 
-// Components
+// COMPONENTS
 const Wrapper = styled.div`
+  background: linear-gradient(135deg, #0c0c0f, #111116);
+  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: #0b0b0f;
-  height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Poppins", sans-serif;
+  align-items: center;
+  padding: 24px;
   position: relative;
-  padding: 20px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Poppins", sans-serif;
 `;
 
 const Close = styled.div`
   position: absolute;
   top: 24px;
-  right: 28px;
+  right: 30px;
   font-size: 28px;
-  color: #888;
+  color: #aaa;
   cursor: pointer;
-  z-index: 10;
-  transition: color 0.3s ease;
+  z-index: 999;
+  transition: color 0.2s ease;
 
   &:hover {
     color: #fff;
@@ -76,21 +77,22 @@ const Close = styled.div`
 `;
 
 const Card = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(24px);
-  padding: 48px 40px;
-  border-radius: 28px;
-  text-align: center;
   width: 100%;
   max-width: 460px;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.65);
+  padding: 50px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+  text-align: center;
   opacity: 0;
   transform: translateY(40px) scale(0.96);
   transition: all 0.6s ease;
+  will-change: transform, opacity;
 
   &.visible {
-    animation: ${fadeUp} 0.6s ease forwards;
+    animation: ${fadePop} 0.7s ease-out forwards;
   }
 `;
 
@@ -98,44 +100,51 @@ const LottieBox = styled.div`
   width: 160px;
   height: 160px;
   margin: 0 auto 32px;
-  filter: drop-shadow(0 0 30px #34c759aa);
+  filter: drop-shadow(0 0 32px rgba(52, 199, 89, 0.7));
 `;
 
 const Heading = styled.h1`
-  font-size: 2.2rem;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
   color: #fff;
-  font-weight: 600;
   margin-bottom: 14px;
-  letter-spacing: -0.3px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 `;
 
 const Text = styled.p`
-  color: #ccc;
-  font-size: 1.1rem;
-  line-height: 1.65;
-  margin-bottom: 32px;
+  font-size: 1.125rem;
+  color: #d1d1d1;
+  line-height: 1.7;
+  margin-bottom: 36px;
+`;
+
+const Highlight = styled.span`
+  color: #fff;
+  font-weight: 500;
 `;
 
 const Brand = styled.span`
   color: #34c759;
   font-weight: 600;
+  letter-spacing: -0.2px;
 `;
 
 const CTA = styled.button`
-  padding: 16px 36px;
-  font-size: 1rem;
-  font-weight: 500;
   background: #34c759;
   color: #000;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 36px;
   border: none;
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 16px rgba(52, 199, 89, 0.4);
+  box-shadow: 0 10px 30px rgba(52, 199, 89, 0.4);
 
   &:hover {
     background: #28b347;
-    box-shadow: 0 8px 20px rgba(40, 179, 71, 0.5);
+    box-shadow: 0 12px 36px rgba(52, 199, 89, 0.6);
   }
 
   &:active {
