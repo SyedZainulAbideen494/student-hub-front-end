@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
-// Soft fade-up and subtle scale
+// Elegant fade-in + lift
 const fadeUp = keyframes`
   0% {
     opacity: 0;
-    transform: translateY(24px) scale(0.98);
+    transform: translateY(28px) scale(0.985);
   }
   100% {
     opacity: 1;
@@ -17,11 +17,11 @@ const fadeUp = keyframes`
 const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  background: #0a0a0a;
+  background: #0b0b0f;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 32px;
   box-sizing: border-box;
 `;
 
@@ -34,47 +34,50 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-size: clamp(2.6rem, 6vw, 3.8rem);
   font-weight: 600;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
   line-height: 1.2;
   color: #ffffff;
-  background: linear-gradient(120deg, #ffffff, #d4d4d4);
+  background: linear-gradient(120deg, #ffffff, #cfcfcf);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 `;
 
 const Subtitle = styled.p`
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
-  color: #a0a0a5;
-  line-height: 1.6;
-  max-width: 90%;
-  margin: 0 auto 42px auto;
+  font-size: clamp(1.15rem, 2.1vw, 1.3rem);
+  color: #9b9ba1;
+  line-height: 1.7;
+  margin: 0 auto 48px auto;
+  max-width: 92%;
+  font-weight: 400;
 `;
 
 const Button = styled.button`
-  padding: 15px 34px;
-  font-size: 1.05rem;
-  background: #1c1c21;
-  color: #fff;
+  padding: 16px 38px;
+  font-size: 1.08rem;
+  background: rgba(255, 255, 255, 0.035);
+  color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
-  letter-spacing: 0.15px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
 
   &:hover {
-    background: #27272d;
-    transform: translateY(-1px);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    background: rgba(255, 255, 255, 0.065);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
   }
 
   &:active {
-    transform: scale(0.98);
-    background: #141418;
+    transform: scale(0.985);
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 `;
 
@@ -82,21 +85,22 @@ const Welcome = () => {
   const nav = useNavigate();
 
   return (
-<Wrapper>
-  <Content>
-    <Title>Designed to help you flow</Title>
-    <Subtitle>
-      Everything here is built around you.  <br/>
-      The way you think. The way you learn.   <br/>
-      Let’s craft a plan that just… fits.
-    </Subtitle>
-    <Button onClick={() => nav('/flow-user-data')}>
-  Get Your Custom Plan
+    <Wrapper>
+      <Content>
+       <Title>Welcome to your smarter study era</Title>
+
+<Subtitle>
+You’ve just unlocked the next level of learning. <br/>
+Let’s build an AI-powered plan that works exactly the way you do. <br/>
+Because focus should feel effortless.
+</Subtitle>
+
+<Button onClick={() => nav('/flow-user-data')}>
+  Build My Smart Study Plan
 </Button>
 
-  </Content>
-</Wrapper>
-
+      </Content>
+    </Wrapper>
   );
 };
 
