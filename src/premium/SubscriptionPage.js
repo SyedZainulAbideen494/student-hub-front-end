@@ -200,6 +200,7 @@ const Badge = styled.div`
   border-radius: 20px;
   font-weight: 600;
   margin-bottom: 1rem;
+  margin-top: 1em;
 `;
 
 const FeatureList = styled.ul`
@@ -391,7 +392,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   <PageWrapper>
     <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
 
-    <Badge>Only on Edusify Premium</Badge>
+    <Badge>Only on Edusify</Badge>
     <Subtitle2>
       Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.
     </Subtitle2>
