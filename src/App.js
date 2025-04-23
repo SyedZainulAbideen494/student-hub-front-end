@@ -162,6 +162,8 @@ import DeepResearchApp from "./deep reserach ai/DeepReseacrApp";
 import EdusifyArticle1 from "./seo/EdusifyArticle1";
 import EdusifyArticle2 from "./seo/EdusifyArticle2";
 import LoadingHome from "./help/loaderHome";
+import QuizGeneratorAPi from "./api testing/apitesting";
+import QuizGeneratorCompExam from "./api testing/apiTestingCompExam";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -308,6 +310,8 @@ const router = createBrowserRouter([
   {path: '/edusify-article-1-boost-study-productivity', element: <EdusifyArticle1/>},
   {path: '/edusify-article-2-study-tools-ai', element: <EdusifyArticle2/>},
   {path: '/loading/home', element: <LoadingHome/>},
+  {path: '/api-testing-quiz', element: <QuizGeneratorAPi/>},
+  {path: '/api-testing-comp-exam', element: <QuizGeneratorCompExam/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
