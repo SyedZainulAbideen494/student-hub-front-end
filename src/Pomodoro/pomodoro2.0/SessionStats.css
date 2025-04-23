@@ -164,25 +164,24 @@
     transform: translateY(-4px);
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
   }
-  
   .session-card__pomodoro__stats__page.study {
-    background: #faedcd;
+    background: #1f3b4d; /* Dark desaturated blue – calming for study mode */
   }
   
   .session-card__pomodoro__stats__page.break {
-    background: #fefae0;
+    background: #2e2a1e; /* Muted brownish – warm and relaxing for breaks */
   }
   
   .session-card__pomodoro__stats__page p {
     font-size: 14px;
-    color: #555;
+    color: #cecece;
     display: flex;
     align-items: center;
     gap: 8px;
   }
   
   .session-card__pomodoro__stats__page strong {
-    color: #333;
+    color: #b1b1b1;
   }
   
   .session-details__pomodoro__stats__page ul {
