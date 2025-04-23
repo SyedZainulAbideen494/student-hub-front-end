@@ -1,6 +1,6 @@
 /* General Page Layout */
 .session-stats__pomodoro__stats__page {
-    background-color: #f7f8fa;
+    background-color: #121212;
     padding: 40px;
     border-radius: 18px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
@@ -55,7 +55,7 @@
   }
   
   .total-time__pomodoro__stats__page {
-    background: #fff;
+    background: #171717;
     padding: 30px;
     border-radius: 25px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
@@ -80,7 +80,7 @@
   
   .total-time__pomodoro__stats__page p {
     font-size: 14px;
-    color: #555;
+    color: #cacaca;
     display: flex;
     justify-content: center;
     align-items: center;
