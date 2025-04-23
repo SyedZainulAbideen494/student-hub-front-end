@@ -2,26 +2,29 @@
 .generate-notes__ai__gen__notes-container__ai__gen__notes {
   background-color: #1e1e1e;
   border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  padding: 40px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow for depth */
+  padding: 50px;
   width: 80%;
   max-width: 700px;
   text-align: center;
   transition: all 0.3s ease;
   margin: 0 auto;
+  overflow: hidden; /* Prevent overflow */
 }
 
 /* Header */
 .header__ai__gen__notes__ai__gen__notes {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 30px;
-  font-weight: 600;
-  color: #e1e1e1;
+  font-weight: 700; /* Increased font weight for better impact */
+  color: #f1f1f1; /* Lighter font color */
+  text-transform: uppercase; /* Added to give a refined look */
+  letter-spacing: 1px;
 }
 
 /* Input fields */
 .input-container__ai__gen__notes__ai__gen__notes {
-  margin-bottom: 25px;
+  margin-bottom: 30px; /* Increased bottom margin for spacing */
 }
 
 .input-label__ai__gen__notes__ai__gen__notes {
@@ -29,61 +32,65 @@
   color: #ccc;
   text-align: left;
   margin-bottom: 8px;
+  font-weight: 500; /* Slightly lighter font weight */
 }
 
 .input-field__ai__gen__notes__ai__gen__notes {
   width: 90%;
-  padding: 12px 18px;
+  padding: 14px 20px; /* Slightly larger padding */
   font-size: 1.1rem;
   border: 1px solid #444;
   border-radius: 12px;
   outline: none;
   background-color: #333;
   color: #e1e1e1;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: 'Helvetica Neue', sans-serif; /* Premium font */
 }
 
 .input-field__ai__gen__notes__ai__gen__notes:focus {
   border-color: #007aff;
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.6); /* Subtle blue glow on focus */
 }
 
 /* Note types container */
 .note-types-container__ai__gen__notes__ai__gen__notes {
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 40px; /* Increased spacing */
 }
 
 .note-types-label__ai__gen__notes__ai__gen__notes {
   font-size: 1.2rem;
   color: #ccc;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Increased margin for spacing */
+  font-weight: 600;
 }
 
 /* Toggle switch styles */
 .toggle-container__ai__gen__notes__ai__gen__notes {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px; /* Added more space between toggle options */
 }
 
 .toggle-card__ai__gen__notes__ai__gen__notes {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 20px; /* Increased padding for a more luxurious feel */
   background-color: #2a2a2a;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+  transition: all 0.3s ease;
 }
 
 .toggle-card__ai__gen__notes__ai__gen__notes:hover {
   background-color: #333;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Enhanced hover effect */
 }
 
 .toggle-label__ai__gen__notes__ai__gen__notes {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: #ccc;
 }
@@ -91,8 +98,8 @@
 .switch__ai__gen__notes {
   position: relative;
   display: inline-block;
-  width: 34px;
-  height: 20px;
+  width: 38px; /* Slightly larger switch for a premium feel */
+  height: 22px;
 }
 
 .toggle-input_ai__gen__notes {
@@ -109,20 +116,20 @@
   right: 0;
   bottom: 0;
   background-color: #888;
-  transition: 0.4s;
+  transition: all 0.4s ease;
   border-radius: 50px;
 }
 
 .slider__ai__gen__notes__ai__gen__notes:before {
   position: absolute;
   content: "";
-  height: 12px;
-  width: 12px;
-  border-radius: 50px;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: 0.4s;
+  transition: all 0.4s ease;
 }
 
 .toggle-input:checked + .slider__ai__gen__notes__ai__gen__notes {
@@ -130,21 +137,22 @@
 }
 
 .toggle-input:checked + .slider__ai__gen__notes__ai__gen__notes:before {
-  transform: translateX(14px);
+  transform: translateX(16px); /* Adjusted to match the larger switch size */
 }
 
 /* Submit button */
 .submit-btn__ai__gen__notes__ai__gen__notes {
   background-color: #242128;
   color: white;
-  padding: 20px 27px;
+  padding: 24px 30px; /* Larger padding for the button */
   border: none;
   border-radius: 25px;
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* Slightly larger font size */
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 25px; /* Increased margin */
+  font-weight: 600; /* Stronger font weight */
 }
 
 .submit-btn__ai__gen__notes__ai__gen__notes:hover {
@@ -154,55 +162,59 @@
 /* Error message */
 .error-message__ai__gen__notes__ai__gen__notes {
   color: red;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-top: 10px;
+  font-weight: 500;
 }
 
 /* Generated notes */
 .generated-notes__ai__gen__notes__ai__gen__notes {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .generated-notes-header__ai__gen__notes__ai__gen__notes {
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-size: 1.8rem;
+  font-weight: 600;
   color: #e1e1e1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .notes-content__ai__gen__notes__ai__gen__notes {
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: left;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #ddd;
+  line-height: 1.6; /* Increased line height for better readability */
+  font-family: 'Helvetica Neue', sans-serif; /* Premium font */
 }
 
 /* Media queries for mobile responsiveness */
 @media (max-width: 768px) {
   .generate-notes__ai__gen__notes-container__ai__gen__notes {
-      padding: 20px;
+    padding: 20px;
   }
 
   .header__ai__gen__notes__ai__gen__notes {
-      font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .input-field__ai__gen__notes__ai__gen__notes {
-      font-size: 1rem;
-      padding: 10px 15px;
+    font-size: 1rem;
+    padding: 12px 18px;
   }
 
   .submit-btn__ai__gen__notes__ai__gen__notes {
-      font-size: 1rem;
-      padding: 12px 18px;
+    font-size: 1.1rem;
+    padding: 14px 20px;
   }
 
   .toggle-card__ai__gen__notes__ai__gen__notes {
-      padding: 10px;
-      font-size: 0.9rem;
+    padding: 12px;
   }
 
   .notes-content__ai__gen__notes__ai__gen__notes {
-      font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
