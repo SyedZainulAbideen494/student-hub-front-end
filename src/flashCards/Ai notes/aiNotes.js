@@ -71,7 +71,7 @@ const GenerateNotesAI = () => {
 
 
   return (
-<div className="generate-notes__ai__gen__notes-container__ai__gen__notes" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', flexDirection: 'column' }}>
+<div className="generate-notes__ai__gen__notes-container__ai__gen__notes" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
 <button className="PDFNotesCreation__backButton" onClick={() => navigate(-1)}>
         ← 
       </button>

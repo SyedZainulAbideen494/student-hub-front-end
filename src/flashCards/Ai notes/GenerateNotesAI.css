@@ -1,4 +1,3 @@
-/* Main container for the form */
 .generate-notes__ai__gen__notes-container__ai__gen__notes {
   background-color: #1e1e1e;
   border-radius: 16px;
@@ -10,6 +9,11 @@
   transition: all 0.3s ease;
   margin: 0 auto;
   overflow: hidden; /* Prevent overflow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 /* Header */
