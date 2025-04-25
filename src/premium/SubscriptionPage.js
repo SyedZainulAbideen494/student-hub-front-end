@@ -98,19 +98,7 @@ const PlanBox = styled.div`
   }
 `;
 
-const BestOfferTag = styled.div`
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #7f56d9;
-  color: white;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(127, 86, 217, 0.5);
-`;
+
 
 const SmallText = styled.p`
   font-size: 12px;
@@ -274,6 +262,21 @@ const DreamGlow = styled.h2`
   }
 `;
 
+const BestOfferTag = styled.div`
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #9f63ff, #ffb1f9);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(127, 86, 217, 0.35);
+  letter-spacing: 0.3px;
+`;
+
 
 const PaymentComponent = () => {
   const navigate = useNavigate();
@@ -298,7 +301,7 @@ if (selectedPlan === "daily") {
 } else if (selectedPlan === "weekly") {
   planAmount = 39;
 } else if (selectedPlan === "monthly") {
-  planAmount = 99;
+  planAmount = 59;
 }
 
 const { data } = await axios.post(API_ROUTES.getPremium, {
@@ -435,11 +438,17 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
           <SmallText>Perfect for a quick taste</SmallText>
         </PlanBox>
         <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-          <BestOfferTag>Most Chosen</BestOfferTag>
-          <h4>Stay Ahead</h4>
-          <p>₹3.30/day</p>
-          <SmallText>Billed ₹99 monthly</SmallText>
-        </PlanBox>
+  <BestOfferTag>🔥 ₹59 – 3 Days Only</BestOfferTag>
+  <h4>Stay Ahead</h4>
+  <p>
+    <span style={{ textDecoration: "line-through", color: "#777", fontSize: "13px", marginRight: "6px" }}>
+      ₹99
+    </span>
+    ₹59/month
+  </p>
+  <SmallText>Limited-time premium unlock</SmallText>
+</PlanBox>
+
         <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
           <h4>Test the Waters</h4>
           <p>₹39/week</p>
