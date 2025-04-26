@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaLock, FaUser, FaEyeSlash, FaEye } from 'react-icons/fa';
+import { FaLock, FaUser, FaEyeSlash, FaEye, FaKey } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import Axios from 'axios';
@@ -16,7 +16,7 @@ const Login = () => {
 
     const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
 
-    useEffect(() => {
+     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
             Axios.post(API_ROUTES.sessionCheck, { token }).then((res) => {
@@ -50,45 +50,50 @@ const Login = () => {
 
     return (
         <div className="login-wrapper">
-            {loading && <LoadingSpinner />}
-            {!loading && (
-                <div className="login-container">
-                    <h2>Login</h2>
-                    {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
-                    <form onSubmit={handleSubmit}>
-                        <div className="input-container-login">
-                            <FaUser className="icon" />
-                            <input
-                                type="text"
-                                placeholder="Email"
-                                value={identifier}
-                                onChange={(e) => setIdentifier(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="input-container-login">
-                            <FaLock className="icon" />
-                            <input
-                                type={passwordVisible ? 'text' : 'password'}
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                            <span className="toggle-password-icon" onClick={togglePasswordVisibility}>
-                                {passwordVisible ? <FaEye /> : <FaEyeSlash />}
-                            </span>
-                        </div>
-                        <button type="submit" className="login-button">Login</button>
-                        <div className="links-login">
-                            <Link to="/forgot-password">Forgot Password?</Link> | 
-                            <Link to="/sign-up"> Sign up</Link>
-                        </div>
-                    </form>
-                    <p className="welcome-message">Welcome back! Please log in to continue.</p>
-                </div>
-            )}
-        </div>
+        {loading && <LoadingSpinner />}
+        {!loading && (
+          <div className="login-container">
+            <div className="login-header">
+              <h2>Log in</h2>
+              <Link to="/sign-up" className="signup-btn">Sign up</Link>
+            </div>
+            {error && <p className="error-message">{error}</p>}
+            <form onSubmit={handleSubmit}>
+  {/* EMAIL FIELD */}
+  <div className="input-wrapper has-icon">
+    <span className="input-icon">@</span>
+    <input
+      type="text"
+      placeholder="Email"
+      className="login-input"
+      value={identifier}
+      onChange={(e) => setIdentifier(e.target.value)}
+      required
+    />
+  </div>
+
+  {/* PASSWORD FIELD */}
+  <div className="input-wrapper has-icon password-wrapper">
+    <span className="input-icon"><FaKey/></span> {/* or use a font icon if needed */}
+    <input
+      type={passwordVisible ? 'text' : 'password'}
+      placeholder="Password"
+      className="login-input"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+    <span className="toggle-password-icon" onClick={togglePasswordVisibility}>
+      {passwordVisible ? <FaEye /> : <FaEyeSlash />}
+    </span>
+    <Link to="/forgot-password" className="forgot-inside">I forgot</Link>
+  </div>
+  <button type="submit" className="login-main-btn">Log in</button>
+</form>
+          </div>
+        )}
+      </div>
+      
     );
 };
 
