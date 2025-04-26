@@ -74,14 +74,9 @@
 
 /* Box styling */
 .box__home__page__component {
-  background-color: var(--box-dark);
-  color: var(--text-light);
+  color: black;
   padding: 17px;
   border-radius: 15px;
-  box-shadow: 
-    3px 3px 10px rgba(0, 0, 0, 0.5),
-    6px 6px 15px rgba(0, 0, 0, 0.6),
-    -3px -3px 10px rgba(255, 255, 255, 0.03);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -114,7 +109,7 @@
 .count__home__page__component {
   font-size: 28px;
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 8px;
 }
 

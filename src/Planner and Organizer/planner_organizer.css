@@ -403,6 +403,23 @@
   border-left: 3px solid rgba(186, 85, 211, 0.6); /* Soft Lavender */
   box-shadow: 0 4px 12px rgba(186, 85, 211, 0.15);
 }
+.box-1__home__page__component {
+  background-color: #C1DFE1;
+  color: black;
+}.box-2__home__page__component {
+  background-color: #E6DFF1;
+  color: black;
+
+}.box-3__home__page__component {
+  background-color: #F4F1EC;
+  color: black;
+
+}
+.box-4__home__page__component {
+background-color: #F2E0DE;
+color: black;
+
+}
 
 
 .quantity__planner__data {
