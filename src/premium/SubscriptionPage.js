@@ -535,7 +535,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
     <Badge>Only on Edusify</Badge>
     <Subtitle2>
-      Edusify Premium gives you elite tools, unlimited AI, and the power to study 10x smarter.
+      Edusify gives you elite tools, unlimited AI, and the power to study 10x smarter.
     </Subtitle2>
 
     <FeatureList>
@@ -558,7 +558,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     ["Dynamic Mind Maps for Visual Learning", <FaLayerGroup />],
     ["Join Collaborative Study Rooms & Communities", <FaUsers />],
     ["Secure Document Locker for Your Important Files", <FaLock />],
-    ["And so much more, powered by the future of education — Edusify Premium."]
+    ["And so much more, powered by the future of education — Edusify."]
   ].map(([text, icon]) => (
     <FeatureItem key={text}>
       <IconWrapper>{icon}</IconWrapper>{text}
@@ -601,7 +601,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     </span>
     ₹59/month
   </p>
-  <SmallText>Limited-time premium unlock</SmallText>
+  <SmallText>Limited-time unlock</SmallText>
 </PlanBox>
 
         <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
