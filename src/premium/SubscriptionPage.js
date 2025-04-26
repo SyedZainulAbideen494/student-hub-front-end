@@ -539,16 +539,33 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     </Subtitle2>
 
     <FeatureList>
-      {[["Unlimited AI Usage", <FaMagic />], ["AI Quizzes, Flashcards & Mind Maps", <FaBrain />], ["Convert Any PDF", <FaFilePdf />],
-        ["AI Topic Notes", <FaClipboardCheck />], ["Custom Study Plans", <FaTasks />], ["Daily Task Generation", <FaRegClock />],
-        ["Smart Task Suggestions", <FaLightbulb />], ["Quiz Analytics", <FaChartLine />], ["NEET, JEE, Boards Quizzes", <FaStopwatch />],
-        ["NEET Guide & Resources", <FaBookOpen />], ["AI Assignments", <FaFileInvoice />], ["AI Image Generator", <FaImage />],
-        ["Aesthetic Notes", <FaStickyNote />], ["AI Resource Finder", <FaFileAlt />], ["Smart Dashboard", <FaChartBar />],
-        ["Mind Maps", <FaLayerGroup />], ["Study Rooms", <FaUsers />], ["Document Locker", <FaLock />]]
-        .map(([text, icon]) => (
-          <FeatureItem key={text}><IconWrapper>{icon}</IconWrapper>{text}</FeatureItem>
-        ))}
-    </FeatureList>
+  {[
+    ["Unlimited AI Power", <FaMagic />],
+    ["Create Quizzes, Flashcards & Mind Maps Instantly", <FaBrain />],
+    ["Convert Any PDF into Notes, Quizzes & More", <FaFilePdf />],
+    ["AI-Generated Expert Topic Notes", <FaClipboardCheck />],
+    ["Custom Study Plans Tailored to You", <FaTasks />],
+    ["Daily Smart Task Generation", <FaRegClock />],
+    ["Intelligent Study Suggestions That Adapt to You", <FaLightbulb />],
+    ["Advanced Quiz Analytics & Progress Insights", <FaChartLine />],
+    ["Exclusive NEET, JEE, Boards AI Quizzes", <FaStopwatch />],
+    ["Full NEET Study Guide & Curated Resources", <FaBookOpen />],
+    ["Instant AI-Generated Assignments", <FaFileInvoice />],
+    ["Stunning AI Image Generator for Notes & Projects", <FaImage />],
+    ["Craft Beautiful, Aesthetic Notes Effortlessly", <FaStickyNote />],
+    ["Find the Perfect Study Resources in Seconds", <FaFileAlt />],
+    ["Personalized Smart Dashboard to Track Your Success", <FaChartBar />],
+    ["Dynamic Mind Maps for Visual Learning", <FaLayerGroup />],
+    ["Join Collaborative Study Rooms & Communities", <FaUsers />],
+    ["Secure Document Locker for Your Important Files", <FaLock />],
+    ["And so much more, powered by the future of education — Edusify Premium."]
+  ].map(([text, icon]) => (
+    <FeatureItem key={text}>
+      <IconWrapper>{icon}</IconWrapper>{text}
+    </FeatureItem>
+  ))}
+</FeatureList>
+
 
     <CallToAction>
       This isn’t just studying. <br />
@@ -622,6 +639,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 </div>
               </button>
             </StyledWrapper>
+            //   old design if needed     <Button onClick={handlePayment}>Continue with Edusify</Button>
       )}
       <Link to='/help'>
           <Footer>
