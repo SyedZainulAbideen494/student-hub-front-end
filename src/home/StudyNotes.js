@@ -147,65 +147,132 @@ const StudyNotes = () => {
             )}
 
             {modalOpen && (
-                <div className="modal__create__sticky__note__Section">
-                    <div className="modal-content__create__sticky__note__Section">
-                        <span 
-                            className="close__create__sticky__note__Section" 
-                            onClick={() => setModalOpen(false)}
-                        >
-                            &times;
-                        </span>
-                        <h2 className="title__create__sticky__note">Add New Note</h2>
-                        <form onSubmit={handleAddNote}>
-                            <input
-                                type="text"
-                                placeholder="Title"
-                                value={newNote.title}
-                                onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
-                                required
-                                className="input__create__sticky__note"
-                            />
-                            <textarea
-                                placeholder="Description (optional)"
-                                value={newNote.description}
-                                onChange={(e) => setNewNote({ ...newNote, description: e.target.value })}
-                                className="textarea__create__sticky__note"
-                            />
-                            <div className="color-picker-group__create__sticky__note">
-                                <div>
-                                    <label>Note Color:</label>
-                                    <input
-                                        type="color"
-                                        value={newNote.color}
-                                        onChange={(e) => setNewNote({ ...newNote, color: e.target.value })}
-                                        className="color-picker__create__sticky__note"
-                                    />
-                                </div>
-                                <div>
-                                    <label>Font Color:</label>
-                                    <input
-                                        type="color"
-                                        value={newNote.fontColor}
-                                        onChange={(e) => setNewNote({ ...newNote, fontColor: e.target.value })}
-                                        className="font-color-picker__create__sticky__note"
-                                    />
-                                </div>
-                            </div>
-                            <div className='bookmarkBtn__save__sticky__note-container'>
-                                <button className="bookmarkBtn__save__sticky__note">
-                                    <span className="IconContainer__save__sticky__note">
-                                        <svg viewBox="0 0 384 512" height="0.9em" className="icon__save__sticky__note">
-                                            <path
-                                                d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
-                                            ></path>
-                                        </svg>
-                                    </span>
-                                    <p className="text__save__sticky__note" type="submit">Save</p>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                <div
+  style={{
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 9999,
+  }}
+>
+  <div
+    style={{
+      backgroundColor: '#fff',
+      padding: '30px',
+      borderRadius: '12px',
+      maxWidth: '500px',
+      width: '90%',
+      boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+      position: 'relative',
+      animation: 'fadeIn 0.3s ease',
+      overflowY: 'auto',
+      maxHeight: '90%',
+    }}
+  >
+    <span
+      onClick={() => setModalOpen(false)}
+      style={{
+        position: 'absolute',
+        top: '15px',
+        right: '20px',
+        fontSize: '1.8rem',
+        fontWeight: 'bold',
+        color: '#333',
+        cursor: 'pointer',
+      }}
+    >
+      &times;
+    </span>
+    <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>
+      Add New Note
+    </h2>
+    <form onSubmit={handleAddNote} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+      <input
+        type="text"
+        placeholder="Title"
+        value={newNote.title}
+        onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
+        required
+        style={{
+          padding: '10px',
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          fontSize: '1rem',
+          backgroundColor: '#f9f9f9',
+        }}
+      />
+      <textarea
+        placeholder="Description (optional)"
+        value={newNote.description}
+        onChange={(e) => setNewNote({ ...newNote, description: e.target.value })}
+        style={{
+          padding: '10px',
+          border: '1px solid #ccc',
+          borderRadius: '8px',
+          fontSize: '1rem',
+          backgroundColor: '#f9f9f9',
+          minHeight: '100px',
+        }}
+      />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          marginTop: '10px',
+          backgroundColor: '#f0f0f0',
+          padding: '10px',
+          borderRadius: '8px',
+        }}
+      >
+        <div style={{ textAlign: 'center' }}>
+          <label style={{ fontSize: '0.9rem', color: '#555' }}>Note Color:</label>
+          <input
+            type="color"
+            value={newNote.color}
+            onChange={(e) => setNewNote({ ...newNote, color: e.target.value })}
+            style={{ marginTop: '5px', width: '40px', height: '40px', border: 'none' }}
+          />
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <label style={{ fontSize: '0.9rem', color: '#555' }}>Font Color:</label>
+          <input
+            type="color"
+            value={newNote.fontColor}
+            onChange={(e) => setNewNote({ ...newNote, fontColor: e.target.value })}
+            style={{ marginTop: '5px', width: '40px', height: '40px', border: 'none' }}
+          />
+        </div>
+      </div>
+      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+        <button
+          type="submit"
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            transition: 'background-color 0.3s',
+          }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#45a049')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = '#4CAF50')}
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
             )}
 
             {viewNote && (
