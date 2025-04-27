@@ -154,7 +154,8 @@ const StudyNotes = () => {
     left: 0,
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backdropFilter: 'blur(10px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -163,16 +164,17 @@ const StudyNotes = () => {
 >
   <div
     style={{
-      backgroundColor: '#fff',
+      backgroundColor: 'rgba(30, 30, 30, 0.85)',
       padding: '30px',
-      borderRadius: '12px',
+      borderRadius: '16px',
       maxWidth: '500px',
       width: '90%',
-      boxShadow: '0 8px 16px rgba(0,0,0,0.2)',
+      boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
       position: 'relative',
-      animation: 'fadeIn 0.3s ease',
       overflowY: 'auto',
       maxHeight: '90%',
+      color: '#fff',
+      border: '1px solid rgba(255, 255, 255, 0.08)',
     }}
   >
     <span
@@ -183,16 +185,21 @@ const StudyNotes = () => {
         right: '20px',
         fontSize: '1.8rem',
         fontWeight: 'bold',
-        color: '#333',
+        color: '#ccc',
         cursor: 'pointer',
+        transition: 'color 0.3s',
       }}
+      onMouseOver={(e) => (e.target.style.color = '#fff')}
+      onMouseOut={(e) => (e.target.style.color = '#ccc')}
     >
       &times;
     </span>
-    <h2 style={{ textAlign: 'center', marginBottom: '20px', color: '#333' }}>
+
+    <h2 style={{ textAlign: 'center', marginBottom: '25px', fontWeight: '600', fontSize: '1.8rem', color: '#e0e0e0' }}>
       Add New Note
     </h2>
-    <form onSubmit={handleAddNote} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+
+    <form onSubmit={handleAddNote} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
       <input
         type="text"
         placeholder="Title"
@@ -200,11 +207,13 @@ const StudyNotes = () => {
         onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
         required
         style={{
-          padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '8px',
+          padding: '12px',
+          borderRadius: '12px',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          color: '#fff',
           fontSize: '1rem',
-          backgroundColor: '#f9f9f9',
+          outline: 'none',
         }}
       />
       <textarea
@@ -212,59 +221,75 @@ const StudyNotes = () => {
         value={newNote.description}
         onChange={(e) => setNewNote({ ...newNote, description: e.target.value })}
         style={{
-          padding: '10px',
-          border: '1px solid #ccc',
-          borderRadius: '8px',
+          padding: '12px',
+          borderRadius: '12px',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          color: '#fff',
           fontSize: '1rem',
-          backgroundColor: '#f9f9f9',
+          outline: 'none',
           minHeight: '100px',
         }}
       />
+
       <div
         style={{
           display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '20px',
           marginTop: '10px',
-          backgroundColor: '#f0f0f0',
-          padding: '10px',
-          borderRadius: '8px',
         }}
       >
-        <div style={{ textAlign: 'center' }}>
-          <label style={{ fontSize: '0.9rem', color: '#555' }}>Note Color:</label>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <label style={{ fontSize: '0.9rem', color: '#aaa' }}>Note Color</label>
           <input
             type="color"
             value={newNote.color}
             onChange={(e) => setNewNote({ ...newNote, color: e.target.value })}
-            style={{ marginTop: '5px', width: '40px', height: '40px', border: 'none' }}
+            style={{
+              marginTop: '8px',
+              width: '48px',
+              height: '48px',
+              border: 'none',
+              background: 'none',
+              cursor: 'pointer',
+            }}
           />
         </div>
-        <div style={{ textAlign: 'center' }}>
-          <label style={{ fontSize: '0.9rem', color: '#555' }}>Font Color:</label>
+        <div style={{ flex: 1, textAlign: 'center' }}>
+          <label style={{ fontSize: '0.9rem', color: '#aaa' }}>Font Color</label>
           <input
             type="color"
             value={newNote.fontColor}
             onChange={(e) => setNewNote({ ...newNote, fontColor: e.target.value })}
-            style={{ marginTop: '5px', width: '40px', height: '40px', border: 'none' }}
+            style={{
+              marginTop: '8px',
+              width: '48px',
+              height: '48px',
+              border: 'none',
+              background: 'none',
+              cursor: 'pointer',
+            }}
           />
         </div>
       </div>
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
+
+      <div style={{ textAlign: 'center', marginTop: '25px' }}>
         <button
           type="submit"
           style={{
-            padding: '10px 20px',
-            backgroundColor: '#4CAF50',
-            color: 'white',
+            padding: '12px 24px',
+            backgroundColor: '#0a84ff',
+            color: '#fff',
             border: 'none',
-            borderRadius: '8px',
+            borderRadius: '12px',
             cursor: 'pointer',
             fontSize: '1rem',
+            fontWeight: '600',
             transition: 'background-color 0.3s',
           }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = '#45a049')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = '#4CAF50')}
+          onMouseOver={(e) => (e.target.style.backgroundColor = '#006fe6')}
+          onMouseOut={(e) => (e.target.style.backgroundColor = '#0a84ff')}
         >
           Save
         </button>
