@@ -91,7 +91,7 @@ const GenerateNotesAI = () => {
         <button 
           type="submit" 
           disabled={loading || isExceededLimit && !isPremium} 
-          className="PDFNotesCreation__button"
+          className="submit-btn__ai__gen__notes__ai__gen__notes"
         >
           {loading ? "Processing..." : isExceededLimit && !isPremium ? "Upgrade to Premium" : "Generate Notes"}
         </button>
@@ -101,18 +101,8 @@ const GenerateNotesAI = () => {
             <span>🔒 Premium Only</span> - You have reached the limit for free users.
           </div>
         )}
-  
       </form>
-
       {error && <p className="error-message__ai__gen__notes__ai__gen__notes">{error}</p>}
-
-      {generatedNotes && (
-        <div className="generated-notes__ai__gen__notes__ai__gen__notes">
-          <h3 className="generated-notes-header__ai__gen__notes__ai__gen__notes">Generated Notes:</h3>
-          <div dangerouslySetInnerHTML={{ __html: generatedNotes }} className="notes-content__ai__gen__notes__ai__gen__notes" />
-        </div>
-      )}
-
       {/* Loading Modal */}
       {loading && (
         <LoadingModal/>
