@@ -1,255 +1,503 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './SubscriptionPage.css';
-import { API_ROUTES } from '../app_modules/apiRoutes';
-import FooterNav from '../app_modules/footernav';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaArrowLeft, FaCrown } from 'react-icons/fa';
-import styled, { keyframes } from "styled-components";
-import Confetti from 'react-confetti';
-import { FiArrowLeft } from 'react-icons/fi';
-import FeaturesCard from './FeaturesCard';
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import axios from "axios";
+import {
+  FaMagic, FaTasks, FaClipboardCheck, FaBrain, FaFileAlt, FaRegClock,
+  FaStickyNote, FaLightbulb, FaUsers, FaCalendarAlt, FaLock, FaChartBar, FaStopwatch,
+  FaFilePdf, FaImage, FaLayerGroup,
+  FaChartLine, FaPlayCircle, FaCommentDots, FaBookOpen, FaFileInvoice
+} from 'react-icons/fa';
+import { API_ROUTES } from "../app_modules/apiRoutes";
+import TestimonialsSection from "./testimonials";
 
-const PaymentComponent = () => {
-  const [amount, setAmount] = useState(99); // Default ₹99 (monthly)
-  const [subscriptionPlan, setSubscriptionPlan] = useState('premium');
-  const [duration, setDuration] = useState('monthly'); // Ensure default is 'monthly'
-  const [showPremium, setShowPremium] = useState(true); // State to toggle between free and premium features
-  const [isPremium, setIsPremium] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 3 days in seconds
-  const [showConfetti, setShowConfetti] = useState(false);
-  const nav = useNavigate();
-
-  const SubscriptionWrapper = styled.div`
+const Wrapper = styled.div`
+  background: linear-gradient(135deg, #0a0a0a, #1c1c1e);
+  color: #f5f5f7;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+`;
+
+const ScrollContent = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 20px 80px;
+  display: flex;
   justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #F8F5FF, #FDFDFD); /* Soft pastel gradient */
-  padding: 1rem;
-  font-family: 'Poppins', sans-serif;
 `;
 
-const Card = styled.div`
-  width: 85%;
-  max-width: 380px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
+const SubscriptionContainer = styled.div`
+  width: 100%;
+  max-width: 460px;
   text-align: center;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 45px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
 `;
 
-const Header = styled.div`
-  height: 80px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  position: relative;
-  margin: -2rem -2rem 1rem -2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: #5A3EAB; /* Deep luxe purple */
-  background: linear-gradient(to right, #E6DAFF,rgb(222, 207, 255));
-  box-shadow: inset 0px -2px 6px rgba(0, 0, 0, 0.05);
-`;
-
-const Title = styled.p`
-  font-size: 1.5rem;
+const Title = styled.h1`
+  font-size: 32px;
   font-weight: 600;
-  color: #2E1A47; /* Rich, elegant text color */
-  margin-bottom: 1rem;
-`;
-
-const Plan = styled.div`
-  padding: 1rem;
-  border-radius: 14px;
-  margin-top: 1rem;
-  color: #3A2D62;
-  font-size: 1.1rem;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.3s;
-  background: rgba(255, 255, 255, 0.4);
-  border: ${({ active }) => (active ? '2px solid #D1A3FF' : '1px solid rgba(0, 0, 0, 0.05)')};
-  box-shadow: ${({ active }) => (active ? '0px 4px 12px rgba(209, 163, 255, 0.4)' : 'none')};
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.6);
-  }
-`;
-
-const BestValue = styled.span`
-  background: #D1A3FF;
-  color: white;
-  font-size: 0.8rem;
-  padding: 4px 10px;
-  border-radius: 8px;
-  font-weight: 600;
-`;
-
-const ButtonBase = styled.button`
-  width: 100%; /* Ensures both buttons take full width */
-  padding: 0.9rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 14px;
-  margin-top: 1.5rem;
-  cursor: pointer;
-  transition: 0.3s;
-  text-align: center;
-  box-shadow: 0px 6px 16px rgba(182, 139, 255, 0.4);
-`;
-
-const BorderButton = styled(ButtonBase)`
-  background: transparent;
-  border: 2.5px solid #6F42C1;
-  color: #6F42C1;
-`;
-
-const Button = styled(ButtonBase)`
-  background: linear-gradient(135deg, #B68BFF, #D1A3FF);
-  color: white;
-  border: none;
-
-  &:hover {
-    background: linear-gradient(135deg, #D1A3FF, #B68BFF);
-    transform: scale(1.02);
-  }
-`;
-
-
-const Countdown = styled.div`
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  color: #FF6B6B; /* Soft warning color */
-  font-weight: 500;
-  font-style: italic;
-`;
-
-const BackButton = styled.div`
-  color: #222; /* Premium dark gray */
-  font-size: 1.3rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: absolute;
-  top: 1.2rem;
-  left: 1.2rem;
-  z-index: 1000;
-  backdrop-filter: blur(10px); /* Subtle blur for premium glass effect */
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.1); /* Slightly darker on hover */
-  }
-
-
+  margin-bottom: 18px;
+  color: #f5f5f7;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.2rem;
+  font-size: 15px;
+  color: #a1a1aa;
+  margin-bottom: 32px;
+  line-height: 1.8;
   font-weight: 500;
-  color: #6B5B95; /* Soft elite color */
-  margin-bottom: 1.5rem;
+`;
+
+const Plans = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 35px;
+`;
+
+const PlanBox = styled.div`
+  padding: 20px;
+  border-radius: 20px;
   text-align: center;
-  max-width: 80%;
-`;
+  border: 2px solid ${(props) => (props.active ? "#7f56d9" : "#2c2c2e")};
+  width: 150px;
+  background: ${(props) =>
+    props.active ? "rgba(127, 86, 217, 0.12)" : "rgba(255, 255, 255, 0.02)"};
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: ${(props) =>
+    props.active ? "0 0 14px rgba(127, 86, 217, 0.4)" : "none"};
 
-// 🎨 Gradient Shine Animation for Best Value Badge
-const shimmer = keyframes`
-  0% { background-position: 0% }
-  100% { background-position: 200% }
-`;
-
-// 🌟 Glowing Header Effect
-const glow = keyframes`
-  0% { box-shadow: 0px 0px 10px rgba(210, 173, 255, 0.4); }
-  50% { box-shadow: 0px 0px 18px rgba(210, 173, 255, 0.8); }
-  100% { box-shadow: 0px 0px 10px rgba(210, 173, 255, 0.4); }
-`;
-
-
-
-
-
-useEffect(() => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-      .then(response => setIsPremium(response.data.premium))
-      .catch(() => setIsPremium(false));
-  } else {
-    setIsPremium(false);
+  &:hover {
+    border-color: #7f56d9;
+    background: rgba(127, 86, 217, 0.14);
+    transform: translateY(-3px);
   }
-}, []);
 
+  h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #f5f5f7;
+  }
+
+  p {
+    font-size: 14px;
+    color:rgb(138, 138, 138);
+  }
+`;
+
+
+
+const SmallText = styled.p`
+  font-size: 12px;
+  color: #8e8e93;
+  margin-top: 5px;
+`;
+
+const Button = styled.button`
+  background: #7f56d9;
+  color: white;
+  border: none;
+  padding: 16px 42px;
+  font-size: 17px;
+  border-radius: 50px;
+  font-weight: 600;
+  width: 100%;
+  max-width: 320px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 12px 30px rgba(127, 86, 217, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    background: #3a3a3c;
+    cursor: default;
+    opacity: 0.5;
+    box-shadow: none;
+  }
+`;
+
+const Footer = styled.p`
+  margin-top: 30px;
+  font-size: 14px;
+  color: #7c7c80;
+  text-align: center;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #a58dfb;
+  }
+`;
+
+const Divider = styled.div`
+  height: 2px;
+  width: 60px;
+  background: #3c3c43;
+  margin: 60px auto 40px;
+  border-radius: 10px;
+`;
+
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const Title2 = styled.h2`
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #f5f5f7;
+  text-align: center;
+  margin-bottom: 0.5rem;
+`;
+
+const Subtitle2 = styled.p`
+  font-size: 1.1rem;
+  color: #a1a1aa;
+  text-align: center;
+  margin-bottom: 2.2rem;
+  font-weight: 500;
+`;
+
+const Badge = styled.div`
+  font-size: 0.85rem;
+  background: #2c2c2e;
+  padding: 4px 10px;
+  color: #a58dfb;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 1em;
+`;
+
+const FeatureList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const FeatureItem = styled.li`
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f5f5f7;
+  padding: 0.95rem 1rem;
+  background: #1c1c1e;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+  border-left: 4px solid #7f56d9;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.03);
+
+  &:hover {
+    background: #2c2c2e;
+    transform: translateY(-2px);
+  }
+`;
+
+const IconWrapper = styled.span`
+  font-size: 1.4rem;
+  margin-right: 14px;
+  background: linear-gradient(135deg, #7f56d9, #c08fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const CallToAction = styled.div`
+  margin-top: 2.5rem;
+  text-align: center;
+  color: #a58dfb;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  line-height: 1.7;
+`;
+
+const DreamGlow = styled.h2`
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  background: linear-gradient(120deg, #9f63ff, #ffb1f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  animation: glowIn 1.2s ease-out forwards;
+
+  @keyframes glowIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+`;
+
+const BestOfferTag = styled.div`
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #9f63ff, #ffb1f9);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(127, 86, 217, 0.35);
+  letter-spacing: 0.3px;
+`;
+
+const StyledWrapper = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+
+.pay-btn {
+  position: relative;
+  padding: 12px 24px;
+  font-size: 16px;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.icon-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  color: #22c55e;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.default-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hover animations */
+.pay-btn:hover .icon {
+  animation: none;
+}
+
+.pay-btn:hover .wallet-icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pay-btn:hover .card-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 0s;
+}
+
+.pay-btn:hover .payment-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 0.5s;
+}
+
+.pay-btn:hover .dollar-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 1s;
+}
+
+.pay-btn:hover .check-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 1.5s;
+}
+
+/* Active state - show only checkmark */
+.pay-btn:active .icon {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:active .check-icon {
+  animation: checkmarkAppear 0.6s ease forwards;
+  visibility: visible;
+}
+
+.btn-text {
+  font-weight: 600;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+@keyframes iconRotate {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.5);
+  }
+  5% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  15% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.5);
+  }
+}
+
+@keyframes checkmarkAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+`;
+
+const PaymentComponent = () => {
+  const navigate = useNavigate();
+  const [selectedPlan, setSelectedPlan] = useState("monthly");
+  const [isPremium, setIsPremium] = useState(null);
+  const [step, setStep] = useState(1);
+
+
+  // Handle Payment with Razorpay
   const handlePayment = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
-        alert('Please log in to subscribe.');
+        alert("Please log in to subscribe.");
         return;
       }
-  
-      let planAmount = 119; // Default to monthly
 
-      if (duration === 'daily') planAmount = 29;
-      else if (duration === 'weekly') planAmount = 59;
-      else if (duration === 'monthly') planAmount = 119;
-      
-  
-      const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount: amount,
-        currency: 'INR',
-        subscription_plan: subscriptionPlan,
-        token,
-        duration, // Send the selected duration
-      });
-  
+    // Set pricing based on selected plan
+let planAmount = 0;
+if (selectedPlan === "daily") {
+  planAmount = 15; // ₹8 → 800 paise
+} else if (selectedPlan === "weekly") {
+  planAmount = 39;
+} else if (selectedPlan === "monthly") {
+  planAmount = 99;
+}
+
+const { data } = await axios.post(API_ROUTES.getPremium, {
+  amount: planAmount, // Razorpay accepts amount in paise
+  currency: "INR",
+  subscription_plan: "Edusify Premium",
+  token,
+  duration: selectedPlan,
+});
+
       const options = {
-        key: 'rzp_live_jPX6SxetQbApHC',
+        key: "rzp_live_jPX6SxetQbApHC",
         amount: data.order.amount,
-        currency: 'INR',
+        currency: "INR",
         order_id: data.order.id,
-        name: 'Edusify',
-        description: `Subscription Payment (${duration})`,
+        name: "Edusify",
+        description: `Subscription Payment (${selectedPlan})`,
         handler: async (response) => {
           const { data } = await axios.post(API_ROUTES.verifyPayment, {
             payment_id: response.razorpay_payment_id,
             order_id: response.razorpay_order_id,
             signature: response.razorpay_signature,
             token,
-            subscription_plan: subscriptionPlan,
-            duration, // Send the selected duration
+            subscription_plan: "Edusify Premium",
+            duration: selectedPlan,
           });
-  
+      
           if (data.success) {
-            nav('/payment-success');
+            navigate("/payment-success");
           } else {
-            alert('Payment verification failed!');
+            alert("Payment verification failed!");
           }
         },
-        theme: { color: '#000000' },
+        theme: { color: "#000000" },
+      
+        method: {
+          upi: true, // ✅ Enable UPI but force manual entry
+          card: true,
+          netbanking: true,
+          wallet: true,
+        },
+      
+        config: {
+          display: {
+            hide: ["upi_recommended"], // ✅ Hide "Recommended" UPI options (PhonePe, Google Pay, Paytm)
+          },
+        },
+      
+        prefill: {
+          method: "upi", // ✅ Forces users to enter UPI ID manually
+        },
       };
-  
+      
       const razorpayInstance = new window.Razorpay(options);
       razorpayInstance.open();
+      
     } catch (error) {
-      console.error('Error initiating payment', error);
+      console.error("Error initiating payment", error);
     }
   };
 
@@ -264,100 +512,121 @@ useEffect(() => {
     }
   }, []);
 
-  useEffect(() => {
-    // Countdown timer logic
-    const interval = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
-    }, 1000);
+  const scrollRef = useRef();
 
-    if (timeLeft <= 0) {
-      clearInterval(interval);
-    }
-
-    return () => clearInterval(interval);
-  }, [timeLeft]);
-
-  const formatTime = (timeInSeconds) => {
-    const hours = Math.floor(timeInSeconds / 3600);
-    const minutes = Math.floor((timeInSeconds % 3600) / 60);
-    const seconds = timeInSeconds % 60;
-    return `${hours}h ${minutes}m ${seconds}s`;
+  const handleNext = () => {
+    setStep(2);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    // Scroll to the top of the page on load
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Smooth scrolling animation
+    });
+  }, []); // Empty dependency array to run only once when the component is mounted
+
   return (
-    <SubscriptionWrapper>
-    {showConfetti && <Confetti numberOfPieces={200} />}
+    <Wrapper>
+      {step === 1 && (
+        <PageWrapper>
+          <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
   
-    <Card>
-      
-<Link to='/'>
-  <BackButton><FaArrowLeft/></BackButton>
-  </Link>
-      {/* 🚀 Premium Header */}
-      <Header />
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-  {/* 🎯 Exclusive Messaging */}
-  <Title>One Price. Unlimited Learning.</Title>
-  <Subtitle>The AI-powered study ecosystem for toppers.</Subtitle>
-</div> {/*
-<Plan
-  active={duration === 'daily'}
-  onClick={() => {
-    setDuration('daily');
-    setAmount(9); // Set daily price
-  }}
->
-  <span>Daily Access</span>
-  <span>₹9/day</span>
-</Plan>*/}
-
-      {/* 📌 Pricing Plans */}
-      <Plan
-        active={duration === 'weekly'}
-        onClick={() => {
-          setDuration('weekly');
-          setAmount(39);
-        }}
-      >
-        <span>Weekly Access</span>
-        <span>₹39/week</span>
-      </Plan>
-
-      <Plan active={duration === "monthly"} onClick={() => { setDuration("monthly"); setAmount(99); }}>
-          <span>Monthly Plan <BestValue>Best Value</BestValue></span>
-          <span>₹99/mo</span>
-        </Plan>
+          <Badge>Only on Edusify</Badge>
+          <Subtitle2>
+            Meet the app that gives you elite tools, unlimited AI, and the power to study 10x smarter — while making it feel effortless.
+          </Subtitle2>
   
-    
+          <FeatureList>
+            {[
+              ["Unlimited AI Power", <FaMagic />],
+              ["Create Quizzes, Flashcards & Mind Maps Instantly", <FaBrain />],
+              ["Convert Any PDF into Notes, Quizzes & More", <FaFilePdf />],
+              ["AI-Generated Expert Topic Notes", <FaClipboardCheck />],
+              ["Custom Study Plans Tailored to You", <FaTasks />],
+              ["Daily Smart Task Generation", <FaRegClock />],
+              ["Intelligent Study Suggestions That Adapt to You", <FaLightbulb />],
+              ["Advanced Quiz Analytics & Progress Insights", <FaChartLine />],
+              ["Exclusive NEET, JEE, Boards AI Quizzes", <FaStopwatch />],
+              ["Full NEET Study Guide & Curated Resources", <FaBookOpen />],
+              ["Instant AI-Generated Assignments", <FaFileInvoice />],
+              ["Stunning AI Image Generator for Notes & Projects", <FaImage />],
+              ["Craft Beautiful, Aesthetic Notes Effortlessly", <FaStickyNote />],
+              ["Find the Perfect Study Resources in Seconds", <FaFileAlt />],
+              ["Personalized Smart Dashboard to Track Your Success", <FaChartBar />],
+              ["Dynamic Mind Maps for Visual Learning", <FaLayerGroup />],
+              ["Join Collaborative Study Rooms & Communities", <FaUsers />],
+              ["Secure Document Locker for Your Important Files", <FaLock />],
+              ["And so much more — designed for the next generation of top students."]
+            ].map(([text, icon]) => (
+              <FeatureItem key={text}>
+                <IconWrapper>{icon}</IconWrapper>{text}
+              </FeatureItem>
+            ))}
+          </FeatureList>
   
-{isPremium ? (
-  <>
-    <Button>You have Premium! 🔥</Button>
-     {/*   <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>*/}
-  </>
-) : (
-  <>
-<Button 
-  onClick={handlePayment} 
-  disabled={!duration} // Disable if no plan is selected
-  style={{
-    opacity: !duration ? 0.6 : 1, // Reduce opacity when disabled
-    cursor: !duration ? 'not-allowed' : 'pointer' // Change cursor style
-  }}
->
-  Get Premium
-</Button>
-
-    {/*  <BorderButton onClick={() => nav('/subscription/features')}>See What You're Missing 👀</BorderButton>*/}
-  </>
-)}
-
-<FeaturesCard/>
-    </Card>
-
-  </SubscriptionWrapper>
+          <CallToAction>
+            You’ve seen the future of studying. <br />
+            <strong>Now it's your turn to unlock it.</strong> <br />
+            <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
+              Join the students who are no longer guessing — they’re dominating.
+            </span>
+          </CallToAction>
   
+          <Button style={{ marginTop: "2.5rem" }} onClick={handleNext}>
+            See Plans
+          </Button>
+        </PageWrapper>
+      )}
+  
+      {step === 2 && (
+        <ScrollContent ref={scrollRef}>
+          <SubscriptionContainer>
+            <Title>Your Edge Begins Here</Title>
+            <Subtitle>Precision-crafted for students who expect more from themselves — and get it.</Subtitle>
+  
+            <Plans>
+            <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+  <h4>First Step to Mastery</h4>
+  <p>₹15/day</p>
+  <SmallText>Experience premium. No commitments.</SmallText>
+</PlanBox>
+
+              <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+  <BestOfferTag>Exclusive Value</BestOfferTag>
+  <h4>Lead Without Limits</h4>
+  <p>
+    ₹99/month
+  </p>
+  <SmallText>Full access. Effortless excellence.</SmallText>
+</PlanBox>
+
+  
+<PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+  <h4>Own Your Week</h4>
+  <p>₹39/week</p>
+  <SmallText>Focus. Achieve. Repeat.</SmallText>
+</PlanBox>
+
+            </Plans>
+  
+            {isPremium ? (
+      <Button disabled>You have Premium! 🔥</Button>    
+     ) : (
+        <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button> 
+            )}
+  
+            <Link to='/help'>
+              <Footer>Need Help?</Footer>
+            </Link>
+          </SubscriptionContainer>
+        </ScrollContent>
+      )}
+    </Wrapper>
   );
+  
 };
 
 export default PaymentComponent;
+//  <Button disabled>You have Premium! 🔥</Button>
