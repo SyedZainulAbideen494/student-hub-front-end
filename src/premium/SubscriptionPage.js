@@ -439,7 +439,7 @@ if (selectedPlan === "daily") {
 } else if (selectedPlan === "weekly") {
   planAmount = 39;
 } else if (selectedPlan === "monthly") {
-  planAmount = 59;
+  planAmount = 99;
 }
 
 const { data } = await axios.post(API_ROUTES.getPremium, {
