@@ -59,6 +59,8 @@
   border-color: #007aff;
   box-shadow: 0 0 12px rgba(0, 122, 255, 0.6); /* Subtle blue glow on focus */
 }
+
+
 /* Submit Button */
 .submit-btn__ai__gen__notes__ai__gen__notes {
   background: white; /* White background */
@@ -74,24 +76,6 @@
   font-weight: 700;
   position: relative;
   overflow: hidden; /* Prevent the glow from spilling out */
-  z-index: -1;
-  transition: all 0.3s ease;
-  box-shadow: 
-    0 0 10px rgba(0, 122, 255, 0.5), /* Blue glow */
-    0 0 15px rgba(0, 255, 128, 0.5), /* Green glow */
-    0 0 20px rgba(173, 216, 230, 0.5); /* Light blue glow */
-}
-
-/* Multi-colored glow effect */
-.submit-btn__ai__gen__notes__ai__gen__notes::after {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  background: rgba(0, 122, 255, 0.2); /* Light blue base */
-  border-radius: 30px; /* Match border-radius for rounded glow */
   z-index: -1;
   transition: all 0.3s ease;
   box-shadow: 
