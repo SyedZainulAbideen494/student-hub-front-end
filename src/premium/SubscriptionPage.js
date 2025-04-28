@@ -587,29 +587,28 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
             <Subtitle>Precision-crafted for students who expect more from themselves — and get it.</Subtitle>
   
             <Plans>
-              <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
-                <h4>Just Curious</h4>
-                <p>₹15/day</p>
-                <SmallText>Perfect for a quick taste of greatness</SmallText>
-              </PlanBox>
-  
+            <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+  <h4>First Step to Mastery</h4>
+  <p>₹15/day</p>
+  <SmallText>Experience premium. No commitments.</SmallText>
+</PlanBox>
+
               <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-                <BestOfferTag>🔥 ₹59 – 3 Days Only</BestOfferTag>
-                <h4>Stay Ahead</h4>
-                <p>
-                  <span style={{ textDecoration: "line-through", color: "#777", fontSize: "13px", marginRight: "6px" }}>
-                    ₹99
-                  </span>
-                  ₹59/month
-                </p>
-                <SmallText>Unlock everything. Move differently.</SmallText>
-              </PlanBox>
+  <BestOfferTag>Exclusive Value</BestOfferTag>
+  <h4>Lead Without Limits</h4>
+  <p>
+    ₹99/month
+  </p>
+  <SmallText>Full access. Effortless excellence.</SmallText>
+</PlanBox>
+
   
-              <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-                <h4>Test the Waters</h4>
-                <p>₹39/week</p>
-                <SmallText>Ideal for focused study sprints</SmallText>
-              </PlanBox>
+<PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+  <h4>Own Your Week</h4>
+  <p>₹39/week</p>
+  <SmallText>Focus. Achieve. Repeat.</SmallText>
+</PlanBox>
+
             </Plans>
   
             {isPremium ? (
