@@ -45,6 +45,9 @@ const ExamMode = () => {
     }
   };
   
+  const handleMypack =() => {
+    navigate('/exam-mode/packs')
+  }
 
   return (
     <div className="container__Exam__mode__page__main">
@@ -80,6 +83,7 @@ const ExamMode = () => {
           <button
             className="button__Exam__mode__page__main"
             disabled={loading}
+            onClick={handleMypack}
           >
             My Packs
           </button>
