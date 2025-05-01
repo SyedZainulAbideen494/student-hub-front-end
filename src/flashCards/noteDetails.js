@@ -549,7 +549,11 @@ const quillModules = {
                 </form>
             ) : (
                 <div className="note-content-note-detail-page">
-                    <div dangerouslySetInnerHTML={{ __html: note.headings }} />
+<div
+  dangerouslySetInnerHTML={{
+    __html: note.headings.replace(/```html|```/g, ''),
+  }}
+/>
                     
 {images.length > 0 && (
                         <div className="image-gallery">
