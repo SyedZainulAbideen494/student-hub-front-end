@@ -172,6 +172,10 @@ const TopBoxes = () => {
           <FontAwesomeIcon icon={faUser} />
           <span>Profile</span>
         </Link>
+        <Link to="/leaderboard" className="dropdown-item__dark">
+  <FontAwesomeIcon icon={faTrophy} />
+  <span>Leaderboard</span>
+</Link>
         <Link to="/settings" className="dropdown-item__dark">
           <FontAwesomeIcon icon={faGear} />
           <span>Settings</span>

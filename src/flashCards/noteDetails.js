@@ -159,7 +159,7 @@ const quillModules = {
   }, [editMode, note]);
 
     const handleBackClick = () => {
-        nav('/notes/view');
+        nav(-1);
     };
 
     const handleEditToggle = () => {

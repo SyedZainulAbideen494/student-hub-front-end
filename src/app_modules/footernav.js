@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard, FaNewspaper } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard, FaNewspaper, FaBookReader } from 'react-icons/fa';
 import { MdAssessment, MdAssignment, MdCampaign, MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -95,10 +95,11 @@ const FooterNav = () => {
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
                 {/* Popup Buttons */}
                
-                <Link to='/leaderboard' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/leaderboard' ? 'active' : ''}`}>
-                        <FaTrophy className="icon-footer-nav" />
-                        <span className="btn-label">leaderboard</span>
+                <Link to='/exam-mode' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/exam-mode' ? 'active' : ''}`}>
+                        <FaBookReader className="icon-footer-nav" />
+                        <span className="btn-label">Exam Mode</span>
+                        <span className='new-label-footer-nav'>new</span>
                     </button>
                 </Link>
                 <Link to='/competive-exam' style={{ textDecoration: 'none' }}>

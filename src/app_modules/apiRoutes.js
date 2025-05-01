@@ -236,5 +236,8 @@ export const API_ROUTES = {
   fetchPomodoroChallengeProgress: `${API_URL}/pomodoro/weekly-progress-premium`,
   checkWeeklyRewardClaimed: `${API_URL}/pomodoro/check-claim`,
   claimPremiumReward: `${API_URL}/pomodoro/claim`,
-  generateImage: `${API_URL}/generate-image`
+  generateImage: `${API_URL}/generate-image`,
+  getExamModePack: `${API_URL}/api/exam-mode`,
+  fetchExamPacks: `${API_URL}/get-packs`,
+  examModeGenerate: `${API_URL}/api/exam-mode/generate`
 }

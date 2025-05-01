@@ -1,0 +1,94 @@
+.examPacksContainer {
+    padding: 36px 20px;
+    max-width: 680px;
+    margin: auto;
+    color: #f0f0f0;
+    font-family: 'SF Pro Display', sans-serif;
+  }
+  
+  .examPacksHeader {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  
+  .backBtn {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f0f0f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+  }
+  
+  .backBtn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  
+  .statusText {
+    text-align: center;
+    font-size: 1rem;
+    color: #aaa;
+    margin-top: 20px;
+  }
+  
+  .errorText {
+    color: #f66767;
+  }
+  
+  .packList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .packItem {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(16px);
+    transition: transform 0.2s;
+  }
+  
+  .packItem:hover {
+    transform: translateY(-2px);
+  }
+  
+  .packLink {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .packInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .packInfo small {
+    font-size: 0.85rem;
+    color: #888;
+  }
+  
+  .viewBtn {
+    font-weight: 500;
+    color: #59b4f6;
+    font-size: 0.9rem;
+  }
+  

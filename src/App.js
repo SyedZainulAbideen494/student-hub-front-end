@@ -164,6 +164,10 @@ import EdusifyArticle2 from "./seo/EdusifyArticle2";
 import LoadingHome from "./help/loaderHome";
 import QuizGeneratorAPi from "./api testing/apitesting";
 import QuizGeneratorCompExam from "./api testing/apiTestingCompExam";
+import ExamMode from "./exam mode/ExamMode";
+import ExamModeResult from "./exam mode/ExamModeResult";
+import LoaderExamMode from "./exam mode/loader";
+import ExamPacks from "./exam mode/ExamPacks";
 
 
 const urlBase64ToUint8Array = (base64String) => {
@@ -312,6 +316,10 @@ const router = createBrowserRouter([
   {path: '/loading/home', element: <LoadingHome/>},
   {path: '/api-testing-quiz', element: <QuizGeneratorAPi/>},
   {path: '/api-testing-comp-exam', element: <QuizGeneratorCompExam/>},
+  {path: '/exam-mode', element: <ExamMode/>},
+  {path: '/exam-mode/loader', element: <LoaderExamMode/>},
+  {path: '/exam-mode/:id', element: <ExamModeResult/>},
+  {path: '/exam-mode/packs', element: <ExamPacks/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
