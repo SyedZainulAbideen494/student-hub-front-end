@@ -140,7 +140,6 @@ const HomeMain = () => {
   return (
     <Fragment>
         <>
-        <BirthdayModal/>
           <SubscriptionRedirector/>
           <ReviewModal />
           <HomeTopBoxes />
