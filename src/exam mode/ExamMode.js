@@ -50,7 +50,10 @@ const ExamMode = () => {
     <div className="container__Exam__mode__page__main">
  
         <div className="inputSection__Exam__mode__page__main animate__Exam__mode__page__main">
-          <h1 className="title__Exam__mode__page__main">Enter Exam Mode</h1>
+        <h1 className="title__Exam__mode__page__main">
+  Enter Exam Mode
+</h1>
+<span className="betaBadge__Exam__mode__page__main">Beta</span>
 
           <input
             type="text"

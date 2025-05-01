@@ -75,6 +75,23 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  
+  .betaBadge__Exam__mode__page__main {
+    background-color: #ff6b6b;
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    margin: 12px auto 0;
+    text-align: center;
+    border-radius: 999px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    animation: pulse 1.8s infinite;
+  }
   
   .examStarted__Exam__mode__page__main {
     text-align: center;
