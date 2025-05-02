@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaBrain, FaMap } from "react-icons/fa";
+import { FaBookReader, FaBrain, FaMap } from "react-icons/fa";
 import { MdBrush, MdQuiz, MdNotes, MdOutlineAssignment, MdArrowBack } from "react-icons/md";
 import "./AiSelectionPage.css";
 import { API_ROUTES } from "../app_modules/apiRoutes";
@@ -53,7 +53,9 @@ const AiSelectionPage = () => {
           { icon: <MdNotes />, text: "AI Notes", path: isPremium ? "/notes/create/ai" : "/subscription" },
           { icon: <MdQuiz />, text: "AI Quizzes", path: "/quiz/ai" },
           { icon: <FaMap />, text: "AI Mind Maps", path: "/mindmap/create" },
-          { icon: <MdOutlineAssignment />, text: "AI Assignment Maker", path: "/assignment-maker" }
+          { icon: <MdOutlineAssignment />, text: "AI Assignment Maker", path: "/assignment-maker" },
+          { icon: <FaBookReader />, text: "AI Exam Mode", path: "/exam-mode" }
+
         ].map((item, index) => (
           <button
             key={index}
