@@ -1,146 +1,151 @@
 /* Root wrapper */
 .examModeResult {
-    background-color: #0e0e0f;
-    color: #e0e0e0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 48px 16px;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-  }
-  
-  /* Header */
-  .examModeHeader {
-    text-align: center;
-    margin-bottom: 36px;
-  }
-  
-  .examModeHeader h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    color: #ffffff;
-    margin-bottom: 6px;
-  }
-  
-  .examModeHeader p {
-    font-size: 1rem;
-    color: #888888;
-    font-weight: 400;
-  }
-  .topNav {
-    width: 100%;
-    max-width: 460px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 12px 0 24px;
-    position: relative;
-  }
+  background-color: #0e0e0f;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  padding: 48px 16px;
+}
 
-  .examResultItem {
-    transition: all 0.25s ease;
-  }
-  .examResultItem:hover {
-    transform: scale(1.02);
-    background: rgba(255, 255, 255, 0.06);
-  }
-  .viewLink:hover {
-    color: #76c9ff;
-    text-decoration: underline;
-  }
+/* Header */
+.examModeHeader {
+  text-align: center;
+  margin-bottom: 36px;
+}
 
-  
-  
-  .backBtn {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: #e0e0e0;
-    font-size: 20px;
-    padding: 6px 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-right: 12px;
+.examModeHeader h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.examModeHeader p {
+  font-size: 1rem;
+  color: #888888;
+  font-weight: 400;
+}
+
+/* Top nav */
+.topNav {
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0 24px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.topNav h2 {
+  font-size: 1rem;
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* Back button */
+.backBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  color: #e0e0e0;
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 12px;
+}
+
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Data container */
+.examData {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 460px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Each result item */
+.examResultItem {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease;
+}
+
+.examResultItem:hover {
+  transform: scale(1.015);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Text */
+.examResultItem p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #eaeaea;
+  margin: 0;
+}
+
+/* Link */
+.viewLink {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+  opacity: 0.6;
+  text-decoration: none;
+  margin-top: 4px;
+  transition: all 0.3s ease;
+}
+
+.viewLink:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Loading and error states */
+.loading,
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+  font-size: 1rem;
+  color: #999;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
-  .topNav h2 {
-    font-size: 1rem;
-    color: #aaa;
-    font-weight: 500;
-  }
-  
-  /* Data container with glassmorphism */
-  .examData {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-radius: 18px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    width: 80%;
-    max-width: 460px;
-    padding: 28px 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  
-  /* Each result item */
-  .examResultItem {
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 14px;
-    padding: 14px 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    box-shadow: inset 0 0 0 0.4px rgba(255, 255, 255, 0.05);
-    transition: none;
-  }
-  
-  /* Text inside */
-  .examResultItem p {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #e5e5e5;
-    margin: 0;
-  }
-  
-  .viewLink {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #59b4f6;
-    text-decoration: none;
-    margin-top: 4px;
-  }
-  
-  /* Loading and error states */
-  .loading,
-  .error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 80px;
-    font-size: 1rem;
-    color: #999;
-  }
-  
-  .spinner {
-    width: 36px;
-    height: 36px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #59b4f6;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 12px;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
+}
