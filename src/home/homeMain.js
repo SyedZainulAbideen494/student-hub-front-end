@@ -7,7 +7,7 @@ import TipBox from "../Tip box/TipBox";
 import FeedbackForm from "../help/FeedbackForm";
 import InviteFriends from "../help/InviteFriends";
 import QuoteCard from "./dailyquote";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ReviewModal from "../help/ReviewModal";
 import AppUpdates from "./AppUpdates";
 import ExploreCard from "./ExploreCard";
@@ -137,9 +137,21 @@ const HomeMain = () => {
     logDailyLogin();
   }, []);
 
+  const ScrollToTop = () => {
+    const { pathname } = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scrolls to top on every route change
+    }, [pathname]);
+  
+    return null;
+  };
+  
+
   return (
     <Fragment>
         <>
+              <ScrollToTop/>
           <SubscriptionRedirector/>
           <ReviewModal />
           <HomeTopBoxes />

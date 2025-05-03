@@ -6,6 +6,8 @@ import {
   Params,
   useNavigate,
 } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import "./index.css";
 import "./App.css";
 import axios from "axios";
@@ -168,7 +170,6 @@ import ExamMode from "./exam mode/ExamMode";
 import ExamModeResult from "./exam mode/ExamModeResult";
 import LoaderExamMode from "./exam mode/loader";
 import ExamPacks from "./exam mode/ExamPacks";
-
 
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
