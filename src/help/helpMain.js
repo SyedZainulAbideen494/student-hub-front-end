@@ -106,7 +106,7 @@ const HelpMain = () => {
       </div>
 
       <footer className="footer-help-page">
-        <p>© 2024 Edusify. All rights reserved.</p>
+        <p>© 2025 Edusify. All rights reserved.</p>
 
         {/* Social Media Links */}
         <div className="footer-social-links-help-page">
@@ -115,9 +115,6 @@ const HelpMain = () => {
           </a>
           <a href="https://x.com/SyedZain_saz?t=mUNjUKoihNUivIYikdtu3g&s=08" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
             <FontAwesomeIcon icon={faTwitter} size="2x" />
-          </a>
-          <a href="https://t.me/edusify" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
-            <FontAwesomeIcon icon={faTelegram} size="2x" />
           </a>
           <a href="https://edusify-download.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
             <FontAwesomeIcon icon={faChrome} size="2x" />

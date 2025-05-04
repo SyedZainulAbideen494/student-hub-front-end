@@ -235,7 +235,6 @@ const ResourceFinder = () => {
         <p className="ai__recommendations__text">{aiResults}</p>
     </div>
 )}
-<GuideBanner/>
 
                 {filteredResources.length > 0 ? (
                     filteredResources.map((res) => (
