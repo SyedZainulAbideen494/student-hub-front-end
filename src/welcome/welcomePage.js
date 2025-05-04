@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 
@@ -11,6 +11,17 @@ const fadeUp = keyframes`
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+`;
+
+const fadeInStaggered = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
@@ -31,6 +42,21 @@ const Content = styled.div`
   width: 100%;
   animation: ${fadeUp} 1s ease-out forwards;
   opacity: 0;
+
+  & > *:nth-child(1) {
+    animation: ${fadeInStaggered} 1s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+
+  & > *:nth-child(2) {
+    animation: ${fadeInStaggered} 1s ease-out forwards;
+    animation-delay: 0.4s;
+  }
+
+  & > *:nth-child(3) {
+    animation: ${fadeInStaggered} 1s ease-out forwards;
+    animation-delay: 0.6s;
+  }
 `;
 
 const Title = styled.h1`
@@ -43,6 +69,9 @@ const Title = styled.h1`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 24px;
+
+  /* Improved contrast */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 `;
 
 const Subtitle = styled.p`
@@ -67,6 +96,23 @@ const Button = styled.button`
   letter-spacing: 0.2px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  /* Ripple effect */
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    animation: ripple 0.6s linear;
+    opacity: 0;
+  }
 
   &:hover {
     background: rgba(255, 255, 255, 0.065);
@@ -79,26 +125,44 @@ const Button = styled.button`
     background: rgba(255, 255, 255, 0.025);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
+
+  /* Ripple animation */
+  @keyframes ripple {
+    to {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+  }
 `;
 
 const Welcome = () => {
+  const [error, setError] = useState(null);
   const nav = useNavigate();
+
+  const handleNavigation = () => {
+    try {
+      nav('/flow-user-data');
+    } catch (err) {
+      setError('Navigation error. Please try again later.');
+    }
+  };
 
   return (
     <Wrapper>
       <Content>
-       <Title>Welcome to your smarter study era</Title>
+        <Title>Welcome to your smarter study era</Title>
 
-<Subtitle>
-You’ve just unlocked the next level of learning. <br/>
-Let’s build an AI-powered plan that works exactly the way you do. <br/>
-Because focus should feel effortless.
-</Subtitle>
+        <Subtitle>
+          You’ve just unlocked the next level of learning. <br />
+          Let’s build an AI-powered plan that works exactly the way you do. <br />
+          Because focus should feel effortless.
+        </Subtitle>
 
-<Button onClick={() => nav('/flow-user-data')}>
-  Build My Smart Study Plan
-</Button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
 
+        <Button onClick={handleNavigation}>
+          Build My Smart Study Plan
+        </Button>
       </Content>
     </Wrapper>
   );
