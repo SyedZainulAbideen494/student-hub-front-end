@@ -13,13 +13,13 @@ const MindMap = () => {
   const navigate = useNavigate();
   const mindmapId = params.mindMapId;
 
-  // 🌌 Luxury night-mode gradients
+  // 🍬 Pastel node colors for light theme
   const nodeColors = [
-    "linear-gradient(135deg, #1f1c2c, #928dab)", // violet dusk
-    "linear-gradient(135deg, #2c3e50, #4ca1af)", // deep ocean
-    "linear-gradient(135deg, #373b44, #4286f4)", // steel blue
-    "linear-gradient(135deg, #0f2027, #203a43, #2c5364)", // deep nebula
-    "linear-gradient(135deg, #1a1a1a, #333333)", // graphite
+    "linear-gradient(135deg, #fdfbfb, #ebedee)",     // light silver
+    "linear-gradient(135deg, #d9afd9, #97d9e1)",     // pink to blue
+    "linear-gradient(135deg, #ffecd2, #fcb69f)",     // peachy
+    "linear-gradient(135deg, #e0c3fc, #8ec5fc)",     // purple to blue
+    "linear-gradient(135deg, #f6f9fc, #e9eff5)",     // icy white
   ];
 
   useEffect(() => {
@@ -38,20 +38,21 @@ const MindMap = () => {
           draggable: true,
           style: {
             background: nodeColors[index % nodeColors.length],
-            color: "#f5f5f5",
-            borderRadius: "16px",
-            padding: "16px 24px",
-            boxShadow: "0 6px 24px rgba(0, 255, 255, 0.1)",
-            fontSize: "15px",
+            color: "#333333",
+            borderRadius: "20px",
+            padding: "18px 24px",
+            fontSize: "16px",
             fontWeight: 600,
-            fontFamily: "SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif",
+            fontFamily:
+              "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif",
+            boxShadow: "0 12px 24px rgba(0, 0, 0, 0.1)",
             textAlign: "center",
-            cursor: "grab",
-            transition: "all 0.25s ease",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
             userSelect: "none",
-            backdropFilter: "blur(4px)",
-            WebkitBackdropFilter: "blur(4px)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            border: "1px solid rgba(0, 0, 0, 0.05)",
+            cursor: "grab",
+            transition: "transform 0.2s ease",
           },
         }));
 
@@ -61,10 +62,10 @@ const MindMap = () => {
           target: edge.to.toString(),
           animated: true,
           style: {
-            stroke: "#00ffe0",
-            strokeWidth: 2.5,
-            strokeDasharray: "2 4",
+            stroke: "#a1a1aa", // soft gray
+            strokeWidth: 2,
             strokeLinecap: "round",
+            opacity: 0.6,
           },
         }));
 
@@ -93,7 +94,7 @@ const MindMap = () => {
       style={{
         width: "100vw",
         height: "100vh",
-        background: "linear-gradient(to bottom right, #0d0d0d, #1a1a1a)",
+        background: "linear-gradient(120deg, #ffffff, #f6f6f6)",
         overflow: "hidden",
         position: "relative",
       }}
@@ -101,12 +102,12 @@ const MindMap = () => {
       {loading ? (
         <p
           style={{
-            color: "#aaa",
+            color: "#777",
             textAlign: "center",
             marginTop: "24px",
             fontSize: "15px",
             fontWeight: 500,
-            fontFamily: "SF Pro Text, sans-serif",
+            fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif",
           }}
         >
           Generating your mind map...
@@ -120,26 +121,29 @@ const MindMap = () => {
               position: "absolute",
               top: "20px",
               left: "20px",
-              background: "rgba(255, 255, 255, 0.05)",
-              color: "#eee",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
+              background: "rgba(0, 0, 0, 0.03)",
+              color: "#333",
+              border: "1px solid rgba(0, 0, 0, 0.1)",
               padding: "10px 18px",
-              borderRadius: "12px",
+              borderRadius: "16px",
               fontSize: "14px",
               fontWeight: 600,
-              fontFamily: "SF Pro Text, sans-serif",
+              fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif",
               cursor: "pointer",
-              transition: "all 0.25s ease-in-out",
-              backdropFilter: "blur(8px)",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.4)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
               zIndex: 1000,
+              transition: "all 0.3s ease",
             }}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)")
-            }
-            onMouseOut={(e) =>
-              (e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)")
-            }
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.background = "rgba(0, 0, 0, 0.06)";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.background = "rgba(0, 0, 0, 0.03)";
+            }}
           >
             ← Back
           </button>
@@ -156,6 +160,8 @@ const MindMap = () => {
             nodesDraggable
             minZoom={0.5}
             maxZoom={2}
+            snapToGrid={true}
+            snapGrid={[20, 20]}
             defaultViewport={{ x: 0, y: 0, zoom: 1 }}
             style={{
               width: "100%",
