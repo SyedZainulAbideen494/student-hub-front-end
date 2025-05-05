@@ -82,7 +82,6 @@ const AssignmentPage = () => {
     )}
   </div>
 </div>
-
   );
 };
 

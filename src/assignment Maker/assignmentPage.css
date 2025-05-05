@@ -1,3 +1,4 @@
+/* 🌌 General Styles - Dark Theme */
 .assignment-page__assignment__gen__page {
   display: flex;
   flex-direction: column;
@@ -5,6 +6,7 @@
   background: linear-gradient(to bottom, #0b0b0d, #1a1a1d);
 }
 
+/* 📦 Header */
 .assignment-header__assignment__gen__page {
   position: fixed;
   top: 15px; /* A bit on top for floating margin */
@@ -23,7 +25,7 @@
   z-index: 10;
 }
 
-
+/* 🧭 Back Button */
 .back-btn__assignment__gen__page,
 .download-btn__assignment__gen__page {
   background: transparent;
@@ -40,6 +42,7 @@
   transform: scale(1.1);
 }
 
+/* 📦 Assignment Container */
 .assignment-container__assignment__gen__page {
   margin-top: 70px; /* Adjust to account for the fixed header */
   padding: 25px;
@@ -56,6 +59,7 @@
   overflow-y: auto;
 }
 
+/* 📝 Assignment Title */
 .assignment-title__assignment__gen__page {
   font-family: "Playfair Display", serif;
   font-size: 26px;
@@ -68,6 +72,7 @@
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
 }
 
+/* 📄 Assignment Content */
 .assignment-content__assignment__gen__page {
   flex: 1;
   overflow-y: auto;
@@ -92,12 +97,14 @@
   color: #ffffff !important; /* Force white color on all h tags inside assignment-content */
 }
 
+/* ❌ No Assignment Found */
 .assignment-not-found__assignment__gen__page {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   color: #999;
 }
 
+/* 📱 Responsive Design */
 @media (max-width: 768px) {
   .assignment-header__assignment__gen__page {
     padding: 15px;
