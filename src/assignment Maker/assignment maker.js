@@ -4,6 +4,7 @@ import axios from "axios";
 import "./assignment maker.css";
 import FooterNav from "../app_modules/footernav";
 import { API_ROUTES } from "../app_modules/apiRoutes";
+import { FaArrowRight, FaFileAlt, FaStickyNote } from "react-icons/fa";
 
 const GenerateAssignment = () => {
   const [topic, setTopic] = useState("");
@@ -67,35 +68,54 @@ const GenerateAssignment = () => {
   };
 
   return (
-    <div className="assignment_maker flex flex-col items-center justify-center min-h-screen p-6" style={{ marginBottom: "90px" }}>
-      <div className="assignment_maker__container">
-        <h2 className="assignment_maker__title">📄 Assignment Maker</h2>
+    <div className="wrapper__assignment__gen__page">
+      <div className="card__assignment__gen__page animate__fade__assignment__gen__page">
+        <h2 className="title__assignment__gen__page">
+          <FaFileAlt /> Assignment Maker
+        </h2>
 
-        <div className="assignment_maker__form">
-          <input type="text" className="assignment_maker__input" placeholder="Enter Topic" value={topic} onChange={(e) => setTopic(e.target.value)} />
-          <textarea className="assignment_maker__textarea" placeholder="Additional Details" value={details} onChange={(e) => setDetails(e.target.value)} />
-          <input
-  type="number"
-  className="assignment_maker__input"
-  placeholder="Number of Pages"
-  value={pages}
-  onChange={(e) => {
-    const value = Math.min(15, Math.max(1, Number(e.target.value))); // Ensure value stays between 1 and 15
-    setPages(value);
-  }}
-  max={15}
-  min={1} // Prevents values below 1
-/>
+        <input
+          type="text"
+          placeholder="Topic"
+          className="input__assignment__gen__page"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+        />
 
-          <button className="assignment_maker__button" onClick={generateAssignment} disabled={loading || (!isPremium && hasGenerated)}>
-            {loading ? "Generating..." : hasGenerated && !isPremium ? "Upgrade to Generate More" : "Generate Assignment"}
-          </button>
-          <button style={{ marginTop: "10px" }} className="assignment_maker__button" onClick={() => navigate("/my-assignments")}>
-            My Assignments
-          </button>
-        </div>
+        <textarea
+          placeholder="Additional Details"
+          className="textarea__assignment__gen__page"
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+        />
+
+        <input
+          type="number"
+          className="input__assignment__gen__page"
+          placeholder="Number of Pages (1–15)"
+          value={pages}
+          onChange={(e) => setPages(Math.min(15, Math.max(1, Number(e.target.value))))}
+          max={15}
+          min={1}
+        />
+
+        <button
+          className={`button__assignment__gen__page ${loading || (!isPremium && hasGenerated) ? 'disabled__assignment__gen__page' : ''}`}
+          disabled={loading || (!isPremium && hasGenerated)}
+          onClick={generateAssignment}
+        >
+          {loading ? "Generating..." : hasGenerated && !isPremium ? "Upgrade to Generate More" : "Generate"}
+          <FaArrowRight style={{ marginLeft: '8px' }} />
+        </button>
+
+        <button
+          className="button__assignment__gen__page outline__assignment__gen__page"
+          onClick={() => navigate("/my-assignments")}
+        >
+          <FaStickyNote style={{ marginRight: '8px' }} />
+          My Assignments
+        </button>
       </div>
-      <FooterNav />
     </div>
   );
 };
