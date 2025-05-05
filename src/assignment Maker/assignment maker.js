@@ -71,7 +71,7 @@ const GenerateAssignment = () => {
     <div className="wrapper__assignment__gen__page">
       <div className="card__assignment__gen__page animate__fade__assignment__gen__page">
         <h2 className="title__assignment__gen__page">
-          <FaFileAlt /> Assignment Maker
+        Assignment Maker
         </h2>
 
         <input
