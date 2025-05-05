@@ -53,26 +53,36 @@ const AssignmentPage = () => {
   }
 
   return (
-    <div className="assignment-maker">
-    <div className="assignment-container">
-      <button className="back-btn" onClick={() => navigate(-2)}>←</button>
-      
-      <h2 className="assignment-title">📄 Your Assignment</h2>
-  
-      {assignment ? (
-        <div className="assignment-content" ref={contentRef} contentEditable suppressContentEditableWarning>
-          <div dangerouslySetInnerHTML={{ __html: assignment }} />
-        </div>
-      ) : (
-        <p className="assignment-not-found">Assignment not found.</p>
-      )}
-  
-      {assignment && (
-        <button className="download-btn" onClick={downloadPDF}>⬇ Download PDF</button>
-      )}
-    </div>
+<div className="assignment-page__assignment__gen__page">
+  <header className="assignment-header__assignment__gen__page">
+    <button className="back-btn__assignment__gen__page" onClick={() => navigate(-2)}>
+      <i className="fas fa-arrow-left"></i>
+    </button>
+    <button className="download-btn__assignment__gen__page" onClick={downloadPDF}>
+      <i className="fas fa-download"></i>
+    </button>
+  </header>
+
+  <div className="assignment-container__assignment__gen__page">
+    <h2 className="assignment-title__assignment__gen__page">
+      <i className="fas fa-file-alt"></i> Your Assignment
+    </h2>
+
+    {assignment ? (
+      <div
+        className="assignment-content__assignment__gen__page"
+        ref={contentRef}
+        contentEditable
+        suppressContentEditableWarning
+      >
+        <div dangerouslySetInnerHTML={{ __html: assignment }} />
+      </div>
+    ) : (
+      <p className="assignment-not-found__assignment__gen__page">Assignment not found.</p>
+    )}
   </div>
-  
+</div>
+
   );
 };
 
