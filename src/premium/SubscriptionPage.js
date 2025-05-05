@@ -390,101 +390,99 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
   return (
     <Wrapper>
-      {step === 1 && (
-        <PageWrapper>
-          <Title2>Everything You’ve Ever Wanted in a Study App</Title2>
+    {step === 1 && (
+      <PageWrapper>
+      <Title2>Redefine How You Study. Elevate Your Future.</Title2>
   
-          <Badge>Only on Edusify</Badge>
-          <Subtitle2>
-            Meet the app that gives you elite tools, unlimited AI, and the power to study 10x smarter — while making it feel effortless.
-          </Subtitle2>
+      <Badge>Exclusive to Edusify</Badge>
+      <Subtitle2>
+          The study app that blends power, elegance, and simplicity — empowering you to study smarter, not harder.
+      </Subtitle2>
   
-          <FeatureList>
-            {[
-              ["Unlimited AI Power", <FaMagic />],
-              ["Create Quizzes, Flashcards & Mind Maps Instantly", <FaBrain />],
-              ["Convert Any PDF into Notes, Quizzes & More", <FaFilePdf />],
-              ["AI-Generated Expert Topic Notes", <FaClipboardCheck />],
-              ["Custom Study Plans Tailored to You", <FaTasks />],
-              ["Daily Smart Task Generation", <FaRegClock />],
-              ["Intelligent Study Suggestions That Adapt to You", <FaLightbulb />],
-              ["Advanced Quiz Analytics & Progress Insights", <FaChartLine />],
-              ["Exclusive NEET, JEE, Boards AI Quizzes", <FaStopwatch />],
-              ["Full NEET Study Guide & Curated Resources", <FaBookOpen />],
-              ["Instant AI-Generated Assignments", <FaFileInvoice />],
-              ["Stunning AI Image Generator for Notes & Projects", <FaImage />],
-              ["Craft Beautiful, Aesthetic Notes Effortlessly", <FaStickyNote />],
-              ["Find the Perfect Study Resources in Seconds", <FaFileAlt />],
-              ["Personalized Smart Dashboard to Track Your Success", <FaChartBar />],
-              ["Dynamic Mind Maps for Visual Learning", <FaLayerGroup />],
-              ["Join Collaborative Study Rooms & Communities", <FaUsers />],
-              ["Secure Document Locker for Your Important Files", <FaLock />],
-              ["And so much more — designed for the next generation of top students."]
-            ].map(([text, icon]) => (
+      <FeatureList>
+          {[
+["Master Every Subject, Effortlessly.", <FaMagic />],
+["Experience the Power of Instant Clarity.", <FaBrain />],
+["Turn Every PDF into a Knowledge Gateway.", <FaFilePdf />],
+["Feel the Confidence of Expert Notes in Seconds.", <FaClipboardCheck />],
+["Study Plans as Ambitious as Your Dreams.", <FaTasks />],
+["Unlock Focus, One Task at a Time.", <FaRegClock />],
+["Your Perfect Study Path, Powered by AI.", <FaLightbulb />],
+["See Your Progress, Feel the Achievement.", <FaChartLine />],
+["Prepare Like a Pro — NEET, JEE, and Beyond.", <FaStopwatch />],
+["A Complete Study Guide That Adapts to You.", <FaBookOpen />],
+["Assignments Made Simple. Time to Breathe.", <FaFileInvoice />],
+["Inspire Creativity in Your Work with AI Visuals.", <FaImage />],
+["Notes That Reflect Your Best Work, Effortlessly.", <FaStickyNote />],
+["Find What You Need, When You Need It. Instantly.", <FaFileAlt />],
+["Your Personal Command Center for Success.", <FaChartBar />],
+["Learning, Made Visual. Learning, Made Easy.", <FaLayerGroup />],
+["Collaborate with the Best — Elevate Your Success.", <FaUsers />],
+["Keep Your Essential Files Secure, Always.", <FaLock />],
+["The Future of Studying, Tailored for You."]
+          ].map(([text, icon]) => (
               <FeatureItem key={text}>
-                <IconWrapper>{icon}</IconWrapper>{text}
+                  <IconWrapper>{icon}</IconWrapper>{text}
               </FeatureItem>
-            ))}
-          </FeatureList>
+          ))}
+      </FeatureList>
   
-          <CallToAction>
-            You’ve seen the future of studying. <br />
-            <strong>Now it's your turn to unlock it.</strong> <br />
-            <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
-              Join the students who are no longer guessing — they’re dominating.
-            </span>
-          </CallToAction>
+      <CallToAction>
+          The future of studying is here.  
+          <strong>Unlock your edge.</strong>  
+          <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
+              Join those who don't just study — they dominate.
+          </span>
+      </CallToAction>
   
-          <Button style={{ marginTop: "2.5rem" }} onClick={handleNext}>
-            See Plans
-          </Button>
-        </PageWrapper>
-      )}
+      <Button style={{ marginTop: "2.5rem" }} onClick={handleNext}>
+          Unlock Your Potential — See Plans
+      </Button>
+  </PageWrapper>
   
-      {step === 2 && (
+    )}
+
+    {step === 2 && (
         <ScrollContent ref={scrollRef}>
-          <SubscriptionContainer>
-            <Title>Your Edge Begins Here</Title>
-            <Subtitle>Precision-crafted for students who expect more from themselves — and get it.</Subtitle>
-  
-            <Plans>
-            <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
-  <h4>First Step to Mastery</h4>
-  <p>₹15/day</p>
-  <SmallText>Experience premium. No commitments.</SmallText>
-</PlanBox>
+            <SubscriptionContainer>
+                <Title>Your Edge Begins Here</Title>
+                <Subtitle>For students who expect more — and achieve it.</Subtitle>
 
-              <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-  <BestOfferTag>Exclusive Value</BestOfferTag>
-  <h4>Lead Without Limits</h4>
-  <p>
-    ₹99/month
-  </p>
-  <SmallText>Full access. Effortless excellence.</SmallText>
-</PlanBox>
+                <Plans>
+                    <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+                        <h4>First Step to Mastery</h4>
+                        <p>₹15/day</p>
+                        <SmallText>No commitment. Just results.</SmallText>
+                    </PlanBox>
 
-  
-<PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-  <h4>Own Your Week</h4>
-  <p>₹39/week</p>
-  <SmallText>Focus. Achieve. Repeat.</SmallText>
-</PlanBox>
+                    <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+                        <BestOfferTag>Exclusive Value</BestOfferTag>
+                        <h4>Lead Without Limits</h4>
+                        <p>₹99/month</p>
+                        <SmallText>Full access. Effortless excellence.</SmallText>
+                    </PlanBox>
 
-            </Plans>
-  
-            {isPremium ? (
-      <Button disabled>You have Premium! 🔥</Button>    
-     ) : (
-        <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button> 
-            )}
-  
-            <Link to='/help'>
-              <Footer>Need Help?</Footer>
-            </Link>
-          </SubscriptionContainer>
+                    <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+                        <h4>Own Your Week</h4>
+                        <p>₹39/week</p>
+                        <SmallText>Focused. Achieved. Repeated.</SmallText>
+                    </PlanBox>
+                </Plans>
+
+                {isPremium ? (
+                    <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button>
+                  ) : (
+                    <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button>
+                )}
+
+                <Link to='/help'>
+                    <Footer>Need Help?</Footer>
+                </Link>
+            </SubscriptionContainer>
         </ScrollContent>
-      )}
-    </Wrapper>
+    )}
+</Wrapper>
+
   );
   
 };
