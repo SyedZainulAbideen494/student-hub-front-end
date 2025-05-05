@@ -1,4 +1,4 @@
-/* Apple-Like Minimal Premium Glassmorphism UI */
+/* 🌌 General Styles - Dark Theme with Glassmorphism */
 .quiz-container__new__ui__Ai__gen__Quiz {
     max-width: 480px;
     margin: 60px auto;
@@ -7,11 +7,23 @@
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
     border-radius: 24px;
+    width: 80%;
     box-shadow: 0px 15px 40px rgba(0, 0, 0, 0.45);
     text-align: center;
     font-family: "SF Pro Display", sans-serif;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s ease-in-out;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Header */
@@ -19,6 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .back-button__new__ui__Ai__gen__Quiz {
@@ -28,18 +41,22 @@
     color: #bbb;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    transform: scale(1);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .back-button__new__ui__Ai__gen__Quiz:hover {
     color: #fff;
+    transform: scale(1.1);
 }
 
 /* Title */
 .title__new__ui__Ai__gen__Quiz {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 20px;
     color: #f5f5f5;
+    letter-spacing: 1px;
 }
 
 /* Input Groups */
@@ -48,12 +65,14 @@
     flex-direction: column;
     text-align: left;
     margin-bottom: 18px;
+    position: relative;
 }
 
 .input-group__new__ui__Ai__gen__Quiz label {
     font-weight: 600;
     margin-bottom: 6px;
     color: #ccc;
+    transition: color 0.3s ease;
 }
 
 .input-group__new__ui__Ai__gen__Quiz input {
@@ -65,12 +84,17 @@
     background: rgba(40, 40, 40, 0.5);
     box-shadow: inset 0px 5px 12px rgba(0, 0, 0, 0.2);
     color: #f0f0f0;
+    outline: none;
 }
 
 .input-group__new__ui__Ai__gen__Quiz input:focus {
     border-color: #888;
-    outline: none;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+.input-group__new__ui__Ai__gen__Quiz input::placeholder {
+    color: #999;
+    font-style: italic;
 }
 
 /* Buttons */
@@ -87,6 +111,7 @@
     letter-spacing: 0.3px;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.4);
     transition: 0.2s ease-in-out;
+    transform: scale(1);
 }
 
 .generate-button__new__ui__Ai__gen__Quiz:disabled,
@@ -94,6 +119,11 @@
     background: #444;
     color: #888;
     box-shadow: none;
+}
+
+.generate-button__new__ui__Ai__gen__Quiz:hover,
+.generate-pdf-button__new__ui__Ai__gen__Quiz:hover {
+    transform: scale(1.05);
 }
 
 /* Locked Message */
@@ -105,16 +135,19 @@
     font-weight: 500;
     text-align: center;
     color: #bbb;
+    animation: slideIn 0.5s ease-out;
 }
 
-.locked-message__new__ui__Ai__gen__Quiz button {
-    background: #444;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
+/* Slide-in animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* Premium Lock Message */
@@ -125,6 +158,11 @@
     border-radius: 12px;
     font-weight: 500;
     color: #ddd;
+    transition: background 0.3s ease-in-out;
+}
+
+.premium-lock-message__new__ui__Ai__gen__Quiz:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* Error Message */
@@ -133,6 +171,27 @@
     font-weight: 600;
     margin-top: 12px;
     font-size: 15px;
+    text-align: center;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Shake animation */
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 /* File Input */
@@ -156,6 +215,11 @@
     font-weight: 600;
     font-size: 15px;
     color: #eee;
+    transition: color 0.3s ease;
+}
+
+.file-input__new__ui__Ai__gen__Quiz:hover span {
+    color: #fff;
 }
 
 .selected-file__new__ui__Ai__gen__Quiz {
