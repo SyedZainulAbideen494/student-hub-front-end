@@ -116,6 +116,7 @@ const GenerateAssignment = () => {
           My Assignments
         </button>
       </div>
+      <FooterNav/>
     </div>
   );
 };
