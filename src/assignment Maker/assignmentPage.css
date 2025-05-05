@@ -14,10 +14,9 @@
   left: 50%;
   transform: translateX(-50%); /* Center the header horizontally */
   width: 80%; /* Reduced width to allow centering */
-  padding: 15px 20px;
+  padding: 5px 20px;
   background: rgba(255, 255, 255, 0.1); /* Light glass effect */
   border-radius: 25px; /* Rounded corners */
-  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px); /* Glass-like blur */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for floating effect */
   display: flex;
@@ -162,7 +161,7 @@
 /* 📱 Responsive Design */
 @media (max-width: 768px) {
   .assignment-header__assignment__gen__page {
-    padding: 15px;
+    padding: 9px;
   }
 
   .back-btn__assignment__gen__page,
