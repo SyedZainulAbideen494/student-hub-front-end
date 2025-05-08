@@ -6,7 +6,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const steps = [
   {
-    question: "Which of these topics do you enjoy the most? (Select up to 3)",
+    question: "Which of these topics do you enjoy the most? (Select up to 4)",
     type: "multi",
     key: "interests",
     options: [
@@ -14,7 +14,7 @@ const steps = [
       "💼 Business & Management", "⚖️ Law & Politics", "🧠 Psychology & Mind",
       "🧪 Science & Research", "✈️ Travel & Cultures", "🎥 Media & Content Creation"
     ],
-    max: 3
+    max: 4
   },
   {
     question: "What are your strongest natural abilities?",
@@ -24,7 +24,7 @@ const steps = [
       "🧠 Logical Thinking", "🗣 Communication", "🎯 Focus & Discipline",
       "🎨 Creativity", "👥 Empathy", "🔬 Attention to Detail", "🛠 Problem-Solving"
     ],
-    max: 3
+    max: 4
   },
   {
     question: "Which of these best describes you?",
@@ -35,7 +35,7 @@ const steps = [
       "👑 I like leading others", "🎯 I’m a perfectionist",
       "💡 I love experimenting and learning new things"
     ],
-    max: 3
+    max: 4
   },
   {
     question: "What motivates you the most?",
@@ -45,7 +45,7 @@ const steps = [
       "💰 High earning potential", "📈 Growth & success", "🧘 Work-life balance",
       "🌍 Making a difference", "💡 Innovation & creativity", "🔐 Job security"
     ],
-    max: 3
+    max: 4
   },
   {
     question: "How do you like to study?",
@@ -55,7 +55,7 @@ const steps = [
       "📖 Reading theory deeply", "🧪 Hands-on learning", "🗣 Group discussions",
       "👨‍🏫 Visual or video-based", "🧠 Trial-and-error by doing"
     ],
-    max: 3
+    max: 4
   },
   {
     question: "Rate yourself (1-5): Confidence, Discipline, Social Skills, Curiosity, Patience",

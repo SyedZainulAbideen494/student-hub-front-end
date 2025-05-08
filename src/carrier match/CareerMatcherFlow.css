@@ -58,7 +58,7 @@ font-size: 15px;
 transition: all 0.3s;
 }
 
-.option__Flow__Carrier__choose__flow:hover,
+
 .selected__Flow__Carrier__choose__flow {
 background: var(--accent-glow);
 border-color: var(--accent);
