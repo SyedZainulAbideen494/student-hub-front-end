@@ -128,7 +128,7 @@ const CareerMatcherFlow = () => {
     
             // Now navigate using the career_match_id
             const careerMatchId = data.career_match_id; // Use career match ID from response
-            navigate(`/career/${careerMatchId}`); // Redirect to the career result page using the match ID
+            navigate(`/carrier/${careerMatchId}`); // Redirect to the career result page using the match ID
     
         } catch (err) {
             console.error("Submission error:", err);
