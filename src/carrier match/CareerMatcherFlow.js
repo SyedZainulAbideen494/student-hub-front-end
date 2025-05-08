@@ -10,30 +10,70 @@ const steps = [
     type: "multi",
     key: "interests",
     options: [
-      "🧬 Biology & Health", "💻 Technology & Coding", "🎨 Design & Art",
-      "💼 Business & Management", "⚖️ Law & Politics", "🧠 Psychology & Mind",
-      "🧪 Science & Research", "✈️ Travel & Cultures", "🎥 Media & Content Creation"
+      "🧬 Health Biology", 
+      "💻 Technology & Coding", 
+      "🎨 Design & Art", 
+      "💼 Business & Management", 
+      "⚖️ Law & Politics", 
+      "🧠 Psychology & Mind", 
+      "🧪 Science & Research", 
+      "✈️ Travel & Cultures", 
+      "🎥 Media & Content Creation", 
+      "🌿 Environmental Science", 
+      "🔬 Medical Research", 
+      "🩺 Healthcare & Medicine", 
+      "🏛️ History & Philosophy", 
+      "📚 Literature & Writing", 
+      "🎮 Gaming & Interactive Media", 
+      "🎶 Music & Performing Arts", 
+      "🤖 Artificial Intelligence & Robotics"
     ],
     max: 4
-  },
+  },  
   {
     question: "What are your strongest natural abilities?",
     type: "multi",
     key: "skills",
     options: [
-      "🧠 Logical Thinking", "🗣 Communication", "🎯 Focus & Discipline",
-      "🎨 Creativity", "👥 Empathy", "🔬 Attention to Detail", "🛠 Problem-Solving"
+      "🧠 Logical Thinking", 
+      "🗣 Communication", 
+      "🎯 Focus & Discipline", 
+      "🎨 Creativity", 
+      "👥 Empathy", 
+      "🔬 Attention to Detail", 
+      "🛠 Problem-Solving", 
+      "⚡ Adaptability", 
+      "💡 Innovation", 
+      "🧘‍♂️ Self-Motivation", 
+      "💭 Critical Thinking", 
+      "⚖️ Decision-Making", 
+      "🔑 Leadership", 
+      "📝 Organization", 
+      "🕵️‍♂️ Analytical Skills", 
+      "🤝 Teamwork & Collaboration"
     ],
     max: 4
-  },
+  },  
   {
     question: "Which of these best describes you?",
     type: "multi",
     key: "personality",
     options: [
-      "🧍 I prefer working alone", "🧑‍🤝‍🧑 I enjoy team collaboration",
-      "👑 I like leading others", "🎯 I’m a perfectionist",
-      "💡 I love experimenting and learning new things"
+      "🧍 I prefer working alone", 
+      "🧑‍🤝‍🧑 I enjoy team collaboration", 
+      "👑 I like leading others", 
+      "🎯 I’m a perfectionist", 
+      "💡 I love experimenting and learning new things", 
+      "⚡ I thrive in fast-paced environments", 
+      "🧘‍♂️ I value peace and balance", 
+      "🎨 I enjoy creative problem-solving", 
+      "🛠 I’m hands-on and love building things", 
+      "🧠 I enjoy deep thinking and analysis", 
+      "🌍 I care about making a positive impact", 
+      "🕵️‍♂️ I’m highly observant and detail-oriented", 
+      "🎤 I’m comfortable with public speaking", 
+      "🌱 I believe in continuous personal growth", 
+      "⚖️ I prefer to take a logical, calculated approach"
     ],
     max: 4
   },
@@ -42,8 +82,20 @@ const steps = [
     type: "multi",
     key: "motivations",
     options: [
-      "💰 High earning potential", "📈 Growth & success", "🧘 Work-life balance",
-      "🌍 Making a difference", "💡 Innovation & creativity", "🔐 Job security"
+      "💰 High earning potential", 
+      "📈 Growth & success", 
+      "🧘 Work-life balance", 
+      "🌍 Making a difference", 
+      "💡 Innovation & creativity", 
+      "🔐 Job security", 
+      "🛠 Building something meaningful", 
+      "👥 Helping others", 
+      "🎯 Achieving personal goals", 
+      "💎 Recognition & status", 
+      "⏳ Time freedom", 
+      "🌱 Personal development & learning", 
+      "🔄 Stability & consistency", 
+      "🚀 Impacting the world on a large scale"
     ],
     max: 4
   },
@@ -52,11 +104,20 @@ const steps = [
     type: "multi",
     key: "learning",
     options: [
-      "📖 Reading theory deeply", "🧪 Hands-on learning", "🗣 Group discussions",
-      "👨‍🏫 Visual or video-based", "🧠 Trial-and-error by doing"
+      "📖 Reading theory deeply", 
+      "🧪 Hands-on learning", 
+      "🗣 Group discussions", 
+      "👨‍🏫 Visual or video-based", 
+      "🧠 Trial-and-error by doing", 
+      "📝 Writing and note-taking", 
+      "🎧 Listening to podcasts or lectures", 
+      "💡 Problem-solving with examples", 
+      "📚 Self-paced online courses", 
+      "🌍 Real-world applications"
     ],
     max: 4
-  },
+  }
+  ,
   {
     question: "Rate yourself (1-5): Confidence, Discipline, Social Skills, Curiosity, Patience",
     type: "rating",
