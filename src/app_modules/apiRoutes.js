@@ -239,5 +239,7 @@ export const API_ROUTES = {
   generateImage: `${API_URL}/generate-image`,
   getExamModePack: `${API_URL}/api/exam-mode`,
   fetchExamPacks: `${API_URL}/get-packs`,
-  examModeGenerate: `${API_URL}/api/exam-mode/generate`
+  examModeGenerate: `${API_URL}/api/exam-mode/generate`,
+  displayAiCareerResult: `${API_URL}/api/career-ai/result`,
+  generateAiCareer: `${API_URL}/api/career-ai/recommendation`
 }

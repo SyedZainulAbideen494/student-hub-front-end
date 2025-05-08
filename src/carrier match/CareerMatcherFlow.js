@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './CareerMatcherFlow.css';
 import { useNavigate } from 'react-router-dom';
+import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const steps = [
   {
@@ -106,7 +107,7 @@ const CareerMatcherFlow = () => {
                 return;
             }
     
-            const res = await fetch('http://localhost:8080/api/career-ai/recommendation', {
+            const res = await fetch(API_ROUTES.generateAiCareer, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

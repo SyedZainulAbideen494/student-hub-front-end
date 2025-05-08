@@ -1,11 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import './displayCarrier.css';
-import templateImg from './2.png'; // Make sure this path is correct
+import templateImg from './2.png';
+import { API_ROUTES } from '../app_modules/apiRoutes';
+import { FaArrowLeft, FaDownload } from 'react-icons/fa';
 
 const CareerResult = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [careerResult, setCareerResult] = useState(null);
   const [loading, setLoading] = useState(true);
   const imageRef = useRef();
@@ -13,17 +16,16 @@ const CareerResult = () => {
   useEffect(() => {
     const fetchCareerResult = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/api/career-ai/result/${id}`);
+        const res = await fetch(`${API_ROUTES.displayAiCareerResult}/${id}`);
         const data = await res.json();
-        if (data.error) {
-          console.error('Error:', data.error);
-        } else {
+        if (!data.error) {
           setCareerResult(data);
         }
       } catch (err) {
         console.error('Error fetching career result:', err);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchCareerResult();
@@ -37,18 +39,20 @@ const CareerResult = () => {
     link.click();
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (!careerResult) return <div>No career result found.</div>;
+  if (loading) return <div className="career-result__carreir__result__page">Loading...</div>;
+  if (!careerResult) return <div className="career-result__carreir__result__page">No career result found.</div>;
 
   return (
     <>
       <div className="career-result__carreir__result__page">
+        <div className="topbar__carreir__result__page">
+          <button onClick={() => navigate(-2)} className="back-btn__carreir__result__page">
+            <FaArrowLeft />
+          </button>
+        </div>
+
         <div className="career-card__carreir__result__page">
-          <div
-            className="career-header__carreir__result__page"
-            style={{ backgroundColor: careerResult.background_image }}
-          >
-            <div className="emoji__carreir__result__page">{careerResult.emoji}</div>
+          <div className="career-header__carreir__result__page" style={{ backgroundColor: careerResult.background_image }}>
             <h1 className="career-title__carreir__result__page">{careerResult.career}</h1>
             <h2 className="catchy__carreir__result__page">{careerResult.catchy_title}</h2>
             <p className="reason__carreir__result__page">{careerResult.reason}</p>
@@ -65,73 +69,62 @@ const CareerResult = () => {
             </div>
 
             <div className="share__carreir__result__page">
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(`${careerResult.career}: ${careerResult.hashtag}`);
-                  alert('Copied to clipboard!');
-                }}
-              >
-                📋 Copy & Share
-              </button>
               <p className="hashtag__carreir__result__page">{careerResult.hashtag}</p>
-              <button onClick={downloadImage}>📥 Download Image</button>
+              <button onClick={downloadImage}>
+                <FaDownload style={{ marginRight: '8px' }} />
+                Download Image
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div
-  ref={imageRef}
-  style={{
-    width: '1500px',
-    height: '1500px',
-    backgroundImage: `url(${templateImg})`,
-    backgroundSize: 'cover',
-    color: 'white',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '100px 50px',
-    textAlign: 'center',
-    fontFamily: "'Agrandir', sans-serif", // Font update
-  }}
->
-  <h1
-    style={{
-      fontSize: '120px', // Relative font size based on the viewport width
-      marginTop: '200px',
-      marginRight: '10px',
-      fontWeight: '700',
-    }}
-  >
-    {careerResult.career}
-  </h1>
+      {/* Hidden HTML2Canvas image */}
+      <div style={{ position: 'absolute', left: '-9999px', top: 0 }}>
+        <div
+          ref={imageRef}
+          style={{
+            width: '1500px',
+            height: '1500px',
+            backgroundImage: `url(${templateImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            color: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '100px 50px',
+            textAlign: 'center',
+            fontFamily: "'Agrandir', sans-serif",
+          }}
+        >
+          <h1 style={{
+            fontSize: careerResult.career.length > 20 ? '80px' : '120px',
+            lineHeight: careerResult.career.length > 20 ? '90px' : '130px',
+            marginTop: careerResult.career.length > 20 ? '0px' : '200px',
+            fontWeight: '700',
+            width: '70%',
+          }}>
+            {careerResult.career}
+          </h1>
 
-  <p
-    style={{
-      fontSize: '55px', // Smaller font size for quote
-      fontStyle: 'italic',
-      marginTop: '100px',
-      fontWeight: '700',
-      width: '70%'
-    }}
-  >
-    “{careerResult.quote}”
-  </p>
+          <p style={{
+            fontSize: careerResult.career.length > 20 ? '36px' : '55px',
+            lineHeight: careerResult.career.length > 20 ? '44px' : '62px',
+            fontStyle: 'italic',
+            marginTop: careerResult.career.length > 20 ? '80px' : '100px',
+            fontWeight: '700',
+            width: '70%',
+          }}>
+            “{careerResult.quote}”
+          </p>
 
-  <p
-    style={{
-      fontSize: '25px', // Even smaller for hashtags
-      marginTop: 'auto',
-      marginTop: '50px',
-      fontWeight: '400',
-    }}
-  >
-    {careerResult.hashtag}
-  </p>
-</div>
-
+          <p style={{ fontSize: '25px', marginTop: '50px', fontWeight: '400' }}>
+            {careerResult.hashtag}
+          </p>
+        </div>
+      </div>
     </>
   );
 };

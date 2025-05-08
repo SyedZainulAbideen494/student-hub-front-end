@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard, FaNewspaper, FaBookReader } from 'react-icons/fa';
+import { FaUsers, FaFlask, FaCalculator, FaStickyNote, FaCalendarAlt, FaBars, FaSignOutAlt, FaClock, FaMusic, FaStream, FaUser, FaSearch, FaGem, FaQuestionCircle, FaTrophy, FaBook, FaToolbox, FaFolder, FaGlobe, FaChartLine, FaFileAlt, FaCrown, FaRegClipboard, FaNewspaper, FaBookReader, FaUserGraduate } from 'react-icons/fa';
 import { MdAssessment, MdAssignment, MdCampaign, MdDashboard } from 'react-icons/md'; // Material Dashboard icon
 import { HiBookOpen } from 'react-icons/hi';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -99,6 +99,13 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/exam-mode' ? 'active' : ''}`}>
                         <FaBookReader className="icon-footer-nav" />
                         <span className="btn-label">Exam Mode</span>
+                        <span className='new-label-footer-nav'>new</span>
+                    </button>
+                </Link>
+                <Link to='/carrier/flow' style={{ textDecoration: 'none' }}>
+                    <button className={`nav-btn-footer-nav ${location.pathname === '/carrier/flow' ? 'active' : ''}`}>
+                        <FaUserGraduate className="icon-footer-nav" />
+                        <span className="btn-label">CareerSense</span>
                         <span className='new-label-footer-nav'>new</span>
                     </button>
                 </Link>
@@ -209,14 +216,6 @@ const FooterNav = () => {
     </button>
 </Link>
 
-                
-{/* New Monthly Stats Button */}
-<Link to='/monthly-stats' style={{ textDecoration: 'none' }}>
-    <button className={`nav-btn-footer-nav ${location.pathname === '/monthly-stats' ? 'active' : ''}`}>
-        <BsFileBarGraph className="icon-footer-nav" /> {/* Icon of your choice */}
-        <span className="btn-label">Monthly Stats</span>
-    </button>
-</Link>
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
         </div>
