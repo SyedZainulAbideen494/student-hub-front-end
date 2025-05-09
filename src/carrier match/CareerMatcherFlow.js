@@ -6,7 +6,7 @@ import { API_ROUTES } from '../app_modules/apiRoutes';
 
 const steps = [
   {
-    question: "Which of these topics do you enjoy the most? (Select up to 4)",
+    question: "Which of these topics do you enjoy the most?",
     type: "multi",
     key: "interests",
     options: [
@@ -140,9 +140,9 @@ const CareerMatcherFlow = () => {
   
       if (alreadySelected) {
         setAnswers(prev => ({ ...prev, [current.key]: selected.filter(o => o !== option) }));
-      } else if (selected.length < current.max) {
+      } else {
         setAnswers(prev => ({ ...prev, [current.key]: [...selected, option] }));
-      }
+      }      
     };
   
     const handleRating = (key, value) => {
