@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa';
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import TestimonialsSection from "./testimonials";
+import './Welcome.css'
 
 const Wrapper = styled.div`
   background: #0D0D0D
@@ -391,55 +392,33 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   return (
     <Wrapper>
     {step === 1 && (
-      <PageWrapper>
-      <Title2>Redefine How You Study. Elevate Your Future.</Title2>
-  
-      <Badge>Exclusive to Edusify</Badge>
-      <Subtitle2>
-          The study app that blends power, elegance, and simplicity — empowering you to study smarter, not harder.
-      </Subtitle2>
-  
-      <FeatureList>
-          {[
-["Master Every Subject, Effortlessly.", <FaMagic />],
-["Experience the Power of Instant Clarity.", <FaBrain />],
-["Turn Every PDF into a Knowledge Gateway.", <FaFilePdf />],
-["Feel the Confidence of Expert Notes in Seconds.", <FaClipboardCheck />],
-["Study Plans as Ambitious as Your Dreams.", <FaTasks />],
-["Unlock Focus, One Task at a Time.", <FaRegClock />],
-["Your Perfect Study Path, Powered by AI.", <FaLightbulb />],
-["See Your Progress, Feel the Achievement.", <FaChartLine />],
-["Prepare Like a Pro — NEET, JEE, and Beyond.", <FaStopwatch />],
-["A Complete Study Guide That Adapts to You.", <FaBookOpen />],
-["Assignments Made Simple. Time to Breathe.", <FaFileInvoice />],
-["Inspire Creativity in Your Work with AI Visuals.", <FaImage />],
-["Notes That Reflect Your Best Work, Effortlessly.", <FaStickyNote />],
-["Find What You Need, When You Need It. Instantly.", <FaFileAlt />],
-["Your Personal Command Center for Success.", <FaChartBar />],
-["Learning, Made Visual. Learning, Made Easy.", <FaLayerGroup />],
-["Collaborate with the Best — Elevate Your Success.", <FaUsers />],
-["Keep Your Essential Files Secure, Always.", <FaLock />],
-["The Future of Studying, Tailored for You."]
-          ].map(([text, icon]) => (
-              <FeatureItem key={text}>
-                  <IconWrapper>{icon}</IconWrapper>{text}
-              </FeatureItem>
-          ))}
-      </FeatureList>
-  
-      <CallToAction>
-          The future of studying is here.  
-          <strong>Unlock your edge.</strong>  
-          <span style={{ fontSize: '0.9rem', color: '#2E1A47' }}>
-              Join those who don't just study — they dominate.
-          </span>
-      </CallToAction>
-  
-      <Button style={{ marginTop: "2.5rem" }} onClick={handleNext}>
-          Unlock Your Potential — See Plans
-      </Button>
-  </PageWrapper>
-  
+ <div className="wrapper__Welcome__Premium__page">
+ <div className="card__Welcome__Premium__page">
+   <h1 className="heading__Welcome__Premium__page">Edusify</h1>
+
+   <p className="tagline__Welcome__Premium__page">
+     The future of learning. One app. Zero distractions.
+   </p>
+
+   <div className="statements__Welcome__Premium__page">
+     <span>Built for focus.</span>
+     <span>Powered by AI.</span>
+     <span>Designed like no other.</span>
+   </div>
+
+   <p className="cta__Welcome__Premium__page">
+     Study plans. Notes. Quizzes. Flashcards. Deadlines. Friends. All in one seamless space.
+   </p>
+
+   <p className="footnote__Welcome__Premium__page">
+     You don't switch tabs in the future.
+   </p>
+
+   <button className="btn__Welcome__Premium__page" onClick={handleNext}>
+     Get Started
+   </button>
+ </div>
+</div>
     )}
 
     {step === 2 && (
