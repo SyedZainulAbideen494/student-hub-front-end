@@ -11,6 +11,7 @@ import {
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import TestimonialsSection from "./testimonials";
 import './Welcome.css'
+import Welcome from "./welcome";
 
 const Wrapper = styled.div`
   background: #0D0D0D
@@ -392,34 +393,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   return (
     <Wrapper>
     {step === 1 && (
-<div className="wrapper__Welcome__Premium__page">
-  <div className="card__Welcome__Premium__page">
-    <h1 className="heading__Welcome__Premium__page">Edusify</h1>
-
-    <p className="tagline__Welcome__Premium__page">
-      The future of learning. One app. Zero distractions.
-    </p>
-
-    <div className="statements__Welcome__Premium__page">
-      <span>Built for focus.</span>
-      <span>Powered by AI.</span>
-      <span>Designed like no other.</span>
-    </div>
-
-    <p className="cta__Welcome__Premium__page">
-      Study plans. Notes. Quizzes. Flashcards. Deadlines. Friends. All in one seamless space.
-    </p>
-
-    <p className="footnote__Welcome__Premium__page">
-      You don’t switch tabs in the future.
-    </p>
-
-    <button className="btn__Welcome__Premium__page" onClick={handleNext}>
-      Get Started
-    </button>
-  </div>
-</div>
-
+      <Welcome handleNext={handleNext} />
     )}
 
     {step === 2 && (

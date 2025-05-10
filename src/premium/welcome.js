@@ -1,21 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Welcome.css';
 
-const Welcome = () => {
+const Welcome = ({ handleNext }) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => {
+      handleNext(); // triggers parent callback after loading
+    }, 3000);
+  };
+
+  if (loading) {
+    return (
+  <div className="wrapper____loading__premium___Page">
+  <div className="glow__orb____loading__premium___Page" />
+  <h1 className="loading__text____loading__premium___Page">
+    Launching your learning space<span className="dot__anim____loading__premium___Page" />
+  </h1>
+</div>
+
+    );
+  }
+
   return (
-    <div className="welcome__wrapper">
-    <div className="welcome__card">
-      <h2 className="welcome__tagline">Reimagine Learning</h2>
-      <h1 className="welcome__heading">Welcome to Edusify</h1>
-      <p className="welcome__desc">
-        Precision. Clarity. Simplicity.<br/>
-        Edusify isn’t just another study app — it’s a statement. A space where your learning feels effortless, elegant, and ahead of its time.
-      </p>
-      <a href="https://edusify-download.vercel.app/">
-        <button className="welcome__btn">Get Started</button>
-      </a>
+    <div className="wrapper__Welcome__Premium__page">
+      <div className="card__Welcome__Premium__page">
+        <h1 className="heading__Welcome__Premium__page">Edusify</h1>
+
+        <p className="tagline__Welcome__Premium__page">
+          The future of learning. One app. Zero distractions.
+        </p>
+
+        <div className="statements__Welcome__Premium__page">
+          <span>Built for focus.</span>
+          <span>Powered by AI.</span>
+          <span>Designed like no other.</span>
+        </div>
+
+        <p className="cta__Welcome__Premium__page">
+          Study plans. Notes. Quizzes. Flashcards. Deadlines. Friends. All in one seamless space.
+        </p>
+
+        <p className="footnote__Welcome__Premium__page">
+          You don’t switch tabs in the future.
+        </p>
+
+        <button className="btn__Welcome__Premium__page" onClick={handleClick}>
+          Get Started
+        </button>
+      </div>
     </div>
-  </div>
   );
 };
 
