@@ -424,7 +424,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 </Plans>
 
                 {isPremium ? (
-                    <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button>
+ <Button disabled>You have Premium! 🔥</Button>
                   ) : (
                     <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button>
                 )}

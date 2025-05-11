@@ -5,10 +5,9 @@ const Welcome = ({ handleNext }) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = () => {
-    setLoading(true);
-    setTimeout(() => {
+
       handleNext(); // triggers parent callback after loading
-    }, 3000);
+
   };
 
   if (loading) {
