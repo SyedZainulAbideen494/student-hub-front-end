@@ -829,14 +829,6 @@ const SparkleIcon = () => (
             </div>
           </button>
 
-          {/* Edusify V1 - Vision Model */}
-          <Link to="/ai/image" style={dropdownItemStyle}>
-            {getSparkleIcon("Edusify V1")}
-            <div>
-              <b>Edusify V1</b>
-              <p style={dropdownDescStyle}>Vision model for image generation and visual learning.</p>
-            </div>
-          </Link>
         </div>
       )}
     </div>

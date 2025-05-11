@@ -135,3 +135,20 @@
     max-width: 320px;
   }
 }
+
+
+.copo__btn__ai__selection.locked {
+  opacity: 0.6;
+  position: relative;
+}
+
+.copo__btn__content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.copo__lock__icon {
+  font-size: 16px;
+  color: #f5c518;
+}
