@@ -116,12 +116,14 @@ const FooterNav = () => {
                     </button>
                 </Link>
 
-                <Link to='/flashcard' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/flashcard' ? 'active' : ''}`}>
-                        <FaStickyNote className="icon-footer-nav" />
-                        <span className="btn-label">Flashcards</span>
-                    </button>
-                </Link>
+       <LockButton
+    to='/flashcard'
+    icon={<FaStickyNote className="icon-footer-nav" />}
+    label="Flashcards"
+    locked={!isPremium}
+    isActive={location.pathname === '/flashcard'}
+/>
+
 
                 <Link to='/room' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/room' ? 'active' : ''}`}>
