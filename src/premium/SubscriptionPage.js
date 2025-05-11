@@ -298,11 +298,11 @@ const PaymentComponent = () => {
     // Set pricing based on selected plan
 let planAmount = 0;
 if (selectedPlan === "daily") {
-  planAmount = 15; // ₹8 → 800 paise
+  planAmount = 39; // ₹8 → 800 paise
 } else if (selectedPlan === "weekly") {
-  planAmount = 39;
-} else if (selectedPlan === "monthly") {
   planAmount = 99;
+} else if (selectedPlan === "monthly") {
+  planAmount = 299;
 }
 
 const { data } = await axios.post(API_ROUTES.getPremium, {
@@ -405,20 +405,20 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 <Plans>
                     <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
                         <h4>First Step to Mastery</h4>
-                        <p>₹15/day</p>
+                        <p>₹39/day</p>
                         <SmallText>No commitment. Just results.</SmallText>
                     </PlanBox>
 
                     <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
                         <BestOfferTag>Exclusive Value</BestOfferTag>
                         <h4>Lead Without Limits</h4>
-                        <p>₹99/month</p>
+                        <p>₹299/month</p>
                         <SmallText>Full access. Effortless excellence.</SmallText>
                     </PlanBox>
 
                     <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
                         <h4>Own Your Week</h4>
-                        <p>₹39/week</p>
+                        <p>₹99/week</p>
                         <SmallText>Focused. Achieved. Repeated.</SmallText>
                     </PlanBox>
                 </Plans>
