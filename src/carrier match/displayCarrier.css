@@ -140,3 +140,30 @@ body {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.instagram-story-btn__carreir__result__page {
+  background: #f0f0f0;
+  color: #262626;
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.instagram-story-btn__carreir__result__page:hover {
+  background: #f0f0f0;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.instagram-story-btn__carreir__result__page svg {
+  font-size: 22px;
+}
