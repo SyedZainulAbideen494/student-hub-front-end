@@ -37,12 +37,12 @@ const CreateNotesPage = () => {
   }, []);
 
 
-  return (
+     return (
     <div className="create__notes__type__page__container">
       <div className="create__notes__type__page__header-container">
         <button className="create__notes__type__page__back-btn" onClick={handleBackClick}>
           <FaArrowLeft className="create__notes__type__page__back-icon" />
-        </button><br/>
+        </button>
         <h1 className="create__notes__type__page__header">Create Your Notes</h1>
       </div>
 
@@ -51,40 +51,32 @@ const CreateNotesPage = () => {
       </p>
 
       <div className="create__notes__type__page__options">
-      
-      
         {isPremium ? (
           <button
-          className="create__notes__type__page__option"
-          onClick={() => handleOptionClick('ai')}
-        >
-          AI Generated Notes
-        </button>
-            ) : (
-              <button 
-                className="create__notes__type__page__option"
-                disabled
-              >
-                <FaLock className="lock-icon" /> AI Generated Notes<span> Premium</span>
-              </button>
-            )}
+            className="create__notes__type__page__option"
+            onClick={() => handleOptionClick('ai')}
+          >
+            AI Generated Notes
+          </button>
+        ) : (
+          <button className="create__notes__type__page__option" disabled>
+            <FaLock className="lock-icon" /> AI Generated Notes<span> Premium</span>
+          </button>
+        )}
 
         {isPremium ? (
-         <button
-         className="create__notes__type__page__option"
-         onClick={() => handleOptionClick('pdf')}
-       >
-         PDF to Notes
-       </button>
-            ) : (
-              <button 
-                className="create__notes__type__page__option"
-                disabled
-              >
-                <FaLock className="lock-icon" /> PDF to Notes<span> Premium</span>
-              </button>
-            )}
-      
+          <button
+            className="create__notes__type__page__option"
+            onClick={() => handleOptionClick('pdf')}
+          >
+            PDF to Notes
+          </button>
+        ) : (
+          <button className="create__notes__type__page__option" disabled>
+            <FaLock className="lock-icon" /> PDF to Notes<span> Premium</span>
+          </button>
+        )}
+
         <button
           className="create__notes__type__page__option"
           onClick={() => handleOptionClick('manual')}

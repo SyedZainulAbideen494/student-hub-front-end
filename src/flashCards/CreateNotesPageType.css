@@ -1,108 +1,171 @@
-/* General container for the page */
+/* General Container with Smooth Glassmorphism */
 .create__notes__type__page__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  border-radius: 20px;
-  width: 70%;
-  max-width: 480px; /* Limit max width to give a more centered feel */
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Darker background to pop elements */
+  backdrop-filter: blur(20px); /* Slightly softer blur effect */
+  border-radius: 30px; /* More rounded edges for a polished look */
+  padding: 40px 20px;
+  width: 90%;
+  max-width: 600px;
   margin: auto;
-  background-color: #1c1c1e; /* Dark background */
-  color: white; /* Text color for contrast */
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.4); /* Enhanced shadow for more depth */
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
 }
 
-/* Header container for back button and title */
+/* Header Section */
 .create__notes__type__page__header-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  margin-bottom: 40px; /* Added more spacing between header and options */
+  margin-bottom: 20px;
 }
 
-/* Back button */
 .create__notes__type__page__back-btn {
-  background: transparent;
+  background: none;
   border: none;
+  color: #fff;
+  font-size: 26px;
   cursor: pointer;
-  margin-right: 15px; /* Reduced the margin slightly */
+  transition: transform 0.3s ease;
 }
 
 .create__notes__type__page__back-icon {
-  width: 24px;
-  height: 24px;
-  fill: white; /* Ensure icon is visible in dark mode */
+  font-size: 26px;
 }
 
-/* Title */
 .create__notes__type__page__header {
-  font-size: 24px;
-  font-weight: 600;
-  color: white; /* Title in white for contrast */
-  margin-top: 0;
-  margin-bottom: 0;
-  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  margin-left: 20px;
+  text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
 }
 
-/* Description text */
+/* Header and Back Button Animations */
+.create__notes__type__page__header-container:hover .create__notes__type__page__back-icon {
+  transform: translateX(-5px);
+}
+
+.create__notes__type__page__header {
+  transform: translateY(-5px);
+}
+
+/* Description below header */
 .create__notes__type__page__description {
-  font-size: 17px;
-  color: #aaa; /* Lighter grey for description */
+  font-size: 18px;
+  color: #f0f0f0;
+  margin-top: 15px;
   text-align: center;
-  margin-bottom: 40px;
-  font-weight: 300;
-  line-height: 1.5;
-  max-width: 350px; /* Limiting description width for cleaner look */
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Options container */
+.create__notes__type__page__description:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* Main Options Section */
 .create__notes__type__page__options {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 30px;
+  margin-top: 30px;
   width: 100%;
-  max-width: 400px; /* Limit width for cleaner presentation */
 }
 
-/* Option buttons */
+/* Each Option Button Style */
 .create__notes__type__page__option {
-  background-color: #242128; /* Apple-inspired dark grey */
-  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 20px;
+  padding: 18px 30px;
+  border-radius: 15px;
   border: none;
-  padding: 15px 25px;
-  font-size: 17px;
-  font-weight: 500;
-  border-radius: 50px;
-  width: 100%;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for dark theme */
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-}
-
-.create__notes__type__page__option:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(72, 209, 204, 0.8);
-}
-
-/* Minor touch-ups for better centering */
-.create__notes__type__page__container {
-  text-align: center; /* Ensure text is centered */
-  justify-content: center; /* Ensure content is vertically centered */
-}
-
-.create__notes__type__page__header-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
-  margin-bottom: 30px; /* Reduce space between header and options */
+  outline: none;
 }
 
-/* Increase spacing between options */
-.create__notes__type__page__options button {
-  margin-top: 15px;
+/* Hover Effects */
+.create__notes__type__page__option:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Disabled Option Button */
+.create__notes__type__page__option:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Lock Icon Styling */
+.lock-icon {
+  font-size: 22px;
+  color: #f5c518;
+}
+
+/* Premium Label */
+.create__notes__type__page__option span {
+  font-size: 16px;
+  color: #f5c518;
+  text-transform: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Animation for Buttons when Hovered */
+@keyframes glowAnimation {
+  0% {
+    background: rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.create__notes__type__page__option:hover {
+  animation: glowAnimation 1.5s infinite ease-in-out;
+}
+
+/* Smooth Background Animations */
+@keyframes smoothBgGlow {
+  0% {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.create__notes__type__page__option:hover {
+  animation: smoothBgGlow 1.5s infinite ease-in-out;
 }
