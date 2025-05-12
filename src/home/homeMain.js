@@ -154,7 +154,6 @@ const HomeMain = () => {
     <Fragment>
         <>
               <ScrollToTop/>
-          <SubscriptionRedirector/>
           <ReviewModal />
 
 <PremiumTeasePopup
