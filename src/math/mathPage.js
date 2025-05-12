@@ -177,7 +177,7 @@ const [dropdownOpen, setDropdownOpen] = useState(false);
         try {
           const convoResponse = await axios.post(API_ROUTES.checkConvoCountAi, { token });
       
-          if (convoResponse.data.convoCount >= 5) {
+          if (convoResponse.data.convoCount >= 2) {
             setChatHistory([
               ...newHistory,
               { role: "model", parts: [{ text: "You've reached the daily limit. Upgrade to Premium for unlimited chats!" }] },
