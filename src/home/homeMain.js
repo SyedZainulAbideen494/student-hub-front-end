@@ -139,22 +139,13 @@ const HomeMain = () => {
     logDailyLogin();
   }, []);
 
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-  
-    useEffect(() => {
-      window.scrollTo(0, 0); // Scrolls to top on every route change
-    }, [pathname]);
-  
-    return null;
-  };
+
   
 
   return (
     <Fragment>
         <>
-              <ScrollToTop/>
-          <ReviewModal />
+                  <ReviewModal />
 
 <PremiumTeasePopup
   isOpen={showPopup}
