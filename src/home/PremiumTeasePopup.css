@@ -1,0 +1,108 @@
+.overlay__noti__popup__Modal__premuium__tease__free {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay for focus */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.container__noti__popup__Modal__premuium__tease__free {
+  background: #111111; /* Black background for a sleek and minimal feel */
+  padding: 2.5rem 3rem;
+  border-radius: 16px; /* Subtle rounded corners */
+  width: 70%;
+  max-width: 480px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* Floating shadow */
+  animation: slideUp 0.5s ease-out;
+  color: #fff; /* White text for contrast */
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+  text-align: center;
+}
+
+.badge__noti__popup__Modal__premuium__tease__free {
+  background: #ffd700; /* Gold accent for exclusivity */
+  color: #111;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2); /* Glow effect for prestige */
+}
+
+.title__noti__popup__Modal__premuium__tease__free {
+  font-size: 1.8rem; /* Larger title for impact */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.body__noti__popup__Modal__premuium__tease__free {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+}
+
+.buttons__noti__popup__Modal__premuium__tease__free {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.unlockBtn__noti__popup__Modal__premuium__tease__free {
+  background: #ffd700; /* Gold to create urgency */
+  color: #111;
+  border: none;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 25px; /* Sleek, rounded edges */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3); /* Subtle glow effect */
+}
+
+.unlockBtn__noti__popup__Modal__premuium__tease__free:hover {
+  background: #ffcc00; /* Brighter gold on hover for urgency */
+  transform: translateY(-3px); /* Subtle lift effect */
+}
+
+.laterBtn__noti__popup__Modal__premuium__tease__free {
+  background: transparent;
+  color: #aaa;
+  border: 2px solid #444; /* Subtle border to differentiate */
+  font-weight: 500;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.laterBtn__noti__popup__Modal__premuium__tease__free:hover {
+  color: #fff; /* White text on hover to highlight */
+  transform: translateY(-3px); /* Subtle lift effect */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

@@ -28,11 +28,13 @@ import ExamTimeOffer from "../premium/modal/exam-time-modal";
 import SubscriptionRedirector from "../premium/SubscriptionRedirector";
 import PomodoroChallengeBannerPremium from "../Challenges/PomodoroChallengeBannerPremium";
 import GuideBanner from "../guides/neet/guideBanner";
+import PremiumTeasePopup from "./PremiumTeasePopup";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
  const [isAIDown, setIsAIDown] = useState(true)
  const [location, setLocation] = useState(null);
+ const [showPopup, setShowPopup] = useState(true);
  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -154,6 +156,14 @@ const HomeMain = () => {
               <ScrollToTop/>
           <SubscriptionRedirector/>
           <ReviewModal />
+
+<PremiumTeasePopup
+  isOpen={showPopup}
+  onClose={() => setShowPopup(false)}
+  onUpgrade={() => {
+   navigate('/subscription')
+  }}
+/>
           <HomeTopBoxes />
           <TodayEventsAndTasks />
           <FriendsDashboard />
