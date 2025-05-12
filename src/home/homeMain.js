@@ -145,8 +145,7 @@ const HomeMain = () => {
   return (
     <Fragment>
         <>
-                  <ReviewModal />
-
+        <ReviewModal />
 <PremiumTeasePopup
   isOpen={showPopup}
   onClose={() => setShowPopup(false)}
