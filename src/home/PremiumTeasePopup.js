@@ -63,21 +63,22 @@ const PremiumTeasePopup = ({ isOpen, onClose, onUpgrade }) => {
   if (!isOpen || isPremium || !popup) return null;
 
   return (
-    <div className="overlay__noti__popup__Modal__premuium__tease__free">
-      <div className="container__noti__popup__Modal__premuium__tease__free">
-        <div className="badge__noti__popup__Modal__premuium__tease__free">Premium</div>
-        <h2 className="title__noti__popup__Modal__premuium__tease__free">{popup.title}</h2>
-        <p className="body__noti__popup__Modal__premuium__tease__free">{popup.body}</p>
-        <div className="buttons__noti__popup__Modal__premuium__tease__free">
-          <button className="unlockBtn__noti__popup__Modal__premuium__tease__free" onClick={onUpgrade}>
-            Unlock Now – ₹299/month
-          </button>
-          <button className="laterBtn__noti__popup__Modal__premuium__tease__free" onClick={onClose}>
-            Maybe Later
-          </button>
-        </div>
-      </div>
+<div className="overlay__premium__popup">
+  <div className="popup__container">
+    <div className="popup__badge">Premium</div>
+    <h2 className="popup__title">{popup.title}</h2>
+    <p className="popup__body">{popup.body}</p>
+    <div className="popup__buttons">
+      <button className="popup__btn--primary" onClick={onUpgrade}>
+        Unlock Now – ₹299/month
+      </button>
+      <button className="popup__btn--secondary" onClick={onClose}>
+        Maybe Later
+      </button>
     </div>
+  </div>
+</div>
+
   );
 };
 
