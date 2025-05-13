@@ -177,3 +177,13 @@
     font-size: 22px;
   }
 }
+
+
+.__assignment__html__wrapper h1,
+.__assignment__html__wrapper h2,
+.__assignment__html__wrapper h3,
+.__assignment__html__wrapper h4,
+.__assignment__html__wrapper h5,
+.__assignment__html__wrapper h6 {
+  color: white !important;
+}

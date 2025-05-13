@@ -75,7 +75,7 @@ const AssignmentPage = () => {
         contentEditable
         suppressContentEditableWarning
       >
-        <div dangerouslySetInnerHTML={{ __html: assignment }} />
+<div className="__assignment__html__wrapper" dangerouslySetInnerHTML={{ __html: assignment }} />
       </div>
     ) : (
       <p className="assignment-not-found__assignment__gen__page">Assignment not found.</p>
