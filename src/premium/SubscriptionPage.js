@@ -392,11 +392,6 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
   return (
     <Wrapper>
-    {step === 1 && (
-      <Welcome handleNext={handleNext} />
-    )}
-
-    {step === 2 && (
         <ScrollContent ref={scrollRef}>
             <SubscriptionContainer>
                 <Title>Your Edge Begins Here</Title>
@@ -434,7 +429,6 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 </Link>
             </SubscriptionContainer>
         </ScrollContent>
-    )}
 </Wrapper>
 
   );
