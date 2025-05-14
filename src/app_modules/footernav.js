@@ -96,7 +96,6 @@ const FooterNav = () => {
                     <button className={`nav-btn-footer-nav ${location.pathname === '/carrier/flow' ? 'active' : ''}`}>
                         <FaUserGraduate className="icon-footer-nav" />
                         <span className="btn-label">CareerSense</span>
-<span className='new-label-footer-nav'>Tag @edusify.app for Free Premium</span>
                     </button>
                 </Link>
 
