@@ -76,7 +76,7 @@ const CareerResult = () => {
   </button>
 
 <p className="tagline__carreir__result__page">
-  🌟 Your future deserves the spotlight. <strong>Share this on your story</strong> and <strong>tag @edusify.app</strong><br />
+  <strong>Share this on your story</strong> and <strong>tag @edusify.app</strong><br /><br/>
   🎁 We’ll reward a few students with <strong>15 days of Premium access</strong> — just for being you.
 </p>
 
