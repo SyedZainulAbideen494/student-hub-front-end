@@ -89,7 +89,7 @@ const FooterNav = () => {
             </button>
 
             <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
-                <LockButton to='/exam-mode' icon={<FaBookReader className="icon-footer-nav" />} label="Exam Mode" locked={!isPremium} isActive={location.pathname === '/exam-mode'} extra={<span className='new-label-footer-nav'>new</span>} />
+                <LockButton to='/exam-mode' icon={<FaBookReader className="icon-footer-nav" />} label="Exam Mode" locked={!isPremium} isActive={location.pathname === '/exam-mode'} />
                 <LockButton to='/competive-exam' icon={<FaFileAlt className="icon-footer-nav" />} label="Competitive Exam Mock Quiz" locked={!isPremium} isActive={location.pathname === '/competive-exam'} />
 
                 <Link to='/carrier/flow' style={{ textDecoration: 'none' }}>
