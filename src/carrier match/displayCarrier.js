@@ -67,13 +67,21 @@ const CareerResult = () => {
 
          
 
-            <div className="share__carreir__result__page">
-              <p className="hashtag__carreir__result__page">{careerResult.hashtag}</p>
-              <button onClick={redirectToInstagram} className="instagram-story-btn__carreir__result__page">
-                <FaInstagram style={{ marginRight: '8px' }} />
-                Add to Story
-              </button>
-            </div>
+         <div className="share__carreir__result__page">
+  <p className="hashtag__carreir__result__page">{careerResult.hashtag}</p>
+
+  <button onClick={redirectToInstagram} className="instagram-story-btn__carreir__result__page">
+    <FaInstagram style={{ marginRight: '8px' }} />
+    Add to Story
+  </button>
+
+<p className="tagline__carreir__result__page">
+  🌟 Your future deserves the spotlight. <strong>Share this on your story</strong> and <strong>tag @edusify.app</strong><br />
+  🎁 We’ll reward a few students with <strong>15 days of Premium access</strong> — just for being you.
+</p>
+
+</div>
+
           </div>
         </div>
       </div>
