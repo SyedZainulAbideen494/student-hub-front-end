@@ -2,19 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
-import {
-  FaMagic, FaTasks, FaClipboardCheck, FaBrain, FaFileAlt, FaRegClock,
-  FaStickyNote, FaLightbulb, FaUsers, FaCalendarAlt, FaLock, FaChartBar, FaStopwatch,
-  FaFilePdf, FaImage, FaLayerGroup,
-  FaChartLine, FaPlayCircle, FaCommentDots, FaBookOpen, FaFileInvoice
-} from 'react-icons/fa';
+import { FaRocket, FaStar, FaMoon, FaCloudSun, FaCube, FaRegClock } from 'react-icons/fa';
+
 import { API_ROUTES } from "../app_modules/apiRoutes";
 import TestimonialsSection from "./testimonials";
 import './Welcome.css'
 import Welcome from "./welcome";
 
 const Wrapper = styled.div`
-  background: #0D0D0D
+  background: #0D0D0D;
   color: #f5f5f7;
   min-height: 100vh;
   width: 100%;
@@ -35,7 +31,7 @@ const SubscriptionContainer = styled.div`
   max-width: 460px;
   text-align: center;
   backdrop-filter: blur(30px);
-  background:rgb(17, 17, 17);
+  background: rgb(17, 17, 17);
   border-radius: 30px;
   padding: 45px 30px;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -95,11 +91,9 @@ const PlanBox = styled.div`
 
   p {
     font-size: 14px;
-    color:rgb(138, 138, 138);
+    color: rgb(138, 138, 138);
   }
 `;
-
-
 
 const SmallText = styled.p`
   font-size: 12px;
@@ -155,114 +149,6 @@ const Divider = styled.div`
   border-radius: 10px;
 `;
 
-const PageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 3rem 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const Title2 = styled.h2`
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: #f5f5f7;
-  text-align: center;
-  margin-bottom: 0.5rem;
-`;
-
-const Subtitle2 = styled.p`
-  font-size: 1.1rem;
-  color: #a1a1aa;
-  text-align: center;
-  margin-bottom: 2.2rem;
-  font-weight: 500;
-`;
-
-const Badge = styled.div`
-  font-size: 0.85rem;
-  background: #2c2c2e;
-  padding: 4px 10px;
-  color: #a58dfb;
-  border-radius: 20px;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 1em;
-`;
-
-const FeatureList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const FeatureItem = styled.li`
-  display: flex;
-  align-items: center;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #f5f5f7;
-  padding: 0.95rem 1rem;
-  background: #1c1c1e;
-  border-radius: 14px;
-  transition: all 0.25s ease;
-  border-left: 4px solid #7f56d9;
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.03);
-
-  &:hover {
-    background: #2c2c2e;
-    transform: translateY(-2px);
-  }
-`;
-
-const IconWrapper = styled.span`
-  font-size: 1.4rem;
-  margin-right: 14px;
-  background: linear-gradient(135deg, #7f56d9, #c08fff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-
-const CallToAction = styled.div`
-  margin-top: 2.5rem;
-  text-align: center;
-  color: #a58dfb;
-  font-size: 1.15rem;
-  font-weight: 600;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  line-height: 1.7;
-`;
-
-const DreamGlow = styled.h2`
-  font-size: 2.5rem;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  background: linear-gradient(120deg, #9f63ff, #ffb1f9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  margin-bottom: 0.75rem;
-  animation: glowIn 1.2s ease-out forwards;
-
-  @keyframes glowIn {
-    0% {
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-`;
-
 const BestOfferTag = styled.div`
   position: absolute;
   top: -16px;
@@ -277,6 +163,7 @@ const BestOfferTag = styled.div`
   box-shadow: 0 6px 18px rgba(127, 86, 217, 0.35);
   letter-spacing: 0.3px;
 `;
+
 
 
 const PaymentComponent = () => {
@@ -424,9 +311,10 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                     <Button onClick={handlePayment}>Unlock Your Edusify Journey</Button>
                 )}
 
-                <Link to='/help'>
-                    <Footer>Need Help?</Footer>
-                </Link>
+              <Link to='/'>
+  <Footer>Go Back — Premium Was About to Change Everything</Footer>
+</Link>
+
             </SubscriptionContainer>
         </ScrollContent>
 </Wrapper>
