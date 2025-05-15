@@ -22,16 +22,16 @@ const ExamTimeOffer = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (isPremium === null) return; // Wait until isPremium is determined
+useEffect(() => {
+  if (isPremium === null) return; // Wait until isPremium is determined
 
-    const lastClosed = localStorage.getItem("offerLastClosed");
+  const lastClosed = localStorage.getItem("offerLastClosed");
+  const lastClosedTimestamp = lastClosed ? Number(lastClosed) : null;
 
-    if (!isPremium && (!lastClosed || Date.now() - lastClosed > 40 * 60 * 1000)) {
-      setIsVisible(true);
-    }
-    
- }, [isPremium]);
+  if (!isPremium && (!lastClosedTimestamp || Date.now() - lastClosedTimestamp > 40 * 60 * 1000)) {
+    setIsVisible(true);
+  }
+}, [isPremium]);
 
   const closeOffer = () => {
     localStorage.setItem("offerLastClosed", Date.now());
@@ -96,16 +96,16 @@ const ExamTimeOffer = () => {
 
     <h2 className="exam-title__exam__modal">🚨 Exclusive Unlock – 48 Hours Only</h2>
     <p className="exam-subtitle__exam__modal">
-      You’ve unlocked a limited-time offer: full access to all AI tools for just <strong>₹199/month</strong> — that’s <strong>33% OFF</strong> the usual ₹299 price!
+      Unlock full AI-powered study tools for just <strong>₹199/month</strong> — <span className="highlight-offer">33% OFF</span> the usual ₹299/month.
     </p>
 
     <div className="exam-card__exam__modal">
-      <div className="exam-icon__exam__modal"><FaClock size={30} color="#DCB99D" /></div>
-      <p className="exam-benefits__exam__modal" style={{textAlign: 'left'}}>
-        <FaCheckCircle className="icon-check__exam__modal" /> <strong>AI Smart Notes & Flashcards – no more manual work</strong><br/>
-        <FaCheckCircle className="icon-check__exam__modal" /> <strong>Predicted Questions, Mindmaps & Exam Mode</strong><br/>
-        <FaCheckCircle className="icon-check__exam__modal" /> <strong>Mock Quizzes for Boards, JEE, NEET & more</strong>
-      </p>
+      <div className="exam-icon__exam__modal"><FaClock size={36} color="#DCB99D" /></div>
+      <ul className="exam-benefits__exam__modal">
+        <li><FaCheckCircle className="icon-check__exam__modal" /> <strong>AI Smart Notes & Flashcards – no manual work</strong></li>
+        <li><FaCheckCircle className="icon-check__exam__modal" /> <strong>Predicted Questions, Mindmaps & Exam Mode</strong></li>
+        <li><FaCheckCircle className="icon-check__exam__modal" /> <strong>Mock Quizzes for Boards, JEE, NEET & more</strong></li>
+      </ul>
 
       <div className="exam-price-box__exam__modal">
         <span className="price">Just <strong>₹199</strong> / month</span>
@@ -113,18 +113,20 @@ const ExamTimeOffer = () => {
 
       <p className="lowest-price__exam__modal">
         ⏳ Hurry! This <strong>33% OFF</strong> deal lasts only 48 hours.<br/>
-        After that, it’s ₹299/month forever. Don’t miss out.
+        Then ₹299/month forever. Don’t miss out.
       </p>
     </div>
 
     <button className="claim-btn__exam__modal" onClick={handlePayment}>
       <strong>Unlock 33% OFF — All Features for ₹199 Now</strong>
     </button>
-<button className="not-now-btn__exam__modal" onClick={closeOffer} style={{textDecoration:'underline'}}>
-  Not Now —<br/> but ₹299/month after 48 hrs, so why wait?
-</button>
+
+    <button className="not-now-btn__exam__modal" onClick={closeOffer}>
+      Not Now — but ₹299/month after 48 hrs, so why wait?
+    </button>
   </div>
 </div>
+
 
   );
 };
