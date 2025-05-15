@@ -311,7 +311,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   <BestOfferTag>Best Value</BestOfferTag>
   <h4>Commit to Greatness</h4>
   <p>₹1999/year</p>
-  <SmallText>Get 12 months for the price of 5 — elite move</SmallText>
+<SmallText>12 months for the price of 6 — save ₹1589 today</SmallText>
   </PlanBox>
 
 
