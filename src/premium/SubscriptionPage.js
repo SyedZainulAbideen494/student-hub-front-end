@@ -183,14 +183,17 @@ const PaymentComponent = () => {
       }
 
     // Set pricing based on selected plan
-let planAmount = 0;
-if (selectedPlan === "daily") {
-  planAmount = 39; // ₹8 → 800 paise
-} else if (selectedPlan === "weekly") {
-  planAmount = 99;
-} else if (selectedPlan === "monthly") {
-  planAmount = 299;
-}
+    let planAmount = 0;
+    if (selectedPlan === "daily") {
+      planAmount = 39;
+    } else if (selectedPlan === "weekly") {
+      planAmount = 99;
+    } else if (selectedPlan === "monthly") {
+      planAmount = 299;
+    } else if (selectedPlan === "yearly") {
+      planAmount = 1999;
+    }
+    
 
 const { data } = await axios.post(API_ROUTES.getPremium, {
   amount: planAmount, // Razorpay accepts amount in paise
@@ -303,6 +306,15 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                         <p>₹99/week</p>
                         <SmallText>Focused. Achieved. Repeated.</SmallText>
                     </PlanBox>
+
+                    <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
+  <BestOfferTag>Best Value</BestOfferTag>
+  <h4>Commit to Greatness</h4>
+  <p>₹1999/year</p>
+  <SmallText>Get 12 months for the price of 5 — elite move</SmallText>
+  </PlanBox>
+
+
                 </Plans>
 
                 {isPremium ? (
