@@ -25,9 +25,9 @@ const ExamTimeOffer = () => {
   useEffect(() => {
     if (isPremium === null) return; // Wait until isPremium is determined
 
-//    const lastClosed = localStorage.getItem("offerLastClosed");
+    const lastClosed = localStorage.getItem("offerLastClosed");
 
-  if (!isPremium) {
+    if (!isPremium && (!lastClosed || Date.now() - lastClosed > 40 * 60 * 1000)) {
       setIsVisible(true);
     }
     
@@ -47,7 +47,7 @@ const ExamTimeOffer = () => {
       }
 
       const { data } = await axios.post(API_ROUTES.getPremium, {
-        amount: 199,
+        amount: 150,
         currency: "INR",
         subscription_plan: "premium",
         token,
