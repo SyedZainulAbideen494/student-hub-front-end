@@ -22,16 +22,16 @@ const ExamTimeOffer = () => {
     }
   }, []);
 
-useEffect(() => {
-  if (isPremium === null) return; // Wait until isPremium is determined
+  useEffect(() => {
+    if (isPremium === null) return; // Wait until isPremium is determined
 
-  const lastClosed = localStorage.getItem("offerLastClosed");
-  const lastClosedTimestamp = lastClosed ? Number(lastClosed) : null;
+    const lastClosed = localStorage.getItem("offerLastClosed");
 
-  if (!isPremium && (!lastClosedTimestamp || Date.now() - lastClosedTimestamp > 40 * 60 * 1000)) {
-    setIsVisible(true);
-  }
-}, [isPremium]);
+   if (!isPremium && (!lastClosed || Date.now() - lastClosed > 40 * 60 * 1000)) {
+      setIsVisible(true);
+ }
+    
+ }, [isPremium]);
 
   const closeOffer = () => {
     localStorage.setItem("offerLastClosed", Date.now());
@@ -108,7 +108,10 @@ useEffect(() => {
       </ul>
 
       <div className="exam-price-box__exam__modal">
-        <span className="price">Just <strong>₹199</strong> / month</span>
+<span className="price">
+  <span style={{ textDecoration: "line-through", color: "#888", marginRight: "8px" }}>₹299</span>
+  Just <strong>₹199</strong> / month
+</span>
       </div>
 
       <p className="lowest-price__exam__modal">
@@ -118,7 +121,7 @@ useEffect(() => {
     </div>
 
     <button className="claim-btn__exam__modal" onClick={handlePayment}>
-      <strong>Unlock 33% OFF — All Features for ₹199 Now</strong>
+      <strong>Unlock 33% OFF — ₹199</strong>
     </button>
 
     <button className="not-now-btn__exam__modal" onClick={closeOffer}>
