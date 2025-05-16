@@ -1,161 +1,151 @@
-.overlay__exam__modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: fadeIn 0.3s ease;
+.overlay__premium__modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.exam-container__exam__modal {
-    position: relative;
-    background: #111;
-    border-radius: 20px;
-    padding: 24px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-    animation: slideUp 0.3s ease;
-    font-family: 'Inter', 'SF Pro Display', sans-serif;
-    color: #f5f5f5;
+.modal-container__premium__modal {
+  background: rgba(17, 17, 17, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 36px 28px;
+  width: 85%;
+  max-width: 420px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-family: 'SF Pro Display', 'Inter', sans-serif;
+  color: #f8f8f8;
+  animation: slideUp 0.3s ease-in-out;
+  position: relative;
 }
 
-.close-btn__exam__modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: none;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 16px;
-    color: #aaa;
-    cursor: pointer;
-    transition: background 0.2s ease;
+.close-btn__premium__modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.close-btn__premium__modal:hover {
+  color: #fff;
 }
 
-.close-btn__exam__modal:hover {
-    background: rgba(255, 255, 255, 0.1);
+.modal-title__premium__modal {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #fff;
 }
 
-.exam-title__exam__modal {
-    font-size: 22px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 8px;
+.modal-subtitle__premium__modal {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 26px;
 }
 
-.exam-subtitle__exam__modal {
-    font-size: 14px;
-    color: #bbb;
-    margin-bottom: 20px;
+.modal-price__premium__modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-.exam-card__exam__modal {
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 16px;
-    padding: 16px;
+.old-price {
+  text-decoration: line-through;
+  color: #555;
+  font-size: 14px;
 }
 
-.exam-benefits__exam__modal {
-    font-size: 14px;
-    color: #ddd;
-    font-weight: 500;
-    line-height: 1.6;
-    text-align: left;
+.new-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
 }
 
-.icon-check__exam__modal {
-    color: #45f0aa;
-    margin-right: 6px;
+.offer-tag {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 8px;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.exam-price-box__exam__modal {
-    background: #222;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 16px 0 8px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
+.modal-benefits__premium__modal {
+  text-align: left;
+  font-size: 14px;
+  color: #ccc;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
 }
 
-.lowest-price__exam__modal {
-    font-size: 12px;
-    color: #888;
+.modal-benefits__premium__modal li {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
 }
 
-.claim-btn__exam__modal {
-    position: relative;
-    background: transparent;
-    color: #4A90E2;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 14px;
-    border-radius: 30px;
-    margin-top: 16px;
-    cursor: pointer;
-    width: 100%;
-    letter-spacing: 0.3px;
-    z-index: 1;
-    overflow: hidden;
-    border: none;
-    transition: color 0.3s ease;
+.modal-benefits__premium__modal li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #3ef576;
+  font-weight: 600;
 }
 
-.claim-btn__exam__modal::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    border-radius: 30px;
-    background: linear-gradient(to right, #4A90E2, #50E3C2);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    z-index: -1;
-    pointer-events: none;
+.unlock-btn__premium__modal {
+  background: #fff;
+  color: #000;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 30px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 0 transparent;
 }
 
-.claim-btn__exam__modal:hover {
-    background: linear-gradient(to right, #4A90E2, #50E3C2);
-    color: #fff;
+.unlock-btn__premium__modal:hover {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
 }
 
-
-
-.not-now-btn__exam__modal {
-    background: none;
-    color: #777;
-    border: none;
-    font-size: 13px;
-    margin-top: 12px;
-    cursor: pointer;
+.not-now-btn__premium__modal {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #888;
+  margin-top: 14px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.not-now-btn__premium__modal:hover {
+  color: #ccc;
 }
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0 }
-    to { opacity: 1 }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }

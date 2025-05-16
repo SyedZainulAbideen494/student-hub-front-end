@@ -29,7 +29,7 @@ const ExamTimeOffer = () => {
 
    if (!isPremium && (!lastClosed || Date.now() - lastClosed > 40 * 60 * 1000)) {
       setIsVisible(true);
- }
+  }
     
  }, [isPremium]);
 
@@ -90,46 +90,35 @@ const ExamTimeOffer = () => {
   if (!isVisible) return null;
 
   return (
-<div className="overlay__exam__modal">
-  <div className="exam-container__exam__modal">
-    <button className="close-btn__exam__modal" onClick={closeOffer}><FaTimes/></button>
+<div className="overlay__premium__modal">
+  <div className="modal-container__premium__modal">
+    <button className="close-btn__premium__modal" onClick={closeOffer}><FaTimes /></button>
 
-    <h2 className="exam-title__exam__modal">🚨 Exclusive Unlock – 48 Hours Only</h2>
-    <p className="exam-subtitle__exam__modal">
-      Unlock full AI-powered study tools for just <strong>₹199/month</strong> — <span className="highlight-offer">33% OFF</span> the usual ₹299/month.
-    </p>
+    <h2 className="modal-title__premium__modal">Unlock Premium Access</h2>
+    <p className="modal-subtitle__premium__modal">All your AI tools. One simple plan.</p>
 
-    <div className="exam-card__exam__modal">
-      <div className="exam-icon__exam__modal"><FaClock size={36} color="#DCB99D" /></div>
-      <ul className="exam-benefits__exam__modal">
-        <li><FaCheckCircle className="icon-check__exam__modal" /> <strong>AI Smart Notes & Flashcards – no manual work</strong></li>
-        <li><FaCheckCircle className="icon-check__exam__modal" /> <strong>Predicted Questions, Mindmaps & Exam Mode</strong></li>
-        <li><FaCheckCircle className="icon-check__exam__modal" /> <strong>Mock Quizzes for Boards, JEE, NEET & more</strong></li>
-      </ul>
-
-      <div className="exam-price-box__exam__modal">
-<span className="price">
-  <span style={{ textDecoration: "line-through", color: "#888", marginRight: "8px" }}>₹299</span>
-  Just <strong>₹199</strong> / month
-</span>
-      </div>
-
-      <p className="lowest-price__exam__modal">
-        ⏳ Hurry! This <strong>33% OFF</strong> deal lasts only 48 hours.<br/>
-        Then ₹299/month forever. Don’t miss out.
-      </p>
+    <div className="modal-price__premium__modal">
+      <span className="old-price">₹299</span>
+      <span className="new-price">₹199/mo</span>
+      <span className="offer-tag">Limited Time Offer</span>
     </div>
 
-    <button className="claim-btn__exam__modal" onClick={handlePayment}>
-      <strong>Unlock 33% OFF — ₹199</strong>
+    <ul className="modal-benefits__premium__modal">
+      <li>AI Smart Quizzes, Mindmaps & more</li>
+      <li>Predicted Questions & Exam Mode</li>
+  <li>Weekly Reports — Track Progress with Clarity</li>
+  <li>And so much more!</li>
+    </ul>
+
+    <button className="unlock-btn__premium__modal" onClick={handlePayment}>
+      Get Premium –   <span className="old-price">₹299</span> ₹199/month
     </button>
 
-    <button className="not-now-btn__exam__modal" onClick={closeOffer}>
-      Not Now — but ₹299/month after 48 hrs, so why wait?
+    <button className="not-now-btn__premium__modal" onClick={closeOffer}>
+      Maybe Later
     </button>
   </div>
 </div>
-
 
   );
 };
