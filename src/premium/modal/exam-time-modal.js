@@ -23,7 +23,7 @@ const ExamTimeOffer = () => {
   }, []);
 
   useEffect(() => {
-    if (isPremium === null) return; // Wait until isPremium is determined
+    if (isPremium === null) return; // Wait until ispremium is determined
 
     const lastClosed = localStorage.getItem("offerLastClosed");
 
