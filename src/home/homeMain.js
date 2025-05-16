@@ -146,6 +146,7 @@ const HomeMain = () => {
     <Fragment>
         <>
         <ReviewModal />
+        <SubscriptionRedirector/>
         <ExamTimeOffer/>
           <HomeTopBoxes />
           <TodayEventsAndTasks />
