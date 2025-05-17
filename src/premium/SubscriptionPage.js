@@ -100,30 +100,69 @@ const SmallText = styled.p`
   color: #8e8e93;
   margin-top: 5px;
 `;
-
 const Button = styled.button`
-  background: #7f56d9;
-  color: white;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 36px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background: transparent;
   border: none;
-  padding: 16px 42px;
-  font-size: 17px;
-  border-radius: 50px;
-  font-weight: 600;
+  border-radius: 25px;
   width: 100%;
   max-width: 320px;
-  transition: all 0.3s ease;
   cursor: pointer;
+  z-index: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #a88beb, #7f56d9, #a88beb);
+    background-size: 300% 300%;
+    animation: shimmer 6s ease infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+  }
 
   &:hover {
-    box-shadow: 0 12px 30px rgba(127, 86, 217, 0.5);
-    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-1px);
+    box-shadow: 0 0 16px rgba(168, 139, 235, 0.3);
   }
 
   &:disabled {
-    background: #3a3a3c;
-    cursor: default;
-    opacity: 0.5;
-    box-shadow: none;
+    color: rgba(255, 255, 255, 0.4);
+    background: transparent;
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.6;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 `;
 
@@ -279,7 +318,25 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       behavior: 'smooth', // Smooth scrolling animation
     });
   }, []); // Empty dependency array to run only once when the component is mounted
-
+  const SparkleIcon = () => (
+    <svg
+      height="20"
+      width="20"
+      fill="url(#gradient)"
+      viewBox="0 0 24 24"
+      style={{ marginLeft: '4px' }}
+    >
+      <defs>
+        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#a88beb" />
+          <stop offset="100%" stopColor="#7f56d9" />
+        </linearGradient>
+      </defs>
+      <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z" />
+    </svg>
+  );
+  
+  
   return (
     <Wrapper>
         <ScrollContent ref={scrollRef}>
@@ -318,9 +375,13 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 </Plans>
 
                 {isPremium ? (
+
  <Button disabled>You have Premium! 🔥</Button>
                   ) : (
-                    <Button onClick={handlePayment}>Upgrade Now</Button>
+                    <Button onClick={handlePayment}>
+                    Upgrade Now <SparkleIcon />
+                  </Button>
+                
                 )}
 
               <Link to='/'>
