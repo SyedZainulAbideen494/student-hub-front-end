@@ -793,7 +793,7 @@ const SparkleIcon = () => (
 
 
            <div className="math-page-header">
-  <button className="back-btn" onClick={() => navigate('/')}>
+  <button className="back-btn" onClick={() => navigate('/')} style={{color: "white"}}>
     <FaArrowLeft />
   </button>
 
