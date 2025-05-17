@@ -182,8 +182,7 @@ const [dropdownOpen, setDropdownOpen] = useState(false);
               ...newHistory,
               { role: "model", parts: [{ text: "You've reached the daily limit. Upgrade to Premium for unlimited chats!" }] },
             ]);
-            setLoading(false);
-            navigate('/subscription')
+
             return;
           }
         } catch (error) {
