@@ -172,6 +172,7 @@ import LoaderExamMode from "./exam mode/loader";
 import ExamPacks from "./exam mode/ExamPacks";
 import CareerMatcherFlow from "./carrier match/CareerMatcherFlow";
 import CareerResult from "./carrier match/displayCarrier";
+import PaymentComponentUserReg from "./premium/subs-user-reg";
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -324,6 +325,7 @@ const router = createBrowserRouter([
   {path: '/exam-mode/packs', element: <ExamPacks/>},
   {path: '/carrier/flow',element: <CareerMatcherFlow/>},
   {path: '/carrier/:id', element: <CareerResult/>},
+  {path: '/reg-user-subs', element: <PaymentComponentUserReg/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
