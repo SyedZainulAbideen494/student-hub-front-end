@@ -184,12 +184,20 @@ const FooterNav = () => {
 
                 <LockButton to='/user/report' icon={<FaFileAlt className="icon-footer-nav" />} label="AI Report" locked={!isPremium} isActive={location.pathname === '/user/report'} />
 
-                <Link to='/subscription' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/subscription' ? 'active' : ''}`}>
-                        <FaCrown className="icon-footer-nav" />
-                        <span className="btn-label">Premium</span>
-                    </button>
-                </Link>
+<Link
+    to={profile?.id === 2561 || profile?.id === 1981  ? '/reg-user-subs' : '/subscription'}
+    style={{ textDecoration: 'none' }}
+>
+    <button
+        className={`nav-btn-footer-nav ${
+            location.pathname === '/subscription' || location.pathname === '/reg-user-subs' ? 'active' : ''
+        }`}
+    >
+        <FaCrown className="icon-footer-nav" />
+        <span className="btn-label">Premium</span>
+    </button>
+</Link>
+
 
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
