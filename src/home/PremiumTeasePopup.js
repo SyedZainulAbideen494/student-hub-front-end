@@ -39,23 +39,42 @@ const PremiumTeasePopup = ({ isOpen, onClose, onUpgrade }) => {
   if (!isOpen || isPremium === null || isPremium || !shouldShow) return null;
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-container">
-        <span className="popup-close" onClick={handleClose}>×</span>
-        <h1 className="popup-title">Edusify Premium</h1>
-        <p className="popup-subtitle">Effortlessly ahead. Quietly powerful.</p>
-        <div className="popup-divider" />
-        <p className="popup-info">Smart AI · AI Tools · Clean Interface · Zero Noise</p>
-        <div className="popup-price">₹299/month</div>
-        <button className="popup-btn" onClick={() => {
-          localStorage.setItem('premiumPopupSeenAt', Date.now().toString());
-          onUpgrade();
-        }}>
-          Get Premium
-        </button>
-      </div>
+  <div className="lux-popup-overlay">
+    <div className="lux-stars"></div>
+    <div className="lux-popup-container">
+      <span className="lux-popup-close" onClick={handleClose}>×</span>
+
+      <div className="lux-ribbon">Not for everyone. Built for the 1%.</div>
+
+      <h1 className="lux-title">Edusify Premium</h1>
+      <p className="lux-tagline">Your unfair advantage is waiting.</p>
+
+      <div className="lux-divider"></div>
+
+      <p className="lux-desc">
+        Instant access to elite AI tools.<br />
+        Designed for those who move differently.
+      </p>
+
+      <p className="lux-scarcity">
+        Most students scroll. You execute.<br />
+        This isn’t a free tool. It’s a weapon.
+      </p>
+
+      <div className="lux-price">Access: ₹299/month</div>
+
+      <button className="lux-btn" onClick={() => {
+        localStorage.setItem('premiumPopupSeenAt', Date.now().toString());
+        onUpgrade();
+      }}>
+        Unlock Premium
+      </button>
+
+      <div className="lux-powered">AI-Driven · Distraction-Free · Results-Only</div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default PremiumTeasePopup;

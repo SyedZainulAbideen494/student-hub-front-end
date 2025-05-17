@@ -1,107 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap');
 
-.popup-overlay {
+.lux-popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(8, 8, 8, 0.92);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, #0a0a0a, #111111);
   backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   animation: fadeIn 0.3s ease-out forwards;
+  overflow: hidden;
 }
 
-.popup-container {
-  background-color: #0b0b0b;
-  color: white;
-  border-radius: 20px;
-  padding: 48px 36px;
-  max-width: 430px;
-  width: 88%;
+.lux-halo {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 80%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.lux-stars {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,0.02) 1px, transparent 2px),
+              radial-gradient(circle at 25% 70%, rgba(255,255,255,0.015), transparent 40%);
+  background-size: 1400px 800px;
+  z-index: 0;
+  pointer-events: none;
+  animation: starsFloat 30s ease-in-out infinite alternate;
+}
+
+.lux-popup-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(14, 14, 14, 0.94);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 46px 36px;
+  width: 90%;
+  max-width: 460px;
   text-align: center;
   font-family: 'Inter', sans-serif;
-  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.04);
-  transform: scale(0.96);
-  animation: scaleUp 0.3s ease-out forwards;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.03), 0 0 2px rgba(255, 255, 255, 0.05);
+  animation: scaleUp 0.35s ease-out forwards;
 }
 
-.popup-close {
+.lux-popup-close {
   position: absolute;
   top: 18px;
   right: 22px;
   font-size: 20px;
-  color: #999;
+  color: #777;
   cursor: pointer;
   transition: color 0.2s;
 }
+.lux-popup-close:hover { color: white; }
 
-.popup-close:hover {
-  color: white;
+.lux-ribbon {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e0c165;
+  color: #000;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.popup-title {
-  font-size: 24px;
+.lux-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
   font-weight: 600;
   letter-spacing: -0.3px;
   margin-bottom: 8px;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.03);
 }
 
-.popup-subtitle {
+.lux-tagline {
   font-size: 14.5px;
-  font-weight: 400;
   color: #ccc;
-  opacity: 0.85;
+  opacity: 0.9;
   margin-bottom: 24px;
-  line-height: 1.6;
+  font-weight: 400;
 }
 
-.popup-divider {
+.lux-divider {
   height: 1px;
-  background: linear-gradient(to right, #ffffff05, #ffffff40, #ffffff05);
+  background: linear-gradient(to right, #ffffff08, #ffffff40, #ffffff08);
   width: 64px;
-  margin: 0 auto 24px;
+  margin: 0 auto 22px;
 }
 
-.popup-info {
+.lux-desc, .lux-scarcity {
   font-size: 13.5px;
-  color: #999;
-  line-height: 1.5;
-  margin-bottom: 24px;
-  opacity: 0.75;
+  color: #aaa;
+  line-height: 1.6;
+  opacity: 0.82;
+  margin-bottom: 18px;
 }
 
-.popup-price {
+.lux-scarcity {
+  font-style: italic;
+  margin-bottom: 26px;
+}
+
+.lux-price {
   font-size: 16px;
-  color: #eee;
   font-weight: 500;
-  margin-bottom: 30px;
+  color: #f8f8f8;
+  margin-bottom: 26px;
 }
 
-.popup-btn {
+.lux-btn {
   border: 1.4px solid white;
-  background: transparent;
+  background: linear-gradient(to right, #1a1a1a, #2a2a2a);
   color: white;
   font-size: 14.5px;
   font-weight: 500;
-  padding: 11px 26px;
-  border-radius: 25px;
+  padding: 11px 30px;
+  border-radius: 28px;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
 }
+.lux-btn:hover {
+  background: linear-gradient(to right, #232323, #333333);
+  box-shadow: 0 0 12px rgba(255,255,255,0.04);
+}
 
-.popup-btn:hover {
-  background-color: rgba(255, 255, 255, 0.07);
+.lux-powered {
+  font-size: 11px;
+  color: #666;
+  margin-top: 28px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.5;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; } to { opacity: 1; }
 }
-
 @keyframes scaleUp {
   from { transform: scale(0.96); opacity: 0.85; }
   to { transform: scale(1); opacity: 1; }
+}
+@keyframes starsFloat {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-10px) scale(1.02); }
 }
