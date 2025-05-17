@@ -29,6 +29,7 @@ import SubscriptionRedirector from "../premium/SubscriptionRedirector";
 import PomodoroChallengeBannerPremium from "../Challenges/PomodoroChallengeBannerPremium";
 import GuideBanner from "../guides/neet/guideBanner";
 import PremiumTeasePopup from "./PremiumTeasePopup";
+import SpinWheel from "../spin wheel/SpinWheel";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
