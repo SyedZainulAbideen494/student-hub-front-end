@@ -147,7 +147,6 @@ const HomeMain = () => {
         <>
         <ReviewModal />
         <SubscriptionRedirector/>
-        <ExamTimeOffer/>
           <HomeTopBoxes />
           <TodayEventsAndTasks />
           <FriendsDashboard />
