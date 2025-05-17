@@ -148,6 +148,13 @@ const HomeMain = () => {
         <>
         <ReviewModal />
           <HomeTopBoxes />
+         <PremiumTeasePopup
+  isOpen={showPopup}
+ onClose={() => setShowPopup(false)}
+ onUpgrade={() => {
+ navigate('/subscription')
+  }}
+/>
           <TodayEventsAndTasks />
           <FriendsDashboard />
           <div style={{ marginTop: '20px', marginBottom: '60px' }}>
@@ -161,10 +168,3 @@ const HomeMain = () => {
 
 export default HomeMain;
 
-//<PremiumTeasePopup
-  //isOpen={showPopup}
- // onClose={() => setShowPopup(false)}
- /// onUpgrade={() => {
- //  navigate('/subscription')
-  //}}
-///>
