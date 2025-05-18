@@ -19,7 +19,30 @@ const FooterNav = () => {
     const [isPremium, setIsPremium] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
+const calculateTimeLeft = () => {
+    const difference = +new Date('2025-05-19T22:00:00') - +new Date();
+    let timeLeft = {};
 
+    if (difference > 0) {
+        timeLeft = {
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+        };
+    }
+
+    return timeLeft;
+};
+
+const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+useEffect(() => {
+    const timer = setInterval(() => {
+        setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+}, []);
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -204,7 +227,10 @@ const FooterNav = () => {
         >
             <FaCrown className="icon-footer-nav" />
             <span className="btn-label">Premium</span>
-            <span className='new-label-footer-nav'>50% Off Today!</span>
+<span className='new-label-footer-nav'>
+    🔥 50% Off — Ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+</span>
+
         </button>
     </Link>
 )}
