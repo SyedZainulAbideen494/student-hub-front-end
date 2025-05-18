@@ -228,7 +228,7 @@ useEffect(() => {
             <FaCrown className="icon-footer-nav" />
             <span className="btn-label">Premium</span>
 <span className='new-label-footer-nav'>
-    🔥 50% Off — Ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+    🔥 50% Off — Ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s Hurry!
 </span>
 
         </button>
