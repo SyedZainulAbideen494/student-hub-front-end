@@ -30,6 +30,7 @@ import PomodoroChallengeBannerPremium from "../Challenges/PomodoroChallengeBanne
 import GuideBanner from "../guides/neet/guideBanner";
 import PremiumTeasePopup from "./PremiumTeasePopup";
 import SpinWheel from "../spin wheel/SpinWheel";
+import MadeWithLove from "../app_modules/madeWithLove";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -151,9 +152,10 @@ const HomeMain = () => {
           <SubscriptionRedirector/>
           <TodayEventsAndTasks />
           <FriendsDashboard />
-          <div style={{ marginTop: '20px', marginBottom: '60px' }}>
+          <div style={{ marginTop: '20px'}}>
             <InviteFriends />
           </div>
+          <MadeWithLove/>
           <FooterNav />
         </>
     </Fragment>
