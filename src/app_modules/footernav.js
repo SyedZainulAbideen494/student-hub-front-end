@@ -106,7 +106,7 @@ const FooterNav = () => {
                     </button>
                 </Link>
 
-                <LockButton to='/mindmap/create' icon={<FiMap className="icon-footer-nav" />} label="Mind Maps" locked={!isPremium} isActive={location.pathname === '/mindmap/create'} />
+                <LockButton to='/mindmap/create' icon={<FiMap className="icon-footer-nav" />} label="AI Mind Maps" locked={!isPremium} isActive={location.pathname === '/mindmap/create'} />
 
                 <Link to='/notes/view' style={{ textDecoration: 'none' }}>
                     <button className={`nav-btn-footer-nav ${location.pathname === '/notes/view' ? 'active' : ''}`}>
