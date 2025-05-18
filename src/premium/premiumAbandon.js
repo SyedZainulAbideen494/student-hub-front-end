@@ -103,53 +103,57 @@ const StatsBox = styled.div`
 `;
 
 const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 18px;
   position: fixed;
   bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 480px;
-  padding: 0 24px;
+  max-width: 440px;
+  padding: 0 20px;
+  display: flex;
+  gap: 16px;
+  box-sizing: border-box;
 `;
 
 const ButtonPrimary = styled.button`
+  flex: 1;
   background: linear-gradient(90deg, #a88beb 0%, #7f56d9 100%);
   border: none;
-  padding: 16px 32px;
+  padding: 12px 0;
   border-radius: 28px;
   color: white;
-  font-size: 16.5px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  flex-grow: 1;
-  box-shadow: 0 14px 34px rgba(127, 86, 217, 0.3);
-  transition: transform 0.25s ease;
+  box-shadow: 0 10px 25px rgba(127, 86, 217, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     transform: scale(1.06);
+    box-shadow: 0 14px 35px rgba(127, 86, 217, 0.5);
   }
 `;
 
 const ButtonSecondary = styled.button`
+  flex: 1;
   background: transparent;
-  border: 2px solid #7f56d9;
-  padding: 16px 32px;
+  border: 2.5px solid #7f56d9;
+  padding: 12px 0;
   border-radius: 28px;
   color: #7f56d9;
-  font-size: 16.5px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  flex-grow: 1;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 
   &:hover {
     background-color: #7f56d9;
     color: white;
+
+    border-color: #7f56d9;
   }
 `;
+
 
 const testimonials = [
   `"Premium isn’t just an upgrade — it’s the mindset of a winner. Feel unstoppable every time you open Edusify." — Aarav M., 12th CBSE`,
@@ -215,7 +219,7 @@ const PremiumReminder = () => {
 
 <ButtonGroup>
   <ButtonPrimary onClick={() => navigate('/subscription')}>
-    Unlock Premium Now
+    Get Premium Now
   </ButtonPrimary>
   <ButtonSecondary onClick={() => navigate('/')}>
     I’ll keep struggling
