@@ -109,8 +109,8 @@ const Button = styled.button`
   padding: 14px 36px;
   font-size: 16px;
   font-weight: 500;
-  color: black;
-  background: white;
+  color: white;
+  background: transparent;
   border: none;
   border-radius: 25px;
   width: 100%;
@@ -375,10 +375,10 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 </Plans>
 
                 {isPremium ? (
-<Button disabled>You have Premium! 🔥</Button>
-                ) : (
+         <Button disabled>You have Premium! 🔥</Button>
+                  ) : (
                     <Button onClick={handlePayment}>
-                    Upgrade Now <SparkleIcon />
+            Unlock Your Edge<SparkleIcon />
                   </Button>
                 
                 )}
