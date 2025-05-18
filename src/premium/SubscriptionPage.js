@@ -265,6 +265,11 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
             alert("Payment verification failed!");
           }
         },
+  modal: {
+    ondismiss: () => {
+      navigate("/premium-abandon"); // 👉 Redirect when payment is canceled or closed
+    }
+  },
         theme: { color: "#000000" },
       
         method: {
@@ -387,7 +392,9 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
 
                 {isPremium ? (
+
          <Button disabled>You have Premium! 🔥</Button>
+         
                   ) : (
                     <Button onClick={handlePayment}>
             Unlock Your Edge<SparkleIcon />
