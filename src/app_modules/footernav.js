@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
     FaUsers, FaFlask, FaStickyNote, FaCalendarAlt, FaBars, FaClock, FaUser,
     FaQuestionCircle, FaBook, FaToolbox, FaFolder, FaFileAlt, FaCrown, FaBookReader,
-    FaUserGraduate
+    FaUserGraduate,
+    FaChartBar
 } from 'react-icons/fa';
 import { MdDashboard, MdAssignment } from 'react-icons/md';
 import { HiBookOpen } from 'react-icons/hi';
@@ -184,19 +185,30 @@ const FooterNav = () => {
 
                 <LockButton to='/user/report' icon={<FaFileAlt className="icon-footer-nav" />} label="AI Report" locked={!isPremium} isActive={location.pathname === '/user/report'} />
 
-<Link
-    to={profile?.id === 2561 || profile?.id === 1981  ? '/reg-user-subs' : '/subscription'}
-    style={{ textDecoration: 'none' }}
->
-    <button
-        className={`nav-btn-footer-nav ${
-            location.pathname === '/subscription' || location.pathname === '/reg-user-subs' ? 'active' : ''
-        }`}
+{isPremium ? (
+    <Link to="/monthly-stats" style={{ textDecoration: 'none' }}>
+        <button className={`nav-btn-footer-nav ${location.pathname === '/monthly-stats' ? 'active' : ''}`}>
+            <FaChartBar className="icon-footer-nav" />
+            <span className="btn-label">Monthly Stats</span>
+        </button>
+    </Link>
+) : (
+    <Link
+        to={profile?.id === 2561 || profile?.id === 1981 ? '/reg-user-subs' : '/subscription'}
+        style={{ textDecoration: 'none' }}
     >
-        <FaCrown className="icon-footer-nav" />
-        <span className="btn-label">Premium</span>
-    </button>
-</Link>
+        <button
+            className={`nav-btn-footer-nav ${
+                location.pathname === '/subscription' || location.pathname === '/reg-user-subs' ? 'active' : ''
+            }`}
+        >
+            <FaCrown className="icon-footer-nav" />
+            <span className="btn-label">Premium</span>
+            <span className='new-label-footer-nav'>50% Off Today!</span>
+        </button>
+    </Link>
+)}
+
 
 
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
