@@ -118,9 +118,7 @@ const TopBoxes = () => {
     
     useEffect(() => {
         if (showDropdown) {
-          const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
-          document.body.style.overflow = 'hidden';
-          document.body.style.paddingRight = `${scrollBarWidth}px`; // prevent right shift
+         
         } else {
           document.body.style.overflow = '';
           document.body.style.paddingRight = '';
