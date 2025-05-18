@@ -22,8 +22,9 @@ const SubscriptionRedirector = () => {
     if (isPremium === false) {
       const lastRedirectTime = localStorage.getItem("lastSubscriptionRedirect");
       const currentTime = Date.now();
+      const TWELVE_HOURS = 12 * 60 * 60 * 1000;
 
-      if (!lastRedirectTime || currentTime - lastRedirectTime > 60 * 60 * 1000) {
+      if (!lastRedirectTime || currentTime - lastRedirectTime > TWELVE_HOURS) {
         localStorage.setItem("lastSubscriptionRedirect", currentTime);
         navigate("/subscription");
       }
