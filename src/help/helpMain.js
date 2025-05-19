@@ -6,6 +6,7 @@ import { faInstagram, faTwitter, faTelegram, faChrome, faGoogle } from '@fortawe
 import './helpMain.css';
 import InviteFriends from './InviteFriends';
 import FeedbackForm from './FeedbackForm';
+import MadeWithLove from '../app_modules/madeWithLove';
 
 const HelpMain = () => {
   const navigate = useNavigate(); // Hook to navigate
@@ -127,6 +128,7 @@ const HelpMain = () => {
         <Link to="/terms-and-conditions" className="footer-link-help-page">
           <p style={{ marginTop: '10px' }}>Terms and Conditions</p>
         </Link>
+        <MadeWithLove/>
       </footer>
     </div>
   );
