@@ -224,13 +224,13 @@ const PaymentComponent = () => {
     // Set pricing based on selected plan
     let planAmount = 0;
     if (selectedPlan === "daily") {
-      planAmount = 19;
+      planAmount = 39;
     } else if (selectedPlan === "weekly") {
-      planAmount = 49;
+      planAmount = 99;
     } else if (selectedPlan === "monthly") {
-      planAmount = 149;
+      planAmount = 299;
     } else if (selectedPlan === "yearly") {
-      planAmount = 999;
+      planAmount = 1999;
     }
     
 
@@ -265,7 +265,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
             alert("Payment verification failed!");
           }
         },
-  modal: {
+        modal: {
     ondismiss: () => {
       navigate("/premium-abandon"); // 👉 Redirect when payment is canceled or closed
     }
@@ -349,52 +349,38 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 <Title>Your Edge Begins Here</Title>
                 <Subtitle>For students who expect more — and achieve it.</Subtitle>
 
-          <Plans>
-    <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
-        <h4>First Step to Mastery</h4>
-        <p>
-            <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹39</span>
-            <span style={{ fontWeight: 'bold', color: '#00c853' }}>₹19/day</span>
-        </p>
-        <SmallText>No commitment. Just results.</SmallText>
-    </PlanBox>
+                <Plans>
+                    <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+                        <h4>First Step to Mastery</h4>
+                        <p>₹39/day</p>
+                        <SmallText>No commitment. Just results.</SmallText>
+                    </PlanBox>
 
-    <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-        <BestOfferTag>Exclusive 50% Off</BestOfferTag>
-        <h4>Lead Without Limits</h4>
-        <p>
-            <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹299</span>
-            <span style={{ fontWeight: 'bold', color: '#00c853' }}>₹149/month</span>
-        </p>
-        <SmallText>Full access. Effortless excellence.</SmallText>
-    </PlanBox>
+                    <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+                        <BestOfferTag>Exclusive Value</BestOfferTag>
+                        <h4>Lead Without Limits</h4>
+                        <p>₹299/month</p>
+                        <SmallText>Full access. Effortless excellence.</SmallText>
+                    </PlanBox>
 
-    <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-        <h4>Own Your Week</h4>
-        <p>
-            <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹99</span>
-            <span style={{ fontWeight: 'bold', color: '#00c853' }}>₹49/week</span>
-        </p>
-        <SmallText>Focused. Achieved. Repeated.</SmallText>
-    </PlanBox>
+                    <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+                        <h4>Own Your Week</h4>
+                        <p>₹99/week</p>
+                        <SmallText>Focused. Achieved. Repeated.</SmallText>
+                    </PlanBox>
 
-    <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
-        <BestOfferTag>Biggest Savings</BestOfferTag>
-        <h4>Commit to Greatness</h4>
-        <p>
-            <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹1999</span>
-            <span style={{ fontWeight: 'bold', color: '#00c853' }}>₹999/year</span>
-        </p>
-        <SmallText>12 months. 50% off. No limits.</SmallText>
-    </PlanBox>
-</Plans>
+                    <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
+  <BestOfferTag>Best Value</BestOfferTag>
+  <h4>Commit to Greatness</h4>
+  <p>₹1999/year</p>
+<SmallText>12 months for the price of 6 — save ₹1589 today</SmallText>
+  </PlanBox>
 
 
+                </Plans>
 
                 {isPremium ? (
-
          <Button disabled>You have Premium! 🔥</Button>
-         
                   ) : (
                     <Button onClick={handlePayment}>
             Unlock Your Edge<SparkleIcon />
