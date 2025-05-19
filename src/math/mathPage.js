@@ -196,7 +196,7 @@ const [dropdownOpen, setDropdownOpen] = useState(false);
       if (pdfFile) {
         const formData = new FormData();
         formData.append("file", pdfFile);
-        formData.append("prompt", message || "Analyze this PDF deeply and extract all key concepts, summarized explanations, important definitions, examples, formulas, and diagrams (if any). Identify the intended audience, structure the content into sections, and highlight exam-relevant insights, real-world applications, and any patterns in how the information is presented. If this is study material, suggest how a student can best use it for revision or preparation. Avoid simply describing the document — instead, aim to provide a clear, useful breakdown of what can be learned from it.");
+        formData.append("prompt", message || "Analyze this PDF deeply and extract all key concepts, summarized explanations, important definitions, examples, formulas, and diagrams (if any). Identify the intended audience, structure the content into sections, and highlight exam-relevant insights, real-world applications, and any patterns in how the information is presented. If this is study material, suggest how a student can best use it for revision or preparation. Avoid simply describing the document — instead, aim to provide a clear, useful breakdown of what can be learned from it and provide details and answers from it.");
         formData.append("token", token);
   
         const response = await axios.post(API_ROUTES.aiPdfProcessing, formData, {
@@ -209,7 +209,7 @@ const [dropdownOpen, setDropdownOpen] = useState(false);
       } else if (image) {
         const formData = new FormData();
         formData.append("image", image);
-        formData.append("prompt", message || "Analyze this image and provide details.");
+        formData.append("prompt", message || "Analyze this image and provide details and answers from it.");
         formData.append("token", token);
   
         const response = await axios.post(API_ROUTES.aiImgProcessing, formData, {
