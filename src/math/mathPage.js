@@ -234,6 +234,8 @@ const [dropdownOpen, setDropdownOpen] = useState(false);
       }
   
       setChatHistory([...newHistory, { role: "model", parts: [{ text: formattedResultText }] }]);
+      setMessage(""); // Clear the input after success
+
     } catch (error) {
       console.error("Error sending message:", error);
       setChatHistory([...newHistory, { role: "model", parts: [{ text: "Something went wrong. Please try again later." }] }]);
