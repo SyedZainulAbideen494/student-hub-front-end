@@ -224,13 +224,13 @@ const PaymentComponentUserReg = () => {
     // Set pricing based on selected plan
     let planAmount = 0;
     if (selectedPlan === "daily") {
-      planAmount = 19;
+      planAmount = 9;
     } else if (selectedPlan === "weekly") {
-      planAmount = 49;
+      planAmount = 39;
     } else if (selectedPlan === "monthly") {
-      planAmount = 149;
+      planAmount = 99;
     } else if (selectedPlan === "yearly") {
-      planAmount = 1299;
+      planAmount = 999;
     }
     
 
@@ -347,28 +347,28 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                 <Plans>
                     <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
                         <h4>First Step to Mastery</h4>
-                        <p>₹19/day</p>
+                        <p>₹9/day</p>
                         <SmallText>No commitment. Just results.</SmallText>
                     </PlanBox>
 
                     <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
                         <BestOfferTag>Exclusive Value</BestOfferTag>
                         <h4>Lead Without Limits</h4>
-                        <p>₹149/month</p>
+                        <p>₹99/month</p>
                         <SmallText>Full access. Effortless excellence.</SmallText>
                     </PlanBox>
 
                     <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
                         <h4>Own Your Week</h4>
-                        <p>₹49/week</p>
+                        <p>₹39/week</p>
                         <SmallText>Focused. Achieved. Repeated.</SmallText>
                     </PlanBox>
 
                     <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
   <BestOfferTag>Best Value</BestOfferTag>
   <h4>Commit to Greatness</h4>
-  <p>₹1,299/year</p>
-<SmallText>12 months for the price of 6</SmallText>
+  <p>₹999/year</p>
+<SmallText>12 months for the price of 10</SmallText>
   </PlanBox>
 
 
