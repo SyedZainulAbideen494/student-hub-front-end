@@ -202,8 +202,8 @@ const FooterNav = () => {
                 location.pathname === '/subscription' || location.pathname === '/reg-user-subs' ? 'active' : ''
             }`}
         >
-            <FaCrown className="icon-footer-nav" />
-            <span className="btn-label">Premium</span>
+            <FaCrown className="icon-footer-nav" style={{color: 'gold'}}/>
+            <span className="btn-label">Edusify Pro</span>
 
 
         </button>

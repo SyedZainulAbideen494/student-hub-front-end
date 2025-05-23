@@ -383,7 +383,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
          <Button disabled>You have Premium! 🔥</Button>
                   ) : (
    <Button onClick={handlePayment}>
-  Unleash the Smartest Way to Study <SparkleIcon />
+  Upgrade to Edusify Pro <SparkleIcon />
 </Button>
 
                 
