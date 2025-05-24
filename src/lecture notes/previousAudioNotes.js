@@ -67,7 +67,7 @@ const AudioNotes = () => {
                   </svg>
                 </div>
                 <div className="timestamp__prev__class__lect__page">
-                  {new Date(note.created_at).toLocaleString()}
+{new Date(note.created_at).toLocaleDateString()}
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ const AudioNotes = () => {
                   className="btn__view__summary__prev__class__lect__page"
                   onClick={() => navigate(`/note/view/${note.note_id}`)}
                 >
-                  <i className="fas fa-brain"></i> View AI Summary
+                   AI Summary
                 </button>
               </div>
             </li>
