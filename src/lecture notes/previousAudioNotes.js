@@ -33,10 +33,7 @@ const AudioNotes = () => {
     <div className="container__prev__class__lect__page">
       <div className="header__prev__class__lect__page">
         <button className="back__btn__prev__class__lect__page" onClick={() => navigate(-1)}>
-          <svg height="20" width="20" viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-          Back
+          <i className="fas fa-arrow-left"></i> Back
         </button>
         <h2 className="title__prev__class__lect__page">Your AI Summaries</h2>
       </div>
@@ -47,41 +44,43 @@ const AudioNotes = () => {
         <p className="no__notes__prev__class__lect__page">No lectures found.</p>
       ) : (
         <ul className="list__prev__class__lect__page">
-         {notes.map((note) => (
-  <li key={note.note_id} className="item__prev__class__lect__page">
-    <div className="icon__wrapper__prev__class__lect__page">
-      <svg
-        height="28"
-        width="28"
-        viewBox="0 0 24 24"
-        className="icon__ai__audio__recorder"
-      >
-        <defs>
-          <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6a9eff" />
-            <stop offset="100%" stopColor="#cb7eff" />
-          </linearGradient>
-        </defs>
-        <path
-          fill="url(#aiGradient)"
-          d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"
-        />
-      </svg>
-    </div>
-    <div className="right__col__prev__class__lect__page">
-      <button
-        className="btn__view__summary__prev__class__lect__page"
-        onClick={() => navigate(`/note/view/${note.note_id}`)}
-      >
-        View AI Summary
-      </button>
-      <div className="timestamp__prev__class__lect__page">
-        {new Date(note.created_at).toLocaleString()}
-      </div>
-    </div>
-  </li>
-))}
+          {notes.map((note) => (
+            <li key={note.note_id} className="item__prev__class__lect__page">
+              <div className="left__col__prev__class__lect__page">
+                <div className="icon__wrapper__prev__class__lect__page">
+                  <svg
+                    height="32"
+                    width="32"
+                    viewBox="0 0 24 24"
+                    className="icon__ai__audio__recorder"
+                  >
+                    <defs>
+                      <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#6a9eff" />
+                        <stop offset="100%" stopColor="#cb7eff" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#aiGradient)"
+                      d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"
+                    />
+                  </svg>
+                </div>
+                <div className="timestamp__prev__class__lect__page">
+                  {new Date(note.created_at).toLocaleString()}
+                </div>
+              </div>
 
+              <div className="right__col__prev__class__lect__page">
+                <button
+                  className="btn__view__summary__prev__class__lect__page"
+                  onClick={() => navigate(`/note/view/${note.note_id}`)}
+                >
+                  <i className="fas fa-brain"></i> View AI Summary
+                </button>
+              </div>
+            </li>
+          ))}
         </ul>
       )}
     </div>

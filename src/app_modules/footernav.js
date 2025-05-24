@@ -3,7 +3,8 @@ import {
     FaUsers, FaFlask, FaStickyNote, FaCalendarAlt, FaBars, FaClock, FaUser,
     FaQuestionCircle, FaBook, FaToolbox, FaFolder, FaFileAlt, FaCrown, FaBookReader,
     FaUserGraduate,
-    FaChartBar
+    FaChartBar,
+    FaMicrophone
 } from 'react-icons/fa';
 import { MdDashboard, MdAssignment } from 'react-icons/md';
 import { HiBookOpen } from 'react-icons/hi';
@@ -139,12 +140,14 @@ const FooterNav = () => {
                     </button>
                 </Link>
 
-                <Link to='/document-locker' style={{ textDecoration: 'none' }}>
-                    <button className={`nav-btn-footer-nav ${location.pathname === '/document-locker' ? 'active' : ''}`}>
-                        <FaFolder className="icon-footer-nav" />
-                        <span className="btn-label">Locker</span>
-                    </button>
-                </Link>
+                <Link to='/lecture-recorder' style={{ textDecoration: 'none' }}>
+  <button className={`nav-btn-footer-nav ${location.pathname === '/lecture-recorder' ? 'active' : ''}`}>
+    <FaMicrophone className="icon-footer-nav" />
+    <span className="btn-label">Lecture AI</span>
+    <span className='new-label-footer-nav'>New must try!</span>
+  </button>
+</Link>
+
 
                 <LockButton to='/assignment-maker' icon={<MdAssignment className="icon-footer-nav" />} label="Assignment Maker" locked={!isPremium} isActive={location.pathname === '/assignment-maker'} />
 

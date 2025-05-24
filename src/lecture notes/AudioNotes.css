@@ -1,117 +1,126 @@
 .container__prev__class__lect__page {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0d0d0f, #101114);
-    color: #e6e6ea;
-    padding: 32px 24px 64px;
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .header__prev__class__lect__page {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-    max-width: 800px;
-    margin-bottom: 40px;
-  }
-  
-  .back__btn__prev__class__lect__page {
-    background: none;
-    border: none;
-    color: #aaa;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  .back__btn__prev__class__lect__page:hover {
-    color: #fff;
-  }
-  
-  .title__prev__class__lect__page {
-    font-size: 1.9rem;
-    font-weight: 600;
-    color: #fafafa;
-    flex-grow: 1;
-    text-align: center;
-  }
-  
-  .loading__prev__class__lect__page,
-  .no__notes__prev__class__lect__page {
-    font-size: 1.1rem;
-    color: #999;
-    margin-top: 24px;
-  }
-  
-  .list__prev__class__lect__page {
-    list-style: none;
-    padding: 0;
-    width: 100%;
-    max-width: 720px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .item__prev__class__lect__page {
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .item__prev__class__lect__page:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  }
-  
-  .icon__wrapper__prev__class__lect__page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icon__ai__audio__recorder {
-    flex-shrink: 0;
-  }
-  
-  .btn__view__summary__prev__class__lect__page {
-    background: linear-gradient(135deg, #6a9eff, #cb7eff);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 12px;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    white-space: nowrap;
-  }
-  
-  .btn__view__summary__prev__class__lect__page:hover {
-    background: linear-gradient(135deg, #5884e9, #b26ae6);
-  }
-  
-  .right__col__prev__class__lect__page {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-  }
-  
-  .timestamp__prev__class__lect__page {
-    font-size: 0.85rem;
-    color: #aaa;
-  }
-  
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d0d0f, #101114);
+  color: #e6e6ea;
+  padding: 32px 24px 64px;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__prev__class__lect__page {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.back__btn__prev__class__lect__page {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.back__btn__prev__class__lect__page:hover {
+  color: #fff;
+}
+
+.title__prev__class__lect__page {
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #fafafa;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.loading__prev__class__lect__page,
+.no__notes__prev__class__lect__page {
+  font-size: 1.1rem;
+  color: #999;
+  margin-top: 24px;
+}
+
+.list__prev__class__lect__page {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item__prev__class__lect__page {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+.item__prev__class__lect__page:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.left__col__prev__class__lect__page {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon__wrapper__prev__class__lect__page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon__ai__audio__recorder {
+  flex-shrink: 0;
+}
+
+.btn__view__summary__prev__class__lect__page {
+  background: linear-gradient(135deg, #6a9eff, #cb7eff);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn__view__summary__prev__class__lect__page:hover {
+  background: linear-gradient(135deg, #5884e9, #b26ae6);
+}
+
+.right__col__prev__class__lect__page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.timestamp__prev__class__lect__page {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-left: 8px;
+  margin-top: 4px;
+}

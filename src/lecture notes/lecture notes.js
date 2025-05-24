@@ -4,6 +4,7 @@ import "./LectureRecorder.css";
 import { FaMicrophone, FaStop, FaFileAlt } from "react-icons/fa";
 import FooterNav from "../app_modules/footernav";
 import { API_ROUTES } from "../app_modules/apiRoutes";
+import axios from "axios";
 
 export default function LectureRecorder() {
   const [recording, setRecording] = useState(false);
@@ -17,22 +18,47 @@ export default function LectureRecorder() {
   const audioChunksRef = useRef([]);
   const timerRef = useRef(null);
   const navigate = useNavigate();
+  const [isPremium, setIsPremium] = useState(null);
 
-  const startRecording = async () => {
+
+    useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return setIsPremium(false);
+
+    axios
+      .post(API_ROUTES.checkSubscription, {}, { headers: { Authorization: token } })
+      .then(res => setIsPremium(res.data.premium))
+      .catch(() => setIsPremium(false));
+  }, []);
+  
+const startRecording = async () => {
+  if (!isPremium) {
+    navigate("/subscription");
+    return;
+  }
+
+  try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     audioChunksRef.current = [];
     mediaRecorderRef.current = new MediaRecorder(stream);
 
-    mediaRecorderRef.current.ondataavailable = (e) =>
+    mediaRecorderRef.current.ondataavailable = (e) => {
       audioChunksRef.current.push(e.data);
+    };
 
     mediaRecorderRef.current.start();
     setRecording(true);
     setTimer(0);
+
     timerRef.current = setInterval(() => {
       setTimer((prev) => prev + 1);
     }, 1000);
-  };
+  } catch (err) {
+    console.error("Microphone access error:", err);
+    alert("Could not access microphone. Please allow microphone permissions.");
+  }
+};
+
 
   const stopRecording = async () => {
     // stop media recorder and wait for data to be available
@@ -150,7 +176,7 @@ Generate the lecture notes exactly as described, formatted and ready to be displ
           <button
             className="button__ai__audio__recorder secondary-btn__ai__audio__recorder"
             onClick={() => {
-         navigate("/audio-notes");
+         navigate("/audio-notes-previous");
             }}
             disabled={loading}
           >
