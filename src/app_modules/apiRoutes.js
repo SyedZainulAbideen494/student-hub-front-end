@@ -241,5 +241,7 @@ export const API_ROUTES = {
   fetchExamPacks: `${API_URL}/get-packs`,
   examModeGenerate: `${API_URL}/api/exam-mode/generate`,
   displayAiCareerResult: `${API_URL}/api/career-ai/result`,
-  generateAiCareer: `${API_URL}/api/career-ai/recommendation`
+  generateAiCareer: `${API_URL}/api/career-ai/recommendation`,
+  generateNotesFromAudio: `${API_URL}/upload/audio/notes`,
+  fetchPreviousAudioNotes: `${API_URL}/api/audio-notes`
 }

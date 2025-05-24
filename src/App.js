@@ -176,6 +176,8 @@ import PaymentComponentUserReg from "./premium/subs-user-reg";
 import PremiumReminder from "./premium/premiumAbandon";
 import StoryCard from "./Share Stats/shareProfile";
 import StoryCardMain from "./Share Stats/shareProfileMain";
+import LectureRecorder from "./lecture notes/lecture notes";
+import AudioNotes from "./lecture notes/previousAudioNotes";
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -331,6 +333,8 @@ const router = createBrowserRouter([
   {path: '/reg-user-subs', element: <PaymentComponentUserReg/>},
   {path: "/premium-abandon", element: <PremiumReminder/>},
   {path: '/share-profile', element: <StoryCardMain/>},
+  {path: '/lecture-recorder', element: <LectureRecorder/>},
+  {path: '/audio-notes-previous', element: <AudioNotes/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 

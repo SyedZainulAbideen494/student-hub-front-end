@@ -1,0 +1,215 @@
+.container__ai__audio__recorder {
+    height: 100vh;
+    background: linear-gradient(135deg, #0e0e0f, #121212);
+    color: #f5f5f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+    padding: 48px 24px;
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+  }
+  
+  .title__ai__audio__recorder {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* this centers horizontally */
+    gap: 12px;
+    margin-bottom: 8px;
+    user-select: none;
+    text-align: center;
+  }
+  
+  .icon__ai__audio__recorder {
+    display: block; /* avoids inline quirks */
+    width: 24px;
+    height: 24px;
+    fill: #5a94ff;
+    flex-shrink: 0; /* prevent shrinking */
+    margin: 0; /* just in case */
+    padding: 0;
+  }
+  
+  
+  .desc__ai__audio__recorder {
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: #b6b6b9;
+    font-size: 1.08rem;
+    font-weight: 400;
+    max-width: 460px;
+    line-height: 1.6;
+  }
+  
+  .button-group__ai__audio__recorder {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 320px;
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .button__ai__audio__recorder {
+    padding: 18px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    border-radius: 1000px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease-in-out;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .primary-btn__ai__audio__recorder {
+    background: linear-gradient(90deg, #5a94ff, #3b71ff);
+    color: white;
+    box-shadow: 0 14px 36px rgba(91, 147, 255, 0.35);
+  }
+  
+  .primary-btn__ai__audio__recorder:hover {
+    background: linear-gradient(90deg, #4a83e8, #315edc);
+    box-shadow: 0 16px 40px rgba(65, 113, 224, 0.55);
+    transform: translateY(-2px);
+  }
+  /* Elegant & Refined Secondary Button */
+
+.button__ai__audio__recorder.secondary-btn__ai__audio__recorder {
+    background: transparent;
+    color: #5a94ff;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1.8px solid #5a94ff;
+    border-radius: 25px;           /* Softer, subtle rounding */
+    cursor: pointer;
+    transition: 
+      background-color 0.35s ease,
+      color 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+    box-shadow: 0 1.5px 5px rgba(90, 148, 255, 0.2); /* Soft glow */
+    user-select: none;
+    letter-spacing: 0.03em;
+    margin-top: 10px;
+  }
+  
+  .button__ai__audio__recorder.secondary-btn__ai__audio__recorder:hover:not(:disabled) {
+    background-color: #5a94ff;
+    color: #fff;
+    border-color: #4a7ee0;
+    box-shadow: 0 5px 15px rgba(90, 148, 255, 0.4);  /* Elegant subtle glow */
+  }
+  
+  .button__ai__audio__recorder.secondary-btn__ai__audio__recorder:disabled {
+    color: #a5bbf9;
+    border-color: #a5bbf9;
+    cursor: not-allowed;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  
+  .recording-box__ai__audio__recorder {
+    width: 320px;
+    padding: 18px 26px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    animation: zoomIn 0.5s ease-out;
+  }
+  
+  .timer__ai__audio__recorder {
+    font-size: 1rem;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  
+  .stop-btn__ai__audio__recorder {
+    padding: 12px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 1000px;
+    background: linear-gradient(90deg, #ff4c5f, #ff2e44);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 28px rgba(255, 65, 83, 0.25);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .stop-btn__ai__audio__recorder:hover:not(:disabled) {
+    background: linear-gradient(90deg, #ff3a4a, #e42e3a);
+    transform: translateY(-2px);
+  }
+  
+  .stop-btn__ai__audio__recorder:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  
+  .summary-box__ai__audio__recorder {
+    margin-top: 52px;
+    background: rgba(255, 255, 255, 0.035);
+    padding: 36px 42px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 860px;
+    width: 100%;
+    color: #ddd;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    font-weight: 400;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(14px);
+  }
+  
+  .summary-title__ai__audio__recorder {
+    margin-bottom: 20px;
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 1.65rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes zoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
