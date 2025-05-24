@@ -222,16 +222,22 @@ const PaymentComponent = () => {
       }
 
     // Set pricing based on selected plan
-    let planAmount = 0;
-    if (selectedPlan === "daily") {
-      planAmount = 9;
-    } else if (selectedPlan === "weekly") {
-      planAmount = 39;
-    } else if (selectedPlan === "monthly") {
-      planAmount = 99;
-    } else if (selectedPlan === "yearly") {
-      planAmount = 999;
-    }
+   // Set pricing based on selected plan
+let planAmount = 0;
+if (selectedPlan === "daily") {
+  planAmount = 9;
+} else if (selectedPlan === "weekly") {
+  planAmount = 39;
+} else if (selectedPlan === "monthly") {
+  planAmount = 99;
+} else if (selectedPlan === "3months") {
+  planAmount = 239; // 💡 Adjust price as per your pricing strategy
+} else if (selectedPlan === "6months") {
+  planAmount = 499; // 💡 Adjust price as per your pricing strategy
+} else if (selectedPlan === "yearly") {
+  planAmount = 999;
+}
+
     
 
 const { data } = await axios.post(API_ROUTES.getPremium, {
@@ -368,6 +374,18 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                         <p>₹39/week</p>
                         <SmallText>Focused. Achieved. Repeated.</SmallText>
                     </PlanBox>
+
+                    <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
+    <h4>Rise Quarterly</h4>
+    <p>₹239/3 months</p>
+    <SmallText>Save more. Stay sharp.</SmallText>
+  </PlanBox>
+
+  <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
+    <h4>Half-Year Hustle</h4>
+    <p>₹499/6 months</p>
+    <SmallText>Consistency breeds champions.</SmallText>
+  </PlanBox>
 
                     <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
   <BestOfferTag>Best Value</BestOfferTag>
