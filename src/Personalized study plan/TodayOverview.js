@@ -122,6 +122,11 @@ function TodayAiOverview() {
     navigate('/flow-user-data');
   };
 
+  const handleBuildNewPlan = () => {
+    navigate('/study-plan-builder');
+  };
+
+
   const handleEdit = () => {
     navigate('/study-plan')
   }
@@ -195,17 +200,32 @@ function TodayAiOverview() {
       <div className="bottom__buttons__today__ai__pan_overview">
         {isPremium ? (
           <button className="action__button__today__ai__pan_overview" onClick={handleNewPlan}>
-            Get New Plan
+            Get New Plan AI
           </button>
         ) : (
           <button 
           className="action__button__today__ai__pan_overview__locked__premium__"
           disabled
         >
-          <FaLock className="lock-icon" /> Get New Plan<span>Premium</span>
+          <FaLock className="lock-icon" /> Generate New Plan AI<span>Premium</span>
         </button>
 
         )}
+
+        {isPremium ? (
+          <button className="action__button__today__ai__pan_overview" onClick={handleBuildNewPlan}>
+            Build New plan
+          </button>
+        ) : (
+          <button 
+          className="action__button__today__ai__pan_overview__locked__premium__"
+          disabled
+        >
+          <FaLock className="lock-icon" /> Build New plan <span>Premium</span>
+        </button>
+
+        )}
+
 
   {/* Task Generation Button */}
     {isPremium ? (

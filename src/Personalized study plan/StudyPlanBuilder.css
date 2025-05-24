@@ -1,0 +1,140 @@
+
+  
+  /* Outer wrapper */
+  .builder-container__manual__builder__Study__Plan__Page {
+    padding: 48px 24px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Title styling */
+  .title__manual__builder__Study__Plan__Page {
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Weekly layout */
+  .week-grid__manual__builder__Study__Plan__Page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+  
+  /* Each day card */
+  .day-card__manual__builder__Study__Plan__Page {
+    background: #1a1a1a;
+    border-radius: 18px;
+    padding: 20px 20px 16px;
+    width: 290px;
+    border: 1px solid #2a2a2a;
+    box-shadow: inset 0 0 0 1px #2c2c2c;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  /* Card title */
+  .day-card__manual__builder__Study__Plan__Page h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #f5f5f5;
+  }
+  
+  /* Subject input row */
+  .input-group__manual__builder__Study__Plan__Page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  /* Inputs inside subject input group */
+  .input-group__manual__builder__Study__Plan__Page input {
+    padding: 8px 10px;
+    background-color: #141414;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    width: 100px;
+    font-size: 0.9rem;
+  }
+  
+  /* Add subject button */
+  .input-group__manual__builder__Study__Plan__Page button {
+    background-color: #007aff;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .input-group__manual__builder__Study__Plan__Page button:hover {
+    background-color: #0056d4;
+  }
+  
+  /* Subject list items */
+  .subject-list__manual__builder__Study__Plan__Page {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 14px;
+    color: #d1d1d1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  /* Textareas and select fields */
+  .day-card__manual__builder__Study__Plan__Page textarea,
+  .day-card__manual__builder__Study__Plan__Page select {
+    width: 90%;
+    padding: 10px 12px;
+    background-color: #141414;
+    color: #f0f0f0;
+    border: 1px solid #2c2c2c;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    margin-top: 12px;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+  }
+  .day-card__manual__builder__Study__Plan__Page select{
+    width: 97%
+  }
+  .day-card__manual__builder__Study__Plan__Page textarea:focus,
+  .day-card__manual__builder__Study__Plan__Page select:focus {
+    border-color: #007aff;
+    outline: none;
+  }
+  
+  .day-card__manual__builder__Study__Plan__Page select {
+    cursor: pointer;
+  }
+  
+  /* Final JSON Button */
+  .generate-btn__manual__builder__Study__Plan__Page {
+    margin: 48px auto 0;
+    padding: 14px 28px;
+    background: #007aff;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    box-shadow: 0 4px 20px rgba(0, 122, 255, 0.2);
+  }
+  
+  .generate-btn__manual__builder__Study__Plan__Page:hover {
+    background: #0056d4;
+    transform: translateY(-1px);
+  }
+  

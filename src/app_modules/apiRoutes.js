@@ -243,5 +243,6 @@ export const API_ROUTES = {
   displayAiCareerResult: `${API_URL}/api/career-ai/result`,
   generateAiCareer: `${API_URL}/api/career-ai/recommendation`,
   generateNotesFromAudio: `${API_URL}/upload/audio/notes`,
-  fetchPreviousAudioNotes: `${API_URL}/api/audio-notes`
+  fetchPreviousAudioNotes: `${API_URL}/api/audio-notes`,
+  saveStudyPlanManual: `${API_URL}/api/save-study-plan/manual`
 }

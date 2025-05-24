@@ -178,6 +178,7 @@ import StoryCard from "./Share Stats/shareProfile";
 import StoryCardMain from "./Share Stats/shareProfileMain";
 import LectureRecorder from "./lecture notes/lecture notes";
 import AudioNotes from "./lecture notes/previousAudioNotes";
+import StudyPlanBuilder from "./Personalized study plan/manualStudyPlanBuilder";
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -335,6 +336,7 @@ const router = createBrowserRouter([
   {path: '/share-profile', element: <StoryCardMain/>},
   {path: '/lecture-recorder', element: <LectureRecorder/>},
   {path: '/audio-notes-previous', element: <AudioNotes/>},
+  {path: '/study-plan-builder', element: <StudyPlanBuilder/>},
   { path: '*', element: <NotFoundPage /> },
 ]);
 
