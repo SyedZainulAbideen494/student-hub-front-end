@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  FaBookReader, FaBrain, FaMap, FaUserGraduate, FaLock
+  FaBookReader, FaBrain, FaMap, FaUserGraduate, FaLock,
+  FaMicrophone
 } from "react-icons/fa";
 import {
   MdBrush, MdQuiz, MdNotes, MdOutlineAssignment, MdArrowBack
@@ -33,16 +34,18 @@ const AiSelectionPage = () => {
     }
   }, []);
 
-  const aiOptions = [
-    { icon: <FaBrain />, text: "AI Chatbot", path: "/ai", locked: false },
-    { icon: <MdBrush />, text: "AI Image Generator", path: "/ai/image", locked: true },
-    { icon: <MdNotes />, text: "AI Notes", path: "/notes/create/ai", locked: true },
-    { icon: <MdQuiz />, text: "AI Quizzes", path: "/quiz/ai", locked: false },
-    { icon: <FaMap />, text: "AI Mind Maps", path: "/mindmap/create", locked: true },
-    { icon: <MdOutlineAssignment />, text: "AI Assignment Maker", path: "/assignment-maker", locked: true },
-    { icon: <FaBookReader />, text: "AI Exam Mode", path: "/exam-mode", locked: true },
-    { icon: <FaUserGraduate />, text: "CareerSense", path: "/carrier/flow", locked: false }
-  ];
+const aiOptions = [
+  { icon: <FaBrain />, text: "AI Chatbot", path: "/ai", locked: false },
+  { icon: <MdBrush />, text: "AI Image Generator", path: "/ai/image", locked: true },
+  { icon: <MdNotes />, text: "AI Notes", path: "/notes/create/ai", locked: true },
+  { icon: <MdQuiz />, text: "AI Quizzes", path: "/quiz/ai", locked: false },
+  { icon: <FaMap />, text: "AI Mind Maps", path: "/mindmap/create", locked: true },
+  { icon: <MdOutlineAssignment />, text: "AI Assignment Maker", path: "/assignment-maker", locked: true },
+  { icon: <FaBookReader />, text: "AI Exam Mode", path: "/exam-mode", locked: true },
+  { icon: <FaUserGraduate />, text: "CareerSense", path: "/carrier/flow", locked: false },
+  { icon: <FaMicrophone />, text: "Lecture Recorder AI", path: "/lecture-recorder", locked: true }
+];
+
 
   const handleNavigation = (item) => {
     if (item.locked && !isPremium) {
