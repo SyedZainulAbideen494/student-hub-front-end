@@ -144,7 +144,6 @@ const FooterNav = () => {
   <button className={`nav-btn-footer-nav ${location.pathname === '/lecture-recorder' ? 'active' : ''}`}>
     <FaMicrophone className="icon-footer-nav" />
     <span className="btn-label">Lecture AI</span>
-    <span className='new-label-footer-nav'>New must try!</span>
   </button>
 </Link>
 
