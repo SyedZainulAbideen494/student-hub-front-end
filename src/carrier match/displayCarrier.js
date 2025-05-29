@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 import './displayCarrier.css';
 import templateImg from './2.png';
 import { API_ROUTES } from '../app_modules/apiRoutes';
-import { FaArrowLeft, FaInstagram } from 'react-icons/fa';
+import { FaArrowLeft, FaDownload, FaInstagram } from 'react-icons/fa';
 
 const CareerResult = () => {
   const { id } = useParams();
@@ -39,12 +39,6 @@ const CareerResult = () => {
     link.click();
   };
 
-  const redirectToInstagram = async () => {
-    await downloadImage();  // Download the image first
-    // After download, open Instagram's mobile app or web story page
-    const instagramUrl = 'https://www.instagram.com/create/story/';
-    window.open(instagramUrl, '_blank');  // Open Instagram's story creation page
-  };
 
   if (loading) return <div className="career-result__carreir__result__page">Loading...</div>;
   if (!careerResult) return <div className="career-result__carreir__result__page">No career result found.</div>;
@@ -70,10 +64,10 @@ const CareerResult = () => {
          <div className="share__carreir__result__page">
   <p className="hashtag__carreir__result__page">{careerResult.hashtag}</p>
 
-  <button onClick={redirectToInstagram} className="instagram-story-btn__carreir__result__page">
-    <FaInstagram style={{ marginRight: '8px' }} />
-    Add to Story
-  </button>
+  <button onClick={downloadImage} className="instagram-story-btn__carreir__result__page">
+    <FaDownload style={{ marginRight: '8px' }} />
+save 
+ </button>
 
 <p className="tagline__carreir__result__page">
   <strong>Share this on your story</strong> and <strong>tag @edusify.app</strong><br /><br/>

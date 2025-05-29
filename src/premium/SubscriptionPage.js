@@ -375,7 +375,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
                         <SmallText>Focused. Achieved. Repeated.</SmallText>
                     </PlanBox>
 
-                    <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
+                {/*   <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
     <h4>Rise Quarterly</h4>
     <p>₹239/3 months</p>
     <SmallText>Save more. Stay sharp.</SmallText>
@@ -385,7 +385,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     <h4>Half-Year Hustle</h4>
     <p>₹499/6 months</p>
     <SmallText>Consistency breeds champions.</SmallText>
-  </PlanBox>
+  </PlanBox>*/}  
 
                     <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
   <BestOfferTag>Best Value</BestOfferTag>
