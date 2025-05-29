@@ -401,7 +401,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
          <Button disabled>You have Premium! 🔥</Button>
                   ) : (
    <Button onClick={handlePayment}>
-  Upgrade to Edusify Pro <SparkleIcon />
+  Upgrade to Pro <SparkleIcon />
 </Button>
 
                 
