@@ -43,7 +43,7 @@ const aiOptions = [
   { icon: <MdOutlineAssignment />, text: "AI Assignment Maker", path: "/assignment-maker", locked: true },
   { icon: <FaBookReader />, text: "AI Exam Mode", path: "/exam-mode", locked: true },
   { icon: <FaUserGraduate />, text: "CareerSense", path: "/carrier/flow", locked: false },
-  { icon: <FaMicrophone />, text: "Lecture Recorder AI", path: "/lecture-recorder", locked: true }
+  { icon: <FaMicrophone />, text: "AI Lecture Summary", path: "/lecture-recorder", locked: true }
 ];
 
 
