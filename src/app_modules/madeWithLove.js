@@ -50,8 +50,8 @@ const MadeWithLove: React.FC = () => {
         href="https://instagram.com/_syed_zain_ul"
         target="_blank"
         rel="noopener noreferrer"
-      >
-        Zain
+      ><br/>
+        Syed Zain-ul Abideen
       </a>
     </Footer>
   );
