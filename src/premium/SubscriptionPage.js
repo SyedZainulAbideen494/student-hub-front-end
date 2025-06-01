@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
 import axios from "axios";
 import { FaRocket, FaStar, FaMoon, FaCloudSun, FaCube, FaRegClock } from 'react-icons/fa';
 
@@ -180,13 +180,7 @@ const Footer = styled.p`
   }
 `;
 
-const Divider = styled.div`
-  height: 2px;
-  width: 60px;
-  background: #3c3c43;
-  margin: 60px auto 40px;
-  border-radius: 10px;
-`;
+
 
 const BestOfferTag = styled.div`
   position: absolute;
@@ -202,6 +196,57 @@ const BestOfferTag = styled.div`
   box-shadow: 0 6px 18px rgba(127, 86, 217, 0.35);
   letter-spacing: 0.3px;
 `;
+const BenefitsContainer = styled.div`
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  padding: 32px 24px;
+  backdrop-filter: blur(14px);
+  animation: fadeIn 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease-in-out;
+`;
+
+const Feature = styled.p`
+  font-size: 15px;
+  color: #eaeaea;
+  margin-bottom: 16px;
+  line-height: 1.6;
+`;
+
+const Highlight = styled.span`
+  font-weight: 600;
+  color: #ffffff;
+`;
+
+const Tagline = styled.p`
+  font-size: 14px;
+  color: #b1b1b1;
+  text-align: center;
+  margin-top: 30px;
+  line-height: 1.8;
+  font-style: italic;
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background: #3c3c43;
+  margin: 32px auto;
+  width: 40%;
+  border-radius: 10px;
+  opacity: 0.3;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`;
 
 
 
@@ -210,6 +255,7 @@ const PaymentComponent = () => {
   const [selectedPlan, setSelectedPlan] = useState("monthly");
   const [isPremium, setIsPremium] = useState(null);
   const [step, setStep] = useState(1);
+const [showBenefits, setShowBenefits] = useState(false);
 
 
   // Handle Payment with Razorpay
@@ -349,70 +395,86 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   
   
   return (
-    <Wrapper>
-        <ScrollContent ref={scrollRef}>
-            <SubscriptionContainer>
-                <Title>Your Edge Begins Here</Title>
-                <Subtitle>For students who expect more — and achieve it.</Subtitle>
+   <Wrapper>
+  <ScrollContent ref={scrollRef}>
+    <SubscriptionContainer>
+      <Title>Unlock the Edge.</Title>
+      <Subtitle>Built for students who move smart — and move first.</Subtitle>
 
-                <Plans>
-                    <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
-                        <h4>First Step to Mastery</h4>
-                        <p>₹9/day</p>
-                        <SmallText>No commitment. Just results.</SmallText>
-                    </PlanBox>
+      <Plans>
+        <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+          <h4>First Step to Mastery</h4>
+          <p>₹9/day</p>
+          <SmallText>No commitment. Just results.</SmallText>
+        </PlanBox>
 
-                    <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-                        <BestOfferTag>Exclusive Value</BestOfferTag>
-                        <h4>Lead Without Limits</h4>
-                        <p>₹99/month</p>
-                        <SmallText>Full access. Effortless excellence.</SmallText>
-                    </PlanBox>
+        <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+          <BestOfferTag>Exclusive Value</BestOfferTag>
+          <h4>Lead Without Limits</h4>
+          <p>₹99/month</p>
+          <SmallText>Full access. Effortless excellence.</SmallText>
+        </PlanBox>
 
-                    <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-                        <h4>Own Your Week</h4>
-                        <p>₹39/week</p>
-                        <SmallText>Focused. Achieved. Repeated.</SmallText>
-                    </PlanBox>
+        <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+          <h4>Own Your Week</h4>
+          <p>₹39/week</p>
+          <SmallText>Focused. Achieved. Repeated.</SmallText>
+        </PlanBox>
 
-                {/*   <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
-    <h4>Rise Quarterly</h4>
-    <p>₹239/3 months</p>
-    <SmallText>Save more. Stay sharp.</SmallText>
-  </PlanBox>
+        <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
+          <h4>Rise Quarterly</h4>
+          <p>₹239/3 months</p>
+          <SmallText>Save more. Stay sharp.</SmallText>
+        </PlanBox>
 
-  <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
-    <h4>Half-Year Hustle</h4>
-    <p>₹499/6 months</p>
-    <SmallText>Consistency breeds champions.</SmallText>
-  </PlanBox>*/}  
+        <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
+          <h4>Half-Year Hustle</h4>
+          <p>₹499/6 months</p>
+          <SmallText>Consistency breeds champions.</SmallText>
+        </PlanBox>
 
-                    <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
-  <BestOfferTag>Best Value</BestOfferTag>
-  <h4>Commit to Greatness</h4>
-  <p>₹999/year</p>
-<SmallText>12 months for the price of 10 — save today</SmallText>
-  </PlanBox>
+        <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
+          <BestOfferTag>Best Value</BestOfferTag>
+          <h4>Commit to Greatness</h4>
+          <p>₹999/year</p>
+          <SmallText>12 months for the price of 10 — secure your edge today.</SmallText>
+        </PlanBox>
+      </Plans>
 
+      <Button onClick={() => setShowBenefits(!showBenefits)} style={{ marginBottom: '20px' }}>
+        {showBenefits ? 'Hide Premium Benefits' : 'See Why Toppers Upgrade 🔒'}
+      </Button>
 
-                </Plans>
+      {showBenefits && (
+        <BenefitsContainer style={{ marginBottom: '20px' }}>
+          <Divider />
+          <Feature>✨ <Highlight>AI notes</Highlight> that sound like a topper made them.</Feature>
+          <Feature>✨ <Highlight>Predicted questions</Highlight> before your teacher finishes the chapter.</Feature>
+          <Feature>✨ <Highlight>Study plan</Highlight> that feels like it was made by a rank coach.</Feature>
+          <Feature>✨ <Highlight>Stats</Highlight> so clean, they look screenshot-worthy.</Feature>
+          <Feature>✨ <Highlight>Edusify badge.</Highlight> If you know, you know.</Feature>
+          <Divider />
+          <Tagline>
+            Thousands use Edusify. <br />
+            The top 1% don’t just use it — <br />
+            <Highlight>they own it.</Highlight>
+          </Tagline>
+        </BenefitsContainer>
+      )}
 
-                {isPremium ? (
-         <Button disabled>You have Premium! 🔥</Button>
-                  ) : (
-   <Button onClick={handlePayment}>
-  Unlock All Premium Features <SparkleIcon />
-</Button>
+      {isPremium ? (
+        <Button disabled>You’ve Got Premium. That Says It All. 🔥</Button>
+      ) : (
+        <Button onClick={handlePayment}>
+          Unlock Your Private Study OS <SparkleIcon />
+        </Button>
+      )}
 
-                
-                )}
-
-              <Link to='/'>
-  <Footer>Go Back — Premium Was About to Change Everything</Footer>
-</Link>
-
-            </SubscriptionContainer>
-        </ScrollContent>
+      <Link to='/'>
+        <Footer>Go Back — But Just Know: Premium Hits Different.</Footer>
+      </Link>
+    </SubscriptionContainer>
+  </ScrollContent>
 </Wrapper>
 
   );
