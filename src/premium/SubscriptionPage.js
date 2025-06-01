@@ -8,6 +8,7 @@ import { API_ROUTES } from "../app_modules/apiRoutes";
 import TestimonialsSection from "./testimonials";
 import './Welcome.css'
 import Welcome from "./welcome";
+import PriceHikeBanner from "./priceHikeBanner";
 
 const Wrapper = styled.div`
   background: #0D0D0D;
@@ -400,7 +401,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     <SubscriptionContainer>
       <Title>Unlock the Edge.</Title>
       <Subtitle>Built for students who move smart — and move first.</Subtitle>
-
+<PriceHikeBanner/>
       <Plans>
         <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
           <h4>First Step to Mastery</h4>
