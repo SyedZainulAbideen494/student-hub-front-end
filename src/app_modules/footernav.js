@@ -103,9 +103,7 @@ const FooterNav = () => {
                 <NavButton to='/toolkit' icon={<FaToolbox className="icon-footer-nav" />} label="Toolkit" isActive={location.pathname === '/toolkit'} />
                 <NavButton to='/profile' icon={<FaUser className="icon-footer-nav" />} label={`Profile${hasProfileIssues ? '!' : ''}`} isActive={location.pathname === '/profile'} />
                 <NavButton to='/help' icon={<FaQuestionCircle className="icon-footer-nav" />} label="Help" isActive={location.pathname === '/help'} />
-                <NavButton to='/user/report' icon={<FaFileAlt className="icon-footer-nav" />} label="AI Report" isActive={location.pathname === '/user/report'} />
-
-                {isPremium ? (
+                             {isPremium ? (
                     <NavButton to="/monthly-stats" icon={<FaChartBar className="icon-footer-nav" />} label="Monthly Stats" isActive={location.pathname === '/monthly-stats'} />
                 ) : (
                     <NavButton
@@ -116,6 +114,7 @@ const FooterNav = () => {
 />
 
                 )}
+                <NavButton to='/user/report' icon={<FaFileAlt className="icon-footer-nav" />} label="AI Report" isActive={location.pathname === '/user/report'} />
 
                 <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
             </div>
