@@ -27,6 +27,7 @@ const Banner = styled.div`
   gap: 14px;
   width: 100%;
   max-width: 360px;
+  margin-bottom: 30px;
   transition: box-shadow 0.3s ease;
 
   @media (max-width: 480px) {
