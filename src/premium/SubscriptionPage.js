@@ -333,7 +333,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     const token = localStorage.getItem('token');
     if (token) {
       axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-        .then(response => setIsPremium(false))
+        .then(response => setIsPremium(response.data.premium))
         .catch(() => setIsPremium(false));
     } else {
       setIsPremium(false);
