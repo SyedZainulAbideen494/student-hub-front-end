@@ -110,9 +110,9 @@ const Button = styled.button`
   padding: 14px 36px;
   font-size: 16px;
   font-weight: 500;
-  color: white;
-  background: transparent;
-  border: none;
+  color: #a88beb;
+  background: white;
+  border: white;
   border-radius: 25px;
   width: 100%;
   max-width: 320px;
@@ -123,28 +123,6 @@ const Button = styled.button`
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  &:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: 25px;
-    background: linear-gradient(135deg, #a88beb, #7f56d9, #a88beb);
-    background-size: 300% 300%;
-    animation: shimmer 6s ease infinite;
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: -1;
-  }
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.04);
-    transform: translateY(-1px);
-    box-shadow: 0 0 16px rgba(168, 139, 235, 0.3);
-  }
 
   &:disabled {
     color: rgba(255, 255, 255, 0.4);
@@ -355,7 +333,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     const token = localStorage.getItem('token');
     if (token) {
       axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
-        .then(response => setIsPremium(response.data.premium))
+        .then(response => setIsPremium(false))
         .catch(() => setIsPremium(false));
     } else {
       setIsPremium(false);
@@ -443,7 +421,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       </Plans>
 
       <Button onClick={() => setShowBenefits(!showBenefits)} style={{ marginBottom: '20px' }}>
-        {showBenefits ? 'Hide Premium Benefits' : 'See Why Toppers Upgrade 🔒'}
+        {showBenefits ? 'Hide Premium Benefits' : 'See Why Toppers Upgrade'}
       </Button>
 
       {showBenefits && (
@@ -467,7 +445,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
         <Button disabled>You’ve Got Premium. That Says It All. 🔥</Button>
       ) : (
         <Button onClick={handlePayment}>
-          Unlock Your Private Study OS <SparkleIcon />
+          <SparkleIcon /> Get Premium
         </Button>
       )}
 
