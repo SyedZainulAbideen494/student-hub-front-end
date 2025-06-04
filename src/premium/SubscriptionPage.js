@@ -381,11 +381,11 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       <Subtitle>Built for students who move smart — and move first.</Subtitle>
 <PriceHikeBanner/>
       <Plans>
-        <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+  {/*       <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
           <h4>First Step to Mastery</h4>
           <p>₹9/day</p>
           <SmallText>No commitment. Just results.</SmallText>
-        </PlanBox>
+        </PlanBox>*/}
 
         <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
           <BestOfferTag>Exclusive Value</BestOfferTag>
