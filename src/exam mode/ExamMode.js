@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ExamMode.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirect
@@ -11,6 +11,7 @@ const ExamMode = () => {
   const [started, setStarted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
+    const [isPremium, setIsPremium] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate hook
 
@@ -49,6 +50,17 @@ const ExamMode = () => {
     navigate('/exam-mode/packs')
   }
 
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        axios.post(API_ROUTES.checkSubscription, {}, { headers: { 'Authorization': token } })
+          .then(response => setIsPremium(response.data.premium))
+          .catch(() => setIsPremium(false));
+      } else {
+        setIsPremium(false);
+      }
+    }, []);
+
   return (
     <div className="container__Exam__mode__page__main">
  
@@ -73,13 +85,22 @@ const ExamMode = () => {
             className="input__Exam__mode__page__main"
           />
 
-          <button
-            onClick={handleStart}
-            className="button__Exam__mode__page__main"
-            disabled={loading}
-          >
-            {loading ? 'Generating...' : 'Start Exam'}
-          </button>
+<button
+  onClick={handleStart}
+  className="button__Exam__mode__page__main"
+  disabled={loading || isPremium === false}
+  style={{
+    opacity: isPremium === false ? 0.5 : 1,
+    cursor: isPremium === false ? 'not-allowed' : 'pointer'
+  }}
+>
+  {loading
+    ? 'Generating...'
+    : isPremium === false
+      ? 'Premium Required'
+      : 'Start Exam'}
+</button>
+
           <button
             className="button__Exam__mode__page__main"
             disabled={loading}
