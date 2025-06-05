@@ -407,38 +407,53 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 </Button>
 </PlanBox>*/}
 
-        <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-          <BestOfferTag>Exclusive Value</BestOfferTag>
-          <h4>Lead Without Limits</h4>
-          <p>₹99/month</p>
-          <SmallText>Full access. Effortless excellence.</SmallText>
-        </PlanBox>
+<PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+  <BestOfferTag>Exclusive Value</BestOfferTag>
+  <h4>Lead Without Limits</h4>
+  <p>
+    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹149</span>
+    ₹99/month
+  </p>
+  <SmallText>Full access. Effortless excellence.</SmallText>
+</PlanBox>
 
-        <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-          <h4>Own Your Week</h4>
-          <p>₹39/week</p>
-          <SmallText>Focused. Achieved. Repeated.</SmallText>
-        </PlanBox>
+<PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
+  <h4>Own Your Week</h4>
+  <p>
+    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹49</span>
+    ₹39/week
+  </p>
+  <SmallText>Focused. Achieved. Repeated.</SmallText>
+</PlanBox>
 
-        <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
-          <h4>Rise Quarterly</h4>
-          <p>₹239/3 months</p>
-          <SmallText>Save more. Stay sharp.</SmallText>
-        </PlanBox>
+<PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
+  <h4>Rise Quarterly</h4>
+  <p>
+    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹349</span>
+    ₹239/3 months
+  </p>
+  <SmallText>Save more. Stay sharp.</SmallText>
+</PlanBox>
 
-        <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
-          <h4>Half-Year Hustle</h4>
-          <p>₹499/6 months</p>
-          <SmallText>Consistency breeds champions.</SmallText>
-        </PlanBox>
+<PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
+  <h4>Half-Year Hustle</h4>
+  <p>
+    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹649</span>
+    ₹499/6 months
+  </p>
+  <SmallText>Consistency breeds champions.</SmallText>
+</PlanBox>
 
-        <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
-          <BestOfferTag>Best Value</BestOfferTag>
-          <h4>Commit to Greatness</h4>
-          <p>₹999/year</p>
-          <SmallText>12 months for the price of 10 — secure your edge today.</SmallText>
-        </PlanBox>
-      </Plans>
+<PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
+  <BestOfferTag>Best Value</BestOfferTag>
+  <h4>Commit to Greatness</h4>
+  <p>
+    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹1199</span>
+    ₹999/year
+  </p>
+  <SmallText>12 months for the price of 10 — secure your edge today.</SmallText>
+</PlanBox>
+</Plans>
 
       <Button onClick={() => setShowBenefits(!showBenefits)} style={{ marginBottom: '20px' }}>
         {showBenefits ? 'Hide Premium Benefits' : 'See Why Toppers Upgrade'}
