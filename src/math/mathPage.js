@@ -968,20 +968,31 @@ const SparkleIcon = () => (
     </i>
   </label>
   <input
-    id="pdfUpload"
-    type="file"
-    accept="application/pdf" // Restrict to PDFs
-    onChange={(e) => {
-      const file = e.target.files[0];
-      if (file && file.type !== "application/pdf") {
-        alert("Only PDF files are allowed!"); // Alert if not a PDF
-        e.target.value = null; // Reset the input value
-      } else {
-        setPdfFile(file); // Set the file if it's valid
-      }
-    }}
-    className="pdf-upload-input"
-  />
+  id="pdfUpload"
+  type="file"
+  accept="application/pdf" // Restrict to PDFs
+  onChange={(e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    if (file.type !== "application/pdf") {
+      alert("Only PDF files are allowed!");
+      e.target.value = null;
+      return;
+    }
+
+    if (file.size > 40 * 1024 * 1024) { // 40 MB in bytes
+      alert("File size must be 40MB or less!");
+      e.target.value = null;
+      return;
+    }
+
+    setPdfFile(file); // Set the file if valid
+  }}
+  className="pdf-upload-input"
+/>
+
 </div>
 
 
