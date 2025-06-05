@@ -94,13 +94,23 @@ export default function PriceHikeBanner() {
       <Banner>
         <Dot />
         <TextSection>
-          <Line1>
-            Price increases in{" "}
-            <CountdownText>
-              {daysLeft} day{daysLeft > 1 ? "s" : ""}
-            </CountdownText>
-          </Line1>
-          <Line2>Buy before the hike and save big.</Line2>
+        <Line1>
+  {daysLeft <= 2 ? (
+    <>
+      ⏳ <CountdownText>Final {daysLeft} day{daysLeft > 1 ? "s" : ""}</CountdownText> to grab Edusify Premium before the price goes up!
+    </>
+  ) : (
+    <>
+      🚨 Price hike in <CountdownText>{daysLeft} day{daysLeft > 1 ? "s" : ""}</CountdownText>
+    </>
+  )}
+</Line1>
+<Line2>
+  {daysLeft <= 2
+    ? "Upgrade now — this offer won’t come back."
+    : "Lock in your premium at today’s rate — don’t wait!"}
+</Line2>
+
         </TextSection>
       </Banner>
     </Wrapper>
