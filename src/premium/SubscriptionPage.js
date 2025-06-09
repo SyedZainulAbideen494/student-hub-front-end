@@ -410,8 +410,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   <BestOfferTag>Exclusive Value</BestOfferTag>
   <h4>Lead Without Limits</h4>
   <p>
-    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹149</span>
-    ₹99/month
+    ₹149/month
   </p>
   <SmallText>Full access. Effortless excellence.</SmallText>
 </PlanBox>
