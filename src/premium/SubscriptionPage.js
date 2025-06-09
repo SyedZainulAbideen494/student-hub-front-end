@@ -252,15 +252,15 @@ let planAmount = 0;
 if (selectedPlan === "daily") {
   planAmount = 9;
 } else if (selectedPlan === "weekly") {
-  planAmount = 39;
+  planAmount = 49;
 } else if (selectedPlan === "monthly") {
-  planAmount = 99;
+  planAmount = 149;
 } else if (selectedPlan === "3months") {
-  planAmount = 239; // 💡 Adjust price as per your pricing strategy
+  planAmount = 349; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "6months") {
-  planAmount = 499; // 💡 Adjust price as per your pricing strategy
+  planAmount = 649; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "yearly") {
-  planAmount = 999;
+  planAmount = 1199;
 }
 
     
@@ -379,7 +379,6 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
     <SubscriptionContainer>
       <Title>Unlock the Edge.</Title>
       <Subtitle>Built for students who move smart — and move first.</Subtitle>
-<PriceHikeBanner/>
       <Plans>
   {/*       <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
           <h4>First Step to Mastery</h4>
@@ -420,8 +419,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
   <h4>Own Your Week</h4>
   <p>
-    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹49</span>
-    ₹39/week
+    ₹49/week
   </p>
   <SmallText>Focused. Achieved. Repeated.</SmallText>
 </PlanBox>
@@ -429,8 +427,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
   <h4>Rise Quarterly</h4>
   <p>
-    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹349</span>
-    ₹239/3 months
+    ₹349/3 months
   </p>
   <SmallText>Save more. Stay sharp.</SmallText>
 </PlanBox>
@@ -438,8 +435,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
   <h4>Half-Year Hustle</h4>
   <p>
-    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹649</span>
-    ₹499/6 months
+    ₹649/6 months
   </p>
   <SmallText>Consistency breeds champions.</SmallText>
 </PlanBox>
@@ -448,8 +444,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   <BestOfferTag>Best Value</BestOfferTag>
   <h4>Commit to Greatness</h4>
   <p>
-    <span style={{ textDecoration: 'line-through', color: '#999', marginRight: 6 }}>₹1199</span>
-    ₹999/year
+    ₹1199/year
   </p>
   <SmallText>12 months for the price of 10 — secure your edge today.</SmallText>
 </PlanBox>
