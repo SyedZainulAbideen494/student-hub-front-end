@@ -250,7 +250,7 @@ const [showBenefits, setShowBenefits] = useState(false);
    // Set pricing based on selected plan
 let planAmount = 0;
 if (selectedPlan === "daily") {
-  planAmount = 9;
+  planAmount = 19;
 } else if (selectedPlan === "weekly") {
   planAmount = 49;
 } else if (selectedPlan === "monthly") {
@@ -382,7 +382,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       <Plans>
      <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
           <h4>First Step to Mastery</h4>
-          <p>₹9/day</p>
+          <p>₹19/day</p>
           <SmallText>No commitment. Just results.</SmallText>
         </PlanBox>
   <PlanBox 
