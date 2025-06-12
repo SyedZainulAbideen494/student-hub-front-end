@@ -258,9 +258,9 @@ if (selectedPlan === "daily") {
 } else if (selectedPlan === "3months") {
   planAmount = 699; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "6months") {
-  planAmount = 999; // 💡 Adjust price as per your pricing strategy
+  planAmount = 1199; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "yearly") {
-  planAmount = 1799;
+  planAmount = 1999;
 }
 
     
@@ -426,14 +426,14 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
 <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
   <h4>Elite Consistency</h4>
-  <p>₹999 / 6 months</p>
+  <p>1199 / 6 months</p>
   <SmallText>Built for those who don’t stop.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
   <BestOfferTag>Top Value</BestOfferTag>
   <h4>Commit to Excellence</h4>
-  <p>₹1799 / year</p>
+  <p>₹1999 / year</p>
   <SmallText>One year. One decision. Total access.</SmallText>
 </PlanBox>
 
