@@ -380,12 +380,12 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       <Title>Unlock the Edge.</Title>
       <Subtitle>Built for students who move smart — and move first.</Subtitle>
       <Plans>
-  {/*       <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+     <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
           <h4>First Step to Mastery</h4>
           <p>₹9/day</p>
           <SmallText>No commitment. Just results.</SmallText>
         </PlanBox>
- {/* <PlanBox 
+  <PlanBox 
   active={selectedPlan === "freePremium"} 
   onClick={() => setSelectedPlan("freePremium")}
 >
@@ -404,7 +404,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   <Button onClick={() => navigate('/story-free-promo-premium')}>
   Claim Premium
 </Button>
-</PlanBox>*/}
+</PlanBox>
 
 <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
   <BestOfferTag>Exclusive Value</BestOfferTag>
