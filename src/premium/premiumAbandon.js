@@ -221,9 +221,7 @@ const PremiumReminder = () => {
   <ButtonPrimary onClick={() => navigate('/subscription')}>
     Get Premium Now
   </ButtonPrimary>
-  <ButtonSecondary onClick={() => navigate('/')}>
-    I’ll keep struggling
-  </ButtonSecondary>
+
 </ButtonGroup>
 
     </PageWrapper>
