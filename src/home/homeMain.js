@@ -31,6 +31,7 @@ import GuideBanner from "../guides/neet/guideBanner";
 import PremiumTeasePopup from "./PremiumTeasePopup";
 import SpinWheel from "../spin wheel/SpinWheel";
 import MadeWithLove from "../app_modules/madeWithLove";
+import CheckSubscription from "../help/CheckSubscription";
 
 const HomeMain = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false);
@@ -149,7 +150,7 @@ const HomeMain = () => {
         <>
         <ReviewModal />
           <HomeTopBoxes />
-          <SubscriptionRedirector/>
+          <CheckSubscription />
           <TodayEventsAndTasks />
           <FriendsDashboard />
           <div style={{ marginTop: '20px'}}>
