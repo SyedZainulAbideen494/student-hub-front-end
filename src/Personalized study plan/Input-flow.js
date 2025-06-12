@@ -33,7 +33,7 @@ const UserFlow = () => {
       subtext: "Choose what you want to achieve.",
       options: [
         "Improve Grades",
-        "Stay Constant with Studies",
+        "Stay Consistant with Studies",
         "Prepare for an Exam",
       ],
       setSelection: setSelectedGoal,
