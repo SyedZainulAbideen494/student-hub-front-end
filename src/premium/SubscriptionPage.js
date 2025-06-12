@@ -250,17 +250,17 @@ const [showBenefits, setShowBenefits] = useState(false);
    // Set pricing based on selected plan
 let planAmount = 0;
 if (selectedPlan === "daily") {
-  planAmount = 19;
-} else if (selectedPlan === "weekly") {
   planAmount = 49;
-} else if (selectedPlan === "monthly") {
+} else if (selectedPlan === "weekly") {
   planAmount = 149;
+} else if (selectedPlan === "monthly") {
+  planAmount = 399;
 } else if (selectedPlan === "3months") {
-  planAmount = 349; // 💡 Adjust price as per your pricing strategy
+  planAmount = 999; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "6months") {
-  planAmount = 649; // 💡 Adjust price as per your pricing strategy
+  planAmount = 1799; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "yearly") {
-  planAmount = 1199;
+  planAmount = 2999;
 }
 
     
@@ -380,74 +380,65 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       <Title>Unlock the Edge.</Title>
       <Subtitle>Built for students who move smart — and move first.</Subtitle>
       <Plans>
-     <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
-          <h4>First Step to Mastery</h4>
-          <p>₹19/day</p>
-          <SmallText>No commitment. Just results.</SmallText>
-        </PlanBox>
-  <PlanBox 
+
+<PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
+  <h4>Start Strong</h4>
+  <p>₹49/day</p>
+  <SmallText>One day. All access. Zero limits.</SmallText>
+</PlanBox>
+
+<PlanBox 
   active={selectedPlan === "freePremium"} 
   onClick={() => setSelectedPlan("freePremium")}
 >
   <BestOfferTag style={{ backgroundColor: "#0a84ff", color: "#fff" }}>
-    Claim Free Premium
+    Try Premium Free
   </BestOfferTag>
-  <h4>Enjoy 14 Days Free</h4>
-  <p>
-    ₹0
-  </p>
+  <h4>14 Days Full Access</h4>
+  <p>₹0</p>
   <SmallText style={{ color: "#60aaff" }}>
-    Full premium access. No cost.
+    Premium unlocked. No card. No catch.
   </SmallText>
 
-
   <Button onClick={() => navigate('/story-free-promo-premium')}>
-  Claim Premium
-</Button>
-</PlanBox>
-
-<PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
-  <BestOfferTag>Exclusive Value</BestOfferTag>
-  <h4>Lead Without Limits</h4>
-  <p>
-    ₹149/month
-  </p>
-  <SmallText>Full access. Effortless excellence.</SmallText>
+    Claim My Free Trial
+  </Button>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
-  <h4>Own Your Week</h4>
-  <p>
-    ₹49/week
-  </p>
-  <SmallText>Focused. Achieved. Repeated.</SmallText>
+  <h4>Weekly Momentum</h4>
+  <p>₹149/week</p>
+  <SmallText>Stay sharp. Stay winning.</SmallText>
+</PlanBox>
+
+<PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
+  <BestOfferTag>Premium Access</BestOfferTag>
+  <h4>Lead Without Limits</h4>
+  <p>₹399/month</p>
+  <SmallText>Unlock full mastery—month after month.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
-  <h4>Rise Quarterly</h4>
-  <p>
-    ₹349/3 months
-  </p>
-  <SmallText>Save more. Stay sharp.</SmallText>
+  <h4>Quarterly Rise</h4>
+  <p>₹999 / 3 months</p>
+  <SmallText>Invest in growth. See the climb.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
-  <h4>Half-Year Hustle</h4>
-  <p>
-    ₹649/6 months
-  </p>
-  <SmallText>Consistency breeds champions.</SmallText>
+  <h4>Elite Consistency</h4>
+  <p>₹1799 / 6 months</p>
+  <SmallText>Built for those who don’t stop.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
-  <BestOfferTag>Best Value</BestOfferTag>
-  <h4>Commit to Greatness</h4>
-  <p>
-    ₹1199/year
-  </p>
-  <SmallText>12 months for the price of 10 — secure your edge today.</SmallText>
+  <BestOfferTag>Top Value</BestOfferTag>
+  <h4>Commit to Excellence</h4>
+  <p>₹2999 / year</p>
+  <SmallText>One year. One decision. Total access.</SmallText>
 </PlanBox>
+
 </Plans>
+
 
       <Button onClick={() => setShowBenefits(!showBenefits)} style={{ marginBottom: '20px' }}>
         {showBenefits ? 'Hide Premium Benefits' : 'See Why Toppers Upgrade'}

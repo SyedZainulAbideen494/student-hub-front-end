@@ -70,7 +70,6 @@ const HelpMain = () => {
           <li><strong>No Ads:</strong> Enjoy an uninterrupted experience without any ads on the app.</li>
           <li><strong>Priority Support:</strong> Get quicker responses and premium customer service whenever you need help.</li>
         </ul>
-        <p>Upgrade today for just ₹99 per month and take your studying to the next level!</p>
       </div>
 
       {/* Feature Usage Section */}
