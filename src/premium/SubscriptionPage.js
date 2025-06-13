@@ -250,17 +250,17 @@ const [showBenefits, setShowBenefits] = useState(false);
    // Set pricing based on selected plan
 let planAmount = 0;
 if (selectedPlan === "daily") {
-  planAmount = 39;
+  planAmount = 9;
 } else if (selectedPlan === "weekly") {
-  planAmount = 99;
+  planAmount = 39;
 } else if (selectedPlan === "monthly") {
-  planAmount = 299;
+  planAmount = 99;
 } else if (selectedPlan === "3months") {
-  planAmount = 699; // 💡 Adjust price as per your pricing strategy
+  planAmount = 249; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "6months") {
-  planAmount = 1199; // 💡 Adjust price as per your pricing strategy
+  planAmount = 459; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "yearly") {
-  planAmount = 1999;
+  planAmount = 999;
 }
 
     
@@ -383,7 +383,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
 <PlanBox active={selectedPlan === "daily"} onClick={() => setSelectedPlan("daily")}>
   <h4>Start Strong</h4>
-  <p>₹39/day</p>
+  <p>₹9/day</p>
   <SmallText>One day. All access. Zero limits.</SmallText>
 </PlanBox>
 
@@ -407,33 +407,33 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
 <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
   <h4>Weekly Momentum</h4>
-  <p>₹99/week</p>
+  <p>₹39/week</p>
   <SmallText>Stay sharp. Stay winning.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "monthly"} onClick={() => setSelectedPlan("monthly")}>
   <BestOfferTag>Premium Access</BestOfferTag>
   <h4>Lead Without Limits</h4>
-  <p>₹299/month</p>
+  <p>₹99/month</p>
   <SmallText>Unlock full mastery—month after month.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
   <h4>Quarterly Rise</h4>
-  <p>₹699 / 3 months</p>
+  <p>₹349 / 3 months</p>
   <SmallText>Invest in growth. See the climb.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "6months"} onClick={() => setSelectedPlan("6months")}>
   <h4>Elite Consistency</h4>
-  <p>1199 / 6 months</p>
+  <p>449 / 6 months</p>
   <SmallText>Built for those who don’t stop.</SmallText>
 </PlanBox>
 
 <PlanBox active={selectedPlan === "yearly"} onClick={() => setSelectedPlan("yearly")}>
   <BestOfferTag>Top Value</BestOfferTag>
   <h4>Commit to Excellence</h4>
-  <p>₹1999 / year</p>
+  <p>₹999 / year</p>
   <SmallText>One year. One decision. Total access.</SmallText>
 </PlanBox>
 
