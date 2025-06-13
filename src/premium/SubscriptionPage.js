@@ -420,7 +420,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
 <PlanBox active={selectedPlan === "3months"} onClick={() => setSelectedPlan("3months")}>
   <h4>Quarterly Rise</h4>
-  <p>₹349 / 3 months</p>
+  <p>₹249 / 3 months</p>
   <SmallText>Invest in growth. See the climb.</SmallText>
 </PlanBox>
 
