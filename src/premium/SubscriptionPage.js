@@ -387,23 +387,6 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   <SmallText>One day. All access. Zero limits.</SmallText>
 </PlanBox>
 
-<PlanBox 
-  active={selectedPlan === "freePremium"} 
-  onClick={() => setSelectedPlan("freePremium")}
->
-  <BestOfferTag style={{ backgroundColor: "#0a84ff", color: "#fff" }}>
-    Try Premium Free
-  </BestOfferTag>
-  <h4>14 Days Full Access</h4>
-  <p>₹0</p>
-  <SmallText style={{ color: "#60aaff" }}>
-    Premium unlocked. No card. No catch.
-  </SmallText>
-
-  <Button onClick={() => navigate('/story-free-promo-premium')}>
-    Claim My Free Trial
-  </Button>
-</PlanBox>
 
 <PlanBox active={selectedPlan === "weekly"} onClick={() => setSelectedPlan("weekly")}>
   <h4>Weekly Momentum</h4>
