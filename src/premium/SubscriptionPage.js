@@ -469,8 +469,8 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
         </Button>
       )}
 
-      <Link to='/help'>
-        <Footer>Need Help?</Footer>
+      <Link to='/'>
+        <Footer>Not Now</Footer>
       </Link>
     </SubscriptionContainer>
   </ScrollContent>
