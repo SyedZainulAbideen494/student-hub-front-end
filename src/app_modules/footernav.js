@@ -51,6 +51,29 @@ const FooterNav = () => {
         </Link>
     );
 
+    const PremiumNavButton = ({ to, icon, label, isActive }) => {
+        if (isPremium) {
+            return (
+                <NavButton
+                    to={to}
+                    icon={icon}
+                    label={label}
+                    isActive={isActive}
+                />
+            );
+        } else {
+            return (
+                <Link to="/subscription" style={{ textDecoration: 'none' }}>
+                    <button className="nav-btn-footer-nav locked">
+                        {icon}
+                        <span className="btn-label">{label} <FaCrown/></span>
+                    </button>
+                </Link>
+            );
+        }
+    };
+    
+
     return (
         <div className="footer-nav">
             <NavButton
@@ -86,38 +109,46 @@ const FooterNav = () => {
                 <span className="btn-label">More{hasProfileIssues && <span className="issue-icon">!</span>}</span>
             </button>
 
-            <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
-                <NavButton to='/exam-mode' icon={<FaBookReader className="icon-footer-nav" />} label="Exam Mode" isActive={location.pathname === '/exam-mode'} />
-                <NavButton to='/competive-exam' icon={<FaFileAlt className="icon-footer-nav" />} label="Competitive Exam Mock Quiz" isActive={location.pathname === '/competive-exam'} />
-                <NavButton to='/carrier/flow' icon={<FaUserGraduate className="icon-footer-nav" />} label="CareerSense" isActive={location.pathname === '/carrier/flow'} />
-                <NavButton to='/resource-finder' icon={<i className="fas fa-search icon-footer-nav"></i>} label="Resources Finder" isActive={location.pathname === '/resource-finder'} />
-                <NavButton to='/mindmap/create' icon={<FiMap className="icon-footer-nav" />} label="AI Mind Maps" isActive={location.pathname === '/mindmap/create'} />
-                <NavButton to='/notes/view' icon={<FaBook className="icon-footer-nav" />} label="Notes" isActive={location.pathname === '/notes/view'} />
-                <NavButton to='/flashcard' icon={<FaStickyNote className="icon-footer-nav" />} label="Flashcards" isActive={location.pathname === '/flashcard'} />
-                <NavButton to='/room' icon={<FaUsers className="icon-footer-nav" />} label="Rooms" isActive={location.pathname === '/room'} />
-                <NavButton to='/quiz/home' icon={<FaFlask className="icon-footer-nav" />} label="AI Quiz" isActive={location.pathname === '/quiz/home'} />
-                <NavButton to='/lecture-recorder' icon={<FaMicrophone className="icon-footer-nav" />} label="Lecture AI" isActive={location.pathname === '/lecture-recorder'} />
-                <NavButton to='/assignment-maker' icon={<MdAssignment className="icon-footer-nav" />} label="Assignment Maker" isActive={location.pathname === '/assignment-maker'} />
-                <NavButton to='/calendar' icon={<FaCalendarAlt className="icon-footer-nav" />} label="Calendar" isActive={location.pathname === '/calendar'} />
-                <NavButton to='/pomodoro' icon={<FaClock className="icon-footer-nav" />} label="Pomodoro" isActive={location.pathname === '/pomodoro'} />
-                <NavButton to='/toolkit' icon={<FaToolbox className="icon-footer-nav" />} label="Toolkit" isActive={location.pathname === '/toolkit'} />
-                <NavButton to='/profile' icon={<FaUser className="icon-footer-nav" />} label={`Profile${hasProfileIssues ? '!' : ''}`} isActive={location.pathname === '/profile'} />
-                <NavButton to='/help' icon={<FaQuestionCircle className="icon-footer-nav" />} label="Help" isActive={location.pathname === '/help'} />
-                             {isPremium ? (
-                    <NavButton to="/monthly-stats" icon={<FaChartBar className="icon-footer-nav" />} label="Monthly Stats" isActive={location.pathname === '/monthly-stats'} />
-                ) : (
-                    <NavButton
-    to="/subscription"
-    icon={<FaCrown className="icon-footer-nav" style={{ color: 'gold' }} />}
-    label="Edusify Pro"
-    isActive={location.pathname === '/subscription'}
-/>
 
-                )}
-                <NavButton to='/user/report' icon={<FaFileAlt className="icon-footer-nav" />} label="AI Report" isActive={location.pathname === '/user/report'} />
+           <div className={`popup-menu-footer-nav ${isPopupVisible ? 'show-footer-nav' : ''}`}>
 
-                <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
-            </div>
+    {/* Learning & Daily Tools */}
+    <NavButton to='/notes/view' icon={<FaBook className="icon-footer-nav" />} label="Notes" isActive={location.pathname === '/notes/view'} />
+    <PremiumNavButton to='/flashcard' icon={<FaStickyNote className="icon-footer-nav" />} label="Flashcards" isActive={location.pathname === '/flashcard'} />
+    <NavButton to='/quiz/home' icon={<FaFlask className="icon-footer-nav" />} label="AI Quiz" isActive={location.pathname === '/quiz/home'} />
+    <PremiumNavButton to='/mindmap/create' icon={<FiMap className="icon-footer-nav" />} label="AI Mind Maps" isActive={location.pathname === '/mindmap/create'} />
+    <PremiumNavButton to='/lecture-recorder' icon={<FaMicrophone className="icon-footer-nav" />} label="Lecture AI" isActive={location.pathname === '/lecture-recorder'} />
+    <PremiumNavButton to='/assignment-maker' icon={<MdAssignment className="icon-footer-nav" />} label="Assignment Maker" isActive={location.pathname === '/assignment-maker'} />
+    
+    {/* Productivity */}
+    <NavButton to='/calendar' icon={<FaCalendarAlt className="icon-footer-nav" />} label="Calendar" isActive={location.pathname === '/calendar'} />
+    <NavButton to='/pomodoro' icon={<FaClock className="icon-footer-nav" />} label="Pomodoro" isActive={location.pathname === '/pomodoro'} />
+    <NavButton to='/toolkit' icon={<FaToolbox className="icon-footer-nav" />} label="Toolkit" isActive={location.pathname === '/toolkit'} />
+
+    {/* Premium Power Features */}
+    <PremiumNavButton to='/exam-mode' icon={<FaBookReader className="icon-footer-nav" />} label="Exam Mode" isActive={location.pathname === '/exam-mode'} />
+    <PremiumNavButton to='/competive-exam' icon={<FaFileAlt className="icon-footer-nav" />} label="Mock Tests" isActive={location.pathname === '/competive-exam'} />
+    <PremiumNavButton to='/user/report' icon={<FaFileAlt className="icon-footer-nav" />} label="AI Report" isActive={location.pathname === '/user/report'} />
+
+    {/* Community & Navigation */}
+    <NavButton to='/room' icon={<FaUsers className="icon-footer-nav" />} label="Rooms" isActive={location.pathname === '/room'} />
+    <NavButton to='/carrier/flow' icon={<FaUserGraduate className="icon-footer-nav" />} label="CareerSense" isActive={location.pathname === '/carrier/flow'} />
+    <NavButton to='/resource-finder' icon={<i className="fas fa-search icon-footer-nav"></i>} label="Find Resources" isActive={location.pathname === '/resource-finder'} />
+    <NavButton to='/profile' icon={<FaUser className="icon-footer-nav" />} label={`Profile${hasProfileIssues ? '!' : ''}`} isActive={location.pathname === '/profile'} />
+    <NavButton to='/help' icon={<FaQuestionCircle className="icon-footer-nav" />} label="Help" isActive={location.pathname === '/help'} />
+
+    {/* Premium CTA or Stats */}
+    {isPremium ? (
+        <NavButton to="/monthly-stats" icon={<FaChartBar className="icon-footer-nav" />} label="Monthly Stats" isActive={location.pathname === '/monthly-stats'} />
+    ) : (
+        <NavButton to="/subscription" icon={<FaCrown className="icon-footer-nav" style={{ color: 'gold' }} />} label="Edusify Pro" isActive={location.pathname === '/subscription'} />
+    )}
+
+    {/* Close Button */}
+    <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>
+</div>
+
+
         </div>
     );
 };
