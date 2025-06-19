@@ -116,7 +116,10 @@ const HomeMain = () => {
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
   
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   // Toggle feedback form visibility
   const toggleFeedbackForm = () => {
     setShowFeedbackForm(prev => !prev);

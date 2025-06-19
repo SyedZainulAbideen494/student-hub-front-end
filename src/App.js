@@ -180,6 +180,7 @@ import LectureRecorder from "./lecture notes/lecture notes";
 import AudioNotes from "./lecture notes/previousAudioNotes";
 import StudyPlanBuilder from "./Personalized study plan/manualStudyPlanBuilder";
 import StoryPromoPage from "./premium/storyPromotionFreePremium";
+import ScrollToTop from "./help/ScrollToTop";
 const urlBase64ToUint8Array = (base64String) => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');

@@ -326,7 +326,10 @@ const handleSliderChange = () => {
         }
       }, []);
 
-     
+       useEffect(() => {
+         window.scrollTo(0, 0);
+       }, []);
+       
 
     return (
         <div className="App-dashboard-planner">
