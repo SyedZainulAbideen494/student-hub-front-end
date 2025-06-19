@@ -132,26 +132,39 @@ const FeaturesPage = () => {
       </Subtitle>
 
       <FeatureList>
-        <FeatureItem><IconWrapper><FaMagic /></IconWrapper> Unlimited AI Usage – No Limits, No Restrictions 🔥</FeatureItem>
-        <FeatureItem><IconWrapper><FaBrain /></IconWrapper> AI Quizzes, Flashcards & Mind Maps – Unlocked Fully</FeatureItem>
-        <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> Convert Any PDF to Quizzes, Notes, Mind Maps Instantly</FeatureItem>
-        <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> Instantly Generate Notes on Any Topic with AI</FeatureItem>
-        <FeatureItem><IconWrapper><FaTasks /></IconWrapper> Study Plans Customized Just for You</FeatureItem>
-        <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> Auto-Generate Daily Study Tasks Based on Your Plan</FeatureItem>
-        <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> AI-Smart Task Generation – Adaptive & Personalized</FeatureItem>
-        <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> Quiz Analysis – Identify Strengths & Weaknesses</FeatureItem>
-        <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> NEET, JEE, Boards & Competitive Quiz Generators</FeatureItem>
-        <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> Exclusive Resources: NEET Guide, More Coming Soon</FeatureItem>
-        <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> AI Assignment Generation – Do More, Stress Less</FeatureItem>
-        <FeatureItem><IconWrapper><FaImage /></IconWrapper> AI Image Generator – Turn Concepts into Visual Gold</FeatureItem>
-        <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> Aesthetic Notes Generator – So Good You’ll Want to Re-read Them</FeatureItem>
-        <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> Resource Finder – Let Edusify Hunt the Best Content for You</FeatureItem>
-        <FeatureItem><IconWrapper><FaChartBar /></IconWrapper> Smart Dashboard – Always Know Where You Stand, At a Glance</FeatureItem>
-        <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> AI Mind Maps – Visualize Complex Topics Like a Genius</FeatureItem>
-        <FeatureItem><IconWrapper><FaUsers /></IconWrapper> Study Rooms – Learn Together, Win Together</FeatureItem>
-        <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> AI Reports – Break Down Any Topic into Simple Wins</FeatureItem>
-        <FeatureItem><IconWrapper><FaLock /></IconWrapper> Document Locker – Secure, Private, Always Within Reach</FeatureItem>
-      </FeatureList>
+  {/* 1. Hook features: instant value & top AI features */}
+  <FeatureItem><IconWrapper><FaMagic /></IconWrapper> <strong>Unlimited AI Usage</strong> – No Limits. No Caps. Just Pure Power 🔥</FeatureItem>
+  <FeatureItem><IconWrapper><FaClipboardCheck /></IconWrapper> <strong>Generate Smart Notes Instantly</strong> – Any Topic, Any Time</FeatureItem>
+  <FeatureItem><IconWrapper><FaFilePdf /></IconWrapper> <strong>Convert Any PDF</strong> to Quizzes, Notes & Mind Maps in Seconds</FeatureItem>
+  <FeatureItem><IconWrapper><FaBrain /></IconWrapper> <strong>AI Quizzes, Flashcards & Mind Maps</strong> – Fully Unlocked</FeatureItem>
+
+  {/* 2. Study planning features */}
+  <FeatureItem><IconWrapper><FaTasks /></IconWrapper> <strong>Personalized Study Plans</strong> – Tailored to Your Goals</FeatureItem>
+  <FeatureItem><IconWrapper><FaRegClock /></IconWrapper> <strong>Auto Daily Study Tasks</strong> – Your Day, Sorted</FeatureItem>
+  <FeatureItem><IconWrapper><FaLightbulb /></IconWrapper> <strong>AI Task Generation</strong> – Adaptive, Just Like You</FeatureItem>
+
+  {/* 3. Competitive prep & performance features */}
+  <FeatureItem><IconWrapper><FaStopwatch /></IconWrapper> <strong>Competitive Exam Tools</strong> – NEET, JEE, Boards & More</FeatureItem>
+  <FeatureItem><IconWrapper><FaChartLine /></IconWrapper> <strong>Quiz Insights</strong> – Spot Your Strengths & Fix Weaknesses</FeatureItem>
+  <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> <strong>AI Assignment Maker</strong> – Work Done, Stress Gone</FeatureItem>
+  <FeatureItem><IconWrapper><FaUsers /></IconWrapper> <strong>Study Rooms</strong> – Learn Together. Win Together</FeatureItem>
+
+  {/* 4. Creativity & aesthetics */}
+  <FeatureItem><IconWrapper><FaImage /></IconWrapper> <strong>AI Image Generator</strong> – Turn Concepts into Visual Gold</FeatureItem>
+  <FeatureItem><IconWrapper><FaStickyNote /></IconWrapper> <strong>Aesthetic Notes Generator</strong> – You’ll Want to Re-read Them 😍</FeatureItem>
+  <FeatureItem><IconWrapper><FaLayerGroup /></IconWrapper> <strong>Mind Maps Powered by AI</strong> – Visualize Topics Like a Genius</FeatureItem>
+
+  {/* 5. Resource & guidance */}
+  <FeatureItem><IconWrapper><FaBookOpen /></IconWrapper> <strong>Exclusive NEET Guide</strong> & Other Premium Resources</FeatureItem>
+  <FeatureItem><IconWrapper><FaFileAlt /></IconWrapper> <strong>Resource Finder</strong> – Edusify Hunts the Best for You</FeatureItem>
+
+  {/* 6. Monitoring & reporting */}
+  <FeatureItem><IconWrapper><FaChartBar /></IconWrapper> <strong>Smart Dashboard</strong> – Your Study Progress at a Glance</FeatureItem>
+  <FeatureItem><IconWrapper><FaFileInvoice /></IconWrapper> <strong>AI Reports</strong> – Break Down Topics into Simple Wins</FeatureItem>
+
+  {/* 7. Security & exclusivity */}
+  <FeatureItem><IconWrapper><FaLock /></IconWrapper> <strong>Document Locker</strong> – Private. Secure. Always Within Reach</FeatureItem>
+</FeatureList>
 
       <CallToAction>
         This isn’t just studying.
