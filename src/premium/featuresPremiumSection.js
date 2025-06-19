@@ -7,33 +7,34 @@ const fadeIn = keyframes`
 `;
 
 const Section = styled.section`
-  background: linear-gradient(145deg, #0e0e0e, #1a1a1a);
-  color: #ffffff;
+  background: linear-gradient(145deg, #0a0a0a, #141414); // darker, smoother
+  color: #f2f2f2;
   border-radius: 24px;
   padding: 48px 32px;
   max-width: 720px;
   margin: 40px auto;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
 `;
 
 const Button = styled.button`
-  background: linear-gradient(to right, #ffffff0d, #ffffff14);
-  border: 1px solid #ffffff22;
-  color: #fff;
+  background: linear-gradient(to right, #1c1c1c, #2a2a2a);
+  border: 1px solid #333333;
+  color: #ffffff;
   padding: 16px 32px;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 16px;
   cursor: pointer;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   margin: 0 auto;
   display: block;
 
   &:hover {
-    background: linear-gradient(to right, #ffffff22, #ffffff33);
+    background: linear-gradient(to right, #2e2e2e, #3a3a3a);
     transform: scale(1.03);
+    box-shadow: 0 0 12px #ffffff11;
   }
 `;
 
@@ -42,17 +43,17 @@ const Features = styled.div`
   animation: ${fadeIn} 0.5s ease-out;
   line-height: 1.8;
   font-size: 1.05rem;
-  color: #e0e0e0;
+  color: #dddddd;
 `;
 
 const FeatureItem = styled.div`
   padding: 12px 0;
-  border-bottom: 1px solid #ffffff12;
+  border-bottom: 1px solid #2c2c2c;
 `;
 
 const Divider = styled.div`
   height: 1px;
-  background: #ffffff12;
+  background: #2c2c2c;
   margin: 24px 0;
 `;
 
@@ -60,6 +61,7 @@ const Highlight = styled.span`
   color: #ffffff;
   font-weight: 700;
 `;
+
 
 const PremiumCTA = () => {
   const [showFeatures, setShowFeatures] = useState(false);

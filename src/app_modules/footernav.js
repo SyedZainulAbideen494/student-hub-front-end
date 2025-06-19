@@ -135,14 +135,15 @@ const FooterNav = () => {
     <NavButton to='/carrier/flow' icon={<FaUserGraduate className="icon-footer-nav" />} label="CareerSense" isActive={location.pathname === '/carrier/flow'} />
     <NavButton to='/resource-finder' icon={<i className="fas fa-search icon-footer-nav"></i>} label="Find Resources" isActive={location.pathname === '/resource-finder'} />
     <NavButton to='/profile' icon={<FaUser className="icon-footer-nav" />} label={`Profile${hasProfileIssues ? '!' : ''}`} isActive={location.pathname === '/profile'} />
-    <NavButton to='/help' icon={<FaQuestionCircle className="icon-footer-nav" />} label="Help" isActive={location.pathname === '/help'} />
-
-    {/* Premium CTA or Stats */}
-    {isPremium ? (
+      {/* Premium CTA or Stats */}
+      {isPremium ? (
         <NavButton to="/monthly-stats" icon={<FaChartBar className="icon-footer-nav" />} label="Monthly Stats" isActive={location.pathname === '/monthly-stats'} />
     ) : (
-        <NavButton to="/subscription" icon={<FaCrown className="icon-footer-nav" style={{ color: 'gold' }} />} label="Edusify Pro" isActive={location.pathname === '/subscription'} />
+        <NavButton to="/subscription/features" icon={<FaCrown className="icon-footer-nav"/>} label="Edusify Pro" isActive={location.pathname === '/subscription'} />
     )}
+
+    <NavButton to='/help' icon={<FaQuestionCircle className="icon-footer-nav" />} label="Help" isActive={location.pathname === '/help'} />
+
 
     {/* Close Button */}
     <button className="close-btn-footer-nav" onClick={togglePopup}>×</button>

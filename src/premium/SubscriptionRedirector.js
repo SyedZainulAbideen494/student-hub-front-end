@@ -26,7 +26,7 @@ const SubscriptionRedirector = () => {
 
       if (!lastRedirectTime || currentTime - lastRedirectTime > THREE_HOURS) {
         localStorage.setItem("lastSubscriptionRedirect", currentTime);
-        navigate("/subscription");
+        navigate("/subscription/features");
       }
     }
   }, [isPremium, navigate]);

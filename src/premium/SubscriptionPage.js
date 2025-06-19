@@ -423,9 +423,9 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 </Plans>
 
 
-      <Button onClick={() => setShowBenefits(!showBenefits)} style={{ marginBottom: '20px' }}>
+  {/* <Button onClick={() => setShowBenefits(!showBenefits)} style={{ marginBottom: '20px' }}>
         {showBenefits ? 'Hide Premium Benefits' : 'See Why Toppers Upgrade'}
-      </Button>
+      </Button>*/}  
 
       {showBenefits && (
         <BenefitsContainer style={{ marginBottom: '20px' }}>
@@ -444,17 +444,21 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
         </BenefitsContainer>
       )}
 
-      {isPremium ? (
-        <Button disabled>You’ve Got Premium. That Says It All. 🔥</Button>
-      ) : (
-        <Button onClick={handlePayment}>
-          <SparkleIcon /> Get Premium
-        </Button>
-      )}
+{isPremium ? (
+  <Button disabled>You’ve Got Premium. That Says It All. 🔥</Button>
+) : (
+  <Button onClick={handlePayment}>
+    <SparkleIcon /> Stop Studying Hard. Start Studying Smart.
+  </Button>
+)}
 
-      <Link to='/'>
-        <Footer>Not Now</Footer>
-      </Link>
+<Link to='/'>
+  <Footer style={{ opacity: 0.8, fontSize: '0.92rem', marginTop: '1.5rem' }}>
+    Maybe Later — But Remember, Toppers Don’t Wait.
+  </Footer>
+</Link>
+
+
     </SubscriptionContainer>
   </ScrollContent>
 </Wrapper>
