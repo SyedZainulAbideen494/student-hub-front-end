@@ -1,176 +1,430 @@
-.help-main-container-help-page {
-  padding: 48px;
-  font-family: 'Helvetica Neue', sans-serif;
-  color: #f2f2f2;
-  background-color: #121212;
-  max-width: 1240px;
-  margin: 0 auto;
-  border-radius: 22px;
-  backdrop-filter: blur(20px);
-  box-shadow:
-    inset 0 0 1px rgba(255, 255, 255, 0.02),
-    0 25px 50px rgba(0, 0, 0, 0.6),
-    0 0 1px rgba(255, 255, 255, 0.03);
-  transition: all 0.3s ease-in-out;
-}
+.sticky__nav__helpp__page__new__desgin {
+  position: sticky;
+  top: 16px;
+  margin: 0 24px;
+  padding: 12px 20px;
+  border-radius: 25px;
 
-.help-main-container-help-page:hover {
-  box-shadow:
-    0 35px 70px rgba(0, 0, 0, 0.7),
-    0 0 2px rgba(255, 255, 255, 0.05);
-}
+  /* ✨ Glassmorphism magic */
+  background: rgba(255, 255, 255, 0.05); /* Transparent white layer */
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
 
-.back-button-help-page {
-  background: transparent;
-  color: #f2f2f2;
-  border: 1px solid #3f3f3f;
-  padding: 12px 26px;
-  font-size: 18px;
-  border-radius: 30px;
-  margin-bottom: 36px;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-}
+  border: 1px solid rgba(255, 255, 255, 0.08); /* soft light border */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 
-.back-button-help-page:hover {
-  background-color: #525252;
-  transform: translateY(-2px);
-}
-
-.welcome-message-help-page {
-  font-size: 34px;
-  font-weight: 700;
-  color: #ffffff;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.app-description-help-page {
-  margin-bottom: 60px;
-  font-size: 18px;
-  line-height: 1.75;
-  color: #bbbbbb;
-  text-align: center;
-  max-width: 880px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.footer-help-page {
-  margin-top: 70px;
-  text-align: center;
-  font-size: 14px;
-  color: #999;
-  padding-top: 36px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.footer-help-page a,
-.footer-link-help-page {
-  color: #aaa;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.footer-help-page a:hover,
-.footer-link-help-page:hover {
-  color: #ffffff;
-}
-
-.footer-social-links-help-page {
-  margin-top: 24px;
   display: flex;
-  justify-content: center;
-  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-.footer-social-icon-help-page {
-  color: #999;
-  font-size: 24px;
-  transition: color 0.3s ease;
-}
 
-.footer-social-icon-help-page:hover {
+/* Logo/title styling */
+.logo__helpp__page__new__desgin {
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-grow: 1;
   color: #fff;
 }
 
-.help-section,
-.feature-usage-section,
-.thank-you-section,
-.premium-benefits-section {
-  margin-top: 45px;
-  padding: 42px;
-  background: linear-gradient(145deg, #1d1d1d, #141414);
-  border-radius: 20px;
-  box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.4),
-    inset 0 0 0.5px rgba(255, 255, 255, 0.03);
+/* Desktop nav links */
+.nav__helpp__page__new__desgin {
+  display: flex;
+  gap: 16px;
 }
 
-.help-section h2,
-.feature-usage-section h2,
-.thank-you-section h2,
-.premium-benefits-section h2 {
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 18px;
+.nav__helpp__page__new__desgin a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav__helpp__page__new__desgin a:hover {
+  color: #fff;
+}
+
+/* Burger menu toggle (hidden on desktop) */
+.burger__helpp__page__new__desgin {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Show burger on small screens */
+@media (max-width: 768px) {
+  .burger__helpp__page__new__desgin {
+    display: block;
+  }
+  .nav__helpp__page__new__desgin {
+    position: absolute;
+    top: 64px;
+    right: 24px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    background: rgba(20, 20, 25, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+  }
+  .nav__helpp__page__new__desgin.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+/* Main container */
+.container__helpp__page__new__desgin {
+  max-width: 900px;
+  margin: 56px auto 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* Section styling */
+.section__helpp__page__new__desgin {
+  margin-bottom: 80px;
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  background: rgba(30, 30, 35, 0.6);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer styling */
+.footer__helpp__page__new__desgin {
+  padding: 40px 24px;
+  border-radius: 16px;
+  background: rgba(30, 30, 35, 0.6);
   text-align: center;
+  color: #aaa;
+  backdrop-filter: blur(20px);
+  margin-bottom: 40px;
+}
+
+.welcome__helpp__page__new__desgin {
+  padding: 60px 30px;
+  margin: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.4s ease;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.welcome__helpp__page__new__desgin h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #fff, #aaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome__helpp__page__new__desgin p {
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #ddd;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container for all feature cards */
+.feature__usage__helpp__page__new__desgin {
+  margin-top: 40px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Title for section */
+.feature__usage__helpp__page__new__desgin h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Individual feature card */
+.feature__card__helpp__page__new__desgin {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature__card__helpp__page__new__desgin:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Card title */
+.feature__card__helpp__page__new__desgin h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
   color: #ffffff;
 }
 
-.help-section h3,
-.feature-usage-section h3 {
-  font-size: 24px;
-  color: #e0e0e0;
-  margin-top: 30px;
-  font-weight: 600;
-}
-
-.help-section ul,
-.premium-benefits-section ul {
-  list-style-type: disc;
-  margin-left: 30px;
-  margin-bottom: 20px;
-}
-
-.help-section li,
-.premium-benefits-section li {
+/* Card text */
+.feature__card__helpp__page__new__desgin p {
   font-size: 16px;
-  color: #ccc;
+  line-height: 1.7;
+  color: #e0e0e0;
   margin-bottom: 12px;
 }
 
-.help-section p,
-.feature-usage-section p,
-.thank-you-section p,
-.premium-benefits-section p {
-  color: #b0b0b0;
+/* Bullet points */
+.feature__card__helpp__page__new__desgin ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.feature__card__helpp__page__new__desgin ul li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #dcdcdc;
+}
+
+.feature__card__helpp__page__new__desgin ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #00ffc8;
+  font-weight: bold;
+}
+
+.premium__helpp__page__new__desgin {
+  margin-top: 60px;
+  padding: 60px 24px;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.premium__title__helpp__page__new__desgin {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.premium__desc__helpp__page__new__desgin {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  color: #ccc;
   font-size: 16px;
-  line-height: 1.75;
+  line-height: 1.6;
+}
+
+.premium__cards__helpp__page__new__desgin {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-bottom: 40px;
+}
+
+.premium__card__helpp__page__new__desgin {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.premium__card__helpp__page__new__desgin:hover {
+  transform: translateY(-6px);
+}
+
+.premium__card__helpp__page__new__desgin h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.premium__card__helpp__page__new__desgin p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+.premium__footer__helpp__page__new__desgin {
+  font-style: italic;
+  text-align: center;
+  color: #aaa;
+  font-size: 15px;
+}
+
+
+.faq__helpp__page__new__desgin {
+  margin: 60px auto;
+  padding: 40px 20px;
+  max-width: 950px;
+  width: 86%;
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.faq__title__helpp__page__new__desgin {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #ffffff, #dcdcdc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.faq__list__helpp__page__new__desgin {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq__item__helpp__page__new__desgin {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.faq__item__helpp__page__new__desgin:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.faq__item__helpp__page__new__desgin summary {
+  font-size: 16px;
+  font-weight: 600;
+  list-style: none;
+  color: #fff;
+  outline: none;
+}
+
+.faq__item__helpp__page__new__desgin p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* ✅ Mobile optimization */
+@media (max-width: 600px) {
+  .faq__helpp__page__new__desgin {
+    padding: 30px 16px;
+    margin: 40px 12px;
+  }
+
+  .faq__title__helpp__page__new__desgin {
+    font-size: 22px;
+  }
+
+  .faq__item__helpp__page__new__desgin {
+    padding: 14px 14px;
+  }
+
+  .faq__item__helpp__page__new__desgin summary {
+    font-size: 15px;
+  }
+
+  .faq__item__helpp__page__new__desgin p {
+    font-size: 13.5px;
+  }
+}
+
+
+.footer__helpp__page__new__desgin {
+  margin: 100px auto 40px;
+  padding: 60px 30px;
+  max-width: 1000px;
+  width: 86%;
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  color: #fff;
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .help-main-container-help-page {
-    padding: 24px;
+.footer__content__helpp__page__new__desgin {
+  margin-bottom: 40px;
+}
+
+.footer__title__helpp__page__new__desgin {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ffffff, #dddddd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer__subtitle__helpp__page__new__desgin {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 24px;
+}
+
+.footer__bottom__helpp__page__new__desgin {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+  opacity: 0.8;
+}
+
+/* Responsive footer */
+@media (max-width: 600px) {
+  .footer__helpp__page__new__desgin {
+    padding: 40px 16px;
+    margin: 80px 12px 24px;
   }
 
-  .help-section h2,
-  .feature-usage-section h2,
-  .premium-benefits-section h2,
-  .thank-you-section h2 {
-    font-size: 24px;
+  .footer__title__helpp__page__new__desgin {
+    font-size: 22px;
   }
 
-  .footer-social-links-help-page {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .footer-social-icon-help-page {
-    font-size: 20px;
+  .footer__subtitle__helpp__page__new__desgin {
+    font-size: 14px;
   }
 }

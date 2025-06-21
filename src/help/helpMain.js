@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faTwitter, faTelegram, faChrome, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -9,127 +8,260 @@ import FeedbackForm from './FeedbackForm';
 import MadeWithLove from '../app_modules/madeWithLove';
 
 const HelpMain = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
   const navigate = useNavigate(); // Hook to navigate
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   
   return (
-    <div className="help-main-container-help-page">
-      {/* Back Button */}
-      <button className="back-button-help-page" onClick={() => navigate(-1)}>
-        ←
-      </button>
+    <>
+      {/* Sticky Header Navigation */}
+      <header className="sticky__nav__helpp__page__new__desgin">
+  <h1 className="logo__helpp__page__new__desgin">Edusify Help</h1>
+  <nav className={`nav__helpp__page__new__desgin ${showMenu ? 'open' : ''}`}>
+    <a href="#welcome">Welcome</a>
+    <a href="#howtouse">How to Use</a>
+    <a href="#premium">Premium</a>
+    <a href="#faq">FAQs</a>
+    <a href="#feedback">Feedback</a>
+  </nav>
+  <button className="burger__helpp__page__new__desgin" onClick={() => setShowMenu(!showMenu)}>
+    ☰
+  </button>
+</header>
 
-      <h1 className="welcome-message-help-page">Welcome to Edusify: Your Ultimate Study Companion!</h1>
 
-      <p className="app-description-help-page">
-        Edusify is an all-in-one study app designed to enhance your learning experience with a suite of powerful tools. Stay organized, collaborate, and make studying more enjoyable!
-      </p>
 
-      {/* Help Section: Troubleshooting and Support */}
-      <div className="help-section">
-        <h2>How to Get the Most Out of Edusify</h2>
-        <p>Here are some helpful tips to ensure you're getting the best experience with Edusify:</p>
-        <ul>
-          <li><strong>Set up your custom study plan:</strong> Use the AI-powered study plan generator to create a personalized schedule.</li>
-          <li><strong>Maximize your productivity:</strong> Make use of the Pomodoro timer and to-do list features for better focus and organization.</li>
-          <li><strong>Collaborate with peers:</strong> Share notes, quizzes, and stats with your friends using the friends feature.</li>
-          <li><strong>Explore AI features:</strong> Try out Magic for generating quizzes, flashcards, and study notes automatically.</li>
-          <li><strong>Sync your PDFs:</strong> Upload and create notes directly from your study materials in PDF format for a seamless study experience.</li>
-        </ul>
+      <div className="container__helpp__page__new__desgin">
+        {/* Sections will go here */}
+        <section id="welcome" className="welcome__helpp__page__new__desgin">
+  <h2>Welcome to Edusify ✨</h2>
+  <p>Your all-in-one premium study companion — built for those who want to win at studying, not just survive it.</p>
+</section>
+<section className="feature__usage__helpp__page__new__desgin" id="guide">
+  <h2>How to Use Each Feature</h2>
 
-        <h3>Frequently Asked Questions (FAQs)</h3>
-        <div>
-          <h4>1. How do I reset my password?</h4>
-          <p>If you've forgotten your password, simply go to the login page and click on the "Forgot Password" link. Follow the instructions to reset it.</p>
+  {/* Study Plan */}
+  <div id="howtouse" className="feature__card__helpp__page__new__desgin">
+    <h3>📅 AI Study Plan</h3>
+    <p>
+      We generate a personalized study plan tailored to your subjects, goals, and availability.
+      View it at the top of your Dashboard by tapping <strong>“View Today’s Plan”</strong>.
+      It shows your sessions, subject-wise time breakdown, and total focus duration.
+      Use the Pomodoro Timer to complete your session and update your progress.
+      You’ll also find three powerful actions:
+    </p>
+    <ul>
+      <li><strong>🎯 Get New Plan (AI):</strong> Instantly generate a new AI-powered plan.</li>
+      <li><strong>🛠️ Build Manually:</strong> Create your plan from scratch, your way.</li>
+      <li><strong>🧠 Generate Tasks:</strong> Auto-generate tasks based on today’s plan.</li>
+    </ul>
+  </div>
 
-          <h4>2. How do I upgrade to the Premium version?</h4>
-          <p>To unlock premium features, go to the settings page and select "Upgrade to Premium." It's only ₹99 per month!</p>
+  {/* Sticky Notes */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>📝 Sticky Notes</h3>
+    <p>
+      Add colorful, customizable sticky notes right on your Dashboard. Perfect for reminders,
+      ideas, or micro-tasks. Add a title, description, and pick a color that fits your mood.
+    </p>
+  </div>
 
-          <h4>3. How do I contact support?</h4>
-          <p>If you're facing any issues, feel free to reach out to us at <a href="mailto:edusyfy@gmail.com">edusyfy@gmail.com</a>. We'll get back to you as soon as possible!</p>
-        </div>
+  {/* AI Chat Assistant */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>💬 AI Assistant</h3>
+    <p>
+      Ask anything, from math problems to essay help. Your AI tutor is always ready. Use the
+      <strong>“Click Here”</strong> button below the response to:
+    </p>
+    <ul>
+      <li>📓 Convert the answer into notes</li>
+      <li>🧠 Turn it into flashcards</li>
+      <li>🗺️ Make a mind map</li>
+      <li>❓ Create a quiz</li>
+      <li>📝 Add related tasks</li>
+    </ul>
+    <p>To clear your chat history, tap the ⚙️ icon on the top-right and select “Clear All.”</p>
+  </div>
 
-        <h3>If you're facing any difficulty, don't hesitate to contact us!</h3>
-        <p>Our support team is always here to help. Reach out via:</p>
-        <ul>
-          <li>Email: <a href="mailto:edusyfy@gmail.com">edusyfy@gmail.com</a></li>
-          <li>Telegram: <a href="https://t.me/edusify" target="_blank" rel="noopener noreferrer">Join our Telegram channel</a></li>
-        </ul>
+  {/* AI Image Generator */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🎨 Image Generator (Beta)</h3>
+    <p>
+      Type your idea and get a stunning AI-generated image. It’s in beta, so expect magic with a pinch of experimentation.
+    </p>
+  </div>
+
+  {/* AI Notes */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🧾 AI Notes</h3>
+    <p>
+      Create short, focused summary notes on any topic with AI. Once generated, you can expand
+      them into flashcards, quizzes, and mind maps directly from the notes.
+    </p>
+  </div>
+
+  {/* AI Quiz */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🧪 AI Quiz</h3>
+    <p>
+      Enter your subject and topic to generate instant quizzes. After attempting, get an AI-powered
+      analysis showing your strengths, weaknesses, and improvement tips.
+    </p>
+  </div>
+
+  {/* AI Mind Maps */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🗺️ AI Mind Maps</h3>
+    <p>
+      Visualize your topics. Just enter subject and topic, and optionally add instructions.
+      AI will generate a structured, beautiful mind map for quick understanding.
+    </p>
+  </div>
+
+  {/* Assignment Maker */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>📚 Assignment Maker</h3>
+    <p>
+      Beat deadlines with a complete AI-generated assignment (up to 15 pages) in under 5 seconds.
+      With images, pick a subject, and download the final PDF ready to submit.
+    </p>
+  </div>
+
+  {/* Exam Mode */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🎓 Exam Mode</h3>
+    <p>
+      This is your ultimate revision toolkit. Enter a topic, and the AI instantly provides:
+    </p>
+    <ul>
+      <li>📝 Key Notes</li>
+      <li>📌 Definitions & Formulas</li>
+      <li>🧾 Last-Minute Revision Sheets</li>
+      <li>❓ Practice Questions</li>
+      <li>🧠 Quiz on that topic</li>
+    </ul>
+  </div>
+
+  {/* Lecture Summarizer */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🎙️ Lecture AI</h3>
+    <p>
+      Record any lecture — school, online, or tuition — and let Edusify instantly turn it into
+      summarized, structured notes so you never miss a thing.
+    </p>
+  </div>
+
+  {/* To-Do List */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>✅ To-Do List</h3>
+    <p>
+      Add, edit, or delete tasks with a title, description, and due date. The AI can auto-generate
+      tasks based on your study plan. Track what matters.
+    </p>
+  </div>
+
+  {/* Flashcards */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>🧠 Flashcards</h3>
+    <p>
+      Learn and revise faster with flashcards. Make your own or convert notes into card format.
+      Tap through and boost memory retention through active recall.
+    </p>
+  </div>
+
+  {/* Mock Tests */}
+  <div className="feature__card__helpp__page__new__desgin">
+    <h3>📖 Mock Tests</h3>
+    <p>
+      Generate full-length 50-question competitive exam mock tests. Includes a built-in timer
+      to simulate the real test experience and sharpen your exam-taking skills.
+    </p>
+  </div>
+</section>
+
       </div>
+      <section id="premium" className="premium__helpp__page__new__desgin">
+  <h2 className="premium__title__helpp__page__new__desgin">Why Edusify is Premium Only</h2>
+  <p className="premium__desc__helpp__page__new__desgin">
+    Edusify isn’t just another study app. It’s your AI-powered academic partner built for ambitious students who want to study smarter, faster, and better.
+  </p>
 
-      {/* Premium Benefits Section */}
-      <div className="premium-benefits-section">
-        <h2>Why Go Premium?</h2>
-        <p>Unlock the full potential of Edusify with our premium version. Here's why you should upgrade:</p>
-        <ul>
-          <li><strong>Unlimited AI Magic:</strong> Generate as many study notes, quizzes, and flashcards as you want without limitations.</li>
-          <li><strong>Custom Study Plans:</strong> Get personalized study plans tailored to your learning needs, updated every month.</li>
-          <li><strong>AI Task Generation:</strong> Access AI-generated tasks for more structured and effective study sessions.</li>
-          <li><strong>No Ads:</strong> Enjoy an uninterrupted experience without any ads on the app.</li>
-          <li><strong>Priority Support:</strong> Get quicker responses and premium customer service whenever you need help.</li>
-        </ul>
-      </div>
-
-      {/* Feature Usage Section */}
-      <div className="feature-usage-section">
-        <h2>Feature Usage Guide</h2>
-        <h3>AI Assistant</h3>
-        <p>The AI assistant is your personal study guide. It can answer questions, explain topics, and help you understand complex subjects. Simply type in your question, and the AI will provide a detailed answer.</p>
-
-        <h3>Magic</h3>
-        <p>Magic is an AI-powered tool that helps you generate study notes, quizzes, and flashcards. Use it to create personalized study materials quickly. In the free version, you can generate up to 5 items per day. Premium users have unlimited access to Magic!</p>
-
-        <h3>Custom Study Plan</h3>
-        <p>Create a study schedule that works for you! The AI will suggest a plan based on your goals, subject preferences, and available time. You can update it monthly, and premium users can access more personalized options.</p>
-
-        <h3>To-Do List</h3>
-        <p>Stay organized by creating a to-do list of tasks. The AI assistant can even generate tasks based on your study goals, and you can get reminders in the premium version!</p>
-
-        <h3>Notes from PDFs</h3>
-        <p>Upload your PDFs, and the AI will extract relevant notes and summarize them for easy study. Premium users can upload unlimited PDFs, while free users have a daily limit of 5.</p>
-
-        <h3>Pomodoro Timer</h3>
-        <p>Use the Pomodoro timer to enhance focus during study sessions. Breaks are essential to maintain productivity and mental clarity, and the Pomodoro technique helps you manage them effectively.</p>
-      </div>
-
-      {/* Thank You Section */}
-      <div className="thank-you-section">
-        <h2>Thank You for Choosing Edusify!</h2>
-        <p>We're thrilled to have you as part of the Edusify community. Your feedback and support help us improve the app every day. We hope Edusify continues to be a valuable tool in your learning journey!</p>
-      </div>
-
-      {/* Feedback Form */}
-      <div style={{ marginTop: '10px' }}>
-        <FeedbackForm />
-      </div>
-
-      <footer className="footer-help-page">
-        <p>© 2025 Edusify. All rights reserved.</p>
-
-        {/* Social Media Links */}
-        <div className="footer-social-links-help-page">
-          <a href="https://www.instagram.com/edusify.app/" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
-            <FontAwesomeIcon icon={faInstagram} size="2x" />
-          </a>
-          <a href="https://x.com/SyedZain_saz?t=mUNjUKoihNUivIYikdtu3g&s=08" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
-            <FontAwesomeIcon icon={faTwitter} size="2x" />
-          </a>
-          <a href="https://edusify-download.vercel.app/" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
-            <FontAwesomeIcon icon={faChrome} size="2x" />
-          </a>
-          <a href="https://g.page/r/CbK_EhVVrsJqEAI/review" target="_blank" rel="noopener noreferrer" className="footer-social-icon-help-page">
-            <FontAwesomeIcon icon={faGoogle} size="2x" />
-          </a>
-        </div>
-
-        <Link to="/terms-and-conditions" className="footer-link-help-page">
-          <p style={{ marginTop: '10px' }}>Terms and Conditions</p>
-        </Link>
-        <MadeWithLove/>
-      </footer>
+  <div className="premium__cards__helpp__page__new__desgin">
+    <div className="premium__card__helpp__page__new__desgin">
+      <h3>Unlimited AI Tools</h3>
+      <p>From notes to quizzes, mind maps to assignments — everything powered by AI, with no limits.</p>
     </div>
+
+    <div className="premium__card__helpp__page__new__desgin">
+      <h3>Personalized Study Plans</h3>
+      <p>AI-generated weekly study plans based on your subjects, time, and goals — always one step ahead.</p>
+    </div>
+
+    <div className="premium__card__helpp__page__new__desgin">
+      <h3>No Distractions</h3>
+      <p>100% ad-free experience so you can stay focused on what truly matters — your studies.</p>
+    </div>
+
+    <div className="premium__card__helpp__page__new__desgin">
+      <h3>Lecture Summarizer</h3>
+      <p>Just record — and get summarized class notes instantly. Study the lecture without replaying it.</p>
+    </div>
+
+    <div className="premium__card__helpp__page__new__desgin">
+      <h3>Priority Access</h3>
+      <p>Be the first to access new features and get VIP support directly from the Edusify team.</p>
+    </div>
+  </div>
+
+  <p className="premium__footer__helpp__page__new__desgin">
+    Edusify is built for serious learners. That's why it's 100% premium — no distractions, no limits, no compromises.
+  </p>
+</section>
+<section id="faq" className="faq__helpp__page__new__desgin">
+  <h2 className="faq__title__helpp__page__new__desgin">FAQs – You Asked, We Answered</h2>
+  
+  <div className="faq__list__helpp__page__new__desgin">
+    <details className="faq__item__helpp__page__new__desgin">
+      <summary>Is Edusify completely paid?</summary>
+      <p>Yes. We believe serious students deserve serious tools. Edusify is 100% premium, with no free version, no ads, and no compromises.</p>
+    </details>
+
+    <details className="faq__item__helpp__page__new__desgin">
+      <summary>Do I get all AI tools after subscribing?</summary>
+      <p>Absolutely. One subscription unlocks everything: AI notes, quizzes, flashcards, lecture summarizer, mind maps, and more.</p>
+    </details>
+
+    <details className="faq__item__helpp__page__new__desgin">
+      <summary>Is it safe to upload PDFs and record lectures?</summary>
+      <p>Yes. Your data is encrypted and stored securely. You can delete anything anytime.</p>
+    </details>
+
+    <details className="faq__item__helpp__page__new__desgin">
+      <summary>Can I cancel anytime?</summary>
+      <p>Yes, you’re in control. You can cancel your subscription anytime — no lock-ins or hidden terms.</p>
+    </details>
+
+    <details className="faq__item__helpp__page__new__desgin">
+      <summary>Will I lose my data if I unsubscribe?</summary>
+      <p>No. Your data is safely stored. You can re-subscribe anytime and continue from where you left off.</p>
+    </details>
+  </div>
+</section>
+<footer id='feedback' className="footer__helpp__page__new__desgin">
+  <div className="footer__content__helpp__page__new__desgin">
+    <h2 className="footer__title__helpp__page__new__desgin">Got Feedback?</h2>
+    <p className="footer__subtitle__helpp__page__new__desgin">We’re building Edusify for you. Share your thoughts below!</p>
+    <FeedbackForm />
+  </div>
+
+  <div className="footer__bottom__helpp__page__new__desgin">
+    <MadeWithLove />
+  </div>
+</footer>
+    </>
   );
 };
 
