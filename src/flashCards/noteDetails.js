@@ -455,13 +455,23 @@ const quillModules = {
     ))}
   </div>
 ) : (
-  <div className="note-btn-container__notes__page__Details">
-    {["Generate Flashcards", "Generate Mind Map", "Generate Quiz"].map((label, index) => (
-      <button key={index} className="action__button__today__ai__pan_overview__locked__premium__" disabled>
-        <FaLock className="lock-icon" style={{ marginRight: "10px" }} /> {label} <span>Premium</span>
+  <div className="note-btn-container">
+  {["Generate Flashcards", "Generate Mind Map", "Generate Quiz"].map((label, index) => (
+    <div
+      key={index}
+      className="centered-button-container__notes__page__Details"
+      style={{ marginTop: index !== 0 ? "8px" : "0px" }}
+    >
+      <button
+        className="action__button__today__ai__pan_overview__locked__premium__"
+        disabled
+      >
+        <FaLock className="lock-icon" style={{ marginRight: "10px" }} />
+        {label} <span>Premium</span>
       </button>
-    ))}
-  </div>
+    </div>
+  ))}
+</div>
 )}
 
 <br/>
