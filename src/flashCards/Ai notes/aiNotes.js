@@ -13,29 +13,33 @@ const GenerateNotesAI = () => {
   const [isPremium, setIsPremium] = useState(null);
   const [flashcardsCount, setFlashcardsCount] = useState(0);
   const [isExceededLimit, setIsExceededLimit] = useState(false);
+  const [classLevel, setClassLevel] = useState('');
+const [examType, setExamType] = useState('');
+const [extraDetails, setExtraDetails] = useState('');
   const navigate = useNavigate(); // Hook to navigate to a different page
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Show loading modal
-
+    setLoading(true);
+  
     try {
-      const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
+      const token = localStorage.getItem('token');
       const response = await axios.post(API_ROUTES.aiNotesGen, {
         topic,
+        class: classLevel,
+        exam: examType,
+        extraDetails,
         token
       });
-
+  
       setGeneratedNotes(response.data.notes.headings);
       setError('');
-      setLoading(false); // Hide loading modal
-
-      // Redirect to the newly created note's page using the id
-      navigate(`/note/view/${response.data.notes.id}`); // Ensure that 'response.data.notes.id' is the correct id
+      setLoading(false);
+      navigate(`/note/view/${response.data.notes.id}`);
     } catch (err) {
       setError('Error generating notes. Please try again later.');
       setGeneratedNotes('');
-      setLoading(false); // Hide loading modal
+      setLoading(false);
     }
   };
 
@@ -87,7 +91,40 @@ const GenerateNotesAI = () => {
             className="input-field__ai__gen__notes__ai__gen__notes"
           />
         </div>
+        <div className="input-container__ai__gen__notes__ai__gen__notes">
+    <label className="input-label__ai__gen__notes__ai__gen__notes">Class/Grade (optional):</label>
+    <input
+      type="text"
+      value={classLevel}
+      onChange={(e) => setClassLevel(e.target.value)}
+      placeholder="e.g. Class 11, 12, BCA, etc."
+      className="input-field__ai__gen__notes__ai__gen__notes"
+    />
+  </div>
 
+  {/* Exam Type Input */}
+  <div className="input-container__ai__gen__notes__ai__gen__notes">
+    <label className="input-label__ai__gen__notes__ai__gen__notes">Exam Type (optional):</label>
+    <input
+      type="text"
+      value={examType}
+      onChange={(e) => setExamType(e.target.value)}
+      placeholder="e.g. Boards, JEE, End Semester"
+      className="input-field__ai__gen__notes__ai__gen__notes"
+    />
+  </div>
+
+  {/* Extra Details Input */}
+  <div className="input-container__ai__gen__notes__ai__gen__notes">
+    <label className="input-label__ai__gen__notes__ai__gen__notes">Extra Notes Preference (optional):</label>
+    <textarea
+      value={extraDetails}
+      onChange={(e) => setExtraDetails(e.target.value)}
+      placeholder="e.g. Focus on formulas, key points only, or include real-life applications"
+      className="input-field__ai__gen__notes__ai__gen__notes"
+      rows={3}
+    />
+  </div>
         <button 
           type="submit" 
           disabled={loading || isExceededLimit && !isPremium} 
