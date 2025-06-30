@@ -404,7 +404,7 @@ const ViewFlashCard = () => {
         ) : (
           <div className="flashcard-list-flashcards-page">
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              {filteredNotes.map(note => (
+            {[...filteredNotes].reverse().map(note => (
                 <div
                   key={note.id}
                   style={{
