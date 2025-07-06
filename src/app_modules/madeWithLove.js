@@ -47,7 +47,7 @@ const MadeWithLove: React.FC = () => {
     <Footer>
       Made with ❤️ by&nbsp;
       <a
-        href="https://instagram.com/_syed_zain_ul"
+        href="https://instagram.com/_zainn.27"
         target="_blank"
         rel="noopener noreferrer"
       ><br/>
