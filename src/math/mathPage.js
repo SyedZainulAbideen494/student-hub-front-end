@@ -898,7 +898,7 @@ const SparkleIcon = () => (
                     <div>
   <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
     <button className="flashcard__set__page__ai-explain-btn" onClick={() => handleMagicButtonClick(result.parts.map((part) => part.text).join(''))}>
-      <SparkleIcon className="ai-explain-flashcard-icon" /> Click Here
+      <SparkleIcon className="ai-explain-flashcard-icon" /> Convert into
     </button>
   </div>
   <div style={{ fontSize: '10px', color: '#888', textAlign: 'center', marginTop: '8px' }}>
