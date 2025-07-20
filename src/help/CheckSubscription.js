@@ -25,7 +25,7 @@ const CheckSubscription = () => {
         const status = response.data.status;
 
         if (status === "redirect_subscription") {
-          navigate("/subscription");
+          navigate("/subscription/features");
         }
       } catch (error) {
         console.error("❌ Error checking subscription:", error);
