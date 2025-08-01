@@ -153,7 +153,6 @@ const HomeMain = () => {
         <>
         <ReviewModal />
           <HomeTopBoxes />
-          < CheckSubscription/>
           <TodayEventsAndTasks />
           <FriendsDashboard />
           <div style={{ marginTop: '20px'}}>
