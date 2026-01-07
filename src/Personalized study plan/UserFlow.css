@@ -85,6 +85,8 @@
   background-color: #1d1a23;
   color: white;
   border-color: #6c88d1;
+  border-radius: 25px;
+  animation-duration: 0.2;
 }
 
 /* Navigation */
