@@ -250,11 +250,11 @@ const [showBenefits, setShowBenefits] = useState(false);
    // Set pricing based on selected plan
 let planAmount = 0;
 if (selectedPlan === "daily") {
-  planAmount = 9;
+  planAmount = 29;
 } else if (selectedPlan === "weekly") {
-  planAmount = 39;
+  planAmount = 59;
 } else if (selectedPlan === "monthly") {
-  planAmount = 99;
+  planAmount = 149;
 } else if (selectedPlan === "3months") {
   planAmount = 249; // 💡 Adjust price as per your pricing strategy
 } else if (selectedPlan === "6months") {
@@ -446,16 +446,16 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
 
 {isPremium ? (
   <Button onClick={handlePayment}>
-  <SparkleIcon /> Stop Studying Hard. Start Studying Smart.
+  <SparkleIcon /> Upgrade now
 </Button>) : (
   <Button onClick={handlePayment}>
-    <SparkleIcon /> Stop Studying Hard. Start Studying Smart.
+    <SparkleIcon /> Upgrade now
   </Button>
 )}
 
 <Link to='/'>
   <Footer style={{ opacity: 0.8, fontSize: '0.92rem', marginTop: '1.5rem' }}>
-    I'm Good being average
+    Later
   </Footer>
 </Link>
 
