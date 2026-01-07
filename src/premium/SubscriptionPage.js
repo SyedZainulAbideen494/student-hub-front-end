@@ -453,9 +453,9 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
   </Button>
 )}
 
-<Link to='/help'>
+<Link to='/'>
   <Footer style={{ opacity: 0.8, fontSize: '0.92rem', marginTop: '1.5rem' }}>
-    Need Help?
+    I'm Good being average
   </Footer>
 </Link>
 
