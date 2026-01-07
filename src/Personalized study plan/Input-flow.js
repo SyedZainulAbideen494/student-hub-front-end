@@ -274,14 +274,15 @@ const UserFlow = () => {
       </div>
 
       {/* Navigation */}
-<button
-  className="flow__user__btn"
-  disabled={!isStepSelected()}
-  onClick={handleNext}
->
-  {step === steps.length ? "Generate Plan" : "Continue"}
-</button>
-
+      <div className="flow__user__navigation">
+        <button
+          className="flow__user__btn"
+          disabled={!isStepSelected()} // Disable if the step is not selected
+          onClick={handleNext}
+        >
+          {step === steps.length ? "Generate Plan" : "Next"}
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,264 +1,211 @@
-/* ===============================
-   iOS 26 SYSTEM VARIABLES
-================================ */
-
-:root {
-  --ios-bg-primary: rgba(28, 28, 30, 0.92);
-  --ios-bg-secondary: rgba(44, 44, 46, 0.85);
-  --ios-bg-tertiary: rgba(58, 58, 60, 0.85);
-
-  --ios-text-primary: rgba(255, 255, 255, 0.95);
-  --ios-text-secondary: rgba(235, 235, 245, 0.6);
-  --ios-text-tertiary: rgba(235, 235, 245, 0.4);
-
-  --ios-accent: #0a84ff; /* iOS System Blue */
-  --ios-accent-soft: rgba(10, 132, 255, 0.25);
-
-  --ios-border: rgba(255, 255, 255, 0.08);
-}
-
-/* ===============================
-   CONTAINER (SYSTEM GLASS)
-================================ */
-
+/* Container */
 .flow__user__container {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-    "Helvetica Neue", sans-serif;
-
-  background: linear-gradient(
-    180deg,
-    var(--ios-bg-primary),
-    rgba(18, 18, 20, 0.88)
-  );
-
-  backdrop-filter: blur(28px) saturate(1.35);
-  -webkit-backdrop-filter: blur(28px) saturate(1.35);
-
-  padding: 36px 28px;
-  border-radius: 30px;
-
+  font-family: "San Francisco", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  background-color: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
   width: 80%;
-  max-width: 560px;
-
-  box-shadow:
-    0 40px 80px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
-  color: var(--ios-text-primary);
-
+  max-width: 540px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.3s ease-in-out;
 }
 
-/* ===============================
-   PROGRESS (VERY APPLE)
-================================ */
-
+/* Progress Bar */
 .flow__user__progress {
-  height: 3px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  margin-bottom: 32px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  margin-bottom: 24px;
+  position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .flow__user__progress-bar {
   height: 100%;
-  background: var(--ios-accent);
-  border-radius: 999px;
-  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(to right, #6c88d1, #ffffff);
+  border-radius: 6px;
+  transition: width 0.4s ease-in-out;
 }
 
-/* ===============================
-   CONTENT
-================================ */
-
-.flow__user__content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ===============================
-   TYPOGRAPHY (APPLE RHYTHM)
-================================ */
-
+/* Question & Subtext */
 .flow__user__question {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 600;
-  letter-spacing: -0.022em;
-  text-align: center;
   margin-bottom: 12px;
+  color: #f0f0f0;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .flow__user__subtext {
   font-size: 15px;
-  line-height: 1.6;
+  color: #b3b3b3;
+  margin-bottom: 30px;
   text-align: center;
-  color: var(--ios-text-secondary);
-  margin-bottom: 36px;
+  line-height: 1.5;
 }
 
-/* ===============================
-   OPTIONS (iOS LIST CELLS)
-================================ */
-
+/* Options */
 .flow__user__options {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   width: 100%;
 }
 
 .flow__user__option {
-  background: var(--ios-bg-secondary);
-  border: 1px solid var(--ios-border);
-
-  padding: 18px;
-  border-radius: 18px;
-
+  background-color: rgba(38, 38, 38, 0.85);
+  border: 1.5px solid rgba(108, 141, 255, 0.1);
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
   font-size: 16px;
   font-weight: 500;
-  color: var(--ios-text-primary);
-
+  color: #e2e6f9;
   cursor: pointer;
-
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 6px rgba(108, 141, 255, 0.05);
+  position: relative;
+  z-index: 1;
 }
 
-.flow__user__option:active {
-  transform: scale(0.98);
-}
 
 .flow__user__selected {
-  background: linear-gradient(
-    180deg,
-    rgba(10, 132, 255, 0.35),
-    rgba(10, 132, 255, 0.22)
-  );
-  border-color: rgba(10, 132, 255, 0.5);
+  background-color: #1d1a23;
+  color: white;
+  border-color: #6c88d1;
 }
 
-/* ===============================
-   INPUTS (iOS SEARCH BAR FEEL)
-================================ */
-
-.flow__user__input,
-.flow__user__select {
-  width: 100%;
-  padding: 14px 16px;
-
-  font-size: 15px;
-  border-radius: 14px;
-
-  background: var(--ios-bg-secondary);
-  border: 1px solid var(--ios-border);
-
-  color: var(--ios-text-primary);
-
-  transition: all 0.25s ease;
-}
-
-.flow__user__input::placeholder {
-  color: var(--ios-text-tertiary);
-}
-
-.flow__user__input:focus,
-.flow__user__select:focus {
-  outline: none;
-  background: var(--ios-bg-tertiary);
-  border-color: var(--ios-accent-soft);
-}
-
-/* ===============================
-   MANUAL INPUT
-================================ */
-
-.flow__user__manual-input {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.flow__user__subjects-list {
-  margin-top: 12px;
-}
-
-.flow__user__subject-item {
-  background: var(--ios-bg-tertiary);
-  padding: 12px;
-  border-radius: 12px;
-  color: var(--ios-text-secondary);
-}
-
-/* ===============================
-   PRIMARY BUTTON (iOS CONTINUE)
-================================ */
-
+/* Navigation */
 .flow__user__navigation {
-  margin-top: 40px;
+  margin-top: 35px;
+  text-align: center;
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .flow__user__btn {
-  background: var(--ios-accent);
+  background-color: #4e91f0; /* Bright, eye-catching blue */
   color: white;
-
   border: none;
-  border-radius: 999px;
-  margin-top: 15px;
-  padding: 14px 38px;
-
+  padding: 14px 28px;
+  border-radius: 50px;
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.3px;
-
   cursor: pointer;
-
-  box-shadow:
-    0 10px 25px rgba(10, 132, 255, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-
-  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(72, 118, 255, 0.3); /* Enhanced shadow for depth */
+  position: relative;
+  z-index: 1;
 }
 
-.flow__user__btn:active:not(:disabled) {
-  transform: scale(0.97);
+
+
+.flow__user__btn:hover:not(:disabled) {
+  background-color: #29242f;
+  transform: translateY(-1px);
 }
 
 .flow__user__btn:disabled {
-  opacity: 0.4;
-  box-shadow: none;
+  background-color: #3a3a3a;
+  color: #999;
   cursor: not-allowed;
 }
 
-/* ===============================
-   MOBILE
-================================ */
+/* Manual Input */
+.flow__user__manual-input {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+  width: 100%;
+  background: none;
+  color: white;
+}
 
+.flow__user__input {
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1.5px solid #444;
+  background-color: rgba(20, 20, 20, 0.5);
+  color: #f0f0f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 90%;
+}
+
+.flow__user__select {
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1.5px solid #444;
+  background-color: rgba(20, 20, 20, 0.5);
+  color: #f0f0f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+
+.flow__user__input:focus,
+.flow__user__select:focus {
+  border-color: #6c88d1;
+  outline: none;
+  background-color: rgba(20, 20, 20, 0.7);
+}
+
+.flow__user__subjects-list {
+  margin-top: 20px;
+}
+
+.flow__user__subject-item {
+  background-color: rgba(40, 40, 40, 0.6);
+  padding: 12px;
+  border-radius: 10px;
+  color: #ddd;
+  margin-bottom: 10px;
+  transition: background 0.3s ease;
+}
+
+.flow__user__subject-item:hover {
+  background-color: rgba(60, 60, 60, 0.7);
+}
+
+/* Mobile Optimization */
 @media (max-width: 768px) {
   .flow__user__container {
-    padding: 28px 20px;
+    padding: 20px;
+    width: 90%;
   }
 
   .flow__user__question {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .flow__user__subtext {
+    font-size: 13px;
+  }
+
+  .flow__user__option {
     font-size: 14px;
+    padding: 13px;
+  }
+
+  .flow__user__btn {
+    font-size: 14px;
+    padding: 12px 22px;
+  }
+
+  .flow__user__progress {
+    height: 5px;
   }
 }
