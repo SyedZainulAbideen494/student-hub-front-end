@@ -445,8 +445,9 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
       )}
 
 {isPremium ? (
-  <Button disabled>You’ve Got Premium. That Says It All. 🔥</Button>
-) : (
+  <Button onClick={handlePayment}>
+  <SparkleIcon /> Stop Studying Hard. Start Studying Smart.
+</Button>) : (
   <Button onClick={handlePayment}>
     <SparkleIcon /> Stop Studying Hard. Start Studying Smart.
   </Button>

@@ -105,8 +105,12 @@ const UserFlow = () => {
   ];
 
   const currentStep = steps.find((s) => s.id === step);
-
+  const clickSound = new Audio("/sounds/computer-mouse-click-352734.mp3");
+  clickSound.volume = 0.25; // subtle, Apple-like
+  
   const handleNext = async () => {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {}); // prevents autoplay errors
     if (step < steps.length) {
       setStep(step + 1);
     } else {
@@ -270,15 +274,14 @@ const UserFlow = () => {
       </div>
 
       {/* Navigation */}
-      <div className="flow__user__navigation">
-        <button
-          className="flow__user__btn"
-          disabled={!isStepSelected()} // Disable if the step is not selected
-          onClick={handleNext}
-        >
-          {step === steps.length ? "Generate Plan" : "Next"}
-        </button>
-      </div>
+<button
+  className="flow__user__btn"
+  disabled={!isStepSelected()}
+  onClick={handleNext}
+>
+  {step === steps.length ? "Generate Plan" : "Continue"}
+</button>
+
     </div>
   );
 };
