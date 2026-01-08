@@ -152,7 +152,7 @@ const HomeMain = () => {
     <Fragment>
         <>
         <ReviewModal />
-        <SubscriptionRedirector/>
+        <CheckSubscription/>
           <HomeTopBoxes />
           <TodayEventsAndTasks />
           <FriendsDashboard />
