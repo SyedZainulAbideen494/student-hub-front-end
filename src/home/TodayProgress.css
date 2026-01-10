@@ -1,298 +1,267 @@
-/* 🌑 Dark Mode Glassmorphism Container */
-.today-progress-dashboard__container {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3); /* Dark translucent background */
-    backdrop-filter: blur(15px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle light border */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* Elegant shadow */
-    max-width: 600px;
-    margin: 10px auto;
-    width: 90%;
-    animation: fadeIn 0.7s ease-in-out;
-    transition: transform 0.3s ease-in-out;
-}
+/* =========================================================
+   iOS 26 / VisionOS Premium System
+========================================================= */
 
-/* Hover Effect - Slight Lift */
-.today-progress-dashboard__container:hover {
-    transform: translateY(-3px);
-}
-
-/* ✨ Smooth Fade-in Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* 🏆 Inline Flexbox for Layout */
-.inline__today-progress-dashboard__container {
+:root {
+    --glass-bg: rgba(12, 12, 14, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --card-bg: linear-gradient(180deg, #0c0c0f, #141418);
+    --card-border: rgba(255, 255, 255, 0.06);
+    --accent-blue: #6a93ff;
+    --accent-purple: #9b7bff;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  /* Disable tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+  
+  /* =========================================================
+     MAIN GLASS DASHBOARD
+  ========================================================= */
+  
+  .today-progress-dashboard__container {
+    width: 92%;
+    max-width: 640px;
+    margin: 16px auto;
+  
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,0.09),
+        rgba(255,255,255,0.02)
+      ),
+      var(--glass-bg);
+  
+    backdrop-filter: blur(24px) saturate(180%);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+  
+    box-shadow:
+      0 30px 70px rgba(0,0,0,0.7),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+  
+    padding: 22px;
+    animation: fadeSlideIn 0.7s var(--ease-apple) both;
+  }
+  
+  /* =========================================================
+     TOP ROW
+  ========================================================= */
+  
+  .inline__today-progress-dashboard__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-/* 🎯 Left Side - Study Time Text */
-.study-time__today-progress-dashboard--left {
-    flex: 1;
-    text-align: left;
-}
-
-/* 📊 Study Time Number */
-.study-time-left__today-progress-dashboard--text {
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff; /* Light text for dark background */
-    transition: color 0.3s ease-in-out;
-}
-
-/* 🏷 Label Under Study Time */
-.study-time-left-label__today-progress-dashboard--text {
-    font-size: 12px;
-    color: #bbb; /* Lighter label */
-}
-
-/* 🟢 Pomodoro Progress Circle */
-.pomodoro-progress-circle__today-progress-dashboard--container {
-    width: 110px;
-    height: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: popIn 0.7s ease-in-out;
-}
-
-/* 🔵 Circular Progress Bar Text */
-.react-circular-progressbar-text {
-    font-size: 15px;
-    font-weight: bold;
-    fill: #ff5555; /* Vibrant shade */
-    transition: fill 0.3s ease-in-out;
-}
-
-/* ⚡ Subtle Pop Animation */
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* 🚀 Error, Loading, and No Plan States */
-.loading__today-progress-dashboard--container,
-.error__today-progress-dashboard--container,
-.no-study-plan__today-progress-dashboard--container {
-    text-align: center;
-    padding: 20px;
-    color: #bbb; /* Softer contrast */
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* 🎯 Responsive Design for Mobile */
-@media (max-width: 768px) {
-    .today-progress-dashboard__container {
-        padding: 15px;
-    }
-
-    .study-time__today-progress-dashboard--left {
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-    .study-time-left__today-progress-dashboard--text {
-        font-size: 22px; /* Slightly smaller */
-    }
-
-    .study-time-left-label__today-progress-dashboard--text {
-        font-size: 10px;
-    }
-
-    .pomodoro-progress-circle__today-progress-dashboard--container {
-        width: 90px;
-        height: 90px;
-    }
-
-    .react-circular-progressbar-text {
-        font-size: 13px; /* Adjusted for mobile */
-    }
-}
-
-/* 🎯 View Today's Plan Button Container */
-.view-plan-btn__today-progress-dashboard--container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-/* 🚀 View Plan Button - Premium Look */
-.view-plan-btn__today-progress-dashboard {
-    padding: 10px 20px;
-    background: #121212;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* 🚀 Button Hover & Click Effects */
-.view-plan-btn__today-progress-dashboard:hover {
-    background: linear-gradient(135deg, #2E2B38, #3A3645);
-    transform: scale(1.05);
-}
-
-.view-plan-btn__today-progress-dashboard:active {
-    transform: scale(0.98);
-}
-
-/* 📂 Floating Back Button (Arrow Only) */
-.back-btn__today-progress-dashboard {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 10px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-/* 🎯 Arrow Only Icon */
-.back-btn__today-progress-dashboard::before {
-    content: '←';
-    font-size: 18px;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* 🚀 Back Button Hover */
-.back-btn__today-progress-dashboard:hover {
-    background: rgba(0, 0, 0, 0.3);
-    transform: scale(1.1);
-}
-
-/* 🌑 Main Container - Darker Glassmorphic Base */
-.dashboard__today__progress__container {
+  }
+  
+  /* Left text */
+  .study-time__today-progress-dashboard--left {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: 20px;
-    background: rgba(10, 10, 10, 0.5); /* Slightly darker */
-    backdrop-filter: blur(15px);
+    gap: 4px;
+  }
+  
+  .study-time-left__today-progress-dashboard--text {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+  
+  .study-time-left-label__today-progress-dashboard--text {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  
+  /* =========================================================
+     PROGRESS RING
+  ========================================================= */
+  
+  .pomodoro-progress-circle__today-progress-dashboard--container {
+    width: 110px;
+    height: 110px;
+    animation: pulseGlow 3.5s ease-in-out infinite;
+  }
+  
+  .react-circular-progressbar-path {
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px rgba(106,147,255,0.6));
+  }
+  
+  .react-circular-progressbar-text {
+    fill: var(--text-primary);
+    font-weight: 700;
+    font-size: 16px;
+  }
+  
+  /* =========================================================
+     CTA BUTTON
+  ========================================================= */
+  
+  .view-plan-btn__today-progress-dashboard--container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .view-plan-btn__today-progress-dashboard {
+    padding: 12px 28px;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.05), 
-                0 10px 25px rgba(0, 0, 0, 0.6); /* Slight inner line + outer shadow */
-    animation: fadeIn 0.6s ease-in-out;
-}
-
-/* 🔥 Always Keep 2 Items Inline */
-.dashboard__today__progress__row {
+    font-size: 14px;
+    font-weight: 700;
+  
+    background:
+      linear-gradient(180deg, #1c1c20, #121216);
+  
+    color: white;
+    border: none;
+  
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.15),
+      0 10px 24px rgba(0,0,0,0.7);
+  
+    cursor: pointer;
+    transition: all 0.25s var(--ease-apple);
+  }
+  
+  .view-plan-btn__today-progress-dashboard:hover {
+    transform: translateY(-2px) scale(1.04);
+  }
+  
+  .view-plan-btn__today-progress-dashboard:active {
+    transform: scale(0.94);
+  }
+  
+  /* =========================================================
+     LOWER DASHBOARD
+  ========================================================= */
+  
+  .dashboard__today__progress__container {
+    margin: 18px auto;
+    width: 92%;
+    max-width: 640px;
+  
+    background: rgba(10,10,12,0.6);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+  
+    padding: 20px;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.06),
+      0 20px 40px rgba(0,0,0,0.7);
+  }
+  
+  /* =========================================================
+     CARD GRID
+  ========================================================= */
+  
+  .dashboard__today__progress__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-}
-
-/* 🎯 Individual Cards - Stronger Pop */
-.dashboard__today__progress__card {
-    background: linear-gradient(135deg, #0a0a0a, #141414); /* Deeper matte feel */
+    margin-bottom: 16px;
+  }
+  
+  /* =========================================================
+     CARDS
+  ========================================================= */
+  
+  .dashboard__today__progress__card {
+    background: var(--card-bg);
+    border-radius: 18px;
     padding: 18px;
-    border-radius: 14px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 
-        0 4px 10px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.05); /* subtle rim for pop */
-    transition: all 0.3s ease-in-out;
-}
-
-/* Optional: Hover effect for more depth */
-.dashboard__today__progress__card:hover {
+  
+    border: 1px solid var(--card-border);
+  
     box-shadow:
-        0 6px 16px rgba(0, 0, 0, 0.7),
-        0 0 0 1.5px rgba(255, 255, 255, 0.08);
-}
-
-
-/* 📌 Card Titles */
-.dashboard__today__progress__card h3 {
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
+      0 6px 16px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.05);
+  
+    text-align: center;
+  
+    animation: cardEnter 0.6s var(--ease-apple) both;
+    transition: transform 0.3s var(--ease-apple),
+                box-shadow 0.3s var(--ease-apple);
+  }
+  
+  .dashboard__today__progress__card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+      0 10px 24px rgba(0,0,0,0.8),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+  
+  /* Card text */
+  .dashboard__today__progress__card h3 {
+    color: var(--text-primary);
+    font-size: 17px;
+    font-weight: 700;
     margin-bottom: 10px;
-}
-
-/* 📊 Text Inside Cards */
-.dashboard__today__progress__card p {
+  }
+  
+  .dashboard__today__progress__card p {
+    color: var(--text-secondary);
     font-size: 14px;
-    color: #ddd; /* Lighter text */
-    margin: 5px 0;
-}
-
-/* 🟢 Circular Progress Bar */
-.dashboard__progress__circle {
-    width: 100px !important;
-    height: 100px !important;
-    margin: auto;
-    filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
-}
-
-/* ✨ Smooth Fade-in Animation */
-@keyframes fadeIn {
+  }
+  
+  /* =========================================================
+     ANIMATIONS
+  ========================================================= */
+  
+  @keyframes fadeSlideIn {
     from {
-        opacity: 0;
-        transform: translateY(10px);
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
-}
-
-/* 📱 Responsive Design - 2 Items Inline Even on Small Screens */
-@media (max-width: 600px) {
-    .dashboard__today__progress__row {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+  }
+  
+  @keyframes cardEnter {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
     }
-
-    .dashboard__today__progress__container {
-        padding: 15px;
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
-
-    .dashboard__today__progress__card {
-        padding: 14px;
+  }
+  
+  @keyframes pulseGlow {
+    0% { filter: drop-shadow(0 0 6px rgba(106,147,255,0.3)); }
+    50% { filter: drop-shadow(0 0 16px rgba(106,147,255,0.6)); }
+    100% { filter: drop-shadow(0 0 6px rgba(106,147,255,0.3)); }
+  }
+  
+  /* =========================================================
+     MOBILE OPTIMIZATION
+  ========================================================= */
+  
+  @media (max-width: 600px) {
+    .study-time-left__today-progress-dashboard--text {
+      font-size: 24px;
     }
-
+  
+    .pomodoro-progress-circle__today-progress-dashboard--container {
+      width: 90px;
+      height: 90px;
+    }
+  
     .dashboard__today__progress__card h3 {
-        font-size: 16px;
+      font-size: 15px;
     }
-
+  
     .dashboard__today__progress__card p {
-        font-size: 13px;
+      font-size: 13px;
     }
-
-    .dashboard__progress__circle {
-        width: 80px !important;
-        height: 80px !important;
-    }
-}
+  }
+  
