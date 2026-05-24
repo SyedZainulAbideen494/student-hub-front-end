@@ -444,20 +444,7 @@ const { data } = await axios.post(API_ROUTES.getPremium, {
         </BenefitsContainer>
       )}
 
-{isPremium ? (
-  <Button onClick={handlePayment}>
-  <SparkleIcon /> Upgrade now
-</Button>) : (
-  <Button onClick={handlePayment}>
-    <SparkleIcon /> Upgrade now
-  </Button>
-)}
 
-<Link to='/'>
-  <Footer style={{ opacity: 0.8, fontSize: '0.92rem', marginTop: '1.5rem' }}>
-    Later
-  </Footer>
-</Link>
 
 
     </SubscriptionContainer>
